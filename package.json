@@ -12,7 +12,9 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "prepare": "husky",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "registry:build:html": "pnpm dlx shadcn@4.20.0 build ./registry-html.json --output ./apps/docs/public/r/html",
+    "registry:build:react": "pnpm dlx shadcn@4.20.0 build ./registry-react.json --output ./apps/docs/public/r/react"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
