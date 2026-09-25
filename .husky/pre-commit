@@ -1,0 +1,8 @@
+branch=$(git symbolic-ref --quiet --short HEAD 2>/dev/null || true)
+
+if [ "$branch" = "main" ] || [ "$branch" = "master" ]; then
+	echo "Commits to '$branch' are not allowed. Create or switch to a feature branch." >&2
+	exit 1
+fi
+
+pnpm precommit
