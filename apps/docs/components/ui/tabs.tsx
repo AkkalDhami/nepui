@@ -112,7 +112,7 @@ function TabsTrigger({ className, children, ...props }: TabsTriggerProps) {
             ) : (
               <motion.div
                 layoutId={`${layoutId}-pill`}
-                className="absolute inset-0 -z-10 rounded-md bg-background shadow-xs dark:bg-input/30"
+                className="absolute inset-0 -z-10 rounded-md bg-input shadow-xs"
                 transition={{ type: "spring", stiffness: 400, damping: 30 }}
               />
             ))}
