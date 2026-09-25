@@ -1,0 +1,54 @@
+apps/
+└── docs/
+    ├── content/
+    │   └── docs/
+    │       ├── index.mdx
+    │       │
+    │       ├── getting-started/
+    │       │   ├── installation.mdx
+    │       │   ├── quick-start.mdx
+    │       │   └── configuration.mdx
+    │       │
+    │       ├── fundamentals/
+    │       │   ├── introduction.mdx
+    │       │   ├── design-tokens.mdx
+    │       │   ├── theming.mdx
+    │       │   ├── accessibility.mdx
+    │       │   └── customization.mdx
+    │       │
+    │       ├── html/
+    │       │   ├── introduction.mdx
+    │       │   ├── installation.mdx
+    │       │   └── usage.mdx
+    │       │
+    │       ├── react/
+    │       │   ├── introduction.mdx
+    │       │   ├── installation.mdx
+    │       │   └── usage.mdx
+    │       │
+    │       ├── components/
+    │       │   ├── button.mdx
+    │       │   ├── input.mdx
+    │       │   ├── textarea.mdx
+    │       │   ├── select.mdx
+    │       │   ├── checkbox.mdx
+    │       │   ├── radio.mdx
+    │       │   ├── switch.mdx
+    │       │   ├── dialog.mdx
+    │       │   ├── dropdown-menu.mdx
+    │       │   ├── tooltip.mdx
+    │       │   └── ...
+    │       │
+    │       ├── guides/
+    │       │   ├── styling.mdx
+    │       │   ├── dark-mode.mdx
+    │       │   ├── accessibility.mdx
+    │       │   └── migration.mdx
+    │       │
+    │       └── contributing/
+    │           ├── introduction.mdx
+    │           ├── development.mdx
+    │           ├── adding-components.mdx
+    │           └── registry.mdx
+    │
+    └── ...
