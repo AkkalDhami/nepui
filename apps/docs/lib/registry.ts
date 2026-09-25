@@ -58,3 +58,38 @@ export async function getHtmlComponentSource(
 
   return { html, css, js }
 }
+
+export async function getRegistryItem2(target: string, component: string) {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_SITE_URL}/r/${target}/${component}.json`,
+    {
+      next: {
+        revalidate: 3600,
+      },
+    }
+  )
+
+  if (!response.ok) {
+    return null
+  }
+
+  return response.json()
+}
+
+export async function getRegistryItem(target: string, component: string) {
+  const filePath = path.join(
+    process.cwd(),
+    "public",
+    "r",
+    target,
+    `${component}.json`
+  )
+
+  try {
+    const content = await fs.readFile(filePath, "utf8")
+
+    return JSON.parse(content)
+  } catch {
+    return null
+  }
+}
