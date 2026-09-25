@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "nepui",
+  "homepage": "https://nepui.vercel.app",
+  "items": [
+    {
+      "name": "button",
+      "type": "registry:component",
+      "title": "Button",
+      "description": "A button triggers an action, submits a form, or performs another user-initiated operation.",
+      "files": [
+        {
+          "path": "registry/html/button/button.html",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/html/button/button.css",
+          "type": "registry:component"
+        }
+      ]
+    }
+  ]
+}
