@@ -85,7 +85,7 @@ export function buildHtmlDocument(
     />
 
     <style>
-      /* NepUI design tokens */
+      /* nepui design tokens */
       ${tokens}
     </style>
 
