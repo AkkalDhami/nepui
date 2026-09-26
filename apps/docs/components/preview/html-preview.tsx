@@ -18,7 +18,7 @@ export function HtmlPreview({ files, tokens = "" }: HtmlPreviewProps) {
   return (
     <div className="h-full min-h-80 scrollbar-thin overflow-hidden rounded-lg border bg-background">
       <iframe
-        title="NepUI component preview"
+        title="nepui component preview"
         srcDoc={srcDoc}
         sandbox="allow-scripts"
         className="block h-full min-h-80 w-full scrollbar-thin border-0"

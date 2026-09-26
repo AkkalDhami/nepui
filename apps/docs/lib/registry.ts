@@ -29,8 +29,6 @@ async function readSourceFile(filePath: string): Promise<string> {
   }
 }
 
-// A missing JS file is expected (most components are markup + CSS only),
-// so this resolves to null on ENOENT instead of throwing.
 async function readOptionalSourceFile(
   filePath: string
 ): Promise<string | null> {
@@ -59,7 +57,7 @@ export async function getHtmlComponentSource(
   return { html, css, js }
 }
 
-export async function getRegistryItem2(target: string, component: string) {
+export async function getRegistryItem(target: string, component: string) {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_SITE_URL}/r/${target}/${component}.json`,
     {
@@ -76,7 +74,7 @@ export async function getRegistryItem2(target: string, component: string) {
   return response.json()
 }
 
-export async function getRegistryItem(target: string, component: string) {
+export async function getRegistryItem2(target: string, component: string) {
   const filePath = path.join(
     process.cwd(),
     "public",

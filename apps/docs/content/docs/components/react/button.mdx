@@ -1,0 +1,608 @@
+---
+title: Button
+description: A button triggers an action, submits a form, or performs another user-initiated operation.
+---
+
+---
+
+import { Button } from "@nepui/react/button";
+import { ArrowUpIcon } from "@phosphor-icons/react/ssr"
+
+<Tabs
+  defaultValue="preview"
+  className="gap-0"
+>
+  <TabsList className="bg-transparent mb-0" variant="line"> 
+    <TabsTrigger
+      value="preview"
+      className={"text-base"}
+    >
+      Preview
+    </TabsTrigger>
+    <TabsTrigger
+      value="code"
+      className={"text-base"}
+    >
+      Code
+    </TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+    <ReactPreview>
+      <Button>Button</Button>
+
+      <Button variant="secondary">Secondary</Button>
+
+      <Button variant="ghost">Ghost</Button>
+
+      <Button variant="outline" size="icon">
+        <ArrowUpIcon />
+      </Button>
+
+      <Button variant="destructive">Destructive</Button>
+    </ReactPreview>
+  </TabsContent>
+  <TabsContent value="code">
+    ```tsx
+    import { ArrowUpIcon } from "@phosphor-icons/react"
+
+    import { Button } from "@/components/ui/button"
+
+    export function ButtonDemo() {
+      return (
+        <div>
+          <Button>Button</Button>
+
+          <Button variant="secondary">Secondary</Button>
+
+          <Button variant="ghost">Ghost</Button>
+
+          <Button variant="outline" size="icon">
+            <ArrowUpIcon />
+          </Button>
+
+          <Button variant="destructive">Destructive</Button>
+        </div>
+      )
+    }
+    ```
+  </TabsContent>
+</Tabs>
+
+## Installation
+
+<ReactCodeBlockCommand
+  shadcn="npx shadcn@latest add @nepui/button"
+  nepui="npx nepui@latest add button --target react"
+/>
+  
+---
+
+## Usage
+
+```tsx
+import { Button } from "@/components/ui/button";
+```
+
+```tsx
+<Button>Button</Button>
+
+<Button variant="outline">Outline</Button>
+
+<Button variant="secondary">Secondary</Button>
+
+<Button variant="ghost">Ghost</Button>
+
+<Button size="lg">Large</Button>
+
+<Button size="icon" aria-label="Settings">
+  <SettingsIcon />
+</Button>
+```
+
+---
+
+## Sizes
+
+Use the `size` prop to change the size of the button.
+
+{/* <ComponentPreview target="react" name="button"/> */}
+
+<Tabs
+  defaultValue="preview"
+  className="gap-0"
+>
+  <TabsList className="bg-transparent mb-0" variant="line"> 
+    <TabsTrigger
+      value="preview"
+      className={"text-base"}
+    >
+      Preview
+    </TabsTrigger>
+    <TabsTrigger
+      value="code"
+      className={"text-base"}
+    >
+      Code
+    </TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+    <ReactPreview>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "16px",
+        }}
+        className="not-typeset"
+      >
+        <div
+          style={{
+            display: "flex",
+            alignItems: "start",
+            gap: "8px",
+          }}
+        >
+          <Button size="xs" variant="outline">Extra Small</Button>
+          <Button size="icon-xs" aria-label="Submit" variant="outline"><ArrowUpIcon /></Button>
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            alignItems: "start",
+            gap: "8px",
+          }}
+        >
+          <Button size="sm" variant="outline">Small</Button>
+          <Button size="icon-sm" aria-label="Submit" variant="outline"><ArrowUpIcon /></Button>
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            alignItems: "start",
+            gap: "8px",
+          }}
+        >
+          <Button variant="outline">Default</Button>
+          <Button size="icon" aria-label="Submit" variant="outline"><ArrowUpIcon /></Button>
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            alignItems: "start",
+            gap: "8px",
+          }}
+        >
+          <Button variant="outline" size="lg">Large</Button>
+          <Button size="icon-lg" aria-label="Submit" variant="outline"><ArrowUpIcon /></Button>
+        </div>
+      </div>
+    </ReactPreview>
+  </TabsContent>
+  <TabsContent value="code">
+    ```tsx
+    import { ArrowUpIcon } from "@phosphor-icons/react"
+
+    import { Button } from "@/components/ui/button"
+
+    export function ButtonDemo() {
+      return (
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "16px",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "start",
+              gap: "8px",
+            }}
+          >
+            <Button size="xs" variant="outline">
+              Extra Small
+            </Button>
+            <Button size="icon-xs" aria-label="Submit" variant="outline">
+              <ArrowUpIcon />
+            </Button>
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              alignItems: "start",
+              gap: "8px",
+            }}
+          >
+            <Button size="sm" variant="outline">
+              Small
+            </Button>
+            <Button size="icon-sm" aria-label="Submit" variant="outline">
+              <ArrowUpIcon />
+            </Button>
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              alignItems: "start",
+              gap: "8px",
+            }}
+          >
+            <Button variant="outline">Default</Button>
+            <Button size="icon" aria-label="Submit" variant="outline">
+              <ArrowUpIcon />
+            </Button>
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              alignItems: "start",
+              gap: "8px",
+            }}
+          >
+            <Button variant="outline" size="lg">
+              Large
+            </Button>
+            <Button size="icon-lg" aria-label="Submit" variant="outline">
+              <ArrowUpIcon />
+            </Button>
+          </div>
+        </div>
+      )
+    }
+    ```
+  </TabsContent>
+</Tabs>
+
+Available sizes are `xs`, `sm`, `lg`, `icon-xs`, `icon-sm`, `icon`, and `icon-lg`.
+
+---
+
+## Default
+
+<Tabs
+  defaultValue="preview"
+  className="gap-0"
+>
+  <TabsList className="bg-transparent mb-0" variant="line"> 
+    <TabsTrigger
+      value="preview"
+      className={"text-base"}
+    >
+      Preview
+    </TabsTrigger>
+    <TabsTrigger
+      value="code"
+      className={"text-base"}
+    >
+      Code
+    </TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+    <ReactPreview>
+       <Button>Button</Button>
+    </ReactPreview>
+  </TabsContent>
+  <TabsContent value="code">
+    ```tsx
+    import { Button } from "@/components/ui/button"
+
+    export function ButtonDefault() {
+      return <Button>Button</Button>
+    }
+    ```
+  </TabsContent>
+</Tabs>
+
+---
+
+## Outline
+
+<Tabs
+  defaultValue="preview"
+  className="gap-0"
+>
+  <TabsList className="bg-transparent mb-0" variant="line"> 
+    <TabsTrigger
+      value="preview"
+      className={"text-base"}
+    >
+      Preview
+    </TabsTrigger>
+    <TabsTrigger
+      value="code"
+      className={"text-base"}
+    >
+      Code
+    </TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+    <ReactPreview>
+       <Button variant="outline">Button</Button>
+    </ReactPreview>
+  </TabsContent>
+  <TabsContent value="code">
+    ```tsx
+    import { Button } from "@/components/ui/button"
+
+    export function ButtonOutline() {
+      return <Button variant="outline">Outline</Button>
+    }
+    ```
+  </TabsContent>
+</Tabs>
+
+---
+
+## Secondary
+
+<Tabs
+  defaultValue="preview"
+  className="gap-0"
+>
+  <TabsList className="bg-transparent mb-0" variant="line"> 
+    <TabsTrigger
+      value="preview"
+      className={"text-base"}
+    >
+      Preview
+    </TabsTrigger>
+    <TabsTrigger
+      value="code"
+      className={"text-base"}
+    >
+      Code
+    </TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+    <ReactPreview>
+      <Button variant="secondary">Secondary</Button>
+    </ReactPreview>
+  </TabsContent>
+  <TabsContent value="code">
+    ```tsx
+    import { Button } from "@/components/ui/button"
+
+    export function ButtonSecondary() {
+      return <Button variant="secondary">Secondary</Button>
+    }
+    ```
+  </TabsContent>
+</Tabs>
+
+---
+
+## Ghost
+
+<Tabs
+  defaultValue="preview"
+  className="gap-0"
+>
+  <TabsList className="bg-transparent mb-0" variant="line"> 
+    <TabsTrigger
+      value="preview"
+      className={"text-base"}
+    >
+      Preview
+    </TabsTrigger>
+    <TabsTrigger
+      value="code"
+      className={"text-base"}
+    >
+      Code
+    </TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+    <ReactPreview>
+      <Button variant="ghost">Ghost</Button>
+    </ReactPreview>
+  </TabsContent>
+  <TabsContent value="code">
+    ```tsx
+    import { Button } from "@/components/ui/button"
+
+    export function ButtonGhost() {
+      return <Button variant="ghost">Ghost</Button>
+    }
+    ```
+  </TabsContent>
+</Tabs>
+
+---
+
+## Destructive
+
+<Tabs
+  defaultValue="preview"
+  className="gap-0"
+>
+  <TabsList className="bg-transparent mb-0" variant="line"> 
+    <TabsTrigger
+      value="preview"
+      className={"text-base"}
+    >
+      Preview
+    </TabsTrigger>
+    <TabsTrigger
+      value="code"
+      className={"text-base"}
+    >
+      Code
+    </TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+    <ReactPreview>
+      <Button variant="destructive">Delete</Button>
+    </ReactPreview>
+  </TabsContent>
+  <TabsContent value="code">
+    ```tsx
+    import { Button } from "@/components/ui/button"
+
+    export function ButtonDestructive() {
+      return <Button variant="destructive">Delete</Button>
+    }
+    ```
+  </TabsContent>
+</Tabs>
+
+---
+
+## Icon
+
+<Tabs
+  defaultValue="preview"
+  className="gap-0"
+>
+  <TabsList className="bg-transparent mb-0" variant="line"> 
+    <TabsTrigger
+      value="preview"
+      className={"text-base"}
+    >
+      Preview
+    </TabsTrigger>
+    <TabsTrigger
+      value="code"
+      className={"text-base"}
+    >
+      Code
+    </TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+    <ReactPreview>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "12px",
+        }}
+        className="not-typeset"
+      >
+        <Button size="icon" variant="outline" aria-label="Submit">
+          <ArrowUpIcon />
+        </Button>
+
+        <Button size="icon-sm" variant="secondary" aria-label="Submit">
+          <ArrowUpIcon />
+        </Button>
+
+        <Button size="icon-lg" variant="ghost" aria-label="Submit">
+          <ArrowUpIcon />
+        </Button>
+      </div>
+    </ReactPreview>
+  </TabsContent>
+  <TabsContent value="code">
+    ```tsx
+    import { ArrowUpIcon } from "@phosphor-icons/react"
+
+    import { Button } from "@/components/ui/button"
+
+    export function ButtonIcon() {
+      return (
+        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+          <Button size="icon" variant="outline" aria-label="Submit">
+            <ArrowUpIcon />
+          </Button>
+
+          <Button size="icon-sm" variant="secondary" aria-label="Submit">
+            <ArrowUpIcon />
+          </Button>
+
+          <Button size="icon-lg" variant="ghost" aria-label="Submit">
+            <ArrowUpIcon />
+          </Button>
+        </div>
+      )
+    }
+    ```
+  </TabsContent>
+</Tabs>
+
+
+---
+
+## Spinner
+
+
+<Tabs
+  defaultValue="preview"
+  className="gap-0"
+>
+  <TabsList className="bg-transparent mb-0" variant="line"> 
+    <TabsTrigger
+      value="preview"
+      className={"text-base"}
+    >
+      Preview
+    </TabsTrigger>
+    <TabsTrigger
+      value="code"
+      className={"text-base"}
+    >
+      Code
+    </TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+    <ReactPreview>
+      <Button loading>Loading</Button>
+    </ReactPreview>
+  </TabsContent>
+  <TabsContent value="code">
+    ```tsx
+    import { Button } from "@/components/ui/button"
+
+    export function ButtonStates() {
+      return (
+        <Button loading>Loading</Button>
+      )
+    }
+    ```
+  </TabsContent>
+</Tabs>
+---
+
+## Disabled
+
+
+<Tabs
+  defaultValue="preview"
+  className="gap-0"
+>
+  <TabsList className="bg-transparent mb-0" variant="line"> 
+    <TabsTrigger
+      value="preview"
+      className={"text-base"}
+    >
+      Preview
+    </TabsTrigger>
+    <TabsTrigger
+      value="code"
+      className={"text-base"}
+    >
+      Code
+    </TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+    <ReactPreview>
+      <Button disabled>Disabled</Button>
+    </ReactPreview>
+  </TabsContent>
+  <TabsContent value="code">
+    ```tsx
+    import { Button } from "@/components/ui/button"
+
+    export function ButtonStates() {
+      return (
+        <Button disabled>Disabled</Button>
+      )
+    }
+    ```
+  </TabsContent>
+</Tabs>

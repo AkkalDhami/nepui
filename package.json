@@ -5,8 +5,11 @@
   "type": "module",
   "scripts": {
     "dev:app": "pnpm --filter docs dev",
+    "dev:cli": "pnpm --filter nepui dev",
     "build": "pnpm -r build",
-    "typecheck": "tsc --noEmit && pnpm -r --if-present typecheck",
+    "build:app": "pnpm --filter docs build",
+    "build:cli": "pnpm --filter nepui build",
+    "typecheck": "pnpm -r --if-present typecheck",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
@@ -26,13 +29,24 @@
     ]
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.0",
-    "eslint": "^10.0.0",
+    "@eslint/js": "^9.39.5",
+    "@trivago/prettier-plugin-sort-imports": "^6.0.2",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9.39.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
     "husky": "^9.0.0",
     "lint-staged": "^16.0.0",
     "prettier": "^3.0.0",
+    "prettier-plugin-tailwindcss": "^0.8.1",
     "typescript": "^5.7.0",
     "typescript-eslint": "^8.0.0"
+  },
+  "dependencies": {
+    "next": "16.3.4",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
   },
   "packageManager": "pnpm@10.28.0"
 }

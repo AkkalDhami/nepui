@@ -1,0 +1,202 @@
+---
+title: Button
+description: A button triggers an action, submits a form, or performs another user-initiated operation.
+---
+
+
+<ComponentPreview name="button" />
+
+---
+
+## Installation
+
+Copy `button.html` and `button.css` from the registry, or install the component with the nepui CLI:
+
+```bash title="Terminal"
+npx nepui add button --target html
+```
+
+---
+
+## Usage
+
+Use the Button component in your project.
+
+```html {2}
+<html>
+  <link rel="stylesheet" href="./styles/button.css">
+</html>
+```
+
+```html
+<body>
+  <button
+    type="button"
+    class="np-button"
+    data-variant="default"
+  >
+    Button
+  </button>
+</body>
+```
+
+Button variants and sizes support both data attributes and class aliases:
+
+| Data attribute | Class alias |
+| --- | --- |
+| `data-variant="primary"` | `np-button-primary` |
+| `data-variant="outline"` | `np-button-outline` |
+| `data-variant="secondary"` | `np-button-secondary` |
+| `data-variant="ghost"` | `np-button-ghost` |
+| `data-variant="destructive"` | `np-button-destructive` |
+| `data-size="xs"` | `np-button-xs` |
+| `data-size="sm"` | `np-button-sm` |
+| `data-size="lg"` | `np-button-lg` |
+
+States use data attributes, for example `data-state="loading"`.
+
+---
+
+## Variants
+
+Use `data-variant` or the matching class alias to choose a visual style. The default button can use `np-button` or `np-button-primary`.
+
+```html title="button.html" showLineNumbers
+<button class="np-button" type="button">
+  Default
+</button>
+
+<button class="np-button" type="button" data-variant="outline">
+  Outline
+</button>
+
+<button class="np-button" type="button" data-variant="secondary">
+  Secondary
+</button>
+
+<button class="np-button" type="button" data-variant="ghost">
+  Ghost
+</button>
+
+<button class="np-button" type="button" data-variant="destructive">
+  Destructive
+</button>
+
+<!-- Equivalent class aliases -->
+<button class="np-button np-button-outline" type="button">
+  Outline
+</button>
+
+<button class="np-button np-button-ghost" type="button">
+  Ghost
+</button>
+```
+
+---
+
+## Sizes
+
+Use `data-size` or a matching class alias for compact, large, or icon-only buttons.
+
+```html title="button.html"
+<button class="np-button" type="button" data-size="xs">
+  Extra small
+</button>
+
+<button class="np-button" type="button" data-size="sm">
+  Small
+</button>
+
+<button class="np-button" type="button">
+  Default
+</button>
+
+<button class="np-button" type="button" data-size="lg">
+  Large
+</button>
+
+<!-- Equivalent class aliases -->
+<button class="np-button np-button-xs" type="button">
+  Extra small
+</button>
+
+<button class="np-button np-button-sm" type="button">
+  Small
+</button>
+
+<button class="np-button np-button-lg" type="button">
+  Large
+</button>
+
+<button
+  class="np-button"
+  type="button"
+  data-size="icon"
+  aria-label="Settings"
+>
+  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+    ...
+  </svg>
+</button>
+```
+
+
+Available sizes are `xs`, `sm`, `lg`, `icon-xs`, `icon-sm`, `icon`, and `icon-lg`.
+
+---
+
+## Icons
+
+Buttons support inline SVG icons. Mark decorative icons as hidden and provide an accessible name for icon-only buttons.
+
+```html title="button.html"
+<button class="np-button" type="button" data-variant="outline">
+  <svg aria-hidden="true" viewBox="0 0 24 24">...</svg>
+  Continue
+</button>
+```
+
+
+---
+
+## States
+
+Use the native `disabled` attribute for unavailable actions. Loading buttons should also set `aria-busy="true"`.
+
+```html title="button.html"
+<button class="np-button" type="button" disabled>
+  Disabled
+</button>
+
+<button
+  class="np-button"
+  type="button"
+  data-state="loading"
+  aria-busy="true"
+  disabled
+>
+  Loading...
+</button>
+```
+
+---
+
+## Forms
+
+Always specify the button's `type` explicitly in forms.
+
+```html title="button.html"
+<form>
+  <button class="np-button" type="submit">
+    Submit
+  </button>
+
+  <button class="np-button" type="reset" data-variant="outline">
+    Reset
+  </button>
+
+  <button class="np-button" type="button" data-variant="ghost">
+    Cancel
+  </button>
+</form>
+```

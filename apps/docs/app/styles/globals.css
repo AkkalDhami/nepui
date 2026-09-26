@@ -103,7 +103,7 @@
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
-   --muted-primary: #c0c0c0;
+  --muted-primary: #c0c0c0;
   --accent: oklch(0.269 0 0);
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
@@ -140,6 +140,11 @@
     @apply font-sans;
   }
 }
+
+/* * {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+} */
 
 html {
   scroll-behavior: smooth;
@@ -294,5 +299,13 @@ h4 {
     padding-block: 0.1rem;
     font-family: var(--font-mono);
     font-size: 0.8rem;
+  }
+
+  .ͼ3k {
+    background-color: var(--color-code) !important;
+    /* background-color: var(--color-code) !important; */
+    .cm-gutters {
+      background-color: var(--color-code) !important;
+    }
   }
 }

@@ -19,13 +19,9 @@
       }
     ],
     "paths": {
-      "@/*": [ "./*" ],
-      // "@nepui/react/*": [
-      //   "../../registry/react/*"
-      // ],
-      // "@nepui/html/*": [
-      //   "../../registry/html/*"
-      // ]
+      "@/*": ["./*"],
+      "@nepui/react/*": ["../../registry/react/*"],
+      "@nepui/html/*": ["../../registry/html/*"]
     }
   },
   "include": [
