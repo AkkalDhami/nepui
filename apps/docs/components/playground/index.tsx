@@ -8,6 +8,7 @@ import { normalizeFiles, type PlaygroundFile } from "@/lib/playground"
 import { HtmlPreview } from "@/components/preview/html-preview"
 import { ArrowsClockwiseIcon, PlayIcon } from "@phosphor-icons/react"
 import { Button } from "@/components/ui/button"
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 interface RegistryFile {
   path: string
@@ -22,8 +23,6 @@ interface PlaygroundProps {
 }
 
 export function Playground({
-  // name,
-  title,
   files: registryFiles,
   tokens = "",
 }: PlaygroundProps) {
@@ -69,12 +68,32 @@ export function Playground({
   }
 
   return (
-    <div className="overflow-hidden rounded-xl border bg-background">
-      <div className="flex h-12 items-center justify-between border-b px-4">
-        <div className="flex min-w-0 items-center gap-3">
-          <div className="truncate">{title}</div>
-        </div>
+    <div className="overflow-hidden rounded-xl border bg-code">
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b p-2">
+        <Tabs
+          value={activePath}
+          onValueChange={setActivePath}
+          className="flex-1"
+        >
+          <TabsList
+            // variant="line"
+            className="max-w-full scrollbar-none overflow-x-auto rounded-none bg-transparent p-0"
+          >
+            {files.map((file) => {
+              const fileName = file.path.split("/").pop() ?? file.path
 
+              return (
+                <TabsTrigger
+                  key={file.path}
+                  value={file.path}
+                  className="rounded-none px-4 py-2.5 text-sm"
+                >
+                  {fileName}
+                </TabsTrigger>
+              )
+            })}
+          </TabsList>
+        </Tabs>
         <div className="flex items-center gap-2">
           <Button variant={"secondary"} onClick={reset} size={"icon-lg"}>
             <ArrowsClockwiseIcon />
@@ -91,33 +110,6 @@ export function Playground({
         </div>
       </div>
 
-      {/* File tabs */}
-      <div className="flex overflow-x-auto border-b">
-        {files.map((file) => {
-          const fileName = file.path.split("/").pop() ?? file.path
-
-          const active = file.path === activePath
-
-          return (
-            <button
-              key={file.path}
-              type="button"
-              onClick={() => setActivePath(file.path)}
-              className={[
-                "border-r px-4 py-2.5 font-mono text-xs",
-                "transition-colors",
-                active
-                  ? "bg-muted text-foreground"
-                  : "text-muted-foreground hover:bg-muted/50 hover:text-foreground",
-              ].join(" ")}
-            >
-              {fileName}
-            </button>
-          )
-        })}
-      </div>
-
-      {/* Editor + preview */}
       <div className="grid lg:grid-cols-2">
         <div className="h-full max-h-120 min-w-0 scroll-fade overflow-y-auto border-b lg:border-r lg:border-b-0">
           <CodeEditor
@@ -127,8 +119,7 @@ export function Playground({
           />
         </div>
 
-        {/* Preview */}
-        <div className="h-full max-h-120 min-h-100 min-w-0 scroll-fade scrollbar-thin overflow-y-auto bg-muted/20 p-4">
+        <div className="h-full max-h-120 min-h-100 min-w-0 scroll-fade scrollbar-thin overflow-y-auto">
           <HtmlPreview files={files} tokens={tokens} />
         </div>
       </div>

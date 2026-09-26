@@ -12,9 +12,6 @@ interface HtmlPreviewFrameProps {
   className?: string
 }
 
-// const MIN_HEIGHT = 120;
-// const MAX_HEIGHT = 940;
-
 const RESIZE_SCRIPT = `
   (function () {
     function postHeight() {
@@ -30,14 +27,6 @@ const RESIZE_SCRIPT = `
   })();
 `
 
-/**
- * Builds a fully self-contained HTML document for the preview iframe.
- *
- * Layout rules here (centering, padding) are documentation presentation
- * only - they live in this generated wrapper, never in the registry CSS
- * file itself, so registry/html/<name>/<name>.css stays the real,
- * shippable component styling.
- */
 function buildPreviewDocument(html: string, css: string, js?: string | null) {
   return `<!doctype html>
 <html>
@@ -80,7 +69,6 @@ export function HtmlPreviewFrame({
   className,
 }: HtmlPreviewFrameProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null)
-  // const [height, setHeight] = useState(MIN_HEIGHT);
 
   const document = useMemo(
     () => buildPreviewDocument(html, css, js),

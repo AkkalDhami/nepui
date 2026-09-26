@@ -9,7 +9,7 @@ import { CopyButton } from "@/components/docs/copy-button"
 import { getIconForLanguageExtension } from "@/components/icons"
 import Link from "next/link"
 
-interface ComponentPreviewClientProps {
+interface HtmlComponentPreviewProps {
   name: string
   html: string
   css: string
@@ -22,7 +22,7 @@ interface ComponentPreviewClientProps {
 
 type SourceTab = "html" | "css" | "js"
 
-export function ComponentPreviewClient({
+export function HtmlComponentPreview({
   name,
   html,
   css,
@@ -31,7 +31,7 @@ export function ComponentPreviewClient({
   cssHighlighted,
   jsHighlighted,
   className,
-}: ComponentPreviewClientProps) {
+}: HtmlComponentPreviewProps) {
   const [sourceTab, setSourceTab] = useState<SourceTab>("html")
 
   const sourceTabs = [
@@ -132,7 +132,7 @@ export function ComponentPreviewClient({
                     key={tab.value}
                     value={tab.value}
                     className={cn(
-                      "rounded-lg px-2.5 py-1 text-base text-muted-foreground shadow-none",
+                      "rounded-lg px-2.5 py-1 text-base font-normal text-muted-foreground shadow-none",
                       "transition-colors hover:text-foreground",
                       "data-[state=active]:bg-muted data-[state=active]:text-foreground",
                       "data-[state=active]:shadow-none"

@@ -1,11 +1,9 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react-hooks/refs */
 "use client"
 
 import { useEffect, useRef } from "react"
 
 import { EditorState, type Extension } from "@codemirror/state"
-import { coolGlow, tomorrow, } from "thememirror"
+import { dracula, tomorrow } from "thememirror"
 import { EditorView, keymap, lineNumbers } from "@codemirror/view"
 
 import { defaultKeymap, indentWithTab } from "@codemirror/commands"
@@ -21,7 +19,7 @@ import { css } from "@codemirror/lang-css"
 import { javascript } from "@codemirror/lang-javascript"
 
 import { cn } from "@/lib/utils"
-import { useTheme } from "next-themes";
+import { useTheme } from "next-themes"
 
 export type EditorLanguage =
   "html" | "css" | "javascript" | "typescript" | "text"
@@ -53,7 +51,6 @@ function getLanguageExtension(language: EditorLanguage): Extension {
       return []
   }
 }
-
 
 const editorFont = EditorView.theme({
   ".cm-scroller": {
@@ -87,9 +84,11 @@ export function CodeEditor({
 
   const onChangeRef = useRef(onChange)
 
-  onChangeRef.current = onChange
+  useEffect(() => {
+    onChangeRef.current = onChange
+  }, [onChange])
 
-  const themeExt = isDark ? coolGlow : tomorrow
+  const themeExt = isDark ? dracula : tomorrow
 
   useEffect(() => {
     if (!containerRef.current) {
@@ -147,6 +146,7 @@ export function CodeEditor({
       view.destroy()
       viewRef.current = null
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [language, themeExt])
 
   useEffect(() => {
@@ -181,7 +181,7 @@ export function CodeEditor({
   return (
     <div
       ref={containerRef}
-      className={cn("h-full min-h-75 overflow-auto scrollbar-thin", className)}
+      className={cn("h-full min-h-75 scrollbar-thin overflow-auto", className)}
     />
   )
 }
