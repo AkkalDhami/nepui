@@ -11,11 +11,13 @@
       "files": [
         {
           "path": "registry/html/button/button.html",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "html/button.html"
         },
         {
           "path": "registry/html/button/button.css",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "styles/button.css"
         }
       ]
     }
