@@ -1,10 +1,19 @@
-import { Fira_Code, Geist_Mono, Inter } from "next/font/google"
-
+import { Metadata } from "next"
+import { Fira_Code, Geist_Mono, Inter, JetBrains_Mono } from "next/font/google"
 import "./styles/globals.css"
-import { NuqsAdapter } from "nuqs/adapters/next/app"
 import { ThemeProvider } from "@/components/providers/theme-provider"
-import { RootProvider } from "fumadocs-ui/provider/next"
+import { JsonLd } from "@/components/seo/json-ld"
+import {
+  createOrganizationJsonLd,
+  createWebSiteJsonLd,
+  rootMetadata,
+  createSoftwareApplicationJsonLd,
+} from "@/lib/seo"
 import { cn } from "@/lib/utils"
+import { Analytics } from "@vercel/analytics/next"
+import { RootProvider } from "fumadocs-ui/provider/next"
+import { NuqsAdapter } from "nuqs/adapters/next/app"
+import "./styles/globals.css"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 
@@ -17,6 +26,13 @@ const fontCode = Fira_Code({
   subsets: ["latin"],
   variable: "--font-code",
 })
+
+const jetBrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+})
+
+export const metadata: Metadata = { ...rootMetadata }
 
 export default function RootLayout({
   children,
@@ -31,11 +47,20 @@ export default function RootLayout({
         "antialiased",
         fontMono.variable,
         fontCode.variable,
+        jetBrainsMono.variable,
         "font-sans",
         inter.variable
       )}
     >
       <body>
+        <JsonLd
+          data={[
+            createWebSiteJsonLd(),
+            createOrganizationJsonLd(),
+            createSoftwareApplicationJsonLd(),
+          ]}
+        />
+        <Analytics />
         <ThemeProvider>
           <RootProvider>
             <NuqsAdapter>{children}</NuqsAdapter>

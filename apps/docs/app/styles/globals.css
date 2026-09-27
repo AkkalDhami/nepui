@@ -9,6 +9,7 @@
 
 @theme inline {
   --color-code: var(--code);
+  --color-code-highlight: var(--code-highlight);
   --font-heading: var(--font-sans);
   --font-sans: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -50,10 +51,13 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+
+  --max-width-code: 860px;
 }
 
 :root {
   --code: var(--color-neutral-100);
+  --code-highlight: var(--color-neutral-200);
   --background: #ffffff;
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -91,6 +95,7 @@
 
 .dark {
   --code: var(--color-neutral-900);
+  --code-highlight: var(--color-neutral-800);
   --background: oklch(0 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
@@ -156,42 +161,36 @@ h4 {
   scroll-margin-top: 6rem;
 }
 
+@utility step {
+  counter-increment: step;
+
+  &:before {
+    @apply mr-2 inline-flex size-6 items-center justify-center rounded-full border-background bg-muted text-center -indent-px font-mono text-sm font-medium md:absolute md:-mt-1 md:-ml-12.5 md:size-9 md:border-3;
+    content: counter(step);
+  }
+}
+
+@utility extend-touch-target {
+  @media (pointer: coarse) {
+    @apply relative touch-manipulation after:absolute after:-inset-2;
+  }
+}
+
 @layer components {
   [data-rehype-pretty-code-figure] {
-    background-color: var(--color-code);
-    color: var(--color-code-foreground);
-    border-radius: var(--radius-2xl);
-    border-width: 0px;
-    border-color: var(--border);
-    margin-top: calc(var(--spacing) * 6);
-    overflow: hidden;
-    font-size: var(--text-sm);
-    outline: none;
     position: relative;
-    @apply -mx-1 md:-mx-1;
-
-    &:has([data-rehype-pretty-code-title]) [data-slot="copy-button"] {
-      top: calc(var(--spacing) * 1.5) !important;
-    }
-  }
-
-  [data-rehype-pretty-code-figure] code,
-  [data-rehype-pretty-code-figure] code span {
-    font-variant-ligatures: none;
-    font-feature-settings:
-      "liga" 0,
-      "calt" 0;
+    @apply mt-6 mb-8 w-full max-w-code rounded-lg bg-code;
   }
 
   [data-rehype-pretty-code-title] {
-    border-bottom: color-mix(in oklab, var(--border) 30%, transparent);
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    padding-block: calc(var(--spacing) * 2.5);
+    padding-block: calc(var(--spacing) * 2.825);
     padding-inline: calc(var(--spacing) * 4);
     font-size: var(--text-sm);
     font-family: var(--font-mono);
     color: var(--color-code-foreground);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    @apply border-b border-neutral-500/10;
   }
 
   [data-line-numbers] {
@@ -210,10 +209,11 @@ h4 {
     counter-increment: line;
     content: counter(line);
     display: inline-block;
-    width: calc(var(--spacing) * 16);
-    padding-right: calc(var(--spacing) * 6);
+    width: calc(var(--spacing) * 10);
+    padding-right: calc(var(--spacing) * 9);
+    padding-left: calc(var(--spacing) * 3);
     text-align: right;
-    color: var(--color-code-number);
+    color: var(--color-muted-foreground);
     background-color: var(--color-code);
     position: sticky;
     left: 0;
@@ -224,51 +224,19 @@ h4 {
   }
 
   [data-line] {
-    padding-top: calc(var(--spacing) * 0.25);
-    padding-bottom: calc(var(--spacing) * 0.25);
     min-height: calc(var(--spacing) * 0.875);
     width: 100%;
     display: inline-block;
+
+    @apply px-4;
   }
 
-  /*
-   * ```text composition trees use box-drawing characters; per-line padding makes
-   * vertical connectors look broken. rehype-pretty-code sets `data-language` on
-   * `pre`/`code` (not `language-*` classes). It also sets `code { display: grid }`,
-   * which can add visible row separation — reset to a normal pre stack for text.
-   */
-  [data-rehype-pretty-code-figure] pre[data-language="text"] code,
-  [data-rehype-pretty-code-figure] pre[data-language="plaintext"] code,
-  [data-slot="docs"] pre[data-language="text"] code,
-  [data-slot="docs"] pre[data-language="plaintext"] code {
-    display: block !important;
-    white-space: pre;
-    line-height: 0.95;
-    font-family:
-      ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-      "Courier New", monospace;
-    font-variant-ligatures: none;
-  }
-
-  [data-rehype-pretty-code-figure] pre[data-language="text"] [data-line],
-  [data-rehype-pretty-code-figure] pre[data-language="plaintext"] [data-line],
-  [data-rehype-pretty-code-figure] code[data-language="text"] [data-line],
-  [data-rehype-pretty-code-figure] code[data-language="plaintext"] [data-line],
-  [data-slot="docs"] pre[data-language="text"] [data-line],
-  [data-slot="docs"] pre[data-language="plaintext"] [data-line] {
-    padding-top: 0;
-    padding-bottom: 0;
-    min-height: unset;
-    line-height: 0.95;
-    display: block;
-  }
-
-  [data-line] span {
+  [data-rehype-pretty-code-figure] code span {
     color: var(--shiki-light);
+  }
 
-    @variant dark {
-      color: var(--shiki-dark) !important;
-    }
+  .dark [data-rehype-pretty-code-figure] code span {
+    color: var(--shiki-dark);
   }
 
   [data-highlighted-line],
@@ -301,11 +269,10 @@ h4 {
     font-size: 0.8rem;
   }
 
-  .ͼ3k {
+  .cm-content {
     background-color: var(--color-code) !important;
-    /* background-color: var(--color-code) !important; */
-    .cm-gutters {
-      background-color: var(--color-code) !important;
-    }
+  }
+  .cm-gutters {
+    background-color: var(--color-code) !important;
   }
 }

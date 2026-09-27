@@ -409,6 +409,9 @@
       white-space: nowrap;
       padding: 0.65em 1em;
     }
+    /* &:where(td) {
+      color: var(--color-muted-primary);
+    } */
     &:where(thead td) {
       color: var(--color-foreground);
       font-weight: 500;

@@ -1,3 +1,5 @@
+import { getPreviewCss } from "./preview"
+
 export type PlaygroundLanguage =
   "html" | "css" | "javascript" | "typescript" | "text"
 
@@ -54,10 +56,7 @@ function escapeScriptContent(content: string) {
   return content.replace(/<\/script/gi, "<\\/script")
 }
 
-export function buildHtmlDocument(
-  files: PlaygroundFile[],
-  tokens: string = ""
-) {
+export function buildHtmlDocument(files: PlaygroundFile[]) {
   const html = files.find((file) => file.language === "html")?.content ?? ""
 
   const css = files
@@ -84,34 +83,13 @@ export function buildHtmlDocument(
       content="width=device-width, initial-scale=1.0"
     />
 
-    <style>
-      /* nepui design tokens */
-      ${tokens}
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
     <style>
       /* Preview reset */
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-      }
-
-      html,
-      body {
-        margin: 0;
-        min-height: 100%;
-      }
-
-      body {
-        padding: 24px;
-        font-family:
-          ui-sans-serif,
-          system-ui,
-          sans-serif;
-        background: var(--np-background, #fff);
-        color: var(--np-foreground, #09090b);
-      }
+      ${getPreviewCss("playground")}
     </style>
 
     <style>
