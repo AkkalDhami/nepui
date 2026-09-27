@@ -16,38 +16,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { source } from "@/lib/source"
 import { cn } from "cn"
 import type { MDXComponents } from "mdx/types"
-import {
-  CodeBlockCommand,
-  ReactCodeBlockCommand,
-} from "@/components/docs/code-block-command"
-import { ComponentsList } from "@/components/docs/components-list"
-import { CopyButton } from "@/components/docs/copy-button"
-import PackageManagerTabs from "@/components/docs/package-manager-tabs"
-import { getIconForLanguageExtension } from "@/components/icons"
-import { ComponentPreview } from "@/components/preview/component-preview"
-import { HtmlPreview } from "@/components/preview/html-preview"
-import { HtmlPreviewTabs } from "@/components/preview/html-preview-tabs"
-import { ReactPreview } from "@/components/preview/react-preview"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { source } from "@/lib/source"
-import { cn } from "cn"
-import type { MDXComponents } from "mdx/types"
-import {
-  CodeBlockCommand,
-  ReactCodeBlockCommand,
-} from "@/components/docs/code-block-command"
-import { ComponentsList } from "@/components/docs/components-list"
-import { CopyButton } from "@/components/docs/copy-button"
-import PackageManagerTabs from "@/components/docs/package-manager-tabs"
-import { getIconForLanguageExtension } from "@/components/icons"
-import { ComponentPreview } from "@/components/preview/component-preview"
-import { HtmlPreview } from "@/components/preview/html-preview"
-import { HtmlPreviewTabs } from "@/components/preview/html-preview-tabs"
-import { ReactPreview } from "@/components/preview/react-preview"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { source } from "@/lib/source"
-import { cn } from "cn"
-import type { MDXComponents } from "mdx/types"
 
 function getNodeText(node: React.ReactNode): string {
   if (typeof node === "string" || typeof node === "number") {

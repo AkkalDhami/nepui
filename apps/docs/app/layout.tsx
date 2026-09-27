@@ -14,31 +14,6 @@ import { Analytics } from "@vercel/analytics/next"
 import { RootProvider } from "fumadocs-ui/provider/next"
 import { NuqsAdapter } from "nuqs/adapters/next/app"
 import "./styles/globals.css"
-import { ThemeProvider } from "@/components/providers/theme-provider"
-import { JsonLd } from "@/components/seo/json-ld"
-import {
-  createOrganizationJsonLd,
-  createWebSiteJsonLd,
-  rootMetadata,
-  createSoftwareApplicationJsonLd,
-} from "@/lib/seo"
-import { cn } from "@/lib/utils"
-import { Analytics } from "@vercel/analytics/next"
-import { RootProvider } from "fumadocs-ui/provider/next"
-import { NuqsAdapter } from "nuqs/adapters/next/app"
-import "./styles/globals.css"
-import { ThemeProvider } from "@/components/providers/theme-provider"
-import { JsonLd } from "@/components/seo/json-ld"
-import {
-  createOrganizationJsonLd,
-  createWebSiteJsonLd,
-  rootMetadata,
-  createSoftwareApplicationJsonLd,
-} from "@/lib/seo"
-import { cn } from "@/lib/utils"
-import { Analytics } from "@vercel/analytics/next"
-import { RootProvider } from "fumadocs-ui/provider/next"
-import { NuqsAdapter } from "nuqs/adapters/next/app"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 

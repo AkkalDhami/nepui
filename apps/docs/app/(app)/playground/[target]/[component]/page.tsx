@@ -5,14 +5,6 @@ import { Playground } from "@/components/playground"
 import { CodePreferencesDialog } from "@/components/playground/code-preferences-dialog"
 import { capitalize } from "@/lib/capatilize"
 import { getRegistryItem } from "@/lib/registry"
-import { Playground } from "@/components/playground"
-import { CodePreferencesDialog } from "@/components/playground/code-preferences-dialog"
-import { capitalize } from "@/lib/capatilize"
-import { getRegistryItem } from "@/lib/registry"
-import { Playground } from "@/components/playground"
-import { CodePreferencesDialog } from "@/components/playground/code-preferences-dialog"
-import { capitalize } from "@/lib/capatilize"
-import { getRegistryItem } from "@/lib/registry"
 
 type Params = {
   target: string

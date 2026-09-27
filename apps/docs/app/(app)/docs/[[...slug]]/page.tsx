@@ -16,36 +16,6 @@ import { source } from "@/lib/source"
 import { mdxComponents } from "@/mdx-components"
 import { ArrowLeftIcon, ArrowRightIcon } from "@phosphor-icons/react/ssr"
 import { findNeighbour } from "fumadocs-core/page-tree"
-import { FrameworkTabs } from "@/components/docs/framework-tabs"
-import { TableOfContents } from "@/components/docs/table-of-contents"
-import { ComponentPreview } from "@/components/preview/component-preview"
-import { JsonLd } from "@/components/seo/json-ld"
-import { Button } from "@/components/ui/button"
-import {
-  createBreadcrumbJsonLd,
-  createTechArticleJsonLd,
-  getDocsBreadcrumbs,
-  createDocsPageMetadata,
-} from "@/lib/seo"
-import { source } from "@/lib/source"
-import { mdxComponents } from "@/mdx-components"
-import { ArrowLeftIcon, ArrowRightIcon } from "@phosphor-icons/react/ssr"
-import { findNeighbour } from "fumadocs-core/page-tree"
-import { FrameworkTabs } from "@/components/docs/framework-tabs"
-import { TableOfContents } from "@/components/docs/table-of-contents"
-import { ComponentPreview } from "@/components/preview/component-preview"
-import { JsonLd } from "@/components/seo/json-ld"
-import { Button } from "@/components/ui/button"
-import {
-  createBreadcrumbJsonLd,
-  createTechArticleJsonLd,
-  getDocsBreadcrumbs,
-  createDocsPageMetadata,
-} from "@/lib/seo"
-import { source } from "@/lib/source"
-import { mdxComponents } from "@/mdx-components"
-import { ArrowLeftIcon, ArrowRightIcon } from "@phosphor-icons/react/ssr"
-import { findNeighbour } from "fumadocs-core/page-tree"
 
 export const revalidate = false
 export const dynamic = "force-static"
