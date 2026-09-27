@@ -1,6 +1,4 @@
 import { codeToHtml, ShikiTransformer, type BundledLanguage } from "shiki"
-import { codeToHtml, ShikiTransformer, type BundledLanguage } from "shiki"
-import { codeToHtml, ShikiTransformer, type BundledLanguage } from "shiki"
 
 export const transformers = [
   {
