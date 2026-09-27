@@ -1,17 +1,53 @@
-import type { MDXComponents } from "mdx/types"
 import React from "react"
-import { cn } from "cn"
-import { ComponentPreview } from "@/components/preview/component-preview"
-import { getIconForLanguageExtension } from "@/components/icons"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Image from "next/image"
 import {
   CodeBlockCommand,
   ReactCodeBlockCommand,
 } from "@/components/docs/code-block-command"
+import { ComponentsList } from "@/components/docs/components-list"
 import { CopyButton } from "@/components/docs/copy-button"
 import PackageManagerTabs from "@/components/docs/package-manager-tabs"
+import { getIconForLanguageExtension } from "@/components/icons"
+import { ComponentPreview } from "@/components/preview/component-preview"
+import { HtmlPreview } from "@/components/preview/html-preview"
+import { HtmlPreviewTabs } from "@/components/preview/html-preview-tabs"
 import { ReactPreview } from "@/components/preview/react-preview"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { source } from "@/lib/source"
+import { cn } from "cn"
+import type { MDXComponents } from "mdx/types"
+import {
+  CodeBlockCommand,
+  ReactCodeBlockCommand,
+} from "@/components/docs/code-block-command"
+import { ComponentsList } from "@/components/docs/components-list"
+import { CopyButton } from "@/components/docs/copy-button"
+import PackageManagerTabs from "@/components/docs/package-manager-tabs"
+import { getIconForLanguageExtension } from "@/components/icons"
+import { ComponentPreview } from "@/components/preview/component-preview"
+import { HtmlPreview } from "@/components/preview/html-preview"
+import { HtmlPreviewTabs } from "@/components/preview/html-preview-tabs"
+import { ReactPreview } from "@/components/preview/react-preview"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { source } from "@/lib/source"
+import { cn } from "cn"
+import type { MDXComponents } from "mdx/types"
+import {
+  CodeBlockCommand,
+  ReactCodeBlockCommand,
+} from "@/components/docs/code-block-command"
+import { ComponentsList } from "@/components/docs/components-list"
+import { CopyButton } from "@/components/docs/copy-button"
+import PackageManagerTabs from "@/components/docs/package-manager-tabs"
+import { getIconForLanguageExtension } from "@/components/icons"
+import { ComponentPreview } from "@/components/preview/component-preview"
+import { HtmlPreview } from "@/components/preview/html-preview"
+import { HtmlPreviewTabs } from "@/components/preview/html-preview-tabs"
+import { ReactPreview } from "@/components/preview/react-preview"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { source } from "@/lib/source"
+import { cn } from "cn"
+import type { MDXComponents } from "mdx/types"
 
 function getNodeText(node: React.ReactNode): string {
   if (typeof node === "string" || typeof node === "number") {
@@ -66,12 +102,39 @@ function HeadingAnchor({
   )
 }
 
+function getComponentsFolder() {
+  const componentsFolder = source.pageTree.children.find(
+    (page) => page.$id === "components"
+  )
+
+  if (componentsFolder?.type !== "folder") {
+    return null
+  }
+
+  return componentsFolder
+}
+
+function ComponentsListWrapper({ variant }: { variant?: "all" | "new" }) {
+  const componentsFolder = getComponentsFolder()
+
+  if (!componentsFolder) {
+    return null
+  }
+
+  return (
+    <ComponentsList componentsFolder={componentsFolder} variant={variant} />
+  )
+}
+
 export const mdxComponents = {
   PackageManagerTabs,
   ComponentPreview,
   ReactPreview,
   CodeBlockCommand,
   ReactCodeBlockCommand,
+  ComponentsList: ComponentsListWrapper,
+  HtmlPreview,
+  HtmlPreviewTabs,
 
   h1: ({ children, id, ...props }: React.ComponentProps<"h1">) => {
     const headingId = id ?? getHeadingId(children)
@@ -144,7 +207,8 @@ export const mdxComponents = {
       <pre
         data-not-typeset
         className={cn(
-          "relative mt-4 mb-2 no-scrollbar min-w-0 overflow-x-auto overflow-y-auto overscroll-x-contain overscroll-y-auto rounded-lg bg-code px-1 py-4 outline-none has-data-highlighted-line:px-0 has-data-line-numbers:px-0 has-data-[slot=tabs]:p-0",
+          "no-scrollbar min-w-0 overflow-x-auto overflow-y-auto overscroll-x-contain overscroll-y-auto px-1 pt-3 pb-4 outline-none has-data-[slot=tabs]:p-0",
+          "has-data-highlighted-line:px-2 has-data-line-numbers:px-0",
           className
         )}
         {...props}
@@ -166,7 +230,7 @@ export const mdxComponents = {
     return (
       <figcaption
         className={cn(
-          "text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70",
+          "[&_svg]:text-code-foreground flex items-center gap-2 font-mono text-muted-foreground [&_svg]:size-4",
           className
         )}
         {...props}
@@ -217,7 +281,7 @@ export const mdxComponents = {
         {__raw__ && (
           <CopyButton
             value={__raw__}
-            className="absolute top-4 right-4 z-40 w-auto cursor-pointer bg-transparent p-1.5 text-xs"
+            className="absolute top-1.5 right-2 z-40 w-auto cursor-pointer bg-transparent px-1.75"
           />
         )}
         <code
@@ -252,7 +316,7 @@ export const mdxComponents = {
   Steps: ({ className, ...props }: React.ComponentProps<"div">) => (
     <div
       className={cn(
-        "steps [&>h3]:step mb-12 [counter-reset:step] md:ml-4 md:border-l md:pl-8",
+        "steps mb-12 [counter-reset:step] md:ml-4 md:border-l md:pl-8 [&>h3]:step",
         className
       )}
       {...props}

@@ -22,6 +22,6 @@
   "menuColor": "default-translucent",
   "menuAccent": "subtle",
   "registries": {
-    "@nepui": "http://localhost:3000/r/react/{name}.json"
+    "@nepui": "https://nepui.vercel.app/r/react/{name}.json"
   }
 }

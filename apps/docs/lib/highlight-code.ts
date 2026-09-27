@@ -1,4 +1,6 @@
 import { codeToHtml, ShikiTransformer, type BundledLanguage } from "shiki"
+import { codeToHtml, ShikiTransformer, type BundledLanguage } from "shiki"
+import { codeToHtml, ShikiTransformer, type BundledLanguage } from "shiki"
 
 export const transformers = [
   {
@@ -54,7 +56,7 @@ export async function highlightCode(code: string, lang: BundledLanguage) {
       light: "github-light",
       dark: "ayu-dark",
     },
-    transformers,
+    transformers: [...transformers],
     defaultColor: false,
   })
 }

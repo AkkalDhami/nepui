@@ -1,9 +1,9 @@
+import { docs } from "@/.source/server"
 import { loader } from "fumadocs-core/source"
-import { defineDocs } from "fumadocs-mdx/macro"
-
-const docs = defineDocs({
-  dir: "content/docs",
-})
+import { docs } from "@/.source/server"
+import { loader } from "fumadocs-core/source"
+import { docs } from "@/.source/server"
+import { loader } from "fumadocs-core/source"
 
 export const source = loader({
   baseUrl: "/docs",
