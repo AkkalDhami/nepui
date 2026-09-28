@@ -26,7 +26,7 @@ export default function PackageManagerTabs({
     <Tabs
       value={packageManager}
       className={cn(
-        "not-typeset rounded-lg border border-transparent bg-code py-2"
+        "not-typeset w-full max-w-code rounded-lg border border-transparent bg-code py-2"
       )}
     >
       <TabsList
@@ -61,11 +61,11 @@ export default function PackageManagerTabs({
           >
             <CopyButton
               value={cmd}
-              className="absolute right-3 bottom-0 z-10 w-auto cursor-pointer bg-transparent p-1.5 text-xs"
+              className="absolute right-3 bottom-0 z-10 bg-code text-xs"
             />
             <pre
               className={cn(
-                "overflow-x-auto overscroll-x-contain px-4 pt-4 pb-2"
+                "max-w-[calc(100%-50px)] scrollbar-none overflow-x-auto overscroll-x-contain px-4 pt-4 pb-2"
               )}
             >
               <code className="not-typeset font-code! text-base leading-none text-muted-foreground">

@@ -3,7 +3,20 @@
 import { useEffect, useRef } from "react"
 
 import { EditorState, type Extension } from "@codemirror/state"
-import { dracula, tomorrow } from "thememirror"
+import {
+  amy,
+  ayuLight,
+  barf,
+  birdsOfParadise,
+  clouds,
+  cobalt,
+  coolGlow,
+  dracula,
+  rosePineDawn,
+  smoothy,
+  solarizedLight,
+  tomorrow,
+} from "thememirror"
 import { EditorView, keymap, lineNumbers } from "@codemirror/view"
 
 import { defaultKeymap, indentWithTab } from "@codemirror/commands"
@@ -19,10 +32,27 @@ import { css } from "@codemirror/lang-css"
 import { javascript } from "@codemirror/lang-javascript"
 
 import { cn } from "@/lib/utils"
-import { useTheme } from "next-themes"
+import { FontFamily, useConfig } from "@/hooks/use-config"
 
 export type EditorLanguage =
   "html" | "css" | "javascript" | "typescript" | "text"
+
+export const CODE_MIRROR_THEMES = {
+  tomorrow,
+  ayuLight,
+  dracula,
+  clouds,
+  rosePineDawn,
+  solarizedLight,
+  smoothy,
+  amy,
+  barf,
+  cobalt,
+  coolGlow,
+  birdsOfParadise,
+} as const
+
+export type CodeTheme = keyof typeof CODE_MIRROR_THEMES
 
 interface CodeEditorProps {
   value: string
@@ -52,21 +82,38 @@ function getLanguageExtension(language: EditorLanguage): Extension {
   }
 }
 
-const editorFont = EditorView.theme({
-  ".cm-scroller": {
-    fontFamily: "var(--font-mono), monospace",
-    fontSize: "16px",
-  },
+function getEditorFont({
+  fontSize,
+  font,
+}: {
+  fontSize: string
+  font: FontFamily
+}) {
+  const fontOptions = {
+    "fira-code": "var(--font-code), monospace",
+    "geist-mono": "var(--font-mono), monospace",
+    "jetbrains-mono": "var(--font-jetbrains-mono), monospace",
+  }[font]
 
-  ".cm-content": {
-    fontFamily: "var(--font-code), monospace",
-  },
+  const editorFont = EditorView.theme({
+    ".cm-scroller": {
+      fontFamily: fontOptions,
+      fontSize: fontSize,
+    },
 
-  ".cm-gutters": {
-    fontFamily: "var(--font-code), monospace",
-    fontSize: "16px",
-  },
-})
+    ".cm-content": {
+      fontFamily: fontOptions,
+      fontSize: fontSize,
+    },
+
+    ".cm-gutters": {
+      fontFamily: fontOptions,
+      fontSize: fontSize,
+    },
+  })
+
+  return editorFont
+}
 
 export function CodeEditor({
   value,
@@ -75,8 +122,8 @@ export function CodeEditor({
   className,
 }: CodeEditorProps) {
   const containerRef = useRef<HTMLDivElement>(null)
-  const { theme } = useTheme()
-  const isDark = theme === "dark"
+
+  const { theme: configTheme, font, fontSize } = useConfig()
 
   const viewRef = useRef<EditorView | null>(null)
 
@@ -88,9 +135,11 @@ export function CodeEditor({
     onChangeRef.current = onChange
   }, [onChange])
 
-  const themeExt = isDark ? dracula : tomorrow
+  const themeExt = CODE_MIRROR_THEMES[configTheme]
 
   useEffect(() => {
+    const editorFont = getEditorFont({ fontSize, font })
+
     if (!containerRef.current) {
       return
     }

@@ -122,9 +122,7 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
                 {doc.title}
               </h1>
               <div className="docs-nav flex items-center gap-2">
-                <div className="hidden sm:block">
-                  {/* <DocsCopyPage page={raw} url={absoluteUrl(page.url)} /> */}
-                </div>
+                <div className="hidden sm:block"></div>
                 <div className="ml-auto flex gap-2">
                   {neighbours.previous && (
                     <Button
@@ -181,7 +179,7 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
             <MDX components={mdxComponents} />
           </div>
           {contributors?.length > 0 && (
-            <div className="border-t py-6">
+            <div className="border-t pt-6">
               <p className="text-sm tracking-wide text-muted-foreground uppercase">
                 {contributors?.length > 1 ? "Contributors" : "Contributor"}
               </p>
@@ -210,6 +208,37 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
               ))}
             </div>
           )}
+
+          <div className="flex w-full items-center justify-between gap-2 border-t pt-6">
+            {neighbours.previous && (
+              <Button
+                variant="secondary"
+                nativeButton={false}
+                className="extend-touch-target"
+                render={
+                  <Link href={neighbours.previous.url as Route}>
+                    <ArrowLeftIcon />
+                    <span className="sr-only">Previous</span>
+                    <span>{neighbours.previous.name}</span>
+                  </Link>
+                }
+              ></Button>
+            )}
+            {neighbours.next && (
+              <Button
+                variant="secondary"
+                nativeButton={false}
+                className="extend-touch-target"
+                render={
+                  <Link href={neighbours.next.url as Route}>
+                    <span>{neighbours.next.name}</span>
+                    <ArrowRightIcon />
+                    <span className="sr-only">Next</span>
+                  </Link>
+                }
+              ></Button>
+            )}
+          </div>
         </main>
 
         <TableOfContents items={page.data.toc} />

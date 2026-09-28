@@ -4,6 +4,7 @@ import { usePathname, useRouter } from "next/navigation"
 
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Route } from "next"
+import { getCurrentTarget } from "@/lib/page-tree"
 
 const frameworks = [
   {
@@ -16,14 +17,15 @@ const frameworks = [
   },
 ] as const
 
-type Framework = (typeof frameworks)[number]["value"]
+// type Framework = (typeof frameworks)[number]["value"]
 
 export function FrameworkTabs() {
   const pathname = usePathname()
   const router = useRouter()
 
-  const current: Framework = pathname.includes("/react/") ? "react" : "html"
+  // const current: Framework = pathname.includes("/react/") ? "react" : "html"
 
+  const current = getCurrentTarget(pathname)
   function handleFrameworkChange(value: string) {
     if (value === current) return
 

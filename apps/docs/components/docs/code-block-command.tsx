@@ -8,6 +8,7 @@ import { useConfig } from "@/hooks/use-config"
 import { PackageManager } from "@/types"
 import { CheckIcon, CopyIcon, TerminalIcon } from "@phosphor-icons/react"
 import PackageManagerTabs from "./package-manager-tabs"
+import { cn } from "cn"
 
 export function CodeBlockCommand({
   __npm__,
@@ -111,9 +112,11 @@ export function CodeBlockCommand({
 export function ReactCodeBlockCommand({
   nepui,
   shadcn,
+  className,
 }: {
   shadcn: string
   nepui: string
+  className?: string
 }) {
   const { registry, setRegistry } = useConfig()
 
@@ -122,7 +125,7 @@ export function ReactCodeBlockCommand({
       <Tabs
         value={registry}
         onValueChange={(value) => setRegistry(value as "nepui" | "shadcn")}
-        className="w-full"
+        className={cn("w-full min-w-0", className)}
       >
         <TabsList className={"mb-2 bg-transparent"} variant={"line"}>
           <TabsTrigger value="nepui" className={"text-base"}>
@@ -132,10 +135,10 @@ export function ReactCodeBlockCommand({
             shadcn
           </TabsTrigger>
         </TabsList>
-        <TabsContent value="nepui">
+        <TabsContent value="nepui" className={"w-full min-w-0"}>
           <PackageManagerTabs command={nepui} />
         </TabsContent>
-        <TabsContent value="shadcn">
+        <TabsContent value="shadcn" className={"w-full min-w-0"}>
           <PackageManagerTabs command={shadcn} />
         </TabsContent>
       </Tabs>

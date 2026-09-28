@@ -1,6 +1,5 @@
-import { baseOptions } from "@/components/layouts/layout.shared"
+import { DocsMobileNav, DocsSidebar } from "@/components/layouts/docs-sidebar"
 import { source } from "@/lib/source"
-import { DocsLayout } from "fumadocs-ui/layouts/docs"
 
 export default function Layout({
   children,
@@ -8,10 +7,16 @@ export default function Layout({
   children: React.ReactNode
 }>) {
   return (
-    <DocsLayout tree={source.pageTree} {...baseOptions()}>
-      <div className="border-edge relative mx-auto flex max-w-7xl gap-8 px-4 py-1">
-        <div className="h-full w-full">{children}</div>
+    <div className="flex min-h-svh w-full">
+      <DocsSidebar tree={source.pageTree} />
+
+      <div className="flex min-w-0 flex-1 flex-col">
+        <DocsMobileNav tree={source.pageTree} />
+
+        <div className="mx-auto w-full max-w-5xl min-w-0 flex-1 px-4 py-1 lg:px-8">
+          {children}
+        </div>
       </div>
-    </DocsLayout>
+    </div>
   )
 }

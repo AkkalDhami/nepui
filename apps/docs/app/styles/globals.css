@@ -153,6 +153,7 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
 }
 
 h2,
@@ -179,7 +180,7 @@ h4 {
 @layer components {
   [data-rehype-pretty-code-figure] {
     position: relative;
-    @apply mt-6 mb-8 w-full max-w-code rounded-lg bg-code;
+    @apply mt-6 mb-6 w-full max-w-code rounded-lg bg-code;
   }
 
   [data-rehype-pretty-code-title] {
