@@ -16,7 +16,7 @@ export function TableOfContents({ items }: TableOfContentsProps) {
   const containerRef = useRef<HTMLUListElement>(null)
 
   return (
-    <aside className="sticky top-16 hidden h-fit w-48 xl:block">
+    <aside className="sticky top-16 hidden h-fit w-56 xl:block">
       <p className="mb-4 text-sm font-medium">On this page</p>
 
       <AnchorProvider toc={items}>
