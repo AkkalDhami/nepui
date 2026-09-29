@@ -1,0 +1,150 @@
+:root {
+  --np-spinner-muted-color: rgba(0, 0, 0, 0.2);
+  --np-spinner-color: currentColor;
+}
+
+.dark {
+  --np-spinner-color: currentColor; /* red, #123456, rgba(255, 0, 0, 0.5) */
+  --np-spinner-muted-color: rgba(255, 255, 255, 0.4);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --np-spinner-color: currentColor;
+    --np-spinner-muted-color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+.np-spinner,
+[data-np-spinner] {
+  --np-spinner-size: 1.275rem;
+  --np-spinner-thickness: clamp(1px, calc(var(--np-spinner-size) * 0.1), 4px);
+  --np-spinner-speed: 750ms;
+
+  display: inline-block;
+  width: var(--np-spinner-size);
+  height: var(--np-spinner-size);
+
+  flex-shrink: 0;
+
+  border: var(--np-spinner-thickness) solid var(--np-spinner-muted-color);
+  border-right-color: var(--np-spinner-color);
+
+  border-radius: 50%;
+
+  color: var(--np-spinner-color);
+
+  animation: np-spinner-spin var(--np-spinner-speed) linear infinite;
+}
+
+/* Size */
+
+[data-size="xs"],
+.np-spinner-xs {
+  --np-spinner-size: 0.75rem;
+}
+
+[data-size="sm"],
+.np-spinner-sm {
+  --np-spinner-size: 1rem;
+}
+
+[data-size="md"],
+.np-spinner-md {
+  --np-spinner-size: 1.5rem;
+}
+
+[data-size="lg"],
+.np-spinner-lg {
+  --np-spinner-size: 2rem;
+}
+
+[data-size="xl"],
+.np-spinner-xl {
+  --np-spinner-size: 3rem;
+}
+
+/* Thickness */
+
+[data-thickness="thin"],
+.np-spinner-thin {
+  --np-spinner-thickness: 1px;
+}
+
+[data-thickness="normal"],
+.np-spinner-thickness-normal {
+  --np-spinner-thickness: 2px;
+}
+
+[data-thickness="medium"],
+.np-spinner-thickness-medium {
+  --np-spinner-thickness: 2.5px;
+}
+
+[data-thickness="thick"],
+.np-spinner-thickness-thick {
+  --np-spinner-thickness: 4px;
+}
+
+[data-thickness="extra-thick"],
+.np-spinner-thickness-extra-thick {
+  --np-spinner-thickness: 6px;
+}
+
+/* Speed */
+
+[data-speed="slow"],
+.np-spinner-slow {
+  --np-spinner-speed: 1.25s;
+}
+
+[data-speed="normal"],
+.np-spinner-normal {
+  --np-spinner-speed: 750ms;
+}
+
+[data-speed="fast"],
+.np-spinner-fast {
+  --np-spinner-speed: 500ms;
+}
+
+[data-speed="faster"],
+.np-spinner-faster {
+  --np-spinner-speed: 300ms;
+}
+
+/* Direction */
+
+[data-direction="clockwise"],
+.np-spinner-clockwise {
+  animation-name: np-spinner-spin;
+}
+
+[data-direction="anti-clockwise"],
+[data-direction="anticlockwise"],
+.np-spinner-anti-clockwise,
+.np-spinner-anticlockwise {
+  animation-name: np-spinner-spin-reverse;
+}
+
+/* Animation */
+
+@keyframes np-spinner-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes np-spinner-spin-reverse {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+/* Reduced motion support */
+
+@media (prefers-reduced-motion: reduce) {
+  .np-spinner {
+    animation-duration: 1.5s;
+  }
+}
