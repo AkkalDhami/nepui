@@ -1,28 +1,53 @@
-"use client"
+import "server-only"
 
-import { useMemo } from "react"
-
-import { buildHtmlDocument, PlaygroundFile } from "@/lib/playground"
+import fs from "node:fs/promises"
+import path from "node:path"
+import { HtmlPreviewFrame } from "./html-preview-frame"
+import { cn } from "cn"
 
 interface HtmlPreviewProps {
-  files: PlaygroundFile[]
+  html: string
   tokens?: string
+  cssPath?: string | string[]
+  cssPaths?: string[]
+  className?: string
 }
 
-export function HtmlPreview({ files, tokens = "" }: HtmlPreviewProps) {
-  const srcDoc = useMemo(
-    () => buildHtmlDocument(files, tokens),
-    [files, tokens]
+export async function HtmlPreview({
+  html,
+  tokens,
+  cssPath = "./apps/docs/app/styles/globals.css",
+  cssPaths,
+  className,
+}: HtmlPreviewProps) {
+  const targetCss = cssPaths ?? cssPath
+  const paths = Array.isArray(targetCss) ? targetCss : [targetCss]
+
+  const cssContents = await Promise.all(
+    paths.map(async (p) => {
+      const fullPath = path.resolve(process.cwd(), "../..", p)
+      try {
+        return await fs.readFile(fullPath, "utf8")
+      } catch (error) {
+        if ((error as NodeJS.ErrnoException).code === "ENOENT") {
+          throw new Error(
+            `[HtmlPreview] CSS file not found at: ${fullPath} (resolved from "${p}")`
+          )
+        }
+        throw error
+      }
+    })
   )
 
+  const css = cssContents.join("\n\n")
+
   return (
-    <div className="h-full min-h-80 scrollbar-thin overflow-hidden rounded-lg border bg-background">
-      <iframe
-        title="nepui component preview"
-        srcDoc={srcDoc}
-        sandbox="allow-scripts"
-        className="block h-full min-h-80 w-full scrollbar-thin border-0"
-      />
-    </div>
+    <HtmlPreviewFrame
+      html={html}
+      css={css}
+      tokens={tokens ?? null}
+      className={cn("rounded-xl border", className)}
+      js={null}
+    />
   )
 }
