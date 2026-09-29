@@ -16,6 +16,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { source } from "@/lib/source"
 import { cn } from "cn"
 import type { MDXComponents } from "mdx/types"
+import { ReactPreviewTabs } from "@/components/preview/react-preview-tabs"
 
 function getNodeText(node: React.ReactNode): string {
   if (typeof node === "string" || typeof node === "number") {
@@ -93,7 +94,6 @@ function ComponentsListWrapper({ variant }: { variant?: "all" | "new" }) {
     <ComponentsList componentsFolder={componentsFolder} variant={variant} />
   )
 }
-
 export const mdxComponents = {
   PackageManagerTabs,
   ComponentPreview,
@@ -103,6 +103,7 @@ export const mdxComponents = {
   ComponentsList: ComponentsListWrapper,
   HtmlPreview,
   HtmlPreviewTabs,
+  ReactPreviewTabs,
 
   h1: ({ children, id, ...props }: React.ComponentProps<"h1">) => {
     const headingId = id ?? getHeadingId(children)
@@ -267,7 +268,7 @@ export const mdxComponents = {
   a: (props) => (
     <a
       target="_blank"
-      className="font-medium text-muted-primary underline underline-offset-1 hover:text-foreground"
+      className="font-medium text-muted-primary underline underline-offset-4 hover:text-foreground"
       {...props}
     />
   ),

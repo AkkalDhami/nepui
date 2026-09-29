@@ -11,6 +11,7 @@ export interface HtmlComponentSource {
   html: string
   css: string
   js: string | null
+  tokens: string | null
 }
 
 async function readSourceFile(filePath: string): Promise<string> {
@@ -43,27 +44,35 @@ async function readOptionalSourceFile(
   }
 }
 
+export interface HtmlComponentSource {
+  html: string
+  css: string
+  tokens: string | null
+  js: string | null
+}
+
 export async function getHtmlComponentSource(
   name: string
 ): Promise<HtmlComponentSource> {
   const dir = path.join(REGISTRY_ROOT, "html", name)
 
-  const [html, css, js] = await Promise.all([
+  const [html, css, tokens, js] = await Promise.all([
     readSourceFile(path.join(dir, `${name}.html`)),
     readSourceFile(path.join(dir, `${name}.css`)),
+    readOptionalSourceFile(path.join(dir, "tokens.css")),
     readOptionalSourceFile(path.join(dir, `${name}.js`)),
   ])
 
-  return { html, css, js }
+  return { html, css, tokens, js }
 }
 
 export async function getRegistryItem(target: string, component: string) {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_SITE_URL}/r/${target}/${component}.json`,
     {
-      next: {
-        revalidate: 3600,
-      },
+      // next: {
+      //   revalidate: 3600,
+      // },
     }
   )
 
