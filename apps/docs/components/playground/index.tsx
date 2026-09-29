@@ -10,6 +10,7 @@ import { ArrowsClockwiseIcon, PlayIcon } from "@phosphor-icons/react"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { CopyButton } from "@/components/docs/copy-button"
+import { getIconForLanguageExtension } from "../icons"
 
 interface RegistryFile {
   path: string
@@ -73,16 +74,17 @@ export function Playground({ files: registryFiles }: PlaygroundProps) {
           onValueChange={setActivePath}
           className="flex-1"
         >
-          <TabsList className="max-w-full scrollbar-none overflow-x-auto rounded-none bg-transparent p-0">
+          <TabsList className="max-w-full scrollbar-none overflow-x-auto rounded-none bg-transparent p-0 px-0.5">
             {files.map((file) => {
               const fileName = file.path.split("/").pop() ?? file.path
-
+              const Icon = getIconForLanguageExtension(file.language, fileName)
               return (
                 <TabsTrigger
                   key={file.path}
                   value={file.path}
                   className="rounded-none px-4 py-2.5 text-sm"
                 >
+                  {Icon && Icon}
                   {fileName}
                 </TabsTrigger>
               )
