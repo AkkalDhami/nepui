@@ -12,6 +12,7 @@ interface PreviewTabsProps {
     html: string
     css?: string
     js?: string
+    tokens?: string
   }
 
   react?: React.ReactNode
@@ -41,6 +42,7 @@ export function PreviewTabs({
             html={html.html}
             css={html.css ?? ""}
             js={html.js ?? null}
+            tokens={html.tokens ?? null}
           />
         </TabsContent>
       )}

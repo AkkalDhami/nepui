@@ -3,13 +3,15 @@
 import { useEffect, useMemo, useRef } from "react"
 
 import { cn } from "@/lib/utils"
+import { getPreviewCss } from "@/lib/preview"
 
 interface HtmlPreviewFrameProps {
   html: string
   css: string
   js: string | null
-  tokens?: string
+  tokens: string | null
   className?: string
+  height?: string
 }
 
 const RESIZE_SCRIPT = `
@@ -27,31 +29,25 @@ const RESIZE_SCRIPT = `
   })();
 `
 
-function buildPreviewDocument(html: string, css: string, js?: string | null) {
+function buildPreviewDocument(
+  html: string,
+  css: string,
+  js?: string | null,
+  tokens?: string | null
+) {
   return `<!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
     <meta name="color-scheme" content="light dark" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <style id="nepui-component">${css}</style>
+        <style id="nepui-component-tokens">${tokens}</style>
+
     <style id="nepui-docs-layout">
-      html, body {
-        margin: 0;
-        padding: 0;
-      }
-      body {
-        box-sizing: border-box;
-        min-height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 2.5rem 1.5rem;
-        font-family:
-          ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-      }
-      *, *::before, *::after {
-        box-sizing: border-box;
-      }
+    ${getPreviewCss("docs")}
     </style>
   </head>
   <body>
@@ -66,13 +62,15 @@ export function HtmlPreviewFrame({
   html,
   css,
   js,
+  tokens,
+  height = "480px",
   className,
 }: HtmlPreviewFrameProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null)
 
   const document = useMemo(
-    () => buildPreviewDocument(html, css, js),
-    [html, css, js]
+    () => buildPreviewDocument(html, css, js, tokens),
+    [html, css, js, tokens]
   )
 
   useEffect(() => {
@@ -91,9 +89,9 @@ export function HtmlPreviewFrame({
       title="Component preview"
       sandbox="allow-scripts"
       srcDoc={document}
-      style={{ height: "480px" }}
+      style={{ height }}
       className={cn(
-        "w-full rounded-b-lg border-0 bg-background transition-[height]",
+        "flex w-full items-center justify-center rounded-b-lg border-0 bg-background transition-[height]",
         className
       )}
     />

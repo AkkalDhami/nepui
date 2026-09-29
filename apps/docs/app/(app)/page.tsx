@@ -1,5 +1,3 @@
-import { Button } from "@/components/ui/button"
-
 export default function Page() {
   return (
     <div className="flex min-h-svh p-6">
@@ -13,7 +11,28 @@ export default function Page() {
         <div className="font-mono text-xs text-muted-foreground">
           (Press <kbd>d</kbd> to toggle dark mode)
         </div>
+
+        <ButtonWithIcon />
       </div>
+    </div>
+  )
+}
+
+import { PlusIcon, DownloadSimpleIcon } from "@phosphor-icons/react/ssr"
+import { Button } from "@nepui/react/button"
+
+export function ButtonWithIcon() {
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+      <Button variant="outline">
+        <PlusIcon />
+        Add item
+      </Button>
+
+      <Button variant="outline">
+        Download
+        <DownloadSimpleIcon />
+      </Button>
     </div>
   )
 }

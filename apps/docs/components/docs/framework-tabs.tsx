@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Route } from "next"
 import { getCurrentTarget } from "@/lib/page-tree"
+import { LanguageIcons } from "../icons"
 
 const frameworks = [
   {
@@ -33,19 +34,32 @@ export function FrameworkTabs() {
 
     router.push(nextPath as Route, { scroll: false })
   }
+  console.log({ current })
+  const Icons = {
+    html: LanguageIcons.html,
+    react: LanguageIcons.tsx,
+  }
+
+  const Icon = Icons[current as keyof typeof Icons]
 
   return (
     <Tabs
       value={current}
       onValueChange={handleFrameworkChange}
-      className={"gap-0"}
+      className={"min-w-0 gap-0"}
     >
-      <TabsList variant="line" className={"mb-0 gap-2"}>
-        {frameworks.map(({ value, label }) => (
-          <TabsTrigger key={value} value={value} className={"text-base"}>
-            {label}
-          </TabsTrigger>
-        ))}
+      <TabsList
+        variant="line"
+        className={"mb-0 flex w-full items-center justify-between gap-2"}
+      >
+        <div className="space-x-2">
+          {frameworks.map(({ value, label }) => (
+            <TabsTrigger key={value} value={value} className={"text-base"}>
+              {label}
+            </TabsTrigger>
+          ))}
+        </div>
+        <Icon className="size-5" />
       </TabsList>
     </Tabs>
   )

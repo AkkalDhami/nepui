@@ -1,8 +1,7 @@
 import { cn } from "@/lib/utils"
-import { PackageManager } from "@/types";
+import { PackageManager } from "@/types"
 
 type IconProps = React.HTMLAttributes<SVGElement>
-
 
 export const LanguageIcons = {
   npm: (props: IconProps) => (
@@ -603,7 +602,20 @@ export const LanguageIcons = {
 
 export function getIconForLanguageExtension(
   language: string,
+  fileName?: string
 ) {
+  if (fileName?.endsWith(".css")) {
+    return LanguageIcons.css({ className: "size-4" })
+  }
+  if (fileName?.endsWith(".html")) {
+    return LanguageIcons.html({ className: "size-4" })
+  }
+  if (fileName?.endsWith(".js")) {
+    return LanguageIcons.js({ className: "size-4" })
+  }
+  if (fileName?.endsWith(".ts")) {
+    return LanguageIcons.ts({ className: "size-4" })
+  }
 
   switch (language) {
     case "json":

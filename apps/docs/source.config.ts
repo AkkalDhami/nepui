@@ -3,16 +3,6 @@ import { pageSchema } from "fumadocs-core/source/schema"
 import { defineConfig, defineDocs } from "fumadocs-mdx/config"
 import rehypePrettyCode from "rehype-pretty-code"
 import z from "zod"
-import { transformers } from "@/lib/highlight-code"
-import { pageSchema } from "fumadocs-core/source/schema"
-import { defineConfig, defineDocs } from "fumadocs-mdx/config"
-import rehypePrettyCode from "rehype-pretty-code"
-import z from "zod"
-import { transformers } from "@/lib/highlight-code"
-import { pageSchema } from "fumadocs-core/source/schema"
-import { defineConfig, defineDocs } from "fumadocs-mdx/config"
-import rehypePrettyCode from "rehype-pretty-code"
-import z from "zod"
 
 const contributorSchema = z.object({
   name: z.string(),

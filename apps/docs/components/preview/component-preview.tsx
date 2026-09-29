@@ -18,11 +18,13 @@ export async function ComponentPreview({
 }: ComponentPreviewProps) {
   const source = await getHtmlComponentSource(name)
 
-  const [htmlHighlighted, cssHighlighted, jsHighlighted] = await Promise.all([
-    highlightCode(source.html, "html"),
-    highlightCode(source.css, "css"),
-    source?.js && highlightCode(source?.js, "js"),
-  ])
+  const [htmlHighlighted, cssHighlighted, tokensHighlighted, jsHighlighted] =
+    await Promise.all([
+      highlightCode(source.html, "html"),
+      highlightCode(source.css, "css"),
+      highlightCode(source?.tokens || "", "css"),
+      source?.js && highlightCode(source?.js, "js"),
+    ])
 
   return (
     <>
@@ -35,6 +37,8 @@ export async function ComponentPreview({
           htmlHighlighted={htmlHighlighted}
           cssHighlighted={cssHighlighted}
           jsHighlighted={source?.js ? jsHighlighted : null}
+          tokens={source?.tokens || ""}
+          tokensHighlighted={tokensHighlighted}
           className={className}
         />
       )}

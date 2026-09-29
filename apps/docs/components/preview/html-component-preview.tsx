@@ -14,21 +14,25 @@ interface HtmlComponentPreviewProps {
   html: string
   css: string
   js: string | null
+  tokens: string | null
   htmlHighlighted: string
   cssHighlighted: string
+  tokensHighlighted: string
   jsHighlighted: string | null
   className?: string
 }
 
-type SourceTab = "html" | "css" | "js"
+type SourceTab = "html" | "css" | "js" | "tokens"
 
 export function HtmlComponentPreview({
   name,
   html,
   css,
   js,
+  tokens,
   htmlHighlighted,
   cssHighlighted,
+  tokensHighlighted,
   jsHighlighted,
   className,
 }: HtmlComponentPreviewProps) {
@@ -47,7 +51,7 @@ export function HtmlComponentPreview({
       source: css,
       highlighted: cssHighlighted,
     },
-    // Only shown when the component actually ships a JS file.
+
     ...(js !== null && jsHighlighted !== null
       ? [
           {
@@ -55,6 +59,17 @@ export function HtmlComponentPreview({
             label: `${name}.js`,
             source: js,
             highlighted: jsHighlighted,
+          },
+        ]
+      : []),
+
+    ...(tokens !== null && tokensHighlighted !== null
+      ? [
+          {
+            value: "tokens" as const,
+            label: `tokens.css`,
+            source: tokens,
+            highlighted: tokensHighlighted,
           },
         ]
       : []),
@@ -112,7 +127,7 @@ export function HtmlComponentPreview({
       </div>
 
       <TabsContent value="preview" className="mt-0 bg-background">
-        <HtmlPreviewFrame html={html} css={css} js={js} />
+        <HtmlPreviewFrame html={html} css={css} js={js} tokens={tokens} />
       </TabsContent>
 
       <TabsContent value="code" className="mt-0 bg-background">
@@ -121,12 +136,9 @@ export function HtmlComponentPreview({
           onValueChange={(value) => setSourceTab(value as SourceTab)}
         >
           <div className="not-prose not-typeset relative flex items-center justify-between border-b border-border px-3 py-2">
-            <TabsList
-              // variant={"line"}
-              className="h-auto gap-2 bg-transparent p-0"
-            >
+            <TabsList className="h-auto gap-2 bg-transparent p-0">
               {sourceTabs.map((tab) => {
-                const Icon = getIconForLanguageExtension(tab.value)
+                const Icon = getIconForLanguageExtension(tab.value, tab.label)
                 return (
                   <TabsTrigger
                     key={tab.value}
@@ -145,7 +157,7 @@ export function HtmlComponentPreview({
               })}
             </TabsList>
             <CopyButton
-              value={activeTab.source}
+              value={activeTab.source || ""}
               className="absolute top-1/2 right-3 -translate-y-1/2"
             />
           </div>
