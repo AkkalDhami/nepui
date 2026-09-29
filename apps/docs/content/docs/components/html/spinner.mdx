@@ -1,0 +1,210 @@
+---
+title: Spinner
+description: An indicator that can be used to show a loading state.
+contributor:
+ -  name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4 
+---
+
+## Installation
+
+```bash
+npx nepui@latest add spinner
+```
+
+---
+
+## Usage
+
+```html title="spinner.html" showLineNumbers {2} 
+<html>
+  <link rel="stylesheet" href="./styles/spinner.css">
+</html>
+```
+
+After installing the component, add the `data-np-spinner` attribute or the class alias `np-spinner` to an element:
+
+```html title="spinner.html" showLineNumbers
+<span data-np-spinner></span>
+<span class="np-spinner"></span>
+```
+
+---
+
+## Sizes
+
+Use the `data-size` attribute or the class alias to control the spinner size.
+
+<HtmlPreviewTabs
+  className="mt-4"
+  cssPath="registry/html/spinner/spinner.css"
+  html={`
+<span class="np-spinner" data-size="xs"></span>
+<span class="np-spinner" data-size="sm"></span>
+<span class="np-spinner np-spinner-md"></span>
+<span class="np-spinner" data-size="lg"></span>
+<span class="np-spinner np-spinner-xl"></span>
+  `}
+      >
+```html title="spinner.html" showLineNumbers
+<span class="np-spinner" data-size="xs"></span>
+
+<span class="np-spinner" data-size="sm"></span>
+
+<span class="np-spinner np-spinner-md"></span>
+
+<span class="np-spinner" data-size="lg"></span>
+
+<span class="np-spinner np-spinner-xl"></span>
+```
+</HtmlPreviewTabs>
+
+Use the `--np-spinner-size` custom property to control the spinner size.
+
+<HtmlPreviewTabs
+  className="mt-4"
+  cssPath="registry/html/spinner/spinner.css"
+  html={`
+<span class="np-spinner" style="--np-spinner-size: 5rem"></span>
+  `}
+      >
+```html title="spinner.html" showLineNumbers
+<span class="np-spinner" style="--np-spinner-size: 5rem"></span>
+```
+</HtmlPreviewTabs>
+
+| Size | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Extra small   | `data-size="xs"` | `np-spinner-xs` |
+| Small         | `data-size="sm"` | `np-spinner-sm` |
+| Medium        | `data-size="md"` | `np-spinner-md` |
+| Large         | `data-size="lg"` | `np-spinner-lg` |
+| Extra large   | `data-size="xl"` | `np-spinner-xl` |
+
+---
+
+## Speed
+
+Use the `data-speed` attribute to control the spinner's animation speed.
+
+<HtmlPreviewTabs
+  className="mt-4"
+  cssPath="registry/html/spinner/spinner.css"
+  html={`
+<span class="np-spinner" data-speed="slow"></span>
+<span class="np-spinner" data-speed="normal"></span>
+<span class="np-spinner" data-speed="fast"></span>
+<span class="np-spinner" data-speed="faster"></span>
+  `}
+      >
+```html title="spinner.html" showLineNumbers
+<span class="np-spinner" data-speed="slow"></span>
+
+<span class="np-spinner" data-speed="normal"></span>
+
+<span class="np-spinner" data-speed="fast"></span>
+
+<span class="np-spinner" data-speed="faster"></span>
+```
+</HtmlPreviewTabs>
+
+Use the `--np-spinner-speed` custom property to control the spinner's animation speed.
+
+<HtmlPreviewTabs
+  className="mt-4"
+  cssPath="registry/html/spinner/spinner.css"
+  html={`
+<span class="np-spinner" style="--np-spinner-speed: 350ms"></span>
+  `}
+      >
+```html title="spinner.html" showLineNumbers
+<span class="np-spinner" style="--np-spinner-speed: 350ms"></span>
+```
+</HtmlPreviewTabs>
+
+| Speed | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Slow  | `data-speed="slow"` | `np-spinner-slow` |
+| Normal | `data-speed="normal"` | `np-spinner-normal` |
+| Fast  | `data-speed="fast"` | `np-spinner-fast` |
+| Faster | `data-speed="faster"` | `np-spinner-faster` |
+
+---
+
+## Thickness
+
+Use the `data-thickness` attribute or the class alias to control the spinner's border thickness.
+
+<HtmlPreviewTabs
+  className="mt-4"
+  cssPath="registry/html/spinner/spinner.css"
+  html={`
+<span class="np-spinner" data-thickness="thin"></span>
+<span class="np-spinner" data-thickness="normal"></span>
+<span class="np-spinner" data-thickness="medium"></span>
+<span class="np-spinner" data-thickness="thick"></span>
+<span class="np-spinner" data-thickness="extra-thick"></span>
+  `}
+      >
+```html title="spinner.html" showLineNumbers
+<span class="np-spinner" data-thickness="thin"></span>
+
+<span class="np-spinner" data-thickness="normal"></span>
+
+<span class="np-spinner" data-thickness="medium"></span>
+
+<span class="np-spinner" data-thickness="thick"></span>
+
+<span class="np-spinner" data-thickness="extra-thick"></span>
+```
+</HtmlPreviewTabs>
+
+Use the `--np-spinner-thickness` custom property to control the spinner's border thickness.
+
+<HtmlPreviewTabs
+  className="mt-4"
+  cssPath="registry/html/spinner/spinner.css"
+  html={`
+<span class="np-spinner" style="--np-spinner-thickness: 20px"></span>
+  `}
+      >
+```html title="spinner.html" showLineNumbers
+<span class="np-spinner" style="--np-spinner-thickness: 20px"></span>
+```
+</HtmlPreviewTabs>
+
+| Thickness | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Thin      | `data-thickness="thin"` | `np-spinner-thickness-thin` |
+| Normal    | `data-thickness="normal"` | `np-spinner-thickness-normal` |
+| Medium    | `data-thickness="medium"` | `np-spinner-thickness-medium` |
+| Thick     | `data-thickness="thick"` | `np-spinner-thickness-thick` |
+| Extra thick | `data-thickness="extra-thick"` | `np-spinner-thickness-extra-thick` |
+
+---
+
+## Directions
+
+Use the `data-direction` attribute or the class alias to control the spinner's rotation direction.
+
+<HtmlPreviewTabs
+  className="mt-4"
+  cssPath="registry/html/spinner/spinner.css"
+  html={`
+<span class="np-spinner" data-direction="clockwise"></span>
+
+<span class="np-spinner-anti-clockwise" data-np-spinner></span>
+  `}
+      >
+```html title="spinner.html" showLineNumbers
+<span class="np-spinner" data-direction="clockwise"></span>
+
+<span class="np-spinner-anti-clockwise" data-np-spinner></span>
+```
+</HtmlPreviewTabs>
+
+| Direction | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Clockwise | `data-direction="clockwise"` | `np-spinner-clockwise` |
+| Anti-clockwise | `data-direction="anti-clockwise"` | `np-spinner-anti-clockwise` |

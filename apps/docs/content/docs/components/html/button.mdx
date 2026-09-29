@@ -1,34 +1,31 @@
 ---
 title: Button
 description: A button triggers an action, submits a form, or performs another user-initiated operation.
----
-
-
-<ComponentPreview name="button" />
-
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
 ---
 
 ## Installation
 
-Copy `button.html` and `button.css` from the registry, or install the component with the nepui CLI:
-
-```bash title="Terminal"
-npx nepui add button --target html
+```bash
+npx nepui@latest add button
 ```
 
 ---
 
 ## Usage
 
-Use the Button component in your project.
+Use the `button` component in your project.
 
-```html {2}
+```html title="button.html" showLineNumbers {2} 
 <html>
   <link rel="stylesheet" href="./styles/button.css">
 </html>
 ```
 
-```html
+```html title="button.html" showLineNumbers {2-8}
 <body>
   <button
     type="button"
@@ -40,26 +37,11 @@ Use the Button component in your project.
 </body>
 ```
 
-Button variants and sizes support both data attributes and class aliases:
-
-| Data attribute | Class alias |
-| --- | --- |
-| `data-variant="primary"` | `np-button-primary` |
-| `data-variant="outline"` | `np-button-outline` |
-| `data-variant="secondary"` | `np-button-secondary` |
-| `data-variant="ghost"` | `np-button-ghost` |
-| `data-variant="destructive"` | `np-button-destructive` |
-| `data-size="xs"` | `np-button-xs` |
-| `data-size="sm"` | `np-button-sm` |
-| `data-size="lg"` | `np-button-lg` |
-
-States use data attributes, for example `data-state="loading"`.
-
 ---
 
 ## Variants
 
-Use `data-variant` or the matching class alias to choose a visual style. The default button can use `np-button` or `np-button-primary`.
+Use `data-variant` attribute or the matching class alias to choose a visual style. The default button can use `np-button`.
 
 ```html title="button.html" showLineNumbers
 <button class="np-button" type="button">
@@ -92,56 +74,251 @@ Use `data-variant` or the matching class alias to choose a visual style. The def
 </button>
 ```
 
+Button variants can be specified using either `data-variant` attributes or their corresponding class aliases.
+
+| Variant     | Data attribute               | Class alias             |
+| ----------- | ---------------------------- | ----------------------- |
+| Default     | `data-variant="default"`     | `np-button`             |
+| Outline     | `data-variant="outline"`     | `np-button-outline`     |
+| Secondary   | `data-variant="secondary"`   | `np-button-secondary`   |
+| Ghost       | `data-variant="ghost"`       | `np-button-ghost`       |
+| Destructive | `data-variant="destructive"` | `np-button-destructive` |
+
+---
+
+## Default
+
+<HtmlPreviewTabs
+  cssPath={["registry/html/button/button.css", "registry/html/button/tokens.css"]}
+  html={`
+    <button class="np-button" type="button">
+      Default
+    </button>
+  `}
+>
+
+```html title="button.html" showLineNumbers {7, 11-13}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Button</title>
+  <link rel="stylesheet" href="./styles/button.css">
+</head>
+<body>
+
+  <button class="np-button" type="button">
+    Default
+  </button>
+
+</body>
+</html>
+```
+</HtmlPreviewTabs>
+
+---
+
+## Outline
+
+<HtmlPreviewTabs
+  cssPath={["registry/html/button/button.css", "registry/html/button/tokens.css"]}
+  html={`
+    <button class="np-button" type="button" data-variant="outline">
+      Outline
+    </button>
+  `}
+>
+
+```html title="button.html" showLineNumbers
+<button class="np-button" type="button" data-variant="outline"> 
+  Outline
+</button>
+```
+</HtmlPreviewTabs>
+
+---
+
+## Secondary
+
+<HtmlPreviewTabs
+  cssPath={["registry/html/button/button.css", "registry/html/button/tokens.css"]}
+  html={`
+    <button class="np-button" type="button" data-variant="secondary">
+      Secondary
+    </button>
+  `}
+>
+
+```html title="button.html" showLineNumbers
+<button class="np-button" type="button" data-variant="secondary">
+  Secondary
+</button>
+```
+</HtmlPreviewTabs>
+
+---
+
+## Ghost
+
+<HtmlPreviewTabs
+  cssPath={["registry/html/button/button.css", "registry/html/button/tokens.css"]}
+  html={`
+    <button class="np-button" type="button" data-variant="ghost">
+      Ghost
+    </button>
+  `}
+>
+
+```html title="button.html" showLineNumbers
+<button class="np-button" type="button" data-variant="ghost">
+  Ghost
+</button>
+```
+</HtmlPreviewTabs>
+
+---
+
+## Destructive
+
+<HtmlPreviewTabs
+  cssPath={["registry/html/button/button.css", "registry/html/button/tokens.css"]}
+  html={`
+    <button class="np-button" type="button" data-variant="destructive">
+      Destructive
+    </button>
+  `}
+>
+
+```html title="button.html" showLineNumbers
+<button class="np-button" type="button" data-variant="destructive">
+  Destructive
+</button>
+```
+</HtmlPreviewTabs>
+
 ---
 
 ## Sizes
 
 Use `data-size` or a matching class alias for compact, large, or icon-only buttons.
 
-```html title="button.html"
-<button class="np-button" type="button" data-size="xs">
+<HtmlPreviewTabs
+  cssPath={["registry/html/button/button.css", "registry/html/button/tokens.css"]}
+  className="mt-4"
+  html={`
+<button class="np-button np-button-outline" type="button" data-size="xs">
   Extra small
 </button>
 
-<button class="np-button" type="button" data-size="sm">
+<button class="np-button np-button-outline" type="button" data-size="sm">
   Small
 </button>
 
-<button class="np-button" type="button">
+<button class="np-button np-button-outline" type="button">
   Default
 </button>
 
-<button class="np-button" type="button" data-size="lg">
-  Large
-</button>
-
-<!-- Equivalent class aliases -->
-<button class="np-button np-button-xs" type="button">
-  Extra small
-</button>
-
-<button class="np-button np-button-sm" type="button">
-  Small
-</button>
-
-<button class="np-button np-button-lg" type="button">
+<button class="np-button np-button-outline" type="button" data-size="lg">
   Large
 </button>
 
 <button
-  class="np-button"
+  class="np-button np-button-outline"
+  type="button"
+  data-size="icon-xs"
+>
+↺
+</button>
+
+<button
+  class="np-button np-button-outline"
+  type="button"
+  data-size="icon-sm"
+>
+↺
+</button>
+
+<button
+  class="np-button np-button-outline"
   type="button"
   data-size="icon"
-  aria-label="Settings"
 >
-  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-    ...
-  </svg>
+↺
+</button>
+
+<button
+  class="np-button np-button-outline"
+  type="button"
+  data-size="icon-lg"
+>
+↺
+</button>
+  `}
+>
+```html title="button.html"
+<button class="np-button np-button-outline" type="button" data-size="xs">
+  Extra small
+</button>
+
+<button class="np-button np-button-outline" type="button" data-size="sm">
+  Small
+</button>
+
+<button class="np-button np-button-outline" type="button">
+  Default
+</button>
+
+<button class="np-button np-button-outline" type="button" data-size="lg">
+  Large
+</button>
+
+<button
+  class="np-button np-button-outline"
+  type="button"
+  data-size="icon-xs"
+>
+↺
+</button>
+
+<button
+  class="np-button np-button-outline"
+  type="button"
+  data-size="icon-sm"
+>
+↺
+</button>
+
+<button
+  class="np-button np-button-outline"
+  type="button"
+  data-size="icon"
+>
+↺
+</button>
+
+<button
+  class="np-button np-button-outline"
+  type="button"
+  data-size="icon-lg"
+>
+↺
 </button>
 ```
+</HtmlPreviewTabs>
 
 
-Available sizes are `xs`, `sm`, `lg`, `icon-xs`, `icon-sm`, `icon`, and `icon-lg`.
+Button sizes can be specified using either `data-size` attributes or their corresponding class aliases.
+
+| Size             | Data attribute        | Class alias         |
+| ---------------- | --------------------- | ------------------- |
+| Extra small      | `data-size="xs"`      | `np-button-xs`      |
+| Small            | `data-size="sm"`      | `np-button-sm`      |
+| Large            | `data-size="lg"`      | `np-button-lg`      |
+| Icon extra small | `data-size="icon-xs"` | `np-button-icon-xs` |
+| Icon small       | `data-size="icon-sm"` | `np-button-icon-sm` |
+| Icon             | `data-size="icon"`    | `np-button-icon`    |
+| Icon large       | `data-size="icon-lg"` | `np-button-icon-lg` |
 
 ---
 
@@ -159,15 +336,21 @@ Buttons support inline SVG icons. Mark decorative icons as hidden and provide an
 
 ---
 
-## States
+## Disabled
 
-Use the native `disabled` attribute for unavailable actions. Loading buttons should also set `aria-busy="true"`.
+Use the native `disabled` attribute for unavailable actions.`.
 
-```html title="button.html"
+```html title="button.html" showLineNumbers
 <button class="np-button" type="button" disabled>
   Disabled
 </button>
+```
 
+---
+
+## Spinner
+
+```html title="button.html" showLineNumbers
 <button
   class="np-button"
   type="button"
@@ -179,13 +362,22 @@ Use the native `disabled` attribute for unavailable actions. Loading buttons sho
 </button>
 ```
 
+> **Loading button: Use the [`spinner`](/docs/components/html/spinner) component when you want to display a spinner with text or other content inside the button.**
+
+```html title="button.html" showLineNumbers {2}
+<button data-np-button data-loading>
+  <span data-np-spinner data-size="sm"></span>
+  Loading...
+</button>
+```
+
 ---
 
 ## Forms
 
 Always specify the button's `type` explicitly in forms.
 
-```html title="button.html"
+```html title="button.html" showLineNumbers
 <form>
   <button class="np-button" type="submit">
     Submit
