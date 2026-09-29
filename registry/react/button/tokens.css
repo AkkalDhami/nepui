@@ -1,0 +1,170 @@
+/**
+ * nepui — design tokens
+*/
+
+:root {
+  color-scheme: light;
+
+  --np-radius: 0.625rem;
+  --np-radius-sm: calc(var(--np-radius) * 0.6);
+  --np-radius-md: calc(var(--np-radius) * 0.8);
+  --np-radius-lg: var(--np-radius);
+  --np-radius-xl: calc(var(--np-radius) * 1.4);
+  --np-radius-2xl: calc(var(--np-radius) * 1.8);
+  --np-radius-3xl: calc(var(--np-radius) * 2.2);
+  --np-radius-4xl: calc(var(--np-radius) * 2.6);
+  --np-radius-full: 9999px;
+
+  --np-background: #ffffff;
+  --np-foreground: #0a0a0a;
+
+  --np-card: #ffffff;
+  --np-card-foreground: #0a0a0a;
+
+  --np-popover: #ffffff;
+  --np-popover-foreground: #0a0a0a;
+
+  --np-primary: #121212;
+  --np-primary-foreground: #ffffff;
+
+  --np-secondary: #f4f4f5;
+  --np-secondary-foreground: #18181b;
+
+  --np-muted: #f4f4f5;
+  --np-muted-foreground: #71717a;
+
+  --np-accent: #f4f4f5;
+  --np-accent-foreground: #18181b;
+
+  --np-destructive: #e7000b;
+
+  --np-success: #16a34a;
+  --np-success-foreground: #fafafa;
+
+  --np-warning: #d97706;
+  --np-warning-foreground: #fafafa;
+
+  --np-border: #e4e4e7;
+  --np-input: #e4e4e7;
+  --np-ring: #a1a1a1;
+
+  --np-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --np-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --np-shadow-md:
+    0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --np-shadow-lg:
+    0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+/* Explicit dark theme — class or data-attribute toggle (next-themes, etc.) */
+.dark,
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --np-radius: 0.625rem;
+  --np-radius-sm: calc(var(--np-radius) * 0.6);
+  --np-radius-md: calc(var(--np-radius) * 0.8);
+  --np-radius-lg: var(--np-radius);
+  --np-radius-xl: calc(var(--np-radius) * 1.4);
+  --np-radius-2xl: calc(var(--np-radius) * 1.8);
+  --np-radius-3xl: calc(var(--np-radius) * 2.2);
+  --np-radius-4xl: calc(var(--np-radius) * 2.6);
+  --np-radius-full: 9999px;
+
+  --np-background: #0a0a0a;
+  --np-foreground: #fafafa;
+
+  --np-card: #0a0a0a;
+  --np-card-foreground: #fafafa;
+
+  --np-popover: #ffffff;
+  --np-popover-foreground: #0a0a0a;
+
+  --np-primary: #121212;
+  --np-primary-foreground: #fafafa;
+
+  --np-secondary: #27272a;
+  --np-secondary-foreground: #fafafa;
+
+  --np-muted: #27272a;
+  --np-muted-foreground: #a1a1aa;
+
+  --np-accent: #27272a;
+  --np-accent-foreground: #fafafa;
+
+  --np-destructive: #e7000b;
+
+  --np-success: #01a041;
+  --np-success-foreground: #f0fdf4;
+
+  --np-warning: #ad4407;
+  --np-warning-foreground: #fffbeb;
+
+  --np-border: #27272a;
+  --np-input: #27272a;
+  --np-ring: #737373;
+
+  --np-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --np-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.4), 0 1px 2px -1px rgb(0 0 0 / 0.4);
+  --np-shadow-md:
+    0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+  --np-shadow-lg:
+    0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+}
+
+/* OS-level dark mode when no explicit theme has been chosen */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not(.light) {
+    color-scheme: dark;
+
+    --np-radius: 0.625rem;
+    --np-radius-sm: calc(var(--np-radius) * 0.6);
+    --np-radius-md: calc(var(--np-radius) * 0.8);
+    --np-radius-lg: var(--np-radius);
+    --np-radius-xl: calc(var(--np-radius) * 1.4);
+    --np-radius-2xl: calc(var(--np-radius) * 1.8);
+    --np-radius-3xl: calc(var(--np-radius) * 2.2);
+    --np-radius-4xl: calc(var(--np-radius) * 2.6);
+    --np-radius-full: 9999px;
+
+    --np-background: #0a0a0a;
+    --np-foreground: #fafafa;
+
+    --np-card: #0a0a0a;
+    --np-card-foreground: #fafafa;
+
+    --np-popover: #0a0a0a;
+    --np-popover-foreground: #fafafa;
+
+    --np-primary: #ffffff;
+    --np-primary-foreground: #0a0a0a;
+
+    --np-secondary: #27272a;
+    --np-secondary-foreground: #fafafa;
+
+    --np-muted: #27272a;
+    --np-muted-foreground: #a1a1aa;
+
+    --np-accent: #27272a;
+    --np-accent-foreground: #fafafa;
+
+    --np-destructive: #e7000b;
+
+    --np-success: #01a041;
+    --np-success-foreground: #f0fdf4;
+
+    --np-warning: #ad4407;
+    --np-warning-foreground: #fffbeb;
+
+    --np-border: #27272a;
+    --np-input: #27272a;
+    --np-ring: #737373;
+
+    --np-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+    --np-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.4), 0 1px 2px -1px rgb(0 0 0 / 0.4);
+    --np-shadow-md:
+      0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+    --np-shadow-lg:
+      0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+  }
+}
