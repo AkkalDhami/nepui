@@ -41,6 +41,7 @@ const PREVIEW_CSS = `
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  padding-bottom: 16px;
 }
 
 .np-preview-section {
@@ -137,7 +138,7 @@ body {
 body {
   box-sizing: border-box;
   min-height: 100%;
-  height: 450px;
+  height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;

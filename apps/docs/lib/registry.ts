@@ -83,6 +83,57 @@ export async function getRegistryItem(target: string, component: string) {
   return response.json()
 }
 
+type Style = "ktm" | "tokyo"
+
+type RegistryComponentOptions = {
+  target: string
+  name: string
+  style?: Style
+}
+
+export async function getRegistryComponent({
+  target,
+  name,
+  style = "ktm",
+}: RegistryComponentOptions) {
+  const filePath = path.join(
+    process.cwd(),
+    "examples",
+    style,
+    target,
+    `${name}.tsx`
+  )
+
+  try {
+    const content = await fs.readFile(filePath, "utf8")
+
+    return JSON.parse(content)
+  } catch {
+    return null
+  }
+}
+
+export async function getReactComponentSource({
+  target,
+  name,
+  style = "ktm",
+}: RegistryComponentOptions) {
+  const filePath = path.join(
+    process.cwd(),
+    "examples",
+    style,
+    target,
+    `${name}.tsx`
+  )
+
+  try {
+    const content = await fs.readFile(filePath, "utf8")
+    return content
+  } catch {
+    return null
+  }
+}
+
 export async function getRegistryItem2(target: string, component: string) {
   const filePath = path.join(
     process.cwd(),
