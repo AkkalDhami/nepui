@@ -150,11 +150,11 @@
   scrollbar-width: thin;
   scrollbar-color: var(--border) transparent;
 } */
-
+/*  
 html {
   scroll-behavior: smooth;
   scrollbar-gutter: stable;
-}
+} */
 
 h2,
 h3,
@@ -346,5 +346,12 @@ h4 {
         }
       }
     }
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
   }
 }
