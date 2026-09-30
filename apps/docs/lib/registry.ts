@@ -2,17 +2,11 @@ import "server-only"
 
 import fs from "node:fs/promises"
 import path from "node:path"
+import { TargetType } from "@/hooks/use-config"
 
 const REGISTRY_ROOT =
   process.env.NEPUI_REGISTRY_ROOT ??
   path.join(process.cwd(), "..", "..", "registry")
-
-export interface HtmlComponentSource {
-  html: string
-  css: string
-  js: string | null
-  tokens: string | null
-}
 
 async function readSourceFile(filePath: string): Promise<string> {
   try {
@@ -66,7 +60,27 @@ export async function getHtmlComponentSource(
   return { html, css, tokens, js }
 }
 
-export async function getRegistryItem(target: string, component: string) {
+export interface RegistryFile {
+  path: string
+  content: string
+  type: string
+  target?: string
+}
+
+export interface RegistryItem {
+  name: string
+  type: string
+  title: string
+  description?: string
+  files: RegistryFile[]
+}
+
+const OUBLIC_REGISTRY_ROOT = path.join(process.cwd(), "public", "r")
+
+export async function getRegistryItem2(
+  target: string,
+  component: string
+): Promise<RegistryItem | null> {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_SITE_URL}/r/${target}/${component}.json`,
     {
@@ -83,13 +97,25 @@ export async function getRegistryItem(target: string, component: string) {
   return response.json()
 }
 
-export async function getRegistryItem2(target: string, component: string) {
+type Style = "ktm" | "tokyo"
+
+type RegistryComponentOptions = {
+  target: string
+  name: string
+  style?: Style
+}
+
+export async function getRegistryComponent({
+  target,
+  name,
+  style = "ktm",
+}: RegistryComponentOptions) {
   const filePath = path.join(
     process.cwd(),
-    "public",
-    "r",
+    "examples",
+    style,
     target,
-    `${component}.json`
+    `${name}.tsx`
   )
 
   try {
@@ -99,4 +125,36 @@ export async function getRegistryItem2(target: string, component: string) {
   } catch {
     return null
   }
+}
+
+export async function getReactComponentSource({
+  target,
+  name,
+  style = "ktm",
+}: RegistryComponentOptions) {
+  const filePath = path.join(
+    process.cwd(),
+    "examples",
+    style,
+    target,
+    `${name}.tsx`
+  )
+
+  try {
+    const content = await fs.readFile(filePath, "utf8")
+    return content
+  } catch {
+    return null
+  }
+}
+
+export async function getRegistryItem(
+  target: TargetType,
+  component: string
+): Promise<RegistryItem> {
+  const filePath = path.join(OUBLIC_REGISTRY_ROOT, target, `${component}.json`)
+
+  const content = await fs.readFile(filePath, "utf8")
+
+  return JSON.parse(content) as RegistryItem
 }

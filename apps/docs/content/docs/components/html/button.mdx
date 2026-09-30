@@ -39,167 +39,7 @@ Use the `button` component in your project.
 
 ---
 
-## Variants
-
-Use `data-variant` attribute or the matching class alias to choose a visual style. The default button can use `np-button`.
-
-```html title="button.html" showLineNumbers
-<button class="np-button" type="button">
-  Default
-</button>
-
-<button class="np-button" type="button" data-variant="outline">
-  Outline
-</button>
-
-<button class="np-button" type="button" data-variant="secondary">
-  Secondary
-</button>
-
-<button class="np-button" type="button" data-variant="ghost">
-  Ghost
-</button>
-
-<button class="np-button" type="button" data-variant="destructive">
-  Destructive
-</button>
-
-<!-- Equivalent class aliases -->
-<button class="np-button np-button-outline" type="button">
-  Outline
-</button>
-
-<button class="np-button np-button-ghost" type="button">
-  Ghost
-</button>
-```
-
-Button variants can be specified using either `data-variant` attributes or their corresponding class aliases.
-
-| Variant     | Data attribute               | Class alias             |
-| ----------- | ---------------------------- | ----------------------- |
-| Default     | `data-variant="default"`     | `np-button`             |
-| Outline     | `data-variant="outline"`     | `np-button-outline`     |
-| Secondary   | `data-variant="secondary"`   | `np-button-secondary`   |
-| Ghost       | `data-variant="ghost"`       | `np-button-ghost`       |
-| Destructive | `data-variant="destructive"` | `np-button-destructive` |
-
----
-
-## Default
-
-<HtmlPreviewTabs
-  cssPath={["registry/html/button/button.css", "registry/html/button/tokens.css"]}
-  html={`
-    <button class="np-button" type="button">
-      Default
-    </button>
-  `}
->
-
-```html title="button.html" showLineNumbers {7, 11-13}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Button</title>
-  <link rel="stylesheet" href="./styles/button.css">
-</head>
-<body>
-
-  <button class="np-button" type="button">
-    Default
-  </button>
-
-</body>
-</html>
-```
-</HtmlPreviewTabs>
-
----
-
-## Outline
-
-<HtmlPreviewTabs
-  cssPath={["registry/html/button/button.css", "registry/html/button/tokens.css"]}
-  html={`
-    <button class="np-button" type="button" data-variant="outline">
-      Outline
-    </button>
-  `}
->
-
-```html title="button.html" showLineNumbers
-<button class="np-button" type="button" data-variant="outline"> 
-  Outline
-</button>
-```
-</HtmlPreviewTabs>
-
----
-
-## Secondary
-
-<HtmlPreviewTabs
-  cssPath={["registry/html/button/button.css", "registry/html/button/tokens.css"]}
-  html={`
-    <button class="np-button" type="button" data-variant="secondary">
-      Secondary
-    </button>
-  `}
->
-
-```html title="button.html" showLineNumbers
-<button class="np-button" type="button" data-variant="secondary">
-  Secondary
-</button>
-```
-</HtmlPreviewTabs>
-
----
-
-## Ghost
-
-<HtmlPreviewTabs
-  cssPath={["registry/html/button/button.css", "registry/html/button/tokens.css"]}
-  html={`
-    <button class="np-button" type="button" data-variant="ghost">
-      Ghost
-    </button>
-  `}
->
-
-```html title="button.html" showLineNumbers
-<button class="np-button" type="button" data-variant="ghost">
-  Ghost
-</button>
-```
-</HtmlPreviewTabs>
-
----
-
-## Destructive
-
-<HtmlPreviewTabs
-  cssPath={["registry/html/button/button.css", "registry/html/button/tokens.css"]}
-  html={`
-    <button class="np-button" type="button" data-variant="destructive">
-      Destructive
-    </button>
-  `}
->
-
-```html title="button.html" showLineNumbers
-<button class="np-button" type="button" data-variant="destructive">
-  Destructive
-</button>
-```
-</HtmlPreviewTabs>
-
----
-
-## Sizes
+## Size
 
 Use `data-size` or a matching class alias for compact, large, or icon-only buttons.
 
@@ -319,6 +159,167 @@ Button sizes can be specified using either `data-size` attributes or their corre
 | Icon small       | `data-size="icon-sm"` | `np-button-icon-sm` |
 | Icon             | `data-size="icon"`    | `np-button-icon`    |
 | Icon large       | `data-size="icon-lg"` | `np-button-icon-lg` |
+
+---
+
+## Variant
+
+Use `data-variant` attribute or the matching class alias to choose a visual style. The default button can use `np-button`.
+
+```html title="button.html" showLineNumbers
+<button class="np-button" type="button">
+  Default
+</button>
+
+<button class="np-button" type="button" data-variant="outline">
+  Outline
+</button>
+
+<button class="np-button" type="button" data-variant="secondary">
+  Secondary
+</button>
+
+<button class="np-button" type="button" data-variant="ghost">
+  Ghost
+</button>
+
+<button class="np-button" type="button" data-variant="destructive">
+  Destructive
+</button>
+
+<a
+  class="np-button"
+  href="https://github.com/akkaldhami/nepui"
+  target="_blank"
+  data-variant="link"
+>
+  Docs
+</a>
+```
+
+Button variants can be specified using either `data-variant` attributes or their corresponding class aliases.
+
+| Variant     | Data attribute               | Class alias             |
+| ----------- | ---------------------------- | ----------------------- |
+| Default     | `data-variant="default"`     | `np-button`             |
+| Outline     | `data-variant="outline"`     | `np-button-outline`     |
+| Secondary   | `data-variant="secondary"`   | `np-button-secondary`   |
+| Ghost       | `data-variant="ghost"`       | `np-button-ghost`       |
+| Destructive | `data-variant="destructive"` | `np-button-destructive` |
+| Link | `data-variant="link"` | `np-button-link` |
+
+---
+
+## Default
+
+<HtmlPreviewTabs
+  cssPath={["registry/html/button/button.css", "registry/html/button/tokens.css"]}
+  html={`
+    <button class="np-button" type="button">
+      Default
+    </button>
+  `}
+>
+
+```html title="button.html" showLineNumbers {7, 11-13}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Button</title>
+  <link rel="stylesheet" href="./styles/button.css">
+</head>
+<body>
+
+  <button class="np-button" type="button">
+    Default
+  </button>
+
+</body>
+</html>
+```
+</HtmlPreviewTabs>
+
+---
+
+## Outline
+
+<HtmlPreviewTabs
+  cssPath={["registry/html/button/button.css", "registry/html/button/tokens.css"]}
+  html={`
+    <button class="np-button" type="button" data-variant="outline">
+      Outline
+    </button>
+  `}
+>
+
+```html title="button.html" showLineNumbers
+<button class="np-button" type="button" data-variant="outline"> 
+  Outline
+</button>
+```
+</HtmlPreviewTabs>
+
+---
+
+## Secondary
+
+<HtmlPreviewTabs
+  cssPath={["registry/html/button/button.css", "registry/html/button/tokens.css"]}
+  html={`
+    <button class="np-button" type="button" data-variant="secondary">
+      Secondary
+    </button>
+  `}
+>
+
+```html title="button.html" showLineNumbers
+<button class="np-button" type="button" data-variant="secondary">
+  Secondary
+</button>
+```
+</HtmlPreviewTabs>
+
+---
+
+## Ghost
+
+<HtmlPreviewTabs
+  cssPath={["registry/html/button/button.css", "registry/html/button/tokens.css"]}
+  html={`
+    <button class="np-button" type="button" data-variant="ghost">
+      Ghost
+    </button>
+  `}
+>
+
+```html title="button.html" showLineNumbers
+<button class="np-button" type="button" data-variant="ghost">
+  Ghost
+</button>
+```
+</HtmlPreviewTabs>
+
+---
+
+## Destructive
+
+<HtmlPreviewTabs
+  cssPath={["registry/html/button/button.css", "registry/html/button/tokens.css"]}
+  html={`
+    <button class="np-button" type="button" data-variant="destructive">
+      Destructive
+    </button>
+  `}
+>
+
+```html title="button.html" showLineNumbers
+<button class="np-button" type="button" data-variant="destructive">
+  Destructive
+</button>
+```
+</HtmlPreviewTabs>
 
 ---
 

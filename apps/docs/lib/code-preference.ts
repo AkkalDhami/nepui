@@ -9,13 +9,13 @@ type CodeThemeType = {
 
 export const CODE_THEMES: CodeThemeType[] = [
   {
-    label: "Ayu Light",
-    value: "ayuLight",
+    label: "Tomorrow",
+    value: "tomorrow",
     mode: "light",
   },
   {
-    label: "Tomorrow",
-    value: "tomorrow",
+    label: "Ayu Light",
+    value: "ayuLight",
     mode: "light",
   },
   {

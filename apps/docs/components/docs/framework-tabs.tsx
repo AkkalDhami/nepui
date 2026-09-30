@@ -34,7 +34,6 @@ export function FrameworkTabs() {
 
     router.push(nextPath as Route, { scroll: false })
   }
-  console.log({ current })
   const Icons = {
     html: LanguageIcons.html,
     react: LanguageIcons.tsx,

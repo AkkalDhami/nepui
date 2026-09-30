@@ -167,7 +167,7 @@ export function HtmlComponentPreview({
               <div
                 className={cn(
                   "max-h-110 scroll-fade scrollbar-thin overflow-auto px-2 pt-2 pb-4 text-sm leading-relaxed [&_pre]:bg-transparent!",
-                  "[&_pre]:font-code! [&_pre]:m-0 [&_pre]:text-base [&_pre]:wrap-break-word [&_pre]:whitespace-pre-wrap"
+                  "[&_pre]:font-code! [&_pre]:m-0 [&_pre]:scrollbar-none [&_pre]:text-base [&_pre]:wrap-break-word [&_pre]:whitespace-pre-wrap"
                 )}
                 dangerouslySetInnerHTML={{ __html: tab.highlighted }}
               />

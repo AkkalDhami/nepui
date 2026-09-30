@@ -102,7 +102,7 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
   return (
     <div
       data-slot="docs"
-      className="flex max-w-code scroll-mt-24 items-stretch pb-8 xl:w-full"
+      className="flex max-w-code min-w-0 scroll-mt-24 items-stretch pb-8 xl:w-full"
     >
       <JsonLd
         data={[
@@ -114,8 +114,8 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
           createBreadcrumbJsonLd(breadcrumbs),
         ]}
       />
-      <div className="flex justify-between gap-12">
-        <main className="flex-1 space-y-6 pt-4">
+      <div className="flex w-full min-w-0 justify-between gap-12">
+        <main className="min-w-0 flex-1 space-y-6 pt-4">
           <div className="flex flex-col gap-2">
             <div className="flex items-center justify-between md:items-start">
               <h1 className="scroll-m-24 text-3xl font-semibold tracking-tight sm:text-3xl">
@@ -171,11 +171,11 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
 
           {isHtmlDocs && (
             <>
-              <ComponentPreview name={itemName} />
+              <ComponentPreview name={itemName} target="html" />
               <hr className="mt-10" />
             </>
           )}
-          <div className="typeset typeset-docs">
+          <div className="typeset typeset-docs min-w-0">
             <MDX components={mdxComponents} />
           </div>
           {contributors?.length > 0 && (
@@ -241,7 +241,9 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
           </div>
         </main>
 
-        <TableOfContents items={page.data.toc} />
+        <div className="shrink-0">
+          <TableOfContents items={page.data.toc} />
+        </div>
       </div>
     </div>
   )

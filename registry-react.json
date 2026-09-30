@@ -10,6 +10,11 @@
       "description": "A button triggers an action, submits a form, or performs another user-initiated operation.",
       "files": [
         {
+          "path": "registry/tokens.css",
+          "type": "registry:component",
+          "target": "components/nepui/tokens.css"
+        },
+        {
           "path": "registry/react/button/button.tsx",
           "type": "registry:component",
           "target": "components/nepui/button/button.tsx"
