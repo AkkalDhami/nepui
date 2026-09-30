@@ -17,7 +17,8 @@
     "prepare": "husky",
     "precommit": "lint-staged",
     "registry:build:html": "pnpm dlx shadcn@4.20.0 build ./registry-html.json --output ./apps/docs/public/r/html",
-    "registry:build:react": "pnpm dlx shadcn@4.20.0 build ./registry-react.json --output ./apps/docs/public/r/react"
+    "registry:build:react": "pnpm dlx shadcn@4.20.0 build ./registry-react.json --output ./apps/docs/public/r/react",
+    "examples:build": "pnpm --filter docs examples:build"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -48,5 +49,5 @@
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },
-  "packageManager": "pnpm@10.28.0"
+  "packageManager": "pnpm@12.6.0"
 }
