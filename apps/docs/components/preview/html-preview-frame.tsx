@@ -63,7 +63,7 @@ export function HtmlPreviewFrame({
   css,
   js,
   tokens,
-  height = "480px",
+  height = "410px",
   className,
 }: HtmlPreviewFrameProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null)
