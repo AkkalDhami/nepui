@@ -102,7 +102,7 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
   return (
     <div
       data-slot="docs"
-      className="flex max-w-code scroll-mt-24 items-stretch pb-8 xl:w-full"
+      className="flex max-w-code min-w-0 scroll-mt-24 items-stretch pb-8 xl:w-full"
     >
       <JsonLd
         data={[
@@ -114,7 +114,7 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
           createBreadcrumbJsonLd(breadcrumbs),
         ]}
       />
-      <div className="flex justify-between gap-12">
+      <div className="flex min-w-0 justify-between gap-12">
         <main className="flex-1 space-y-6 pt-4">
           <div className="flex flex-col gap-2">
             <div className="flex items-center justify-between md:items-start">
@@ -175,7 +175,7 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
               <hr className="mt-10" />
             </>
           )}
-          <div className="typeset typeset-docs">
+          <div className="typeset typeset-docs min-w-0">
             <MDX components={mdxComponents} />
           </div>
           {contributors?.length > 0 && (

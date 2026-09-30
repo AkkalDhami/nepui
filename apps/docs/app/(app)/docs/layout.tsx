@@ -7,7 +7,7 @@ export default function Layout({
   children: React.ReactNode
 }>) {
   return (
-    <div className="flex min-h-svh w-full">
+    <div className="flex min-h-svh w-full min-w-0">
       <DocsSidebar tree={source.pageTree} />
 
       <div className="flex min-w-0 flex-1 flex-col">

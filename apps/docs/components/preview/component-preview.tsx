@@ -36,13 +36,13 @@ export async function ComponentPreview({
       <HtmlComponentPreview
         name={name}
         html={source.html}
+        tokens={source?.tokens || ""}
         css={source.css}
         js={source.js}
         htmlHighlighted={htmlHighlighted}
+        tokensHighlighted={tokensHighlighted}
         cssHighlighted={cssHighlighted}
         jsHighlighted={source?.js ? jsHighlighted : null}
-        tokens={source?.tokens || ""}
-        tokensHighlighted={tokensHighlighted}
         className={className}
       />
     )
