@@ -5,6 +5,7 @@ import { Playground } from "@/components/playground"
 import { CodePreferencesDialog } from "@/components/playground/code-preferences-dialog"
 import { capitalize } from "@/lib/capatilize"
 import { getRegistryItem } from "@/lib/registry"
+import { TargetType } from "@/hooks/use-config"
 
 type Params = {
   target: string
@@ -31,7 +32,7 @@ export default async function Page(
   const { params } = props
   const { component, target } = await params
 
-  const registry = await getRegistryItem(target, component)
+  const registry = await getRegistryItem(target as TargetType, component)
 
   if (!registry) {
     notFound()

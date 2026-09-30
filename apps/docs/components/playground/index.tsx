@@ -10,12 +10,8 @@ import { ArrowsClockwiseIcon, PlayIcon } from "@phosphor-icons/react"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { CopyButton } from "@/components/docs/copy-button"
-import { getIconForLanguageExtension } from "../icons"
-
-interface RegistryFile {
-  path: string
-  content: string
-}
+import { getIconForLanguageExtension } from "@/components/icons"
+import { RegistryFile } from "@/lib/registry"
 
 interface PlaygroundProps {
   name: string

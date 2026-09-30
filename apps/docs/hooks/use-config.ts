@@ -3,7 +3,7 @@ import { PackageManager } from "@/types"
 import { create } from "zustand"
 import { persist } from "zustand/middleware"
 
-type TargetType = "html" | "react"
+export type TargetType = "html" | "react"
 type Registry = "nepui" | "shadcn"
 
 export type FontFamily = "fira-code" | "geist-mono" | "jetbrains-mono"

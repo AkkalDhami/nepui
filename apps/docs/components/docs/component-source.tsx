@@ -1,16 +1,10 @@
+import { TargetType } from "@/hooks/use-config"
 import { getIconForLanguageExtension } from "../icons"
 import { CopyButton } from "./copy-button"
 import { highlightCode } from "@/lib/highlight-code"
 import { readFileFromRoot } from "@/lib/read-file"
-import { getRegistryItem } from "@/lib/registry"
+import { getRegistryItem, RegistryFile } from "@/lib/registry"
 import { cn } from "cn"
-
-export interface RegistryFile {
-  path: string
-  content: string
-  type: string
-  target?: string
-}
 
 export function trimCode(code: string | undefined) {
   return code?.replace(/\r?\n+$/, "") || ""
@@ -32,7 +26,7 @@ export async function ComponentSource({
   src?: string
   title?: string
   language?: string
-  target?: string
+  target?: TargetType
   fileTarget?: string
   darkTheme?: string
   highlightedCode?: string
