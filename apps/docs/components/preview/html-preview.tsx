@@ -5,6 +5,8 @@ import path from "node:path"
 import { HtmlPreviewFrame } from "./html-preview-frame"
 import { cn } from "cn"
 
+const REGISTRY_ROOT = path.join(process.cwd(), "../../")
+
 interface HtmlPreviewProps {
   html: string
   tokens?: string
@@ -25,16 +27,11 @@ export async function HtmlPreview({
 
   const cssContents = await Promise.all(
     paths.map(async (p) => {
-      const fullPath = path.resolve(process.cwd(), "../..", p)
+      const fullPath = path.join(/* turbopackIgnore: true */ REGISTRY_ROOT, p)
       try {
         return await fs.readFile(fullPath, "utf8")
-      } catch (error) {
-        if ((error as NodeJS.ErrnoException).code === "ENOENT") {
-          throw new Error(
-            `[HtmlPreview] CSS file not found at: ${fullPath} (resolved from "${p}")`
-          )
-        }
-        throw error
+      } catch {
+        return ""
       }
     })
   )

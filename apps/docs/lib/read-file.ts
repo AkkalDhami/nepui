@@ -1,7 +1,10 @@
-import { promises as fs } from "node:fs"
+import fs from "node:fs/promises"
 import path from "node:path"
 
+const ROOT = path.join(process.cwd(), "registry")
+
 export async function readFileFromRoot(relativePath: string) {
-  const absolutePath = path.join(process.cwd(), relativePath)
-  return fs.readFile(absolutePath, "utf-8")
+  const filePath = path.join(ROOT, relativePath)
+
+  return fs.readFile(filePath, "utf-8")
 }
