@@ -171,7 +171,7 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
 
           {isHtmlDocs && (
             <>
-              <ComponentPreview name={itemName} />
+              <ComponentPreview name={itemName} target="html" />
               <hr className="mt-10" />
             </>
           )}
