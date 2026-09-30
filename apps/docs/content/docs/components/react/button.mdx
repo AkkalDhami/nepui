@@ -10,8 +10,6 @@ contributor:
 import { Button } from "@nepui/react/button"
 import { ArrowUpIcon, PlusIcon, DownloadSimpleIcon } from "@phosphor-icons/react/ssr"
 
-
-
 ---
 
 <ComponentPreview
@@ -175,221 +173,34 @@ Available sizes are `xs`, `sm`, `lg`, `icon-xs`, `icon-sm`, `icon`, and `icon-lg
 
 ## Icon
 
-<Tabs
-  defaultValue="preview"
-  className="gap-0"
->
-  <TabsList className="bg-transparent mb-0" variant="line"> 
-    <TabsTrigger
-      value="preview"
-      className={"text-base"}
-    >
-      Preview
-    </TabsTrigger>
-    <TabsTrigger
-      value="code"
-      className={"text-base"}
-    >
-      Code
-    </TabsTrigger>
-  </TabsList>
-  <TabsContent value="preview">
-    <ReactPreview>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "12px",
-        }}
-        className="not-typeset"
-      >
-        <Button size="icon-sm" variant="outline">
-          <ArrowUpIcon />
-        </Button>
-        
-        <Button size="icon" variant="outline">
-          <ArrowUpIcon />
-        </Button>
-
-        <Button size="icon-lg" variant="outline">
-          <ArrowUpIcon />
-        </Button>
-      </div>
-    </ReactPreview>
-
-  </TabsContent>
-  <TabsContent value="code">
-    ```tsx showLineNumbers title="demo.tsx"
-    import { ArrowUpIcon } from "@phosphor-icons/react"
-
-    import { Button } from "@/components/nepui/button"
-
-    export function ButtonIcon() {
-      return (
-        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-          <Button size="icon-sm" variant="secondary">
-            <ArrowUpIcon />
-          </Button>
-
-          <Button size="icon" variant="outline">
-            <ArrowUpIcon />
-          </Button>
-
-          <Button size="icon-lg" variant="outline">
-            <ArrowUpIcon />
-          </Button>
-        </div>
-      )
-    }
-    ```
-
-  </TabsContent>
-</Tabs>
+<ComponentPreview
+  name="button-icon"
+  type="example"
+/>
 
 ---
 
 ## With Icon
 
-<Tabs
-  defaultValue="preview"
-  className="gap-0"
->
-  <TabsList className="bg-transparent mb-0" variant="line"> 
-    <TabsTrigger
-      value="preview"
-      className={"text-base"}
-    >
-      Preview
-    </TabsTrigger>
-    <TabsTrigger
-      value="code"
-      className={"text-base"}
-    >
-      Code
-    </TabsTrigger>
-  </TabsList>
-  <TabsContent value="preview">
-    <ReactPreview>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "12px",
-        }}
-        className="not-typeset"
-      >
-        <Button variant="outline">
-          <PlusIcon />
-          <span>Add item</span>
-        </Button>
-
-        <Button variant="outline">
-          <span>Download</span>
-          <DownloadSimpleIcon />
-        </Button>
-      </div>
-    </ReactPreview>
-
-  </TabsContent>
-  <TabsContent value="code">
-    ```tsx showLineNumbers title="demo.tsx"
-    import { PlusIcon, DownloadSimpleIcon } from "@phosphor-icons/react"
-
-    import { Button } from "@/components/nepui/button"
-
-    export function ButtonWithIcon() {
-      return (
-        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-          <Button variant="outline">
-            <PlusIcon />
-            Add item
-          </Button>
-
-          <Button variant="outline">
-            Download
-            <DownloadSimpleIcon />
-          </Button>
-        </div>
-      )
-    }
-    ```
-
-  </TabsContent>
-</Tabs>
+<ComponentPreview
+  name="button-with-icon"
+  type="example"
+/>
 
 ---
 
 ## Spinner
 
-<Tabs
-  defaultValue="preview"
-  className="gap-0"
->
-  <TabsList className="bg-transparent mb-0" variant="line"> 
-    <TabsTrigger
-      value="preview"
-      className={"text-base"}
-    >
-      Preview
-    </TabsTrigger>
-    <TabsTrigger
-      value="code"
-      className={"text-base"}
-    >
-      Code
-    </TabsTrigger>
-  </TabsList>
-  <TabsContent value="preview">
-    <ReactPreview>
-      <Button loading>Loading...</Button>
-    </ReactPreview>
-  </TabsContent>
-  <TabsContent value="code">
-    ```tsx showLineNumbers title="demo.tsx"
-    import { Button } from "@/components/nepui/button"
+<ComponentPreview
+  name="button-spinner"
+  type="example"
+/>
 
-    export function ButtonStates() {
-      return (
-        <Button loading>Loading</Button>
-      )
-    }
-    ```
-
-  </TabsContent>
-</Tabs>
 ---
 
 ## Disabled
 
-<Tabs
-  defaultValue="preview"
-  className="gap-0"
->
-  <TabsList className="bg-transparent mb-0" variant="line"> 
-    <TabsTrigger
-      value="preview"
-      className={"text-base"}
-    >Preview</TabsTrigger>
-    <TabsTrigger
-      value="code"
-      className={"text-base"}
-    >Code</TabsTrigger>
-  </TabsList>
-  <TabsContent value="preview">
-    <ReactPreview>
-      <Button disabled>Disabled</Button>
-    </ReactPreview>
-  </TabsContent>
-  <TabsContent value="code">
-    ```tsx showLineNumbers title="demo.tsx"
-    import { Button } from "@/components/nepui/button"
-
-    export function ButtonStates() {
-      return (
-        <Button disabled>Disabled</Button>
-      )
-    }
-    ```
-
-  </TabsContent>
-</Tabs>
+<ComponentPreview
+  name="button-disabled"
+  type="example"
+/>

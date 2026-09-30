@@ -23,6 +23,7 @@ async function getDirectories(directory: string) {
   return entries
     .filter((entry) => entry.isDirectory())
     .map((entry) => entry.name)
+    .sort()
 }
 
 async function getFiles(directory: string) {
@@ -59,14 +60,21 @@ async function build() {
 
   const styles = await getDirectories(root)
 
+  console.log()
+  console.log("📋 Building examples/__index__.tsx")
+  console.log()
+
   for (const style of styles) {
-    // Ignore generated/internal directories
     if (style.startsWith("_") || style.startsWith(".")) {
       continue
     }
 
     const stylePath = path.join(root, style)
     const targets = await getDirectories(stylePath)
+
+    let styleExampleCount = 0
+
+    console.log(`  ${style}`)
 
     examples[style] ??= {}
 
@@ -80,7 +88,12 @@ async function build() {
 
       examples[style][target] ??= {}
 
-      for (const file of files) {
+      console.log(`  ├─ ${target}`)
+
+      for (let index = 0; index < files.length; index++) {
+        const file = files[index]
+        const isLast = index === files.length - 1
+
         const name = path.basename(file, path.extname(file))
 
         const importName = toImportName(
@@ -96,8 +109,20 @@ async function build() {
         })
 
         examples[style][target][name] = importName
+
+        styleExampleCount++
+
+        const branch = isLast ? "└─" : "├─"
+
+        console.log(`  │  ${branch} ` + "✓" + " " + file)
       }
     }
+
+    if (styleExampleCount === 0) {
+      console.log(`  └─ no examples`)
+    }
+
+    console.log()
   }
 
   const lines: string[] = []
@@ -139,11 +164,21 @@ async function build() {
 
   await fs.writeFile(output, lines.join("\n"), "utf8")
 
-  console.log(`Generated ${path.relative(process.cwd(), output)}`)
-  console.log(`Found ${imports.length} example(s)`)
+  console.log("✓" + " " + `Generated: ${path.relative(process.cwd(), output)}`)
+
+  console.log(
+    "✓" +
+      " " +
+      `${imports.length} example${imports.length === 1 ? "" : "s"} registered`
+  )
+
+  console.log()
 }
 
 build().catch((error) => {
+  console.error()
+  console.error("✗ Failed to build examples")
+  console.error()
   console.error(error)
   process.exit(1)
 })

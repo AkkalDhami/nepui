@@ -5,7 +5,13 @@ import { ArrowUpIcon } from "@phosphor-icons/react"
 
 export default function ButtonDemo() {
   return (
-    <>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: "12px",
+      }}
+    >
       <Button>Default</Button>
 
       <Button variant="outline">Outline</Button>
@@ -27,6 +33,6 @@ export default function ButtonDemo() {
       </Button>
 
       <Button variant="destructive">Destructive</Button>
-    </>
+    </div>
   )
 }
