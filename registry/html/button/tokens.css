@@ -24,8 +24,8 @@
   --np-popover: #ffffff;
   --np-popover-foreground: #0a0a0a;
 
-  --np-primary: #111827;
-  --np-primary-foreground: #fafafa;
+  --np-primary: #121212;
+  --np-primary-foreground: #ffffff;
 
   --np-secondary: #f4f4f5;
   --np-secondary-foreground: #18181b;
@@ -36,8 +36,7 @@
   --np-accent: #f4f4f5;
   --np-accent-foreground: #18181b;
 
-  --np-destructive: #fafafa;
-  --np-destructive-foreground: #e7000b;
+  --np-destructive: #e7000b;
 
   --np-success: #16a34a;
   --np-success-foreground: #fafafa;
@@ -78,11 +77,11 @@
   --np-card: #0a0a0a;
   --np-card-foreground: #fafafa;
 
-  --np-popover: #0a0a0a;
-  --np-popover-foreground: #fafafa;
+  --np-popover: #ffffff;
+  --np-popover-foreground: #0a0a0a;
 
-  --np-primary: #fafafa;
-  --np-primary-foreground: #18181b;
+  --np-primary: #121212;
+  --np-primary-foreground: #fafafa;
 
   --np-secondary: #27272a;
   --np-secondary-foreground: #fafafa;
@@ -93,8 +92,7 @@
   --np-accent: #27272a;
   --np-accent-foreground: #fafafa;
 
-  --np-destructive: #fafafa;
-  --np-destructive-foreground: #e7000b;
+  --np-destructive: #e7000b;
 
   --np-success: #01a041;
   --np-success-foreground: #f0fdf4;
@@ -138,8 +136,8 @@
     --np-popover: #0a0a0a;
     --np-popover-foreground: #fafafa;
 
-    --np-primary: #fafafa;
-    --np-primary-foreground: #18181b;
+    --np-primary: #ffffff;
+    --np-primary-foreground: #0a0a0a;
 
     --np-secondary: #27272a;
     --np-secondary-foreground: #fafafa;
@@ -150,8 +148,7 @@
     --np-accent: #27272a;
     --np-accent-foreground: #fafafa;
 
-    --np-destructive: #fafafa;
-    --np-destructive-foreground: #e7000b;
+    --np-destructive: #e7000b;
 
     --np-success: #01a041;
     --np-success-foreground: #f0fdf4;

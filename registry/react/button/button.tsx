@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"
 
 import * as React from "react"
 
-import "./tokens.css"
+import "../../tokens.css"
 import "./button.css"
 
 export type ButtonVariant =
@@ -63,7 +64,18 @@ export const Button = React.forwardRef<
   const classes = cn("np-button", className)
 
   if (isLinkProps(props)) {
-    const { href, onClick, children, ...linkProps } = props
+    const {
+      as: _as,
+      href,
+      onClick,
+      children,
+      variant: _variant,
+      size: _size,
+      loading: _loading,
+      invalid: _invalid,
+      className: _className,
+      ...linkProps
+    } = props
 
     const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
       if (loading) {
@@ -92,7 +104,19 @@ export const Button = React.forwardRef<
     )
   }
 
-  const { disabled, type = "button", onClick, children, ...buttonProps } = props
+  const {
+    as: _as,
+    disabled,
+    type = "button",
+    onClick,
+    children,
+    variant: _variant,
+    size: _size,
+    loading: _loading,
+    invalid: _invalid,
+    className: _className,
+    ...buttonProps
+  } = props
 
   const isDisabled = disabled || loading
 
