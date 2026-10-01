@@ -5,7 +5,8 @@ button:not(:disabled),
   cursor: pointer;
 }
 
-.np-button {
+.np-button,
+[data-np-button] {
   --np-button-radius: var(--np-radius-md);
   --np-button-font-size: 0.875rem;
   --np-button-font-weight: 500;
@@ -57,34 +58,34 @@ button:not(:disabled),
   outline: none;
 }
 
-.np-button:hover {
+:is([data-np-button], .np-button):hover {
   background: var(--np-button-hover-bg);
 }
 
-.np-button:active {
+:is([data-np-button], .np-button):active {
   transform: translateY(1px);
 }
 
-.np-button:focus-visible {
+:is([data-np-button], .np-button):focus-visible {
   border-color: var(--np-ring);
   box-shadow: 0 0 0 3px color-mix(in oklch, var(--np-ring), transparent 50%);
 }
 
-.np-button:disabled,
-.np-button[aria-disabled="true"] {
+:is([data-np-button], .np-button):disabled,
+:is([data-np-button], .np-button)[aria-disabled="true"] {
   opacity: 0.5;
   cursor: not-allowed;
   pointer-events: none;
 }
 
-.np-button[aria-invalid="true"] {
+:is([data-np-button], .np-button)[aria-invalid="true"] {
   border-color: var(--np-destructive);
 
   box-shadow: 0 0 0 3px
     color-mix(in oklch, var(--np-destructive), transparent 80%);
 }
 
-.np-button svg {
+:is([data-np-button], .np-button) svg {
   width: 1rem;
   height: 1rem;
 
@@ -92,9 +93,13 @@ button:not(:disabled),
   pointer-events: none;
 }
 
-.np-button svg:not([class]) {
+:is([data-np-button], .np-button) svg:not([class]) {
   width: 1rem;
   height: 1rem;
+}
+
+:is([data-np-button], .np-button).np-button-rounded {
+  --np-button-radius: 9999px;
 }
 
 /* Variants */
@@ -172,7 +177,7 @@ button:not(:disabled),
   --np-button-padding-x: 0.5rem;
   --np-button-font-size: 0.75rem;
   --np-button-gap: 0.25rem;
-  --np-button-radius: min(var(--np-radius-md), 16px);
+  --np-button-radius: min(var(--np-radius-md), 10px);
 
   svg:not([class]) {
     width: 0.75rem;

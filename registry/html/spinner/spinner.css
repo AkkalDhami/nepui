@@ -17,7 +17,7 @@
 
 .np-spinner,
 [data-np-spinner] {
-  --np-spinner-size: 1.275rem;
+  --np-spinner-size: 1rem;
   --np-spinner-thickness: clamp(1px, calc(var(--np-spinner-size) * 0.1), 4px);
   --np-spinner-speed: 750ms;
 
@@ -46,22 +46,22 @@
 
 [data-size="sm"],
 .np-spinner-sm {
-  --np-spinner-size: 1rem;
+  --np-spinner-size: 0.875rem;
 }
 
 [data-size="md"],
 .np-spinner-md {
-  --np-spinner-size: 1.5rem;
+  --np-spinner-size: 1rem;
 }
 
 [data-size="lg"],
 .np-spinner-lg {
-  --np-spinner-size: 2rem;
+  --np-spinner-size: 1.5rem;
 }
 
 [data-size="xl"],
 .np-spinner-xl {
-  --np-spinner-size: 3rem;
+  --np-spinner-size: 2rem;
 }
 
 /* Thickness */
@@ -120,10 +120,10 @@
   animation-name: np-spinner-spin;
 }
 
-[data-direction="anti-clockwise"],
-[data-direction="anticlockwise"],
-.np-spinner-anti-clockwise,
-.np-spinner-anticlockwise {
+[data-direction="counter-clockwise"],
+[data-direction="counterclockwise"],
+.np-spinner-counter-clockwise,
+.np-spinner-counterclockwise {
   animation-name: np-spinner-spin-reverse;
 }
 
@@ -144,7 +144,8 @@
 /* Reduced motion support */
 
 @media (prefers-reduced-motion: reduce) {
-  .np-spinner {
+  .np-spinner,
+  [data-np-spinner] {
     animation-duration: 1.5s;
   }
 }
