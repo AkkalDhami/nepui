@@ -41,10 +41,10 @@ const TOP_LEVEL_SECTIONS = [
     name: "Installation",
     href: "/docs/installation",
   },
-  // {
-  //   name: "CLI",
-  //   href: "/docs/cli",
-  // },
+  {
+    name: "CLI",
+    href: "/docs/cli",
+  },
   {
     name: "Changelog",
     href: "/docs/changelog",

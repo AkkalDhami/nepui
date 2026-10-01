@@ -31,7 +31,8 @@
     "**/*.tsx",
     "**/*.mts",
     ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts"
+    ".next/dev/types/**/*.ts",
+    "public/llms.tst"
   ],
   "exclude": ["node_modules"]
 }
