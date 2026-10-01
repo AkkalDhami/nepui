@@ -82,8 +82,8 @@ export function Navbar({ className }: NavbarProps) {
       aria-label="Main"
       className={cn("sticky top-0 z-50 w-full bg-background", className)}
     >
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4">
-        <Logo variant="default" className="-ml-4" />
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4 py-2">
+        <Logo variant="default" />
 
         <div className="flex items-center gap-5">
           <div className="hidden md:flex md:items-center md:gap-1">
