@@ -12,10 +12,17 @@ import KtmReactButtonGhost from "./ktm/react/button-ghost"
 import KtmReactButtonIcon from "./ktm/react/button-icon"
 import KtmReactButtonLink from "./ktm/react/button-link"
 import KtmReactButtonOutline from "./ktm/react/button-outline"
+import KtmReactButtonRounded from "./ktm/react/button-rounded"
 import KtmReactButtonSecondary from "./ktm/react/button-secondary"
 import KtmReactButtonSize from "./ktm/react/button-size"
 import KtmReactButtonSpinner from "./ktm/react/button-spinner"
 import KtmReactButtonWithIcon from "./ktm/react/button-with-icon"
+import KtmReactSpinnerColor from "./ktm/react/spinner-color"
+import KtmReactSpinnerDemo from "./ktm/react/spinner-demo"
+import KtmReactSpinnerDirection from "./ktm/react/spinner-direction"
+import KtmReactSpinnerSize from "./ktm/react/spinner-size"
+import KtmReactSpinnerSpeed from "./ktm/react/spinner-speed"
+import KtmReactSpinnerThickness from "./ktm/react/spinner-thickness"
 
 export const ExamplesIndex: Record<string, Record<string, any>> = {
   ktm: {
@@ -28,10 +35,17 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       "button-icon": KtmReactButtonIcon,
       "button-link": KtmReactButtonLink,
       "button-outline": KtmReactButtonOutline,
+      "button-rounded": KtmReactButtonRounded,
       "button-secondary": KtmReactButtonSecondary,
       "button-size": KtmReactButtonSize,
       "button-spinner": KtmReactButtonSpinner,
       "button-with-icon": KtmReactButtonWithIcon,
+      "spinner-color": KtmReactSpinnerColor,
+      "spinner-demo": KtmReactSpinnerDemo,
+      "spinner-direction": KtmReactSpinnerDirection,
+      "spinner-size": KtmReactSpinnerSize,
+      "spinner-speed": KtmReactSpinnerSpeed,
+      "spinner-thickness": KtmReactSpinnerThickness,
     },
   },
 }

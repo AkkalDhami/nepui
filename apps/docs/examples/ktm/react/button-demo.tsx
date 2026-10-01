@@ -28,7 +28,7 @@ export default function ButtonDemo() {
         Link
       </Button>
 
-      <Button variant="outline" size="icon">
+      <Button variant="outline" size="icon" className="np-button-rounded">
         <ArrowUpIcon />
       </Button>
 

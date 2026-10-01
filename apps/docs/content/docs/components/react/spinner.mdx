@@ -1,0 +1,185 @@
+---
+title: Spinner
+description: An indicator that can be used to show a loading state.
+contributor:
+ -  name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4 
+---
+
+<ComponentPreview
+  name="spinner-demo"
+  type="example"
+/>
+
+---
+
+## Installation
+
+<Tabs
+  defaultValue="cli"
+  className="gap-0 mt-8"
+>
+<TabsList className="bg-transparent mb-0" variant="line"> 
+<TabsTrigger value="cli" className={"text-base"}>Command</TabsTrigger>
+<TabsTrigger value="manual" className={"text-base"}>Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+  <ReactCodeBlockCommand
+    shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/spinner.json"
+    nepui="npx nepui@latest add spinner --target react"
+  />
+</TabsContent>
+<TabsContent value="manual" className="mt-0">
+
+<Steps>
+<Step>Add the spinner styles.</Step>
+<ComponentSource
+  target="react"
+  name="spinner"
+  title="components/nepui/spinner/spinner.css"
+  fileTarget="components/nepui/spinner/spinner.css"
+/>
+
+<Step>Add the Spinner component.</Step>
+<ComponentSource
+  target="react"
+  name="spinner"
+  title="components/nepui/spinner/spinner.tsx"
+  fileTarget="components/nepui/spinner/spinner.tsx"
+/>
+
+<Step>Add the Spinner entry point.</Step>
+<ComponentSource
+  target="react"
+  name="button"
+  title="components/nepui/button/index.tsx"
+  fileTarget="components/nepui/button/index.tsx"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+</TabsContent>
+</Tabs>
+
+---
+
+## Usage
+
+```tsx
+import { Spinner } from "@/components/spinner/button"
+```
+
+```tsx
+<Spinner size="xs" speed="fast" />
+<Spinner size="sm" speed="slow" />
+<Spinner />
+<Spinner size="lg" direction="counter-clockwise" />
+<Spinner size="xl" speed="faster" thickness="thick" />
+<Spinner size="5rem" speed="200ms" thickness="0.5rem" />
+```
+
+---
+
+## Size
+
+Use the `size` prop to change the size of the spinner.
+
+<ComponentPreview
+  name="spinner-size"
+  type="example"
+/>
+
+Available sizes are `xs`, `sm`, `md` (default), `lg`, and `xl`. Custom CSS sizes such as `24px` and `5rem` are also supported.
+
+| Size             | Prop          |
+| ---------------- | ------------- |
+| Extra small      | `size="xs"`   |
+| Small            | `size="sm"`   |
+| Medium (default) | `size="md"`   |
+| Large            | `size="lg"`   |
+| Extra large      | `size="xl"`   |
+| Custom           | `size="5rem"` |
+
+---
+
+## Speed
+
+Use the `speed` prop to control the spinner's animation speed.
+
+<ComponentPreview
+  name="spinner-speed"
+  type="example"
+/>
+
+Available speeds are `slow`, `normal` (default), `fast`, and `faster`. Custom durations such as `200ms` and `1s` are also supported.
+
+| Speed            | Prop             |
+| ---------------- | ---------------- |
+| Slow             | `speed="slow"`   |
+| Normal (default) | `speed="normal"` |
+| Fast             | `speed="fast"`   |
+| Faster           | `speed="faster"` |
+| Custom           | `speed="200ms"`  |
+
+---
+
+## Thickness
+
+Use the `thickness` prop to control the spinner's border thickness.
+
+<ComponentPreview
+  name="spinner-thickness"
+  type="example"
+/>
+
+Available thicknesses are `thin`, `normal` (default), `medium`, `thick`, and `extra-thick`.
+
+| Thickness        | Prop                      |
+| ---------------- | ------------------------- |
+| Thin             | `thickness="thin"`        |
+| Normal (default) | `thickness="normal"`      |
+| Medium           | `thickness="medium"`      |
+| Thick            | `thickness="thick"`       |
+| Extra thick      | `thickness="extra-thick"` |
+| Custom      | `thickness="3px"` |
+
+---
+
+## Direction
+
+Use the `direction` prop to control the spinner's rotation direction.
+
+<ComponentPreview
+  name="spinner-direction"
+  type="example"
+/>
+
+Available directions are `clockwise` (default) and `counterclockwise`.
+
+| Direction           | Prop                           |
+| ------------------- | ------------------------------ |
+| Clockwise (default) | `direction="clockwise"`        |
+| Counterclockwise    | `direction="counterclockwise"` |
+
+---
+
+## Color
+
+Use the `color` and `mutedColor` prop to customize the spinner's color.
+
+<ComponentPreview
+  name="spinner-color"
+  type="example"
+/>
+
+The `color` prop accepts any valid CSS color value, including named colors, hexadecimal values, and RGB colors. You can also use `mutedColor` to customize the secondary spinner color.
+
+| Color              | Prop                     |
+| ------------------ | ------------------------ |
+| Named color        | `color="tomato"`         |
+| Hex color          | `color="#2563eb"`        |
+| RGB color          | `color="rgb(34 197 94)"` |
+| Custom muted color | `mutedColor="#0211b7"`   |

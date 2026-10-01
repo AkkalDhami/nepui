@@ -10,8 +10,6 @@ contributor:
 import { Button } from "@nepui/react/button"
 import { ArrowUpIcon, PlusIcon, DownloadSimpleIcon } from "@phosphor-icons/react/ssr"
 
----
-
 <ComponentPreview
   name="button-demo"
   type="example"
@@ -21,13 +19,11 @@ import { ArrowUpIcon, PlusIcon, DownloadSimpleIcon } from "@phosphor-icons/react
 
 <Tabs
   defaultValue="cli"
-  className="gap-0"
+  className="gap-0 mt-8"
 >
 <TabsList className="bg-transparent mb-0" variant="line"> 
-
 <TabsTrigger value="cli" className={"text-base"}>Command</TabsTrigger>
 <TabsTrigger value="manual" className={"text-base"}>Manual</TabsTrigger>
-
 </TabsList>
 
 <TabsContent value="cli">
@@ -36,7 +32,7 @@ import { ArrowUpIcon, PlusIcon, DownloadSimpleIcon } from "@phosphor-icons/react
     nepui="npx nepui@latest add button --target react"
   />
 </TabsContent>
-<TabsContent value="manual">
+<TabsContent value="manual" className="mt-0">
 
 <Steps>
 <Step>Add the nepui design tokens.</Step>
@@ -80,7 +76,6 @@ import { ArrowUpIcon, PlusIcon, DownloadSimpleIcon } from "@phosphor-icons/react
 ---
 
 ## Usage
-
 
 ```tsx
 import { Button } from "@/components/nepui/button"
@@ -189,7 +184,20 @@ Available sizes are `xs`, `sm`, `lg`, `icon-xs`, `icon-sm`, `icon`, and `icon-lg
 
 ---
 
+## Rounded
+
+Use the `np-button-rounded` class to make the button rounded.
+
+<ComponentPreview
+  name="button-rounded"
+  type="example"
+/>
+
+---
+
 ## Spinner
+
+Render a `<Spinner />` component inside the button to show a loading state. 
 
 <ComponentPreview
   name="button-spinner"

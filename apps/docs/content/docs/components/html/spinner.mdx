@@ -32,7 +32,7 @@ After installing the component, add the `data-np-spinner` attribute or the class
 
 ---
 
-## Sizes
+## Size
 
 Use the `data-size` attribute or the class alias to control the spinner size.
 
@@ -78,7 +78,7 @@ Use the `--np-spinner-size` custom property to control the spinner size.
 | ---- | -------------- | ----------- |
 | Extra small   | `data-size="xs"` | `np-spinner-xs` |
 | Small         | `data-size="sm"` | `np-spinner-sm` |
-| Medium        | `data-size="md"` | `np-spinner-md` |
+| Medium (default)       | `data-size="md"` | `np-spinner-md` |
 | Large         | `data-size="lg"` | `np-spinner-lg` |
 | Extra large   | `data-size="xl"` | `np-spinner-xl` |
 
@@ -126,7 +126,7 @@ Use the `--np-spinner-speed` custom property to control the spinner's animation 
 | Speed | Data attribute | Class alias |
 | ---- | -------------- | ----------- |
 | Slow  | `data-speed="slow"` | `np-spinner-slow` |
-| Normal | `data-speed="normal"` | `np-spinner-normal` |
+| Normal (default) | `data-speed="normal"` | `np-spinner-normal` |
 | Fast  | `data-speed="fast"` | `np-spinner-fast` |
 | Faster | `data-speed="faster"` | `np-spinner-faster` |
 
@@ -177,14 +177,14 @@ Use the `--np-spinner-thickness` custom property to control the spinner's border
 | Thickness | Data attribute | Class alias |
 | ---- | -------------- | ----------- |
 | Thin      | `data-thickness="thin"` | `np-spinner-thickness-thin` |
-| Normal    | `data-thickness="normal"` | `np-spinner-thickness-normal` |
+| Normal (default) | `data-thickness="normal"` | `np-spinner-thickness-normal` |
 | Medium    | `data-thickness="medium"` | `np-spinner-thickness-medium` |
 | Thick     | `data-thickness="thick"` | `np-spinner-thickness-thick` |
 | Extra thick | `data-thickness="extra-thick"` | `np-spinner-thickness-extra-thick` |
 
 ---
 
-## Directions
+## Direction
 
 Use the `data-direction` attribute or the class alias to control the spinner's rotation direction.
 
@@ -194,17 +194,58 @@ Use the `data-direction` attribute or the class alias to control the spinner's r
   html={`
 <span class="np-spinner" data-direction="clockwise"></span>
 
-<span class="np-spinner-anti-clockwise" data-np-spinner></span>
+<span class="np-spinner-counter-clockwise" data-np-spinner></span>
   `}
       >
 ```html title="spinner.html" showLineNumbers
 <span class="np-spinner" data-direction="clockwise"></span>
 
-<span class="np-spinner-anti-clockwise" data-np-spinner></span>
+<span class="np-spinner-counter-clockwise" data-np-spinner></span>
 ```
 </HtmlPreviewTabs>
 
 | Direction | Data attribute | Class alias |
 | ---- | -------------- | ----------- |
 | Clockwise | `data-direction="clockwise"` | `np-spinner-clockwise` |
-| Anti-clockwise | `data-direction="anti-clockwise"` | `np-spinner-anti-clockwise` |
+| Counterclockwise | `data-direction="counterclockwise"` | `np-spinner-counterclockwise` |
+
+---
+
+## Color
+
+Use the `--np-spinner-color` and `--np-spinner-muted-color` CSS custom property to customize the spinner's color.
+
+<HtmlPreviewTabs
+className="mt-4"
+cssPath="registry/html/spinner/spinner.css"
+html={` <span class="np-spinner" style="--np-spinner-color: tomato"></span>
+
+<span class="np-spinner" style="--np-spinner-color: #2563eb"></span>
+
+<span class="np-spinner" style="--np-spinner-color: rgb(34 197 94)"></span>
+
+<span class="np-spinner" style="--np-spinner-color: #d80606ff; --np-spinner-muted-color: #0211b7ff"></span>
+`}
+>
+
+```html title="spinner.html" showLineNumbers
+<span class="np-spinner" style="--np-spinner-color: tomato"></span>
+
+<span class="np-spinner" style="--np-spinner-color: #2563eb"></span>
+
+<span class="np-spinner" style="--np-spinner-color: rgb(34 197 94)"></span>
+
+<span
+  class="np-spinner"
+  style="--np-spinner-color: #d80606ff; --np-spinner-muted-color: #0211b7ff"
+></span>
+```
+
+</HtmlPreviewTabs>
+
+| Color           | CSS custom property                                                  |
+| --------------- | -------------------------------------------------------------------- |
+| Primary         | `--np-spinner-color: tomato`                                         |
+| Primary         | `--np-spinner-color: #2563eb`                                        |
+| Primary         | `--np-spinner-color: rgb(34 197 94)`                                 |
+| Primary + muted | `--np-spinner-color: #d80606ff; --np-spinner-muted-color: #0211b7ff` |
