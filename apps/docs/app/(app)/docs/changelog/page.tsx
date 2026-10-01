@@ -41,10 +41,10 @@ export default function ChangelogPage() {
   return (
     <div
       data-slot="docs"
-      className="flex w-full max-w-code min-w-0 scroll-mt-24 items-stretch pb-8 text-[1.05rem] sm:text-[15px]"
+      className="flex w-full min-w-0 scroll-mt-24 items-stretch pb-8 text-[1.05rem] sm:text-[15px]"
     >
       <div className="flex w-full min-w-0 justify-between gap-12">
-        <main className="min-w-0 flex-1 space-y-6 pt-4 [font-variant-ligatures:none]">
+        <main className="min-w-0 flex-1 space-y-6 pt-8 [font-variant-ligatures:none]">
           <div className="flex flex-col gap-2">
             <div className="flex items-center justify-between">
               <h1 className="scroll-m-24 text-3xl font-semibold tracking-tight sm:text-3xl">

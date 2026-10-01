@@ -1,4 +1,4 @@
-import { DocsMobileNav, DocsSidebar } from "@/components/layouts/docs-sidebar"
+import { DocsSidebar } from "@/components/layouts/docs-sidebar"
 import { source } from "@/lib/source"
 
 export default function Layout({
@@ -7,14 +7,10 @@ export default function Layout({
   children: React.ReactNode
 }>) {
   return (
-    <div className="min-h-5xl flex w-full min-w-0">
+    <div className="mx-auto flex w-full max-w-7xl min-w-0 gap-12">
       <DocsSidebar tree={source.pageTree} />
 
-      <DocsMobileNav tree={source.pageTree} />
-
-      <div className="mx-auto w-full max-w-5xl min-w-0 flex-1 px-4 py-1 lg:px-8">
-        {children}
-      </div>
+      <div className="mx-auto w-full min-w-0 flex-1 py-1">{children}</div>
     </div>
   )
 }
