@@ -24,7 +24,6 @@ export async function HtmlPreview({
 }: HtmlPreviewProps) {
   const targetCss = cssPaths ?? cssPath
   const paths = Array.isArray(targetCss) ? targetCss : [targetCss]
-
   const cssContents = await Promise.all(
     paths.map(async (p) => {
       const fullPath = path.join(/* turbopackIgnore: true */ REGISTRY_ROOT, p)

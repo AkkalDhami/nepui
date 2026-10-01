@@ -12,6 +12,7 @@ import { PAGES_NEW } from "@/lib/docs"
 import { cn } from "@/lib/utils"
 import { ListIcon, MagnifyingGlassIcon } from "@phosphor-icons/react"
 import type * as PageTree from "fumadocs-core/page-tree"
+import { Kbd } from "@/components/ui/kbd"
 import { useSearchContext } from "fumadocs-ui/contexts/search"
 import { LayoutGroup, motion } from "motion/react"
 import Link from "next/link"
@@ -104,7 +105,7 @@ function SidebarLink({
       target={external ? "_blank" : undefined}
       rel={external ? "noreferrer noopener" : undefined}
       data-active={active}
-      className="relative flex items-center gap-2 rounded-md px-3 py-1.5 text-[15px] text-foreground transition-colors hover:bg-muted hover:text-foreground data-[active=true]:font-medium data-[active=true]:text-foreground"
+      className="relative flex w-fit items-center gap-2 rounded-md px-2.5 py-1.5 text-base text-foreground transition-colors hover:bg-muted hover:text-foreground data-[active=true]:font-medium data-[active=true]:text-foreground"
     >
       {active && (
         <motion.span
@@ -137,30 +138,32 @@ function SidebarGroup({
   links: FlatLink[]
 }) {
   return (
-    <div className="space-y-1">
+    <div className="space-y-3">
       {label &&
         (href ? (
           <Link
             href={href as never}
-            className="block px-3 pt-4 pb-2 text-[15px] font-medium text-muted-foreground transition-colors hover:text-foreground"
+            className="block pb-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
             {label}
           </Link>
         ) : (
-          <p className="px-3 pt-4 pb-2 text-[15px] font-medium text-muted-foreground">
+          <p className="px-2 text-sm font-medium text-muted-foreground">
             {label}
           </p>
         ))}
-      {links.map((link) => (
-        <SidebarLink
-          key={link.url}
-          url={link.url}
-          urls={link.urls}
-          external={link.external}
-        >
-          {link.name}
-        </SidebarLink>
-      ))}
+      <div className="space-y-1">
+        {links.map((link) => (
+          <SidebarLink
+            key={link.url}
+            url={link.url}
+            urls={link.urls}
+            external={link.external}
+          >
+            {link.name}
+          </SidebarLink>
+        ))}
+      </div>
     </div>
   )
 }
@@ -181,7 +184,7 @@ function SidebarItems({ tree }: { tree: PageTree.Root }) {
   )
 }
 
-function SearchButton() {
+export function SearchButton() {
   const { setOpenSearch, enabled } = useSearchContext()
   if (!enabled) return null
 
@@ -189,17 +192,13 @@ function SearchButton() {
     <button
       type="button"
       onClick={() => setOpenSearch(true)}
-      className="mt-3 flex w-full items-center gap-2 rounded-lg border bg-card px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent"
+      className="mt-3 flex w-full items-center gap-2 rounded-lg bg-card/70 px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-card"
     >
       <MagnifyingGlassIcon className="size-4" />
       <span>Search</span>
       <span className="ml-auto flex gap-1">
-        <kbd className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">
-          Ctrl
-        </kbd>
-        <kbd className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">
-          K
-        </kbd>
+        <Kbd>Ctrl</Kbd>
+        <Kbd>K</Kbd>
       </span>
     </button>
   )
@@ -208,18 +207,9 @@ function SearchButton() {
 function SidebarContent({ tree }: { tree: PageTree.Root }) {
   return (
     <LayoutGroup id={useId()}>
-      <div className="flex h-full flex-col">
-        <div className="space-y-4 p-4">
-          <Link href="/" className="text-lg font-semibold tracking-tight">
-            nepui
-          </Link>
-          <SearchButton />
-        </div>
-
-        <nav className="flex-1 space-y-0.5 overflow-y-auto px-3 pb-6">
-          <SidebarItems tree={tree} />
-        </nav>
-      </div>
+      <nav className="flex-1 scroll-fade-y scrollbar-none space-y-4 overflow-y-auto pt-6 pb-6">
+        <SidebarItems tree={tree} />
+      </nav>
     </LayoutGroup>
   )
 }
@@ -235,7 +225,7 @@ export function DocsSidebar({
   return (
     <aside
       className={cn(
-        "sticky top-0 hidden h-svh w-64 shrink-0 border-r bg-background lg:block",
+        "sticky top-18 hidden h-svh w-56 shrink-0 bg-background px-4 lg:block",
         className
       )}
     >
@@ -254,7 +244,7 @@ export function DocsMobileNav({ tree }: { tree: PageTree.Root }) {
   }, [pathname])
 
   return (
-    <header className="sticky top-0 z-40 flex h-14 items-center gap-2 border-b bg-background/80 px-4 backdrop-blur lg:hidden">
+    <>
       <Button
         variant="ghost"
         size="icon"
@@ -263,10 +253,6 @@ export function DocsMobileNav({ tree }: { tree: PageTree.Root }) {
       >
         <ListIcon className="size-5" />
       </Button>
-      <Link href="/" className="font-semibold tracking-tight">
-        nepui
-      </Link>
-
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetContent side="left" className="w-72 gap-0 p-0">
           <SheetHeader className="sr-only">
@@ -275,6 +261,6 @@ export function DocsMobileNav({ tree }: { tree: PageTree.Root }) {
           <SidebarContent tree={tree} />
         </SheetContent>
       </Sheet>
-    </header>
+    </>
   )
 }
