@@ -1,38 +1,15 @@
+import { Container } from "@/components/shared/container"
+import { LogoIcon } from "@/components/shared/logo"
+
 export default function Page() {
   return (
-    <div className="flex min-h-svh p-6">
-      <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-        <div>
-          <h1 className="font-medium">Project ready!</h1>
-          <p>You may now add components and start building.</p>
-          <p>We&apos;ve already added the button component for you.</p>
-          <Button className="mt-2">Button</Button>
-        </div>
-        <div className="font-mono text-xs text-muted-foreground">
-          (Press <kbd>d</kbd> to toggle dark mode)
-        </div>
-
-        <ButtonWithIcon />
+    <Container className="flex min-h-[80vh] items-center justify-center p-6">
+      <div className="flex flex-col items-center gap-4 text-center">
+        <LogoIcon className="size-120" />
+        <h1 className="ml-4 text-2xl font-bold">
+          The foundation of design systems
+        </h1>
       </div>
-    </div>
-  )
-}
-
-import { PlusIcon, DownloadSimpleIcon } from "@phosphor-icons/react/ssr"
-import { Button } from "@nepui/react/button"
-
-export function ButtonWithIcon() {
-  return (
-    <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-      <Button variant="outline">
-        <PlusIcon />
-        Add item
-      </Button>
-
-      <Button variant="outline">
-        Download
-        <DownloadSimpleIcon />
-      </Button>
-    </div>
+    </Container>
   )
 }

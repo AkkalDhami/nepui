@@ -18,21 +18,21 @@ export function Logo({
     )
   }
   return (
-    <Link href="/" className="flex items-center">
+    <Link href="/" className="flex items-center gap-1">
       <LogoIcon className={className} {...props} />
-      <div className="-ml-2 text-lg font-medium">{siteConfig.name}</div>
+      <div className="text-lg font-medium">{siteConfig.name}</div>
     </Link>
   )
 }
 
-function LogoIcon({ className, ...props }: SVGProps<SVGSVGElement>) {
+export function LogoIcon({ className, ...props }: SVGProps<SVGSVGElement>) {
   return (
     <svg
-      viewBox="0 0 1254 1254"
+      viewBox="330 330 580 580"
       xmlns="http://www.w3.org/2000/svg"
       role="img"
       aria-label="Logo"
-      className={cn("size-12 text-accent-foreground", className)}
+      className={cn("size-6 text-accent-foreground", className)}
       fill="currentColor"
       {...props}
     >

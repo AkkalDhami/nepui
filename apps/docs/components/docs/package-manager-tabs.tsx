@@ -8,7 +8,7 @@ import { PackageManager } from "@/types"
 import { getPackageManagerIcon } from "@/components/icons"
 import { CopyButton } from "@/components/docs/copy-button"
 
-const pkgManagers = ["npm", "yarn", "pnpm", "bun"]
+const pkgManagers = ["npm", "pnpm", "bun", "yarn"]
 
 export default function PackageManagerTabs({
   command = "",
