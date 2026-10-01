@@ -1,0 +1,87 @@
+# nepui
+
+> nepui is a lightweight ui component library providing accessible, customizable components for HTML/CSS/JavaScript and React.
+
+## Documentation
+
+* [Documentation](https://nepui.vercel.app/docs)
+* [Components](https://nepui.vercel.app/docs/components)
+* [CLI](https://nepui.vercel.app/docs/cli)
+* [Changelog](https://nepui.vercel.app/docs/changelog)
+
+## Components
+
+### HTML
+
+* [Button](https://nepui.vercel.app/docs/components/html/button): A button triggers an action, submits a form, or performs another user-initiated operation.
+* [Spinner](https://nepui.vercel.app/docs/components/html/spinner): An indicator that can be used to show a loading state.
+
+### React
+
+* [Button](https://nepui.vercel.app/docs/components/react/button): A button triggers an action, submits a form, or performs another user-initiated operation.
+* [Spinner](https://nepui.vercel.app/docs/components/react/spinner): An indicator that can be used to show a loading state.
+
+## Supported Targets
+
+* HTML — Components use HTML, CSS, and JavaScript where required.
+* React — Components are provided as React components with TypeScript and CSS.
+
+## Installation
+
+### HTML
+
+HTML components can be copied directly from their documentation or fetched from the HTML registry.
+
+```bash
+npx nepui add button --target html
+npx nepui add spinner --target html
+```
+
+### React
+
+React components can be added using the nepui CLI.
+
+```bash
+npx nepui add button --target react
+npx nepui add spinner --target react
+```
+
+## Registry
+
+The component registry provides machine-readable component definitions.
+
+* HTML registry index: `https://nepui.vercel.app/r/html/registry.json`
+* React registry index: `https://nepui.vercel.app/r/react/registry.json`
+
+* HTML registry: `https://nepui.vercel.app/r/html/<component>.json`
+* React registry: `https://nepui.vercel.app/r/react/<component>.json`
+
+
+## CLI
+
+nepui provides a CLI for adding components to a project.
+
+```bash
+npx nepui add <component> --target <html|react>
+```
+
+**Default target: `html`**
+
+Examples:
+
+```bash
+npx nepui add button
+npx nepui add button --target react
+npx nepui add spinner
+npx nepui add spinner --target react
+```
+
+## Source
+
+- [GitHub](https://github.com/akkaldhami/nepui)
+- [Website](https://nepui.vercel.app)
+- [Built by Akkal Dhami](https://akkal.com.np)
+
+## Tech Stack
+
+next.js, react.js, typescript, tailwindcss, shadcn/ui, html, css, javascript
