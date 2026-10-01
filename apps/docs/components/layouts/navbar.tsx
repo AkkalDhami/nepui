@@ -9,6 +9,8 @@ import { siteConfig } from "@/lib/seo"
 import { ThemeToggle } from "@/components/shared/theme-toggle"
 import { Logo } from "@/components/shared/logo"
 import { buttonVariants } from "../ui/button"
+import { DocsMobileNav } from "./docs-sidebar"
+import { source } from "@/lib/source"
 
 export type NavItem = {
   label: string
@@ -96,6 +98,10 @@ export function Navbar({ className }: NavbarProps) {
           <div className="flex items-center gap-1 md:hidden">
             <ThemeToggle />
           </div> */}
+          </div>
+
+          <div className="md:hidden">
+            <DocsMobileNav tree={source.pageTree} />
           </div>
         </div>
       </div>

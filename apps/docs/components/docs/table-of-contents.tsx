@@ -54,7 +54,7 @@ export function TableOfContents({ items }: TableOfContentsProps) {
       initial={{ opacity: 0 }}
       animate={{ opacity: ready ? 1 : 0 }}
       transition={{ duration: 0.25, ease: "easeOut" }}
-      className="sticky top-16 hidden h-fit w-56 shrink-0 xl:block"
+      className="sticky top-20 hidden h-fit w-46 shrink-0 xl:block"
     >
       <p className="mb-4 text-sm font-medium">On this page</p>
 
@@ -98,7 +98,7 @@ function TocList({ items }: { items: TOCItemType[] }) {
                 <TOCItem
                   href={item.url}
                   className={
-                    "block py-1 pr-2 text-muted-foreground transition-colors hover:text-foreground data-[active=true]:font-medium data-[active=true]:text-foreground " +
+                    "block py-1 pr-2 text-muted-foreground transition-colors hover:text-foreground data-[active=true]:font-medium data-[active=true]:text-primary " +
                     (item.depth > 2 ? "pl-6" : "pl-3")
                   }
                 >
@@ -109,7 +109,6 @@ function TocList({ items }: { items: TOCItemType[] }) {
           })}
         </AnimatePresence>
       </ScrollProvider>
-      {/* faint track behind the indicator */}
       <span className="pointer-events-none absolute inset-y-0 left-0 -z-10 w-0.5 rounded-full bg-border" />
     </ul>
   )
