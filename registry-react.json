@@ -30,6 +30,29 @@
           "target": "components/nepui/button/index.tsx"
         }
       ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:component",
+      "title": "Spinner",
+      "description": "An indicator that can be used to show a loading state.",
+      "files": [
+        {
+          "path": "registry/react/spinner/spinner.tsx",
+          "type": "registry:component",
+          "target": "components/nepui/spinner/spinner.tsx"
+        },
+        {
+          "path": "registry/react/spinner/spinner.css",
+          "type": "registry:component",
+          "target": "components/nepui/spinner/spinner.css"
+        },
+        {
+          "path": "registry/react/spinner/index.tsx",
+          "type": "registry:component",
+          "target": "components/nepui/spinner/index.tsx"
+        }
+      ]
     }
   ]
 }
