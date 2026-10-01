@@ -13,6 +13,7 @@ import { HtmlPreview } from "@/components/preview/html-preview"
 import { HtmlPreviewTabs } from "@/components/preview/html-preview-tabs"
 import { ReactPreview } from "@/components/preview/react-preview"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { ManualInstallation } from "@/components/docs/manual-installation"
 import { source } from "@/lib/source"
 import { cn } from "cn"
 import type { MDXComponents } from "mdx/types"
@@ -106,6 +107,7 @@ export const mdxComponents = {
   HtmlPreviewTabs,
   ReactPreviewTabs,
   ComponentSource,
+  ManualInstallation,
 
   h1: ({ children, id, ...props }: React.ComponentProps<"h1">) => {
     const headingId = id ?? getHeadingId(children)
@@ -169,7 +171,7 @@ export const mdxComponents = {
     return <figure className={cn(className)} {...props} />
   },
   table: (props: React.ComponentProps<"table">) => (
-    <div className="typeset-scroll scroll-fade-x scrollbar-none *:[table]:w-full">
+    <div className="typeset-scroll scrollbar-none *:[table]:w-full">
       <table {...props} />
     </div>
   ),
