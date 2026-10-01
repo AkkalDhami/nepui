@@ -1,0 +1,53 @@
+---
+title: CLI
+description: Install and manage nepui components from the command line.
+---
+
+
+```bash
+npx nepui add button
+```
+
+```bash
+npx nepui add button --target react
+```
+
+No install step - run it on demand with `npx`. Pin a version in CI with `npx nepui@latest`.
+
+## Add a component
+
+```bash
+npx nepui add <component> --target <html|react>
+```
+
+**Default target is `html`.**
+
+
+If a destination file already exists, you're prompted to **Overwrite**, **Skip**, or **Cancel** - nothing is silently replaced. An unknown component or an invalid `--target` fails immediately with no files written.
+
+## List components
+
+```bash
+npx nepui list [--target html|react] [--json]
+```
+
+```bash
+npx nepui ls
+```
+
+```bash
+npx nepui ls --target react
+```
+
+```bash
+npx nepui ls --target --json
+```
+
+Defaults to `--target html`. Plain output is an alphabetical list; `--json` prints only the JSON object to stdout (safe to pipe into `jq`), with nothing else written on success.
+
+## Reference
+
+| | |
+| --- | --- |
+| `-V, --version` | Print the installed CLI version |
+| `-h, --help` | Show help for `nepui` or any subcommand |
