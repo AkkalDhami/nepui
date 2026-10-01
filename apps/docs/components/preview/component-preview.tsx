@@ -63,8 +63,8 @@ export async function ComponentPreview({
     }
 
     const refactoredSource = source
-      ?.replace("@nepui/react/", "@/components/nepui/")
-      ?.replace("default ", "")
+      ?.replaceAll("@nepui/react/", "@/components/nepui/")
+      ?.replaceAll("export default function", "export function")
 
     const highlightedCode = await highlightCode(
       trimCode(refactoredSource),

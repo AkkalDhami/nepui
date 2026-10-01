@@ -73,7 +73,7 @@ export function HtmlComponentPreview({
           },
         ]
       : []),
-  ]
+  ].filter((s) => s.source.trim())
 
   const activeTab =
     sourceTabs.find((tab) => tab.value === sourceTab) ?? sourceTabs[0]
