@@ -28,6 +28,7 @@ type FlatLink = {
   urls: string[]
   external?: boolean
 }
+
 const TOP_LEVEL_SECTIONS = [
   {
     name: "Introduction",
@@ -201,7 +202,7 @@ export function SearchButton() {
 function SidebarContent({ tree }: { tree: PageTree.Root }) {
   return (
     <LayoutGroup id={useId()}>
-      <nav className="flex-1 scroll-fade-y scrollbar-none space-y-4 overflow-y-auto pt-6 pb-6">
+      <nav className="flex-1 scrollbar-none space-y-4 overflow-y-auto">
         <SidebarItems tree={tree} />
       </nav>
     </LayoutGroup>
@@ -219,7 +220,7 @@ export function DocsSidebar({
   return (
     <aside
       className={cn(
-        "sticky top-18 hidden h-svh w-56 shrink-0 bg-background px-4 lg:block",
+        "sticky top-6 hidden h-svh w-56 shrink-0 bg-background px-4 pt-12 lg:block",
         className
       )}
     >
