@@ -17,61 +17,51 @@ import { ArrowUpIcon, PlusIcon, DownloadSimpleIcon } from "@phosphor-icons/react
 
 ## Installation
 
-<Tabs
-  defaultValue="cli"
-  className="gap-0 mt-8"
->
-<TabsList className="bg-transparent mb-0" variant="line"> 
-<TabsTrigger value="cli" className={"text-base"}>Command</TabsTrigger>
-<TabsTrigger value="manual" className={"text-base"}>Manual</TabsTrigger>
-</TabsList>
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/button.json"
+      nepui="npx nepui@latest add button --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Add the nepui design tokens.</Step>
+      <ComponentSource
+        target="react"
+        name="button"
+        title="components/nepui/tokens.css"
+        fileTarget="components/nepui/tokens.css"
+      />
 
-<TabsContent value="cli">
-  <ReactCodeBlockCommand
-    shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/button.json"
-    nepui="npx nepui@latest add button --target react"
-  />
-</TabsContent>
-<TabsContent value="manual" className="mt-0">
+      <Step>Add the button styles.</Step>
+      <ComponentSource
+        target="react"
+        name="button"
+        title="components/nepui/button/button.css"
+        fileTarget="components/nepui/button/button.css"
+      />
 
-<Steps>
-<Step>Add the nepui design tokens.</Step>
-<ComponentSource
-  target="react"
-  name="button"
-  title="components/nepui/tokens.css"
-  fileTarget="components/nepui/tokens.css"
+      <Step>Add the Button component.</Step>
+      <ComponentSource
+        target="react"
+        name="button"
+        title="components/nepui/button/button.tsx"
+        fileTarget="components/nepui/button/button.tsx"
+      />
+
+      <Step>Add the Button entry point.</Step>
+      <ComponentSource
+        target="react"
+        name="button"
+        title="components/nepui/button/index.tsx"
+        fileTarget="components/nepui/button/index.tsx"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
 />
-
-<Step>Add the button styles.</Step>
-<ComponentSource
-  target="react"
-  name="button"
-  title="components/nepui/button/button.css"
-  fileTarget="components/nepui/button/button.css"
-/>
-
-<Step>Add the Button component.</Step>
-<ComponentSource
-  target="react"
-  name="button"
-  title="components/nepui/button/button.tsx"
-  fileTarget="components/nepui/button/button.tsx"
-/>
-
-<Step>Add the Button entry point.</Step>
-<ComponentSource
-  target="react"
-  name="button"
-  title="components/nepui/button/index.tsx"
-  fileTarget="components/nepui/button/index.tsx"
-/>
-
-<Step>Update the import paths to match your project setup.</Step>
-
-</Steps>
-</TabsContent>
-</Tabs>
 
 ---
 

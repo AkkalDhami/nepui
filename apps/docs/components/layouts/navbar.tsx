@@ -8,7 +8,7 @@ import { Route } from "next"
 import { siteConfig } from "@/lib/seo"
 import { ThemeToggle } from "@/components/shared/theme-toggle"
 import { Logo } from "@/components/shared/logo"
-import { buttonVariants } from "../ui/button"
+import { buttonVariants } from "@/components/ui/button"
 import { DocsMobileNav } from "./docs-sidebar"
 import { source } from "@/lib/source"
 

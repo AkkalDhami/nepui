@@ -14,7 +14,7 @@ import { ListIcon, MagnifyingGlassIcon } from "@phosphor-icons/react"
 import type * as PageTree from "fumadocs-core/page-tree"
 import { Kbd } from "@/components/ui/kbd"
 import { useSearchContext } from "fumadocs-ui/contexts/search"
-import { LayoutGroup, motion } from "motion/react"
+import { LayoutGroup } from "motion/react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useEffect, useId, useState } from "react"
@@ -37,10 +37,10 @@ const TOP_LEVEL_SECTIONS = [
     name: "Components",
     href: "/docs/components",
   },
-  {
-    name: "Installation",
-    href: "/docs/installation",
-  },
+  // {
+  //   name: "Installation",
+  //   href: "/docs/installation",
+  // },
   {
     name: "CLI",
     href: "/docs/cli",
@@ -107,13 +107,7 @@ function SidebarLink({
       data-active={active}
       className="relative flex w-fit items-center gap-2 rounded-md px-2.5 py-1.5 text-base text-foreground transition-colors hover:bg-muted hover:text-foreground data-[active=true]:font-medium data-[active=true]:text-foreground"
     >
-      {active && (
-        <motion.span
-          layoutId="sidebar-active"
-          className="absolute inset-0 rounded-md bg-accent"
-          transition={{ type: "spring", stiffness: 500, damping: 40 }}
-        />
-      )}
+      {active && <span className="absolute inset-0 rounded-md bg-accent" />}
       <span className="relative z-10">{children}</span>
       {isNew && (
         <>
@@ -254,7 +248,7 @@ export function DocsMobileNav({ tree }: { tree: PageTree.Root }) {
         <ListIcon className="size-5" />
       </Button>
       <Sheet open={open} onOpenChange={setOpen}>
-        <SheetContent side="left" className="w-72 gap-0 p-0">
+        <SheetContent side="left" className="w-72 gap-0 pt-10 pl-4">
           <SheetHeader className="sr-only">
             <SheetTitle>Navigation</SheetTitle>
           </SheetHeader>

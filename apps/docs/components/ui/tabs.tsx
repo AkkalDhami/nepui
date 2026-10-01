@@ -97,8 +97,8 @@ function TabsTrigger({ className, children, ...props }: TabsTriggerProps) {
         <button
           {...tabProps}
           className={cn(
-            "relative z-10 inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 rounded-md px-2 py-1 text-sm font-medium whitespace-nowrap text-foreground/60 transition-colors outline-none group-data-[orientation=vertical]/tabs:w-full group-data-[orientation=vertical]/tabs:justify-start hover:text-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50 dark:text-muted-foreground dark:hover:text-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-            state.active && "font-medium text-foreground dark:text-foreground",
+            "relative z-10 inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 rounded-md px-2 py-1 text-sm font-medium whitespace-nowrap text-foreground/60 transition-colors outline-none group-data-[orientation=vertical]/tabs:w-full group-data-[orientation=vertical]/tabs:justify-start hover:text-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50 dark:text-muted-foreground dark:hover:text-foreground data-active:text-foreground dark:data-active:text-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+            state.active && "font-medium",
             className
           )}
         >
@@ -116,7 +116,9 @@ function TabsTrigger({ className, children, ...props }: TabsTriggerProps) {
                 transition={{ type: "spring", stiffness: 400, damping: 30 }}
               />
             ))}
-          <span className="relative z-10 flex items-center justify-center gap-1.5">
+          <span
+            className={"relative z-10 flex items-center justify-center gap-1.5"}
+          >
             {children}
           </span>
         </button>

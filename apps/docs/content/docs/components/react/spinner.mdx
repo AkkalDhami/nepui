@@ -16,23 +16,14 @@ contributor:
 
 ## Installation
 
-<Tabs
-  defaultValue="cli"
-  className="gap-0 mt-8"
->
-<TabsList className="bg-transparent mb-0" variant="line"> 
-<TabsTrigger value="cli" className={"text-base"}>Command</TabsTrigger>
-<TabsTrigger value="manual" className={"text-base"}>Manual</TabsTrigger>
-</TabsList>
-
-<TabsContent value="cli">
-  <ReactCodeBlockCommand
-    shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/spinner.json"
-    nepui="npx nepui@latest add spinner --target react"
-  />
-</TabsContent>
-<TabsContent value="manual" className="mt-0">
-
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/spinner.json"
+      nepui="npx nepui@latest add spinner --target react"
+    />
+  }
+  manual={
 <Steps>
 <Step>Add the spinner styles.</Step>
 <ComponentSource
@@ -59,12 +50,10 @@ contributor:
 />
 
 <Step>Update the import paths to match your project setup.</Step>
-
 </Steps>
-</TabsContent>
-</Tabs>
+  }
 
----
+/>
 
 ## Usage
 
