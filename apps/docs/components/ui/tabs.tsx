@@ -116,7 +116,9 @@ function TabsTrigger({ className, children, ...props }: TabsTriggerProps) {
                 transition={{ type: "spring", stiffness: 400, damping: 30 }}
               />
             ))}
-          <span className="relative z-10 flex items-center justify-center gap-1.5">
+          <span
+            className={"relative z-10 flex items-center justify-center gap-1.5"}
+          >
             {children}
           </span>
         </button>

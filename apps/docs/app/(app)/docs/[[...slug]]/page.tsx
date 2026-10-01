@@ -102,7 +102,7 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
   return (
     <div
       data-slot="docs"
-      className="flex min-w-0 scroll-mt-24 items-stretch pb-8 xl:w-full"
+      className="flex min-w-0 scroll-mt-24 items-stretch px-4 pb-8 xl:w-full"
     >
       <JsonLd
         data={[
@@ -115,7 +115,7 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
         ]}
       />
       <div className="flex w-full min-w-0 justify-between gap-12">
-        <main className="min-w-0 flex-1 space-y-6 pt-8">
+        <main className="w-full min-w-0 flex-1 space-y-6 pt-8">
           <div className="flex flex-col gap-2">
             <div className="flex items-center justify-between md:items-start">
               <h1 className="scroll-m-24 text-3xl font-semibold tracking-tight sm:text-3xl">
@@ -241,9 +241,9 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
           </div>
         </main>
 
-        <div className="shrink-0">
-          <TableOfContents items={page.data.toc} />
-        </div>
+        {/* <div className="shrink-0"> */}
+        <TableOfContents items={page.data.toc} />
+        {/* </div> */}
       </div>
     </div>
   )
