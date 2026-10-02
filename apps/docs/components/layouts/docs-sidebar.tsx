@@ -38,6 +38,10 @@ const TOP_LEVEL_SECTIONS = [
     name: "Components",
     href: "/docs/components",
   },
+  {
+    name: "Colors",
+    href: "/docs/colors",
+  },
   // {
   //   name: "Installation",
   //   href: "/docs/installation",

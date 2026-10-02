@@ -14,6 +14,8 @@ import { Analytics } from "@vercel/analytics/next"
 import { RootProvider } from "fumadocs-ui/provider/next"
 import { NuqsAdapter } from "nuqs/adapters/next/app"
 import "./styles/globals.css"
+import { Toaster } from "@/components/ui/toast"
+import { TooltipProvider } from "@/components/ui/tooltip"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 
@@ -62,8 +64,11 @@ export default function RootLayout({
         />
         <Analytics />
         <ThemeProvider>
+          <Toaster />
           <RootProvider>
-            <NuqsAdapter>{children}</NuqsAdapter>
+            <NuqsAdapter>
+              <TooltipProvider>{children}</TooltipProvider>
+            </NuqsAdapter>
           </RootProvider>
         </ThemeProvider>
       </body>
