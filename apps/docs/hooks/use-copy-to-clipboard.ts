@@ -18,8 +18,10 @@ export function useCopyToClipboard(resetAfterMs = 1600) {
 
         if (timeoutRef.current) clearTimeout(timeoutRef.current)
         timeoutRef.current = setTimeout(() => setCopied(false), resetAfterMs)
+        return true
       } catch {
         setCopied(false)
+        return false
       }
     },
     [resetAfterMs]

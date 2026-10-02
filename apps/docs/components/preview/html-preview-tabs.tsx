@@ -37,11 +37,14 @@ export function HtmlPreviewTabs({
           cssPath={targetCss}
           tokens={tokens}
           html={html}
-          className="mt-2"
+          className="mt-3"
         />
       </TabsContent>
 
-      <TabsContent value="code" className="[&_figure]:my-1 [&_figure]:pt-0">
+      <TabsContent
+        value="code"
+        className="mt-2 [&_figure]:my-1 [&_figure]:pt-0"
+      >
         {children}
       </TabsContent>
     </Tabs>
