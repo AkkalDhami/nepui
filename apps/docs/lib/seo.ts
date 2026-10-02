@@ -36,7 +36,7 @@ export const rootMetadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: {
     default: `${siteConfig.name} — ${siteConfig.tagline}`,
-    template: `%s | ${siteConfig.name}`,
+    template: `%s - ${siteConfig.name}`,
   },
   description: siteConfig.description,
   applicationName: siteConfig.shortName,

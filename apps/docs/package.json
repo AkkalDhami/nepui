@@ -10,7 +10,10 @@
     "lint": "eslint",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
     "typecheck": "tsc --noEmit",
-    "examples:build": "tsx scripts/build-examples.mts"
+    "examples:build": "tsx scripts/build-examples.mts",
+    "colors:generate": "tsx scripts/generate-colors.mts ../../registry/styles/palette.css ../../registry/styles/colors.css",
+    "colors:generate:public": "tsx scripts/generate-colors.mts ../../registry/styles/palette.css ./public/styles/colors.css",
+    "palette:generate": "tsx scripts/generate-palette.mts ../../registry/styles/palette.css"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",

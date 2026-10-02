@@ -1,6 +1,13 @@
-/* nepui themes.css - color palette and color utilities */
+/*
+ * nepui colors.css - Color palette and utility classes.
+ *
+ * Edit the source palette in ..\..\registry\styles\palette.css, then run:
+ * > pnpm --filter docs colors:generate
+ * The utility classes after the palette are generated.
+ ! ⚠️ Do not edit this generated file directly.
+ */
 
-/* 1. Color palette variables */
+/* Color palette */
 :root {
   --np-red-50: oklch(97.1% 0.013 17.38);
   --np-red-100: oklch(93.6% 0.032 17.717);
@@ -318,7 +325,7 @@
   --np-white: #fff;
 }
 
-/* 2. Background utilities */
+/* Background utilities */
 
 .bg-red-50,
 .np-bg-red-50 {
@@ -1760,7 +1767,7 @@
   background-color: var(--np-white);
 }
 
-/* 3. Text utilities */
+/* Text utilities */
 
 .text-red-50,
 .np-text-red-50 {
@@ -3202,7 +3209,7 @@
   color: var(--np-white);
 }
 
-/* 4. Border utilities */
+/* Border utilities */
 
 .border-red-50,
 .np-border-red-50 {

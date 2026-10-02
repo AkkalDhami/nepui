@@ -19,6 +19,7 @@ import { cn } from "cn"
 import type { MDXComponents } from "mdx/types"
 import { ReactPreviewTabs } from "@/components/preview/react-preview-tabs"
 import { ComponentSource } from "@/components/docs/component-source"
+import { ColorPalette } from "@/components/docs/color-palette"
 
 function getNodeText(node: React.ReactNode): string {
   if (typeof node === "string" || typeof node === "number") {
@@ -96,6 +97,7 @@ function ComponentsListWrapper({ variant }: { variant?: "all" | "new" }) {
     <ComponentsList componentsFolder={componentsFolder} variant={variant} />
   )
 }
+
 export const mdxComponents = {
   PackageManagerTabs,
   ComponentPreview,
@@ -108,6 +110,7 @@ export const mdxComponents = {
   ReactPreviewTabs,
   ComponentSource,
   ManualInstallation,
+  ColorPalette,
 
   h1: ({ children, id, ...props }: React.ComponentProps<"h1">) => {
     const headingId = id ?? getHeadingId(children)
