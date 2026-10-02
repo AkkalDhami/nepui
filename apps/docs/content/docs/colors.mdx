@@ -1,0 +1,107 @@
+---
+title: Colors
+description: The nepui color palette and the bg, text and border utilities that use it.
+---
+
+
+nepui provides a versatile color palette with light-to-dark shades, plus black and white. Colors are available as CSS variables and `bg-*`, `text-*`, and `border-*` utility classes.
+
+--- 
+
+## Setup
+
+Import `colors.css` once, at the root of your app.
+ 
+```html
+<link rel="stylesheet" href="https://nepui.vercel.app/styles/colors.css" />
+```
+ 
+{/* Replace "nepui/colors.css" with your real package path. */}
+ 
+nepui components already load it, so you only need this import to use the palette in your own markup.
+ 
+---
+
+## Palette
+ 
+Choose a format, then click a swatch to copy its value. The panel above the grid shows every format for the selected color.
+ 
+<ColorPalette />
+
+---
+
+## Using colors
+ 
+### Utility classes
+ 
+Each color has a class for background, text and border.
+ 
+```html
+<div class="bg-red-500 text-white border-red-700">Error</div>
+<p class="text-slate-600">Secondary text</p>
+<div class="border-blue-300">Outlined</div>
+```
+ 
+| Class | CSS property |
+| --- | --- |
+| `bg-{color}-{shade}` | `background-color` |
+| `text-{color}-{shade}` | `color` |
+| `border-{color}-{shade}` | `border-color` |
+ 
+Black and white have no shade: `bg-black`, `text-white`, `border-white`.
+ 
+### The `np-` prefix
+ 
+Every class also exists with an `np-` prefix. The two forms are identical.
+ 
+```html
+<div class="bg-red-500"></div>
+<div class="np-bg-red-500"></div>
+```
+ 
+Use the prefixed form if another stylesheet, such as Tailwind, already defines the same class names. It keeps nepui's classes from conflicting with them.
+ 
+### CSS variables
+ 
+Variables are named `--np-{color}-{shade}`. Use them in your own CSS.
+ 
+```css
+.alert {
+  background-color: var(--np-red-50);
+  border: 1px solid var(--np-red-300);
+  color: var(--np-red-800);
+}
+```
+
+---
+ 
+## Choosing shades
+ 
+| Shades | Typical use |
+| --- | --- |
+| 50 to 200 | Backgrounds, subtle fills, hover states |
+| 300 to 400 | Borders, dividers, disabled elements |
+| 500 to 600 | Primary fills, icons, links |
+| 700 to 800 | Hover and pressed states, text on light backgrounds |
+| 900 to 950 | Headings, text on light backgrounds, dark surfaces |
+ 
+Check contrast whenever you place text on a colored background. As a starting point, 600 or darker on a 50 background, or 50 on a 700 or darker background, works for most families.
+
+---
+ 
+## Color formats
+ 
+Values in `colors.css` are written in `oklch`. The palette viewer can copy them as HEX, RGB, HSL, HWB, OKLCH, OKLab, LCH, Lab and Display P3.
+ 
+Some colors are outside the sRGB gamut. HEX, RGB, HSL and HWB values for those colors are the nearest displayable match, so they can differ slightly from the OKLCH original. Use OKLCH or Display P3 for the exact color.
+
+--- 
+
+## Available colors
+ 
+- **Warm:** red, orange, amber, yellow
+- **Green:** lime, green, emerald, teal
+- **Blue:** cyan, sky, blue, indigo
+- **Purple and pink:** violet, purple, fuchsia, pink, rose
+- **Neutral:** slate, gray, zinc, neutral, stone, mauve, olive, mist, taupe
+ 
