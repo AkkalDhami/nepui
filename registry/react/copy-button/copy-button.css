@@ -1,0 +1,92 @@
+/* nepui — Copy Button (extends np-button) */
+
+.np-copy-button,
+[data-np-copy-button] {
+  --np-copy-duration: 250ms;
+  --np-copy-ease: cubic-bezier(0.2, 0, 0, 1);
+  --np-copy-blur: 4px;
+  --np-copy-scale: 0.6;
+}
+
+/* Stacks: states sit on top of each other in one grid cell */
+
+:is(.np-copy-button, [data-np-copy-button]) [data-np-icon-stack],
+:is(.np-copy-button, [data-np-copy-button]) [data-np-label-stack] {
+  display: inline-grid;
+  place-items: center;
+}
+
+:is(.np-copy-button, [data-np-copy-button]) [data-np-icon-stack] > *,
+:is(.np-copy-button, [data-np-copy-button]) [data-np-label-stack] > * {
+  grid-area: 1 / 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    opacity var(--np-copy-duration) var(--np-copy-ease),
+    filter var(--np-copy-duration) var(--np-copy-ease),
+    transform var(--np-copy-duration) var(--np-copy-ease);
+}
+
+/* Idle: "copied" hidden */
+
+:is(.np-copy-button, [data-np-copy-button]) [data-copied-icon],
+:is(.np-copy-button, [data-np-copy-button]) [data-copied-label] {
+  opacity: 0;
+  filter: blur(var(--np-copy-blur));
+  transform: scale(var(--np-copy-scale));
+  pointer-events: none;
+}
+
+/* Copied: swap */
+
+:is(.np-copy-button, [data-np-copy-button])[data-copied] [data-copy-icon],
+:is(.np-copy-button, [data-np-copy-button])[data-copied] [data-copy-label] {
+  opacity: 0;
+  filter: blur(var(--np-copy-blur));
+  transform: scale(var(--np-copy-scale));
+}
+
+:is(.np-copy-button, [data-np-copy-button])[data-copied] [data-copied-icon],
+:is(.np-copy-button, [data-np-copy-button])[data-copied] [data-copied-label] {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1);
+}
+
+/* Check icon draws itself */
+
+:is(.np-copy-button, [data-np-copy-button]) [data-copied-icon] path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 300ms var(--np-copy-ease) 0ms;
+}
+
+:is(.np-copy-button, [data-np-copy-button])[data-copied]
+  [data-copied-icon]
+  path {
+  stroke-dashoffset: 0;
+  transition-delay: 80ms;
+}
+
+/* Copied color (for the neutral variants) */
+
+:is(.np-button-outline, .np-button-ghost, .np-button-secondary):is(
+    .np-copy-button,
+    [data-np-copy-button]
+  )[data-copied],
+:is(
+    .np-button[data-variant="outline"],
+    .np-button[data-variant="ghost"],
+    .np-button[data-variant="secondary"]
+  ):is(.np-copy-button, [data-np-copy-button])[data-copied] {
+  --np-button-color: var(--np-success);
+  --np-button-hover-bg: color-mix(in oklch, var(--np-success), transparent 90%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.np-copy-button, [data-np-copy-button]) * {
+    transition: none !important;
+  }
+}
