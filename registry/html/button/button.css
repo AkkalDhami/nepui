@@ -280,7 +280,7 @@ button:not(:disabled),
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .np-button[data-state="loading"],
+  .np-button[data-state="loading"]::before,
   .np-button[data-loading]::before {
     animation-duration: 1.2s;
   }

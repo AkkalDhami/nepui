@@ -8,22 +8,6 @@ const REGISTRY_ROOT =
   process.env.NEPUI_REGISTRY_ROOT ??
   path.join(process.cwd(), "..", "..", "registry")
 
-async function readSourceFile(filePath: string): Promise<string> {
-  try {
-    const contents = await fs.readFile(filePath, "utf-8")
-    return contents.trim()
-  } catch (error) {
-    if ((error as NodeJS.ErrnoException).code === "ENOENT") {
-      throw new Error(
-        `[nepui] Registry file not found: ${filePath}. ` +
-          `Check that the component name is correct and that NEPUI_REGISTRY_ROOT ` +
-          `(currently resolved to "${REGISTRY_ROOT}") points at the registry directory.`
-      )
-    }
-    throw error
-  }
-}
-
 async function readOptionalSourceFile(
   filePath: string
 ): Promise<string | null> {
@@ -47,15 +31,19 @@ export interface HtmlComponentSource {
 
 export async function getHtmlComponentSource(
   name: string
-): Promise<HtmlComponentSource> {
+): Promise<HtmlComponentSource | null> {
   const dir = path.join(REGISTRY_ROOT, "html", name)
 
   const [html, css, tokens, js] = await Promise.all([
-    readSourceFile(path.join(dir, `${name}.html`)),
-    readSourceFile(path.join(dir, `${name}.css`)),
+    readOptionalSourceFile(path.join(dir, `${name}.html`)),
+    readOptionalSourceFile(path.join(dir, `${name}.css`)),
     readOptionalSourceFile(path.join(dir, "tokens.css")),
     readOptionalSourceFile(path.join(dir, `${name}.js`)),
   ])
+
+  if (html === null || css === null) {
+    return null
+  }
 
   return { html, css, tokens, js }
 }
