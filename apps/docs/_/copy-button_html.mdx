@@ -1,0 +1,52 @@
+---
+title: Copy Button
+description: A button for copying text or content to the clipboard.
+---
+
+## Installation
+
+
+## Usage
+
+Use `data-copy` when the value to copy is directly available.
+
+
+
+## Copy from target
+
+Use `data-copy-target` to copy the text content of another element.
+
+
+## Sizes
+
+Copy Button supports the same compact size pattern as other NepUI controls.
+
+| Size | Data attribute | Class alias |
+| --- | --- | --- |
+| Extra small | `data-size="xs"` | `np-copy-button-xs` |
+| Small | `data-size="sm"` | `np-copy-button-sm` |
+| Default | — | `np-copy-button` |
+| Large | `data-size="lg"` | `np-copy-button-lg` |
+| Icon extra small | `data-size="icon-xs"` | `np-copy-button-icon-xs` |
+| Icon small | `data-size="icon-sm"` | `np-copy-button-icon-sm` |
+| Icon | `data-size="icon"` | `np-copy-button-icon` |
+| Icon large | `data-size="icon-lg"` | `np-copy-button-icon-lg` |
+
+## Rounded
+
+Use `data-rounded` or `np-copy-button-rounded` for a pill-shaped button.
+
+## API
+
+### `data-copy`
+
+The text that should be copied.
+
+```html
+<button
+  class="np-copy-button"
+  data-copy="npm install nepui"
+>
+  Copy
+</button>
+```
