@@ -10,16 +10,77 @@ nepui provides a versatile color palette with light-to-dark shades, plus black a
 
 ## Setup
 
-Import `colors.css` once, at the root of your app.
- 
-```html
-<link rel="stylesheet" href="https://nepui.vercel.app/styles/colors.css" />
+Import `colors.css` once at the root of your application.
+
+### HTML
+
+<Steps>
+<Step>Add the stylesheet to your `<head>`:</Step>
+
+```html title="index.html"
+<link
+  rel="stylesheet"
+  href="https://nepui.vercel.app/styles/colors.css"
+/>
 ```
- 
-{/* Replace "nepui/colors.css" with your real package path. */}
- 
+
+<Step>Or import it from your CSS file:</Step>
+
+```css title="index.css"
+@import url("https://nepui.vercel.app/styles/colors.css");
+```
+
+</Steps>
+
+### React.js
+
+<Steps>
+<Step>Import `colors.css` in your root CSS file:</Step>
+
+```css title="src/index.css"
+@import url("https://nepui.vercel.app/styles/colors.css");
+```
+</Steps>
+
+### Next.js
+
+<Steps>
+<Step>Import `colors.css` in your global CSS file:</Step>
+
+```css title="app/globals.css"
+@import url("https://nepui.vercel.app/styles/colors.css");
+```
+</Steps>
+
 nepui components already load it, so you only need this import to use the palette in your own markup.
  
+---
+
+## Usage
+
+Use NepUI colors through utility classes or CSS variables.
+
+<Steps>
+<Step>Use color utility classes directly in your markup:</Step>
+
+```html
+<div class="bg-blue-500 text-white">
+  Hello nepui
+</div>
+```
+
+<Step>Or use the color variables in your CSS:</Step>
+
+```css
+.card {
+  background: var(--np-blue-50);
+  color: var(--np-neutral-900);
+  border-color: var(--np-orange-200);
+}
+```
+
+</Steps>
+
 ---
 
 ## Palette
