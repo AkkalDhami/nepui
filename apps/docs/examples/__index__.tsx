@@ -17,6 +17,7 @@ import KtmReactButtonSecondary from "./ktm/react/button-secondary"
 import KtmReactButtonSize from "./ktm/react/button-size"
 import KtmReactButtonSpinner from "./ktm/react/button-spinner"
 import KtmReactButtonWithIcon from "./ktm/react/button-with-icon"
+import KtmReactCopyButtonDemo from "./ktm/react/copy-button-demo"
 import KtmReactSpinnerColor from "./ktm/react/spinner-color"
 import KtmReactSpinnerDemo from "./ktm/react/spinner-demo"
 import KtmReactSpinnerDirection from "./ktm/react/spinner-direction"
@@ -40,6 +41,7 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       "button-size": KtmReactButtonSize,
       "button-spinner": KtmReactButtonSpinner,
       "button-with-icon": KtmReactButtonWithIcon,
+      "copy-button-demo": KtmReactCopyButtonDemo,
       "spinner-color": KtmReactSpinnerColor,
       "spinner-demo": KtmReactSpinnerDemo,
       "spinner-direction": KtmReactSpinnerDirection,

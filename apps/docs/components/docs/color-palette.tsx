@@ -24,12 +24,12 @@ import { CheckIcon, CopyIcon } from "@phosphor-icons/react"
 
 const FORMAT_OPTIONS: { id: FormatId; label: string }[] = [
   { id: "hex", label: "HEX" },
-  { id: "var", label: "CSS var" },
-  { id: "class", label: "Class" },
   { id: "rgb", label: "RGB" },
   { id: "hsl", label: "HSL" },
   { id: "oklch", label: "OKLCH" },
   { id: "oklab", label: "OKLab" },
+  { id: "var", label: "CSS var" },
+  { id: "class", label: "Class" },
   { id: "hwb", label: "HWB" },
   { id: "lch", label: "LCH" },
   { id: "lab", label: "Lab" },

@@ -25,6 +25,14 @@ export async function ComponentPreview({
   if (target === "html") {
     const source = await getHtmlComponentSource(name)
 
+    if (!source) {
+      return (
+        <p className="my-6 text-sm text-muted-foreground">
+          HTML preview unavailable for <code>{name}</code>.
+        </p>
+      )
+    }
+
     const [htmlHighlighted, cssHighlighted, tokensHighlighted, jsHighlighted] =
       await Promise.all([
         highlightCode(source.html, "html", "ayu-dark"),
