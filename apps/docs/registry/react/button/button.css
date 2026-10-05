@@ -1,0 +1,287 @@
+/* nepui — Button */
+
+button:not(:disabled),
+[role="button"]:not(:disabled) {
+  cursor: pointer;
+}
+
+.np-button,
+[data-np-button] {
+  --np-button-radius: var(--np-radius-md);
+  --np-button-font-size: 0.875rem;
+  --np-button-font-weight: 500;
+  --np-button-gap: 0.375rem;
+  --np-button-height: 2rem;
+  --np-button-padding-x: 0.625rem;
+
+  --np-button-bg: var(--np-primary);
+  --np-button-color: var(--np-primary-foreground);
+  --np-button-border: var(--np-primary);
+  --np-button-hover-bg: color-mix(
+    in oklch,
+    var(--np-primary),
+    var(--np-foreground) 20%
+  );
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+
+  gap: var(--np-button-gap);
+  height: var(--np-button-height);
+  padding: 0 var(--np-button-padding-x);
+
+  border: 1px solid var(--np-button-border);
+  border-radius: var(--np-button-radius);
+
+  background: var(--np-button-bg);
+  color: var(--np-button-color);
+
+  font: inherit;
+  font-size: var(--np-button-font-size);
+  font-weight: var(--np-button-font-weight);
+  line-height: 1;
+
+  white-space: nowrap;
+  text-decoration: none;
+  user-select: none;
+
+  transition:
+    background-color 150ms ease,
+    color 150ms ease,
+    border-color 150ms ease,
+    box-shadow 150ms ease,
+    transform 100ms ease;
+
+  outline: none;
+}
+
+:is([data-np-button], .np-button):hover {
+  background: var(--np-button-hover-bg);
+}
+
+:is([data-np-button], .np-button):active {
+  transform: translateY(1px);
+}
+
+:is([data-np-button], .np-button):focus-visible {
+  border-color: var(--np-ring);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--np-ring), transparent 50%);
+}
+
+:is([data-np-button], .np-button):disabled,
+:is([data-np-button], .np-button)[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+:is([data-np-button], .np-button)[aria-invalid="true"] {
+  border-color: var(--np-destructive);
+
+  box-shadow: 0 0 0 3px
+    color-mix(in oklch, var(--np-destructive), transparent 80%);
+}
+
+:is([data-np-button], .np-button) svg {
+  width: 1rem;
+  height: 1rem;
+
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+:is([data-np-button], .np-button) svg:not([class]) {
+  width: 1rem;
+  height: 1rem;
+}
+
+:is([data-np-button], .np-button).np-button-rounded {
+  --np-button-radius: 9999px;
+}
+
+/* Variants */
+
+.np-button,
+.np-button[data-variant="default"] {
+  --np-button-border: transparent;
+  --np-button-hover-bg: color-mix(in oklch, var(--np-primary) 80%, transparent);
+}
+
+.np-button-outline,
+.np-button[data-variant="outline"] {
+  --np-button-bg: var(--np-background);
+  --np-button-color: var(--np-foreground);
+  --np-button-border: var(--np-border);
+  --np-button-hover-bg: color-mix(in oklab, var(--np-muted) 60%, transparent);
+}
+
+.np-button-secondary,
+.np-button[data-variant="secondary"] {
+  --np-button-bg: var(--np-secondary);
+  --np-button-color: var(--np-secondary-foreground);
+  --np-button-border: var(--np-secondary);
+  --np-button-hover-bg: color-mix(
+    in oklch,
+    var(--np-secondary),
+    var(--np-foreground) 5%
+  );
+}
+
+.np-button-ghost,
+.np-button[data-variant="ghost"] {
+  --np-button-bg: transparent;
+  --np-button-color: var(--np-foreground);
+  --np-button-border: transparent;
+  --np-button-hover-bg: var(--np-muted);
+}
+
+.np-button-destructive,
+.np-button[data-variant="destructive"] {
+  --np-button-bg: color-mix(in oklch, var(--np-destructive), transparent 80%);
+  --np-button-color: var(--np-destructive);
+  --np-button-border: transparent;
+  --np-button-hover-bg: color-mix(
+    in oklch,
+    var(--np-destructive),
+    transparent 70%
+  );
+  --np-ring: color-mix(in oklch, var(--np-destructive), transparent 50%);
+}
+
+/* Link */
+.np-button-link,
+.np-button[data-variant="link"] {
+  --np-button-bg: transparent;
+  --np-button-border: transparent;
+  --np-button-hover-bg: transparent;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 0.325rem;
+  --np-button-color: var(--np-primary);
+  &:hover {
+    --np-button-bg: transparent;
+    --np-button-border: transparent;
+    --np-button-hover-bg: transparent;
+    --np-button-color: var(--np-primary);
+    text-decoration: underline;
+  }
+}
+
+/* Sizes */
+
+.np-button-xs,
+.np-button[data-size="xs"] {
+  --np-button-height: 1.5rem;
+  --np-button-padding-x: 0.5rem;
+  --np-button-font-size: 0.75rem;
+  --np-button-gap: 0.25rem;
+  --np-button-radius: min(var(--np-radius-md), 10px);
+
+  svg:not([class]) {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+}
+
+.np-button-sm,
+.np-button[data-size="sm"] {
+  --np-button-height: 1.75rem;
+  --np-button-padding-x: 0.625rem;
+  --np-button-font-size: 0.8rem;
+  --np-button-gap: 0.25rem;
+  svg:not([class]) {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+}
+
+.np-button-lg,
+.np-button[data-size="lg"] {
+  --np-button-height: 2.25rem;
+  --np-button-padding-x: 0.625rem;
+  --np-button-font-size: 0.9375rem;
+  --np-button-gap: 0.375rem;
+}
+
+.np-button-icon,
+.np-button[data-size="icon"],
+.np-button-icon-xs,
+.np-button[data-size="icon-xs"],
+.np-button-icon-sm,
+.np-button[data-size="icon-sm"],
+.np-button-icon-lg,
+.np-button[data-size="icon-lg"] {
+  padding: 0;
+  aspect-ratio: 1 / 1;
+}
+
+.np-button-icon-xs,
+.np-button[data-size="icon-xs"] {
+  --np-button-height: 1.5rem;
+  --np-button-radius: min(var(--np-radius-md), 10px);
+
+  svg:not([class]) {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+}
+
+.np-button-icon-sm,
+.np-button[data-size="icon-sm"] {
+  --np-button-height: 1.75rem;
+  --np-button-padding-x: 0.625rem;
+}
+
+.np-button-icon,
+.np-button[data-size="icon"] {
+  --np-button-height: 2rem;
+}
+
+.np-button-icon-lg,
+.np-button[data-size="icon-lg"] {
+  --np-button-height: 2.25rem;
+}
+
+/* Loading state */
+
+.np-button[data-loading] > * {
+  visibility: hidden;
+}
+
+.np-button[data-state="loading"],
+.np-button[data-loading] {
+  position: relative;
+  pointer-events: none;
+  opacity: 0.8;
+  cursor: progress;
+}
+
+.np-button[data-state="loading"],
+.np-button[data-loading]::before {
+  content: "";
+
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+
+  animation: np-button-spin 0.6s linear infinite;
+}
+
+@keyframes np-button-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .np-button[data-state="loading"]::before,
+  .np-button[data-loading]::before {
+    animation-duration: 1.2s;
+  }
+}
