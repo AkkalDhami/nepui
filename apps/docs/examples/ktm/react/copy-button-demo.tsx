@@ -11,6 +11,7 @@ export default function CopyButtonDemo() {
         size="icon"
         aria-label="Copy command"
       />
+
       <CopyButton value="npx nepui@latest add copy-button --target react">
         Copy
       </CopyButton>
@@ -21,6 +22,8 @@ export default function CopyButtonDemo() {
         size="icon"
         aria-label="Copy command"
       />
+
+      <CopyButton value={() => window.location.href}> Copy URL </CopyButton>
     </>
   )
 }

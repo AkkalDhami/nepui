@@ -1,0 +1,82 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "nepui",
+  "homepage": "https://nepui.vercel.app",
+  "items": [
+    {
+      "name": "button",
+      "type": "registry:component",
+      "title": "Button",
+      "description": "A button triggers an action, submits a form, or performs another user-initiated operation.",
+      "files": [
+        {
+          "path": "registry/styles/tokens.css",
+          "type": "registry:component",
+          "target": "components/nepui/tokens.css"
+        },
+        {
+          "path": "registry/react/button/button.tsx",
+          "type": "registry:component",
+          "target": "components/nepui/button/button.tsx"
+        },
+        {
+          "path": "registry/react/button/button.css",
+          "type": "registry:component",
+          "target": "components/nepui/button/button.css"
+        },
+        {
+          "path": "registry/react/button/index.tsx",
+          "type": "registry:component",
+          "target": "components/nepui/button/index.tsx"
+        }
+      ]
+    },
+    {
+      "name": "copy-button",
+      "type": "registry:component",
+      "title": "Copy Button",
+      "description": "A button for copying text or content to the clipboard.",
+      "files": [
+        {
+          "path": "registry/react/copy-button/copy-button.tsx",
+          "type": "registry:component",
+          "target": "components/nepui/copy-button/copy-button.tsx"
+        },
+        {
+          "path": "registry/react/copy-button/copy-button.css",
+          "type": "registry:component",
+          "target": "components/nepui/copy-button/copy-button.css"
+        },
+        {
+          "path": "registry/react/copy-button/index.tsx",
+          "type": "registry:component",
+          "target": "components/nepui/copy-button/index.tsx"
+        }
+      ]
+    },
+
+    {
+      "name": "copy-button",
+      "type": "registry:component",
+      "title": "Copy-button",
+      "description": "An indicator that can be used to show a loading state.",
+      "files": [
+        {
+          "path": "registry/react/copy-button/copy-button.tsx",
+          "type": "registry:component",
+          "target": "components/nepui/copy-button/copy-button.tsx"
+        },
+        {
+          "path": "registry/react/copy-button/copy-button.css",
+          "type": "registry:component",
+          "target": "components/nepui/copy-button/copy-button.css"
+        },
+        {
+          "path": "registry/react/copy-button/index.tsx",
+          "type": "registry:component",
+          "target": "components/nepui/copy-button/index.tsx"
+        }
+      ]
+    }
+  ]
+}
