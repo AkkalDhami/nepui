@@ -10,7 +10,7 @@
       "description": "A button triggers an action, submits a form, or performs another user-initiated operation.",
       "files": [
         {
-          "path": "registry/tokens.css",
+          "path": "registry/styles/tokens.css",
           "type": "registry:component",
           "target": "components/nepui/tokens.css"
         },
@@ -32,25 +32,49 @@
       ]
     },
     {
-      "name": "spinner",
+      "name": "copy-button",
       "type": "registry:component",
-      "title": "Spinner",
+      "title": "Copy Button",
+      "description": "A button for copying text or content to the clipboard.",
+      "files": [
+        {
+          "path": "registry/react/copy-button/copy-button.tsx",
+          "type": "registry:component",
+          "target": "components/nepui/copy-button/copy-button.tsx"
+        },
+        {
+          "path": "registry/react/copy-button/copy-button.css",
+          "type": "registry:component",
+          "target": "components/nepui/copy-button/copy-button.css"
+        },
+        {
+          "path": "registry/react/copy-button/index.tsx",
+          "type": "registry:component",
+          "target": "components/nepui/copy-button/index.tsx"
+        }
+      ]
+    },
+
+    {
+      "name": "copy-button",
+      "type": "registry:component",
+      "title": "Copy-button",
       "description": "An indicator that can be used to show a loading state.",
       "files": [
         {
-          "path": "registry/react/spinner/spinner.tsx",
+          "path": "registry/react/copy-button/copy-button.tsx",
           "type": "registry:component",
-          "target": "components/nepui/spinner/spinner.tsx"
+          "target": "components/nepui/copy-button/copy-button.tsx"
         },
         {
-          "path": "registry/react/spinner/spinner.css",
+          "path": "registry/react/copy-button/copy-button.css",
           "type": "registry:component",
-          "target": "components/nepui/spinner/spinner.css"
+          "target": "components/nepui/copy-button/copy-button.css"
         },
         {
-          "path": "registry/react/spinner/index.tsx",
+          "path": "registry/react/copy-button/index.tsx",
           "type": "registry:component",
-          "target": "components/nepui/spinner/index.tsx"
+          "target": "components/nepui/copy-button/index.tsx"
         }
       ]
     }
