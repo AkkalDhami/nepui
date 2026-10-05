@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@nepui/react/button"
+import { Button } from "@/registry/react/button"
 import { ArrowUpIcon } from "@phosphor-icons/react"
 
 export default function ButtonRounded() {

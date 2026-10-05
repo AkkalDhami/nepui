@@ -1,6 +1,6 @@
 "use client"
 
-import { Spinner } from "@nepui/react/spinner"
+import { Spinner } from "@/registry/react/spinner"
 
 export default function SpinnerColor() {
   return (
