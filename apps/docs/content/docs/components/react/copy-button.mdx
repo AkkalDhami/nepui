@@ -1,0 +1,296 @@
+---
+title: Copy Button
+description: A button for copying text or content to the clipboard.
+---
+
+<ComponentPreview
+  name="copy-button-demo"
+  type="example"
+/>
+
+---
+
+## Installation
+
+<Tabs defaultValue="cli" className="mt-6 gap-0">
+<TabsList className="mb-0 bg-transparent" variant="line">
+
+<TabsTrigger value="cli" className="text-base pb-2">Command</TabsTrigger>
+<TabsTrigger value="manual" className="text-base pb-2">Manual</TabsTrigger>
+
+</TabsList>
+<TabsContent value="cli">
+<ReactCodeBlockCommand
+  shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/copy-button.json"
+  nepui="npx nepui@latest add copy-button --target react"
+/>
+</TabsContent>
+
+<TabsContent value="manual" className="mt-0">
+<Steps>
+<Step>Add the nepui design tokens.</Step>
+<ComponentSource
+target="react"
+name="button"
+title="components/nepui/tokens.css"
+fileTarget="components/nepui/tokens.css"
+/>
+
+<Step>Install the required components.</Step>
+
+- [Button](/docs/components/react/button)
+
+<Step>Add the copy-button styles.</Step>
+<ComponentSource
+target="react"
+name="copy-button"
+title="components/nepui/copy-button/copy-button.css"
+fileTarget="components/nepui/copy-button/copy-button.css"
+/>
+
+<Step>Add the CopyButton component.</Step>
+<ComponentSource
+target="react"
+name="button"
+title="components/nepui/copy-button/copy-button.tsx"
+fileTarget="components/nepui/copy-button/copy-button.tsx"
+/>
+
+<Step>Add the copy-button entry point.</Step>
+<ComponentSource
+target="react"
+name="button"
+title="components/nepui/copy-button/index.tsx"
+fileTarget="components/nepui/copy-button/index.tsx"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+</Steps>
+</TabsContent>
+
+</Tabs>
+
+---
+
+## Usage
+
+```tsx
+import { CopyButton } from "@/components/nepui/copy-button"
+```
+
+Pass a string to the `value` prop.
+```tsx
+<CopyButton value="Hello, World!">
+  Copy
+</CopyButton>
+```
+
+---
+
+## Copy dynamic content
+
+Use a function when the value needs to be resolved at click time.
+
+```tsx
+<CopyButton value={() => window.location.href}>
+  Copy URL
+</CopyButton>
+```
+
+This is useful when the value can change while the component is mounted.
+
+---
+
+## Copy from an Element
+
+The `target` prop can reference an element using either a React ref or a CSS selector.
+
+#### Using a ref
+
+```tsx
+const codeRef = React.useRef<HTMLPreElement>(null)
+
+return (
+  <>
+    <pre ref={codeRef}>
+      <code>npx nepui@latest add copy-button</code>
+    </pre>
+
+    <CopyButton target={codeRef}>
+      Copy code
+    </CopyButton>
+  </>
+)
+```
+
+#### Using a CSS selector
+
+```tsx
+<pre id="install-command">
+  <code>npx nepui@latest add copy-button</code>
+</pre>
+
+<CopyButton target="#install-command">
+  Copy
+</CopyButton>
+```
+
+For `<input>` and `<textarea>` elements, the component copies their `value`. For other elements, it copies their `textContent`.
+
+---
+
+## Copied State
+
+After a successful copy, the button enters its copied state for `2000ms` by default.
+
+```tsx
+<CopyButton value="Copied content">
+  Copy
+</CopyButton>
+```
+
+The component automatically changes:
+
+* Copy icon -> Check icon
+* Copy label -> Copied label
+* `aria-label` -> `Copied`
+
+The duration can be customized with the `timeout` prop.
+
+```tsx
+<CopyButton
+  value="Hello"
+  timeout={3000}
+>
+  Copy
+</CopyButton>
+```
+
+---
+
+## Custom Copied Text
+
+Use `copiedText` to customize the copied-state label.
+
+```tsx
+<CopyButton
+  value="pnpm add nepui"
+  copiedText="Copied!"
+>
+  Copy command
+</CopyButton>
+```
+
+---
+
+## Callbacks
+
+#### `onCopy`
+
+Called after the text has been successfully copied.
+
+```tsx
+<CopyButton
+  value="pnpm add nepui"
+  onCopy={(text) => {
+    console.log("Copied:", text)
+  }}
+>
+  Copy
+</CopyButton>
+```
+
+#### `onCopyError`
+
+Called when the clipboard operation fails.
+
+```tsx
+<CopyButton
+  value="pnpm add nepui"
+  onCopyError={(text) => {
+    console.error("Failed to copy:", text)
+  }}
+>
+  Copy
+</CopyButton>
+```
+
+---
+
+## Event Handling
+
+`CopyButton` supports the standard button event handlers.
+
+```tsx
+<CopyButton
+  value="Hello"
+  onClick={() => {
+    console.log("Button clicked")
+  }}
+>
+  Copy
+</CopyButton>
+```
+
+If `onClick` calls `event.preventDefault()`, the copy operation is skipped.
+
+---
+## API Reference
+
+| Prop          | Type                               | Default     | Description                                                       |
+| ------------- | ---------------------------------- | ----------- | ----------------------------------------------------------------- |
+| `value`       | `string \| (() => string)`         | —           | Text to copy. A function is evaluated when the button is clicked. |
+| `target`      | `string \| RefObject<HTMLElement>` | —           | Element to copy from using a CSS selector or React ref.           |
+| `copiedText`  | `string`                           | `"Copied"`  | Label displayed while the copied state is active.                 |
+| `timeout`     | `number`                           | `2000`      | Duration of the copied state in milliseconds.                     |
+| `variant`     | `ButtonVariant`                    | `"outline"` | Visual variant inherited from `Button`.                           |
+| `size`        | `ButtonSize`                       | `"default"` | Size inherited from `Button`.                                     |
+| `onCopy`      | `(text: string) => void`           | —           | Called after a successful copy.                                   |
+| `onCopyError` | `(text: string) => void`           | —           | Called when copying fails.                                        |
+| `className`   | `string`                           | —           | Additional CSS classes.                                           |
+| `children`    | `ReactNode`                        | —           | Button label.                                                     |
+| `aria-label`  | `string`                           | —           | Accessible label for the button.                                  |
+
+All standard `HTMLButtonElement` attributes are also supported.
+
+---
+
+## Styling
+
+The component uses the NepUI `Button` styles and adds the following component-specific class:
+
+```css
+.np-copy-button
+```
+
+The copied state is exposed through:
+
+```css
+.np-copy-button[data-copied]
+```
+
+This allows the visual state to be customized without modifying the component logic.
+
+For example:
+
+```css
+.np-copy-button[data-copied] {
+  /* custom copied-state styles */
+}
+```
+
+The copy and check icons are also exposed through:
+
+```css
+[data-copy-icon]
+[data-copied-icon]
+```
+
+Labels use:
+
+```css
+[data-copy-label]
+[data-copied-label]
+```
+
+These hooks can be used to customize transitions and animations.
