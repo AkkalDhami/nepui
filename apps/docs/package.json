@@ -11,6 +11,7 @@
     "format": "prettier --write \"**/*.{ts,tsx}\"",
     "typecheck": "tsc --noEmit",
     "examples:build": "tsx scripts/build-examples.mts",
+    "registry:build:react": "pnpm dlx shadcn@4.20.0 build ./registry-react.json --output ./public/r/react",
     "colors:generate": "tsx scripts/generate-colors.mts ../../registry/styles/palette.css ../../registry/styles/colors.css",
     "colors:generate:public": "tsx scripts/generate-colors.mts ../../registry/styles/palette.css ./public/styles/colors.css",
     "palette:generate": "tsx scripts/generate-palette.mts ../../registry/styles/palette.css"

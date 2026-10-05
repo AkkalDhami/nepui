@@ -3,7 +3,8 @@
 
 import * as React from "react"
 
-import "../../tokens.css"
+// NOTE: Update path if needed
+import "../../styles/tokens.css"
 import "./button.css"
 
 export type ButtonVariant =
@@ -23,7 +24,6 @@ interface ButtonBaseProps {
   variant?: ButtonVariant
   size?: ButtonSize
   loading?: boolean
-  invalid?: boolean
 }
 
 interface ButtonAsButtonProps
@@ -58,7 +58,6 @@ export const Button = React.forwardRef<
     variant = "default",
     size = "default",
     loading = false,
-    invalid = false,
   } = props
 
   const classes = cn("np-button", className)
@@ -72,7 +71,6 @@ export const Button = React.forwardRef<
       variant: _variant,
       size: _size,
       loading: _loading,
-      invalid: _invalid,
       className: _className,
       ...linkProps
     } = props
@@ -90,7 +88,6 @@ export const Button = React.forwardRef<
         ref={ref as React.Ref<HTMLAnchorElement>}
         href={href}
         className={cn(classes, "np-button-link")}
-        aria-invalid={invalid || undefined}
         aria-busy={loading || undefined}
         aria-disabled={loading || undefined}
         data-variant={variant}
@@ -113,7 +110,6 @@ export const Button = React.forwardRef<
     variant: _variant,
     size: _size,
     loading: _loading,
-    invalid: _invalid,
     className: _className,
     ...buttonProps
   } = props
@@ -126,7 +122,6 @@ export const Button = React.forwardRef<
       type={type}
       className={classes}
       disabled={isDisabled}
-      aria-invalid={invalid}
       aria-busy={loading}
       data-variant={variant}
       data-size={size}

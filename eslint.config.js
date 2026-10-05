@@ -20,7 +20,7 @@ export default tseslint.config(
 
   // Browser JavaScript
   {
-    files: ["registry/html/**/*.js"],
+    files: ["**/*.js", "registry/react/**/*./*.js"],
     languageOptions: {
       globals: globals.browser,
     },

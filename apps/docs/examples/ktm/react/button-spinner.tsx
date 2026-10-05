@@ -1,7 +1,7 @@
 "use client"
 
-import { Button } from "@nepui/react/button"
-import { Spinner } from "@nepui/react/spinner"
+import { Button } from "@/registry/react/button"
+import { Spinner } from "@/registry/react/spinner"
 
 export default function ButtonSpinner() {
   return (

@@ -3,8 +3,8 @@
 import * as React from "react"
 
 import "./copy-button.css"
-import { Button, ButtonSize, ButtonVariant, cn } from "../button/button"
-import { useCopyToClipboard } from "./hooks/use-copy-to-clipboard"
+import { Button, ButtonSize, ButtonVariant } from "@/registry/react/button"
+import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
 
 function CopyIcon() {
   return (
@@ -53,6 +53,12 @@ function CheckIcon() {
       />
     </svg>
   )
+}
+
+function cn(
+  ...classes: Array<string | number | boolean | null | undefined>
+): string {
+  return classes.filter(Boolean).join(" ")
 }
 
 type CopyTarget = string | React.RefObject<HTMLElement | null>
@@ -119,7 +125,7 @@ export const CopyButton = React.forwardRef<HTMLButtonElement, CopyButtonProps>(
     },
     ref
   ) => {
-    const { copied, copy } = useCopyToClipboard({ timeout })
+    const { copied, copy } = useCopyToClipboard(timeout)
 
     const handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
       onClick?.(event)
@@ -149,19 +155,22 @@ export const CopyButton = React.forwardRef<HTMLButtonElement, CopyButtonProps>(
         onClick={handleClick}
         {...props}
       >
-        <span data-np-icon-stack="">
-          <span data-copy-icon="">
+        {/* Icon stack */}
+        <span data-np-icon-stack>
+          {/* Copy icon */}
+          <span data-copy-icon>
             <CopyIcon />
           </span>
-          <span data-copied-icon="">
+          {/* Copied icon */}
+          <span data-copied-icon>
             <CheckIcon />
           </span>
         </span>
 
         {children != null && (
-          <span data-np-label-stack="">
-            <span data-copy-label="">{children}</span>
-            <span data-copied-label="">{copiedText}</span>
+          <span data-np-label-stack>
+            <span data-copy-label>{children}</span>
+            <span data-copied-label>{copiedText}</span>
           </span>
         )}
       </Button>

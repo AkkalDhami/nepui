@@ -102,6 +102,8 @@ function SidebarLink({
   const pathname = normalize(usePathname())
   const active = urls.includes(pathname)
 
+  // const { } = use
+
   const isNew = PAGES_NEW.includes(url)
 
   return (

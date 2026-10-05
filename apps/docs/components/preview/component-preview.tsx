@@ -1,9 +1,7 @@
 import { highlightCode } from "@/lib/highlight-code"
 import { getHtmlComponentSource, getReactComponentSource } from "@/lib/registry"
 import { HtmlComponentPreview } from "./html-component-preview"
-import { Button } from "@nepui/react/button/button"
 import { ReactPreview } from "./react-preview"
-import { ArrowUpIcon } from "@phosphor-icons/react/ssr"
 import { ComponentSource, trimCode } from "@/components/docs/component-source"
 import { getExample } from "@/lib/get-example"
 import { createElement } from "react"
@@ -72,6 +70,7 @@ export async function ComponentPreview({
 
     const refactoredSource = source
       ?.replaceAll("@nepui/react/", "@/components/nepui/")
+      ?.replaceAll("@/registry/react/", "@/components/nepui/")
       ?.replaceAll("export default function", "export function")
 
     const highlightedCode = await highlightCode(
@@ -115,21 +114,4 @@ export async function ComponentPreview({
       </>
     )
   }
-
-  return (
-    <ReactPreview>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "start",
-          gap: "8px",
-        }}
-      >
-        <Button variant="outline">Default</Button>
-        <Button size="icon" aria-label="Submit" variant="outline">
-          <ArrowUpIcon />
-        </Button>
-      </div>
-    </ReactPreview>
-  )
 }
