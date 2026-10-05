@@ -17,7 +17,7 @@
     "prepare": "husky",
     "precommit": "lint-staged",
     "registry:build:html": "pnpm dlx shadcn@4.20.0 build ./registry-html.json --output ./apps/docs/public/r/html",
-    "registry:build:react": "pnpm dlx shadcn@4.20.0 build ./registry-react.json --output ./apps/docs/public/r/react",
+    "registry:build:react": "pnpm --filter docs registry:build:react",
     "examples:build": "pnpm --filter docs examples:build",
     "colors:generate": "pnpm --filter docs colors:generate && pnpm --filter docs colors:generate:public",
     "palette:generate": "pnpm --filter docs palette:generate"

@@ -170,10 +170,6 @@ function SidebarGroup({
 }
 
 function SidebarItems({ tree }: { tree: PageTree.Root }) {
-  console.log({
-    links: tree.children,
-  })
-
   return (
     <>
       <SidebarGroup label="Sections" links={SECTION_LINKS} />
