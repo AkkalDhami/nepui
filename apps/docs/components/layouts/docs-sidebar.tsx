@@ -102,6 +102,8 @@ function SidebarLink({
   const pathname = normalize(usePathname())
   const active = urls.includes(pathname)
 
+  // const { } = use
+
   const isNew = PAGES_NEW.includes(url)
 
   return (
@@ -168,6 +170,10 @@ function SidebarGroup({
 }
 
 function SidebarItems({ tree }: { tree: PageTree.Root }) {
+  console.log({
+    links: tree.children,
+  })
+
   return (
     <>
       <SidebarGroup label="Sections" links={SECTION_LINKS} />

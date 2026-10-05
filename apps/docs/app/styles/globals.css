@@ -1,10 +1,10 @@
-@import url("https://nepui.vercel.app/styles/colors.css");
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "fumadocs-ui/css/neutral.css";
 @import "fumadocs-ui/css/preset.css";
 @import "./typeset.css";
+@import "../../registry/styles/colors.css";
 
 @custom-variant dark (&:is(.dark *));
 
