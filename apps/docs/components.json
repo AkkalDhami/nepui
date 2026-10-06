@@ -22,7 +22,7 @@
   "menuColor": "default-translucent",
   "menuAccent": "subtle",
   "registries": {
-    "@nepui": "https://nepui.vercel.app/r/react/{name}.json",
+    "@nepui": "http://localhost:3000/r/react/{name}.json",
     "@kobra": "https://kobra.systems/r/{name}.json"
   }
 }
