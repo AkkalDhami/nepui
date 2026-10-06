@@ -1,137 +1,64 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"
 
-import * as React from "react"
+import { Button as ButtonPrimitive } from "@base-ui/react/button"
+import { cva, type VariantProps } from "class-variance-authority"
+import { cn } from "cn"
 
-// NOTE: Update path if needed
-import "../../styles/tokens.css"
+// NOTE: Update these paths if needed
+import "../tokens.css"
 import "./button.css"
 
-export type ButtonVariant =
-  "default" | "outline" | "secondary" | "ghost" | "destructive"
-
-export type ButtonSize =
-  "xs" | "sm" | "default" | "lg" | "icon" | "icon-xs" | "icon-sm" | "icon-lg"
-
-export function cn(
-  ...classes: Array<string | number | boolean | null | undefined>
-): string {
-  return classes.filter(Boolean).join(" ")
-}
-
-interface ButtonBaseProps {
-  children?: React.ReactNode
-  variant?: ButtonVariant
-  size?: ButtonSize
-  loading?: boolean
-}
-
-interface ButtonAsButtonProps
-  extends
-    ButtonBaseProps,
-    Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof ButtonBaseProps> {
-  as?: "button"
-  href?: never
-}
-
-interface ButtonAsLinkProps
-  extends
-    ButtonBaseProps,
-    Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof ButtonBaseProps> {
-  as: "link"
-  href: string
-}
-
-export type ButtonProps = ButtonAsButtonProps | ButtonAsLinkProps
-
-// Real discriminant check on `props.as`, so TS can actually narrow the union.
-function isLinkProps(props: ButtonProps): props is ButtonAsLinkProps {
-  return props.as === "link"
-}
-
-export const Button = React.forwardRef<
-  HTMLButtonElement | HTMLAnchorElement,
-  ButtonProps
->((props, ref) => {
-  const {
-    className,
-    variant = "default",
-    size = "default",
-    loading = false,
-  } = props
-
-  const classes = cn("np-button", className)
-
-  if (isLinkProps(props)) {
-    const {
-      as: _as,
-      href,
-      onClick,
-      children,
-      variant: _variant,
-      size: _size,
-      loading: _loading,
-      className: _className,
-      ...linkProps
-    } = props
-
-    const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-      if (loading) {
-        event.preventDefault()
-        return
-      }
-      onClick?.(event)
-    }
-
-    return (
-      <a
-        ref={ref as React.Ref<HTMLAnchorElement>}
-        href={href}
-        className={cn(classes, "np-button-link")}
-        aria-busy={loading || undefined}
-        aria-disabled={loading || undefined}
-        data-variant={variant}
-        data-size={size}
-        data-state={loading ? "loading" : undefined}
-        {...linkProps}
-        onClick={handleClick}
-      >
-        {children}
-      </a>
-    )
-  }
-
-  const {
-    as: _as,
-    disabled,
-    type = "button",
-    onClick,
-    children,
-    variant: _variant,
-    size: _size,
-    loading: _loading,
-    className: _className,
-    ...buttonProps
-  } = props
-
-  const isDisabled = disabled || loading
-
-  return (
-    <button
-      ref={ref as React.Ref<HTMLButtonElement>}
-      type={type}
-      className={classes}
-      disabled={isDisabled}
-      aria-busy={loading}
-      data-variant={variant}
-      data-size={size}
-      data-state={loading ? "loading" : isDisabled ? "disabled" : undefined}
-      {...buttonProps}
-      onClick={onClick}
-    >
-      {children}
-    </button>
-  )
+const buttonVariants = cva("np-button", {
+  variants: {
+    variant: {
+      default: "",
+      outline: "np-button-outline",
+      secondary: "np-button-secondary",
+      ghost: "np-button-ghost",
+      destructive: "np-button-destructive",
+      link: "np-button-link",
+    },
+    size: {
+      default: "",
+      xs: "np-button-xs",
+      sm: "np-button-sm",
+      lg: "np-button-lg",
+      icon: "np-button-icon",
+      "icon-xs": "np-button-icon-xs",
+      "icon-sm": "np-button-icon-sm",
+      "icon-lg": "np-button-icon-lg",
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+    size: "default",
+  },
 })
 
-Button.displayName = "Button"
+type ButtonVariants = VariantProps<typeof buttonVariants>
+
+export type ButtonVariant = NonNullable<ButtonVariants["variant"]>
+export type ButtonSize = NonNullable<ButtonVariants["size"]>
+export type ButtonProps = ButtonPrimitive.Props & ButtonVariants
+
+function Button({
+  className,
+  variant = "default",
+  size = "default",
+  ...props
+}: ButtonProps) {
+  return (
+    <ButtonPrimitive
+      data-slot="button"
+      className={(state) =>
+        cn(
+          buttonVariants({ variant, size }),
+          typeof className === "function" ? className(state) : className
+        )
+      }
+      {...props}
+    />
+  )
+}
+
+export { Button, buttonVariants }

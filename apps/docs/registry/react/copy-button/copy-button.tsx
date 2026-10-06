@@ -1,10 +1,11 @@
 "use client"
 
 import * as React from "react"
-
-import "./copy-button.css"
 import { Button, ButtonSize, ButtonVariant } from "@/registry/react/button"
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
+import { cn } from "cn"
+
+import "./copy-button.css"
 
 function CopyIcon() {
   return (
@@ -53,12 +54,6 @@ function CheckIcon() {
       />
     </svg>
   )
-}
-
-function cn(
-  ...classes: Array<string | number | boolean | null | undefined>
-): string {
-  return classes.filter(Boolean).join(" ")
 }
 
 type CopyTarget = string | React.RefObject<HTMLElement | null>

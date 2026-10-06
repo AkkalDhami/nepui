@@ -1,6 +1,10 @@
 "use client"
 
 import type { CSSProperties, HTMLAttributes } from "react"
+import { cn } from "cn"
+
+// NOTE: Update these paths if needed
+import "../tokens.css"
 import "./spinner.css"
 
 const SIZES = ["xs", "sm", "md", "lg", "xl"] as const
@@ -48,12 +52,6 @@ const isPreset = <T extends readonly string[]>(
   value: string
 ): value is T[number] => (list as readonly string[]).includes(value)
 
-function cn(
-  ...classes: Array<string | number | boolean | null | undefined>
-): string {
-  return classes.filter(Boolean).join(" ")
-}
-
 export function Spinner({
   size,
   thickness,
@@ -88,6 +86,7 @@ export function Spinner({
 
   return (
     <span
+      data-slot="spinner"
       role="status"
       aria-label={label}
       className={cn(`np-spinner`, className)}
