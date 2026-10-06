@@ -18,11 +18,6 @@
           "path": "registry/html/button/button.css",
           "type": "registry:component",
           "target": "styles/button.css"
-        },
-        {
-          "path": "registry/html/button/tokens.css",
-          "type": "registry:component",
-          "target": "styles/tokens.css"
         }
       ]
     },
