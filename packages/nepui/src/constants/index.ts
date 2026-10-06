@@ -3,7 +3,7 @@ export const DEFAULT_PRODUCTION_REGISTRY_URL = "https://nepui.vercel.app"
 export const DEFAULT_DEVELOPMENT_REGISTRY_URL = "http://localhost:3000"
 
 export const DEFAULT_PATHS = {
-  react: "components/ui",
+  react: "components/nepui",
   html: "html",
   css: "styles",
 } as const

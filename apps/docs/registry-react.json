@@ -48,30 +48,6 @@
           "target": "components/nepui/spinner/index.ts"
         }
       ]
-    },
-    {
-      "name": "copy-button",
-      "type": "registry:component",
-      "title": "Copy Button",
-      "description": "A button for copying text or content to the clipboard.",
-      "registryDependencies": ["https://nepui.vercel.app/r/react/button.json"],
-      "files": [
-        {
-          "path": "registry/react/copy-button/copy-button.tsx",
-          "type": "registry:component",
-          "target": "components/nepui/copy-button/copy-button.tsx"
-        },
-        {
-          "path": "registry/react/copy-button/copy-button.css",
-          "type": "registry:component",
-          "target": "components/nepui/copy-button/copy-button.css"
-        },
-        {
-          "path": "registry/react/copy-button/index.ts",
-          "type": "registry:component",
-          "target": "components/nepui/copy-button/index.ts"
-        }
-      ]
     }
   ]
 }

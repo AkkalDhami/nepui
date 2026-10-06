@@ -37,15 +37,16 @@ export function resolveRelativeDestination(
   const ext = path.extname(filename).toLowerCase()
 
   if (target === "react") {
-    return path.join(DEFAULT_PATHS.react, componentName, filename)
+    return path.join(
+      file.target ? file.target : (DEFAULT_PATHS.react, componentName, filename)
+    )
   }
 
-  // target === "html"
   if (ext === ".css") {
-    return path.join(DEFAULT_PATHS.css, filename)
+    return path.join(file.target ? file.target : (DEFAULT_PATHS.css, filename))
   }
 
-  return path.join(DEFAULT_PATHS.html, filename)
+  return path.join(file.target ? file.target : (DEFAULT_PATHS.html, filename))
 }
 
 /**
