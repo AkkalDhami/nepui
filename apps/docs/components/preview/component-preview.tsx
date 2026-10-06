@@ -1,11 +1,12 @@
 import { highlightCode } from "@/lib/highlight-code"
-import { getHtmlComponentSource, getReactComponentSource } from "@/lib/registry"
-import { HtmlComponentPreview } from "./html-component-preview"
+import { getExampleSource } from "@/lib/registry"
 import { ReactPreview } from "./react-preview"
 import { ComponentSource, trimCode } from "@/components/docs/component-source"
 import { getExample } from "@/lib/get-example"
 import { createElement } from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { HtmlPreview } from "./html-preview"
+import { cn } from "cn"
 
 interface ComponentPreviewProps {
   name: string
@@ -18,44 +19,99 @@ export async function ComponentPreview({
   name,
   target = "react",
   className,
-  type = "default",
 }: ComponentPreviewProps) {
+  // if (target === "html") {
+  //   const source = await getHtmlComponentSource(name)
+
+  //   if (!source) {
+  //     return (
+  //       <p className="my-6 text-sm text-muted-foreground">
+  //         HTML preview unavailable for <code>{name}</code>.
+  //       </p>
+  //     )
+  //   }
+
+  //   // const [htmlHighlighted, cssHighlighted, tokensHighlighted, jsHighlighted] =
+  //   //   await Promise.all([
+  //   //     highlightCode(source.html, "html", "ayu-dark"),
+  //   //     highlightCode(source.css, "css", "ayu-dark"),
+  //   //     highlightCode(source?.tokens || "", "css", "ayu-dark"),
+  //   //     source?.js && highlightCode(source?.js, "js"),
+  //   //   ])
+
+  //   // return (
+  //   //   <HtmlComponentPreview
+  //   //     name={name}
+  //   //     html={source.html}
+  //   //     tokens={source?.tokens || ""}
+  //   //     css={source.css}
+  //   //     js={source.js}
+  //   //     htmlHighlighted={htmlHighlighted}
+  //   //     tokensHighlighted={tokensHighlighted}
+  //   //     cssHighlighted={cssHighlighted}
+  //   //     jsHighlighted={source?.js ? jsHighlighted : null}
+  //   //     className={className}
+  //   //   />
+  //   // )
+  // }
+
   if (target === "html") {
-    const source = await getHtmlComponentSource(name)
+    const source = await getExampleSource({
+      target: "html",
+      name,
+    })
 
     if (!source) {
       return (
-        <p className="my-6 text-sm text-muted-foreground">
-          HTML preview unavailable for <code>{name}</code>.
+        <p className="mt-6 text-sm text-muted-foreground">
+          Example <code>{name}</code> not found.
         </p>
       )
     }
 
-    const [htmlHighlighted, cssHighlighted, tokensHighlighted, jsHighlighted] =
-      await Promise.all([
-        highlightCode(source.html, "html", "ayu-dark"),
-        highlightCode(source.css, "css", "ayu-dark"),
-        highlightCode(source?.tokens || "", "css", "ayu-dark"),
-        source?.js && highlightCode(source?.js, "js"),
-      ])
+    const highlightedCode = await highlightCode(trimCode(source), "html")
+
+    const componentName = name.split("-")[0]
+
     return (
-      <HtmlComponentPreview
-        name={name}
-        html={source.html}
-        tokens={source?.tokens || ""}
-        css={source.css}
-        js={source.js}
-        htmlHighlighted={htmlHighlighted}
-        tokensHighlighted={tokensHighlighted}
-        cssHighlighted={cssHighlighted}
-        jsHighlighted={source?.js ? jsHighlighted : null}
-        className={className}
-      />
+      <Tabs defaultValue="preview" className={cn("mt-4 gap-0", className)}>
+        <TabsList className="bg-transparent" variant="line">
+          <TabsTrigger value="preview" className="text-base">
+            Preview
+          </TabsTrigger>
+
+          <TabsTrigger value="code" className="text-base">
+            Code
+          </TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="preview">
+          <HtmlPreview
+            html={source}
+            cssPath={[
+              `apps/docs/registry/html/${componentName}/button.css`,
+              `apps/docs/registry/html/tokens.css`,
+            ]}
+            className="mt-6"
+          />
+        </TabsContent>
+
+        <TabsContent value="code">
+          <ComponentSource
+            name={name}
+            code={source}
+            highlightedCode={highlightedCode}
+            language="html"
+            title={`${name}.html`}
+            className="mt-6"
+          />
+        </TabsContent>
+      </Tabs>
     )
   }
 
-  if (type === "example" && target === "react") {
-    const source = await getReactComponentSource({ target, name })
+  if (target === "react") {
+    const source = await getExampleSource({ target, name })
     if (!source) {
       return (
         <p className="mt-6 text-sm text-muted-foreground">
@@ -85,33 +141,31 @@ export async function ComponentPreview({
     })
 
     return (
-      <>
-        <Tabs defaultValue="preview" className="mt-4 gap-0">
-          <TabsList className="bg-transparent" variant="line">
-            <TabsTrigger value="preview" className={"text-base"}>
-              Preview
-            </TabsTrigger>
-            <TabsTrigger value="code" className={"text-base"}>
-              Code
-            </TabsTrigger>
-          </TabsList>
-          <TabsContent value="preview">
-            <ReactPreview className="mt-6 min-h-100">
-              {createElement(ExampleComponent)}
-            </ReactPreview>
-          </TabsContent>
-          <TabsContent value="code">
-            <ComponentSource
-              name={name}
-              code={source}
-              highlightedCode={highlightedCode}
-              language="tsx"
-              title={`${name}.tsx`}
-              className={"mt-6"}
-            />
-          </TabsContent>
-        </Tabs>
-      </>
+      <Tabs defaultValue="preview" className={cn("mt-4 gap-0", className)}>
+        <TabsList className="bg-transparent" variant="line">
+          <TabsTrigger value="preview" className={"text-base"}>
+            Preview
+          </TabsTrigger>
+          <TabsTrigger value="code" className={"text-base"}>
+            Code
+          </TabsTrigger>
+        </TabsList>
+        <TabsContent value="preview">
+          <ReactPreview className="mt-6 min-h-100">
+            {createElement(ExampleComponent)}
+          </ReactPreview>
+        </TabsContent>
+        <TabsContent value="code">
+          <ComponentSource
+            name={name}
+            code={source}
+            highlightedCode={highlightedCode}
+            language="tsx"
+            title={`${name}.tsx`}
+            className={"mt-6"}
+          />
+        </TabsContent>
+      </Tabs>
     )
   }
 }
