@@ -15,11 +15,11 @@ export interface RegistryFile {
 
 /** A single component response: GET /r/<target>/<component>.json */
 export interface RegistryItem {
-  $schema?: string
   name: string
   title?: string
   description?: string
   files: RegistryFile[]
+  registryDependencies?: string[]
 }
 
 /** One entry inside a registry index (list) response. */
@@ -34,7 +34,6 @@ export interface RegistryComponent {
 
 /** The component index response: GET /r/<target>/index.json */
 export interface RegistryIndex {
-  $schema?: string
   name?: string
   target?: Target
   components: RegistryComponent[]

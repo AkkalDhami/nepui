@@ -60,7 +60,13 @@ export function validateRegistryItem(
     name: data["name"],
     files,
   }
-  if (isNonEmptyString(data["$schema"])) item.$schema = data["$schema"]
+  if (
+    Array.isArray(data["registryDependencies"]) &&
+    data["registryDependencies"].length > 0
+  )
+    item.registryDependencies = data["registryDependencies"].filter((dep) =>
+      isNonEmptyString(dep)
+    )
   if (isNonEmptyString(data["title"])) item.title = data["title"]
   if (isNonEmptyString(data["description"]))
     item.description = data["description"]
@@ -149,7 +155,6 @@ export function validateRegistryIndex(
   })
 
   const result: RegistryIndex = { components }
-  if (isNonEmptyString(data["$schema"])) result.$schema = data["$schema"]
   if (isNonEmptyString(data["name"])) result.name = data["name"]
   if (data["target"] === "html" || data["target"] === "react")
     result.target = data["target"]

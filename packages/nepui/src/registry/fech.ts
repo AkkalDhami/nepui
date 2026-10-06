@@ -49,7 +49,43 @@ export async function fetchComponent(
   }
 
   const json = await parseJson(response, url)
-  return validateRegistryItem(json, url)
+  const item = validateRegistryItem(json, url)
+
+  const dependencyItems = await Promise.all(
+    (item.registryDependencies ?? []).map((url) => fetchDependencyRegistry(url))
+  )
+
+  const dependencyFiles = dependencyItems.flatMap((item) => item.files)
+
+  return {
+    ...item,
+    files: [...item.files, ...dependencyFiles],
+  }
+}
+
+export async function fetchDependencyRegistry(
+  url: string
+): Promise<RegistryItem> {
+  const response = await performFetch(url)
+
+  if (response.status === 404) {
+    throw new RegistryError(
+      `Could not find:\n${url}\n\nThe registry responded with status ${response.status}.`,
+      url
+    )
+  }
+
+  if (!response.ok) {
+    throw new RegistryError(
+      `Could not fetch:\n${url}\n\nThe registry responded with status ${response.status}.`,
+      url
+    )
+  }
+
+  const json = await parseJson(response, url)
+  const item = validateRegistryItem(json, url)
+
+  return item
 }
 
 /**

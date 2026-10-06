@@ -25,6 +25,8 @@ export async function addCommand(
   const componentName = validateComponentName(rawComponentName)
   const target = validateTarget(options.target)
 
+  console.log({ target })
+
   const spinner = ora(`Fetching ${componentName}...`).start()
 
   let item
