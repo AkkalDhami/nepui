@@ -3,50 +3,7 @@ import "server-only"
 import fs from "node:fs/promises"
 import path from "node:path"
 import { TargetType } from "@/hooks/use-config"
-
-const REGISTRY_ROOT =
-  process.env.NEPUI_REGISTRY_ROOT ??
-  path.join(process.cwd(), "..", "..", "registry")
-
-async function readOptionalSourceFile(
-  filePath: string
-): Promise<string | null> {
-  try {
-    const contents = await fs.readFile(filePath, "utf-8")
-    return contents.trim()
-  } catch (error) {
-    if ((error as NodeJS.ErrnoException).code === "ENOENT") {
-      return null
-    }
-    throw error
-  }
-}
-
-export interface HtmlComponentSource {
-  html: string
-  css: string
-  tokens: string | null
-  js: string | null
-}
-
-export async function getHtmlComponentSource(
-  name: string
-): Promise<HtmlComponentSource | null> {
-  const dir = path.join(REGISTRY_ROOT, "html", name)
-
-  const [html, css, tokens, js] = await Promise.all([
-    readOptionalSourceFile(path.join(dir, `${name}.html`)),
-    readOptionalSourceFile(path.join(dir, `${name}.css`)),
-    readOptionalSourceFile(path.join(dir, "tokens.css")),
-    readOptionalSourceFile(path.join(dir, `${name}.js`)),
-  ])
-
-  if (html === null || css === null) {
-    return null
-  }
-
-  return { html, css, tokens, js }
-}
+import { ExamplesIndex } from "@/examples/__index__"
 
 export interface RegistryFile {
   path: string
@@ -63,7 +20,7 @@ export interface RegistryItem {
   files: RegistryFile[]
 }
 
-const OUBLIC_REGISTRY_ROOT = path.join(process.cwd(), "public", "r")
+const PUBLIC_REGISTRY_ROOT = path.join(process.cwd(), "public", "r")
 
 export async function getRegistryItem2(
   target: string,
@@ -115,22 +72,38 @@ export async function getRegistryComponent({
   }
 }
 
-export async function getReactComponentSource({
+export async function getExampleSource({
   target,
   name,
   style = "ktm",
 }: RegistryComponentOptions) {
-  const filePath = path.join(
-    process.cwd(),
-    "examples",
-    style,
-    target,
-    `${name}.tsx`
-  )
+  if (target === "react") {
+    const filePath = path.join(
+      process.cwd(),
+      "examples",
+      style,
+      target,
+      `${name}.tsx`
+    )
+
+    try {
+      return await fs.readFile(filePath, "utf8")
+    } catch {
+      return null
+    }
+  }
+
+  const examplePath = ExamplesIndex[style]?.[target]?.[name]
+
+  if (typeof examplePath !== "string") {
+    return null
+  }
 
   try {
-    const content = await fs.readFile(filePath, "utf8")
-    return content
+    return await fs.readFile(
+      path.join(process.cwd(), "examples", examplePath),
+      "utf8"
+    )
   } catch {
     return null
   }
@@ -140,7 +113,7 @@ export async function getRegistryItem(
   target: TargetType,
   component: string
 ): Promise<RegistryItem> {
-  const filePath = path.join(OUBLIC_REGISTRY_ROOT, target, `${component}.json`)
+  const filePath = path.join(PUBLIC_REGISTRY_ROOT, target, `${component}.json`)
 
   const content = await fs.readFile(filePath, "utf8")
 
