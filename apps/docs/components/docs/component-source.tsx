@@ -1,5 +1,5 @@
 import { TargetType } from "@/hooks/use-config"
-import { getIconForLanguageExtension } from "../icons"
+import { getIconForLanguageExtension } from "@/components/icons"
 import { CopyButton } from "./copy-button"
 import { highlightCode } from "@/lib/highlight-code"
 import { readFileFromRoot } from "@/lib/read-file"
@@ -7,7 +7,15 @@ import { getRegistryItem, RegistryFile } from "@/lib/registry"
 import { cn } from "cn"
 
 export function trimCode(code: string | undefined) {
-  return code?.replace(/\r?\n+$/, "") || ""
+  return (
+    code
+      ?.replace(/\r?\n+$/, "")
+      .replaceAll("@/registry/react/", "@/components/nepui/")
+      .replaceAll(
+        'import "../../styles/tokens.css"',
+        'import "../tokens.css"'
+      ) || ""
+  )
 }
 
 export async function ComponentSource({

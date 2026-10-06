@@ -7,27 +7,58 @@ contributor:
     avatar: https://avatars.githubusercontent.com/u/170957638?v=4 
 ---
 
+<ComponentPreview
+  name="spinner-demo"
+  target="html"
+/>
+
+---
+
 ## Installation
 
-```bash
-npx nepui@latest add spinner
-```
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add spinner"
+      className="mt-6"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="spinner"
+        title="styles/spinner.css"
+        fileTarget="styles/spinner.css"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
 
 ---
 
 ## Usage
 
-```html title="spinner.html" showLineNumbers {2} 
+Link the component's CSS file to your HTML document.
+
+```html title="spinner.html" showLineNumbers {2}
 <html>
   <link rel="stylesheet" href="./styles/spinner.css">
 </html>
 ```
 
-After installing the component, add the `data-np-spinner` attribute or the class alias `np-spinner` to an element:
+Then, add the `data-np-spinner` attribute or the class alias `np-spinner` to an element:
 
 ```html title="spinner.html" showLineNumbers
 <span data-np-spinner></span>
 <span class="np-spinner"></span>
+<span class="np-spinner" data-size="lg"></span>
+<span class="np-spinner" data-speed="fast"></span>
+<span class="np-spinner" data-thickness="medium"></span>
+<span class="np-spinner-counter-clockwise" data-np-spinner></span>
 ```
 
 ---
@@ -36,43 +67,16 @@ After installing the component, add the `data-np-spinner` attribute or the class
 
 Use the `data-size` attribute or the class alias to control the spinner size.
 
-<HtmlPreviewTabs
-  className="mt-4"
-  cssPath="registry/html/spinner/spinner.css"
-  html={`
-<span class="np-spinner" data-size="xs"></span>
-<span class="np-spinner" data-size="sm"></span>
-<span class="np-spinner np-spinner-md"></span>
-<span class="np-spinner" data-size="lg"></span>
-<span class="np-spinner np-spinner-xl"></span>
-  `}
-      >
-```html title="spinner.html" showLineNumbers
-<span class="np-spinner" data-size="xs"></span>
-
-<span class="np-spinner" data-size="sm"></span>
-
-<span class="np-spinner np-spinner-md"></span>
-
-<span class="np-spinner" data-size="lg"></span>
-
-<span class="np-spinner np-spinner-xl"></span>
-```
-</HtmlPreviewTabs>
+<ComponentPreview
+  name="spinner-size"
+  target="html"
+/>
 
 Use the `--np-spinner-size` custom property to control the spinner size.
 
-<HtmlPreviewTabs
-  className="mt-4"
-  cssPath="registry/html/spinner/spinner.css"
-  html={`
-<span class="np-spinner" style="--np-spinner-size: 5rem"></span>
-  `}
-      >
 ```html title="spinner.html" showLineNumbers
 <span class="np-spinner" style="--np-spinner-size: 5rem"></span>
 ```
-</HtmlPreviewTabs>
 
 | Size | Data attribute | Class alias |
 | ---- | -------------- | ----------- |
@@ -88,40 +92,16 @@ Use the `--np-spinner-size` custom property to control the spinner size.
 
 Use the `data-speed` attribute to control the spinner's animation speed.
 
-<HtmlPreviewTabs
-  className="mt-4"
-  cssPath="registry/html/spinner/spinner.css"
-  html={`
-<span class="np-spinner" data-speed="slow"></span>
-<span class="np-spinner" data-speed="normal"></span>
-<span class="np-spinner" data-speed="fast"></span>
-<span class="np-spinner" data-speed="faster"></span>
-  `}
-      >
-```html title="spinner.html" showLineNumbers
-<span class="np-spinner" data-speed="slow"></span>
-
-<span class="np-spinner" data-speed="normal"></span>
-
-<span class="np-spinner" data-speed="fast"></span>
-
-<span class="np-spinner" data-speed="faster"></span>
-```
-</HtmlPreviewTabs>
+<ComponentPreview
+  name="spinner-speed"
+  target="html"
+/>
 
 Use the `--np-spinner-speed` custom property to control the spinner's animation speed.
 
-<HtmlPreviewTabs
-  className="mt-4"
-  cssPath="registry/html/spinner/spinner.css"
-  html={`
-<span class="np-spinner" style="--np-spinner-speed: 350ms"></span>
-  `}
-      >
 ```html title="spinner.html" showLineNumbers
 <span class="np-spinner" style="--np-spinner-speed: 350ms"></span>
 ```
-</HtmlPreviewTabs>
 
 | Speed | Data attribute | Class alias |
 | ---- | -------------- | ----------- |
@@ -136,43 +116,16 @@ Use the `--np-spinner-speed` custom property to control the spinner's animation 
 
 Use the `data-thickness` attribute or the class alias to control the spinner's border thickness.
 
-<HtmlPreviewTabs
-  className="mt-4"
-  cssPath="registry/html/spinner/spinner.css"
-  html={`
-<span class="np-spinner" data-thickness="thin"></span>
-<span class="np-spinner" data-thickness="normal"></span>
-<span class="np-spinner" data-thickness="medium"></span>
-<span class="np-spinner" data-thickness="thick"></span>
-<span class="np-spinner" data-thickness="extra-thick"></span>
-  `}
-      >
-```html title="spinner.html" showLineNumbers
-<span class="np-spinner" data-thickness="thin"></span>
-
-<span class="np-spinner" data-thickness="normal"></span>
-
-<span class="np-spinner" data-thickness="medium"></span>
-
-<span class="np-spinner" data-thickness="thick"></span>
-
-<span class="np-spinner" data-thickness="extra-thick"></span>
-```
-</HtmlPreviewTabs>
+<ComponentPreview
+  name="spinner-thickness"
+  target="html"
+/>
 
 Use the `--np-spinner-thickness` custom property to control the spinner's border thickness.
 
-<HtmlPreviewTabs
-  className="mt-4"
-  cssPath="registry/html/spinner/spinner.css"
-  html={`
-<span class="np-spinner" style="--np-spinner-thickness: 20px"></span>
-  `}
-      >
 ```html title="spinner.html" showLineNumbers
 <span class="np-spinner" style="--np-spinner-thickness: 20px"></span>
 ```
-</HtmlPreviewTabs>
 
 | Thickness | Data attribute | Class alias |
 | ---- | -------------- | ----------- |
@@ -188,21 +141,10 @@ Use the `--np-spinner-thickness` custom property to control the spinner's border
 
 Use the `data-direction` attribute or the class alias to control the spinner's rotation direction.
 
-<HtmlPreviewTabs
-  className="mt-4"
-  cssPath="registry/html/spinner/spinner.css"
-  html={`
-<span class="np-spinner" data-direction="clockwise"></span>
-
-<span class="np-spinner-counter-clockwise" data-np-spinner></span>
-  `}
-      >
-```html title="spinner.html" showLineNumbers
-<span class="np-spinner" data-direction="clockwise"></span>
-
-<span class="np-spinner-counter-clockwise" data-np-spinner></span>
-```
-</HtmlPreviewTabs>
+<ComponentPreview
+  name="spinner-direction"
+  target="html"
+/>
 
 | Direction | Data attribute | Class alias |
 | ---- | -------------- | ----------- |
@@ -215,37 +157,14 @@ Use the `data-direction` attribute or the class alias to control the spinner's r
 
 Use the `--np-spinner-color` and `--np-spinner-muted-color` CSS custom property to customize the spinner's color.
 
-<HtmlPreviewTabs
-className="mt-4"
-cssPath="registry/html/spinner/spinner.css"
-html={` <span class="np-spinner" style="--np-spinner-color: tomato"></span>
-
-<span class="np-spinner" style="--np-spinner-color: #2563eb"></span>
-
-<span class="np-spinner" style="--np-spinner-color: rgb(34 197 94)"></span>
-
-<span class="np-spinner" style="--np-spinner-color: #d80606ff; --np-spinner-muted-color: #0211b7ff"></span>
-`}
->
-
-```html title="spinner.html" showLineNumbers
-<span class="np-spinner" style="--np-spinner-color: tomato"></span>
-
-<span class="np-spinner" style="--np-spinner-color: #2563eb"></span>
-
-<span class="np-spinner" style="--np-spinner-color: rgb(34 197 94)"></span>
-
-<span
-  class="np-spinner"
-  style="--np-spinner-color: #d80606ff; --np-spinner-muted-color: #0211b7ff"
-></span>
-```
-
-</HtmlPreviewTabs>
+<ComponentPreview
+  name="spinner-color"
+  target="html"
+/>
 
 | Color           | CSS custom property                                                  |
 | --------------- | -------------------------------------------------------------------- |
 | Primary         | `--np-spinner-color: tomato`                                         |
 | Primary         | `--np-spinner-color: #2563eb`                                        |
 | Primary         | `--np-spinner-color: rgb(34 197 94)`                                 |
-| Primary + muted | `--np-spinner-color: #d80606ff; --np-spinner-muted-color: #0211b7ff` |
+| Primary + muted | `--np-spinner-color: red; --np-spinner-muted-color: blue` |

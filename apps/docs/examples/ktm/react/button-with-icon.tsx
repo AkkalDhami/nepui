@@ -9,7 +9,7 @@ export default function ButtonWithIcon() {
       style={{
         display: "flex",
         alignItems: "center",
-        gap: "12px",
+        gap: "1rem",
       }}
     >
       <Button variant="outline">

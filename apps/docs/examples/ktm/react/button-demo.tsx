@@ -9,7 +9,7 @@ export default function ButtonDemo() {
       style={{
         display: "flex",
         alignItems: "center",
-        gap: "12px",
+        gap: "1rem",
       }}
     >
       <Button>Default</Button>
@@ -21,12 +21,14 @@ export default function ButtonDemo() {
       <Button variant="ghost">Ghost</Button>
 
       <Button
-        as="link"
-        href="https://github.com/akkaldhami/nepui"
-        target="_blank"
-      >
-        Link
-      </Button>
+        variant="link"
+        nativeButton={false}
+        render={
+          <a href="https://github.com/akkaldhami/nepui" target="_blank">
+            Link
+          </a>
+        }
+      />
 
       <Button variant="outline" size="icon" className="np-button-rounded">
         <ArrowUpIcon />

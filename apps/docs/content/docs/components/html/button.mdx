@@ -7,23 +7,57 @@ contributor:
     avatar: https://avatars.githubusercontent.com/u/170957638?v=4
 ---
 
+<ComponentPreview
+  name="button-demo"
+  target="html"
+/>
+
+---
+
 ## Installation
 
+<Tabs defaultValue="cli" className="mt-8 gap-0">
+<TabsList className="mb-0 bg-transparent" variant="line">
+<TabsTrigger value="cli" className="text-base pb-2">Command</TabsTrigger>
+
+<TabsTrigger value="manual" className="text-base pb-2">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli" className="mt-0 [&_figure]:my-4">
 ```bash
 npx nepui@latest add button
 ```
+</TabsContent>
+
+<TabsContent value="manual" className="mt-0">
+<Steps>
+<Step>Copy and paste the following code into your project.</Step>
+<ComponentSource
+  target="html"
+  name="button"
+  title="styles/button.css"
+  fileTarget="styles/button.css"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+</Steps>
+</TabsContent>
+
+</Tabs>
 
 ---
 
 ## Usage
 
-Use the `button` component in your project.
+Link the component's CSS file to your HTML document.
 
-```html title="button.html" showLineNumbers {2} 
+```html title="button.html" showLineNumbers {2}
 <html>
   <link rel="stylesheet" href="./styles/button.css">
 </html>
 ```
+
+Then, use the `button` component in your project.
 
 ```html title="button.html" showLineNumbers {2-8}
 <body>
@@ -43,102 +77,10 @@ Use the `button` component in your project.
 
 Use `data-size` or a matching class alias for compact, large, or icon-only buttons.
 
-<HtmlPreviewTabs
-  cssPath={["registry/html/button/button.css", "registry/html/button/tokens.css"]}
-  className="mt-4"
-  html={`
-<button class="np-button np-button-outline" type="button" data-size="xs">
-  Extra small
-</button>
-<button
-  class="np-button np-button-outline"
-  type="button"
-  data-size="icon-xs"
->
-<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"/></svg>
-</button>
-
-<button class="np-button np-button-outline" type="button" data-size="sm">
-  Small
-</button>
-<button
-  class="np-button np-button-outline"
-  type="button"
-  data-size="icon-sm"
->
-<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"/></svg>
-</button>
-
-<button class="np-button np-button-outline" type="button">
-  Default
-</button>
-<button
-  class="np-button np-button-outline"
-  type="button"
-  data-size="icon"
->
-<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"/></svg>
-</button>
-
-<button class="np-button np-button-outline" type="button" data-size="lg">
-  Large
-</button>
-<button
-  class="np-button np-button-outline"
-  type="button"
-  data-size="icon-lg"
->
-<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"/></svg>
-</button>
-  `}
->
-```html title="button.html"
-<button class="np-button np-button-outline" type="button" data-size="xs">
-  Extra small
-</button>
-<button
-  class="np-button np-button-outline"
-  type="button"
-  data-size="icon-xs"
->
-<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"/></svg>
-</button>
-
-<button class="np-button np-button-outline" type="button" data-size="sm">
-  Small
-</button>
-<button
-  class="np-button np-button-outline"
-  type="button"
-  data-size="icon-sm"
->
-<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"/></svg>
-</button>
-
-<button class="np-button np-button-outline" type="button">
-  Default
-</button>
-<button
-  class="np-button np-button-outline"
-  type="button"
-  data-size="icon"
->
-<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"/></svg>
-</button>
-
-<button class="np-button np-button-outline" type="button" data-size="lg">
-  Large
-</button>
-<button
-  class="np-button np-button-outline"
-  type="button"
-  data-size="icon-lg"
->
-<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"/></svg>
-</button>
-```
-</HtmlPreviewTabs>
-
+<ComponentPreview
+  name="button-size"
+  target="html"
+/>
 
 Button sizes can be specified using either `data-size` attributes or their corresponding class aliases.
 
@@ -204,439 +146,85 @@ Button variants can be specified using either `data-variant` attributes or their
 
 ## Default
 
-<HtmlPreviewTabs
-  cssPath={["registry/html/button/button.css", "registry/html/button/tokens.css"]}
-  html={`
-    <button class="np-button" type="button">
-      Default
-    </button>
-  `}
->
-
-```html title="button.html" showLineNumbers {7, 11-13}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Button</title>
-  <link rel="stylesheet" href="./styles/button.css">
-</head>
-<body>
-
-  <button class="np-button" type="button">
-    Default
-  </button>
-
-</body>
-</html>
-```
-</HtmlPreviewTabs>
+<ComponentPreview
+  name="button-default"
+  target="html"
+/>
 
 ---
 
 ## Outline
 
-<HtmlPreviewTabs
-  cssPath={["registry/html/button/button.css", "registry/html/button/tokens.css"]}
-  html={`
-    <button class="np-button" type="button" data-variant="outline">
-      Outline
-    </button>
-  `}
->
-
-```html title="button.html" showLineNumbers
-<button class="np-button" type="button" data-variant="outline"> 
-  Outline
-</button>
-```
-</HtmlPreviewTabs>
-
+<ComponentPreview
+  name="button-outline"
+  target="html"
+/>
 ---
 
 ## Secondary
 
-<HtmlPreviewTabs
-  cssPath={["registry/html/button/button.css", "registry/html/button/tokens.css"]}
-  html={`
-    <button class="np-button" type="button" data-variant="secondary">
-      Secondary
-    </button>
-  `}
->
-
-```html title="button.html" showLineNumbers
-<button class="np-button" type="button" data-variant="secondary">
-  Secondary
-</button>
-```
-</HtmlPreviewTabs>
+<ComponentPreview
+  name="button-secondary"
+  target="html"
+/>
 
 ---
 
 ## Ghost
 
-<HtmlPreviewTabs
-  cssPath={["registry/html/button/button.css", "registry/html/button/tokens.css"]}
-  html={`
-    <button class="np-button" type="button" data-variant="ghost">
-      Ghost
-    </button>
-  `}
->
-
-```html title="button.html" showLineNumbers
-<button class="np-button" type="button" data-variant="ghost">
-  Ghost
-</button>
-```
-</HtmlPreviewTabs>
+<ComponentPreview
+  name="button-ghost"
+  target="html"
+/>
 
 ---
 
 ## Destructive
 
-<HtmlPreviewTabs
-  cssPath={["registry/html/button/button.css", "registry/html/button/tokens.css"]}
-  html={`
-    <button class="np-button" type="button" data-variant="destructive">
-      Destructive
-    </button>
-  `}
->
-
-```html title="button.html" showLineNumbers
-<button class="np-button" type="button" data-variant="destructive">
-  Destructive
-</button>
-```
-</HtmlPreviewTabs>
+<ComponentPreview
+  name="button-destructive"
+  target="html"
+/>
 
 ---
 
 ## Link
 
-<HtmlPreviewTabs
-  cssPath={["registry/html/button/button.css", "registry/html/button/tokens.css"]}
-  html={`
-    <a
-      class="np-button"
-      href="https://github.com/akkaldhami/nepui"
-      target="_blank"
-      data-variant="link"
-    >
-      Docs
-    </a>
-  `}
->
-
-```html title="button.html" showLineNumbers
-<button class="np-button" type="button" data-variant="destructive">
-  Destructive
-</button>
-```
-</HtmlPreviewTabs>
-
+<ComponentPreview
+  name="button-link"
+  target="html"
+/>
+ 
 ---
 
 ## Icon
 
 Buttons support inline SVG icons. Mark decorative icons as hidden and provide an accessible name for icon-only buttons.
 
-<HtmlPreviewTabs
-  className="mt-4"
-  cssPath={[
-    "registry/html/button/tokens.css",
-    "registry/html/button/button.css",
-  ]}
-  html={`
-  <button
-    class="np-button"
-    type="button"
-    data-size="icon-sm"
-    data-variant="outline"
-  >
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M8 3v10M3 8h10"
-        stroke="currentColor"
-        stroke-width="1.5"
-        stroke-linecap="round"
-      />
-    </svg>
-  </button>
-
-  <button
-    class="np-button"
-    type="button"
-    data-size="icon"
-    data-variant="outline"
-  >
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M8 3v10M3 8h10"
-        stroke="currentColor"
-        stroke-width="1.5"
-        stroke-linecap="round"
-      />
-    </svg>
-  </button>
-
-  <button
-    class="np-button"
-    type="button"
-    data-size="icon-lg"
-    data-variant="outline"
-  >
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M8 3v10M3 8h10"
-        stroke="currentColor"
-        stroke-width="1.5"
-        stroke-linecap="round"
-      />
-    </svg>
-  </button>
-  `}
->
-
-```html title="button.html" showLineNumbers
-<button
-  class="np-button"
-  type="button"
-  data-size="icon-sm"
-  data-variant="outline"
->
-  <svg
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
-    fill="none"
-    aria-hidden="true"
-  >
-    <path
-      d="M8 3v10M3 8h10"
-      stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-    />
-  </svg>
-</button>
-
-<button class="np-button" type="button" data-size="icon" data-variant="outline">
-  <svg
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
-    fill="none"
-    aria-hidden="true"
-  >
-    <path
-      d="M8 3v10M3 8h10"
-      stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-    />
-  </svg>
-</button>
-
-<button
-  class="np-button"
-  type="button"
-  data-size="icon-lg"
-  data-variant="outline"
->
-  <svg
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
-    fill="none"
-    aria-hidden="true"
-  >
-    <path
-      d="M8 3v10M3 8h10"
-      stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-    />
-  </svg>
-</button>
-```
-</HtmlPreviewTabs>
+<ComponentPreview
+  name="button-icon"
+  target="html"
+/>
 
 ---
 
 ## With Icon
 
-<HtmlPreviewTabs
-  className="mt-4"
-  cssPath={[
-    "registry/html/button/tokens.css",
-    "registry/html/button/button.css",
-  ]}
-  html={`
-<button class="np-button" type="button" data-variant="outline">
-  <svg
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
-    fill="none"
-    aria-hidden="true"
-  >
-    <path
-      d="M8 3v10M3 8h10"
-      stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-    />
-  </svg>
-  Add item
-</button>
-<button class="np-button" type="button" data-variant="outline">
-  Download
-  <svg
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
-    fill="none"
-    aria-hidden="true"
-  >
-    <path
-      d="M8 2v8m0 0 3-3m-3 3L5 7M3 13h10"
-      stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    />
-  </svg>
-</button>
-  `}
->
-
-```html title="button.html" showLineNumbers
-<button class="np-button" type="button" data-variant="outline">
-  <svg
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
-    fill="none"
-    aria-hidden="true"
-  >
-    <path
-      d="M8 3v10M3 8h10"
-      stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-    />
-  </svg>
-  Add item
-</button>
-
-<button class="np-button" type="button" data-variant="outline">
-  Download
-  <svg
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
-    fill="none"
-    aria-hidden="true"
-  >
-    <path
-      d="M8 2v8m0 0 3-3m-3 3L5 7M3 13h10"
-      stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    />
-  </svg>
-</button>
-```
-</HtmlPreviewTabs>
-
+<ComponentPreview
+  name="button-with-icon"
+  target="html"
+/>
+ 
 ---
 
 ## Rounded
 
 Use the `np-button-rounded` class to make the button rounded.
 
-<HtmlPreviewTabs
-  className="mt-4"
-  cssPath={[
-    "registry/html/button/tokens.css",
-    "registry/html/button/button.css",
-  ]}
-  html={`
-<button class="np-button np-button-rounded" type="button">Get Started</button>
-<button
-  class="np-button np-button-rounded"
-  type="button"
-  data-size="icon"
-  data-variant="outline"
->
-  <svg
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
-    fill="none"
-    aria-hidden="true"
-  >
-    <path
-      d="M8 3v10M3 8h10"
-      stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-    />
-  </svg>
-</button>
-  `}
->
-
-```html title="button.html" showLineNumbers
-<button class="np-button np-button-rounded" type="button">Get Started</button>
-
-<button
-  class="np-button np-button-rounded"
-  type="button"
-  data-size="icon"
-  data-variant="outline"
->
-  <svg
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
-    fill="none"
-    aria-hidden="true"
-  >
-    <path
-      d="M8 3v10M3 8h10"
-      stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-    />
-  </svg>
-</button>
-```
-</HtmlPreviewTabs>
-
+<ComponentPreview
+  name="button-rounded"
+  target="html"
+/>
 
 ---
 ## Spinner
@@ -647,38 +235,11 @@ To use the [`Spinner`](/docs/components/html/spinner) component inside buttons, 
 <link rel="stylesheet" href="./styles/spinner.css" />
 ```
 
-<HtmlPreviewTabs
-  className="mt-4"
-  cssPath={[
-    "registry/html/button/tokens.css",
-    "registry/html/spinner/spinner.css",
-    "registry/html/button/button.css",
-  ]}
-  html={`
-<button class="np-button np-button-secondary" disabled>
-  <span class="np-spinner"></span>
-  Processing...
-</button>
-
-<button class="np-button np-button-secondary" disabled>
-  Downloading...
-  <span class="np-spinner"></span>
-</button>
-  `}
->
-
-```html title="button.html" showLineNumbers
-<button class="np-button np-button-secondary" disabled>
-  <span class="np-spinner"></span>
-  Processing...
-</button>
-
-<button class="np-button np-button-secondary" disabled>
-  Downloading...
-  <span class="np-spinner"></span>
-</button>
-```
-</HtmlPreviewTabs>
+<ComponentPreview
+  name="button-spinner"
+  target="html"
+  styles={["/spinner/spinner.css"]}
+/>
 
 ---
 
@@ -686,19 +247,7 @@ To use the [`Spinner`](/docs/components/html/spinner) component inside buttons, 
 
 Use the native `disabled` attribute for unavailable actions..
 
-<HtmlPreviewTabs
-  className="mt-4"
-  cssPath={["registry/html/button/button.css", "registry/html/button/tokens.css"]}
-  html={`
-    <button class="np-button" disabled>
-      Disabled
-    </button>
-  `}
->
-
-```html title="button.html" showLineNumbers
-<button class="np-button" disabled>
-  Disabled
-</button>
-```
-</HtmlPreviewTabs>
+<ComponentPreview
+  name="button-disabled"
+  target="html"
+/>

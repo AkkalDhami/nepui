@@ -8,7 +8,7 @@ export default function SpinnerColor() {
       style={{
         display: "flex",
         alignItems: "center",
-        gap: "12px",
+        gap: "1rem",
       }}
     >
       <Spinner color="tomato" size="lg" />

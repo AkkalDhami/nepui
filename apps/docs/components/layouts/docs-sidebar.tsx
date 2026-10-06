@@ -34,6 +34,10 @@ const TOP_LEVEL_SECTIONS = [
     name: "Introduction",
     href: "/docs",
   },
+  // {
+  //   name: "Installation",
+  //   href: "/docs/installation",
+  // },
   {
     name: "Components",
     href: "/docs/components",
@@ -42,10 +46,6 @@ const TOP_LEVEL_SECTIONS = [
     name: "Colors",
     href: "/docs/colors",
   },
-  // {
-  //   name: "Installation",
-  //   href: "/docs/installation",
-  // },
   {
     name: "CLI",
     href: "/docs/cli",

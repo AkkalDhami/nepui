@@ -9,7 +9,6 @@ import { CopyButton } from "@/components/docs/copy-button"
 import PackageManagerTabs from "@/components/docs/package-manager-tabs"
 import { getIconForLanguageExtension } from "@/components/icons"
 import { ComponentPreview } from "@/components/preview/component-preview"
-import { HtmlPreview } from "@/components/preview/html-preview"
 import { HtmlPreviewTabs } from "@/components/preview/html-preview-tabs"
 import { ReactPreview } from "@/components/preview/react-preview"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -105,7 +104,6 @@ export const mdxComponents = {
   CodeBlockCommand,
   ReactCodeBlockCommand,
   ComponentsList: ComponentsListWrapper,
-  HtmlPreview,
   HtmlPreviewTabs,
   ReactPreviewTabs,
   ComponentSource,

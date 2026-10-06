@@ -12,8 +12,10 @@ const pkgManagers = ["npm", "pnpm", "bun", "yarn"]
 
 export default function PackageManagerTabs({
   command = "",
+  className,
 }: {
   command: string
+  className?: string
 }) {
   const { packageManager, setPackageManager } = useConfig()
 
@@ -26,7 +28,8 @@ export default function PackageManagerTabs({
     <Tabs
       value={packageManager}
       className={cn(
-        "not-typeset w-full max-w-code rounded-lg border border-transparent bg-code py-2"
+        "not-typeset w-full max-w-code rounded-lg border border-transparent bg-code py-2",
+        className
       )}
     >
       <TabsList

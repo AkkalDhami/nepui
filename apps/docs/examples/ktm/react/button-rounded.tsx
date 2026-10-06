@@ -9,7 +9,7 @@ export default function ButtonRounded() {
       style={{
         display: "flex",
         alignItems: "center",
-        gap: "12px",
+        gap: "1rem",
       }}
     >
       <Button className="np-button-rounded">Get Started</Button>

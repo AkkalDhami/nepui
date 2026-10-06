@@ -25,7 +25,10 @@ import KtmReactSpinnerSize from "./ktm/react/spinner-size"
 import KtmReactSpinnerSpeed from "./ktm/react/spinner-speed"
 import KtmReactSpinnerThickness from "./ktm/react/spinner-thickness"
 
-export const ExamplesIndex: Record<string, Record<string, any>> = {
+export const ExamplesIndex: Record<
+  string,
+  Record<string, Record<string, any>>
+> = {
   ktm: {
     react: {
       "button-default": KtmReactButtonDefault,
@@ -48,6 +51,27 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       "spinner-size": KtmReactSpinnerSize,
       "spinner-speed": KtmReactSpinnerSpeed,
       "spinner-thickness": KtmReactSpinnerThickness,
+    },
+    html: {
+      "button-default": "ktm/html/button-default.html",
+      "button-demo": "ktm/html/button-demo.html",
+      "button-destructive": "ktm/html/button-destructive.html",
+      "button-disabled": "ktm/html/button-disabled.html",
+      "button-ghost": "ktm/html/button-ghost.html",
+      "button-icon": "ktm/html/button-icon.html",
+      "button-link": "ktm/html/button-link.html",
+      "button-outline": "ktm/html/button-outline.html",
+      "button-rounded": "ktm/html/button-rounded.html",
+      "button-secondary": "ktm/html/button-secondary.html",
+      "button-size": "ktm/html/button-size.html",
+      "button-spinner": "ktm/html/button-spinner.html",
+      "button-with-icon": "ktm/html/button-with-icon.html",
+      "spinner-color": "ktm/html/spinner-color.html",
+      "spinner-demo": "ktm/html/spinner-demo.html",
+      "spinner-direction": "ktm/html/spinner-direction.html",
+      "spinner-size": "ktm/html/spinner-size.html",
+      "spinner-speed": "ktm/html/spinner-speed.html",
+      "spinner-thickness": "ktm/html/spinner-thickness.html",
     },
   },
 }

@@ -3,23 +3,21 @@ import { HtmlPreview } from "@/components/preview/html-preview"
 
 interface HtmlPreviewTabsProps {
   html: string
-  cssPath?: string | string[]
-  cssPaths?: string[]
-  tokens?: string
+  styles?: string[]
   children: React.ReactNode
   className?: string
 }
 
+/**
+ * @deprecated
+ */
+
 export function HtmlPreviewTabs({
   html,
-  cssPath,
-  cssPaths,
-  tokens,
+  styles,
   children,
   className,
 }: HtmlPreviewTabsProps) {
-  const targetCss = cssPaths ?? cssPath
-
   return (
     <Tabs defaultValue="preview" className={className}>
       <TabsList className="bg-transparent text-foreground" variant="line">
@@ -34,8 +32,7 @@ export function HtmlPreviewTabs({
 
       <TabsContent value="preview">
         <HtmlPreview
-          cssPath={targetCss}
-          tokens={tokens}
+          styles={(Array.isArray(styles) ? styles : [styles]) as string[]}
           html={html}
           className="mt-3"
         />

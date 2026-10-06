@@ -8,7 +8,7 @@ export default function SpinnerDirection() {
       style={{
         display: "flex",
         alignItems: "center",
-        gap: "12px",
+        gap: "1rem",
       }}
     >
       <Spinner direction="clockwise" /> {/* default */}

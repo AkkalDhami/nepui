@@ -1,19 +1,31 @@
-// scripts/build-examples.mts
-
 import fs from "node:fs/promises"
 import path from "node:path"
 
 const root = path.resolve(import.meta.dirname, "../examples")
 const output = path.join(root, "__index__.tsx")
 
-const SOURCE_EXTENSIONS = new Set([".tsx", ".jsx"])
+const TARGET_EXTENSIONS = {
+  react: new Set([".tsx", ".jsx"]),
+  html: new Set([".html"]),
+} as const
+
+type Target = keyof typeof TARGET_EXTENSIONS
 
 type ImportEntry = {
   name: string
   path: string
 }
 
-type ExamplesIndex = Record<string, Record<string, Record<string, string>>>
+type ReactExamples = Record<string, string>
+type HtmlExamples = Record<string, string>
+
+type ExamplesIndex = Record<
+  string,
+  {
+    react?: ReactExamples
+    html?: HtmlExamples
+  }
+>
 
 async function getDirectories(directory: string) {
   const entries = await fs.readdir(directory, {
@@ -26,7 +38,9 @@ async function getDirectories(directory: string) {
     .sort()
 }
 
-async function getFiles(directory: string) {
+async function getFiles(directory: string, target: Target) {
+  const extensions = TARGET_EXTENSIONS[target]
+
   const entries = await fs.readdir(directory, {
     withFileTypes: true,
   })
@@ -34,7 +48,7 @@ async function getFiles(directory: string) {
   return entries
     .filter(
       (entry) =>
-        entry.isFile() && SOURCE_EXTENSIONS.has(path.extname(entry.name))
+        entry.isFile() && extensions.has(path.extname(entry.name).toLowerCase())
     )
     .map((entry) => entry.name)
     .sort()
@@ -79,42 +93,72 @@ async function build() {
     examples[style] ??= {}
 
     for (const target of targets) {
+      if (target !== "react" && target !== "html") {
+        continue
+      }
+
       const targetPath = path.join(stylePath, target)
-      const files = await getFiles(targetPath)
+      const files = await getFiles(targetPath, target)
 
       if (files.length === 0) {
         continue
       }
 
-      examples[style][target] ??= {}
+      if (target === "react") {
+        examples[style].react ??= {}
 
-      console.log(`  ├─ ${target}`)
+        console.log(`  ├─ ${target}`)
 
-      for (let index = 0; index < files.length; index++) {
-        const file = files[index]
-        const isLast = index === files.length - 1
+        for (let index = 0; index < files.length; index++) {
+          const file = files[index]
+          const isLast = index === files.length - 1
 
-        const name = path.basename(file, path.extname(file))
+          const name = path.basename(file, path.extname(file))
 
-        const importName = toImportName(
-          `${style}-${target}-${name}`,
-          imports.length
-        )
+          const importName = toImportName(
+            `${style}-${target}-${name}`,
+            imports.length
+          )
 
-        const importPath = `./${style}/${target}/${name}`
+          const importPath = `./${style}/${target}/${name}`
 
-        imports.push({
-          name: importName,
-          path: importPath,
-        })
+          imports.push({
+            name: importName,
+            path: importPath,
+          })
 
-        examples[style][target][name] = importName
+          examples[style].react[name] = importName
 
-        styleExampleCount++
+          styleExampleCount++
 
-        const branch = isLast ? "└─" : "├─"
+          const branch = isLast ? "└─" : "├─"
 
-        console.log(`  │  ${branch} ` + "✓" + " " + file)
+          console.log(`  │  ${branch} ✓ ${file}`)
+        }
+      }
+
+      if (target === "html") {
+        examples[style].html ??= {}
+
+        console.log(`  ├─ ${target}`)
+
+        for (let index = 0; index < files.length; index++) {
+          const file = files[index]
+          const isLast = index === files.length - 1
+
+          const name = path.basename(file, path.extname(file))
+
+          // Path relative to the examples directory.
+          const examplePath = `${style}/${target}/${file}`
+
+          examples[style].html[name] = examplePath
+
+          styleExampleCount++
+
+          const branch = isLast ? "└─" : "├─"
+
+          console.log(`  │  ${branch} ✓ ${file}`)
+        }
       }
     }
 
@@ -139,18 +183,31 @@ async function build() {
   }
 
   lines.push("")
+
   lines.push(
-    "export const ExamplesIndex: Record<string, Record<string, any>> = {"
+    "export const ExamplesIndex: Record<string, Record<string, Record<string, any>>> = {"
   )
 
   for (const [style, targets] of Object.entries(examples)) {
     lines.push(`  ${JSON.stringify(style)}: {`)
 
-    for (const [target, demoExamples] of Object.entries(targets)) {
-      lines.push(`    ${JSON.stringify(target)}: {`)
+    if (targets.react) {
+      lines.push(`    "react": {`)
 
-      for (const [name, importName] of Object.entries(demoExamples)) {
+      for (const [name, importName] of Object.entries(targets.react)) {
         lines.push(`      ${JSON.stringify(name)}: ${importName},`)
+      }
+
+      lines.push("    },")
+    }
+
+    if (targets.html) {
+      lines.push(`    "html": {`)
+
+      for (const [name, examplePath] of Object.entries(targets.html)) {
+        lines.push(
+          `      ${JSON.stringify(name)}: ${JSON.stringify(examplePath)},`
+        )
       }
 
       lines.push("    },")
@@ -164,15 +221,15 @@ async function build() {
 
   await fs.writeFile(output, lines.join("\n"), "utf8")
 
-  console.log("✓" + " " + `Generated: ${path.relative(process.cwd(), output)}`)
+  console.log(`✓ Generated: ${path.relative(process.cwd(), output)}`)
 
   console.log(
-    "✓" +
-      " " +
-      `${imports.length} example${imports.length === 1 ? "" : "s"} registered`
+    `✓ ${imports.length} React example${
+      imports.length === 1 ? "" : "s"
+    } registered`
   )
 
-  console.log()
+  console.log("✓ HTML examples are registered as source paths.")
 }
 
 build().catch((error) => {

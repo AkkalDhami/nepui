@@ -8,7 +8,7 @@ export default function SpinnerSpeed() {
       style={{
         display: "flex",
         alignItems: "center",
-        gap: "12px",
+        gap: "1rem",
       }}
     >
       <Spinner speed="slow" />

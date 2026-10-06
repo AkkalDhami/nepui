@@ -3,7 +3,6 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { FrameworkTabs } from "@/components/docs/framework-tabs"
 import { TableOfContents } from "@/components/docs/table-of-contents"
-import { ComponentPreview } from "@/components/preview/component-preview"
 import { JsonLd } from "@/components/seo/json-ld"
 import { Button } from "@/components/ui/button"
 import {
@@ -85,10 +84,10 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
   const isComponentPage = params.slug?.[0] === "components"
   const breadcrumbs = getDocsBreadcrumbs(page.url, page.data.title)
 
-  const itemName = params.slug?.[2]?.trim() || ""
+  // const itemName = params.slug?.[2]?.trim() || ""
 
   const isChangelog = params.slug?.[0] === "changelog"
-  const isHtmlDocs = params.slug?.[1] === "html" && itemName
+  // const isHtmlDocs = params.slug?.[1] === "html" && itemName
   const neighbours = isChangelog
     ? { previous: null, next: null }
     : findNeighbour(source.pageTree, page.url)
@@ -169,12 +168,6 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
             </div>
           )}
 
-          {isHtmlDocs && (
-            <>
-              <ComponentPreview name={itemName} target="html" />
-              <hr className="mt-10" />
-            </>
-          )}
           <div className="typeset typeset-docs min-w-0">
             <MDX components={mdxComponents} />
           </div>
