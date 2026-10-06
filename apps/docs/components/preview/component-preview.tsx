@@ -12,67 +12,31 @@ interface ComponentPreviewProps {
   name: string
   target?: "html" | "react"
   className?: string
-  type?: "default" | "example"
+  styles?: string[]
 }
 
 export async function ComponentPreview({
   name,
   target = "react",
   className,
+  styles,
 }: ComponentPreviewProps) {
-  // if (target === "html") {
-  //   const source = await getHtmlComponentSource(name)
-
-  //   if (!source) {
-  //     return (
-  //       <p className="my-6 text-sm text-muted-foreground">
-  //         HTML preview unavailable for <code>{name}</code>.
-  //       </p>
-  //     )
-  //   }
-
-  //   // const [htmlHighlighted, cssHighlighted, tokensHighlighted, jsHighlighted] =
-  //   //   await Promise.all([
-  //   //     highlightCode(source.html, "html", "ayu-dark"),
-  //   //     highlightCode(source.css, "css", "ayu-dark"),
-  //   //     highlightCode(source?.tokens || "", "css", "ayu-dark"),
-  //   //     source?.js && highlightCode(source?.js, "js"),
-  //   //   ])
-
-  //   // return (
-  //   //   <HtmlComponentPreview
-  //   //     name={name}
-  //   //     html={source.html}
-  //   //     tokens={source?.tokens || ""}
-  //   //     css={source.css}
-  //   //     js={source.js}
-  //   //     htmlHighlighted={htmlHighlighted}
-  //   //     tokensHighlighted={tokensHighlighted}
-  //   //     cssHighlighted={cssHighlighted}
-  //   //     jsHighlighted={source?.js ? jsHighlighted : null}
-  //   //     className={className}
-  //   //   />
-  //   // )
-  // }
+  const source = await getExampleSource({ target, name })
+  if (!source) {
+    return (
+      <p className="mt-6 text-sm text-muted-foreground">
+        Component{" "}
+        <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm text-foreground">
+          {name}
+        </code>{" "}
+        not found in registry.
+      </p>
+    )
+  }
 
   if (target === "html") {
-    const source = await getExampleSource({
-      target: "html",
-      name,
-    })
-
-    if (!source) {
-      return (
-        <p className="mt-6 text-sm text-muted-foreground">
-          Example <code>{name}</code> not found.
-        </p>
-      )
-    }
-
     const highlightedCode = await highlightCode(trimCode(source), "html")
-
     const componentName = name.split("-")[0]
-
     return (
       <Tabs defaultValue="preview" className={cn("mt-4 gap-0", className)}>
         <TabsList className="bg-transparent" variant="line">
@@ -88,9 +52,10 @@ export async function ComponentPreview({
         <TabsContent value="preview">
           <HtmlPreview
             html={source}
-            cssPath={[
-              `apps/docs/registry/html/${componentName}/button.css`,
-              `apps/docs/registry/html/tokens.css`,
+            styles={[
+              `/${componentName}/${componentName}.css`,
+              `/tokens.css`,
+              ...(styles ?? []),
             ]}
             className="mt-6"
           />
@@ -111,19 +76,6 @@ export async function ComponentPreview({
   }
 
   if (target === "react") {
-    const source = await getExampleSource({ target, name })
-    if (!source) {
-      return (
-        <p className="mt-6 text-sm text-muted-foreground">
-          Component{" "}
-          <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm text-foreground">
-            {name}
-          </code>{" "}
-          not found in registry.
-        </p>
-      )
-    }
-
     const refactoredSource = source
       ?.replaceAll("@nepui/react/", "@/components/nepui/")
       ?.replaceAll("@/registry/react/", "@/components/nepui/")

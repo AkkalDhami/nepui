@@ -104,7 +104,10 @@ export function CodeBlockCommand({
         <span className="sr-only">Copy</span>
         {hasCopied ? <CheckIcon /> : <CopyIcon />}
       </Button>
-      <PackageManagerTabs command={tabs[packageManager] || ""} />
+      <PackageManagerTabs
+        command={tabs[packageManager] || ""}
+        className="mt-0"
+      />
     </div>
   )
 }
@@ -136,10 +139,10 @@ export function ReactCodeBlockCommand({
           </TabsTrigger>
         </TabsList>
         <TabsContent value="nepui" className={"w-full min-w-0"}>
-          <PackageManagerTabs command={nepui} />
+          <PackageManagerTabs command={nepui} className="mt-0" />
         </TabsContent>
         <TabsContent value="shadcn" className={"mb-4 w-full min-w-0"}>
-          <PackageManagerTabs command={shadcn} />
+          <PackageManagerTabs command={shadcn} className="mt-0" />
         </TabsContent>
       </Tabs>
     </>
