@@ -8,7 +8,7 @@ export default function SpinnerSize() {
       style={{
         display: "flex",
         alignItems: "center",
-        gap: "12px",
+        gap: "1rem",
       }}
     >
       <Spinner size="xs" />

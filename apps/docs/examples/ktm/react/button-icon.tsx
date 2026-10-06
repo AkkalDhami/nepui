@@ -9,7 +9,7 @@ export default function ButtonIcon() {
       style={{
         display: "flex",
         alignItems: "center",
-        gap: "12px",
+        gap: "1rem",
       }}
     >
       <Button size="icon-sm" variant="outline">
