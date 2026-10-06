@@ -1,5 +1,374 @@
 ---
 title: Installation
-description: Learn how to install the application and get started quickly.
+description: Install nepui components in HTML, React, and Next.js projects.
 ---
 
+nepui is a collection of UI components built with **HTML, CSS, JavaScript, and React**.
+
+There are no Tailwind CSS or CSS-in-JS requirements. You add the components you need and own the source code in your project.
+
+## Choose your setup
+
+* **HTML** — Use nepui directly in any HTML project.
+* **React** — Add nepui components to any React application.
+* **Next.js** — Use nepui with the App Router or Pages Router.
+
+---
+
+## HTML
+
+nepui HTML components are framework-independent. They use standard HTML, CSS, and JavaScript.
+
+You don't need to install React, Tailwind CSS, or any other UI framework.
+
+### 1. Add a component
+
+Use the nepui CLI to add an HTML component:
+
+```bash
+npx nepui@latest add button --target html
+```
+
+For example:
+
+```bash
+npx nepui@latest add spinner --target html
+```
+
+The component files are added directly to your project.
+
+### 2. Include the styles
+
+Import the nepui tokens and component stylesheet:
+
+```html
+<link rel="stylesheet" href="./components/nepui/tokens.css">
+<link rel="stylesheet" href="./components/nepui/button/button.css">
+```
+
+If the component includes JavaScript, load it before the closing `body` tag:
+
+```html
+<script src="./components/nepui/button/button.js"></script>
+```
+
+### 3. Use the component
+
+```html
+<button class="np-button" data-variant="default">
+  Button
+</button>
+```
+
+That's it. nepui HTML components don't require a build step.
+
+### CDN
+
+If you only need the CSS, you can also reference the nepui stylesheet directly:
+
+```html
+<link
+  rel="stylesheet"
+  href="https://nepui.vercel.app/styles/colors.css"
+/>
+```
+
+For production applications, however, installing the component files into your project is recommended so you can customize and version the source yourself.
+
+---
+
+## React
+
+nepui React components are distributed as source files rather than a large runtime component package.
+
+This means you can install only the components you actually use.
+
+### Requirements
+
+You need an existing React project.
+
+For example:
+
+```bash
+npm create vite@latest my-app -- --template react-ts
+```
+
+Then:
+
+```bash
+cd my-app
+npm install
+```
+
+nepui does not require Tailwind CSS.
+
+### 1. Add a component
+
+Use the nepui CLI:
+
+```bash
+npx nepui@latest add button --target react
+```
+
+You can add other components in the same way:
+
+```bash
+npx nepui@latest add spinner --target react
+```
+
+```bash
+npx nepui@latest add copy-button --target react
+```
+
+The component source is added to your project:
+
+```text
+components/
+└── nepui/
+    ├── tokens.css
+    └── button/
+        ├── button.tsx
+        └── button.css
+```
+
+### 2. Import the component
+
+```tsx
+import { Button } from "@/components/nepui/button"
+```
+
+Then use it normally:
+
+```tsx
+export default function App() {
+  return (
+    <Button>
+      Continue
+    </Button>
+  )
+}
+```
+
+### 3. Include nepui styles
+
+Import the component stylesheet according to your project structure.
+
+For example:
+
+```tsx
+import "@/components/nepui/tokens.css"
+import "@/components/nepui/button/button.css"
+```
+
+You can also import these from your global stylesheet if that better fits your application's CSS architecture.
+
+---
+
+## Next.js
+
+nepui works with both the **App Router** and **Pages Router**.
+
+Next.js uses Server Components by default in the App Router, so components that use browser APIs, state, or event handlers must run as Client Components.
+
+### 1. Create a Next.js project
+
+If you are starting a new project:
+
+```bash
+pnpm create next-app@latest my-app
+```
+
+Then:
+
+```bash
+cd my-app
+```
+
+You can use npm, pnpm, yarn, or Bun.
+
+### 2. Add a nepui component
+
+For React components:
+
+```bash
+npx nepui@latest add button --target react
+```
+
+Or:
+
+```bash
+pnpm dlx nepui@latest add button --target react
+```
+
+The component is copied into your project instead of being hidden behind a package abstraction.
+
+### 3. Import the component
+
+With the App Router:
+
+```tsx
+import { Button } from "@/components/nepui/button"
+
+export default function Page() {
+  return (
+    <main>
+      <Button>
+        Get started
+      </Button>
+    </main>
+  )
+}
+```
+
+### Client components
+
+If a nepui component uses client-side interaction, the component itself includes the required `"use client"` directive where appropriate.
+
+For your own component that uses a nepui interactive component, follow the normal Next.js Client Component rules.
+
+For example:
+
+```tsx
+"use client"
+
+import { CopyButton } from "@/components/nepui/copy-button"
+
+export default function Example() {
+  return (
+    <CopyButton value="pnpm add nepui">
+      Copy command
+    </CopyButton>
+  )
+}
+```
+
+### 4. Import the styles
+
+Add the nepui styles to your global stylesheet or root layout according to your project's CSS setup.
+
+For example, with a global CSS file:
+
+```css
+@import "../components/nepui/tokens.css";
+@import "../components/nepui/button/button.css";
+```
+
+Then import the global stylesheet from your root layout:
+
+```tsx
+import "./globals.css"
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+---
+
+## Package managers
+
+The nepui CLI can be executed with your preferred package manager:
+
+### npm
+
+```bash
+npx nepui@latest add button --target react
+```
+
+### pnpm
+
+```bash
+pnpm dlx nepui@latest add button --target react
+```
+
+### yarn
+
+```bash
+yarn dlx nepui@latest add button --target react
+```
+
+### Bun
+
+```bash
+bunx nepui@latest add button --target react
+```
+
+---
+
+## Add multiple components
+
+You can add components individually:
+
+```bash
+npx nepui@latest add button --target react
+npx nepui@latest add spinner --target react
+npx nepui@latest add copy-button --target react
+```
+
+This keeps your project lightweight because you only copy the components you actually need.
+
+---
+
+## What gets installed?
+
+nepui does not replace your application's architecture.
+
+Instead, it adds source files to your project:
+
+```text
+your-project/
+├── components/
+│   └── nepui/
+│       ├── tokens.css
+│       │
+│       ├── button/
+│       │   ├── button.tsx
+│       │   └── button.css
+│       │
+│       ├── spinner/
+│       │   ├── spinner.tsx
+│       │   └── spinner.css
+│       │
+│       └── copy-button/
+│           ├── copy-button.tsx
+│           └── copy-button.css
+│
+└── ...
+```
+
+You own these files.
+
+You can modify the markup, styles, props, animations, accessibility behavior, or component API to fit your application.
+
+## Updating components
+
+Because nepui components are added as source files, updates don't silently change your application.
+
+When a new version of a component is released, you can review the changes and update your local component when you're ready.
+
+This gives you control over your UI instead of introducing a runtime dependency on nepui.
+
+## HTML vs React
+
+|                       | HTML | React |
+| --------------------- | ---- | ----- |
+| HTML/CSS              | ✓    | ✓     |
+| JavaScript            | ✓    | ✓     |
+| React required        | No   | Yes   |
+| Tailwind required     | No   | No    |
+| Source ownership      | ✓    | ✓     |
+| Framework independent | ✓    | —     |
+| React composition     | —    | ✓     |
+| nepui CLI             | ✓    | ✓     |
+
+### Next step
+
+Once nepui is installed, choose a component from the **Components** section and follow its individual usage guide.

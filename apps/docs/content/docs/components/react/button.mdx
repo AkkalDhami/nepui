@@ -12,7 +12,6 @@ import { ArrowUpIcon, PlusIcon, DownloadSimpleIcon } from "@phosphor-icons/react
 
 <ComponentPreview
   name="button-demo"
-  type="example"
 />
 
 ## Installation
@@ -26,15 +25,10 @@ import { ArrowUpIcon, PlusIcon, DownloadSimpleIcon } from "@phosphor-icons/react
   }
   manual={
     <Steps>
-      <Step>Add the nepui design tokens.</Step>
-      <ComponentSource
-        target="react"
-        name="button"
-        title="components/nepui/tokens.css"
-        fileTarget="components/nepui/tokens.css"
-      />
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react" className="mt-6"/>
 
-      <Step>Add the button styles.</Step>
+      <Step>Copy and paste the following code into your project.</Step>
       <ComponentSource
         target="react"
         name="button"
@@ -42,7 +36,6 @@ import { ArrowUpIcon, PlusIcon, DownloadSimpleIcon } from "@phosphor-icons/react
         fileTarget="components/nepui/button/button.css"
       />
 
-      <Step>Add the Button component.</Step>
       <ComponentSource
         target="react"
         name="button"
@@ -50,12 +43,11 @@ import { ArrowUpIcon, PlusIcon, DownloadSimpleIcon } from "@phosphor-icons/react
         fileTarget="components/nepui/button/button.tsx"
       />
 
-      <Step>Add the Button entry point.</Step>
       <ComponentSource
         target="react"
         name="button"
-        title="components/nepui/button/index.tsx"
-        fileTarget="components/nepui/button/index.tsx"
+        title="components/nepui/button/index.ts"
+        fileTarget="components/nepui/button/index.ts"
       />
 
       <Step>Update the import paths to match your project setup.</Step>
@@ -95,7 +87,6 @@ Use the `size` prop to change the size of the button.
 
 <ComponentPreview
   name="button-size"
-  type="example"
 />
 
 Available sizes are `xs`, `sm`, `lg`, `icon-xs`, `icon-sm`, `icon`, and `icon-lg`.
@@ -106,7 +97,6 @@ Available sizes are `xs`, `sm`, `lg`, `icon-xs`, `icon-sm`, `icon`, and `icon-lg
 
 <ComponentPreview
   name="button-default"
-  type="example"
 />
 
 ---
@@ -115,7 +105,6 @@ Available sizes are `xs`, `sm`, `lg`, `icon-xs`, `icon-sm`, `icon`, and `icon-lg
 
 <ComponentPreview
   name="button-outline"
-  type="example"
 />
 
 ---
@@ -124,7 +113,6 @@ Available sizes are `xs`, `sm`, `lg`, `icon-xs`, `icon-sm`, `icon`, and `icon-lg
 
 <ComponentPreview
   name="button-secondary"
-  type="example"
 />
 
 ---
@@ -133,7 +121,6 @@ Available sizes are `xs`, `sm`, `lg`, `icon-xs`, `icon-sm`, `icon`, and `icon-lg
 
 <ComponentPreview
   name="button-ghost"
-  type="example"
 />
 
 ---
@@ -142,7 +129,6 @@ Available sizes are `xs`, `sm`, `lg`, `icon-xs`, `icon-sm`, `icon`, and `icon-lg
 
 <ComponentPreview
   name="button-destructive"
-  type="example"
 />
 
 ---
@@ -151,7 +137,6 @@ Available sizes are `xs`, `sm`, `lg`, `icon-xs`, `icon-sm`, `icon`, and `icon-lg
 
 <ComponentPreview
   name="button-link"
-  type="example"
 />
 
 ---
@@ -160,7 +145,6 @@ Available sizes are `xs`, `sm`, `lg`, `icon-xs`, `icon-sm`, `icon`, and `icon-lg
 
 <ComponentPreview
   name="button-icon"
-  type="example"
 />
 
 ---
@@ -169,7 +153,6 @@ Available sizes are `xs`, `sm`, `lg`, `icon-xs`, `icon-sm`, `icon`, and `icon-lg
 
 <ComponentPreview
   name="button-with-icon"
-  type="example"
 />
 
 ---
@@ -180,7 +163,6 @@ Use the `np-button-rounded` class to make the button rounded.
 
 <ComponentPreview
   name="button-rounded"
-  type="example"
 />
 
 ---
@@ -191,7 +173,6 @@ Render a `<Spinner />` component inside the button to show a loading state.
 
 <ComponentPreview
   name="button-spinner"
-  type="example"
 />
 
 ---
@@ -200,5 +181,4 @@ Render a `<Spinner />` component inside the button to show a loading state.
 
 <ComponentPreview
   name="button-disabled"
-  type="example"
 />
