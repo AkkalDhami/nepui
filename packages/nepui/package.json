@@ -1,6 +1,6 @@
 {
   "name": "nepui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CLI for installing nepui components (HTML & React, plain CSS, no runtime dependencies).",
   "license": "MIT",
   "type": "module",
