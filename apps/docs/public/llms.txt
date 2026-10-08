@@ -15,11 +15,15 @@
 
 * [Button](https://nepui.vercel.app/docs/components/html/button): A button triggers an action, submits a form, or performs another user-initiated operation.
 * [Spinner](https://nepui.vercel.app/docs/components/html/spinner): An indicator that can be used to show a loading state.
+* [Label](https://nepui.vercel.app/docs/components/html/label): Renders an accessible label associated with controls.
+* [Input](https://nepui.vercel.app/docs/components/html/input): A text input component for forms and user data entry with built-in styling and accessibility features.
 
 ### React
 
 * [Button](https://nepui.vercel.app/docs/components/react/button): A button triggers an action, submits a form, or performs another user-initiated operation.
 * [Spinner](https://nepui.vercel.app/docs/components/react/spinner): An indicator that can be used to show a loading state.
+* [Label](https://nepui.vercel.app/docs/components/react/label): Renders an accessible label associated with controls.
+* [Input](https://nepui.vercel.app/docs/components/react/input): A text input component for forms and user data entry with built-in styling and accessibility features.
 
 ## Supported Targets
 
