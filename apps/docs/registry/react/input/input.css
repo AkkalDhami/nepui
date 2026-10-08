@@ -1,0 +1,153 @@
+/* nepui — Input */
+
+.np-input,
+[data-np-input] {
+  --np-input-height: 2rem;
+  --np-input-padding-x: 0.625rem;
+  --np-input-font-size: 0.875rem;
+  --np-input-radius: var(--np-radius-md);
+  --np-input-border: var(--np-input, var(--np-border));
+  --np-input-bg: transparent;
+  --np-input-disabled-bg: color-mix(
+    in oklch,
+    var(--np-input-border),
+    transparent 50%
+  );
+  --np-input-invalid-border: var(--np-destructive);
+  --np-input-invalid-ring: color-mix(
+    in oklch,
+    var(--np-destructive),
+    transparent 80%
+  );
+
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  height: var(--np-input-height);
+  margin: 0;
+  padding: 0.25rem var(--np-input-padding-x);
+
+  border: 1px solid var(--np-input-border);
+  border-radius: var(--np-input-radius);
+  background: var(--np-input-bg);
+  color: inherit;
+
+  font: inherit;
+  font-size: 1rem;
+
+  outline: none;
+  transition:
+    color 150ms ease,
+    background-color 150ms ease,
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+@media (min-width: 48rem) {
+  :is(.np-input, [data-np-input]) {
+    font-size: var(--np-input-font-size);
+  }
+}
+
+:is(.np-input, [data-np-input])::placeholder {
+  color: var(--np-muted-foreground);
+}
+
+/* <input type="file"> */
+:is(.np-input, [data-np-input])::file-selector-button {
+  display: inline-flex;
+  height: calc(var(--np-input-height) - 0.5rem);
+  border: 0;
+  background: transparent;
+  color: var(--np-foreground);
+  font: inherit;
+  font-size: var(--np-input-font-size);
+  font-weight: 500;
+}
+
+/* Focus */
+:is(.np-input, [data-np-input]):focus-visible {
+  border-color: var(--np-ring);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--np-ring), transparent 50%);
+}
+
+/* Disabled */
+:is(.np-input, [data-np-input]):is(
+  :disabled,
+  [data-disabled],
+  [aria-disabled="true"]
+) {
+  pointer-events: none;
+  background: var(--np-input-disabled-bg);
+  opacity: 0.5;
+}
+
+/* Invalid (stays red while focused) */
+:is(.np-input, [data-np-input]):is([aria-invalid="true"], [data-invalid]) {
+  border-color: var(--np-input-invalid-border);
+  box-shadow: 0 0 0 3px var(--np-input-invalid-ring);
+}
+
+/* Dark mode */
+
+:is(.dark, [data-theme="dark"]) :is(.np-input, [data-np-input]) {
+  --np-input-bg: color-mix(in oklab, var(--np-input) 30%, transparent);
+  --np-input-disabled-bg: color-mix(in oklab, var(--np-input) 80%, transparent);
+  --np-input-invalid-border: color-mix(
+    in oklab,
+    var(--np-destructive) 50%,
+    transparent
+  );
+  --np-input-invalid-ring: color-mix(
+    in oklch,
+    var(--np-destructive),
+    transparent 60%
+  );
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light, [data-theme="light"]) :is(.np-input, [data-np-input]) {
+    --np-input-bg: color-mix(in oklab, var(--np-input-border) 30%, transparent);
+    --np-input-disabled-bg: color-mix(
+      in oklab,
+      var(--np-input-border) 80%,
+      transparent
+    );
+    --np-input-invalid-border: color-mix(
+      in oklab,
+      var(--np-destructive) 50%,
+      transparent
+    );
+    --np-input-invalid-ring: color-mix(
+      in oklab,
+      var(--np-destructive) 40%,
+      transparent
+    );
+  }
+}
+
+/* Sizes */
+
+.np-input-xs,
+:is(.np-input, [data-np-input])[data-size="xs"] {
+  --np-input-height: 1.5rem;
+  --np-input-padding-x: 0.5rem;
+  --np-input-font-size: 0.75rem;
+  --np-input-radius: min(var(--np-radius-md), 10px);
+}
+
+.np-input-sm,
+:is(.np-input, [data-np-input])[data-size="sm"] {
+  --np-input-height: 1.75rem;
+  --np-input-padding-x: 0.625rem;
+  --np-input-font-size: 0.8rem;
+  --np-input-radius: min(var(--np-radius-md), 12px);
+}
+
+.np-input-lg,
+:is(.np-input, [data-np-input])[data-size="lg"] {
+  --np-input-height: 2.25rem;
+  --np-input-padding-x: 0.75rem;
+  --np-input-font-size: 0.9375rem;
+}

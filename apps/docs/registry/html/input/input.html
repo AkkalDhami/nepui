@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Input - nepui</title>
+    <link rel="stylesheet" href="../tokens.css" />
+    <link rel="stylesheet" href="../label/label.css" />
+    <link rel="stylesheet" href="../button/button.css" />
+    <link rel="stylesheet" href="./input.css" />
+
+    <!-- Inline page styles (demo layout only) -->
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem;
+        font-family: system-ui, sans-serif;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        display: flex;
+        justify-content: center;
+      }
+      .demo {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        max-width: 22rem;
+      }
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="demo">
+      <button
+        class="np-button np-button-outline np-button-sm"
+        type="button"
+        onclick="document.documentElement.classList.toggle('dark')"
+      >
+        Toggle dark
+      </button>
+
+      <div class="field">
+        <label class="np-label" for="i1">Class</label>
+        <input
+          id="i1"
+          class="np-input"
+          type="email"
+          placeholder="you@example.com"
+        />
+      </div>
+
+      <div class="field">
+        <label class="np-label" for="i2">Data attribute</label>
+        <input id="i2" data-np-input type="text" placeholder="Your name" />
+      </div>
+
+      <div class="field">
+        <label class="np-label" for="s1">xs</label>
+        <input id="s1" class="np-input np-input-xs" placeholder="Extra small" />
+      </div>
+
+      <div class="field">
+        <label class="np-label" for="s2">sm</label>
+        <input id="s2" class="np-input np-input-sm" placeholder="Small" />
+      </div>
+
+      <div class="field">
+        <label class="np-label" for="s3">default</label>
+        <input id="s3" class="np-input" placeholder="Default" />
+      </div>
+
+      <div class="field">
+        <label class="np-label" for="s4">lg (data-size)</label>
+        <input id="s4" data-np-input data-size="lg" placeholder="Large" />
+      </div>
+
+      <div class="field">
+        <label class="np-label" for="f1">File</label>
+        <input id="f1" class="np-input" type="file" />
+      </div>
+
+      <div class="field">
+        <label class="np-label" for="v1">Invalid</label>
+        <input
+          id="v1"
+          class="np-input"
+          aria-invalid="true"
+          value="not an email"
+        />
+      </div>
+
+      <div class="field" data-disabled="true">
+        <label class="np-label" for="d1">Disabled</label>
+        <input id="d1" class="np-input" disabled placeholder="Disabled" />
+      </div>
+    </main>
+  </body>
+</html>
