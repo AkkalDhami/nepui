@@ -31,7 +31,7 @@
   --np-secondary-foreground: #18181b;
 
   --np-muted: #f4f4f5;
-  --np-muted-foreground: #71717a;
+  --np-muted-foreground: #737373;
 
   --np-accent: #f4f4f5;
   --np-accent-foreground: #18181b;
@@ -100,8 +100,8 @@
   --np-warning: #ad4407;
   --np-warning-foreground: #fffbeb;
 
-  --np-border: #27272a;
-  --np-input: #27272a;
+  --np-border: #ffffff1a;
+  --np-input: #ffffff26;
   --np-ring: #737373;
 
   --np-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
@@ -156,8 +156,8 @@
     --np-warning: #ad4407;
     --np-warning-foreground: #fffbeb;
 
-    --np-border: #27272a;
-    --np-input: #27272a;
+    --np-border: #ffffff1a;
+    --np-input: #ffffff26;
     --np-ring: #737373;
 
     --np-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);

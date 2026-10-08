@@ -23,6 +23,7 @@
   "menuAccent": "subtle",
   "registries": {
     "@nepui": "http://localhost:3000/r/react/{name}.json",
-    "@kobra": "https://kobra.systems/r/{name}.json"
+    "@kobra": "https://kobra.systems/r/{name}.json",
+    "@reui": "https://reui.io/r/{style}/{name}.json"
   }
 }
