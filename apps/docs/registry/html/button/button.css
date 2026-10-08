@@ -105,7 +105,7 @@ button:not(:disabled),
 /* Variants */
 
 .np-button-outline,
-.np-button[data-variant="outline"] {
+:is(.np-button, [data-np-button])[data-variant="outline"] {
   --np-button-bg: var(--np-background);
   --np-button-color: var(--np-foreground);
   --np-button-border: var(--np-border);
@@ -113,7 +113,7 @@ button:not(:disabled),
 }
 
 .np-button-secondary,
-.np-button[data-variant="secondary"] {
+:is(.np-button, [data-np-button])[data-variant="secondary"] {
   --np-button-bg: var(--np-secondary);
   --np-button-color: var(--np-secondary-foreground);
   --np-button-hover-bg: color-mix(
@@ -124,7 +124,7 @@ button:not(:disabled),
 }
 
 .np-button-ghost,
-.np-button[data-variant="ghost"] {
+:is(.np-button, [data-np-button])[data-variant="ghost"] {
   --np-button-bg: transparent;
   --np-button-color: var(--np-foreground);
   --np-button-hover-bg: var(--np-muted);
@@ -133,51 +133,54 @@ button:not(:disabled),
 :is(
   .np-button-outline,
   .np-button-ghost,
-  .np-button[data-variant="outline"],
-  .np-button[data-variant="ghost"]
+  :is(.np-button, [data-np-button])[data-variant="outline"],
+  :is(.np-button, [data-np-button])[data-variant="ghost"]
 )[aria-expanded="true"],
 :is(
   .np-button-outline,
   .np-button-ghost,
-  .np-button[data-variant="outline"],
-  .np-button[data-variant="ghost"]
-)[data-np-popup-open] {
+  :is(.np-button, [data-np-button])[data-variant="outline"],
+  :is(.np-button, [data-np-button])[data-variant="ghost"]
+)[data-popup-open] {
   background: var(--np-button-hover-bg);
 }
 
 .np-button-destructive,
-.np-button[data-variant="destructive"] {
-  --np-button-bg: color-mix(in oklch, var(--np-destructive), transparent 90%);
+:is(.np-button, [data-np-button])[data-variant="destructive"] {
+  --np-button-bg: color-mix(in oklab, var(--np-destructive) 20%, transparent);
   --np-button-color: var(--np-destructive);
   --np-button-hover-bg: color-mix(
-    in oklch,
-    var(--np-destructive),
-    transparent 80%
+    in oklab,
+    var(--np-destructive) 30%,
+    transparent
   );
   --np-button-focus-border: color-mix(
     in oklch,
     var(--np-destructive),
     transparent 60%
   );
-  --np-button-ring: color-mix(in oklch, var(--np-destructive), transparent 80%);
+  --np-button-ring: color-mix(in oklab, var(--np-destructive) 40%, transparent);
 }
 
 .np-button-link,
-.np-button[data-variant="link"] {
+:is(.np-button, [data-np-button])[data-variant="link"] {
   --np-button-bg: transparent;
   --np-button-color: var(--np-primary);
   --np-button-hover-bg: transparent;
   text-underline-offset: 4px;
 }
 
-:is(.np-button-link, .np-button[data-variant="link"]):hover {
+:is(
+  .np-button-link,
+  :is(.np-button, [data-np-button])[data-variant="link"]
+):hover {
   text-decoration: underline;
 }
 
 /* Sizes */
 
 .np-button-xs,
-.np-button[data-size="xs"] {
+:is(.np-button, [data-np-button])[data-size="xs"] {
   --np-button-height: 1.5rem;
   --np-button-padding-x: 0.5rem;
   --np-button-font-size: 0.75rem;
@@ -187,7 +190,7 @@ button:not(:disabled),
 }
 
 .np-button-sm,
-.np-button[data-size="sm"] {
+:is(.np-button, [data-np-button])[data-size="sm"] {
   --np-button-height: 1.75rem;
   --np-button-padding-x: 0.625rem;
   --np-button-font-size: 0.8rem;
@@ -197,7 +200,7 @@ button:not(:disabled),
 }
 
 .np-button-lg,
-.np-button[data-size="lg"] {
+:is(.np-button, [data-np-button])[data-size="lg"] {
   --np-button-height: 2.25rem;
   --np-button-padding-x: 0.625rem;
   --np-button-font-size: 0.9375rem;
@@ -205,11 +208,11 @@ button:not(:disabled),
 }
 
 .np-button-icon,
-.np-button[data-size="icon"],
+:is(.np-button, [data-np-button])[data-size="icon"],
 .np-button-icon-xs,
-.np-button[data-size="icon-xs"],
+:is(.np-button, [data-np-button])[data-size="icon-xs"],
 .np-button-icon-sm,
-.np-button[data-size="icon-sm"],
+:is(.np-button, [data-np-button])[data-size="icon-sm"],
 .np-button-icon-lg,
 .np-button[data-size="icon-lg"] {
   padding: 0;
@@ -217,25 +220,25 @@ button:not(:disabled),
 }
 
 .np-button-icon,
-.np-button[data-size="icon"] {
+:is(.np-button, [data-np-button])[data-size="icon"] {
   --np-button-height: 2rem;
 }
 
 .np-button-icon-xs,
-.np-button[data-size="icon-xs"] {
+:is(.np-button, [data-np-button])[data-size="icon-xs"] {
   --np-button-height: 1.5rem;
   --np-button-icon-size: 0.75rem;
   --np-button-radius: min(var(--np-radius-md), 10px);
 }
 
 .np-button-icon-sm,
-.np-button[data-size="icon-sm"] {
+:is(.np-button, [data-np-button])[data-size="icon-sm"] {
   --np-button-height: 1.75rem;
   --np-button-radius: min(var(--np-radius-md), 12px);
 }
 
 .np-button-icon-lg,
-.np-button[data-size="icon-lg"] {
+:is(.np-button, [data-np-button])[data-size="icon-lg"] {
   --np-button-height: 2.25rem;
 }
 
@@ -246,16 +249,16 @@ button:not(:disabled),
     .np-button-sm,
     .np-button-icon-xs,
     .np-button-icon-sm,
-    .np-button[data-size="xs"],
-    .np-button[data-size="sm"],
-    .np-button[data-size="icon-xs"],
-    .np-button[data-size="icon-sm"]
+    :is(.np-button, [data-np-button])[data-size="xs"],
+    :is(.np-button, [data-np-button])[data-size="sm"],
+    :is(.np-button, [data-np-button])[data-size="icon-xs"],
+    :is(.np-button, [data-np-button])[data-size="icon-sm"]
   ) {
   --np-button-radius: var(--np-radius-md);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .np-button:active:not([aria-haspopup]) {
+  :is(.np-button, [data-np-button]):active:not([aria-haspopup]) {
     transform: none;
   }
 }

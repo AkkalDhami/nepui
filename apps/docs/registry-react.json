@@ -48,6 +48,98 @@
           "target": "components/nepui/spinner/index.ts"
         }
       ]
+    },
+    {
+      "name": "label",
+      "type": "registry:component",
+      "title": "Label",
+      "description": "Renders an accessible label associated with controls.",
+      "files": [
+        {
+          "path": "registry/react/label/label.tsx",
+          "type": "registry:component",
+          "target": "components/nepui/label/label.tsx"
+        },
+        {
+          "path": "registry/react/label/label.css",
+          "type": "registry:component",
+          "target": "components/nepui/label/label.css"
+        },
+        {
+          "path": "registry/react/label/index.ts",
+          "type": "registry:component",
+          "target": "components/nepui/label/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:component",
+      "title": "Checkbox",
+      "description": "A control that allows the user to toggle between checked and not checked.",
+      "files": [
+        {
+          "path": "registry/react/checkbox/checkbox.tsx",
+          "type": "registry:component",
+          "target": "components/nepui/checkbox/checkbox.tsx"
+        },
+        {
+          "path": "registry/react/checkbox/checkbox.css",
+          "type": "registry:component",
+          "target": "components/nepui/checkbox/checkbox.css"
+        },
+        {
+          "path": "registry/react/checkbox/index.ts",
+          "type": "registry:component",
+          "target": "components/nepui/checkbox/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:component",
+      "title": "Input",
+      "description": "A text input component for forms and user data entry with built-in styling and accessibility features.",
+      "files": [
+        {
+          "path": "registry/react/input/input.tsx",
+          "type": "registry:component",
+          "target": "components/nepui/input/input.tsx"
+        },
+        {
+          "path": "registry/react/input/input.css",
+          "type": "registry:component",
+          "target": "components/nepui/input/input.css"
+        },
+        {
+          "path": "registry/react/input/index.ts",
+          "type": "registry:component",
+          "target": "components/nepui/input/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "steps",
+      "type": "registry:component",
+      "title": "Steps",
+      "description": "A multi-step process indicator that guides users through a sequence of actions or tasks.",
+      "files": [
+        {
+          "path": "registry/react/steps/steps.tsx",
+          "type": "registry:component",
+          "target": "components/nepui/steps/steps.tsx"
+        },
+        {
+          "path": "registry/react/steps/steps.css",
+          "type": "registry:component",
+          "target": "components/nepui/steps/steps.css"
+        },
+        {
+          "path": "registry/react/input/index.ts",
+          "type": "registry:component",
+          "target": "components/nepui/steps/index.ts"
+        }
+      ]
     }
   ]
 }

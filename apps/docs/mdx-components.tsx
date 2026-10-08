@@ -9,7 +9,6 @@ import { CopyButton } from "@/components/docs/copy-button"
 import PackageManagerTabs from "@/components/docs/package-manager-tabs"
 import { getIconForLanguageExtension } from "@/components/icons"
 import { ComponentPreview } from "@/components/preview/component-preview"
-import { HtmlPreviewTabs } from "@/components/preview/html-preview-tabs"
 import { ReactPreview } from "@/components/preview/react-preview"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ManualInstallation } from "@/components/docs/manual-installation"
@@ -104,7 +103,6 @@ export const mdxComponents = {
   CodeBlockCommand,
   ReactCodeBlockCommand,
   ComponentsList: ComponentsListWrapper,
-  HtmlPreviewTabs,
   ReactPreviewTabs,
   ComponentSource,
   ManualInstallation,
@@ -290,7 +288,7 @@ export const mdxComponents = {
   Steps: ({ className, ...props }: React.ComponentProps<"div">) => (
     <div
       className={cn(
-        "steps mb-12 [counter-reset:step] md:ml-4 md:border-l md:pl-8 [&>h3]:step",
+        "steps mb-12 [counter-reset:step] md:ml-4 md:border-l md:pl-8 [&>h3]:step [&>h3]:first:mt-2",
         className
       )}
       {...props}
