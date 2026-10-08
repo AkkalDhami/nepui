@@ -84,10 +84,8 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
   const isComponentPage = params.slug?.[0] === "components"
   const breadcrumbs = getDocsBreadcrumbs(page.url, page.data.title)
 
-  // const itemName = params.slug?.[2]?.trim() || ""
-
   const isChangelog = params.slug?.[0] === "changelog"
-  // const isHtmlDocs = params.slug?.[1] === "html" && itemName
+
   const neighbours = isChangelog
     ? { previous: null, next: null }
     : findNeighbour(source.pageTree, page.url)
@@ -162,11 +160,13 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
             )}
           </div>
 
-          {isComponentPage && (
-            <div className="mb-8">
-              <FrameworkTabs />
-            </div>
-          )}
+          {isComponentPage &&
+            params?.slug?.length &&
+            params?.slug?.length > 1 && (
+              <div className="mb-8">
+                <FrameworkTabs />
+              </div>
+            )}
 
           <div className="typeset typeset-docs min-w-0">
             <MDX components={mdxComponents} />
