@@ -1,9 +1,14 @@
 export const PAGES_NEW = [
   "/docs/changelog",
-  "/docs/components/html/spinner",
-  "/docs/components/react/spinner",
   "/docs/colors",
-  "/docs/components/html/copy-button",
+  "/docs/components/html/label",
+  "/docs/components/html/checkbox",
+  "/docs/components/react/label",
+  "/docs/components/react/checkbox",
+  "/docs/components/react/input",
+  "/docs/components/html/input",
+  "/docs/components/react/steps",
+  "/docs/components/html/steps",
 ]
 
 export const PAGES_UPDATED = []

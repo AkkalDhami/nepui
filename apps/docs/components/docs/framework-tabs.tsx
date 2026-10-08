@@ -34,6 +34,7 @@ export function FrameworkTabs() {
 
     router.push(nextPath as Route, { scroll: false })
   }
+
   const Icons = {
     html: LanguageIcons.html,
     react: LanguageIcons.tsx,
@@ -43,7 +44,7 @@ export function FrameworkTabs() {
 
   return (
     <Tabs
-      value={current}
+      defaultValue={current}
       onValueChange={handleFrameworkChange}
       className={"min-w-0 gap-0"}
     >

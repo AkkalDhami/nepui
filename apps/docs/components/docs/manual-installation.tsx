@@ -3,6 +3,7 @@
 import type { ReactNode } from "react"
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { InstallationType, useConfig } from "@/hooks/use-config"
 
 export function ManualInstallation({
   cli,
@@ -11,8 +12,14 @@ export function ManualInstallation({
   cli: ReactNode
   manual: ReactNode
 }) {
+  const { installationType, setInstallationType } = useConfig()
+
   return (
-    <Tabs defaultValue="cli" className="mt-8 gap-0">
+    <Tabs
+      value={installationType}
+      onValueChange={(value) => setInstallationType(value as InstallationType)}
+      className="mt-8 gap-0"
+    >
       <TabsList className="mb-4 bg-transparent" variant="line">
         <TabsTrigger value="cli" className="text-base">
           Command

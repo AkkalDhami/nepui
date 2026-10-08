@@ -5,6 +5,7 @@ import { persist } from "zustand/middleware"
 
 export type TargetType = "html" | "react"
 type Registry = "nepui" | "shadcn"
+export type InstallationType = "cli" | "manual"
 
 export type FontFamily = "fira-code" | "geist-mono" | "jetbrains-mono"
 
@@ -26,6 +27,9 @@ interface ConfigState {
 
   fontSize: string
   setFontSize: (fontSize: string) => void
+
+  installationType: InstallationType
+  setInstallationType: (installationType: InstallationType) => void
 }
 
 export const useConfig = create<ConfigState>()(
@@ -48,6 +52,9 @@ export const useConfig = create<ConfigState>()(
 
       fontSize: "16px",
       setFontSize: (fontSize) => set({ fontSize }),
+
+      installationType: "cli",
+      setInstallationType: (installationType) => set({ installationType }),
     }),
     {
       name: "nepui-docs-preferences",

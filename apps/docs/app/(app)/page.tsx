@@ -10,9 +10,6 @@ export default function Page() {
           The Foundation of Your Design System
         </Heading>
         <LogoIcon className="size-100" />
-        {/* <h1 className="ml-4 text-2xl font-bold">
-          nepui is a work in progress. Check back later for updates!
-        </h1> */}
       </div>
     </Container>
   )
