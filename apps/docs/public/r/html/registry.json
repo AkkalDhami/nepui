@@ -38,6 +38,78 @@
           "target": "styles/spinner.css"
         }
       ]
+    },
+    {
+      "name": "label",
+      "type": "registry:component",
+      "title": "Label",
+      "description": "Renders an accessible label associated with controls.",
+      "files": [
+        {
+          "path": "registry/html/label/label.html",
+          "type": "registry:component",
+          "target": "html/label.html"
+        },
+        {
+          "path": "registry/html/label/label.css",
+          "type": "registry:component",
+          "target": "styles/label.css"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:component",
+      "title": "Checkbox",
+      "description": "A control that allows the user to toggle between checked and not checked.",
+      "files": [
+        {
+          "path": "registry/html/checkbox/checkbox.html",
+          "type": "registry:component",
+          "target": "html/checkbox.html"
+        },
+        {
+          "path": "registry/html/checkbox/checkbox.css",
+          "type": "registry:component",
+          "target": "styles/checkbox.css"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:component",
+      "title": "Input",
+      "description": "A text input component for forms and user data entry with built-in styling and accessibility features.",
+      "files": [
+        {
+          "path": "registry/html/input/input.html",
+          "type": "registry:component",
+          "target": "html/input.html"
+        },
+        {
+          "path": "registry/html/input/input.css",
+          "type": "registry:component",
+          "target": "styles/input.css"
+        }
+      ]
+    },
+    {
+      "name": "steps",
+      "type": "registry:component",
+      "title": "Steps",
+      "description": "A multi-step process indicator that guides users through a sequence of actions or tasks.",
+      "files": [
+        {
+          "path": "registry/html/steps/steps.html",
+          "type": "registry:component",
+          "target": "html/steps.html"
+        },
+        {
+          "path": "registry/html/steps/steps.css",
+          "type": "registry:component",
+          "target": "styles/steps.css"
+        }
+      ]
     }
   ]
 }

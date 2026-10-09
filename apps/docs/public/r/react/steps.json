@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "steps",
+  "title": "Steps",
+  "description": "A multi-step process indicator that guides users through a sequence of actions or tasks.",
+  "files": [
+    {
+      "path": "registry/react/steps/steps.tsx",
+      "content": "\"use client\"\r\n\r\nimport { cn } from \"cn\"\r\nimport type { ComponentProps } from \"react\"\r\n\r\n// NOTE: Update these paths if needed\r\nimport \"../tokens.css\"\r\nimport \"./steps.css\"\r\n\r\nfunction Step({ className, ...props }: ComponentProps<\"h3\">) {\r\n  return <h3 data-slot=\"step\" className={cn(\"np-step\", className)} {...props} />\r\n}\r\n\r\nfunction Steps({ className, ...props }: ComponentProps<\"div\">) {\r\n  return (\r\n    <div data-slot=\"steps\" className={cn(\"np-steps\", className)} {...props} />\r\n  )\r\n}\r\n\r\nexport { Step, Steps }\r\n",
+      "type": "registry:component",
+      "target": "components/nepui/steps/steps.tsx"
+    },
+    {
+      "path": "registry/react/steps/steps.css",
+      "content": "/* nepui — Steps */\r\n\r\n.np-steps,\r\n[data-np-steps] {\r\n  margin-bottom: 1rem;\r\n  counter-reset: np-step;\r\n}\r\n\r\n@media (min-width: 48rem) {\r\n  :is(.np-steps, [data-np-steps]) {\r\n    margin-left: 1rem;\r\n    padding-left: 2rem;\r\n    border-left: 1px solid var(--np-border);\r\n  }\r\n}\r\n\r\n/* A step: .np-step, [data-np-step], or any direct <h3> of a steps container */\r\n:is(.np-step, [data-np-step], :is(.np-steps, [data-np-steps]) > h3) {\r\n  --np-step-size: 1.825rem;\r\n  --np-step-bg: var(--np-muted);\r\n  --np-step-border-color: var(--np-background);\r\n\r\n  margin: 2rem 0 0.5rem;\r\n  scroll-margin-top: 5rem;\r\n  font-size: 1.1865rem;\r\n  line-height: 1.75rem;\r\n  font-weight: 500;\r\n  letter-spacing: -0.01em;\r\n\r\n  counter-increment: np-step;\r\n}\r\n\r\n:is(\r\n  .np-step,\r\n  [data-np-step],\r\n  :is(.np-steps, [data-np-steps]) > h3\r\n):first-child {\r\n  margin-top: 0;\r\n}\r\n\r\n:is(.np-step, [data-np-step], :is(.np-steps, [data-np-steps]) > h3)::before {\r\n  content: counter(np-step);\r\n\r\n  display: inline-flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  box-sizing: border-box;\r\n  width: var(--np-step-size);\r\n  height: var(--np-step-size);\r\n  margin-right: 0.5rem;\r\n\r\n  border-radius: 9999px;\r\n  border-color: var(--np-step-border-color);\r\n  background-color: var(--np-step-bg);\r\n\r\n  text-align: center;\r\n  text-indent: -1px;\r\n  font-family:\r\n    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\",\r\n    \"Courier New\", monospace;\r\n  font-size: 0.875rem;\r\n  line-height: 1.45;\r\n  font-weight: 500;\r\n}\r\n\r\n/* From md up: the badge sits on the guide line */\r\n@media (min-width: 48rem) {\r\n  :is(.np-step, [data-np-step], :is(.np-steps, [data-np-steps]) > h3) {\r\n    --np-step-size: 2.25rem;\r\n  }\r\n\r\n  :is(.np-step, [data-np-step], :is(.np-steps, [data-np-steps]) > h3)::before {\r\n    position: absolute;\r\n    margin-top: -0.25rem;\r\n    margin-left: -3.125rem;\r\n    border-style: solid;\r\n    border-width: 3px;\r\n  }\r\n}\r\n",
+      "type": "registry:component",
+      "target": "components/nepui/steps/steps.css"
+    },
+    {
+      "path": "registry/react/input/index.ts",
+      "content": "export * from \"./input\"\r\n",
+      "type": "registry:component",
+      "target": "components/nepui/steps/index.ts"
+    }
+  ],
+  "type": "registry:component"
+}
