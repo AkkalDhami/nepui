@@ -52,10 +52,12 @@ contributor:
 
 />
 
+---
+
 ## Usage
 
 ```tsx
-import { Spinner } from "@/components/spinner/spinner"
+import { Spinner } from "@/components/nepui/spinner"
 ```
 
 ```tsx
@@ -164,3 +166,21 @@ The `color` prop accepts any valid CSS color value, including named colors, hexa
 | Hex color          | `color="#2563eb"`        |
 | RGB color          | `color="rgb(34 197 94)"` |
 | Custom muted color | `mutedColor="#0211b7"`   |
+
+---
+
+## API Reference
+
+| Prop         | Type                                                                   | Default       |
+| ------------ | ---------------------------------------------------------------------- | ------------- |
+| `size`       | `"xs" \| "sm" \| "md" \| "lg" \| "xl" \| string`                       | —             |
+| `thickness`  | `"thin" \| "normal" \| "medium" \| "thick" \| "extra-thick" \| string` | —             |
+| `speed`      | `"slow" \| "normal" \| "fast" \| "faster" \| string`                   | —             |
+| `direction`  | `"clockwise" \| "counter-clockwise" \| "counterclockwise"`             | `"clockwise"` |
+| `color`      | `string`                                                               | —             |
+| `mutedColor` | `string`                                                               | —             |
+| `label`      | `string`                                                               | `"Loading"`   |
+| `className`  | `string`                                                               | —             |
+| `style`      | `CSSProperties`                                                        | —             |
+
+All other props are inherited from `HTMLAttributes<HTMLSpanElement>`.
