@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Input</title>
+    <link rel="stylesheet" href="./styles/tokens.css" />
+    <link rel="stylesheet" href="./styles/input.css" />
+    <link rel="stylesheet" href="./styles/label.css" />
+    <style>
+      .box {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        width: 340px;
+      }
+      .row {
+        display: flex;
+        gap: 0.625rem;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="row">
+        <label for="name" class="np-label"
+          >Enter your name
+          <span style="color: var(--np-destructive)">*</span></label
+        >
+        <input
+          id="name"
+          class="np-input"
+          placeholder="Enter your name"
+          data-size="sm"
+        />
+      </div>
+
+      <div class="row">
+        <label for="email" class="np-label"
+          >Enter your email
+          <span style="color: var(--np-destructive)">*</span></label
+        >
+        <input
+          id="email"
+          type="email"
+          class="np-input"
+          placeholder="Enter your email"
+        />
+      </div>
+
+      <div class="row">
+        <label for="password" class="np-label"
+          >Enter your password
+          <span style="color: var(--np-destructive)">*</span></label
+        >
+        <input
+          id="password"
+          type="password"
+          class="np-input np-input-lg"
+          placeholder="Enter your password"
+        />
+      </div>
+    </div>
+  </body>
+</html>

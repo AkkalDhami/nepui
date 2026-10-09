@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkbox</title>
+    <link rel="stylesheet" href="./styles/tokens.css" />
+    <link rel="stylesheet" href="./styles/checkbox.css" />
+    <link rel="stylesheet" href="./styles/label.css" />
+    <style>
+      .box {
+        display: flex;
+        gap: 1.25rem;
+        flex-direction: column;
+        align-items: start;
+      }
+      .row {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="row">
+        <input type="checkbox" id="terms" class="np-checkbox" />
+        <label for="terms" class="np-label">Accept terms and conditions</label>
+      </div>
+
+      <div class="row">
+        <input
+          type="checkbox"
+          id="default-checked-terms"
+          class="np-checkbox"
+          checked
+        />
+        <label for="default-checked-terms" class="np-label"
+          >Accept terms and conditions</label
+        >
+      </div>
+
+      <div class="row">
+        <input
+          type="checkbox"
+          id="toggle-checkbox"
+          class="np-checkbox"
+          disabled
+        />
+        <label for="toggle-checkbox" class="np-label"
+          >Enable notifications</label
+        >
+      </div>
+    </div>
+  </body>
+</html>

@@ -50,10 +50,6 @@ const TOP_LEVEL_SECTIONS = [
     name: "CLI",
     href: "/docs/cli",
   },
-  {
-    name: "Changelog",
-    href: "/docs/changelog",
-  },
 ]
 
 const SECTION_LINKS: FlatLink[] = TOP_LEVEL_SECTIONS.map((s) => ({

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkbox</title>
+    <link rel="stylesheet" href="./styles/tokens.css" />
+    <link rel="stylesheet" href="./styles/checkbox.css" />
+    <link rel="stylesheet" href="./styles/label.css" />
+    <style>
+      .row {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="row">
+      <input type="checkbox" id="checkbox-controlled" class="np-checkbox" />
+      <label for="checkbox-controlled" class="np-label">Unchecked</label>
+    </div>
+
+    <script>
+      const checkbox = document.querySelector("#checkbox-controlled")
+      const label = document.querySelector('[for="checkbox-controlled"]')
+
+      checkbox.addEventListener("change", () => {
+        label.textContent = checkbox.checked ? "Checked" : "Unchecked"
+      })
+    </script>
+  </body>
+</html>
