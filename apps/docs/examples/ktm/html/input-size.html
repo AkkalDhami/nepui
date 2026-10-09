@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Input</title>
+    <link rel="stylesheet" href="./styles/tokens.css" />
+    <link rel="stylesheet" href="./styles/input.css" />
+    <style>
+      .box {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 340px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <input data-np-input placeholder="Extra small" data-size="xs" />
+      <input class="np-input" placeholder="Small" data-size="sm" />
+      <input data-np-input placeholder="Default" />
+      <input class="np-input np-input-lg" placeholder="Large" />
+    </div>
+  </body>
+</html>

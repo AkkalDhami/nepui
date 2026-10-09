@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkbox</title>
+    <link rel="stylesheet" href="./styles/tokens.css" />
+    <link rel="stylesheet" href="./styles/checkbox.css" />
+    <link rel="stylesheet" href="./styles/label.css" />
+    <style>
+      .box {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .row {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="row">
+        <input type="checkbox" id="d1" class="np-checkbox" disabled />
+        <label for="d1" class="np-label">Disabled</label>
+      </div>
+
+      <div class="row">
+        <input type="checkbox" id="d2" class="np-checkbox" disabled checked />
+        <label for="d2" class="np-label">Disabled checked</label>
+      </div>
+    </div>
+  </body>
+</html>
