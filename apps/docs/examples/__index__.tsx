@@ -17,13 +17,28 @@ import KtmReactButtonSecondary from "./ktm/react/button-secondary"
 import KtmReactButtonSize from "./ktm/react/button-size"
 import KtmReactButtonSpinner from "./ktm/react/button-spinner"
 import KtmReactButtonWithIcon from "./ktm/react/button-with-icon"
+import KtmReactCheckboxControlled from "./ktm/react/checkbox-controlled"
+import KtmReactCheckboxDefaultChecked from "./ktm/react/checkbox-default-checked"
+import KtmReactCheckboxDemo from "./ktm/react/checkbox-demo"
+import KtmReactCheckboxDisabled from "./ktm/react/checkbox-disabled"
+import KtmReactCheckboxInvalid from "./ktm/react/checkbox-invalid"
 import KtmReactCopyButtonDemo from "./ktm/react/copy-button-demo"
+import KtmReactInputBasic from "./ktm/react/input-basic"
+import KtmReactInputControlled from "./ktm/react/input-controlled"
+import KtmReactInputDemo from "./ktm/react/input-demo"
+import KtmReactInputDisabled from "./ktm/react/input-disabled"
+import KtmReactInputFile from "./ktm/react/input-file"
+import KtmReactInputInvalid from "./ktm/react/input-invalid"
+import KtmReactInputSize from "./ktm/react/input-size"
+import KtmReactInputWithLabel from "./ktm/react/input-with-label"
+import KtmReactLabelDemo from "./ktm/react/label-demo"
 import KtmReactSpinnerColor from "./ktm/react/spinner-color"
 import KtmReactSpinnerDemo from "./ktm/react/spinner-demo"
 import KtmReactSpinnerDirection from "./ktm/react/spinner-direction"
 import KtmReactSpinnerSize from "./ktm/react/spinner-size"
 import KtmReactSpinnerSpeed from "./ktm/react/spinner-speed"
 import KtmReactSpinnerThickness from "./ktm/react/spinner-thickness"
+import KtmReactStepsDemo from "./ktm/react/steps-demo"
 
 export const ExamplesIndex: Record<
   string,
@@ -44,13 +59,28 @@ export const ExamplesIndex: Record<
       "button-size": KtmReactButtonSize,
       "button-spinner": KtmReactButtonSpinner,
       "button-with-icon": KtmReactButtonWithIcon,
+      "checkbox-controlled": KtmReactCheckboxControlled,
+      "checkbox-default-checked": KtmReactCheckboxDefaultChecked,
+      "checkbox-demo": KtmReactCheckboxDemo,
+      "checkbox-disabled": KtmReactCheckboxDisabled,
+      "checkbox-invalid": KtmReactCheckboxInvalid,
       "copy-button-demo": KtmReactCopyButtonDemo,
+      "input-basic": KtmReactInputBasic,
+      "input-controlled": KtmReactInputControlled,
+      "input-demo": KtmReactInputDemo,
+      "input-disabled": KtmReactInputDisabled,
+      "input-file": KtmReactInputFile,
+      "input-invalid": KtmReactInputInvalid,
+      "input-size": KtmReactInputSize,
+      "input-with-label": KtmReactInputWithLabel,
+      "label-demo": KtmReactLabelDemo,
       "spinner-color": KtmReactSpinnerColor,
       "spinner-demo": KtmReactSpinnerDemo,
       "spinner-direction": KtmReactSpinnerDirection,
       "spinner-size": KtmReactSpinnerSize,
       "spinner-speed": KtmReactSpinnerSpeed,
       "spinner-thickness": KtmReactSpinnerThickness,
+      "steps-demo": KtmReactStepsDemo,
     },
     html: {
       "button-default": "ktm/html/button-default.html",
@@ -66,12 +96,27 @@ export const ExamplesIndex: Record<
       "button-size": "ktm/html/button-size.html",
       "button-spinner": "ktm/html/button-spinner.html",
       "button-with-icon": "ktm/html/button-with-icon.html",
+      "checkbox-controlled": "ktm/html/checkbox-controlled.html",
+      "checkbox-default-checked": "ktm/html/checkbox-default-checked.html",
+      "checkbox-demo": "ktm/html/checkbox-demo.html",
+      "checkbox-disabled": "ktm/html/checkbox-disabled.html",
+      "checkbox-invalid": "ktm/html/checkbox-invalid.html",
+      "input-basic": "ktm/html/input-basic.html",
+      "input-controlled": "ktm/html/input-controlled.html",
+      "input-demo": "ktm/html/input-demo.html",
+      "input-disabled": "ktm/html/input-disabled.html",
+      "input-file": "ktm/html/input-file.html",
+      "input-invalid": "ktm/html/input-invalid.html",
+      "input-label": "ktm/html/input-label.html",
+      "input-size": "ktm/html/input-size.html",
+      "label-demo": "ktm/html/label-demo.html",
       "spinner-color": "ktm/html/spinner-color.html",
       "spinner-demo": "ktm/html/spinner-demo.html",
       "spinner-direction": "ktm/html/spinner-direction.html",
       "spinner-size": "ktm/html/spinner-size.html",
       "spinner-speed": "ktm/html/spinner-speed.html",
       "spinner-thickness": "ktm/html/spinner-thickness.html",
+      "steps-demo": "ktm/html/steps-demo.html",
     },
   },
 }
