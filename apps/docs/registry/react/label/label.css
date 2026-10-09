@@ -1,0 +1,32 @@
+/* nepui — Label */
+
+.np-label,
+[data-np-label] {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1;
+
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Disabled via an ancestor: <div data-disabled="true"> … <label> … </div> */
+[data-disabled="true"] :is(.np-label, [data-np-label]) {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Disabled control placed BEFORE the label: <input disabled /> <label> */
+:is(input, select, textarea, button, [role="checkbox"], [role="switch"]):is(
+    :disabled,
+    [aria-disabled="true"],
+    [data-disabled]
+  )
+  ~ :is(.np-label, [data-np-label]) {
+  cursor: not-allowed;
+  opacity: 0.5;
+}

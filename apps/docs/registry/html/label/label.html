@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Label - nepui</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/label.css" />
+
+    <!-- Inline page styles (demo layout only, not part of the component) -->
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem;
+        font-family: system-ui, sans-serif;
+        background: var(--np-background);
+        color: var(--np-foreground);
+      }
+
+      .demo {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        max-width: 22rem;
+      }
+
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .row {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      input[type="email"],
+      input[type="text"] {
+        height: 2rem;
+        padding: 0 0.625rem;
+        border: 1px solid var(--np-border);
+        border-radius: var(--np-radius-md);
+        background: var(--np-background);
+        color: inherit;
+        font: inherit;
+        font-size: 0.875rem;
+        box-sizing: border-box;
+      }
+
+      input:disabled {
+        opacity: 0.5;
+      }
+
+      h2 {
+        margin: 0 0 0.25rem;
+        font-size: 0.75rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        opacity: 0.6;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="demo">
+      <section>
+        <h2>Class</h2>
+        <div class="field">
+          <label class="np-label" for="email">Email</label>
+          <input id="email" type="email" placeholder="you@example.com" />
+        </div>
+      </section>
+
+      <section>
+        <h2>Data attribute</h2>
+        <div class="field">
+          <label data-np-label for="name">Name</label>
+          <input id="name" type="text" placeholder="Your name" />
+        </div>
+      </section>
+
+      <section>
+        <h2>Inline style override</h2>
+        <div class="field">
+          <label
+            class="np-label"
+            for="role"
+            style="color: var(--np-destructive); font-size: 1rem"
+          >
+            Role (required)
+          </label>
+          <input id="role" type="text" />
+        </div>
+      </section>
+
+      <section>
+        <h2>Disabled control before label (peer)</h2>
+        <div class="row">
+          <input id="a" type="checkbox" disabled />
+          <label class="np-label" for="a">Accept terms</label>
+        </div>
+      </section>
+
+      <section>
+        <h2>Disabled via ancestor</h2>
+        <div class="field" data-disabled="true">
+          <label class="np-label" for="b">Nickname</label>
+          <input id="b" type="text" disabled />
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
