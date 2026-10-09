@@ -1,0 +1,145 @@
+---
+title: Input
+description: A text input component for forms and user data entry with built-in styling and accessibility features.
+contributor:
+ -  name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4 
+---
+
+<ComponentPreview
+  name="input-demo"
+  target="html"
+  styles={['/label/label.css']}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add input"
+      className="mt-4"
+    />
+  }
+  manual={
+<Steps>
+<Step>Copy and paste the following code into your project.</Step>
+<ComponentSource
+  target="html"
+  name="input"
+  title="styles/input.css"
+  fileTarget="styles/input.css"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+</Steps>
+}/>
+
+---
+
+## Usage
+
+Link the component's CSS file to your HTML document.
+
+```html
+<head>
+  <link rel="stylesheet" href="./styles/input.css">
+</head>
+```
+
+Then add the `data-np-input` attribute or `np-input` class to your `<input>` element.
+```html
+<input
+  name="name"
+  placeholder="Enter your name"
+  class="np-input"
+  data-size="sm"
+/>
+<input name="email" placeholder="Enter your email" data-np-input />
+<input
+  id="password"
+  name="password"
+  placeholder="Enter your password"
+  class="np-input"
+  data-size="lg"
+/>
+```
+
+---
+
+## Size
+
+Use `data-size` attribute or a matching class alias to change the size of the input.
+
+<ComponentPreview
+  name="input-size"
+  target="html"
+/>
+
+| Size             | Data attribute        | Class alias         |
+| ---------------- | --------------------- | ------------------- |
+| Extra small      | `data-size="xs"`      | `np-input-xs`      |
+| Small            | `data-size="sm"`      | `np-input-sm`      |
+| Large            | `data-size="lg"`      | `np-input-lg`      |
+
+---
+
+## Basic
+
+<ComponentPreview
+  name="input-basic"
+  target="html"
+/>
+
+---
+
+## Label
+
+<ComponentPreview
+  name="input-label"
+  target="html"
+  styles={['/label/label.css']}
+/>
+
+---
+
+## File
+
+<ComponentPreview
+  name="input-file"
+  target="html"
+/>
+
+---
+
+## Invalid
+
+Use `data-invalid` or `aria-invalid="true"` to mark the input as invalid.
+
+<ComponentPreview
+  name="input-invalid"
+  target="html"
+/>
+
+---
+
+## Disabled
+
+Use `data-disabled` or `aria-disabled="true"` to mark the input as disabled.
+
+<ComponentPreview
+  name="input-disabled"
+  target="html"
+/>
+
+---
+
+## Controlled
+
+<ComponentPreview
+  name="input-controlled"
+  target="html"
+/>

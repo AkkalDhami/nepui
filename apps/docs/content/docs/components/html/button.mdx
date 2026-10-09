@@ -16,34 +16,27 @@ contributor:
 
 ## Installation
 
-<Tabs defaultValue="cli" className="mt-8 gap-0">
-<TabsList className="mb-0 bg-transparent" variant="line">
-<TabsTrigger value="cli" className="text-base pb-2">Command</TabsTrigger>
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add button"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="button"
+        title="styles/button.css"
+        fileTarget="styles/button.css"
+      />
 
-<TabsTrigger value="manual" className="text-base pb-2">Manual</TabsTrigger>
-</TabsList>
-
-<TabsContent value="cli" className="mt-0 [&_figure]:my-4">
-```bash
-npx nepui@latest add button
-```
-</TabsContent>
-
-<TabsContent value="manual" className="mt-0">
-<Steps>
-<Step>Copy and paste the following code into your project.</Step>
-<ComponentSource
-  target="html"
-  name="button"
-  title="styles/button.css"
-  fileTarget="styles/button.css"
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
 />
-
-<Step>Update the import paths to match your project setup.</Step>
-</Steps>
-</TabsContent>
-
-</Tabs>
 
 ---
 
@@ -51,31 +44,25 @@ npx nepui@latest add button
 
 Link the component's CSS file to your HTML document.
 
-```html title="button.html" showLineNumbers {2}
-<html>
+```html
+<head>
   <link rel="stylesheet" href="./styles/button.css">
-</html>
+</head>
 ```
 
-Then, use the `button` component in your project.
+Then, add the `np-button` class to your `<button>` element.
 
-```html title="button.html" showLineNumbers {2-8}
-<body>
-  <button
-    type="button"
-    class="np-button"
-    data-variant="default"
-  >
-    Button
-  </button>
-</body>
+```html
+<button class="np-button" data-variant="default">Button</button>
+<button class="np-button np-button-outline">Outline</button>
+<button class="np-button" data-variant="secondary">Secondary</button>
 ```
 
 ---
 
 ## Size
 
-Use `data-size` or a matching class alias for compact, large, or icon-only buttons.
+Use `data-size` attribute or a matching class alias for compact, large, or icon-only buttons.
 
 <ComponentPreview
   name="button-size"

@@ -20,7 +20,7 @@ contributor:
   cli={
     <PackageManagerTabs
       command="npx nepui@latest add spinner"
-      className="mt-6"
+      className="mt-4"
     />
   }
   manual={
@@ -44,15 +44,15 @@ contributor:
 
 Link the component's CSS file to your HTML document.
 
-```html title="spinner.html" showLineNumbers {2}
-<html>
+```html
+<head>
   <link rel="stylesheet" href="./styles/spinner.css">
-</html>
+</head>
 ```
 
-Then, add the `data-np-spinner` attribute or the class alias `np-spinner` to an element:
+Then, add the `data-np-spinner` attribute or the class alias `np-spinner` to a `<span>` element.
 
-```html title="spinner.html" showLineNumbers
+```html
 <span data-np-spinner></span>
 <span class="np-spinner"></span>
 <span class="np-spinner" data-size="lg"></span>
