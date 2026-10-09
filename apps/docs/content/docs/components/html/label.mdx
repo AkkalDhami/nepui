@@ -1,0 +1,57 @@
+---
+title: Label
+description: Renders an accessible label associated with controls.
+contributor:
+ -  name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4 
+---
+
+<ComponentPreview
+  name="label-demo"
+  target="html"
+  styles={['/checkbox/checkbox.css']}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add label"
+      className="mt-4"
+    />
+  }
+  manual={
+<Steps>
+<Step>Copy and paste the following code into your project.</Step>
+<ComponentSource
+  target="html"
+  name="label"
+  title="styles/label.css"
+  fileTarget="styles/label.css"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+</Steps>
+}/>
+
+---
+
+## Usage
+
+Link the component's CSS file to your HTML document.
+
+```html
+<head>
+  <link rel="stylesheet" href="./styles/label.css">
+</head>
+```
+
+Then add the `data-np-label` attribute or `np-label` class to your `<label>` element.
+```html
+<label data-np-label for="email">Your email address</label>
+<label for="terms" class="np-label">Terms and conditions</label>
+```

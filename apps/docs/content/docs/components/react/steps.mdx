@@ -1,0 +1,112 @@
+---
+title: Steps
+description: A multi-step process indicator that guides users through a sequence of actions or tasks.
+contributor:
+ -  name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4 
+---
+
+<ComponentPreview
+  name="steps-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/steps.json"
+      nepui="npx nepui@latest add steps --target react"
+    />
+  }
+  manual={
+<Steps>
+<Step>Copy and paste the following code into your project.</Step>
+<ComponentSource
+  target="react"
+  name="steps"
+  title="components/nepui/steps/steps.css"
+  fileTarget="components/nepui/steps/steps.css"
+/>
+
+<ComponentSource
+  target="react"
+  name="steps"
+  title="components/nepui/steps/steps.tsx"
+  fileTarget="components/nepui/steps/steps.tsx"
+/>
+
+<ComponentSource
+  target="react"
+  name="steps"
+  title="components/nepui/steps/index.ts"
+  fileTarget="components/nepui/steps/index.ts"  
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+</Steps>
+}/>
+
+---
+
+## Usage
+
+```tsx
+import { Step, Steps } from "@/components/nepui/steps"
+```
+
+```tsx
+<Steps>
+  <Step>Copy and paste the following code into your project.</Step>
+ 
+  Add the stylesheet to your project.
+ 
+  <Step>Update the import paths to match your project setup.</Step>
+ 
+  Check that the tokens file is imported before the component.
+ 
+  <Step>Use the component.</Step>
+</Steps>
+```
+
+---
+
+## Markdown headings
+ 
+Any direct `h3` inside `Steps` is numbered too, so you can write plain
+markdown headings.
+
+```mdx
+<Steps>
+ 
+### Install the package
+ 
+Run the install command.
+ 
+### Import the styles
+ 
+Import the stylesheet once in your root layout.
+ 
+</Steps>
+```
+ 
+Leave a blank line after `<Steps>` and before `</Steps>` so MDX parses the
+content as markdown.
+
+---
+ 
+## Register in MDX
+ 
+To use `Steps` and `Step` in every docs page without importing them, add them
+to your MDX components map. The exact file depends on your framework.
+ 
+```tsx
+import { Step, Steps } from "@/components/nepui/steps"
+ 
+export function useMDXComponents(components) {
+  return { Step, Steps, ...components }
+}
+```

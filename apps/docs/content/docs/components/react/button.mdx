@@ -26,7 +26,7 @@ import { ArrowUpIcon, PlusIcon, DownloadSimpleIcon } from "@phosphor-icons/react
   manual={
     <Steps>
       <Step>Install the following dependencies:</Step>
-      <PackageManagerTabs command="npm install @base-ui/react" className="mt-6"/>
+      <PackageManagerTabs command="npm install @base-ui/react class-variance-authority cn" className="mt-6"/>
 
       <Step>Copy and paste the following code into your project.</Step>
       <ComponentSource
@@ -182,3 +182,15 @@ Render a `<Spinner />` component inside the button to show a loading state.
 <ComponentPreview
   name="button-disabled"
 />
+
+---
+
+## API Reference
+
+| Prop        | Type                                                                                 | Default     |
+| ----------- | ------------------------------------------------------------------------------------ | ----------- |
+| `variant`   | `"default" \| "outline" \| "secondary" \| "ghost" \| "destructive" \| "link"`        | `"default"` |
+| `size`      | `"default" \| "xs" \| "sm" \| "lg" \| "icon" \| "icon-xs" \| "icon-sm" \| "icon-lg"` | `"default"` |
+| `className` | `string`                                                                             | —           |
+
+All other props are inherited from [Base UI's](https://base-ui.com/react/components/button) `Button`.

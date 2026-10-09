@@ -1,0 +1,121 @@
+---
+title: Checkbox
+description: A control that allows the user to toggle between checked and not checked.
+---
+
+<ComponentPreview
+  name="checkbox-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/checkbox.json"
+      nepui="npx nepui@latest add checkbox --target react"
+    />
+  }
+  manual={
+<Steps>
+<Step>Install the following dependencies:</Step>
+<PackageManagerTabs command="npm install @base-ui/react cn" className="mt-6"/>
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  target="react"
+  name="checkbox"
+  title="components/nepui/checkbox/checkbox.css"
+  fileTarget="components/nepui/checkbox/checkbox.css"
+/>
+
+<ComponentSource
+  target="react"
+  name="checkbox"
+  title="components/nepui/checkbox/checkbox.tsx"
+  fileTarget="components/nepui/checkbox/checkbox.tsx"
+/>
+
+<ComponentSource
+  target="react"
+  name="checkbox"
+  title="components/nepui/checkbox/index.ts"
+  fileTarget="components/nepui/checkbox/index.ts"  
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+</Steps>
+}/>
+
+---
+
+## Usage
+
+```tsx
+import { Checkbox } from "@/components/nepui/checkbox"
+```
+
+```tsx
+<Checkbox />
+```
+
+---
+  
+## Checked by default
+
+<ComponentPreview
+  name="checkbox-default-checked"
+/>
+
+---
+
+## Checked State
+
+Use `defaultChecked` for uncontrolled checkboxes, or `checked` and `onCheckedChange` to control the state.
+
+```tsx
+import * as React from "react"
+ 
+export function Example() {
+  const [checked, setChecked] = React.useState(false)
+ 
+  return <Checkbox checked={checked} onCheckedChange={setChecked} />
+}
+```
+
+---
+
+## Invalid State
+
+Set `aria-invalid` on the checkbox to show the invalid styles.
+
+<ComponentPreview
+  name="checkbox-invalid"
+/>
+
+---
+
+## Disabled State
+
+Set `aria-disabled` on the checkbox to show the disabled styles.
+
+<ComponentPreview
+  name="checkbox-disabled"
+/>
+
+---
+
+## Controlled
+
+<ComponentPreview
+  name="checkbox-controlled"
+/>
+
+---
+
+## API Reference
+
+See the [Base UI](https://base-ui.com/react/components/checkbox#api-reference) documentation for more information.
+

@@ -1,0 +1,101 @@
+---
+title: Checkbox
+description: A control that allows the user to toggle between checked and not checked.
+contributor:
+ -  name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4 
+---
+
+<ComponentPreview
+  name="checkbox-demo"
+  target="html"
+  styles={['/label/label.css']}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add checkbox"
+      className="mt-4"
+    />
+  }
+  manual={
+<Steps>
+<Step>Copy and paste the following code into your project.</Step>
+<ComponentSource
+  target="html"
+  name="checkbox"
+  title="styles/checkbox.css"
+  fileTarget="styles/checkbox.css"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+</Steps>
+}/>
+
+---
+
+## Usage
+
+Link the component's CSS file to your HTML document.
+
+```html
+<head>
+  <link rel="stylesheet" href="./styles/checkbox.css">
+</head>
+```
+
+Then add the `data-np-checkbox` attribute or `np-checkbox` class to your `<input>` element.
+```html
+<input data-np-checkbox type="checkbox" id="remember-me" />
+<input type="checkbox" id="disabled-checkbox" disabled class="np-checkbox" />
+```
+
+---
+
+## Checked by default
+
+<ComponentPreview
+  name="checkbox-default-checked"
+  target="html"
+  styles={['/label/label.css']}
+/>
+
+---
+
+## Invalid State
+
+Set `data-invalid` or `aria-invalid="true"` on the checkbox to show the invalid styles.
+
+<ComponentPreview
+  name="checkbox-invalid"
+  target="html"
+  styles={['/label/label.css']}
+/>
+
+---
+
+## Disabled State
+
+Set `disabled` on the checkbox to show the disabled styles.
+
+<ComponentPreview
+  name="checkbox-disabled"
+  target="html"
+  styles={['/label/label.css']}
+/>
+
+---
+
+## Controlled
+
+<ComponentPreview
+  name="checkbox-controlled"
+  target="html"
+  styles={['/label/label.css']}
+/>

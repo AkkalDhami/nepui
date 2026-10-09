@@ -1,0 +1,69 @@
+---
+title: Steps
+description: A multi-step process indicator that guides users through a sequence of actions or tasks.
+contributor:
+ -  name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4 
+---
+
+<ComponentPreview
+  name="steps-demo"
+  target="html"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add steps"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="steps"
+        title="styles/steps.css"
+        fileTarget="styles/steps.css"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the component's CSS file to your HTML document.
+
+```html
+<head>
+  <link rel="stylesheet" href="./styles/steps.css">
+</head>
+```
+
+Then add the `data-np-steps` attribute or `np-steps` class to your `<div>` element.
+
+Add the `data-np-step` attribute or `np-step` class to each `<h3>` element to create a step indicator.
+
+```html
+<div data-np-steps>
+  <h3 class="np-step">Create your component structure.</h3>
+
+  <h3 data-np-step>Add the required HTML and CSS.</h3>
+
+  <h3 class="np-step">Import nepui&apos;s design tokens.</h3>
+
+  <h3 data-np-step>Add the component behavior.</h3>
+  
+  <h3 class="np-step">Customize the component with CSS variables.</h3>
+</div>
+```

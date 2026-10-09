@@ -1,0 +1,149 @@
+---
+title: Input
+description: A text input component for forms and user data entry with built-in styling and accessibility features.
+contributor:
+ -  name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4 
+---
+
+<ComponentPreview
+  name="input-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/input.json"
+      nepui="npx nepui@latest add input --target react"
+    />
+  }
+  manual={
+<Steps>
+<Step>Install the following dependencies:</Step>
+<PackageManagerTabs command="npm install @base-ui/react class-variance-authority cn" className="mt-6"/>
+
+<Step>Copy and paste the following code into your project.</Step>
+<ComponentSource
+  target="react"
+  name="input"
+  title="components/nepui/input/input.css"
+  fileTarget="components/nepui/input/input.css"
+/>
+
+<ComponentSource
+  target="react"
+  name="input"
+  title="components/nepui/input/input.tsx"
+  fileTarget="components/nepui/input/input.tsx"
+/>
+
+<ComponentSource
+  target="react"
+  name="input"
+  title="components/nepui/input/index.ts"
+  fileTarget="components/nepui/input/index.ts"  
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+</Steps>
+}/>
+
+---
+
+## Usage
+
+```tsx
+import { Input } from "@/components/nepui/input";
+```
+
+```tsx
+<Input id="name" name="name" placeholder="Enter your name" size="sm" />
+<Input id="email" name="email" placeholder="Enter your email" />
+<Input
+  id="password"
+  name="password"
+  placeholder="Enter your password"
+  size="lg"
+/>
+```
+
+---
+
+## Size
+
+Use the `size` prop: `xs`, `sm`, `default` or `lg`.
+
+<ComponentPreview
+  name="input-size"
+/>
+
+---
+
+## Basic
+
+<ComponentPreview
+  name="input-basic"
+/>
+
+---
+
+
+## Label
+
+<ComponentPreview
+  name="input-with-label"
+/>
+
+---
+
+## File
+
+<ComponentPreview
+  name="input-file"
+/>
+
+---
+
+## Invalid
+
+Use the `aria-invalid` prop to indicate that the input value is invalid.
+
+<ComponentPreview
+  name="input-invalid"
+/>
+
+---
+
+## Disabled
+
+Use the `disabled` prop to indicate that the input is disabled.
+
+<ComponentPreview
+  name="input-disabled"
+/>
+
+---
+
+## Controlled
+
+Use the `value` and `onChange` props to control the input value.
+
+<ComponentPreview
+  name="input-controlled"
+/>
+
+---
+
+## API Reference
+
+| Prop        | Type                                | Default     |
+| ----------- | ----------------------------------- | ----------- |
+| `size`      | `"xs" \| "sm" \| "default" \| "lg"` | `"default"` |
+| `className` | `string \| (state) => string`       | —           |
+ 
+All other props are passed to [Base UI's](https://base-ui.com/react/components/input#api-reference) `Input` and the underlying `<input>`.
