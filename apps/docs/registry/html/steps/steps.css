@@ -1,0 +1,79 @@
+/* nepui — Steps */
+
+.np-steps,
+[data-np-steps] {
+  margin-bottom: 1rem;
+  counter-reset: np-step;
+}
+
+@media (min-width: 48rem) {
+  :is(.np-steps, [data-np-steps]) {
+    margin-left: 1rem;
+    padding-left: 2rem;
+    border-left: 1px solid var(--np-border);
+  }
+}
+
+/* A step: .np-step, [data-np-step], or any direct <h3> of a steps container */
+:is(.np-step, [data-np-step], :is(.np-steps, [data-np-steps]) > h3) {
+  --np-step-size: 1.825rem;
+  --np-step-bg: var(--np-muted);
+  --np-step-border-color: var(--np-background);
+
+  margin: 2rem 0 0.5rem;
+  scroll-margin-top: 5rem;
+  font-size: 1.1865rem;
+  line-height: 1.75rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+
+  counter-increment: np-step;
+}
+
+:is(
+  .np-step,
+  [data-np-step],
+  :is(.np-steps, [data-np-steps]) > h3
+):first-child {
+  margin-top: 0;
+}
+
+:is(.np-step, [data-np-step], :is(.np-steps, [data-np-steps]) > h3)::before {
+  content: counter(np-step);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: var(--np-step-size);
+  height: var(--np-step-size);
+  margin-right: 0.5rem;
+
+  border-radius: 9999px;
+  border-color: var(--np-step-border-color);
+  background-color: var(--np-step-bg);
+
+  text-align: center;
+  text-indent: -1px;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  font-weight: 500;
+}
+
+/* From md up: the badge sits on the guide line */
+@media (min-width: 48rem) {
+  :is(.np-step, [data-np-step], :is(.np-steps, [data-np-steps]) > h3) {
+    --np-step-size: 2.25rem;
+  }
+
+  :is(.np-step, [data-np-step], :is(.np-steps, [data-np-steps]) > h3)::before {
+    position: absolute;
+    margin-top: -0.25rem;
+    margin-left: -3.125rem;
+    border-style: solid;
+    border-width: 3px;
+  }
+}
