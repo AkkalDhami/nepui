@@ -86,25 +86,23 @@ export function Navbar({ className }: NavbarProps) {
         <Logo variant="default" />
 
         <div className="flex items-center gap-5">
-          <div className="hidden md:flex md:items-center md:gap-2">
-            {NAV_ITEMS.map((item) => (
-              <DesktopNavLink key={item.href} item={item} />
-            ))}
-            <div className="ml-auto w-full max-w-64">
+          <div className="flex items-center gap-4">
+            <div className="hidden items-center gap-2 md:flex">
+              {NAV_ITEMS.map((item) => (
+                <DesktopNavLink key={item.href} item={item} />
+              ))}
+            </div>
+            <div className="ml-auto hidden w-full max-w-64 md:flex">
               <CommandMenu tree={source.pageTree} navItems={NAV_ITEMS} />
             </div>
-            <div className="hidden md:flex md:items-center md:gap-1">
+            <div className="flex items-center gap-2">
               <GitHubLink />
               <ThemeToggle />
             </div>
 
-            <div className="flex items-center gap-1 md:hidden">
-              <ThemeToggle />
+            <div className="md:hidden">
+              <DocsMobileNav tree={source.pageTree} />
             </div>
-          </div>
-
-          <div className="md:hidden">
-            <DocsMobileNav tree={source.pageTree} />
           </div>
         </div>
       </div>

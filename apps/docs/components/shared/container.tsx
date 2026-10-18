@@ -1,3 +1,6 @@
+"use client"
+
+import { cn } from "cn"
 import React from "react"
 
 export function Container({
@@ -9,7 +12,7 @@ export function Container({
   className?: string
 }) {
   return (
-    <div className={`container mx-auto max-w-7xl ${className}`} {...props}>
+    <div className={cn("container mx-auto max-w-7xl", className)} {...props}>
       {children}
     </div>
   )
