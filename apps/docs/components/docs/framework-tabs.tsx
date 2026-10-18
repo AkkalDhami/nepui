@@ -25,6 +25,7 @@ export function FrameworkTabs() {
 
   const current = getCurrentTarget(pathname)
   const { setTarget } = useConfig()
+
   function handleFrameworkChange(value: string) {
     if (value === current) return
 
