@@ -6,6 +6,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Route } from "next"
 import { getCurrentTarget } from "@/lib/page-tree"
 import { LanguageIcons } from "../icons"
+import { TargetType, useConfig } from "@/hooks/use-config"
 
 const frameworks = [
   {
@@ -18,21 +19,19 @@ const frameworks = [
   },
 ] as const
 
-// type Framework = (typeof frameworks)[number]["value"]
-
 export function FrameworkTabs() {
   const pathname = usePathname()
   const router = useRouter()
 
-  // const current: Framework = pathname.includes("/react/") ? "react" : "html"
-
   const current = getCurrentTarget(pathname)
+  const { setTarget } = useConfig()
   function handleFrameworkChange(value: string) {
     if (value === current) return
 
     const nextPath = pathname.replace(`/${current}/`, `/${value}/`)
 
     router.push(nextPath as Route, { scroll: false })
+    setTarget(value as TargetType)
   }
 
   const Icons = {

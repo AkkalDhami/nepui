@@ -58,7 +58,7 @@ const SECTION_LINKS: FlatLink[] = TOP_LEVEL_SECTIONS.map((s) => ({
   urls: [s.href],
 }))
 
-function flatten(nodes: PageTree.Node[]): FlatLink[] {
+export function flatten(nodes: PageTree.Node[]): FlatLink[] {
   const map = new Map<string, FlatLink>()
 
   const walk = (list: PageTree.Node[]) => {

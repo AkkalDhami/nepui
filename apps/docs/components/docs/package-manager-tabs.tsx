@@ -22,6 +22,7 @@ export default function PackageManagerTabs({
   function onChangePackageManager(pkgManager: PackageManager) {
     setPackageManager(pkgManager)
   }
+
   const Icon = getPackageManagerIcon(packageManager, "size-5")
 
   return (
@@ -32,10 +33,7 @@ export default function PackageManagerTabs({
         className
       )}
     >
-      <TabsList
-        // variant={"line"}
-        className={cn("bg-transparent pl-4")}
-      >
+      <TabsList className={cn("bg-transparent pl-4")}>
         <div className="mr-4 flex items-center gap-3">{Icon}</div>
         {pkgManagers.map((m) => {
           return (
