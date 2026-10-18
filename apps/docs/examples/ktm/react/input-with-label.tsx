@@ -12,12 +12,12 @@ export default function InputWithLabel() {
         gap: "0.625rem",
       }}
     >
-      <Label htmlFor="email">
+      <Label htmlFor="input-label">
         Email
         <span style={{ color: "var(--np-destructive)" }}>*</span>
       </Label>
       <Input
-        id="email"
+        id="input-label"
         name="email"
         type="email"
         placeholder="your.email@example.com"

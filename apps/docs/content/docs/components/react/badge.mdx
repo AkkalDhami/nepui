@@ -1,0 +1,208 @@
+---
+title: Badge
+description: A badge displays a short piece of information, such as a status, a label or a count.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="badge-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/badge.json"
+      nepui="npx nepui@latest add badge --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react class-variance-authority cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="badge"
+        title="components/nepui/badge/badge.css"
+        fileTarget="components/nepui/badge/badge.css"
+      />
+
+      <ComponentSource
+        target="react"
+        name="badge"
+        title="components/nepui/badge/badge.tsx"
+        fileTarget="components/nepui/badge/badge.tsx"
+      />
+
+      <ComponentSource
+        target="react"
+        name="badge"
+        title="components/nepui/badge/index.ts"
+        fileTarget="components/nepui/badge/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import { Badge } from "@/components/nepui/badge"
+```
+
+```tsx
+<Badge>Badge</Badge>
+<Badge variant="success">Success</Badge>
+<Badge variant="warning" appearance="light">
+  Pending
+</Badge>
+<Badge variant="secondary" appearance="outline">
+  Draft
+</Badge>
+<Badge color="#7c3aed">Violet</Badge>
+<Badge variant="success" appearance="light" dot>
+  Online
+</Badge>
+<Badge variant="destructive" pulse>
+  Live
+</Badge>
+```
+
+---
+
+## Variants
+
+Use the `variant` prop to set the semantic color of the badge.
+
+<ComponentPreview
+  name="badge-variant"
+/>
+
+Available variants are `default`, `secondary`, `info`, `success`, `warning`, and `destructive`.
+
+---
+
+## Appearance
+
+Use the `appearance` prop to change how the badge is filled.
+
+<ComponentPreview
+  name="badge-appearance"
+/>
+
+Available appearances are `solid` (default), `light`, and `outline`. Every variant works with every appearance.
+
+---
+
+## Color
+
+Use the `color` prop to set any CSS color: a name, hex, `rgb()`, `hsl()`, or `oklch()`. It overrides the color of the variant and works with every appearance.
+
+<ComponentPreview
+  name="badge-color"
+/>
+
+On solid badges, the text color is chosen automatically for contrast.
+
+---
+
+## Size
+
+Use the `size` prop to change the size of the badge.
+
+<ComponentPreview
+  name="badge-size"
+/>
+
+Available sizes are `xs`, `sm`, `default`, `lg`, and `xl`.
+
+---
+
+## Radius
+
+Badges are pills by default. Use `radius="md"` for regular rounded corners.
+
+<ComponentPreview
+  name="badge-radius"
+/>
+
+---
+
+## Dot
+
+Use the `dot` prop to show a small status dot before the content.
+
+<ComponentPreview
+  name="badge-dot"
+/>
+
+On solid badges the dot uses the text color. On light and outline badges it uses the accent color of the variant.
+
+---
+
+## Pulse
+
+Use the `pulse` prop to animate the dot. It also shows the dot, so you don't need to pass `dot`.
+
+<ComponentPreview
+  name="badge-pulse"
+/>
+
+The animation is turned off for users who prefer reduced motion.
+
+---
+
+## With Icon
+
+Render an icon inside the badge. Icons are sized to match the badge size automatically.
+
+<ComponentPreview
+  name="badge-with-icon"
+/>
+
+---
+
+## With Spinner
+
+<ComponentPreview
+  name="badge-with-spinner"
+/>
+
+---
+
+## Link
+
+Use the `render` prop to render the badge as another element, such as a link.
+
+<ComponentPreview
+  name="badge-link"
+/>
+
+
+---
+
+## API Reference
+
+| Prop         | Type                                                                                                     | Default     |
+| ------------ | -------------------------------------------------------------------------------------------------------- | ----------- |
+| `variant`    | `"default" \| "secondary" \| "info" \| "success" \| "warning" \| "destructive"` | `"default"` |
+| `appearance` | `"solid" \| "light" \| "outline"`                                                                        | `"solid"`   |
+| `size`       | `"xs" \| "sm" \| "default" \| "lg" \| "xl"`                                                              | `"default"` |
+| `radius`     | `"full" \| "md"`                                                                                         | `"full"`    |
+| `color`      | `string` (any CSS color)                                                                                 | —           |
+| `dot`        | `boolean`                                                                                                | `false`     |
+| `pulse`      | `boolean`                                                                                                | `false`     |
+| `render`     | `React.ReactElement \| function`                                                                         | —           |
+| `className`  | `string`                                                                                                 | —           |

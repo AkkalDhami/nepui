@@ -1,0 +1,219 @@
+---
+title: Badge
+description: A badge displays a short piece of information, such as a status, a label or a count.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="badge-demo"
+  target="html"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add badge"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="badge"
+        title="styles/badge.css"
+        fileTarget="styles/badge.css"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the design tokens and the component's CSS file to your HTML document.
+
+```html
+<head>
+  <link rel="stylesheet" href="./styles/tokens.css">
+  <link rel="stylesheet" href="./styles/badge.css">
+</head>
+```
+
+Then, add the `np-badge` class to a `<span>` element.
+
+```html
+<span class="np-badge">Badge</span>
+<span class="np-badge np-badge-success">Success</span>
+<span class="np-badge" data-variant="warning" data-appearance="light">Pending</span>
+```
+
+You can also use the `data-np-badge` attribute instead of the class.
+
+```html
+<span data-np-badge data-variant="success">Success</span>
+```
+
+---
+
+## Variants
+
+Use `data-variant` attribute or the matching class alias to choose a semantic color. The default badge can use `np-badge`.
+
+<ComponentPreview
+  name="badge-variant"
+  target="html"
+/>
+
+Badge variants can be specified using either `data-variant` attributes or their corresponding class aliases.
+
+| Variant     | Data attribute               | Class alias            |
+| ----------- | ---------------------------- | ---------------------- |
+| Default     | `data-variant="default"`     | `np-badge`             |
+| Secondary   | `data-variant="secondary"`   | `np-badge-secondary`   |
+| Info        | `data-variant="info"`        | `np-badge-info`        |
+| Success     | `data-variant="success"`     | `np-badge-success`     |
+| Warning     | `data-variant="warning"`     | `np-badge-warning`     |
+| Destructive | `data-variant="destructive"` | `np-badge-destructive` |
+
+---
+
+## Appearance
+
+Use `data-appearance` attribute or a matching class alias to change how the badge is filled. Every variant works with every appearance.
+
+<ComponentPreview
+  name="badge-appearance"
+  target="html"
+/>
+
+| Appearance | Data attribute             | Class alias        |
+| ---------- | -------------------------- | ------------------ |
+| Solid      | `data-appearance="solid"`  | `np-badge`         |
+| Light      | `data-appearance="light"`  | `np-badge-light`   |
+| Outline    | `data-appearance="outline"`| `np-badge-outline` |
+
+---
+
+## Color
+
+To use any CSS color (a name, hex, `rgb()`, `hsl()`, or `oklch()`), set the `--np-badge-color` variable.
+
+<ComponentPreview
+  name="badge-color"
+  target="html"
+/>
+
+The marker makes the solid background follow the color and picks a readable text color automatically.
+
+---
+
+## Size
+
+Use `data-size` attribute or a matching class alias to change the size of the badge.
+
+<ComponentPreview
+  name="badge-size"
+  target="html"
+/>
+
+Badge sizes can be specified using either `data-size` attributes or their corresponding class aliases.
+
+| Size        | Data attribute   | Class alias     |
+| ----------- | ---------------- | --------------- |
+| Extra small | `data-size="xs"` | `np-badge-xs`   |
+| Small       | `data-size="sm"` | `np-badge-sm`   |
+| Default     | `data-size="default"` | `np-badge` |
+| Large       | `data-size="lg"` | `np-badge-lg`   |
+| Extra large | `data-size="xl"` | `np-badge-xl`   |
+
+---
+
+## Radius
+
+Badges are pills by default. Use `data-radius="md"` or the `np-badge-md` class for regular rounded corners.
+
+<ComponentPreview
+  name="badge-radius"
+  target="html"
+/>
+
+| Radius | Data attribute        | Class alias     |
+| ------ | --------------------- | --------------- |
+| Full   | `data-radius="full"`  | `np-badge-full` |
+| Medium | `data-radius="md"`    | `np-badge-md`   |
+
+---
+
+## Dot
+
+Use the `data-dot` attribute or the `np-badge-dot` class to show a small status dot before the content.
+
+<ComponentPreview
+  name="badge-dot"
+  target="html"
+/>
+
+On solid badges the dot uses the text color. On light and outline badges it uses the accent color of the variant.
+
+---
+
+## Pulse
+
+Use the `data-pulse` attribute or the `np-badge-pulse` class to animate the dot. It also shows the dot, so you don't need to add `data-dot`.
+
+<ComponentPreview
+  name="badge-pulse"
+  target="html"
+/>
+
+The animation is turned off for users who prefer reduced motion.
+
+---
+
+## With Icon
+
+Badges support inline SVG icons. Mark decorative icons as hidden. Icons are sized to match the badge size automatically.
+
+<ComponentPreview
+  name="badge-with-icon"
+  target="html"
+/>
+
+---
+
+## With Spinner
+
+To use the [`Spinner`](/docs/components/html/spinner) component inside badges, first include the `spinner.css` stylesheet in your HTML:
+
+```html
+<link rel="stylesheet" href="./styles/spinner.css" />
+```
+
+<ComponentPreview
+  name="badge-with-spinner"
+  target="html"
+  styles={['/spinner/spinner.css']}
+/>
+
+---
+
+## Link
+
+Badges can be used on any element, such as a link.
+
+<ComponentPreview
+  name="badge-link"
+  target="html"
+/>
