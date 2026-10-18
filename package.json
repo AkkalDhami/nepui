@@ -18,6 +18,7 @@
     "precommit": "lint-staged",
     "registry:build:html": "pnpm --filter docs registry:build:html",
     "registry:build:react": "pnpm --filter docs registry:build:react",
+    "registry:build": "pnpm --filter docs registry:build:react && pnpm --filter docs registry:build:html",
     "examples:build": "pnpm --filter docs examples:build",
     "colors:generate": "pnpm --filter docs colors:generate && pnpm --filter docs colors:generate:public",
     "palette:generate": "pnpm --filter docs palette:generate"
