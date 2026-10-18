@@ -4,6 +4,17 @@
 
 import "server-only"
 
+import KtmReactBadgeAppearance from "./ktm/react/badge-appearance"
+import KtmReactBadgeColor from "./ktm/react/badge-color"
+import KtmReactBadgeDemo from "./ktm/react/badge-demo"
+import KtmReactBadgeDot from "./ktm/react/badge-dot"
+import KtmReactBadgeLink from "./ktm/react/badge-link"
+import KtmReactBadgePulse from "./ktm/react/badge-pulse"
+import KtmReactBadgeRadius from "./ktm/react/badge-radius"
+import KtmReactBadgeSize from "./ktm/react/badge-size"
+import KtmReactBadgeVariant from "./ktm/react/badge-variant"
+import KtmReactBadgeWithIcon from "./ktm/react/badge-with-icon"
+import KtmReactBadgeWithSpinner from "./ktm/react/badge-with-spinner"
 import KtmReactButtonDefault from "./ktm/react/button-default"
 import KtmReactButtonDemo from "./ktm/react/button-demo"
 import KtmReactButtonDestructive from "./ktm/react/button-destructive"
@@ -46,6 +57,17 @@ export const ExamplesIndex: Record<
 > = {
   ktm: {
     react: {
+      "badge-appearance": KtmReactBadgeAppearance,
+      "badge-color": KtmReactBadgeColor,
+      "badge-demo": KtmReactBadgeDemo,
+      "badge-dot": KtmReactBadgeDot,
+      "badge-link": KtmReactBadgeLink,
+      "badge-pulse": KtmReactBadgePulse,
+      "badge-radius": KtmReactBadgeRadius,
+      "badge-size": KtmReactBadgeSize,
+      "badge-variant": KtmReactBadgeVariant,
+      "badge-with-icon": KtmReactBadgeWithIcon,
+      "badge-with-spinner": KtmReactBadgeWithSpinner,
       "button-default": KtmReactButtonDefault,
       "button-demo": KtmReactButtonDemo,
       "button-destructive": KtmReactButtonDestructive,
@@ -83,6 +105,17 @@ export const ExamplesIndex: Record<
       "steps-demo": KtmReactStepsDemo,
     },
     html: {
+      "badge-appearance": "ktm/html/badge-appearance.html",
+      "badge-color": "ktm/html/badge-color.html",
+      "badge-demo": "ktm/html/badge-demo.html",
+      "badge-dot": "ktm/html/badge-dot.html",
+      "badge-link": "ktm/html/badge-link.html",
+      "badge-pulse": "ktm/html/badge-pulse.html",
+      "badge-radius": "ktm/html/badge-radius.html",
+      "badge-size": "ktm/html/badge-size.html",
+      "badge-variant": "ktm/html/badge-variant.html",
+      "badge-with-icon": "ktm/html/badge-with-icon.html",
+      "badge-with-spinner": "ktm/html/badge-with-spinner.html",
       "button-default": "ktm/html/button-default.html",
       "button-demo": "ktm/html/button-demo.html",
       "button-destructive": "ktm/html/button-destructive.html",
