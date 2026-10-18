@@ -140,6 +140,29 @@
           "target": "components/nepui/steps/index.ts"
         }
       ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:component",
+      "title": "Badge",
+      "description": "A badge displays a short piece of information, such as a status, a label or a count.",
+      "files": [
+        {
+          "path": "registry/react/badge/badge.tsx",
+          "type": "registry:component",
+          "target": "components/nepui/badge/badge.tsx"
+        },
+        {
+          "path": "registry/react/badge/badge.css",
+          "type": "registry:component",
+          "target": "components/nepui/badge/badge.css"
+        },
+        {
+          "path": "registry/react/badge/index.ts",
+          "type": "registry:component",
+          "target": "components/nepui/badge/index.ts"
+        }
+      ]
     }
   ]
 }
