@@ -9,8 +9,9 @@ import { siteConfig } from "@/lib/seo"
 import { ThemeToggle } from "@/components/shared/theme-toggle"
 import { Logo } from "@/components/shared/logo"
 import { buttonVariants } from "@/components/ui/button"
-import { DocsMobileNav } from "./docs-sidebar"
+import { DocsMobileNav } from "@/components/layouts/docs-sidebar"
 import { source } from "@/lib/source"
+import { CommandMenu } from "@/components/docs/command-menu"
 
 export type NavItem = {
   label: string
@@ -18,10 +19,9 @@ export type NavItem = {
   external?: boolean
 }
 
-const NAV_ITEMS: readonly NavItem[] = [
+const NAV_ITEMS: NavItem[] = [
   { label: "Docs", href: "/docs" },
   { label: "Components", href: "/docs/components" },
-  { label: "Changelog", href: "/docs/changelog" },
 ]
 
 const GITHUB_URL = siteConfig.github
@@ -86,18 +86,21 @@ export function Navbar({ className }: NavbarProps) {
         <Logo variant="default" />
 
         <div className="flex items-center gap-5">
-          <div className="hidden md:flex md:items-center md:gap-1">
+          <div className="hidden md:flex md:items-center md:gap-2">
             {NAV_ITEMS.map((item) => (
               <DesktopNavLink key={item.href} item={item} />
             ))}
+            <div className="ml-auto w-full max-w-64">
+              <CommandMenu tree={source.pageTree} navItems={NAV_ITEMS} />
+            </div>
             <div className="hidden md:flex md:items-center md:gap-1">
               <GitHubLink />
               <ThemeToggle />
             </div>
-            {/* 
-          <div className="flex items-center gap-1 md:hidden">
-            <ThemeToggle />
-          </div> */}
+
+            <div className="flex items-center gap-1 md:hidden">
+              <ThemeToggle />
+            </div>
           </div>
 
           <div className="md:hidden">
