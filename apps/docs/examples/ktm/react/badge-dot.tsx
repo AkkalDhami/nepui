@@ -21,9 +21,6 @@ export default function BadgeDot() {
       <Badge variant="destructive" appearance="light" dot>
         Offline
       </Badge>
-      <Badge variant="neutral" appearance="outline" dot>
-        Idle
-      </Badge>
       <Badge variant="info" dot>
         Solid
       </Badge>

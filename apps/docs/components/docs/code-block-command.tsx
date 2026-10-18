@@ -137,6 +137,9 @@ export function ReactCodeBlockCommand({
           <TabsTrigger value="shadcn" className={"text-base"}>
             shadcn
           </TabsTrigger>
+          <TabsTrigger value="nepui" className={"text-base"}>
+            nepui
+          </TabsTrigger>
         </TabsList>
         <TabsContent value="nepui" className={"w-full min-w-0"}>
           <PackageManagerTabs command={nepui} className="mt-0" />
