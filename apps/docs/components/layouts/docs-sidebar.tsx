@@ -241,7 +241,7 @@ export function DocsMobileNav({ tree }: { tree: PageTree.Root }) {
     <>
       <Button
         variant="ghost"
-        size="icon"
+        size="icon-lg"
         aria-label="Open menu"
         onClick={() => setOpen(true)}
       >
