@@ -42,10 +42,11 @@ contributor:
 
 ## Usage
 
-Link the component's CSS file to your HTML document.
+Link the design tokens and the component's CSS file to your HTML document.
 
 ```html
 <head>
+  <link rel="stylesheet" href="./styles/tokens.css">
   <link rel="stylesheet" href="./styles/button.css">
 </head>
 ```
@@ -83,7 +84,7 @@ Button sizes can be specified using either `data-size` attributes or their corre
 
 ---
 
-## Variant
+## Variants
 
 Use `data-variant` attribute or the matching class alias to choose a visual style. The default button can use `np-button`.
 
@@ -120,7 +121,7 @@ Use `data-variant` attribute or the matching class alias to choose a visual styl
 
 Button variants can be specified using either `data-variant` attributes or their corresponding class aliases.
 
-| Variant     | Data attribute               | Class alias             |
+| Variants     | Data attribute               | Class alias             |
 | ----------- | ---------------------------- | ----------------------- |
 | Default     | `data-variant="default"`     | `np-button`             |
 | Outline     | `data-variant="outline"`     | `np-button-outline`     |
@@ -214,6 +215,7 @@ Use the `np-button-rounded` class to make the button rounded.
 />
 
 ---
+
 ## Spinner
 
 To use the [`Spinner`](/docs/components/html/spinner) component inside buttons, first include the `spinner.css` stylesheet in your HTML:
