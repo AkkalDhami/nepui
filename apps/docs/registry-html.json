@@ -110,6 +110,24 @@
           "target": "styles/steps.css"
         }
       ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:component",
+      "title": "Badge",
+      "description": "A badge displays a short piece of information, such as a status, a label or a count.",
+      "files": [
+        {
+          "path": "registry/html/badge/badge.html",
+          "type": "registry:component",
+          "target": "html/badge.html"
+        },
+        {
+          "path": "registry/html/badge/badge.css",
+          "type": "registry:component",
+          "target": "styles/badge.css"
+        }
+      ]
     }
   ]
 }
