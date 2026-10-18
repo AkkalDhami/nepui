@@ -14,7 +14,6 @@
   }
 }
 
-/* A step: .np-step, [data-np-step], or any direct <h3> of a steps container */
 :is(.np-step, [data-np-step], :is(.np-steps, [data-np-steps]) > h3) {
   --np-step-size: 1.825rem;
   --np-step-bg: var(--np-muted);
@@ -63,7 +62,6 @@
   font-weight: 500;
 }
 
-/* From md up: the badge sits on the guide line */
 @media (min-width: 48rem) {
   :is(.np-step, [data-np-step], :is(.np-steps, [data-np-steps]) > h3) {
     --np-step-size: 2.25rem;

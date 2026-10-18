@@ -1,0 +1,285 @@
+/* nepui — Badge */
+
+.np-badge,
+[data-np-badge] {
+  --np-badge-color: var(--np-primary);
+
+  --np-badge-bg: var(--np-badge-color);
+  --np-badge-fg: var(--np-primary-foreground);
+
+  --np-badge-text-darken: 40%;
+  --np-badge-text: color-mix(
+    in oklch,
+    var(--np-badge-color),
+    var(--np-foreground) var(--np-badge-text-darken)
+  );
+  --np-badge-light-text: var(--np-badge-text);
+
+  --np-badge-tint-bg: 10%;
+  --np-badge-tint-border: 15%;
+  --np-badge-tint-bg-dark: 15%;
+  --np-badge-tint-border-dark: 25%;
+  --np-badge-outline-bg: var(--np-background);
+
+  --np-badge-height: 1.5rem;
+  --np-badge-padding-x: 0.475rem;
+  --np-badge-padding-y: 0.125rem;
+  --np-badge-gap: 0.375rem;
+  --np-badge-font-size: 0.75rem;
+  --np-badge-line-height: 1rem;
+  --np-badge-icon-size: 0.75rem;
+  --np-badge-radius: 9999px;
+
+  --np-badge-dot-size: 0.375rem;
+  --np-badge-dot-color: currentColor;
+  --np-badge-pulse-duration: 1.6s;
+
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: fit-content;
+
+  height: var(--np-badge-height);
+  min-width: var(--np-badge-height);
+  gap: var(--np-badge-gap);
+  padding: var(--np-badge-padding-y) var(--np-badge-padding-x);
+
+  border: 1px solid transparent;
+  border-radius: var(--np-badge-radius);
+  background: var(--np-badge-bg);
+  color: var(--np-badge-fg);
+
+  font: inherit;
+  font-size: var(--np-badge-font-size);
+  font-weight: 500;
+  line-height: var(--np-badge-line-height);
+  white-space: nowrap;
+  text-decoration: none;
+
+  outline: none;
+  transition: box-shadow 150ms ease;
+}
+
+:is(.np-badge, [data-np-badge]):focus-visible {
+  box-shadow:
+    0 0 0 1px var(--np-background),
+    0 0 0 3px var(--np-ring);
+}
+
+:is(.np-badge, [data-np-badge]):is(
+  :disabled,
+  [aria-disabled="true"],
+  [data-disabled]
+) {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+:is(.np-badge, [data-np-badge]) svg {
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+:is(.np-badge, [data-np-badge]) svg:not([class*="size-"]) {
+  width: var(--np-badge-icon-size);
+  height: var(--np-badge-icon-size);
+}
+
+/* Variants (semantic colors) */
+
+.np-badge-secondary,
+:is(.np-badge, [data-np-badge])[data-variant="secondary"] {
+  --np-badge-color: var(--np-secondary-foreground);
+  --np-badge-bg: var(--np-secondary);
+  --np-badge-fg: var(--np-secondary-foreground);
+}
+
+.np-badge-info,
+:is(.np-badge, [data-np-badge])[data-variant="info"] {
+  --np-badge-color: oklab(62.3% -0.0378 -0.2106);
+  --np-badge-fg: #fff;
+}
+
+.np-badge-success,
+:is(.np-badge, [data-np-badge])[data-variant="success"] {
+  --np-badge-color: var(--np-success);
+  --np-badge-fg: #fff;
+}
+
+.np-badge-warning,
+:is(.np-badge, [data-np-badge])[data-variant="warning"] {
+  --np-badge-color: var(--np-warning);
+  --np-badge-fg: #fff;
+}
+
+.np-badge-destructive,
+:is(.np-badge, [data-np-badge])[data-variant="destructive"] {
+  --np-badge-color: var(--np-destructive);
+  --np-badge-fg: #fff;
+}
+
+/* Custom color */
+
+.np-badge-custom,
+:is(.np-badge, [data-np-badge])[data-custom-color] {
+  --np-badge-bg: var(--np-badge-color);
+  --np-badge-fg: #fff;
+}
+
+@supports (color: oklch(from red l c h)) {
+  .np-badge-custom,
+  :is(.np-badge, [data-np-badge])[data-custom-color] {
+    --np-badge-fg: oklch(
+      from var(--np-badge-color) clamp(0, calc((0.7 - l) * 1000), 1) 0 0
+    );
+  }
+}
+
+/* Appearances */
+
+.np-badge-light,
+:is(.np-badge, [data-np-badge])[data-appearance="light"] {
+  border-color: color-mix(
+    in oklch,
+    var(--np-badge-color) var(--np-badge-tint-border),
+    transparent
+  );
+  background: color-mix(
+    in oklch,
+    var(--np-badge-color) var(--np-badge-tint-bg),
+    transparent
+  );
+  color: var(--np-badge-light-text);
+  --np-badge-dot-color: var(--np-badge-color);
+}
+
+.np-badge-outline,
+:is(.np-badge, [data-np-badge])[data-appearance="outline"] {
+  border-color: var(--np-border);
+  background: var(--np-badge-outline-bg);
+  color: var(--np-badge-text);
+  --np-badge-dot-color: var(--np-badge-color);
+}
+
+/* Dot & pulse */
+
+:is(.np-badge, [data-np-badge]):is(
+    .np-badge-dot,
+    .np-badge-pulse,
+    [data-dot],
+    [data-pulse]
+  )::before {
+  content: "";
+  display: block;
+  flex: 0 0 var(--np-badge-dot-size);
+  width: var(--np-badge-dot-size);
+  height: var(--np-badge-dot-size);
+  min-width: var(--np-badge-dot-size);
+  min-height: var(--np-badge-dot-size);
+  border-radius: 50%;
+  background: var(--np-badge-dot-color);
+}
+
+:is(.np-badge, [data-np-badge]):is(.np-badge-pulse, [data-pulse])::before {
+  animation: np-badge-pulse var(--np-badge-pulse-duration)
+    cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes np-badge-pulse {
+  0% {
+    box-shadow: 0 0 0 0
+      color-mix(in oklch, var(--np-badge-dot-color) 60%, transparent);
+  }
+  75%,
+  100% {
+    box-shadow: 0 0 0 var(--np-badge-dot-size)
+      color-mix(in oklch, var(--np-badge-dot-color) 0%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.np-badge, [data-np-badge]):is(.np-badge-pulse, [data-pulse])::before {
+    animation: none;
+  }
+}
+
+/* Sizes */
+
+.np-badge-xs,
+:is(.np-badge, [data-np-badge])[data-size="xs"] {
+  --np-badge-height: 1.25rem;
+  --np-badge-padding-x: 0.25rem;
+  --np-badge-padding-y: 0.0625rem;
+  --np-badge-font-size: 0.6rem;
+  --np-badge-dot-size: 0.25rem;
+  --np-badge-line-height: 1;
+}
+
+.np-badge-sm,
+:is(.np-badge, [data-np-badge])[data-size="sm"] {
+  --np-badge-height: 1.375rem;
+  --np-badge-padding-x: 0.25rem;
+  --np-badge-padding-y: 0.0625rem;
+  --np-badge-font-size: 0.625rem;
+  --np-badge-dot-size: 0.3125rem;
+  --np-badge-line-height: 1;
+}
+
+.np-badge-lg,
+:is(.np-badge, [data-np-badge])[data-size="lg"] {
+  --np-badge-height: 1.625rem;
+  --np-badge-padding-x: 0.5rem;
+  --np-badge-dot-size: 0.4375rem;
+}
+
+.np-badge-xl,
+:is(.np-badge, [data-np-badge])[data-size="xl"] {
+  --np-badge-height: 1.75rem;
+  --np-badge-padding-x: 0.5rem;
+  --np-badge-padding-y: 0.1875rem;
+  --np-badge-gap: 0.375rem;
+  --np-badge-font-size: 0.875rem;
+  --np-badge-line-height: 1.25rem;
+  --np-badge-dot-size: 0.5rem;
+}
+
+/* Radius */
+
+.np-badge-full,
+:is(.np-badge, [data-np-badge])[data-radius="full"] {
+  --np-badge-radius: 9999px;
+}
+
+.np-badge-md,
+:is(.np-badge, [data-np-badge])[data-radius="md"] {
+  --np-badge-radius: var(--np-radius-md, 0.375rem);
+}
+
+/* Dark */
+
+:is(.dark, [data-theme="dark"]) :is(.np-badge, [data-np-badge]) {
+  --np-badge-tint-bg: var(--np-badge-tint-bg-dark);
+  --np-badge-tint-border: var(--np-badge-tint-border-dark);
+  --np-badge-light-text: var(--np-badge-color);
+  --np-badge-outline-bg: color-mix(
+    in oklab,
+    var(--np-input, var(--np-border)) 30%,
+    transparent
+  );
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light, [data-theme="light"]) :is(.np-badge, [data-np-badge]) {
+    --np-badge-tint-bg: var(--np-badge-tint-bg-dark);
+    --np-badge-tint-border: var(--np-badge-tint-border-dark);
+    --np-badge-light-text: var(--np-badge-color);
+    --np-badge-outline-bg: color-mix(
+      in oklab,
+      var(--np-input, var(--np-border)) 30%,
+      transparent
+    );
+  }
+}

@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Badge - nepui</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/badge.css" />
+
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem;
+        font-family: system-ui, sans-serif;
+        background: var(--np-background);
+        color: var(--np-foreground);
+      }
+      .demo {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        max-width: 40rem;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      h2 {
+        margin: 0 0 0.5rem;
+        font-size: 0.75rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        opacity: 0.6;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="demo">
+      <section>
+        <h2>Variants, solid (class)</h2>
+        <div class="row">
+          <span class="np-badge">Default</span>
+          <span class="np-badge np-badge-secondary">Secondary</span>
+          <span class="np-badge np-badge-info">Info</span>
+          <span class="np-badge np-badge-success">Success</span>
+          <span class="np-badge np-badge-warning">Warning</span>
+          <span class="np-badge np-badge-destructive">Destructive</span>
+        </div>
+      </section>
+
+      <section>
+        <h2>Appearance: light (data attributes)</h2>
+        <div class="row">
+          <span data-np-badge data-appearance="light">Default</span>
+          <span data-np-badge data-variant="secondary" data-appearance="light"
+            >Secondary</span
+          >
+          <span data-np-badge data-variant="info" data-appearance="light"
+            >Info</span
+          >
+          <span data-np-badge data-variant="success" data-appearance="light"
+            >Success</span
+          >
+          <span data-np-badge data-variant="warning" data-appearance="light"
+            >Warning</span
+          >
+          <span data-np-badge data-variant="destructive" data-appearance="light"
+            >Destructive</span
+          >
+        </div>
+      </section>
+
+      <section>
+        <h2>Appearance: outline</h2>
+        <div class="row">
+          <span class="np-badge np-badge-outline">Default</span>
+          <span class="np-badge np-badge-outline np-badge-secondary"
+            >Secondary</span
+          >
+          <span class="np-badge np-badge-outline np-badge-info">Info</span>
+          <span class="np-badge np-badge-outline np-badge-success"
+            >Success</span
+          >
+          <span class="np-badge np-badge-outline np-badge-warning"
+            >Warning</span
+          >
+          <span class="np-badge np-badge-outline np-badge-destructive"
+            >Destructive</span
+          >
+        </div>
+      </section>
+
+      <section>
+        <h2>Custom color: any CSS color format</h2>
+        <div class="row">
+          <span class="np-badge np-badge-custom" style="--np-badge-color: red"
+            >red</span
+          >
+          <span
+            class="np-badge np-badge-custom"
+            style="--np-badge-color: #7c3aed"
+            >#7c3aed</span
+          >
+          <span
+            class="np-badge np-badge-custom"
+            style="--np-badge-color: rgb(14 165 233)"
+            >rgb()</span
+          >
+          <span
+            class="np-badge np-badge-custom"
+            style="--np-badge-color: hsl(45 93% 58%)"
+            >hsl() yellow</span
+          >
+          <span
+            class="np-badge np-badge-custom"
+            style="--np-badge-color: oklch(0.7 0.15 150)"
+            >oklch()</span
+          >
+        </div>
+        <div class="row" style="margin-top: 0.5rem">
+          <span
+            data-np-badge
+            data-custom-color
+            data-appearance="light"
+            style="--np-badge-color: #7c3aed"
+            >light</span
+          >
+          <span
+            data-np-badge
+            data-custom-color
+            data-appearance="outline"
+            style="--np-badge-color: #7c3aed"
+            >outline</span
+          >
+          <span
+            data-np-badge
+            data-custom-color
+            data-variant="success"
+            style="--np-badge-color: orange"
+            >on a variant</span
+          >
+        </div>
+      </section>
+
+      <section>
+        <h2>Dot and pulse</h2>
+        <div class="row">
+          <span class="np-badge np-badge-success np-badge-light np-badge-dot"
+            >Online</span
+          >
+          <span class="np-badge np-badge-warning np-badge-light np-badge-dot"
+            >Away</span
+          >
+          <span
+            data-np-badge
+            data-variant="destructive"
+            data-appearance="outline"
+            data-dot
+            >Offline</span
+          >
+          <span class="np-badge np-badge-success np-badge-pulse">Live</span>
+          <span
+            data-np-badge
+            data-variant="destructive"
+            data-appearance="light"
+            data-pulse
+            >Recording</span
+          >
+          <span
+            class="np-badge np-badge-outline np-badge-pulse np-badge-custom"
+            style="--np-badge-color: #7c3aed"
+            >Custom</span
+          >
+        </div>
+      </section>
+
+      <section>
+        <h2>Sizes</h2>
+        <div class="row">
+          <span class="np-badge np-badge-xs">xs</span>
+          <span class="np-badge np-badge-sm">sm</span>
+          <span class="np-badge">default</span>
+          <span class="np-badge np-badge-lg">lg</span>
+          <span data-np-badge data-size="xl">xl</span>
+        </div>
+      </section>
+
+      <section>
+        <h2>Radius</h2>
+        <div class="row">
+          <span class="np-badge">Full (default)</span>
+          <span class="np-badge np-badge-md">md</span>
+          <span
+            data-np-badge
+            data-radius="md"
+            data-variant="success"
+            data-appearance="light"
+            >md</span
+          >
+        </div>
+      </section>
+
+      <section>
+        <h2>With icon, link and count</h2>
+        <div class="row">
+          <span class="np-badge np-badge-success np-badge-light">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M20 6 9 17l-5-5" />
+            </svg>
+            Verified
+          </span>
+          <a href="#" class="np-badge np-badge-secondary np-badge-outline"
+            >Changelog</a
+          >
+          <span class="np-badge np-badge-destructive">12</span>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
