@@ -7,21 +7,21 @@
     {
       "path": "registry/react/label/label.tsx",
       "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { cn } from \"cn\"\n\nimport \"./label.css\"\n\nexport type LabelProps = React.ComponentProps<\"label\">\n\nfunction Label({ className, ...props }: LabelProps) {\n  return (\n    <label data-slot=\"label\" className={cn(\"np-label\", className)} {...props} />\n  )\n}\n\nexport { Label }\n",
-      "type": "registry:component",
+      "type": "registry:ui",
       "target": "components/nepui/label/label.tsx"
     },
     {
       "path": "registry/react/label/label.css",
       "content": "/* nepui — Label */\n\n.np-label,\n[data-np-label] {\n  display: flex;\n  align-items: center;\n  gap: 0.5rem;\n\n  font-size: 0.875rem;\n  font-weight: 500;\n  line-height: 1;\n\n  -webkit-user-select: none;\n  user-select: none;\n}\n\n/* Disabled via an ancestor: <div data-disabled=\"true\"> … <label> … </div> */\n[data-disabled=\"true\"] :is(.np-label, [data-np-label]) {\n  pointer-events: none;\n  opacity: 0.5;\n}\n\n/* Disabled control placed BEFORE the label: <input disabled /> <label> */\n:is(input, select, textarea, button, [role=\"checkbox\"], [role=\"switch\"]):is(\n    :disabled,\n    [aria-disabled=\"true\"],\n    [data-disabled]\n  )\n  ~ :is(.np-label, [data-np-label]) {\n  cursor: not-allowed;\n  opacity: 0.5;\n}\n",
-      "type": "registry:component",
+      "type": "registry:ui",
       "target": "components/nepui/label/label.css"
     },
     {
       "path": "registry/react/label/index.ts",
       "content": "export * from \"./label\"\n",
-      "type": "registry:component",
+      "type": "registry:ui",
       "target": "components/nepui/label/index.ts"
     }
   ],
-  "type": "registry:component"
+  "type": "registry:ui"
 }
