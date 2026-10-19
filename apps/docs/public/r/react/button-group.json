@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group",
+  "title": "Button-group",
+  "description": "A container that groups related buttons together with consistent styling.",
+  "registryDependencies": [
+    "https://nepui.vercel.app/r/react/button.json",
+    "https://nepui.vercel.app/r/react/separator.json"
+  ],
+  "files": [
+    {
+      "path": "registry/react/button-group/button-group.tsx",
+      "content": "\"use client\"\n\nimport type { ComponentProps } from \"react\"\nimport { mergeProps } from \"@base-ui/react/merge-props\"\nimport { useRender } from \"@base-ui/react/use-render\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\nimport { cn } from \"cn\"\nimport { Separator } from \"@/registry/react/separator\"\n\n// NOTE: Update these paths if needed\nimport \"../tokens.css\"\nimport \"./button-group.css\"\n\nconst buttonGroupVariants = cva(\"np-button-group\", {\n  variants: {\n    orientation: {\n      horizontal: \"\",\n      vertical: \"np-button-group-vertical\",\n    },\n  },\n  defaultVariants: {\n    orientation: \"horizontal\",\n  },\n})\n\nfunction ButtonGroup({\n  className,\n  orientation = \"horizontal\",\n  ...props\n}: ComponentProps<\"div\"> & VariantProps<typeof buttonGroupVariants>) {\n  return (\n    <div\n      role=\"group\"\n      data-slot=\"button-group\"\n      data-orientation={orientation}\n      className={cn(buttonGroupVariants({ orientation }), className)}\n      {...props}\n    />\n  )\n}\n\nfunction ButtonGroupText({\n  className,\n  render,\n  ...props\n}: useRender.ComponentProps<\"div\">) {\n  return useRender({\n    defaultTagName: \"div\",\n    render,\n    props: mergeProps<\"div\">(\n      {\n        className: cn(\"np-button-group-text\", className),\n      },\n      props\n    ),\n    state: {\n      slot: \"button-group-text\",\n    },\n  })\n}\n\nfunction ButtonGroupSeparator({\n  className,\n  orientation = \"vertical\",\n  ...props\n}: React.ComponentProps<typeof Separator>) {\n  return (\n    <Separator\n      data-slot=\"button-group-separator\"\n      orientation={orientation}\n      className={(state) =>\n        cn(\n          \"np-button-group-separator\",\n          typeof className === \"function\" ? className(state) : className\n        )\n      }\n      {...props}\n    />\n  )\n}\n\nexport {\n  ButtonGroup,\n  ButtonGroupSeparator,\n  ButtonGroupText,\n  buttonGroupVariants,\n}\n",
+      "type": "registry:ui",
+      "target": "components/nepui/button-group/button-group.tsx"
+    },
+    {
+      "path": "registry/react/button-group/button-group.css",
+      "content": "/* nepui — Button Group */\n\n.np-button-group,\n[data-np-button-group] {\n  display: flex;\n  width: fit-content;\n  align-items: stretch;\n}\n\n:is(.np-button-group, [data-np-button-group]):is(\n  .np-button-group-vertical,\n  [data-orientation=\"vertical\"]\n) {\n  flex-direction: column;\n}\n\n:is(.np-button-group, [data-np-button-group]):has(\n  > :is(.np-button-group, [data-np-button-group])\n) {\n  gap: 0.5rem;\n}\n\n:is(.np-button-group, [data-np-button-group]) > :focus-visible {\n  position: relative;\n  z-index: 10;\n}\n\n:is(.np-button-group, [data-np-button-group])\n  > :is(input, .np-input, [data-np-input]) {\n  flex: 1;\n}\n\n/* Horizontal */\n:is(.np-button-group, [data-np-button-group]):not(\n    .np-button-group-vertical,\n    [data-orientation=\"vertical\"]\n  )\n  > :not(:last-child) {\n  border-start-end-radius: 0;\n  border-end-end-radius: 0;\n}\n\n:is(.np-button-group, [data-np-button-group]):not(\n    .np-button-group-vertical,\n    [data-orientation=\"vertical\"]\n  )\n  > :not(:first-child) {\n  border-start-start-radius: 0;\n  border-end-start-radius: 0;\n  border-inline-start-width: 0;\n}\n\n/* Vertical */\n:is(.np-button-group, [data-np-button-group]):is(\n    .np-button-group-vertical,\n    [data-orientation=\"vertical\"]\n  )\n  > :not(:last-child) {\n  border-end-start-radius: 0;\n  border-end-end-radius: 0;\n}\n\n:is(.np-button-group, [data-np-button-group]):is(\n    .np-button-group-vertical,\n    [data-orientation=\"vertical\"]\n  )\n  > :not(:first-child) {\n  border-start-start-radius: 0;\n  border-start-end-radius: 0;\n  border-block-start-width: 0;\n}\n\n:is(.np-button-group, [data-np-button-group])\n  :is(\n    .np-button-xs,\n    .np-button-sm,\n    .np-button-icon-xs,\n    .np-button-icon-sm,\n    :is(.np-button, [data-np-button])[data-size=\"xs\"],\n    :is(.np-button, [data-np-button])[data-size=\"sm\"],\n    :is(.np-button, [data-np-button])[data-size=\"icon-xs\"],\n    :is(.np-button, [data-np-button])[data-size=\"icon-sm\"]\n  ) {\n  --np-button-radius: var(--np-radius-md);\n}\n\n/* Text */\n\n.np-button-group-text,\n[data-np-button-group-text] {\n  display: flex;\n  align-items: center;\n  box-sizing: border-box;\n  gap: 0.5rem;\n  padding: 0 0.625rem;\n\n  border: 1px solid var(--np-border);\n  border-radius: var(--np-radius-md);\n  background: var(--np-muted);\n\n  font: inherit;\n  font-size: 0.875rem;\n  font-weight: 500;\n  line-height: 1;\n  white-space: nowrap;\n}\n\n:is(.np-button-group-text, [data-np-button-group-text]) svg {\n  flex-shrink: 0;\n  pointer-events: none;\n}\n\n:is(.np-button-group-text, [data-np-button-group-text])\n  svg:not([class*=\"size-\"]) {\n  width: 1rem;\n  height: 1rem;\n}\n\n/* Separator */\n\n.np-button-group-separator,\n[data-np-button-group-separator] {\n  position: relative;\n  flex-shrink: 0;\n  align-self: stretch;\n  box-sizing: border-box;\n  width: 1px;\n  height: auto;\n  margin: 1px 0;\n  border: 0;\n  background: var(--np-input, var(--np-border));\n}\n\n:is(.np-button-group-separator, [data-np-button-group-separator]):is(\n  .np-button-group-separator-horizontal,\n  [data-orientation=\"horizontal\"]\n) {\n  width: auto;\n  height: 1px;\n  margin: 0 1px;\n}\n",
+      "type": "registry:ui",
+      "target": "components/nepui/button-group/button-group.css"
+    },
+    {
+      "path": "registry/react/button-group/index.ts",
+      "content": "export * from \"./button-group\"\n",
+      "type": "registry:ui",
+      "target": "components/nepui/button-group/index.ts"
+    }
+  ],
+  "type": "registry:ui"
+}

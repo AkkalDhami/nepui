@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "separator",
+  "title": "Separator",
+  "description": "Visually or semantically separates content.",
+  "files": [
+    {
+      "path": "registry/react/separator/separator.tsx",
+      "content": "\"use client\"\r\n\r\nimport { Separator as SeparatorPrimitive } from \"@base-ui/react/separator\"\r\nimport { cn } from \"cn\"\r\n\r\n// NOTE: Update these paths if needed\r\nimport \"../tokens.css\"\r\nimport \"./separator.css\"\r\n\r\nfunction Separator({\r\n  className,\r\n  orientation = \"horizontal\",\r\n  ...props\r\n}: SeparatorPrimitive.Props) {\r\n  return (\r\n    <SeparatorPrimitive\r\n      data-slot=\"separator\"\r\n      orientation={orientation}\r\n      className={(state) =>\r\n        cn(\r\n          \"np-separator\",\r\n          typeof className === \"function\" ? className(state) : className\r\n        )\r\n      }\r\n      {...props}\r\n    />\r\n  )\r\n}\r\n\r\nexport { Separator }\r\n",
+      "type": "registry:ui",
+      "target": "components/nepui/separator/separator.tsx"
+    },
+    {
+      "path": "registry/react/separator/separator.css",
+      "content": "/* nepui — Separator */\r\n\r\n.np-separator,\r\n[data-np-separator] {\r\n  --np-separator-size: 1px;\r\n  --np-separator-color: var(--np-border);\r\n  flex-shrink: 0;\r\n  box-sizing: border-box;\r\n  width: 100%;\r\n  height: var(--np-separator-size);\r\n  margin: 0;\r\n  border: 0;\r\n  background: var(--np-separator-color);\r\n}\r\n\r\n.np-separator-vertical,\r\n:is(.np-separator, [data-np-separator])[data-orientation=\"vertical\"] {\r\n  align-self: stretch;\r\n  width: var(--np-separator-size, 1px);\r\n  height: auto;\r\n}\r\n",
+      "type": "registry:ui",
+      "target": "components/nepui/separator/separator.css"
+    },
+    {
+      "path": "registry/react/separator/index.ts",
+      "content": "export * from \"./separator\"\r\n",
+      "type": "registry:ui",
+      "target": "components/nepui/separator/index.ts"
+    }
+  ],
+  "type": "registry:ui"
+}
