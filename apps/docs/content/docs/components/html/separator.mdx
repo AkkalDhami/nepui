@@ -1,0 +1,114 @@
+---
+title: Separator
+description: Visually or semantically separates content.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="separator-demo"
+  target="html"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add separator"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="separator"
+        title="styles/separator.css"
+        fileTarget="styles/separator.css"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the design tokens and the component's CSS file to your HTML document.
+
+```html
+<head>
+  <link rel="stylesheet" href="./styles/tokens.css">
+  <link rel="stylesheet" href="./styles/separator.css">
+</head>
+```
+
+Then, add the `np-separator` class to an element and give it `role="separator"`.
+
+```html
+<div class="np-separator" role="separator"></div>
+```
+
+You can also use the `data-np-separator` attribute instead of the class.
+
+```html
+<div data-np-separator role="separator"></div>
+```
+
+For a purely decorative line, use `aria-hidden="true"` instead of `role="separator"`. A native `<hr>` already has the separator role.
+
+```html
+<hr class="np-separator" />
+```
+
+---
+
+## Vertical
+
+Use `data-orientation="vertical"` or the `np-separator-vertical` class for a vertical separator.
+
+<ComponentPreview
+  name="separator-vertical"
+  target="html"
+/>
+
+| Orientation | Data attribute                  | Class alias             |
+| ----------- | ------------------------------- | ----------------------- |
+| Horizontal  | `data-orientation="horizontal"` | `np-separator`          |
+| Vertical    | `data-orientation="vertical"`   | `np-separator-vertical` |
+
+---
+
+## List
+
+Use a separator to divide the items of a list or a settings page.
+
+<ComponentPreview
+  name="separator-list"
+  target="html"
+/>
+
+---
+
+## Class and data attributes
+
+Use classes or data attributes on any element, including `<hr>`.
+
+```html
+<div class="np-separator" role="separator"></div>
+
+<div data-np-separator data-orientation="vertical" role="separator"></div>
+```
+
+| Part       | Class                    | Data attribute                |
+| ---------- | ------------------------ | ----------------------------- |
+| Separator  | `np-separator`           | `data-np-separator`           |
+| Vertical   | `np-separator-vertical`  | `data-orientation="vertical"` |

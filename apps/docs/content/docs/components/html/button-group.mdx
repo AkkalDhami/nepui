@@ -1,0 +1,216 @@
+---
+title: Button Group
+description: A container that groups related buttons together with consistent styling.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="button-group-demo"
+  target="html"
+  styles={['/button/button.css']}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add button-group"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="button-group"
+        title="styles/button-group.css"
+        fileTarget="styles/button-group.css"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the design tokens, [Button](/docs/components/html/button) stylesheet and the component's CSS file to your HTML document.
+
+```html
+<head>
+  <link rel="stylesheet" href="./styles/tokens.css">
+  <link rel="stylesheet" href="./styles/button.css">
+  <link rel="stylesheet" href="./styles/button-group.css">
+</head>
+```
+
+Then, add the `np-button-group` class to a container and place your buttons inside it.
+
+```html
+<div class="np-button-group" role="group">
+  <button class="np-button np-button-outline">Archive</button>
+  <button class="np-button np-button-outline">Report</button>
+  <button class="np-button np-button-outline">Snooze</button>
+</div>
+```
+
+You can also use the `data-np-button-group` attribute instead of the class.
+
+```html
+<div data-np-button-group role="group">
+  <button data-np-button data-variant="outline">Archive</button>
+  <button data-np-button data-variant="outline">Report</button>
+</div>
+```
+
+The group connects its direct children: inner corners are squared and shared borders are collapsed.
+
+---
+
+## Composition
+
+Use the following composition to build a `ButtonGroup`:
+
+```text
+ButtonGroup
+├── Button or Input
+├── ButtonGroupSeparator
+└── ButtonGroupText
+```
+
+---
+
+## Accessibility
+
+Add `role="group"` to the container and give it an accessible name with `aria-label` or `aria-labelledby`.
+
+```html
+<div class="np-button-group" role="group" aria-label="Text alignment">
+  ...
+</div>
+```
+
+---
+
+## Orientation
+
+Use `data-orientation="vertical"` or the `np-button-group-vertical` class to stack the buttons.
+
+<ComponentPreview
+  name="button-group-orientation"
+  styles={["/button/button.css"]}
+  target="html"
+/>
+
+| Orientation | Data attribute                | Class alias                |
+| ----------- | ----------------------------- | -------------------------- |
+| Horizontal(Default)  | `data-orientation="horizontal"` | `np-button-group`        |
+| Vertical    | `data-orientation="vertical"` | `np-button-group-vertical` |
+
+---
+
+## Size
+
+Control the size of the buttons by using `data-size` or the size class on each button.
+
+<ComponentPreview
+  name="button-group-size"
+  styles={["/button/button.css"]}
+  target="html"
+/>
+
+---
+
+## Separator
+
+Add a divider between buttons with `np-button-group-separator` or `data-np-button-group-separator`. It is useful for buttons that have no border, such as the `secondary` variant.
+
+<ComponentPreview
+  name="button-group-separator"
+  styles={["/button/button.css"]}
+  target="html"
+/>
+
+The separator is vertical by default, for horizontal groups. In a vertical group, use `np-button-group-separator-horizontal` or `data-orientation="horizontal"`.
+
+| Orientation | Data attribute                  | Class alias                            |
+| ----------- | ------------------------------- | -------------------------------------- |
+| Vertical    | `data-orientation="vertical"`   | `np-button-group-separator`            |
+| Horizontal  | `data-orientation="horizontal"` | `np-button-group-separator-horizontal` |
+
+---
+
+## Text
+
+Use `np-button-group-text` or `data-np-button-group-text` to add static text or an addon next to the buttons. To place an input in the group, also include the `input.css` stylesheet:
+
+```html
+<link rel="stylesheet" href="./styles/input.css" />
+```
+
+<ComponentPreview
+  name="button-group-text"
+  target="html"
+  styles={["/input/input.css"]}
+/>
+
+---
+
+## Icon
+
+Icon-only buttons work too. Mark decorative icons as hidden and provide an accessible name for each button.
+
+<ComponentPreview
+  name="button-group-icon"
+  styles={["/button/button.css"]}
+  target="html"
+/>
+
+---
+
+## Input
+
+An input in the group fills the free space. To place an input in the group, also include the `input.css` stylesheet:
+
+```html
+<link rel="stylesheet" href="./styles/input.css" />
+```
+
+<ComponentPreview
+  name="button-group-input"
+  target="html"
+  styles={["/input/input.css", "/button/button.css"]}
+/>
+
+---
+
+## Nested
+
+Nest groups to create groups of groups. Nested groups are spaced apart.
+
+<ComponentPreview
+  name="button-group-nested"
+  styles={["/button/button.css"]}
+  target="html"
+/>
+
+---
+
+## Class and data attributes
+
+| Part                 | Class                                  | Data attribute                   |
+| -------------------- | -------------------------------------- | -------------------------------- |
+| Group                | `np-button-group`                      | `data-np-button-group`           |
+| Vertical group       | `np-button-group-vertical`             | `data-orientation="vertical"`    |
+| Text                 | `np-button-group-text`                 | `data-np-button-group-text`      |
+| Separator            | `np-button-group-separator`            | `data-np-button-group-separator` |
+| Horizontal separator | `np-button-group-separator-horizontal` | `data-orientation="horizontal"`  |

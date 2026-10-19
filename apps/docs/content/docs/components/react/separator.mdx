@@ -1,0 +1,99 @@
+---
+title: Separator
+description: Visually or semantically separates content.
+contributor:
+ -  name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4 
+---
+
+<ComponentPreview
+  name="separator-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/separator.json"
+      nepui="npx nepui@latest add separator --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react class-variance-authority cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="separator"
+        title="components/nepui/separator/separator.css"
+        fileTarget="components/nepui/separator/separator.css"
+      />
+
+      <ComponentSource
+        target="react"
+        name="separator"
+        title="components/nepui/separator/separator.tsx"
+        fileTarget="components/nepui/separator/separator.tsx"
+      />
+
+      <ComponentSource
+        target="react"
+        name="separator"
+        title="components/nepui/separator/index.ts"
+        fileTarget="components/nepui/separator/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import { Separator } from "@/components/nepui/separator"
+```
+
+```tsx
+<Separator />
+<Separator orientation="vertical" />
+```
+
+---
+
+## Vertical
+
+Use `orientation="vertical"` for a vertical separator.
+
+<ComponentPreview
+  name="separator-vertical"
+/>
+
+---
+
+## List
+
+Use a separator to divide the items of a list or a settings page.
+
+<ComponentPreview
+  name="separator-list"
+/>
+
+---
+
+## API Reference
+
+| Prop          | Type                          | Default        |
+| ------------- | ----------------------------- | -------------- |
+| `orientation` | `"horizontal" \| "vertical"`  | `"horizontal"` |
+| `className` | `string` | — |
+
+All other props are inherited from Base UI's [Separator](https://base-ui.com/react/components/separator).
