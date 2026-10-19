@@ -15,7 +15,8 @@
     "registry:build:html": "pnpm dlx shadcn@4.20.0 build ./registry-html.json --output ./public/r/html",
     "colors:generate": "tsx scripts/generate-colors.mts ../../registry/styles/palette.css ../../registry/styles/colors.css",
     "colors:generate:public": "tsx scripts/generate-colors.mts ../../registry/styles/palette.css ./public/styles/colors.css",
-    "palette:generate": "tsx scripts/generate-palette.mts ../../registry/styles/palette.css"
+    "palette:generate": "tsx scripts/generate-palette.mts ../../registry/styles/palette.css",
+    "build:components": "tsx scripts/build-components.mts"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",
