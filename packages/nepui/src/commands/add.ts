@@ -11,11 +11,24 @@ import {
 import { buildComponentUrl, fetchComponent } from "@/registry/fech"
 import { GITHUB_URL } from "@/constants"
 import kleur from "kleur"
+import { rewriteComponentImports } from "@/utils/rewrite-imports"
 
 export interface AddOptions {
   target?: string
   force?: boolean
   local?: boolean
+}
+
+export function trimCode(code: string | undefined) {
+  return (
+    code
+      ?.replace(/\r?\n+$/, "")
+      .replaceAll("@/registry/react/", "@/components/nepui/")
+      .replaceAll(
+        'import "../../styles/tokens.css"',
+        'import "../tokens.css"'
+      ) || ""
+  )
 }
 
 export async function addCommand(
@@ -37,9 +50,13 @@ export async function addCommand(
     process.exitCode = 1
     return
   }
+
   spinner.text = `Installing ${componentName}...`
 
-  const resolved = resolveAllDestinations(item.files, target, componentName)
+  const files = rewriteComponentImports(item.files, target)
+
+  const resolved = resolveAllDestinations(files, target, componentName)
+
   spinner.stop()
 
   const result = await installFiles(resolved)
@@ -81,7 +98,7 @@ The component at ${url} was not found.
 The component may not exist yet, or the name may be incorrect.
 
 Try:
-> npx nepui ls --target react
+> npx nepui ls --target ${target}
 
 If the problem persists, please open an issue on GitHub.
 > ${GITHUB_URL}/issues/new
