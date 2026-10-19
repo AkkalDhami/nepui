@@ -21,7 +21,8 @@
     "registry:build": "pnpm --filter docs registry:build:react && pnpm --filter docs registry:build:html",
     "examples:build": "pnpm --filter docs examples:build",
     "colors:generate": "pnpm --filter docs colors:generate && pnpm --filter docs colors:generate:public",
-    "palette:generate": "pnpm --filter docs palette:generate"
+    "palette:generate": "pnpm --filter docs palette:generate",
+    "build:components": "pnpm --filter docs build:components"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [

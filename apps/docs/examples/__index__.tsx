@@ -20,6 +20,14 @@ import KtmReactButtonDemo from "./ktm/react/button-demo"
 import KtmReactButtonDestructive from "./ktm/react/button-destructive"
 import KtmReactButtonDisabled from "./ktm/react/button-disabled"
 import KtmReactButtonGhost from "./ktm/react/button-ghost"
+import KtmReactButtonGroupDemo from "./ktm/react/button-group-demo"
+import KtmReactButtonGroupIcon from "./ktm/react/button-group-icon"
+import KtmReactButtonGroupInput from "./ktm/react/button-group-input"
+import KtmReactButtonGroupNested from "./ktm/react/button-group-nested"
+import KtmReactButtonGroupOrientation from "./ktm/react/button-group-orientation"
+import KtmReactButtonGroupSeparator from "./ktm/react/button-group-separator"
+import KtmReactButtonGroupSize from "./ktm/react/button-group-size"
+import KtmReactButtonGroupText from "./ktm/react/button-group-text"
 import KtmReactButtonIcon from "./ktm/react/button-icon"
 import KtmReactButtonLink from "./ktm/react/button-link"
 import KtmReactButtonOutline from "./ktm/react/button-outline"
@@ -43,6 +51,9 @@ import KtmReactInputInvalid from "./ktm/react/input-invalid"
 import KtmReactInputSize from "./ktm/react/input-size"
 import KtmReactInputWithLabel from "./ktm/react/input-with-label"
 import KtmReactLabelDemo from "./ktm/react/label-demo"
+import KtmReactSeparatorDemo from "./ktm/react/separator-demo"
+import KtmReactSeparatorList from "./ktm/react/separator-list"
+import KtmReactSeparatorVertical from "./ktm/react/separator-vertical"
 import KtmReactSpinnerColor from "./ktm/react/spinner-color"
 import KtmReactSpinnerDemo from "./ktm/react/spinner-demo"
 import KtmReactSpinnerDirection from "./ktm/react/spinner-direction"
@@ -73,6 +84,14 @@ export const ExamplesIndex: Record<
       "button-destructive": KtmReactButtonDestructive,
       "button-disabled": KtmReactButtonDisabled,
       "button-ghost": KtmReactButtonGhost,
+      "button-group-demo": KtmReactButtonGroupDemo,
+      "button-group-icon": KtmReactButtonGroupIcon,
+      "button-group-input": KtmReactButtonGroupInput,
+      "button-group-nested": KtmReactButtonGroupNested,
+      "button-group-orientation": KtmReactButtonGroupOrientation,
+      "button-group-separator": KtmReactButtonGroupSeparator,
+      "button-group-size": KtmReactButtonGroupSize,
+      "button-group-text": KtmReactButtonGroupText,
       "button-icon": KtmReactButtonIcon,
       "button-link": KtmReactButtonLink,
       "button-outline": KtmReactButtonOutline,
@@ -96,6 +115,9 @@ export const ExamplesIndex: Record<
       "input-size": KtmReactInputSize,
       "input-with-label": KtmReactInputWithLabel,
       "label-demo": KtmReactLabelDemo,
+      "separator-demo": KtmReactSeparatorDemo,
+      "separator-list": KtmReactSeparatorList,
+      "separator-vertical": KtmReactSeparatorVertical,
       "spinner-color": KtmReactSpinnerColor,
       "spinner-demo": KtmReactSpinnerDemo,
       "spinner-direction": KtmReactSpinnerDirection,
@@ -121,6 +143,14 @@ export const ExamplesIndex: Record<
       "button-destructive": "ktm/html/button-destructive.html",
       "button-disabled": "ktm/html/button-disabled.html",
       "button-ghost": "ktm/html/button-ghost.html",
+      "button-group-demo": "ktm/html/button-group-demo.html",
+      "button-group-icon": "ktm/html/button-group-icon.html",
+      "button-group-input": "ktm/html/button-group-input.html",
+      "button-group-nested": "ktm/html/button-group-nested.html",
+      "button-group-orientation": "ktm/html/button-group-orientation.html",
+      "button-group-separator": "ktm/html/button-group-separator.html",
+      "button-group-size": "ktm/html/button-group-size.html",
+      "button-group-text": "ktm/html/button-group-text.html",
       "button-icon": "ktm/html/button-icon.html",
       "button-link": "ktm/html/button-link.html",
       "button-outline": "ktm/html/button-outline.html",
@@ -143,6 +173,9 @@ export const ExamplesIndex: Record<
       "input-label": "ktm/html/input-label.html",
       "input-size": "ktm/html/input-size.html",
       "label-demo": "ktm/html/label-demo.html",
+      "separator-demo": "ktm/html/separator-demo.html",
+      "separator-list": "ktm/html/separator-list.html",
+      "separator-vertical": "ktm/html/separator-vertical.html",
       "spinner-color": "ktm/html/spinner-color.html",
       "spinner-demo": "ktm/html/spinner-demo.html",
       "spinner-direction": "ktm/html/spinner-direction.html",

@@ -18,6 +18,7 @@ import type { MDXComponents } from "mdx/types"
 import { ReactPreviewTabs } from "@/components/preview/react-preview-tabs"
 import { ComponentSource } from "@/components/docs/component-source"
 import { ColorPalette } from "@/components/docs/color-palette"
+import { Kbd } from "@/components/ui/kbd"
 
 function getNodeText(node: React.ReactNode): string {
   if (typeof node === "string" || typeof node === "number") {
@@ -107,6 +108,7 @@ export const mdxComponents = {
   ComponentSource,
   ManualInstallation,
   ColorPalette,
+  Kbd,
 
   h1: ({ children, id, ...props }: React.ComponentProps<"h1">) => {
     const headingId = id ?? getHeadingId(children)

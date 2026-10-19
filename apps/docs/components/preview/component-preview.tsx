@@ -24,7 +24,7 @@ export async function ComponentPreview({
   const source = await getExampleSource({ target, name })
   if (!source) {
     return (
-      <p className="mt-6 text-sm text-muted-foreground">
+      <p className="mt-6 text-sm text-amber-600">
         Component{" "}
         <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm text-foreground">
           {name}
@@ -36,7 +36,16 @@ export async function ComponentPreview({
 
   if (target === "html") {
     const highlightedCode = await highlightCode(trimCode(source), "html")
-    const componentName = name.split("-")[0]
+    const nameParts = name.split("-")
+
+    const groupedComponents = ["button-group", "input-group"]
+
+    const componentName = groupedComponents.includes(
+      nameParts.slice(0, 2).join("-")
+    )
+      ? nameParts.slice(0, 2).join("-")
+      : nameParts[0]
+
     return (
       <Tabs defaultValue="preview" className={cn("mt-4 gap-0", className)}>
         <TabsList className="bg-transparent" variant="line">
@@ -53,8 +62,8 @@ export async function ComponentPreview({
           <HtmlPreview
             html={source}
             styles={[
-              `/${componentName}/${componentName}.css`,
               `/tokens.css`,
+              `/${componentName}/${componentName}.css`,
               ...(styles ?? []),
             ]}
             className="mt-6"

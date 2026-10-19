@@ -51,8 +51,9 @@ export default function RootLayout({
         fontMono.variable,
         fontCode.variable,
         jetBrainsMono.variable,
+        inter.variable,
         "font-sans",
-        inter.variable
+        "selection:bg-primary selection:text-primary-foreground"
       )}
     >
       <body>

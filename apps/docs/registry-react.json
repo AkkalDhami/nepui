@@ -5,162 +5,212 @@
   "items": [
     {
       "name": "button",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Button",
       "description": "A button triggers an action, submits a form, or performs another user-initiated operation.",
       "files": [
         {
           "path": "registry/react/button/button.tsx",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "components/nepui/button/button.tsx"
         },
         {
           "path": "registry/react/button/button.css",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "components/nepui/button/button.css"
         },
         {
           "path": "registry/react/button/index.ts",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "components/nepui/button/index.ts"
         }
       ]
     },
     {
       "name": "spinner",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Spinner",
       "description": "An indicator that can be used to show a loading state.",
       "files": [
         {
           "path": "registry/react/spinner/spinner.tsx",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "components/nepui/spinner/spinner.tsx"
         },
         {
           "path": "registry/react/spinner/spinner.css",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "components/nepui/spinner/spinner.css"
         },
         {
           "path": "registry/react/spinner/index.ts",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "components/nepui/spinner/index.ts"
         }
       ]
     },
     {
       "name": "label",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Label",
       "description": "Renders an accessible label associated with controls.",
       "files": [
         {
           "path": "registry/react/label/label.tsx",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "components/nepui/label/label.tsx"
         },
         {
           "path": "registry/react/label/label.css",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "components/nepui/label/label.css"
         },
         {
           "path": "registry/react/label/index.ts",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "components/nepui/label/index.ts"
         }
       ]
     },
     {
       "name": "checkbox",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Checkbox",
       "description": "A control that allows the user to toggle between checked and not checked.",
       "files": [
         {
           "path": "registry/react/checkbox/checkbox.tsx",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "components/nepui/checkbox/checkbox.tsx"
         },
         {
           "path": "registry/react/checkbox/checkbox.css",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "components/nepui/checkbox/checkbox.css"
         },
         {
           "path": "registry/react/checkbox/index.ts",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "components/nepui/checkbox/index.ts"
         }
       ]
     },
     {
       "name": "input",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Input",
       "description": "A text input component for forms and user data entry with built-in styling and accessibility features.",
       "files": [
         {
           "path": "registry/react/input/input.tsx",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "components/nepui/input/input.tsx"
         },
         {
           "path": "registry/react/input/input.css",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "components/nepui/input/input.css"
         },
         {
           "path": "registry/react/input/index.ts",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "components/nepui/input/index.ts"
         }
       ]
     },
     {
       "name": "steps",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Steps",
       "description": "A multi-step process indicator that guides users through a sequence of actions or tasks.",
       "files": [
         {
           "path": "registry/react/steps/steps.tsx",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "components/nepui/steps/steps.tsx"
         },
         {
           "path": "registry/react/steps/steps.css",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "components/nepui/steps/steps.css"
         },
         {
           "path": "registry/react/input/index.ts",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "components/nepui/steps/index.ts"
         }
       ]
     },
     {
       "name": "badge",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Badge",
       "description": "A badge displays a short piece of information, such as a status, a label or a count.",
       "files": [
         {
           "path": "registry/react/badge/badge.tsx",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "components/nepui/badge/badge.tsx"
         },
         {
           "path": "registry/react/badge/badge.css",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "components/nepui/badge/badge.css"
         },
         {
           "path": "registry/react/badge/index.ts",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "components/nepui/badge/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "button-group",
+      "type": "registry:ui",
+      "title": "Button-group",
+      "description": "A container that groups related buttons together with consistent styling.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/react/button.json",
+        "https://nepui.vercel.app/r/react/separator.json"
+      ],
+      "files": [
+        {
+          "path": "registry/react/button-group/button-group.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/button-group/button-group.tsx"
+        },
+        {
+          "path": "registry/react/button-group/button-group.css",
+          "type": "registry:ui",
+          "target": "components/nepui/button-group/button-group.css"
+        },
+        {
+          "path": "registry/react/button-group/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/button-group/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "Visually or semantically separates content.",
+      "files": [
+        {
+          "path": "registry/react/separator/separator.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/separator/separator.tsx"
+        },
+        {
+          "path": "registry/react/separator/separator.css",
+          "type": "registry:ui",
+          "target": "components/nepui/separator/separator.css"
+        },
+        {
+          "path": "registry/react/separator/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/separator/index.ts"
         }
       ]
     }

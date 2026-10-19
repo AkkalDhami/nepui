@@ -5,127 +5,167 @@
   "items": [
     {
       "name": "button",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Button",
       "description": "A button triggers an action, submits a form, or performs another user-initiated operation.",
       "files": [
         {
           "path": "registry/html/button/button.html",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "html/button.html"
         },
         {
           "path": "registry/html/button/button.css",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "styles/button.css"
         }
       ]
     },
     {
       "name": "spinner",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Spinner",
       "description": "An indicator that can be used to show a loading state.",
       "files": [
         {
           "path": "registry/html/spinner/spinner.html",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "html/spinner.html"
         },
         {
           "path": "registry/html/spinner/spinner.css",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "styles/spinner.css"
         }
       ]
     },
     {
       "name": "label",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Label",
       "description": "Renders an accessible label associated with controls.",
       "files": [
         {
           "path": "registry/html/label/label.html",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "html/label.html"
         },
         {
           "path": "registry/html/label/label.css",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "styles/label.css"
         }
       ]
     },
     {
       "name": "checkbox",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Checkbox",
       "description": "A control that allows the user to toggle between checked and not checked.",
       "files": [
         {
           "path": "registry/html/checkbox/checkbox.html",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "html/checkbox.html"
         },
         {
           "path": "registry/html/checkbox/checkbox.css",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "styles/checkbox.css"
         }
       ]
     },
     {
       "name": "input",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Input",
       "description": "A text input component for forms and user data entry with built-in styling and accessibility features.",
       "files": [
         {
           "path": "registry/html/input/input.html",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "html/input.html"
         },
         {
           "path": "registry/html/input/input.css",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "styles/input.css"
         }
       ]
     },
     {
       "name": "steps",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Steps",
       "description": "A multi-step process indicator that guides users through a sequence of actions or tasks.",
       "files": [
         {
           "path": "registry/html/steps/steps.html",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "html/steps.html"
         },
         {
           "path": "registry/html/steps/steps.css",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "styles/steps.css"
         }
       ]
     },
     {
       "name": "badge",
-      "type": "registry:component",
+      "type": "registry:ui",
       "title": "Badge",
       "description": "A badge displays a short piece of information, such as a status, a label or a count.",
       "files": [
         {
           "path": "registry/html/badge/badge.html",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "html/badge.html"
         },
         {
           "path": "registry/html/badge/badge.css",
-          "type": "registry:component",
+          "type": "registry:ui",
           "target": "styles/badge.css"
+        }
+      ]
+    },
+    {
+      "name": "button-group",
+      "type": "registry:ui",
+      "title": "Button-group",
+      "description": "A container that groups related buttons together with consistent styling.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/html/button.json",
+        "https://nepui.vercel.app/r/html/separator.json"
+      ],
+      "files": [
+        {
+          "path": "registry/html/button-group/button-group.html",
+          "type": "registry:ui",
+          "target": "html/button-group.html"
+        },
+        {
+          "path": "registry/html/button-group/button-group.css",
+          "type": "registry:ui",
+          "target": "styles/button-group.css"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "Visually or semantically separates content.",
+      "files": [
+        {
+          "path": "registry/html/separator/separator.html",
+          "type": "registry:ui",
+          "target": "html/separator.html"
+        },
+        {
+          "path": "registry/html/separator/separator.css",
+          "type": "registry:ui",
+          "target": "styles/separator.css"
         }
       ]
     }
