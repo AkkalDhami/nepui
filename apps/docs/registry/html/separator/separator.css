@@ -1,0 +1,21 @@
+/* nepui — Separator */
+
+.np-separator,
+[data-np-separator] {
+  --np-separator-size: 1px;
+  --np-separator-color: var(--np-border);
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--np-separator-size);
+  margin: 0;
+  border: 0;
+  background: var(--np-separator-color);
+}
+
+.np-separator-vertical,
+:is(.np-separator, [data-np-separator])[data-orientation="vertical"] {
+  align-self: stretch;
+  width: var(--np-separator-size, 1px);
+  height: auto;
+}
