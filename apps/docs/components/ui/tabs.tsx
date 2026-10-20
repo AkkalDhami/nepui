@@ -147,10 +147,10 @@ function TabsContent({ className, children, ...props }: TabsContentProps) {
             {!state.hidden && (
               <motion.div
                 key={props.value ?? "tab-panel"}
-                initial={{ opacity: 0, y: 8, filter: "blur(4px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                exit={{ opacity: 0, y: -4, filter: "blur(2px)" }}
-                transition={{ duration: 0.2, ease: "easeOut" }}
+                initial={{ opacity: 0, filter: "blur(12px)" }}
+                animate={{ opacity: 1, filter: "blur(0px)" }}
+                exit={{ opacity: 0, filter: "blur(12px)" }}
+                transition={{ duration: 0.3, ease: "easeIn" }}
               >
                 {children}
               </motion.div>
