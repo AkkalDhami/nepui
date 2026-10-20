@@ -3,7 +3,7 @@
 import { motion, useReducedMotion } from "motion/react"
 import { Button } from "@/registry/react/button"
 import Link from "next/link"
-import { LogoIcon } from "../shared/logo"
+import { LogoIcon } from "@/components/shared/logo"
 
 const ease = [0.22, 1, 0.36, 1] as const
 
@@ -42,8 +42,10 @@ export function HeroSection() {
           variants={item}
           className="mb-8 max-w-[56ch] text-lg text-muted-foreground"
         >
-          A foundational system of accessible components for HTML and React,
-          built with CSS, not Tailwind.
+          A foundational system of accessible components for HTML and React —
+          styled with plain CSS you can read, own, and override.
+          {/* A foundational system of accessible components for HTML and React,
+          built with CSS, not Tailwind. */}
         </motion.p>
         <motion.div
           variants={item}
