@@ -100,9 +100,9 @@
     transparent
   );
   --np-input-invalid-ring: color-mix(
-    in oklch,
-    var(--np-destructive),
-    transparent 60%
+    in oklab,
+    var(--np-destructive) 20%,
+    transparent
   );
 }
 
@@ -121,7 +121,7 @@
     );
     --np-input-invalid-ring: color-mix(
       in oklab,
-      var(--np-destructive) 40%,
+      var(--np-destructive) 20%,
       transparent
     );
   }
