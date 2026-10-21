@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skeleton",
+  "title": "Skeleton",
+  "description": "Use to show a placeholder while content is loading.",
+  "files": [
+    {
+      "path": "registry/react/skeleton/skeleton.tsx",
+      "content": "\"use client\"\r\n\r\nimport type { ComponentProps } from \"react\"\r\nimport { cn } from \"cn\"\r\n\r\n// NOTE: Update these paths if needed\r\nimport \"../tokens.css\"\r\nimport \"./skeleton.css\"\r\n\r\nfunction Skeleton({ className, ...props }: ComponentProps<\"div\">) {\r\n  return (\r\n    <div\r\n      data-slot=\"skeleton\"\r\n      aria-hidden=\"true\"\r\n      className={cn(\"np-skeleton\", className)}\r\n      {...props}\r\n    />\r\n  )\r\n}\r\n\r\nexport { Skeleton }\r\n",
+      "type": "registry:ui",
+      "target": "components/nepui/skeleton/skeleton.tsx"
+    },
+    {
+      "path": "registry/react/skeleton/skeleton.css",
+      "content": "/* nepui — Skeleton */\r\n\r\n.np-skeleton,\r\n[data-np-skeleton] {\r\n  --np-skeleton-height: 1rem;\r\n  --np-skeleton-radius: var(--np-radius-md);\r\n  --np-skeleton-color: var(--np-muted);\r\n  display: block;\r\n  box-sizing: border-box;\r\n  height: var(--np-skeleton-height);\r\n  border-radius: var(--np-skeleton-radius);\r\n  background: var(--np-skeleton-color);\r\n  animation: np-skeleton-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;\r\n}\r\n\r\n.np-skeleton-circle,\r\n:is(.np-skeleton, [data-np-skeleton])[data-shape=\"circle\"] {\r\n  --np-skeleton-radius: 9999px;\r\n}\r\n\r\n@keyframes np-skeleton-pulse {\r\n  50% {\r\n    opacity: 0.5;\r\n  }\r\n}\r\n\r\n@media (prefers-reduced-motion: reduce) {\r\n  :is(.np-skeleton, [data-np-skeleton]) {\r\n    animation: none;\r\n  }\r\n}\r\n",
+      "type": "registry:ui",
+      "target": "components/nepui/skeleton/skeleton.css"
+    },
+    {
+      "path": "registry/react/skeleton/index.ts",
+      "content": "export * from \"./skeleton\"\r\n",
+      "type": "registry:ui",
+      "target": "components/nepui/skeleton/index.ts"
+    }
+  ],
+  "type": "registry:ui"
+}
