@@ -1,14 +1,11 @@
 export const PAGES_NEW = [
-  "/docs/changelog",
   "/docs/colors",
-  "/docs/components/html/button-group",
+  "/docs/components/html/textarea",
   "/docs/components/html/separator",
-  "/docs/components/react/button-group",
+  "/docs/components/react/textarea",
   "/docs/components/react/separator",
-  "/docs/components/react/input",
-  "/docs/components/html/input",
-  "/docs/components/react/steps",
-  "/docs/components/html/steps",
+  "/docs/components/react/skeleton",
+  "/docs/components/html/skeleton",
   "/docs/components/react/badge",
   "/docs/components/html/badge",
 ]

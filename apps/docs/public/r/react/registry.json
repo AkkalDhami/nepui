@@ -213,6 +213,52 @@
           "target": "components/nepui/separator/index.ts"
         }
       ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "Use to show a placeholder while content is loading.",
+      "files": [
+        {
+          "path": "registry/react/skeleton/skeleton.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/skeleton/skeleton.tsx"
+        },
+        {
+          "path": "registry/react/skeleton/skeleton.css",
+          "type": "registry:ui",
+          "target": "components/nepui/skeleton/skeleton.css"
+        },
+        {
+          "path": "registry/react/skeleton/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/skeleton/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Displays a form textarea or a component that looks like a textarea.",
+      "files": [
+        {
+          "path": "registry/react/textarea/textarea.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/textarea/textarea.tsx"
+        },
+        {
+          "path": "registry/react/textarea/textarea.css",
+          "type": "registry:ui",
+          "target": "components/nepui/textarea/textarea.css"
+        },
+        {
+          "path": "registry/react/textarea/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/textarea/index.ts"
+        }
+      ]
     }
   ]
 }

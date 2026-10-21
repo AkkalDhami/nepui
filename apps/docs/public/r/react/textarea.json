@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea",
+  "title": "Textarea",
+  "description": "Displays a form textarea or a component that looks like a textarea.",
+  "files": [
+    {
+      "path": "registry/react/textarea/textarea.tsx",
+      "content": "\"use client\"\n\nimport type { ComponentProps } from \"react\"\nimport { cn } from \"cn\"\n\n// NOTE: Update these paths if needed\nimport \"../tokens.css\"\nimport \"./textarea.css\"\n\nfunction Textarea({ className, ...props }: ComponentProps<\"textarea\">) {\n  return (\n    <textarea\n      data-slot=\"textarea\"\n      className={cn(\"np-textarea\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { Textarea }\n",
+      "type": "registry:ui",
+      "target": "components/nepui/textarea/textarea.tsx"
+    },
+    {
+      "path": "registry/react/textarea/textarea.css",
+      "content": "/* nepui — Textarea */\n\n.np-textarea,\n[data-np-textarea] {\n  --np-textarea-min-height: 4rem;\n  --np-textarea-padding-x: 0.625rem;\n  --np-textarea-padding-y: 0.5rem;\n  --np-textarea-font-size: 0.875rem;\n  --np-textarea-radius: var(--np-radius-md);\n  --np-textarea-border: var(--np-input, var(--np-border));\n  --np-textarea-bg: transparent;\n  --np-textarea-disabled-bg: color-mix(\n    in oklch,\n    var(--np-textarea-border),\n    transparent 50%\n  );\n  --np-textarea-invalid-border: var(--np-destructive);\n  --np-textarea-invalid-ring: color-mix(\n    in oklch,\n    var(--np-destructive),\n    transparent 80%\n  );\n\n  display: block;\n  box-sizing: border-box;\n  width: 100%;\n  min-height: var(--np-textarea-min-height);\n  margin: 0;\n  padding: var(--np-textarea-padding-y) var(--np-textarea-padding-x);\n\n  border: 1px solid var(--np-textarea-border);\n  border-radius: var(--np-textarea-radius);\n  background: var(--np-textarea-bg);\n  color: inherit;\n\n  font: inherit;\n  font-size: 1rem;\n  line-height: 1.5rem;\n\n  field-sizing: content;\n  outline: none;\n  transition:\n    color 150ms ease,\n    background-color 150ms ease,\n    border-color 150ms ease,\n    box-shadow 150ms ease;\n}\n\n@media (min-width: 48rem) {\n  :is(.np-textarea, [data-np-textarea]) {\n    font-size: var(--np-textarea-font-size);\n    line-height: 1.25rem;\n  }\n}\n\n:is(.np-textarea, [data-np-textarea])::placeholder {\n  color: var(--np-muted-foreground);\n}\n\n/* Focus */\n:is(.np-textarea, [data-np-textarea]):focus-visible {\n  border-color: var(--np-ring);\n  box-shadow: 0 0 0 3px color-mix(in oklch, var(--np-ring), transparent 50%);\n}\n\n/* Disabled */\n:is(.np-textarea, [data-np-textarea]):is(\n  :disabled,\n  [data-disabled],\n  [aria-disabled=\"true\"]\n) {\n  cursor: not-allowed;\n  background: var(--np-textarea-disabled-bg);\n  opacity: 0.5;\n}\n\n/* Invalid */\n:is(.np-textarea, [data-np-textarea]):is(\n  [aria-invalid=\"true\"],\n  [data-invalid]\n) {\n  border-color: var(--np-textarea-invalid-border);\n  box-shadow: 0 0 0 3px var(--np-textarea-invalid-ring);\n}\n\n:is(.dark, [data-theme=\"dark\"]) :is(.np-textarea, [data-np-textarea]) {\n  --np-textarea-bg: color-mix(\n    in oklab,\n    var(--np-textarea-border) 30%,\n    transparent\n  );\n  --np-textarea-disabled-bg: color-mix(\n    in oklab,\n    var(--np-textarea-border) 80%,\n    transparent\n  );\n  --np-textarea-invalid-border: color-mix(\n    in oklab,\n    var(--np-destructive) 50%,\n    transparent\n  );\n  --np-textarea-invalid-ring: color-mix(\n    in oklab,\n    var(--np-destructive) 20%,\n    transparent\n  );\n}\n\n@media (prefers-color-scheme: dark) {\n  :root:not(.light, [data-theme=\"light\"])\n    :is(.np-textarea, [data-np-textarea]) {\n    --np-textarea-bg: color-mix(\n      in oklab,\n      var(--np-textarea-border) 30%,\n      transparent\n    );\n    --np-textarea-disabled-bg: color-mix(\n      in oklab,\n      var(--np-textarea-border) 80%,\n      transparent\n    );\n    --np-textarea-invalid-border: color-mix(\n      in oklab,\n      var(--np-destructive) 50%,\n      transparent\n    );\n    --np-textarea-invalid-ring: color-mix(\n      in oklab,\n      var(--np-destructive) 20%,\n      transparent\n    );\n  }\n}\n",
+      "type": "registry:ui",
+      "target": "components/nepui/textarea/textarea.css"
+    },
+    {
+      "path": "registry/react/textarea/index.ts",
+      "content": "export * from \"./textarea\"\n",
+      "type": "registry:ui",
+      "target": "components/nepui/textarea/index.ts"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -168,6 +168,24 @@
           "target": "styles/separator.css"
         }
       ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "Use to show a placeholder while content is loading.",
+      "files": [
+        {
+          "path": "registry/html/skeleton/skeleton.html",
+          "type": "registry:ui",
+          "target": "html/skeleton.html"
+        },
+        {
+          "path": "registry/html/skeleton/skeleton.css",
+          "type": "registry:ui",
+          "target": "styles/skeleton.css"
+        }
+      ]
     }
   ]
 }

@@ -3,7 +3,6 @@
 import { motion, useReducedMotion } from "motion/react"
 import { Button } from "@/registry/react/button"
 import Link from "next/link"
-import { LogoIcon } from "@/components/shared/logo"
 
 const ease = [0.22, 1, 0.36, 1] as const
 
@@ -54,16 +53,17 @@ export function HeroSection() {
           <Button
             nativeButton={false}
             size="lg"
+            className="rounded-full"
             render={<Link href="/docs/components">Explore components</Link>}
           ></Button>
           <Button
             size="lg"
             variant="outline"
             nativeButton={false}
+            className="rounded-full"
             render={<Link href="/docs/">Get started</Link>}
           ></Button>
         </motion.div>
-        <LogoIcon className="size-0 text-muted-foreground hover:text-primary sm:size-140" />
       </motion.div>
     </section>
   )
