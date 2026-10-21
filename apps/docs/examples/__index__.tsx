@@ -54,6 +54,11 @@ import KtmReactLabelDemo from "./ktm/react/label-demo"
 import KtmReactSeparatorDemo from "./ktm/react/separator-demo"
 import KtmReactSeparatorList from "./ktm/react/separator-list"
 import KtmReactSeparatorVertical from "./ktm/react/separator-vertical"
+import KtmReactSkeletonAvatar from "./ktm/react/skeleton-avatar"
+import KtmReactSkeletonCard from "./ktm/react/skeleton-card"
+import KtmReactSkeletonDemo from "./ktm/react/skeleton-demo"
+import KtmReactSkeletonShape from "./ktm/react/skeleton-shape"
+import KtmReactSkeletonText from "./ktm/react/skeleton-text"
 import KtmReactSpinnerColor from "./ktm/react/spinner-color"
 import KtmReactSpinnerDemo from "./ktm/react/spinner-demo"
 import KtmReactSpinnerDirection from "./ktm/react/spinner-direction"
@@ -61,6 +66,11 @@ import KtmReactSpinnerSize from "./ktm/react/spinner-size"
 import KtmReactSpinnerSpeed from "./ktm/react/spinner-speed"
 import KtmReactSpinnerThickness from "./ktm/react/spinner-thickness"
 import KtmReactStepsDemo from "./ktm/react/steps-demo"
+import KtmReactTextareaControlled from "./ktm/react/textarea-controlled"
+import KtmReactTextareaDemo from "./ktm/react/textarea-demo"
+import KtmReactTextareaDisabled from "./ktm/react/textarea-disabled"
+import KtmReactTextareaInvalid from "./ktm/react/textarea-invalid"
+import KtmReactTextareaWithLabel from "./ktm/react/textarea-with-label"
 
 export const ExamplesIndex: Record<
   string,
@@ -118,6 +128,11 @@ export const ExamplesIndex: Record<
       "separator-demo": KtmReactSeparatorDemo,
       "separator-list": KtmReactSeparatorList,
       "separator-vertical": KtmReactSeparatorVertical,
+      "skeleton-avatar": KtmReactSkeletonAvatar,
+      "skeleton-card": KtmReactSkeletonCard,
+      "skeleton-demo": KtmReactSkeletonDemo,
+      "skeleton-shape": KtmReactSkeletonShape,
+      "skeleton-text": KtmReactSkeletonText,
       "spinner-color": KtmReactSpinnerColor,
       "spinner-demo": KtmReactSpinnerDemo,
       "spinner-direction": KtmReactSpinnerDirection,
@@ -125,6 +140,11 @@ export const ExamplesIndex: Record<
       "spinner-speed": KtmReactSpinnerSpeed,
       "spinner-thickness": KtmReactSpinnerThickness,
       "steps-demo": KtmReactStepsDemo,
+      "textarea-controlled": KtmReactTextareaControlled,
+      "textarea-demo": KtmReactTextareaDemo,
+      "textarea-disabled": KtmReactTextareaDisabled,
+      "textarea-invalid": KtmReactTextareaInvalid,
+      "textarea-with-label": KtmReactTextareaWithLabel,
     },
     html: {
       "badge-appearance": "ktm/html/badge-appearance.html",
@@ -176,6 +196,11 @@ export const ExamplesIndex: Record<
       "separator-demo": "ktm/html/separator-demo.html",
       "separator-list": "ktm/html/separator-list.html",
       "separator-vertical": "ktm/html/separator-vertical.html",
+      "skeleton-avatar": "ktm/html/skeleton-avatar.html",
+      "skeleton-card": "ktm/html/skeleton-card.html",
+      "skeleton-demo": "ktm/html/skeleton-demo.html",
+      "skeleton-shape": "ktm/html/skeleton-shape.html",
+      "skeleton-text": "ktm/html/skeleton-text.html",
       "spinner-color": "ktm/html/spinner-color.html",
       "spinner-demo": "ktm/html/spinner-demo.html",
       "spinner-direction": "ktm/html/spinner-direction.html",
