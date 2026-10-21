@@ -1,0 +1,131 @@
+---
+title: Skeleton
+description: Use to show a placeholder while content is loading.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="skeleton-demo"
+  target="html"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add skeleton"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="skeleton"
+        title="styles/skeleton.css"
+        fileTarget="styles/skeleton.css"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the design tokens and the component's CSS file to your HTML document.
+
+```html
+<head>
+  <link rel="stylesheet" href="./styles/tokens.css">
+  <link rel="stylesheet" href="./styles/skeleton.css">
+</head>
+```
+
+Then, add the `np-skeleton` class to an element and set its size.
+
+```html
+<div class="np-skeleton" style="width: 12rem"></div>
+```
+
+You can also use the `data-np-skeleton` attribute instead of the class.
+ 
+```html
+<div data-np-skeleton style="width: 12rem"></div>
+```
+
+---
+
+## Avatar
+
+Use `data-shape="circle"` or the `np-skeleton-circle` class for avatars. Stack them with a negative margin to stand in for an avatar group.
+
+<ComponentPreview
+  name="skeleton-avatar"
+  target="html"
+/>
+
+---
+
+## Text
+
+Use several skeletons of different widths to stand in for a title and a paragraph. Make the last line shorter so it reads like text.
+
+<ComponentPreview
+  name="skeleton-text"
+  target="html"
+/>
+
+---
+
+## Card
+
+Combine skeletons to match the layout of a card, a list item, or any other block.
+
+<ComponentPreview
+  name="skeleton-card"
+  target="html"
+/>
+
+---
+
+## Shape
+
+Use `data-shape="circle"` or the `np-skeleton-circle` class for a round skeleton, such as an avatar.
+
+<ComponentPreview
+  name="skeleton-shape"
+  target="html"
+/>
+
+| Shape     | Data attribute        | Class alias          |
+| --------- | --------------------- | -------------------- |
+| Rectangle | —                     | `np-skeleton`        |
+| Circle    | `data-shape="circle"` | `np-skeleton-circle` |
+
+---
+
+ 
+## Class and data attributes
+
+Use classes or data attributes on any element.
+
+```html
+<div class="np-skeleton" style="width: 12rem"></div>
+
+<div data-np-skeleton data-shape="circle" style="width: 3rem; height: 3rem"></div>
+```
+
+| Part     | Class                | Data attribute          |
+| -------- | -------------------- | ----------------------- |
+| Skeleton | `np-skeleton`        | `data-np-skeleton`      |
+| Circle   | `np-skeleton-circle` | `data-shape="circle"`   |

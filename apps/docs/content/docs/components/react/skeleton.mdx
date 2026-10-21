@@ -1,0 +1,125 @@
+---
+title: Skeleton
+description: Use to show a placeholder while content is loading.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="skeleton-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/skeleton.json"
+      nepui="npx nepui@latest add skeleton --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="skeleton"
+        title="components/nepui/skeleton/skeleton.css"
+        fileTarget="components/nepui/skeleton/skeleton.css"
+      />
+
+      <ComponentSource
+        target="react"
+        name="skeleton"
+        title="components/nepui/skeleton/skeleton.tsx"
+        fileTarget="components/nepui/skeleton/skeleton.tsx"
+      />
+
+      <ComponentSource
+        target="react"
+        name="skeleton"
+        title="components/nepui/skeleton/index.ts"
+        fileTarget="components/nepui/skeleton/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import { Skeleton } from "@/components/nepui/skeleton"
+```
+
+```tsx
+<Skeleton style={{ width: "12rem", height: "1rem" }} />
+```
+
+---
+
+## Avatar
+
+Use a circular skeleton for avatars. Stack them with a negative margin to stand in for an avatar group.
+
+<ComponentPreview
+  name="skeleton-avatar"
+/>
+
+---
+
+## Text
+
+Use several skeletons of different widths to stand in for a title and a paragraph. Make the last line shorter so it reads like text.
+
+<ComponentPreview
+  name="skeleton-text"
+/>
+
+---
+
+## Card
+
+Combine skeletons to match the layout of a card, a list item, or any other block.
+
+<ComponentPreview
+  name="skeleton-card"
+/>
+
+---
+
+## Shape
+
+Add the `np-skeleton-circle` class for a round skeleton, such as an avatar.
+
+<ComponentPreview
+  name="skeleton-shape"
+/>
+
+```tsx
+<Skeleton
+  className="np-skeleton-circle"
+  style={{ width: "3rem", height: "3rem" }}
+/>
+```
+
+---
+
+## API Reference
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` | —       |
+| `style`     | `React.CSSProperties` | — |
+
+All other props are passed to the underlying `div`.
