@@ -1,0 +1,105 @@
+---
+title: Textarea
+description: Displays a form textarea or a component that looks like a textarea.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="textarea-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+      cli={
+        <ReactCodeBlockCommand
+          shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/textarea.json"
+          nepui="npx nepui@latest add textarea --target react"
+        />
+      }
+      manual={
+        <Steps>
+          <Step>Install the following dependencies:</Step>
+          <PackageManagerTabs command="npm install @base-ui/react class-variance-authority cn" className="mt-6" />
+
+          <Step>Copy and paste the following code into your project.</Step>
+          <ComponentSource
+            target="react"
+            name="textarea"
+            title="components/nepui/textarea/textarea.css"
+            fileTarget="components/nepui/textarea/textarea.css"
+          />
+
+          <ComponentSource
+            target="react"
+            name="textarea"
+            title="components/nepui/textarea/textarea.tsx"
+            fileTarget="components/nepui/textarea/textarea.tsx"
+          />
+
+          <ComponentSource
+            target="react"
+            name="textarea"
+            title="components/nepui/textarea/index.ts"
+            fileTarget="components/nepui/textarea/index.ts"
+          />
+
+          <Step>Update the import paths to match your project setup.</Step>
+        </Steps>
+      }
+/>
+
+---
+
+## Usage
+
+```tsx
+import { Textarea } from "@/components/nepui/textarea";
+```
+
+```tsx
+<Textarea placeholder="Type your message here." />
+```
+
+---
+
+## Disabled
+
+Use the `disabled` prop to indicate that the textarea is disabled.
+
+<ComponentPreview
+  name="textarea-disabled"
+/>
+
+---
+
+## Invalid
+
+Use the `aria-invalid` prop to indicate that the textarea value is invalid.
+
+<ComponentPreview
+  name="textarea-invalid"
+/>
+
+---
+
+## With Label
+
+<ComponentPreview
+  name="textarea-with-label"
+/>
+
+---
+
+## Controlled
+
+Use the `value` and `onChange` props to control the textarea value.
+
+<ComponentPreview
+  name="textarea-controlled"
+/>
