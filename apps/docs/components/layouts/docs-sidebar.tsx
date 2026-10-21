@@ -219,7 +219,7 @@ export function DocsSidebar({
   return (
     <aside
       className={cn(
-        "sticky top-14 hidden h-svh w-56 shrink-0 bg-background px-4 pt-12 lg:block",
+        "sticky top-14 mb-12 hidden h-svh w-56 shrink-0 scroll-fade-y bg-background px-4 pt-12 pb-12 lg:block",
         className
       )}
     >
