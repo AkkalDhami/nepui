@@ -1,0 +1,31 @@
+/* nepui — Skeleton */
+
+.np-skeleton,
+[data-np-skeleton] {
+  --np-skeleton-height: 1rem;
+  --np-skeleton-radius: var(--np-radius-md);
+  --np-skeleton-color: var(--np-muted);
+  display: block;
+  box-sizing: border-box;
+  height: var(--np-skeleton-height);
+  border-radius: var(--np-skeleton-radius);
+  background: var(--np-skeleton-color);
+  animation: np-skeleton-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.np-skeleton-circle,
+:is(.np-skeleton, [data-np-skeleton])[data-shape="circle"] {
+  --np-skeleton-radius: 9999px;
+}
+
+@keyframes np-skeleton-pulse {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.np-skeleton, [data-np-skeleton]) {
+    animation: none;
+  }
+}
