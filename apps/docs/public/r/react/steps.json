@@ -6,7 +6,7 @@
   "files": [
     {
       "path": "registry/react/steps/steps.tsx",
-      "content": "\"use client\"\n\nimport { cn } from \"cn\"\nimport type { ComponentProps } from \"react\"\n\n// NOTE: Update these paths if needed\nimport \"../tokens.css\"\nimport \"./steps.css\"\n\nfunction Step({ className, ...props }: ComponentProps<\"h3\">) {\n  return <h3 data-slot=\"step\" className={cn(\"np-step\", className)} {...props} />\n}\n\nfunction Steps({ className, ...props }: ComponentProps<\"div\">) {\n  return (\n    <div data-slot=\"steps\" className={cn(\"np-steps\", className)} {...props} />\n  )\n}\n\nexport { Step, Steps }\n",
+      "content": "\"use client\"\n\nimport type { ComponentProps } from \"react\"\nimport { cn } from \"cn\"\n\n// NOTE: Update these paths if needed\nimport \"../tokens.css\"\nimport \"./steps.css\"\n\nfunction Step({ className, ...props }: ComponentProps<\"h3\">) {\n  return <h3 data-slot=\"step\" className={cn(\"np-step\", className)} {...props} />\n}\n\nfunction Steps({ className, ...props }: ComponentProps<\"div\">) {\n  return (\n    <div data-slot=\"steps\" className={cn(\"np-steps\", className)} {...props} />\n  )\n}\n\nexport { Step, Steps }\n",
       "type": "registry:ui",
       "target": "components/nepui/steps/steps.tsx"
     },
