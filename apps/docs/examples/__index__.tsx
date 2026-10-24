@@ -208,6 +208,11 @@ export const ExamplesIndex: Record<
       "spinner-speed": "ktm/html/spinner-speed.html",
       "spinner-thickness": "ktm/html/spinner-thickness.html",
       "steps-demo": "ktm/html/steps-demo.html",
+      "textarea-controlled": "ktm/html/textarea-controlled.html",
+      "textarea-demo": "ktm/html/textarea-demo.html",
+      "textarea-disabled": "ktm/html/textarea-disabled.html",
+      "textarea-invalid": "ktm/html/textarea-invalid.html",
+      "textarea-with-label": "ktm/html/textarea-with-label.html",
     },
   },
 }

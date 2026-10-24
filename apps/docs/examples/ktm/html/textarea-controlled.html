@@ -1,0 +1,14 @@
+<div style="display: grid; gap: 0.5rem; width: 100%; max-width: 24rem">
+  <textarea
+    id="message-controlled"
+    class="np-textarea"
+    placeholder="Type something..."
+    oninput="
+      document.getElementById('message-count').textContent = `Character count:
+        ${this.value.length}`
+    "
+  ></textarea>
+  <p id="message-count" style="margin: 0; font-size: 0.875rem">
+    Character count: 0
+  </p>
+</div>

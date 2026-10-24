@@ -8,7 +8,7 @@ export default function TextareaInvalid() {
       aria-invalid
       placeholder="This textarea has an error"
       style={{
-        width: "340px",
+        width: "24rem",
       }}
     />
   )

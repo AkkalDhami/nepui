@@ -10,7 +10,7 @@ export default function TextareaWithLabel() {
         display: "flex",
         flexDirection: "column",
         gap: "0.625rem",
-        width: "340px",
+        width: "24rem",
       }}
     >
       <Label htmlFor="message">Message</Label>

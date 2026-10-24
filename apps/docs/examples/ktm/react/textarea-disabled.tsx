@@ -8,7 +8,7 @@ export default function TextareaDisabled() {
       disabled
       placeholder="This textarea is disabled"
       style={{
-        width: "340px",
+        width: "24rem",
       }}
     />
   )
