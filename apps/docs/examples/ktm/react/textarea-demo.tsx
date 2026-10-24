@@ -7,7 +7,7 @@ export default function TextareaDemo() {
     <Textarea
       placeholder="Type your message here."
       style={{
-        width: "340px",
+        width: "24rem",
       }}
     />
   )

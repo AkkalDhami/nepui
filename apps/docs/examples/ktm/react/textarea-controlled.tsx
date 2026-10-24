@@ -12,7 +12,7 @@ export default function TextareaControlled() {
         display: "flex",
         flexDirection: "column",
         gap: "0.5rem",
-        width: "340px",
+        width: "24rem",
       }}
     >
       <Textarea

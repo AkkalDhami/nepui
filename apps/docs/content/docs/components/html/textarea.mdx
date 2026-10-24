@@ -1,0 +1,112 @@
+---
+title: Textarea
+description: Displays a form textarea or a component that looks like a textarea.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="textarea-demo"
+  target="html"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add textarea"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="textarea"
+        title="styles/textarea.css"
+        fileTarget="styles/textarea.css"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the design tokens and the component's CSS file to your HTML document.
+
+```html
+<head>
+  <link rel="stylesheet" href="./styles/tokens.css">
+  <link rel="stylesheet" href="./styles/textarea.css">
+</head>
+```
+
+Then, add the `np-textarea` class to your `<textarea>` element.
+
+```html
+<textarea class="np-textarea" placeholder="Type your message here."></textarea>
+```
+
+You can also use the `data-np-textarea` attribute instead of the class.
+
+```html
+<textarea data-np-textarea placeholder="Type your message here."></textarea>
+```
+
+---
+
+## Disabled
+
+Use the native `disabled` attribute to disable the textarea.
+
+<ComponentPreview
+  name="textarea-disabled"
+  target="html"
+/>
+
+---
+
+## Invalid
+
+Use the `aria-invalid="true"` attribute (or `data-invalid`) to indicate that the value is invalid. Connect the error message with `aria-describedby`.
+
+<ComponentPreview
+  name="textarea-invalid"
+  target="html"
+/>
+
+---
+
+## With Label
+
+To use the [`Label`](/docs/components/html/label) component with the textarea, first include the `label.css` stylesheet in your HTML:
+
+```html
+<link rel="stylesheet" href="./styles/label.css" />
+```
+
+<ComponentPreview
+  name="textarea-with-label"
+  target="html"
+  styles={["/label/label.css"]}
+/>
+
+---
+
+## Controlled
+
+
+<ComponentPreview
+  name="textarea-controlled"
+  target="html"
+/>
