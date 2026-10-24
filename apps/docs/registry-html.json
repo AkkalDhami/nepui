@@ -186,6 +186,24 @@
           "target": "styles/skeleton.css"
         }
       ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Displays a form textarea or a component that looks like a textarea.",
+      "files": [
+        {
+          "path": "registry/html/textarea/textarea.html",
+          "type": "registry:ui",
+          "target": "html/textarea.html"
+        },
+        {
+          "path": "registry/html/textarea/textarea.css",
+          "type": "registry:ui",
+          "target": "styles/textarea.css"
+        }
+      ]
     }
   ]
 }

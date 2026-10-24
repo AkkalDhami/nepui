@@ -31,10 +31,7 @@
     "**/*.tsx",
     "**/*.mts",
     ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts",
-    "public/llms.tst",
-    "content/docs/components/html/copy-button.msx",
-    "content/docs/components/react/separator.mdx"
+    ".next/dev/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }
