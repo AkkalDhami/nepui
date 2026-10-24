@@ -6,19 +6,19 @@
   "files": [
     {
       "path": "registry/react/skeleton/skeleton.tsx",
-      "content": "\"use client\"\r\n\r\nimport type { ComponentProps } from \"react\"\r\nimport { cn } from \"cn\"\r\n\r\n// NOTE: Update these paths if needed\r\nimport \"../tokens.css\"\r\nimport \"./skeleton.css\"\r\n\r\nfunction Skeleton({ className, ...props }: ComponentProps<\"div\">) {\r\n  return (\r\n    <div\r\n      data-slot=\"skeleton\"\r\n      aria-hidden=\"true\"\r\n      className={cn(\"np-skeleton\", className)}\r\n      {...props}\r\n    />\r\n  )\r\n}\r\n\r\nexport { Skeleton }\r\n",
+      "content": "\"use client\"\n\nimport type { ComponentProps } from \"react\"\nimport { cn } from \"cn\"\n\n// NOTE: Update these paths if needed\nimport \"../tokens.css\"\nimport \"./skeleton.css\"\n\nfunction Skeleton({ className, ...props }: ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"skeleton\"\n      aria-hidden=\"true\"\n      className={cn(\"np-skeleton\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { Skeleton }\n",
       "type": "registry:ui",
       "target": "components/nepui/skeleton/skeleton.tsx"
     },
     {
       "path": "registry/react/skeleton/skeleton.css",
-      "content": "/* nepui — Skeleton */\r\n\r\n.np-skeleton,\r\n[data-np-skeleton] {\r\n  --np-skeleton-height: 1rem;\r\n  --np-skeleton-radius: var(--np-radius-md);\r\n  --np-skeleton-color: var(--np-muted);\r\n  display: block;\r\n  box-sizing: border-box;\r\n  height: var(--np-skeleton-height);\r\n  border-radius: var(--np-skeleton-radius);\r\n  background: var(--np-skeleton-color);\r\n  animation: np-skeleton-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;\r\n}\r\n\r\n.np-skeleton-circle,\r\n:is(.np-skeleton, [data-np-skeleton])[data-shape=\"circle\"] {\r\n  --np-skeleton-radius: 9999px;\r\n}\r\n\r\n@keyframes np-skeleton-pulse {\r\n  50% {\r\n    opacity: 0.5;\r\n  }\r\n}\r\n\r\n@media (prefers-reduced-motion: reduce) {\r\n  :is(.np-skeleton, [data-np-skeleton]) {\r\n    animation: none;\r\n  }\r\n}\r\n",
+      "content": "/* nepui — Skeleton */\n\n.np-skeleton,\n[data-np-skeleton] {\n  --np-skeleton-height: 1rem;\n  --np-skeleton-radius: var(--np-radius-md);\n  --np-skeleton-color: var(--np-muted);\n  display: block;\n  box-sizing: border-box;\n  height: var(--np-skeleton-height);\n  border-radius: var(--np-skeleton-radius);\n  background: var(--np-skeleton-color);\n  animation: np-skeleton-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;\n}\n\n.np-skeleton-circle,\n:is(.np-skeleton, [data-np-skeleton])[data-shape=\"circle\"] {\n  --np-skeleton-radius: 9999px;\n}\n\n@keyframes np-skeleton-pulse {\n  50% {\n    opacity: 0.5;\n  }\n}\n\n@media (prefers-reduced-motion: reduce) {\n  :is(.np-skeleton, [data-np-skeleton]) {\n    animation: none;\n  }\n}\n",
       "type": "registry:ui",
       "target": "components/nepui/skeleton/skeleton.css"
     },
     {
       "path": "registry/react/skeleton/index.ts",
-      "content": "export * from \"./skeleton\"\r\n",
+      "content": "export * from \"./skeleton\"\n",
       "type": "registry:ui",
       "target": "components/nepui/skeleton/index.ts"
     }
