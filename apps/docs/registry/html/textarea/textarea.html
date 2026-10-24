@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Textarea - nepui</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/label.css" />
+    <link rel="stylesheet" href="../styles/textarea.css" />
+
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem;
+        font-family: system-ui, sans-serif;
+        background: var(--np-background);
+        color: var(--np-foreground);
+      }
+      .demo {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        max-width: 24rem;
+      }
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="demo">
+      <div class="field">
+        <label class="np-label" for="t1">Message (class)</label>
+        <textarea
+          id="t1"
+          class="np-textarea"
+          placeholder="Type your message here."
+        ></textarea>
+      </div>
+
+      <div class="field">
+        <label class="np-label" for="t2">Bio (data attribute)</label>
+        <textarea
+          id="t2"
+          data-np-textarea
+          placeholder="Tell us about yourself."
+        ></textarea>
+      </div>
+
+      <div class="field">
+        <label class="np-label" for="t3">Invalid</label>
+        <textarea id="t3" class="np-textarea" aria-invalid="true">
+Too short</textarea>
+      </div>
+
+      <div class="field" data-disabled="true">
+        <label class="np-label" for="t4">Disabled</label>
+        <textarea
+          id="t4"
+          class="np-textarea"
+          disabled
+          placeholder="Disabled"
+        ></textarea>
+      </div>
+
+      <div class="field">
+        <label class="np-label" for="t5">Custom height and radius</label>
+        <textarea
+          id="t5"
+          class="np-textarea"
+          style="--np-textarea-min-height: 8rem; --np-textarea-radius: 1rem"
+          placeholder="Taller, rounder."
+        ></textarea>
+      </div>
+    </main>
+  </body>
+</html>

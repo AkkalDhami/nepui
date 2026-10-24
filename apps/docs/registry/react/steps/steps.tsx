@@ -1,7 +1,7 @@
 "use client"
 
-import { cn } from "cn"
 import type { ComponentProps } from "react"
+import { cn } from "cn"
 
 // NOTE: Update these paths if needed
 import "../tokens.css"
