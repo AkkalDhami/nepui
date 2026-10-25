@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Field demo - nepui</title>
+
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/label.css" />
+    <link rel="stylesheet" href="../styles/input.css" />
+    <link rel="stylesheet" href="../styles/textarea.css" />
+    <link rel="stylesheet" href="../styles/checkbox.css" />
+    <link rel="stylesheet" href="../styles/separator.css" />
+    <link rel="stylesheet" href="../styles/field.css" />
+  </head>
+  <body>
+    <div style="width: 100%; max-width: 24rem; padding-bottom: 2rem">
+      <form>
+        <div class="np-field-group">
+          <fieldset class="np-field-set">
+            <legend class="np-field-legend">Payment Method</legend>
+            <p class="np-field-description">
+              All transactions are secure and encrypted
+            </p>
+            <div class="np-field-group">
+              <div class="np-field" role="group">
+                <label class="np-field-label" for="card-name"
+                  >Name on Card</label
+                >
+                <input
+                  id="card-name"
+                  class="np-input"
+                  placeholder="Evil Rabbit"
+                  required
+                />
+              </div>
+
+              <div class="np-field" role="group">
+                <label class="np-field-label" for="card-number"
+                  >Card Number</label
+                >
+                <input
+                  id="card-number"
+                  class="np-input"
+                  placeholder="1234 5678 9012 3456"
+                  required
+                />
+                <p class="np-field-description">
+                  Enter your 16-digit card number
+                </p>
+              </div>
+
+              <div
+                style="
+                  display: grid;
+                  grid-template-columns: repeat(3, 1fr);
+                  gap: 1rem;
+                "
+              >
+                <div class="np-field" role="group">
+                  <label class="np-field-label" for="exp-month">Month</label>
+                  <input id="exp-month" class="np-input" placeholder="MM" />
+                </div>
+                <div class="np-field" role="group">
+                  <label class="np-field-label" for="exp-year">Year</label>
+                  <input id="exp-year" class="np-input" placeholder="YYYY" />
+                </div>
+                <div class="np-field" role="group">
+                  <label class="np-field-label" for="cvv">CVV</label>
+                  <input id="cvv" class="np-input" placeholder="123" required />
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="np-field-separator">
+            <div class="np-separator" role="separator"></div>
+          </div>
+
+          <fieldset class="np-field-set">
+            <legend class="np-field-legend">Billing Address</legend>
+            <p class="np-field-description">
+              The billing address associated with your payment method
+            </p>
+            <div class="np-field-group">
+              <div class="np-field np-field-horizontal" role="group">
+                <input
+                  id="same-as-shipping"
+                  type="checkbox"
+                  class="np-checkbox"
+                  checked
+                />
+                <label
+                  class="np-field-label"
+                  for="same-as-shipping"
+                  style="font-weight: 400"
+                >
+                  Same as shipping address
+                </label>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="np-field-group">
+            <div class="np-field" role="group">
+              <label class="np-field-label" for="comments">Comments</label>
+              <textarea
+                id="comments"
+                class="np-textarea"
+                placeholder="Add any additional comments"
+                style="resize: none"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="np-field np-field-horizontal" role="group">
+            <button class="np-button" type="submit">Submit</button>
+            <button class="np-button np-button-outline" type="button">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

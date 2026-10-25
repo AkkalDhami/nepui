@@ -1,0 +1,36 @@
+<div style="width: 100%; max-width: 24rem">
+  <div class="np-field-group">
+    <div class="np-field" role="group" data-invalid>
+      <label class="np-field-label" for="email">Email</label>
+      <input
+        id="email"
+        class="np-input"
+        type="email"
+        value="max@"
+        aria-invalid="true"
+        aria-describedby="email-error"
+      />
+      <div id="email-error" class="np-field-error" role="alert">
+        Enter a valid email address.
+      </div>
+    </div>
+
+    <div class="np-field" role="group" data-invalid>
+      <label class="np-field-label" for="new-password">Password</label>
+      <input
+        id="new-password"
+        class="np-input"
+        type="password"
+        value="abc"
+        aria-invalid="true"
+      />
+      <p class="np-field-description">Choose a strong password.</p>
+      <div class="np-field-error" role="alert">
+        <ul class="np-field-error-list">
+          <li>Must be at least 8 characters.</li>
+          <li>Must contain a number.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
