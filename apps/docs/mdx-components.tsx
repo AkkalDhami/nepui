@@ -181,7 +181,7 @@ export const mdxComponents = {
       <pre
         data-not-typeset
         className={cn(
-          "no-scrollbar min-w-0 overflow-x-auto overflow-y-auto overscroll-x-contain overscroll-y-auto px-1 py-4 outline-none has-data-[slot=tabs]:p-0",
+          "no-scrollbar min-w-0 overflow-x-auto overflow-y-auto overscroll-x-contain overscroll-y-auto px-5 py-4 outline-none has-data-[slot=tabs]:p-0",
           "has-data-highlighted-line:px-2 has-data-line-numbers:px-0",
           className
         )}

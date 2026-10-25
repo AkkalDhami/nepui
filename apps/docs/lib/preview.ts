@@ -66,6 +66,7 @@ body {
   flex-wrap: wrap;
   gap: 1rem;
   padding: 2rem;
+  margin-bottom: 1rem;
   font-family: "Inter",
     ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   background: var(--np-color-primary);

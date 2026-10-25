@@ -201,7 +201,7 @@ export function SearchButton() {
 function SidebarContent({ tree }: { tree: PageTree.Root }) {
   return (
     <LayoutGroup id={useId()}>
-      <nav className="flex-1 scrollbar-none space-y-4 overflow-y-auto">
+      <nav className="flex-1 space-y-4">
         <SidebarItems tree={tree} />
       </nav>
     </LayoutGroup>
@@ -219,7 +219,8 @@ export function DocsSidebar({
   return (
     <aside
       className={cn(
-        "sticky top-14 mb-12 hidden h-svh w-56 shrink-0 scroll-fade-y bg-background px-4 pt-12 pb-12 lg:block",
+        "sticky top-14 mb-12 hidden w-56 shrink-0 scroll-fade-y bg-background px-4 pt-10 pb-16 lg:block",
+        "h-170 scroll-fade-y scrollbar-none overflow-y-auto",
         className
       )}
     >

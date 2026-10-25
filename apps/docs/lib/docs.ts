@@ -6,8 +6,8 @@ export const PAGES_NEW = [
   "/docs/components/react/separator",
   "/docs/components/react/skeleton",
   "/docs/components/html/skeleton",
-  "/docs/components/react/badge",
-  "/docs/components/html/badge",
+  "/docs/components/react/field",
+  "/docs/components/html/field",
 ]
 
 export const PAGES_UPDATED = []
