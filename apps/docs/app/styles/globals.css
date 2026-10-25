@@ -218,32 +218,6 @@ h4 {
 }
 
 @layer components {
-  [data-rehype-pretty-code-figure] pre[data-language="text"] code,
-  [data-rehype-pretty-code-figure] pre[data-language="plaintext"] code,
-  [data-slot="docs"] pre[data-language="text"] code,
-  [data-slot="docs"] pre[data-language="plaintext"] code {
-    display: block !important;
-    white-space: pre;
-    line-height: 0.95;
-    font-family:
-      ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-      "Courier New", monospace;
-    font-variant-ligatures: none;
-  }
-
-  [data-rehype-pretty-code-figure] pre[data-language="text"] [data-line],
-  [data-rehype-pretty-code-figure] pre[data-language="plaintext"] [data-line],
-  [data-rehype-pretty-code-figure] code[data-language="text"] [data-line],
-  [data-rehype-pretty-code-figure] code[data-language="plaintext"] [data-line],
-  [data-slot="docs"] pre[data-language="text"] [data-line],
-  [data-slot="docs"] pre[data-language="plaintext"] [data-line] {
-    padding-top: 0;
-    padding-bottom: 0;
-    min-height: unset;
-    line-height: 0.95;
-    display: block;
-  }
-
   [data-rehype-pretty-code-figure] {
     position: relative;
     @apply mt-6 mb-6 w-full max-w-code rounded-lg bg-code;
@@ -294,8 +268,6 @@ h4 {
     min-height: calc(var(--spacing) * 0.875);
     width: 100%;
     display: inline-block;
-
-    @apply px-4;
   }
 
   [data-rehype-pretty-code-figure] code span {
@@ -341,6 +313,30 @@ h4 {
   }
   .cm-gutters {
     background-color: var(--color-code) !important;
+  }
+
+  [data-rehype-pretty-code-figure] pre[data-language="text"] code,
+  [data-rehype-pretty-code-figure] pre[data-language="plaintext"] code,
+  [data-slot="docs"] pre[data-language="text"] code,
+  [data-slot="docs"] pre[data-language="plaintext"] code {
+    display: block !important;
+    white-space: pre;
+    line-height: 0.95;
+    font-family: var(--font-code);
+    font-variant-ligatures: none;
+  }
+
+  [data-rehype-pretty-code-figure] pre[data-language="text"] [data-line],
+  [data-rehype-pretty-code-figure] pre[data-language="plaintext"] [data-line],
+  [data-rehype-pretty-code-figure] code[data-language="text"] [data-line],
+  [data-rehype-pretty-code-figure] code[data-language="plaintext"] [data-line],
+  [data-slot="docs"] pre[data-language="text"] [data-line],
+  [data-slot="docs"] pre[data-language="plaintext"] [data-line] {
+    padding-top: 0;
+    padding-bottom: 0;
+    min-height: unset;
+    line-height: 0.95;
+    display: block;
   }
 
   .shiki {

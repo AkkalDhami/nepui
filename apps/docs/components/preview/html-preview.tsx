@@ -10,6 +10,7 @@ const REGISTRY_ROOT = path.join(process.cwd(), "registry", "html")
 interface HtmlPreviewProps {
   html: string
   tokens?: string
+  height?: string
   styles?: string[]
   className?: string
 }
@@ -17,6 +18,7 @@ interface HtmlPreviewProps {
 export async function HtmlPreview({
   html,
   tokens,
+  height,
   styles = ["./apps/docs/app/styles/globals.css"],
   className,
 }: HtmlPreviewProps) {
@@ -39,6 +41,7 @@ export async function HtmlPreview({
     <HtmlPreviewFrame
       html={html}
       css={css}
+      height={height}
       tokens={tokens ?? null}
       className={cn("rounded-xl border", className)}
       js={null}

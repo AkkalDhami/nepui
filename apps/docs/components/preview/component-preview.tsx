@@ -12,6 +12,7 @@ interface ComponentPreviewProps {
   name: string
   target?: "html" | "react"
   className?: string
+  height?: string
   styles?: string[]
 }
 
@@ -20,6 +21,7 @@ export async function ComponentPreview({
   target = "react",
   className,
   styles,
+  height,
 }: ComponentPreviewProps) {
   const source = await getExampleSource({ target, name })
   if (!source) {
@@ -61,6 +63,7 @@ export async function ComponentPreview({
         <TabsContent value="preview">
           <HtmlPreview
             html={source}
+            height={height}
             styles={[
               `/tokens.css`,
               `/${componentName}/${componentName}.css`,
@@ -112,7 +115,7 @@ export async function ComponentPreview({
           </TabsTrigger>
         </TabsList>
         <TabsContent value="preview">
-          <ReactPreview className="mt-6 min-h-100">
+          <ReactPreview className={cn("mt-6 min-h-100", height)}>
             {createElement(ExampleComponent)}
           </ReactPreview>
         </TabsContent>
