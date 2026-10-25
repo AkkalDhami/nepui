@@ -1,0 +1,87 @@
+/* nepui — Kbd */
+
+.np-kbd,
+[data-np-kbd] {
+  --np-kbd-height: 1.25rem;
+  --np-kbd-radius: var(--np-radius-sm, 0.25rem);
+  --np-kbd-bg: var(--np-muted);
+  --np-kbd-color: var(--np-muted-foreground);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  gap: 0.25rem;
+  width: fit-content;
+  height: var(--np-kbd-height);
+  min-width: var(--np-kbd-height);
+  padding: 0 0.25rem;
+
+  border-radius: var(--np-kbd-radius);
+  background: var(--np-kbd-bg);
+  color: var(--np-kbd-color);
+
+  font-family: var(--np-font-sans, inherit);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1;
+
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+:is(.np-kbd, [data-np-kbd]) svg {
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+:is(.np-kbd, [data-np-kbd]) svg:not([class*="size-"]) {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+/* Group */
+
+.np-kbd-group,
+[data-np-kbd-group] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Inside a tooltip */
+
+:is(
+    [data-slot="tooltip-content"],
+    .np-tooltip-content,
+    [data-np-tooltip-content]
+  )
+  :is(.np-kbd, [data-np-kbd]) {
+  --np-kbd-bg: color-mix(in oklch, var(--np-background) 20%, transparent);
+  --np-kbd-color: var(--np-background);
+}
+
+/* Dark */
+
+:is(.dark, [data-theme="dark"])
+  :is(
+    [data-slot="tooltip-content"],
+    .np-tooltip-content,
+    [data-np-tooltip-content]
+  )
+  :is(.np-kbd, [data-np-kbd]) {
+  --np-kbd-bg: color-mix(in oklch, var(--np-background) 10%, transparent);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light, [data-theme="light"])
+    :is(
+      [data-slot="tooltip-content"],
+      .np-tooltip-content,
+      [data-np-tooltip-content]
+    )
+    :is(.np-kbd, [data-np-kbd]) {
+    --np-kbd-bg: color-mix(in oklch, var(--np-background) 10%, transparent);
+  }
+}

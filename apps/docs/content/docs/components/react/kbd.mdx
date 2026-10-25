@@ -1,0 +1,135 @@
+---
+title: Kbd
+description: Used to display textual user input from keyboard.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="kbd-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/kbd.json"
+      nepui="npx nepui@latest add kbd --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="kbd"
+        title="components/nepui/kbd/kbd.css"
+        fileTarget="components/nepui/kbd/kbd.css"
+      />
+
+      <ComponentSource
+        target="react"
+        name="kbd"
+        title="components/nepui/kbd/kbd.tsx"
+        fileTarget="components/nepui/kbd/kbd.tsx"
+      />
+
+      <ComponentSource
+        target="react"
+        name="kbd"
+        title="components/nepui/kbd/index.ts"
+        fileTarget="components/nepui/kbd/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import { Kbd, KbdGroup } from "@/components/nepui/kbd"
+```
+
+```tsx
+<Kbd>Esc</Kbd>
+```
+
+`Kbd` renders a semantic `<kbd>` element, so assistive technologies announce it as keyboard input.
+
+---
+
+## Group
+
+Use the `KbdGroup` component to group keys together into one shortcut.
+
+<ComponentPreview
+  name="kbd-group"
+/>
+
+`KbdGroup` also renders a `<kbd>`, which wraps the keys. Nesting `<kbd>` elements is the recommended markup for key combinations.
+
+---
+
+## Button
+
+Use the `Kbd` component inside a `Button` component to display a keyboard key inside a button.
+
+<ComponentPreview
+  name="kbd-button"
+/>
+
+---
+
+## Input
+
+Use `Kbd` with `ButtonGroup` and `ButtonGroupText` to show a keyboard shortcut next to an input.
+
+<ComponentPreview
+  name="kbd-input"
+/>
+
+---
+
+## Tooltip
+
+Inside an element with `data-slot="tooltip-content"`, `Kbd` switches to a translucent background and the tooltip's text color, so it stays readable on the tooltip's inverted surface.
+
+```tsx
+<TooltipContent>
+  Open the command palette <Kbd>⌘K</Kbd>
+</TooltipContent>
+```
+
+---
+
+## API Reference
+
+### Kbd
+
+Use the `Kbd` component to display a keyboard key.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` | —       |
+
+### KbdGroup
+
+Use the `KbdGroup` component to group `Kbd` components together.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` | —       |
+
+All other props are passed to the underlying `kbd` element.
