@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kbd",
+  "title": "Kbd",
+  "description": "Used to display textual user input from keyboard.",
+  "files": [
+    {
+      "path": "registry/react/kbd/kbd.tsx",
+      "content": "\"use client\"\r\n\r\nimport * as React from \"react\"\r\nimport { cn } from \"cn\"\r\n\r\n// NOTE: Update these paths if needed\r\nimport \"../tokens.css\"\r\nimport \"./kbd.css\"\r\n\r\nfunction Kbd({ className, ...props }: React.ComponentProps<\"kbd\">) {\r\n  return <kbd data-slot=\"kbd\" className={cn(\"np-kbd\", className)} {...props} />\r\n}\r\n\r\nfunction KbdGroup({ className, ...props }: React.ComponentProps<\"kbd\">) {\r\n  return (\r\n    <kbd\r\n      data-slot=\"kbd-group\"\r\n      className={cn(\"np-kbd-group\", className)}\r\n      {...props}\r\n    />\r\n  )\r\n}\r\n\r\nexport { Kbd, KbdGroup }\r\n",
+      "type": "registry:ui",
+      "target": "components/nepui/kbd/kbd.tsx"
+    },
+    {
+      "path": "registry/react/kbd/kbd.css",
+      "content": "/* nepui — Kbd */\r\n\r\n.np-kbd,\r\n[data-np-kbd] {\r\n  --np-kbd-height: 1.25rem;\r\n  --np-kbd-radius: var(--np-radius-sm, 0.25rem);\r\n  --np-kbd-bg: var(--np-muted);\r\n  --np-kbd-color: var(--np-muted-foreground);\r\n\r\n  display: inline-flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  box-sizing: border-box;\r\n  gap: 0.25rem;\r\n  width: fit-content;\r\n  height: var(--np-kbd-height);\r\n  min-width: var(--np-kbd-height);\r\n  padding: 0 0.25rem;\r\n\r\n  border-radius: var(--np-kbd-radius);\r\n  background: var(--np-kbd-bg);\r\n  color: var(--np-kbd-color);\r\n\r\n  font-family: var(--np-font-sans, inherit);\r\n  font-size: 0.75rem;\r\n  font-weight: 500;\r\n  line-height: 1;\r\n\r\n  pointer-events: none;\r\n  -webkit-user-select: none;\r\n  user-select: none;\r\n}\r\n\r\n:is(.np-kbd, [data-np-kbd]) svg {\r\n  flex-shrink: 0;\r\n  pointer-events: none;\r\n}\r\n\r\n:is(.np-kbd, [data-np-kbd]) svg:not([class*=\"size-\"]) {\r\n  width: 0.75rem;\r\n  height: 0.75rem;\r\n}\r\n\r\n/* Group */\r\n\r\n.np-kbd-group,\r\n[data-np-kbd-group] {\r\n  display: inline-flex;\r\n  align-items: center;\r\n  gap: 0.25rem;\r\n}\r\n\r\n/* Inside a tooltip */\r\n\r\n:is(\r\n    [data-slot=\"tooltip-content\"],\r\n    .np-tooltip-content,\r\n    [data-np-tooltip-content]\r\n  )\r\n  :is(.np-kbd, [data-np-kbd]) {\r\n  --np-kbd-bg: color-mix(in oklch, var(--np-background) 20%, transparent);\r\n  --np-kbd-color: var(--np-background);\r\n}\r\n\r\n/* Dark */\r\n\r\n:is(.dark, [data-theme=\"dark\"])\r\n  :is(\r\n    [data-slot=\"tooltip-content\"],\r\n    .np-tooltip-content,\r\n    [data-np-tooltip-content]\r\n  )\r\n  :is(.np-kbd, [data-np-kbd]) {\r\n  --np-kbd-bg: color-mix(in oklch, var(--np-background) 10%, transparent);\r\n}\r\n\r\n@media (prefers-color-scheme: dark) {\r\n  :root:not(.light, [data-theme=\"light\"])\r\n    :is(\r\n      [data-slot=\"tooltip-content\"],\r\n      .np-tooltip-content,\r\n      [data-np-tooltip-content]\r\n    )\r\n    :is(.np-kbd, [data-np-kbd]) {\r\n    --np-kbd-bg: color-mix(in oklch, var(--np-background) 10%, transparent);\r\n  }\r\n}\r\n",
+      "type": "registry:ui",
+      "target": "components/nepui/kbd/kbd.css"
+    },
+    {
+      "path": "registry/react/kbd/index.ts",
+      "content": "export * from \"./kbd\"\n",
+      "type": "registry:ui",
+      "target": "components/nepui/kbd/index.ts"
+    }
+  ],
+  "type": "registry:ui"
+}

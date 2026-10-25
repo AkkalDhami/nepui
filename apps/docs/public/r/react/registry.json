@@ -259,6 +259,56 @@
           "target": "components/nepui/textarea/index.ts"
         }
       ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "Combine labels, controls, and help text to compose accessible form fields and grouped inputs.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/react/label.json",
+        "https://nepui.vercel.app/r/react/separator.json"
+      ],
+      "files": [
+        {
+          "path": "registry/react/field/field.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/field/field.tsx"
+        },
+        {
+          "path": "registry/react/field/field.css",
+          "type": "registry:ui",
+          "target": "components/nepui/field/field.css"
+        },
+        {
+          "path": "registry/react/field/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/field/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "title": "Kbd",
+      "description": "Used to display textual user input from keyboard.",
+      "files": [
+        {
+          "path": "registry/react/kbd/kbd.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/kbd/kbd.tsx"
+        },
+        {
+          "path": "registry/react/kbd/kbd.css",
+          "type": "registry:ui",
+          "target": "components/nepui/kbd/kbd.css"
+        },
+        {
+          "path": "registry/react/kbd/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/kbd/index.ts"
+        }
+      ]
     }
   ]
 }
