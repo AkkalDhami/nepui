@@ -1,0 +1,353 @@
+---
+title: Field
+description: Combine labels, controls, and help text to compose accessible form fields and grouped inputs.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="field-demo"
+  target="html"
+  height="660px"
+  styles={[
+    "/label/label.css",
+    "/separator/separator.css",
+    "/input/input.css",
+    "/textarea/textarea.css",
+    "/checkbox/checkbox.css",
+    "/button/button.css",
+  ]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add field"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="field"
+        title="styles/field.css"
+        fileTarget="styles/field.css"
+      />
+
+      <ComponentSource
+        target="html"
+        name="label"
+        title="styles/label.css"
+        fileTarget="styles/label.css"
+      />
+
+      <ComponentSource
+        target="html"
+        name="separator"
+        title="styles/separator.css"
+        fileTarget="styles/separator.css"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the component's CSS file to your HTML document. Add the stylesheets of the controls you use, such as [Input](/docs/components/html/input), [Textarea](/docs/components/html/textarea), [Checkbox](/docs/components/html/checkbox), and [Separator](/docs/components/html/separator).
+
+```html
+<head>
+  <link rel="stylesheet" href="./styles/tokens.css">
+  <link rel="stylesheet" href="./styles/label.css">
+  <link rel="stylesheet" href="./styles/separator.css">
+  <link rel="stylesheet" href="./styles/input.css">
+  <link rel="stylesheet" href="./styles/field.css">
+</head>
+```
+
+Then, build a field with the `np-field-*` classes.
+
+```html
+<fieldset class="np-field-set">
+  <legend class="np-field-legend">Profile</legend>
+  <p class="np-field-description">This appears on invoices and emails.</p>
+
+  <div class="np-field-group">
+    <div class="np-field" role="group">
+      <label class="np-field-label" for="name">Full name</label>
+      <input id="name" class="np-input" autocomplete="off" placeholder="Evil Rabbit" />
+      <p class="np-field-description">This appears on invoices and emails.</p>
+    </div>
+
+    <div class="np-field" role="group" data-invalid>
+      <label class="np-field-label" for="username">Username</label>
+      <input id="username" class="np-input" autocomplete="off" aria-invalid="true" />
+      <div class="np-field-error" role="alert">Choose another username.</div>
+    </div>
+
+    <div class="np-field np-field-horizontal" role="group">
+      <input id="newsletter" type="checkbox" class="np-checkbox" />
+      <label class="np-field-label" for="newsletter">Subscribe to the newsletter</label>
+    </div>
+  </div>
+</fieldset>
+```
+
+Every part also works with a `data-np-*` attribute instead of the class, for example `data-np-field` and `data-np-field-label`.
+
+---
+
+## Composition
+
+### Field
+
+A single control with label, helper text, and validation.
+
+```text
+Field
+├── FieldLabel
+├── Input / Textarea / Checkbox
+├── FieldDescription
+└── FieldError
+```
+
+### FieldGroup
+
+Related fields in one group. Use `FieldSeparator` between sections when needed.
+
+```text
+FieldGroup
+├── Field
+│   ├── FieldLabel
+│   ├── Input / Textarea / Checkbox
+│   ├── FieldDescription
+│   └── FieldError
+├── FieldSeparator
+└── Field
+    ├── FieldLabel
+    └── Input / Textarea / Checkbox
+```
+
+### FieldSet
+
+Semantic grouping with a legend and description, usually containing a `FieldGroup`.
+
+```text
+FieldSet
+├── FieldLegend
+├── FieldDescription
+└── FieldGroup
+    ├── Field
+    │   ├── FieldLabel
+    │   ├── Input / Textarea / Checkbox
+    │   ├── FieldDescription
+    │   └── FieldError
+    └── Field
+        ├── FieldLabel
+        └── Input / Textarea / Checkbox
+```
+
+---
+
+## Parts
+
+| Part             | Class                      | Data attribute                  |
+| ---------------- | -------------------------- | ------------------------------- |
+| FieldSet         | `np-field-set`             | `data-np-field-set`             |
+| FieldLegend      | `np-field-legend`          | `data-np-field-legend`          |
+| FieldGroup       | `np-field-group`           | `data-np-field-group`           |
+| Field            | `np-field`                 | `data-np-field`                 |
+| FieldContent     | `np-field-content`         | `data-np-field-content`         |
+| FieldLabel       | `np-field-label`           | `data-np-field-label`           |
+| FieldTitle       | `np-field-title`           | `data-np-field-title`           |
+| FieldDescription | `np-field-description`     | `data-np-field-description`     |
+| FieldSeparator   | `np-field-separator`       | `data-np-field-separator`       |
+| FieldError       | `np-field-error`           | `data-np-field-error`           |
+
+---
+
+## Orientation
+
+Use `data-orientation` or the matching class on `np-field`.
+
+| Orientation | Data attribute                  | Class alias           |
+| ----------- | ------------------------------- | --------------------- |
+| Vertical    | `data-orientation="vertical"`   | `np-field`            |
+| Horizontal  | `data-orientation="horizontal"` | `np-field-horizontal` |
+| Responsive  | `data-orientation="responsive"` | `np-field-responsive` |
+
+---
+
+## Legend variant
+
+The legend has two sizes. The `label` variant uses label sizing, which is handy for nested fieldsets.
+
+| Variant | Data attribute         | Class alias             |
+| ------- | ---------------------- | ----------------------- |
+| Legend  | `data-variant="legend"` | `np-field-legend`       |
+| Label   | `data-variant="label"`  | `np-field-legend-label` |
+
+```html
+<legend class="np-field-legend np-field-legend-label">Notification Preferences</legend>
+```
+
+---
+
+## Input
+
+<ComponentPreview
+  name="field-input"
+  target="html"
+  styles={["/label/label.css", "/input/input.css"]}
+/>
+
+---
+
+## Textarea
+
+<ComponentPreview
+  name="field-textarea"
+  target="html"
+  styles={["/label/label.css", "/textarea/textarea.css"]}
+/>
+
+---
+
+## Fieldset
+
+<ComponentPreview
+  name="field-fieldset"
+  target="html"
+  styles={["/label/label.css", "/input/input.css"]}
+/>
+
+---
+
+## Checkbox
+
+<ComponentPreview
+  name="field-checkbox"
+  target="html"
+  styles={["/label/label.css", "/checkbox/checkbox.css", "/separator/separator.css"]}
+/>
+
+---
+
+## Choice Card
+
+Wrap a field inside `np-field-label` to create a selectable card. The card is highlighted when it contains a checked control, and shows a focus ring when the control is focused.
+
+Elements inside a `<label>` must be phrasing content, so use `<span>` for the parts inside the card.
+
+<ComponentPreview
+  name="field-choice-card"
+  target="html"
+  styles={["/checkbox/checkbox.css"]}
+/>
+
+```html
+<label class="np-field-label" for="kubernetes">
+  <span class="np-field np-field-horizontal" role="group">
+    <span class="np-field-content">
+      <span class="np-field-title">Kubernetes</span>
+      <span class="np-field-description">Run GPU workloads on a K8s cluster.</span>
+    </span>
+    <input id="kubernetes" type="checkbox" class="np-checkbox" />
+  </span>
+</label>
+```
+
+---
+
+## Field Group
+
+Stack fields with `np-field-group`. Add `np-field-separator` to divide them. It holds an `np-separator` line, and can show text on the line with `np-field-separator-content`.
+
+<ComponentPreview
+  name="field-group"
+  target="html"
+  styles={["/label/label.css", "/checkbox/checkbox.css", "/separator/separator.css"]}
+/>
+
+```html
+<div class="np-field-separator">
+  <div class="np-separator" role="separator"></div>
+  <span class="np-field-separator-content">Or continue with</span>
+</div>
+```
+
+---
+
+## Responsive Layout
+
+- **Vertical fields:** the default orientation stacks label, control, and helper text.
+- **Horizontal fields:** use `np-field-horizontal` to align the label and control side-by-side. Pair with `np-field-content` to keep descriptions aligned.
+- **Responsive fields:** use `np-field-responsive` for automatic column layouts. `np-field-group` is a container, and responsive fields switch to a row when it is at least `28rem` wide. A responsive field outside a field group stays vertical.
+
+<ComponentPreview
+  name="field-responsive"
+  target="html"
+  styles={[
+    "/label/label.css",
+    "/input/input.css",
+    "/button/button.css",
+  ]}
+/>
+
+---
+
+## Validation and Errors
+
+- Add `data-invalid` to `np-field` to switch the entire block into an error state.
+- Add `aria-invalid="true"` on the control itself for assistive technologies.
+- Put `np-field-error` right after the control, with `role="alert"`. Connect it with `aria-describedby`.
+
+<ComponentPreview
+  name="field-error"
+  target="html"
+  styles={["/label/label.css", "/input/input.css"]}
+/>
+
+```html
+<div class="np-field" role="group" data-invalid>
+  <label class="np-field-label" for="email">Email</label>
+  <input id="email" class="np-input" type="email" aria-invalid="true" aria-describedby="email-error" />
+  <div id="email-error" class="np-field-error" role="alert">Enter a valid email address.</div>
+</div>
+```
+
+For several messages, put a list with the `np-field-error-list` class inside `np-field-error`.
+
+---
+
+## Disabled
+
+Add `data-disabled="true"` to the field to dim its label and title. Also disable the control itself with the native `disabled` attribute.
+
+```html
+<div class="np-field np-field-horizontal" role="group" data-disabled="true">
+  <input id="beta" type="checkbox" class="np-checkbox" disabled />
+  <label class="np-field-label" for="beta">Join the beta</label>
+</div>
+```
+
+---
+
+## Accessibility
+
+- `np-field-set` and `np-field-legend` on a native `<fieldset>` and `<legend>` keep related controls grouped for keyboard and assistive tech users.
+- Give each `np-field` `role="group"` so nested controls inherit labeling from the label and legend.
+- Always connect labels and controls with `for` and `id`.
+- Use `np-field-separator` sparingly to ensure screen readers encounter clear section boundaries.

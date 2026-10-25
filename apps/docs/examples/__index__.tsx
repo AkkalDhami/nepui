@@ -42,6 +42,15 @@ import KtmReactCheckboxDemo from "./ktm/react/checkbox-demo"
 import KtmReactCheckboxDisabled from "./ktm/react/checkbox-disabled"
 import KtmReactCheckboxInvalid from "./ktm/react/checkbox-invalid"
 import KtmReactCopyButtonDemo from "./ktm/react/copy-button-demo"
+import KtmReactFieldCheckbox from "./ktm/react/field-checkbox"
+import KtmReactFieldChoiceCard from "./ktm/react/field-choice-card"
+import KtmReactFieldDemo from "./ktm/react/field-demo"
+import KtmReactFieldError from "./ktm/react/field-error"
+import KtmReactFieldFieldset from "./ktm/react/field-fieldset"
+import KtmReactFieldGroup from "./ktm/react/field-group"
+import KtmReactFieldInput from "./ktm/react/field-input"
+import KtmReactFieldResponsive from "./ktm/react/field-responsive"
+import KtmReactFieldTextarea from "./ktm/react/field-textarea"
 import KtmReactInputBasic from "./ktm/react/input-basic"
 import KtmReactInputControlled from "./ktm/react/input-controlled"
 import KtmReactInputDemo from "./ktm/react/input-demo"
@@ -50,6 +59,10 @@ import KtmReactInputFile from "./ktm/react/input-file"
 import KtmReactInputInvalid from "./ktm/react/input-invalid"
 import KtmReactInputSize from "./ktm/react/input-size"
 import KtmReactInputWithLabel from "./ktm/react/input-with-label"
+import KtmReactKbdButton from "./ktm/react/kbd-button"
+import KtmReactKbdDemo from "./ktm/react/kbd-demo"
+import KtmReactKbdGroup from "./ktm/react/kbd-group"
+import KtmReactKbdInput from "./ktm/react/kbd-input"
 import KtmReactLabelDemo from "./ktm/react/label-demo"
 import KtmReactSeparatorDemo from "./ktm/react/separator-demo"
 import KtmReactSeparatorList from "./ktm/react/separator-list"
@@ -116,6 +129,15 @@ export const ExamplesIndex: Record<
       "checkbox-disabled": KtmReactCheckboxDisabled,
       "checkbox-invalid": KtmReactCheckboxInvalid,
       "copy-button-demo": KtmReactCopyButtonDemo,
+      "field-checkbox": KtmReactFieldCheckbox,
+      "field-choice-card": KtmReactFieldChoiceCard,
+      "field-demo": KtmReactFieldDemo,
+      "field-error": KtmReactFieldError,
+      "field-fieldset": KtmReactFieldFieldset,
+      "field-group": KtmReactFieldGroup,
+      "field-input": KtmReactFieldInput,
+      "field-responsive": KtmReactFieldResponsive,
+      "field-textarea": KtmReactFieldTextarea,
       "input-basic": KtmReactInputBasic,
       "input-controlled": KtmReactInputControlled,
       "input-demo": KtmReactInputDemo,
@@ -124,6 +146,10 @@ export const ExamplesIndex: Record<
       "input-invalid": KtmReactInputInvalid,
       "input-size": KtmReactInputSize,
       "input-with-label": KtmReactInputWithLabel,
+      "kbd-button": KtmReactKbdButton,
+      "kbd-demo": KtmReactKbdDemo,
+      "kbd-group": KtmReactKbdGroup,
+      "kbd-input": KtmReactKbdInput,
       "label-demo": KtmReactLabelDemo,
       "separator-demo": KtmReactSeparatorDemo,
       "separator-list": KtmReactSeparatorList,
@@ -184,6 +210,15 @@ export const ExamplesIndex: Record<
       "checkbox-demo": "ktm/html/checkbox-demo.html",
       "checkbox-disabled": "ktm/html/checkbox-disabled.html",
       "checkbox-invalid": "ktm/html/checkbox-invalid.html",
+      "field-checkbox": "ktm/html/field-checkbox.html",
+      "field-choice-card": "ktm/html/field-choice-card.html",
+      "field-demo": "ktm/html/field-demo.html",
+      "field-error": "ktm/html/field-error.html",
+      "field-fieldset": "ktm/html/field-fieldset.html",
+      "field-group": "ktm/html/field-group.html",
+      "field-input": "ktm/html/field-input.html",
+      "field-responsive": "ktm/html/field-responsive.html",
+      "field-textarea": "ktm/html/field-textarea.html",
       "input-basic": "ktm/html/input-basic.html",
       "input-controlled": "ktm/html/input-controlled.html",
       "input-demo": "ktm/html/input-demo.html",
