@@ -1,0 +1,394 @@
+/* nepui — Field */
+
+/* FieldSet */
+.np-field-set,
+[data-np-field-set] {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--np-spacing) * 4);
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+:is(.np-field-set, [data-np-field-set]):has(
+  > :is([data-slot="checkbox-group"], [data-slot="radio-group"])
+) {
+  gap: calc(var(--np-spacing) * 3);
+}
+
+/* FieldLegend */
+
+.np-field-legend,
+[data-np-field-legend] {
+  margin-bottom: calc(var(--np-spacing) * 1.5);
+  padding: 0;
+  font-size: calc(var(--np-spacing) * 4);
+  font-weight: 500;
+}
+
+.np-field-legend-label,
+:is(.np-field-legend, [data-np-field-legend])[data-variant="label"] {
+  font-size: 0.875rem;
+}
+
+/* FieldGroup */
+
+.np-field-group,
+[data-np-field-group] {
+  container: field-group / inline-size;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--np-spacing) * 5);
+  width: 100%;
+}
+
+:is(.np-field-group, [data-np-field-group])[data-slot="checkbox-group"] {
+  gap: calc(var(--np-spacing) * 3);
+}
+
+/* Nested groups are a little tighter */
+:is(.np-field-group, [data-np-field-group])
+  > :is(.np-field-group, [data-np-field-group]) {
+  gap: calc(var(--np-spacing) * 4);
+}
+
+/* Field */
+
+.np-field,
+[data-np-field] {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--np-spacing) * 2);
+  width: 100%;
+}
+
+:is(.np-field, [data-np-field]) > * {
+  width: 100%;
+}
+
+:is(.np-field, [data-np-field]):is([data-invalid]:not([data-invalid="false"])) {
+  color: var(--np-destructive);
+}
+
+/* Horizontal */
+
+.np-field-horizontal,
+:is(.np-field, [data-np-field])[data-orientation="horizontal"] {
+  flex-direction: row;
+  align-items: center;
+}
+
+:is(
+    .np-field-horizontal,
+    :is(.np-field, [data-np-field])[data-orientation="horizontal"]
+  )
+  > * {
+  width: auto;
+}
+
+:is(
+  .np-field-horizontal,
+  :is(.np-field, [data-np-field])[data-orientation="horizontal"]
+):has(> :is(.np-field-content, [data-np-field-content])) {
+  align-items: flex-start;
+}
+
+:is(
+    .np-field-horizontal,
+    :is(.np-field, [data-np-field])[data-orientation="horizontal"]
+  )
+  > :is(.np-field-label, [data-np-field-label]) {
+  flex: auto;
+}
+
+:is(
+    .np-field-horizontal,
+    :is(.np-field, [data-np-field])[data-orientation="horizontal"]
+  ):has(> :is(.np-field-content, [data-np-field-content]))
+  > :is([role="checkbox"], [role="radio"], .np-checkbox, [data-np-checkbox]) {
+  margin-top: 1px;
+}
+
+:is(
+    .np-field-horizontal,
+    :is(.np-field, [data-np-field])[data-orientation="horizontal"]
+  )
+  > :is(.np-checkbox, [data-np-checkbox], [data-slot="checkbox"]) {
+  flex: 0 0 var(--np-checkbox-size, 1rem);
+  width: var(--np-checkbox-size, 1rem);
+  height: var(--np-checkbox-size, 1rem);
+}
+
+/* Responsive: vertical, then a row inside a wide field group */
+
+@container field-group (min-width: 28rem) {
+  :is(
+    .np-field-responsive,
+    :is(.np-field, [data-np-field])[data-orientation="responsive"]
+  ) {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  :is(
+      .np-field-responsive,
+      :is(.np-field, [data-np-field])[data-orientation="responsive"]
+    )
+    > * {
+    width: auto;
+  }
+
+  :is(
+    .np-field-responsive,
+    :is(.np-field, [data-np-field])[data-orientation="responsive"]
+  ):has(> :is(.np-field-content, [data-np-field-content])) {
+    align-items: flex-start;
+  }
+
+  :is(
+      .np-field-responsive,
+      :is(.np-field, [data-np-field])[data-orientation="responsive"]
+    )
+    > :is(.np-field-label, [data-np-field-label]) {
+    flex: auto;
+  }
+
+  :is(
+      .np-field-responsive,
+      :is(.np-field, [data-np-field])[data-orientation="responsive"]
+    ):has(> :is(.np-field-content, [data-np-field-content]))
+    > :is([role="checkbox"], [role="radio"], .np-checkbox, [data-np-checkbox]) {
+    margin-top: 1px;
+  }
+}
+
+/* FieldContent */
+
+.np-field-content,
+[data-np-field-content] {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: calc(var(--np-spacing) * 0.5);
+  line-height: 1.375;
+}
+
+/* FieldLabel */
+
+:is(.np-field-label, [data-np-field-label]):is(
+  .np-field-label,
+  [data-np-field-label]
+) {
+  --np-field-choice-border: color-mix(
+    in oklch,
+    var(--np-primary) 30%,
+    transparent
+  );
+  --np-field-choice-bg: color-mix(in oklch, var(--np-primary) 5%, transparent);
+
+  display: flex;
+  align-items: center;
+  gap: calc(var(--np-spacing) * 2);
+  width: fit-content;
+  box-sizing: border-box;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.375;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Label that wraps a whole Field = a "choice card" */
+:is(.np-field-label, [data-np-field-label]):has(
+  > :is(.np-field, [data-np-field])
+) {
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  border: 1px solid var(--np-border);
+  border-radius: var(--np-radius-md);
+}
+
+:is(.np-field-label, [data-np-field-label]):has(
+    > :is(.np-field, [data-np-field])
+  )
+  > :is(.np-field, [data-np-field]) {
+  padding: calc(var(--np-spacing) * 2.5);
+}
+
+/* Hover (not while checked or disabled) */
+:is(.np-field-label, [data-np-field-label]):has(
+    > :is(.np-field, [data-np-field])
+  ):not(:has(:disabled, [data-disabled])):not(
+    :has([data-checked], input:checked)
+  ):hover {
+  background: color-mix(in oklch, var(--np-muted) 50%, transparent);
+}
+
+/* Checked */
+:is(.np-field-label, [data-np-field-label]):has([data-checked], input:checked) {
+  border-color: var(--np-field-choice-border);
+  background: var(--np-field-choice-bg);
+}
+
+/* Focus */
+:is(.np-field-label, [data-np-field-label]):has(
+    > :is(.np-field, [data-np-field])
+  ):has(:focus-visible) {
+  border-color: var(--np-ring);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--np-ring), transparent 50%);
+}
+
+/* Disabled field dims its label and title */
+:is(.np-field, [data-np-field])[data-disabled="true"]
+  :is(
+    .np-field-label,
+    [data-np-field-label],
+    .np-field-title,
+    [data-np-field-title]
+  ) {
+  opacity: 0.5;
+}
+
+/* FieldTitle */
+
+.np-field-title,
+[data-np-field-title] {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--np-spacing) * 2);
+  width: fit-content;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.375;
+}
+
+/* FieldDescription */
+
+.np-field-description,
+[data-np-field-description] {
+  margin: 0;
+  color: var(--np-muted-foreground);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: start;
+}
+
+/* Right after a legend, pull it closer */
+:is(.np-field-legend, [data-np-field-legend])[data-variant="legend"]
+  + :is(.np-field-description, [data-np-field-description]),
+.np-field-legend:not(.np-field-legend-label)
+  + :is(.np-field-description, [data-np-field-description]) {
+  margin-top: calc(var(--np-spacing) * -1);
+}
+
+:is(.np-field-description, [data-np-field-description]):last-child {
+  margin-top: 0;
+}
+
+:is(.np-field-description, [data-np-field-description]):nth-last-child(2) {
+  margin-top: calc(var(--np-spacing) * -1);
+}
+
+/* Balanced lines next to a control */
+:is(
+    .np-field-horizontal,
+    :is(.np-field, [data-np-field])[data-orientation="horizontal"]
+  )
+  :is(.np-field-description, [data-np-field-description]) {
+  text-wrap: balance;
+}
+
+:is(.np-field-description, [data-np-field-description]) > a {
+  text-underline-offset: 4px;
+  text-decoration: underline;
+}
+
+:is(.np-field-description, [data-np-field-description]) > a:hover {
+  color: var(--np-primary);
+}
+
+/* FieldSeparator */
+
+.np-field-separator,
+[data-np-field-separator] {
+  position: relative;
+  height: calc(var(--np-spacing) * 6);
+  margin-block: calc(var(--np-spacing) * -2);
+  font-size: 0.875rem;
+}
+
+:is(.np-field-separator, [data-np-field-separator])
+  > :is(.np-separator, [data-np-separator]) {
+  position: absolute;
+  inset: 0;
+  top: 50%;
+}
+
+.np-field-separator-content,
+[data-np-field-separator-content] {
+  position: relative;
+  display: block;
+  width: fit-content;
+  margin-inline: auto;
+  padding-inline: calc(var(--np-spacing) * 2);
+  background: var(--np-background);
+  color: var(--np-muted-foreground);
+}
+
+/* FieldError */
+
+.np-field-error,
+[data-np-field-error] {
+  color: var(--np-destructive);
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+:is(.np-field-error, [data-np-field-error]) ul,
+.np-field-error-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--np-spacing);
+  margin: 0;
+  margin-inline-start: calc(var(--np-spacing) * 4);
+  padding: 0;
+  list-style: disc;
+}
+
+/* Dark */
+
+:is(.dark, [data-theme="dark"])
+  :is(.np-field-label, [data-np-field-label]):is(
+    .np-field-label,
+    [data-np-field-label]
+  ) {
+  --np-field-choice-border: color-mix(
+    in oklch,
+    var(--np-primary) 20%,
+    transparent
+  );
+  --np-field-choice-bg: color-mix(in oklch, var(--np-primary) 10%, transparent);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light, [data-theme="light"])
+    :is(.np-field-label, [data-np-field-label]):is(
+      .np-field-label,
+      [data-np-field-label]
+    ) {
+    --np-field-choice-border: color-mix(
+      in oklch,
+      var(--np-primary) 20%,
+      transparent
+    );
+    --np-field-choice-bg: color-mix(
+      in oklch,
+      var(--np-primary) 10%,
+      transparent
+    );
+  }
+}

@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Field - nepui</title>
+    <link rel="stylesheet" href="../tokens.css" />
+    <link rel="stylesheet" href="../button/button.css" />
+    <link rel="stylesheet" href="../label/label.css" />
+    <link rel="stylesheet" href="../input/input.css" />
+    <link rel="stylesheet" href="../textarea/textarea.css" />
+    <link rel="stylesheet" href="../checkbox/checkbox.css" />
+    <link rel="stylesheet" href="../separator/separator.css" />
+    <link rel="stylesheet" href="./field.css" />
+
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem;
+        font-family: system-ui, sans-serif;
+        background: var(--np-background);
+        color: var(--np-foreground);
+      }
+      .demo {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+        max-width: 36rem;
+      }
+      h2 {
+        margin: 0 0 0.75rem;
+        font-size: 0.75rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        opacity: 0.6;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="demo">
+      <section>
+        <h2>Fieldset with fields (class)</h2>
+        <fieldset class="np-field-set">
+          <legend class="np-field-legend">Profile</legend>
+          <p class="np-field-description">
+            This appears on invoices and emails.
+          </p>
+          <div class="np-field-group">
+            <div class="np-field" role="group">
+              <label class="np-field-label" for="name">Full name</label>
+              <input id="name" class="np-input" placeholder="Lakka Imahd" />
+              <p class="np-field-description">
+                This appears on invoices and emails.
+              </p>
+            </div>
+            <div class="np-field" role="group" data-invalid>
+              <label class="np-field-label" for="username">Username</label>
+              <input
+                id="username"
+                class="np-input"
+                aria-invalid="true"
+                value="evil"
+              />
+              <div class="np-field-error" role="alert">
+                Choose another username.
+              </div>
+            </div>
+            <div class="np-field np-field-horizontal" role="group">
+              <input id="newsletter" type="checkbox" class="np-checkbox" />
+              <label class="np-field-label" for="newsletter"
+                >Subscribe to the newsletter</label
+              >
+            </div>
+          </div>
+        </fieldset>
+      </section>
+
+      <section>
+        <h2>Data attributes</h2>
+        <div data-np-field-group>
+          <div data-np-field data-orientation="horizontal" role="group">
+            <input id="remember" type="checkbox" data-np-checkbox checked />
+            <div data-np-field-content>
+              <label data-np-field-label for="remember">Remember me</label>
+              <p data-np-field-description>Stay signed in on this device.</p>
+            </div>
+          </div>
+          <div data-np-field-separator>
+            <div data-np-separator role="separator"></div>
+            <span data-np-field-separator-content>Or continue with</span>
+          </div>
+          <div data-np-field role="group" data-disabled="true">
+            <label data-np-field-label for="disabled-input"
+              >Disabled field</label
+            >
+            <input
+              id="disabled-input"
+              data-np-input
+              disabled
+              placeholder="Disabled"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Choice cards</h2>
+        <div class="np-field-group" style="gap: 0.75rem">
+          <label class="np-field-label" for="kubernetes">
+            <span class="np-field np-field-horizontal" role="group">
+              <span class="np-field-content">
+                <span class="np-field-title">Kubernetes</span>
+                <span class="np-field-description"
+                  >Run GPU workloads on a K8s cluster.</span
+                >
+              </span>
+              <input
+                id="kubernetes"
+                type="checkbox"
+                class="np-checkbox"
+                checked
+              />
+            </span>
+          </label>
+          <label class="np-field-label" for="vm">
+            <span class="np-field np-field-horizontal" role="group">
+              <span class="np-field-content">
+                <span class="np-field-title">Virtual Machine</span>
+                <span class="np-field-description"
+                  >Access a cluster to run GPU workloads.</span
+                >
+              </span>
+              <input id="vm" type="checkbox" class="np-checkbox" />
+            </span>
+          </label>
+        </div>
+      </section>
+
+      <section>
+        <h2>Responsive (row from 28rem)</h2>
+        <div class="np-field-group">
+          <div class="np-field np-field-responsive" role="group">
+            <div class="np-field-content">
+              <label class="np-field-label" for="r-name">Name</label>
+              <p class="np-field-description">
+                Provide your full name for identification
+              </p>
+            </div>
+            <input id="r-name" class="np-input" placeholder="Lakka Imahd" />
+          </div>
+          <div class="np-field np-field-responsive" role="group">
+            <button class="np-button" type="submit">Submit</button>
+            <button class="np-button np-button-outline" type="button">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
