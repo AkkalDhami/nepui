@@ -204,6 +204,28 @@
           "target": "styles/textarea.css"
         }
       ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "Combine labels, controls, and help text to compose accessible form fields and grouped inputs.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/react/label.json",
+        "https://nepui.vercel.app/r/react/separator.json"
+      ],
+      "files": [
+        {
+          "path": "registry/html/field/field.html",
+          "type": "registry:ui",
+          "target": "html/field.html"
+        },
+        {
+          "path": "registry/html/field/field.css",
+          "type": "registry:ui",
+          "target": "styles/field.css"
+        }
+      ]
     }
   ]
 }
