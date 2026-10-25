@@ -15,6 +15,8 @@
   --np-radius-4xl: calc(var(--np-radius) * 2.6);
   --np-radius-full: 9999px;
 
+  --np-spacing: 0.25rem;
+
   --np-background: #ffffff;
   --np-foreground: #0a0a0a;
 
@@ -71,6 +73,8 @@
   --np-radius-4xl: calc(var(--np-radius) * 2.6);
   --np-radius-full: 9999px;
 
+  --np-spacing: 0.25rem;
+
   --np-background: #0a0a0a;
   --np-foreground: #fafafa;
 
@@ -80,8 +84,8 @@
   --np-popover: #ffffff;
   --np-popover-foreground: #0a0a0a;
 
-  --np-primary: #121212;
-  --np-primary-foreground: #fafafa;
+  --np-primary: #ffffff;
+  --np-primary-foreground: #0a0a0a;
 
   --np-secondary: #27272a;
   --np-secondary-foreground: #fafafa;
@@ -126,6 +130,8 @@
     --np-radius-3xl: calc(var(--np-radius) * 2.2);
     --np-radius-4xl: calc(var(--np-radius) * 2.6);
     --np-radius-full: 9999px;
+
+    --np-spacing: 0.25rem;
 
     --np-background: #0a0a0a;
     --np-foreground: #fafafa;
