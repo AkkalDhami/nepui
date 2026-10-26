@@ -7,7 +7,7 @@ import { cn } from "cn"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-
+;<div className="[&>kbd]:rounded-[calc(var(--radius)-5px)]"></div>
 function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div

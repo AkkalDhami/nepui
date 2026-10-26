@@ -309,6 +309,57 @@
           "target": "components/nepui/kbd/index.ts"
         }
       ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "Displays a list of options for the user to pick from, as a Base UI popup or as a native select.",
+      "files": [
+        {
+          "path": "registry/react/select/select.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/select/select.tsx"
+        },
+        {
+          "path": "registry/react/select/select.css",
+          "type": "registry:ui",
+          "target": "components/nepui/select/select.css"
+        },
+        {
+          "path": "registry/react/select/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/select/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "input-group",
+      "type": "registry:ui",
+      "title": "Input Group",
+      "description": "Add addons, buttons, and helper content to inputs.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/react/input.json",
+        "https://nepui.vercel.app/r/react/button.json",
+        "https://nepui.vercel.app/r/react/textarea.json"
+      ],
+      "files": [
+        {
+          "path": "registry/react/input-group/input-group.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/input-group/input-group.tsx"
+        },
+        {
+          "path": "registry/react/input-group/input-group.css",
+          "type": "registry:ui",
+          "target": "components/nepui/input-group/input-group.css"
+        },
+        {
+          "path": "registry/react/input-group/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/input-group/index.ts"
+        }
+      ]
     }
   ]
 }

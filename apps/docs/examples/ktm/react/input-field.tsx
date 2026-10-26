@@ -1,0 +1,24 @@
+"use client"
+
+import { Field, FieldDescription, FieldLabel } from "@/registry/react/field"
+import { Input } from "@/registry/react/input"
+
+export default function InputField() {
+  return (
+    <Field
+      style={{
+        width: "24rem",
+      }}
+    >
+      <FieldLabel htmlFor="input-field-username">Username</FieldLabel>
+      <Input
+        id="input-field-username"
+        type="text"
+        placeholder="Enter your username"
+      />
+      <FieldDescription>
+        Choose a unique username for your account.
+      </FieldDescription>
+    </Field>
+  )
+}
