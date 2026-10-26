@@ -1,0 +1,262 @@
+---
+title: Select
+description: Displays a list of options for the user to pick from, as a Base UI popup or as a native select.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="select-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/select.json"
+      nepui="npx nepui@latest add select --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react class-variance-authority cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="select"
+        title="components/nepui/select/select.css"
+        fileTarget="components/nepui/select/select.css"
+      />
+      <ComponentSource
+        target="react"
+        name="select"
+        title="components/nepui/select/select.tsx"
+        fileTarget="components/nepui/select/select.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="select"
+        title="components/nepui/select/index.ts"
+        fileTarget="components/nepui/select/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/nepui/select"
+```
+
+
+```tsx showLineNumbers
+const items = [
+  { label: "Light", value: "light" },
+  { label: "Dark", value: "dark" },
+  { label: "System", value: "system" },
+]
+
+<Select items={items}>
+  <SelectTrigger style={{ width: "12rem" }}>
+    <SelectValue placeholder="Theme" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectGroup>
+      {items.map((item) => (
+        <SelectItem key={item.value} value={item.value}>
+          {item.label}
+        </SelectItem>
+      ))}
+    </SelectGroup>
+  </SelectContent>
+</Select>
+```
+
+Pass `items` to `Select` so `SelectValue` can show an item's label instead of its raw value.
+
+---
+
+## Composition
+
+Use the following composition to build a `Select`:
+
+```text
+Select
+├── SelectTrigger
+│   └── SelectValue
+└── SelectContent
+    ├── SelectGroup
+    │   ├── SelectLabel
+    │   ├── SelectItem
+    │   └── SelectItem
+    ├── SelectSeparator
+    └── SelectGroup
+        ├── SelectLabel
+        ├── SelectItem
+        └── SelectItem
+```
+
+---
+
+## Groups
+
+Use `SelectGroup` and `SelectLabel` to group items, and `SelectSeparator` to draw a line between groups.
+
+<ComponentPreview
+  name="select-groups"
+/>
+
+---
+
+## Multiple
+ 
+<ComponentPreview
+  name="select-multiple"
+/>
+ 
+---
+ 
+## Icons
+ 
+<ComponentPreview
+  name="select-icons"
+/>
+
+---
+
+## Sizes
+
+Use the `size` prop on `SelectTrigger` to change the height. The heights match Button and Input.
+
+<ComponentPreview
+  name="select-sizes"
+/>
+
+---
+
+## Scrollable
+
+A select with many items that scrolls.
+
+<ComponentPreview name="select-scrollable" />
+
+---
+
+## Disabled
+
+Add `disabled` to `Select` to disable the whole control, or to `SelectItem` to disable one item.
+
+<ComponentPreview
+  name="select-disabled"
+/>
+
+---
+
+## Invalid
+
+Add the `data-invalid` attribute to the `Field` component and the `aria-invalid` attribute to the `SelectTrigger` component to show an error state.
+
+```tsx showLineNumbers /data-invalid/ /aria-invalid/
+<Field data-invalid>
+  <FieldLabel>Fruit</FieldLabel>
+  <SelectTrigger aria-invalid>
+    <SelectValue />
+  </SelectTrigger>
+</Field>
+```
+
+<ComponentPreview
+  name="select-invalid"
+/>
+
+---
+
+## Native
+
+Set `native` on `Select` to render a native `<select>` instead of the Base UI popup. Use it when you want the platform picker, for example on mobile, or when you need no popup JavaScript.
+
+In native mode `Select` takes the props of a `<select>` plus `size`, `placeholder` and `wrapperClassName`. Use `SelectOption` and `SelectOptGroup` as children.
+
+`SelectTrigger`, `SelectValue`, `SelectContent`, `SelectItem`, `SelectLabel` and `SelectSeparator` are only for the Base UI popup.
+
+<ComponentPreview
+  name="select-native"
+/>
+
+`placeholder` adds a leading empty, disabled option. When the select is uncontrolled and has no `defaultValue`, it starts on that option. Native `multiple` is not supported.
+
+```tsx
+<Select native aria-label="Fruit" placeholder="Select a fruit" style={{ width: "12rem" }}>
+  <SelectOption value="apple">Apple</SelectOption>
+  <SelectOption value="banana">Banana</SelectOption>
+</Select>
+```
+
+---
+
+## API Reference
+
+### Select
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `native` | `boolean` | `false` |
+| `size` | `"xs" \| "sm" \| "default" \| "lg"` (native only) | `"default"` |
+| `placeholder` | `string` (native only) | - |
+| `wrapperClassName` | `string` (native only) | - |
+
+Without `native`, `Select` is the Base UI [Select root](https://base-ui.com/react/components/select).
+
+With `native`, it accepts the props of a `<select>` except `size` and `multiple`; `className` is applied to the `<select>`.
+
+### SelectTrigger
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `size` | `"xs" \| "sm" \| "default" \| "lg"` | `"default"` |
+| `className` | `string \| (state) => string` | - |
+
+### SelectValue
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `placeholder` | `ReactNode` | - |
+| `className` | `string \| (state) => string` | - |
+
+### SelectContent
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `side` | `"top" \| "bottom" \| "left" \| "right" \| "inline-start" \| "inline-end"` | `"bottom"` |
+| `sideOffset` | `number` | `4` |
+| `align` | `"start" \| "center" \| "end"` | `"center"` |
+| `alignOffset` | `number` | `0` |
+| `alignItemWithTrigger` | `boolean` | `true` |
+| `className` | `string \| (state) => string` | - |
+
+### SelectItem
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `value` | `any` | - |
+| `disabled` | `boolean` | `false` |
+| `className` | `string \| (state) => string` | - |
