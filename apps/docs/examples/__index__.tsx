@@ -55,7 +55,18 @@ import KtmReactInputBasic from "./ktm/react/input-basic"
 import KtmReactInputControlled from "./ktm/react/input-controlled"
 import KtmReactInputDemo from "./ktm/react/input-demo"
 import KtmReactInputDisabled from "./ktm/react/input-disabled"
+import KtmReactInputFieldGroup from "./ktm/react/input-field-group"
+import KtmReactInputField from "./ktm/react/input-field"
 import KtmReactInputFile from "./ktm/react/input-file"
+import KtmReactInputGroupButton from "./ktm/react/input-group-button"
+import KtmReactInputGroupDemo from "./ktm/react/input-group-demo"
+import KtmReactInputGroupDisabled from "./ktm/react/input-group-disabled"
+import KtmReactInputGroupIcon from "./ktm/react/input-group-icon"
+import KtmReactInputGroupInvalid from "./ktm/react/input-group-invalid"
+import KtmReactInputGroupKbd from "./ktm/react/input-group-kbd"
+import KtmReactInputGroupSpinner from "./ktm/react/input-group-spinner"
+import KtmReactInputGroupText from "./ktm/react/input-group-text"
+import KtmReactInputGroupTextarea from "./ktm/react/input-group-textarea"
 import KtmReactInputInvalid from "./ktm/react/input-invalid"
 import KtmReactInputSize from "./ktm/react/input-size"
 import KtmReactInputWithLabel from "./ktm/react/input-with-label"
@@ -64,6 +75,15 @@ import KtmReactKbdDemo from "./ktm/react/kbd-demo"
 import KtmReactKbdGroup from "./ktm/react/kbd-group"
 import KtmReactKbdInput from "./ktm/react/kbd-input"
 import KtmReactLabelDemo from "./ktm/react/label-demo"
+import KtmReactSelectDemo from "./ktm/react/select-demo"
+import KtmReactSelectDisabled from "./ktm/react/select-disabled"
+import KtmReactSelectGroups from "./ktm/react/select-groups"
+import KtmReactSelectIcons from "./ktm/react/select-icons"
+import KtmReactSelectInvalid from "./ktm/react/select-invalid"
+import KtmReactSelectMultiple from "./ktm/react/select-multiple"
+import KtmReactSelectNative from "./ktm/react/select-native"
+import KtmReactSelectScrollable from "./ktm/react/select-scrollable"
+import KtmReactSelectSizes from "./ktm/react/select-sizes"
 import KtmReactSeparatorDemo from "./ktm/react/separator-demo"
 import KtmReactSeparatorList from "./ktm/react/separator-list"
 import KtmReactSeparatorVertical from "./ktm/react/separator-vertical"
@@ -82,6 +102,7 @@ import KtmReactStepsDemo from "./ktm/react/steps-demo"
 import KtmReactTextareaControlled from "./ktm/react/textarea-controlled"
 import KtmReactTextareaDemo from "./ktm/react/textarea-demo"
 import KtmReactTextareaDisabled from "./ktm/react/textarea-disabled"
+import KtmReactTextareaField from "./ktm/react/textarea-field"
 import KtmReactTextareaInvalid from "./ktm/react/textarea-invalid"
 import KtmReactTextareaWithLabel from "./ktm/react/textarea-with-label"
 
@@ -142,7 +163,18 @@ export const ExamplesIndex: Record<
       "input-controlled": KtmReactInputControlled,
       "input-demo": KtmReactInputDemo,
       "input-disabled": KtmReactInputDisabled,
+      "input-field-group": KtmReactInputFieldGroup,
+      "input-field": KtmReactInputField,
       "input-file": KtmReactInputFile,
+      "input-group-button": KtmReactInputGroupButton,
+      "input-group-demo": KtmReactInputGroupDemo,
+      "input-group-disabled": KtmReactInputGroupDisabled,
+      "input-group-icon": KtmReactInputGroupIcon,
+      "input-group-invalid": KtmReactInputGroupInvalid,
+      "input-group-kbd": KtmReactInputGroupKbd,
+      "input-group-spinner": KtmReactInputGroupSpinner,
+      "input-group-text": KtmReactInputGroupText,
+      "input-group-textarea": KtmReactInputGroupTextarea,
       "input-invalid": KtmReactInputInvalid,
       "input-size": KtmReactInputSize,
       "input-with-label": KtmReactInputWithLabel,
@@ -151,6 +183,15 @@ export const ExamplesIndex: Record<
       "kbd-group": KtmReactKbdGroup,
       "kbd-input": KtmReactKbdInput,
       "label-demo": KtmReactLabelDemo,
+      "select-demo": KtmReactSelectDemo,
+      "select-disabled": KtmReactSelectDisabled,
+      "select-groups": KtmReactSelectGroups,
+      "select-icons": KtmReactSelectIcons,
+      "select-invalid": KtmReactSelectInvalid,
+      "select-multiple": KtmReactSelectMultiple,
+      "select-native": KtmReactSelectNative,
+      "select-scrollable": KtmReactSelectScrollable,
+      "select-sizes": KtmReactSelectSizes,
       "separator-demo": KtmReactSeparatorDemo,
       "separator-list": KtmReactSeparatorList,
       "separator-vertical": KtmReactSeparatorVertical,
@@ -169,6 +210,7 @@ export const ExamplesIndex: Record<
       "textarea-controlled": KtmReactTextareaControlled,
       "textarea-demo": KtmReactTextareaDemo,
       "textarea-disabled": KtmReactTextareaDisabled,
+      "textarea-field": KtmReactTextareaField,
       "textarea-invalid": KtmReactTextareaInvalid,
       "textarea-with-label": KtmReactTextareaWithLabel,
     },
@@ -223,11 +265,34 @@ export const ExamplesIndex: Record<
       "input-controlled": "ktm/html/input-controlled.html",
       "input-demo": "ktm/html/input-demo.html",
       "input-disabled": "ktm/html/input-disabled.html",
+      "input-field-group": "ktm/html/input-field-group.html",
+      "input-field": "ktm/html/input-field.html",
       "input-file": "ktm/html/input-file.html",
+      "input-group-button": "ktm/html/input-group-button.html",
+      "input-group-demo": "ktm/html/input-group-demo.html",
+      "input-group-disabled": "ktm/html/input-group-disabled.html",
+      "input-group-icon": "ktm/html/input-group-icon.html",
+      "input-group-invalid": "ktm/html/input-group-invalid.html",
+      "input-group-kbd": "ktm/html/input-group-kbd.html",
+      "input-group-spinner": "ktm/html/input-group-spinner.html",
+      "input-group-text": "ktm/html/input-group-text.html",
+      "input-group-textarea": "ktm/html/input-group-textarea.html",
       "input-invalid": "ktm/html/input-invalid.html",
       "input-label": "ktm/html/input-label.html",
       "input-size": "ktm/html/input-size.html",
+      "kbd-button": "ktm/html/kbd-button.html",
+      "kbd-demo": "ktm/html/kbd-demo.html",
+      "kbd-group": "ktm/html/kbd-group.html",
+      "kbd-input": "ktm/html/kbd-input.html",
       "label-demo": "ktm/html/label-demo.html",
+      "select-demo": "ktm/html/select-demo.html",
+      "select-disabled": "ktm/html/select-disabled.html",
+      "select-groups": "ktm/html/select-groups.html",
+      "select-icons": "ktm/html/select-icons.html",
+      "select-invalid": "ktm/html/select-invalid.html",
+      "select-multiple": "ktm/html/select-multiple.html",
+      "select-native": "ktm/html/select-native.html",
+      "select-sizes": "ktm/html/select-sizes.html",
       "separator-demo": "ktm/html/separator-demo.html",
       "separator-list": "ktm/html/separator-list.html",
       "separator-vertical": "ktm/html/separator-vertical.html",
@@ -246,6 +311,7 @@ export const ExamplesIndex: Record<
       "textarea-controlled": "ktm/html/textarea-controlled.html",
       "textarea-demo": "ktm/html/textarea-demo.html",
       "textarea-disabled": "ktm/html/textarea-disabled.html",
+      "textarea-field": "ktm/html/textarea-field.html",
       "textarea-invalid": "ktm/html/textarea-invalid.html",
       "textarea-with-label": "ktm/html/textarea-with-label.html",
     },

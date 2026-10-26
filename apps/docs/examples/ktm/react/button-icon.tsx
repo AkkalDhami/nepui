@@ -1,7 +1,7 @@
 "use client"
 
-import { Button } from "@/registry/react/button"
 import { ArrowUpIcon } from "@phosphor-icons/react"
+import { Button } from "@/registry/react/button"
 
 export default function ButtonIcon() {
   return (
