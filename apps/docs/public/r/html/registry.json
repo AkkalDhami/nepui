@@ -226,6 +226,65 @@
           "target": "styles/field.css"
         }
       ]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "title": "Kbd",
+      "description": "Used to display textual user input from keyboard.",
+      "files": [
+        {
+          "path": "registry/html/kbd/kbd.html",
+          "type": "registry:ui",
+          "target": "html/kbd.html"
+        },
+        {
+          "path": "registry/html/kbd/kbd.css",
+          "type": "registry:ui",
+          "target": "styles/kbd.css"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "Displays a list of options for the user to pick from, as a Base UI popup or as a native select.",
+      "files": [
+        {
+          "path": "registry/html/select/select.html",
+          "type": "registry:ui",
+          "target": "html/select.html"
+        },
+        {
+          "path": "registry/html/select/select.css",
+          "type": "registry:ui",
+          "target": "styles/select.css"
+        }
+      ]
+    },
+    {
+      "name": "input-group",
+      "type": "registry:ui",
+      "title": "Input Group",
+      "description": "Add addons, buttons, and helper content to inputs.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/react/input.json",
+        "https://nepui.vercel.app/r/react/button.json",
+        "https://nepui.vercel.app/r/react/textarea.json"
+      ],
+      "files": [
+        {
+          "path": "registry/html/input-group/input-group.html",
+          "type": "registry:ui",
+          "target": "html/input-group.html"
+        },
+        {
+          "path": "registry/html/input-group/input-group.css",
+          "type": "registry:ui",
+          "target": "styles/input-group.css"
+        }
+      ]
     }
   ]
 }
