@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Input Group - nepui</title>
+    <link rel="stylesheet" href="../tokens.css" />
+    <link rel="stylesheet" href="../button/button.css" />
+    <link rel="stylesheet" href="../input/input.css" />
+    <link rel="stylesheet" href="../textarea/textarea.css" />
+    <link rel="stylesheet" href="../kbd/kbd.css" />
+    <link rel="stylesheet" href="./input-group.css" />
+
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem;
+        font-family: system-ui, sans-serif;
+        background: var(--np-background);
+        color: var(--np-foreground);
+      }
+      .demo {
+        display: flex;
+        flex-direction: column;
+        gap: 1.75rem;
+        max-width: 24rem;
+      }
+      h2 {
+        margin: 0 0 0.5rem;
+        font-size: 0.75rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        opacity: 0.6;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="demo">
+      <section>
+        <h2>Icon at the start (class)</h2>
+        <div class="np-input-group" role="group">
+          <input
+            class="np-input np-input-group-input"
+            placeholder="Search..."
+            aria-label="Search"
+          />
+          <div class="np-input-group-addon" role="group">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Text at the end, with a result count</h2>
+        <div class="np-input-group" role="group">
+          <input
+            class="np-input np-input-group-input"
+            placeholder="Search..."
+            aria-label="Search"
+          />
+          <div
+            class="np-input-group-addon np-input-group-addon-end"
+            role="group"
+          >
+            12 results
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Prefix and suffix text (data attributes)</h2>
+        <div data-np-input-group role="group">
+          <div data-np-input-group-addon role="group">
+            <span data-np-input-group-text>https://</span>
+          </div>
+          <input
+            data-np-input
+            data-np-input-group-input
+            placeholder="example.com"
+            aria-label="Domain"
+          />
+          <div data-np-input-group-addon data-align="inline-end" role="group">
+            <span data-np-input-group-text>.com</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Button at the end</h2>
+        <div class="np-input-group" role="group">
+          <input
+            class="np-input np-input-group-input"
+            placeholder="https://x.com/shadcn"
+            aria-label="URL"
+          />
+          <div
+            class="np-input-group-addon np-input-group-addon-end"
+            role="group"
+          >
+            <button
+              class="np-button np-button-ghost np-button-xs np-input-group-button"
+              type="button"
+            >
+              Copy
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Keyboard shortcut</h2>
+        <div class="np-input-group" role="group">
+          <input
+            class="np-input np-input-group-input"
+            placeholder="Search..."
+            aria-label="Search"
+          />
+          <div
+            class="np-input-group-addon np-input-group-addon-end"
+            role="group"
+          >
+            <kbd class="np-kbd-group"
+              ><kbd class="np-kbd">⌘</kbd><kbd class="np-kbd">K</kbd></kbd
+            >
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Textarea with a block addon</h2>
+        <div class="np-input-group" role="group">
+          <textarea
+            class="np-textarea np-input-group-textarea"
+            placeholder="Ask, search or chat..."
+            aria-label="Prompt"
+          ></textarea>
+          <div
+            class="np-input-group-addon np-input-group-addon-block-end"
+            role="group"
+            style="justify-content: space-between"
+          >
+            <span class="np-input-group-text">0 / 280</span>
+            <button
+              class="np-button np-button-xs np-input-group-button"
+              type="button"
+            >
+              Send
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Invalid and disabled</h2>
+        <div class="np-input-group" role="group" style="margin-bottom: 0.75rem">
+          <input
+            class="np-input np-input-group-input"
+            aria-invalid="true"
+            value="not an email"
+            aria-label="Email"
+          />
+          <div
+            class="np-input-group-addon np-input-group-addon-end"
+            role="group"
+          >
+            Invalid
+          </div>
+        </div>
+        <div class="np-input-group" role="group" data-disabled="true">
+          <input
+            class="np-input np-input-group-input"
+            placeholder="Disabled"
+            disabled
+            aria-label="Disabled"
+          />
+          <div
+            class="np-input-group-addon np-input-group-addon-end"
+            role="group"
+          >
+            Off
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

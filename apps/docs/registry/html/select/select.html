@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Select</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/field.css" />
+    <link rel="stylesheet" href="../styles/select.css" />
+    <style>
+      * {
+        margin: 0;
+      }
+      body {
+        margin: 0;
+        padding: 2rem 1rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: system-ui, sans-serif;
+      }
+      main {
+        display: grid;
+        gap: 2rem;
+        max-width: 40rem;
+        margin-inline: auto;
+      }
+      h2 {
+        margin: 0 0 0.75rem;
+        font-size: 0.875rem;
+        color: var(--np-muted-foreground);
+        font-weight: 500;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .col {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+      .error {
+        margin: 0;
+        font-size: 0.875rem;
+        color: var(--np-destructive);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Class form</h2>
+        <div class="np-select-wrapper">
+          <select class="np-select" aria-label="Fruit" style="width: 12rem">
+            <option value="" selected disabled hidden>Select a fruit</option>
+            <option value="apple">Apple</option>
+            <option value="banana">Banana</option>
+            <option value="blueberry">Blueberry</option>
+          </select>
+        </div>
+      </section>
+
+      <section>
+        <h2>Data-attribute form</h2>
+        <div data-np-select-wrapper>
+          <select
+            data-np-select
+            aria-label="Fruit (data attributes)"
+            style="width: 12rem"
+          >
+            <option value="" selected disabled hidden>Select a fruit</option>
+            <option value="apple">Apple</option>
+            <option value="banana">Banana</option>
+            <option value="blueberry">Blueberry</option>
+          </select>
+        </div>
+      </section>
+
+      <section>
+        <h2>Sizes (class and data-size)</h2>
+        <div class="col">
+          <div class="np-select-wrapper">
+            <select
+              class="np-select np-select-xs"
+              aria-label="Extra small"
+              style="width: 12rem"
+            >
+              <option value="" selected disabled hidden>Extra small</option>
+              <option value="apple">Apple</option>
+            </select>
+          </div>
+          <div class="np-select-wrapper">
+            <select
+              class="np-select"
+              data-size="sm"
+              aria-label="Small"
+              style="width: 12rem"
+            >
+              <option value="" selected disabled hidden>
+                Small (data-size)
+              </option>
+              <option value="apple">Apple</option>
+            </select>
+          </div>
+          <div class="np-select-wrapper">
+            <select class="np-select" aria-label="Default" style="width: 12rem">
+              <option value="" selected disabled hidden>Default</option>
+              <option value="apple">Apple</option>
+            </select>
+          </div>
+          <div class="np-select-wrapper">
+            <select
+              class="np-select np-select-lg"
+              aria-label="Large"
+              style="width: 12rem"
+            >
+              <option value="" selected disabled hidden>Large</option>
+              <option value="apple">Apple</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Groups</h2>
+        <div class="np-select-wrapper">
+          <select class="np-select" aria-label="Food" style="width: 12rem">
+            <option value="" selected disabled hidden>Select a food</option>
+            <optgroup label="Fruits">
+              <option value="apple">Apple</option>
+              <option value="banana">Banana</option>
+            </optgroup>
+            <optgroup label="Vegetables">
+              <option value="carrot">Carrot</option>
+              <option value="spinach">Spinach</option>
+            </optgroup>
+          </select>
+        </div>
+      </section>
+
+      <section>
+        <h2>Multiple</h2>
+        <div class="np-select-wrapper">
+          <select
+            class="np-select"
+            aria-label="Fruits"
+            style="width: 12rem"
+            multiple
+            size="1"
+          >
+            <option value="apple" selected>Apple</option>
+            <option value="banana" selected>Banana</option>
+            <option value="blueberry">Blueberry</option>
+            <option value="grapes">Grapes</option>
+          </select>
+        </div>
+      </section>
+
+      <section>
+        <h2>Icons (np-select-rich, Chrome/Edge 135+)</h2>
+        <div data-np-select-wrapper>
+          <select
+            data-np-select
+            data-rich
+            aria-label="Theme"
+            style="width: 12rem"
+          >
+            <button><selectedcontent></selectedcontent></button>
+            <option value="light">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2" />
+                <path d="M12 20v2" />
+                <path d="m4.93 4.93 1.41 1.41" />
+                <path d="m17.66 17.66 1.41 1.41" />
+                <path d="M2 12h2" />
+                <path d="M20 12h2" />
+                <path d="m6.34 17.66-1.41 1.41" />
+                <path d="m19.07 4.93-1.41 1.41" />
+              </svg>
+              Light
+            </option>
+            <option value="dark">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+              </svg>
+              Dark
+            </option>
+            <option value="system" selected>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <rect width="20" height="14" x="2" y="3" rx="2" />
+                <line x1="8" x2="16" y1="21" y2="21" />
+                <line x1="12" x2="12" y1="17" y2="21" />
+              </svg>
+              System
+            </option>
+          </select>
+        </div>
+      </section>
+
+      <section>
+        <h2>Disabled</h2>
+        <div class="row">
+          <div class="np-select-wrapper">
+            <select
+              class="np-select"
+              aria-label="Disabled select"
+              style="width: 12rem"
+              disabled
+            >
+              <option value="" selected disabled hidden>Disabled</option>
+              <option value="apple">Apple</option>
+            </select>
+          </div>
+          <div class="np-select-wrapper">
+            <select
+              class="np-select"
+              aria-label="Select with a disabled option"
+              style="width: 12rem"
+            >
+              <option value="" selected disabled hidden>Disabled option</option>
+              <option value="apple">Apple</option>
+              <option value="banana" disabled>Banana</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Invalid (with Field)</h2>
+        <div class="np-field" data-invalid style="width: 12rem">
+          <label class="np-field-label" for="invalid-select">Fruit</label>
+          <div class="np-select-wrapper" style="width: 100%">
+            <select
+              class="np-select"
+              id="invalid-select"
+              aria-invalid="true"
+              aria-describedby="invalid-message"
+            >
+              <option value="" selected disabled hidden>Select a fruit</option>
+              <option value="apple">Apple</option>
+              <option value="banana">Banana</option>
+              <option value="blueberry">Blueberry</option>
+            </select>
+          </div>
+          <p class="np-field-error" id="invalid-message">
+            Please select a fruit.
+          </p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
