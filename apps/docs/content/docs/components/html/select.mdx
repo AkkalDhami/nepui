@@ -1,0 +1,196 @@
+---
+title: Select
+description: Displays a list of options for the user to pick from, using a styled native select.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="select-demo"
+  target="html"
+  styles={["/select/select.css"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add select"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="select"
+        title="styles/select.css"
+        fileTarget="styles/select.css"
+      />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the stylesheet:
+
+```html
+<link rel="stylesheet" href="./styles/select.css">
+```
+
+Put a `<select class="np-select">` inside a `np-select-wrapper`. The wrapper draws the chevron.
+
+```html
+<div class="np-select-wrapper">
+  <select class="np-select" aria-label="Fruit">
+    <option value="apple">Apple</option>
+    <option value="banana">Banana</option>
+  </select>
+</div>
+```
+
+Or use the data attributes instead of classes:
+
+```html
+<div data-np-select-wrapper>
+  <select data-np-select aria-label="Fruit">
+    <option value="apple">Apple</option>
+    <option value="banana">Banana</option>
+  </select>
+</div>
+```
+
+The wrapper is as wide as the select. Set a width on the `<select>` (for example `style="width: 12rem"`) to change it.
+
+---
+
+## Groups
+
+Use `<optgroup label="...">` to group options.
+
+<ComponentPreview
+  name="select-groups"
+  target="html"
+  styles={["/select/select.css"]}
+/>
+
+---
+
+## Multiple
+
+Add `multiple` (and `size` for the number of visible rows) to get a listbox. It has no chevron, and selected options use the accent colors. It is a native listbox, so it looks different from the popup in the React version.
+
+<ComponentPreview
+  name="select-multiple"
+  target="html"
+  styles={["/select/select.css"]}
+/>
+
+---
+
+## Icons
+
+Add `np-select-rich` (or `data-rich`) to put icons or other markup inside options. Write a `<button><selectedcontent></selectedcontent></button>` as the first child of the `<select>`: it shows the selected option, icon included.
+
+<ComponentPreview
+  name="select-icons"
+  target="html"
+  styles={["/select/select.css"]}
+/>
+
+This uses the browser's customizable select (`appearance: base-select`), which needs no JavaScript but is only available in Chrome and Edge 135+. Other browsers ignore the `<button>` and the icons and show a plain select with text-only options.
+
+---
+
+## Sizes
+
+<ComponentPreview
+  name="select-sizes"
+  target="html"
+  styles={["/select/select.css"]}
+/>
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Extra small | `data-size="xs"` | `np-select-xs` |
+| Small | `data-size="sm"` | `np-select-sm` |
+| Default | - | `np-select` |
+| Large | `data-size="lg"` | `np-select-lg` |
+
+---
+
+## Disabled
+
+Add `disabled` to the `<select>`, or to an `<option>`.
+
+<ComponentPreview
+  name="select-disabled"
+  target="html"
+  styles={["/select/select.css"]}
+/>
+
+---
+
+## Invalid
+
+Wrap the select in a [Field](/docs/components/html/field). Add the `data-invalid` attribute to the field and `aria-invalid="true"` to the `<select>` to show an error state, and link the message with `aria-describedby`.
+ 
+This example uses the Field styles, so link `field.css` before `select.css`:
+ 
+```html
+<link rel="stylesheet" href="./styles/field.css">
+<link rel="stylesheet" href="./styles/select.css">
+```
+
+```html showLineNumbers /data-invalid/ /aria-invalid="true"/
+<div class="np-field" data-invalid>
+  <label class="np-field-label">Fruit</label>
+  <select
+    class="np-select"
+    aria-invalid="true"
+  >
+    ...
+  </select>
+  <p class="np-field-error">Please select a fruit.</p>
+</div>
+```
+
+<ComponentPreview
+  name="select-invalid"
+  target="html"
+  styles={["/field/field.css"]}
+/>
+
+Without Field, set `aria-invalid="true"` (or `data-invalid`) on the `<select>` and show your own message. Only the select needs `select.css`.
+
+---
+
+## Placeholder
+
+Add a first option with an empty value that is `selected disabled hidden`. While it is selected, the select uses the muted text color. The color needs `:has()`; in older browsers the text keeps the normal color.
+
+<ComponentPreview
+  name="select-native"
+  target="html"
+  styles={["/select/select.css"]}
+/>
+
+---
+
+## Reference
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Select | `data-np-select` | `np-select` |
+| Wrapper | `data-np-select-wrapper` | `np-select-wrapper` |
+| Rich options | `data-rich` | `np-select-rich` |

@@ -1,0 +1,135 @@
+---
+title: Kbd
+description: Used to display textual user input from keyboard.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="kbd-demo"
+  target="html"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add kbd"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="kbd"
+        title="styles/kbd.css"
+        fileTarget="styles/kbd.css"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the component's CSS file to your HTML document.
+
+```html
+<head>
+  <link rel="stylesheet" href="./styles/kbd.css">
+</head>
+```
+
+Then, add the `np-kbd` class to a `<kbd>` element.
+
+```html
+<kbd class="np-kbd">Esc</kbd>
+```
+
+You can also use the `data-np-kbd` attribute instead of the class.
+
+```html
+<kbd data-np-kbd>Esc</kbd>
+```
+
+Use the native `<kbd>` element so assistive technologies announce it as keyboard input.
+
+---
+
+## Group
+
+Use `np-kbd-group` or `data-np-kbd-group` to group keys together into one shortcut.
+
+<ComponentPreview
+  name="kbd-group"
+  target="html"
+/>
+
+```html
+<kbd class="np-kbd-group">
+  <kbd class="np-kbd">Ctrl</kbd>
+  <kbd class="np-kbd">K</kbd>
+</kbd>
+```
+
+The group is a `<kbd>` that wraps the keys. Nesting `<kbd>` elements is the recommended markup for key combinations.
+
+---
+
+## Button
+
+Place `np-kbd` inside a button to display a keyboard key inside a button. Reduce the button's right padding so the key sits close to the edge.
+
+<ComponentPreview
+  name="kbd-button"
+  target="html"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Input
+
+Use a [Button Group](/docs/components/html/button-group) with `np-button-group-text` to show a keyboard shortcut next to an input. Include the `button-group.css` and `input.css` stylesheets:
+
+```html
+<link rel="stylesheet" href="./styles/input.css" />
+<link rel="stylesheet" href="./styles/button-group.css" />
+```
+
+<ComponentPreview
+  name="kbd-input"
+  target="html"
+  styles={["/input/input.css", "/button-group/button-group.css"]}
+/>
+
+---
+
+## Tooltip
+
+Inside an element with `data-slot="tooltip-content"` (or the `np-tooltip-content` class), keys switch to a translucent background and the tooltip's text color, so they stay readable on the tooltip's inverted surface.
+
+```html
+<div data-slot="tooltip-content">
+  Open the command palette <kbd class="np-kbd">⌘K</kbd>
+</div>
+```
+
+---
+
+## Class and data attributes
+
+| Part  | Class          | Data attribute      |
+| ----- | -------------- | ------------------- |
+| Key   | `np-kbd`       | `data-np-kbd`       |
+| Group | `np-kbd-group` | `data-np-kbd-group` |

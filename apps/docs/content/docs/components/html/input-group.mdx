@@ -1,0 +1,239 @@
+---
+title: Input Group
+description: Add addons, buttons, and helper content to inputs.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="input-group-demo"
+  target="html"
+  styles={["/input/input.css", "/button/button.css"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add input-group"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="input-group"
+        title="styles/input-group.css"
+        fileTarget="styles/input-group.css"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the component's CSS file to your HTML document, along with the stylesheets of the parts you use: [Input](/docs/components/html/input), [Textarea](/docs/components/html/textarea), [Button](/docs/components/html/button) and [Kbd](/docs/components/html/kbd).
+
+```html
+<head>
+  <link rel="stylesheet" href="./styles/tokens.css">
+  <link rel="stylesheet" href="./styles/input.css">
+  <link rel="stylesheet" href="./styles/input-group.css">
+</head>
+```
+
+Then, wrap an input and its addons in an `np-input-group`. The input needs both its own class and `np-input-group-input`.
+
+```html
+<div class="np-input-group" role="group">
+  <input class="np-input np-input-group-input" placeholder="Search..." aria-label="Search" />
+  <div class="np-input-group-addon" role="group">
+    <!-- icon -->
+  </div>
+  <div class="np-input-group-addon np-input-group-addon-end" role="group">12 results</div>
+</div>
+```
+
+Every part also works with a `data-np-*` attribute instead of the class.
+
+```html
+<div data-np-input-group role="group">
+  <input data-np-input data-np-input-group-input placeholder="Search..." aria-label="Search" />
+  <div data-np-input-group-addon data-align="inline-end" role="group">12 results</div>
+</div>
+```
+
+The group draws the border, the focus ring, and the invalid and disabled states. The input inside it has no border of its own.
+
+---
+
+## Composition
+
+Use the following composition to build an `InputGroup`:
+
+```text
+InputGroup
+├── InputGroupInput or InputGroupTextarea
+├── InputGroupAddon
+├── InputGroupButton
+└── InputGroupText
+```
+
+---
+
+## Parts
+
+| Part               | Class                      | Data attribute                  |
+| ------------------ | -------------------------- | ------------------------------- |
+| InputGroup         | `np-input-group`           | `data-np-input-group`           |
+| InputGroupAddon    | `np-input-group-addon`     | `data-np-input-group-addon`     |
+| InputGroupText     | `np-input-group-text`      | `data-np-input-group-text`      |
+| InputGroupButton   | `np-input-group-button`    | `data-np-input-group-button`    |
+| InputGroupInput    | `np-input-group-input`     | `data-np-input-group-input`     |
+| InputGroupTextarea | `np-input-group-textarea`  | `data-np-input-group-textarea`  |
+
+---
+
+## Align
+
+Use `data-align` or the matching class on an addon to place it. Addons can be written in any order in your HTML. Their position follows the alignment.
+
+| Position     | Data attribute             | Class alias                         |
+| ------------ | -------------------------- | ----------------------------------- |
+| Inline start | `data-align="inline-start"` | `np-input-group-addon` (default)   |
+| Inline end   | `data-align="inline-end"`   | `np-input-group-addon-end`         |
+| Block start  | `data-align="block-start"`  | `np-input-group-addon-block-start` |
+| Block end    | `data-align="block-end"`    | `np-input-group-addon-block-end`   |
+
+---
+
+## Icon
+
+Place an inline SVG inside an addon. Icons are sized to `1rem` automatically. Mark decorative icons as hidden.
+
+<ComponentPreview
+  name="input-group-icon"
+  target="html"
+  styles={["/input/input.css"]}
+/>
+
+---
+
+## Text
+
+Use `np-input-group-text` to show a prefix, a suffix, or a unit.
+
+<ComponentPreview
+  name="input-group-text"
+  target="html"
+  styles={["/input/input.css"]}
+/>
+
+---
+
+## Button
+
+Put a button inside an addon and add `np-input-group-button` to it, along with the button's own classes. The default look is a `ghost` button at the `xs` size.
+
+<ComponentPreview
+  name="input-group-button"
+  target="html"
+  styles={["/input/input.css", "/button/button.css"]}
+/>
+
+```html
+<button class="np-button np-button-ghost np-button-xs np-input-group-button" type="button">
+  Copy
+</button>
+```
+
+Icon-only buttons use `np-button-icon-xs` or `np-button-icon-sm`, and need an `aria-label`.
+
+---
+
+## Kbd
+
+Use [Kbd](/docs/components/html/kbd) to show a keyboard shortcut for the field.
+
+<ComponentPreview
+  name="input-group-kbd"
+  target="html"
+  styles={["/input/input.css", "/kbd/kbd.css"]}
+/>
+
+---
+
+## Spinner
+
+<ComponentPreview
+  name="input-group-spinner"
+  target="html"
+  styles={["/spinner/spinner.css"]}
+/>
+
+---
+
+## Textarea
+
+Use a `textarea` with `np-textarea np-input-group-textarea`, and `block-start` and `block-end` addons to build editors and chat inputs. The group grows with the textarea.
+
+<ComponentPreview
+  name="input-group-textarea"
+  target="html"
+  styles={["/textarea/textarea.css", "/button/button.css"]}
+/>
+
+A block addon that has a border needs a little padding on the bordered side, as in the demo.
+
+---
+
+## Invalid
+
+Set `aria-invalid="true"` (or `data-invalid`) on the input. The group switches to the error state.
+
+<ComponentPreview
+  name="input-group-invalid"
+  target="html"
+  styles={["/input/input.css"]}
+/>
+
+---
+
+## Disabled
+
+Use the native `disabled` attribute on the input. The group is dimmed and tinted. Add `data-disabled="true"` to the group to dim its addons too.
+
+<ComponentPreview
+  name="input-group-disabled"
+  target="html"
+  styles={["/input/input.css"]}
+/>
+
+---
+
+## Focus on click
+
+In React, clicking an addon focuses the input. In plain HTML, add a small handler if you want the same behavior.
+
+```html
+<script>
+  document.querySelectorAll(".np-input-group-addon").forEach((addon) => {
+    addon.addEventListener("click", (event) => {
+      if (event.target.closest("button")) return
+      addon.parentElement.querySelector("input, textarea")?.focus()
+    })
+  })
+</script>
+```
+

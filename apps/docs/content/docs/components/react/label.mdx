@@ -64,3 +64,22 @@ import { Label } from "@/components/nepui/label"
 ```tsx
 <Label htmlFor="email">Your email address</Label>
 ```
+
+---
+
+## Label in Field
+
+For form fields, use the [Field](/docs/components/react/field) component which
+includes built-in `FieldLabel`, `FieldDescription`, and `FieldError` components.
+
+```tsx
+<Field>
+  <FieldLabel htmlFor="email">Your email address</FieldLabel>
+  <Input id="email" />
+</Field>
+```
+
+<ComponentPreview
+  name="field-demo"
+  height="min-h-180"
+/>

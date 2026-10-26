@@ -56,3 +56,31 @@ Then add the `data-np-label` attribute or `np-label` class to your `<label>` ele
 <label data-np-label for="email">Your email address</label>
 <label for="terms" class="np-label">Terms and conditions</label>
 ```
+
+---
+
+## Label in Field
+
+For form fields, use the [Field](/docs/components/html/field) component which
+includes built-in `FieldLabel`, `FieldDescription`, and `FieldError` components.
+
+```tsx
+<div class="np-field">
+  <label class="np-field-label" for="name">Full name</label>
+  <input id="name" class="np-input" />
+</div>
+```
+
+<ComponentPreview
+  name="field-demo"
+  target="html"
+  height="670px"
+  styles={[
+    "/label/label.css",
+    "/separator/separator.css",
+    "/input/input.css",
+    "/textarea/textarea.css",
+    "/checkbox/checkbox.css",
+    "/button/button.css",
+  ]}
+/>

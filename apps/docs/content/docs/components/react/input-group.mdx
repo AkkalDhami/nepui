@@ -1,0 +1,247 @@
+---
+title: Input Group
+description: Add addons, buttons, and helper content to inputs.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="input-group-demo"
+/>
+
+import { InfoIcon } from "@phosphor-icons/react/ssr"
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/input-group.json"
+      nepui="npx nepui@latest add input-group --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install class-variance-authority cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="input-group"
+        title="components/nepui/input-group/input-group.css"
+        fileTarget="components/nepui/input-group/input-group.css"
+      />
+
+      <ComponentSource
+        target="react"
+        name="input-group"
+        title="components/nepui/input-group/input-group.tsx"
+        fileTarget="components/nepui/input-group/input-group.tsx"
+      />
+
+      <ComponentSource
+        target="react"
+        name="input-group"
+        title="components/nepui/input-group/index.ts"
+        fileTarget="components/nepui/input-group/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+  InputGroupText,
+  InputGroupTextarea,
+} from "@/components/nepui/input-group"
+```
+
+```tsx
+<InputGroup>
+  <InputGroupInput placeholder="Search..." />
+  <InputGroupAddon>
+    <SearchIcon />
+  </InputGroupAddon>
+</InputGroup>
+```
+
+---
+
+## Composition
+
+Use the following composition to build an `InputGroup`:
+
+```text
+InputGroup
+├── InputGroupInput or InputGroupTextarea
+├── InputGroupAddon
+├── InputGroupButton
+└── InputGroupText
+```
+
+---
+
+## Align
+
+Use the `align` prop on `InputGroupAddon` to place it before or after the control, or above or below it.
+ 
+| Value          | Position                                      |
+| -------------- | --------------------------------------------- |
+| `inline-start` | Before the control (default)                  |
+| `inline-end`   | After the control                             |
+| `block-start`  | Above the control, on its own row             |
+| `block-end`    | Below the control, on its own row             |
+ 
+Addons can be written in any order in your JSX. Their position follows `align`, not the source order.
+
+---
+
+## Icon
+
+Place an icon inside an addon. Icons are sized to `1rem` automatically.
+
+<ComponentPreview
+  name="input-group-icon"
+/>
+
+---
+
+## Text
+
+Use `InputGroupText` to show a prefix, a suffix, or a unit.
+
+<ComponentPreview
+  name="input-group-text"
+/>
+
+---
+
+## Button
+
+Use `InputGroupButton` for actions that belong to the field. It is a [Button](/docs/components/react/button) with compact sizes: `xs` (default), `sm`, `icon-xs` and `icon-sm`. The default variant is `ghost`.
+ 
+<ComponentPreview
+  name="input-group-button"
+/>
+
+---
+
+## Kbd
+
+Use [Kbd](/docs/components/react/kbd) to show a keyboard shortcut for the field.
+
+<ComponentPreview
+  name="input-group-kbd"
+/>
+
+---
+
+## Spinner
+
+<ComponentPreview
+  name="input-group-spinner"
+/>
+
+---
+
+## Textarea
+
+Use `InputGroupTextarea` with `block-start` and `block-end` addons to build editors and chat inputs. The group grows with the textarea.
+ 
+<ComponentPreview
+  name="input-group-textarea"
+/>
+ 
+A block addon that has a border needs a little padding on the bordered side, as in the demo.
+
+---
+
+## Invalid
+
+Set `aria-invalid` on the input. The group switches to the error state.
+
+<ComponentPreview
+  name="input-group-invalid"
+/>
+
+---
+
+## Disabled
+
+Disable the input. The group is dimmed and tinted. Add `data-disabled="true"` to the group to dim its addons too.
+
+<ComponentPreview
+  name="input-group-disabled"
+/>
+
+---
+
+
+## API Reference
+ 
+### InputGroup
+ 
+The main component that wraps the control and its addons.
+ 
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` | —       |
+ 
+### InputGroupAddon
+ 
+Displays icons, text, buttons or shortcuts before, after, above or below the control.
+ 
+| Prop        | Type                                                             | Default          |
+| ----------- | ---------------------------------------------------------------- | ---------------- |
+| `align`     | `"inline-start" \| "inline-end" \| "block-start" \| "block-end"` | `"inline-start"` |
+| `className` | `string`                                                         | —                |
+ 
+### InputGroupButton
+ 
+A button inside an addon. It accepts the props of [Button](/docs/components/react/button), except `size`.
+ 
+| Prop        | Type                                                  | Default   |
+| ----------- | ----------------------------------------------------- | --------- |
+| `size`      | `"xs" \| "sm" \| "icon-xs" \| "icon-sm"`              | `"xs"`    |
+| `variant`   | Any [Button](/docs/components/react/button) variant   | `"ghost"` |
+| `type`      | `"button" \| "submit" \| "reset"`                      | `"button"` |
+| `className` | `string`                                              | —         |
+ 
+### InputGroupInput
+ 
+The input of the group. It accepts the props of [Input](/docs/components/react/input).
+ 
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` | —       |
+ 
+### InputGroupTextarea
+ 
+The textarea of the group. It accepts the props of [Textarea](/docs/components/react/textarea).
+ 
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` | —       |
+ 
+### InputGroupText
+ 
+Static text, a prefix, a suffix or a unit inside an addon.
+ 
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` | —       |
