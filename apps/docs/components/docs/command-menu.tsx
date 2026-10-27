@@ -360,7 +360,7 @@ export function CommandMenu({
     <Dialog open={open} onOpenChange={setOpen} {...props}>
       <DialogTrigger
         render={<Button variant="outline" />}
-        className={"text-muted-foreground"}
+        className={"hidden text-muted-foreground sm:flex"}
       >
         <MagnifyingGlassIcon />
         <span>Search</span>
@@ -368,6 +368,12 @@ export function CommandMenu({
           <Kbd>Ctrl</Kbd>
           <Kbd>K</Kbd>
         </KbdGroup>
+      </DialogTrigger>
+      <DialogTrigger
+        render={<Button variant="secondary" size={"icon"} />}
+        className={"text-muted-foreground sm:hidden"}
+      >
+        <MagnifyingGlassIcon />
       </DialogTrigger>
       <DialogContent
         showCloseButton={false}

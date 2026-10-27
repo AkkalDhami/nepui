@@ -92,7 +92,7 @@ export function Navbar({ className }: NavbarProps) {
                 <DesktopNavLink key={item.href} item={item} />
               ))}
             </div>
-            <div className="ml-auto hidden w-full max-w-64 md:flex">
+            <div className="ml-auto w-full max-w-64">
               <CommandMenu tree={source.pageTree} navItems={NAV_ITEMS} />
             </div>
             <div className="flex items-center gap-2">
