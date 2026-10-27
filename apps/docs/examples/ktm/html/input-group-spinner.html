@@ -1,40 +1,35 @@
 <div style="display: grid; gap: 1.5rem; width: 100%; max-width: 24rem">
   <div class="np-input-group" role="group">
-    <div class="np-input-group-addon" role="group">
-      <span class="np-input-group-text">$</span>
-    </div>
-    <input
-      class="np-input np-input-group-input"
-      placeholder="0.00"
-      aria-label="Amount"
-    />
-    <div class="np-input-group-addon np-input-group-addon-end" role="group">
-      <span class="np-input-group-text">USD</span>
+    <input class="np-input np-input-group-input" placeholder="Searching..." />
+    <div class="np-input-group-addon" data-align="inline-end">
+      <span class="np-spinner"></span>
     </div>
   </div>
 
   <div class="np-input-group" role="group">
-    <div class="np-input-group-addon" role="group">
-      <span class="np-input-group-text">https://</span>
-    </div>
-    <input
-      class="np-input np-input-group-input"
-      placeholder="example.com"
-      aria-label="Domain"
-    />
-    <div class="np-input-group-addon np-input-group-addon-end" role="group">
-      <span class="np-input-group-text">.com</span>
+    <input class="np-input np-input-group-input" placeholder="Processing..." />
+    <div class="np-input-group-addon" data-align="inline-start">
+      <span class="np-spinner"></span>
     </div>
   </div>
 
   <div class="np-input-group" role="group">
     <input
       class="np-input np-input-group-input"
-      placeholder="Enter your username"
-      aria-label="Username"
+      placeholder="Saving changes..."
     />
-    <div class="np-input-group-addon np-input-group-addon-end" role="group">
-      <span class="np-input-group-text">@company.com</span>
+    <div class="np-input-group-addon" data-align="inline-end">
+      <span class="np-input-group-text">Saving...</span>
+      <span class="np-spinner"></span>
     </div>
   </div>
 </div>
+
+<script>
+  document.querySelectorAll(".np-input-group-addon").forEach((addon) => {
+    addon.addEventListener("click", (event) => {
+      if (event.target.closest("button")) return
+      addon.parentElement.querySelector("input, textarea")?.focus()
+    })
+  })
+</script>

@@ -122,6 +122,10 @@ Use `data-align` or the matching class on an addon to place it. Addons can be wr
 
 Place an inline SVG inside an addon. Icons are sized to `1rem` automatically. Mark decorative icons as hidden.
 
+```html
+<link rel="stylesheet" href="./styles/input.css">
+```
+
 <ComponentPreview
   name="input-group-icon"
   target="html"
@@ -133,6 +137,10 @@ Place an inline SVG inside an addon. Icons are sized to `1rem` automatically. Ma
 ## Text
 
 Use `np-input-group-text` to show a prefix, a suffix, or a unit.
+
+```html
+<link rel="stylesheet" href="./styles/input.css">
+```
 
 <ComponentPreview
   name="input-group-text"
@@ -146,17 +154,16 @@ Use `np-input-group-text` to show a prefix, a suffix, or a unit.
 
 Put a button inside an addon and add `np-input-group-button` to it, along with the button's own classes. The default look is a `ghost` button at the `xs` size.
 
+```html
+<link rel="stylesheet" href="./styles/input.css">
+<link rel="stylesheet" href="./styles/button.css">
+```
+
 <ComponentPreview
   name="input-group-button"
   target="html"
   styles={["/input/input.css", "/button/button.css"]}
 />
-
-```html
-<button class="np-button np-button-ghost np-button-xs np-input-group-button" type="button">
-  Copy
-</button>
-```
 
 Icon-only buttons use `np-button-icon-xs` or `np-button-icon-sm`, and need an `aria-label`.
 
@@ -165,6 +172,11 @@ Icon-only buttons use `np-button-icon-xs` or `np-button-icon-sm`, and need an `a
 ## Kbd
 
 Use [Kbd](/docs/components/html/kbd) to show a keyboard shortcut for the field.
+
+```html
+<link rel="stylesheet" href="./styles/input.css">
+<link rel="stylesheet" href="./styles/kbd.css">
+```
 
 <ComponentPreview
   name="input-group-kbd"
@@ -176,10 +188,15 @@ Use [Kbd](/docs/components/html/kbd) to show a keyboard shortcut for the field.
 
 ## Spinner
 
+```html
+<link rel="stylesheet" href="./styles/input.css">
+<link rel="stylesheet" href="./styles/spinner.css">
+```
+
 <ComponentPreview
   name="input-group-spinner"
   target="html"
-  styles={["/spinner/spinner.css"]}
+  styles={["/input/input.css", "/spinner/spinner.css"]}
 />
 
 ---
@@ -187,6 +204,11 @@ Use [Kbd](/docs/components/html/kbd) to show a keyboard shortcut for the field.
 ## Textarea
 
 Use a `textarea` with `np-textarea np-input-group-textarea`, and `block-start` and `block-end` addons to build editors and chat inputs. The group grows with the textarea.
+
+```html
+<link rel="stylesheet" href="./styles/button.css">
+<link rel="stylesheet" href="./styles/textarea.css">
+```
 
 <ComponentPreview
   name="input-group-textarea"
@@ -202,6 +224,10 @@ A block addon that has a border needs a little padding on the bordered side, as 
 
 Set `aria-invalid="true"` (or `data-invalid`) on the input. The group switches to the error state.
 
+```html
+<link rel="stylesheet" href="./styles/input.css">
+```
+
 <ComponentPreview
   name="input-group-invalid"
   target="html"
@@ -213,6 +239,10 @@ Set `aria-invalid="true"` (or `data-invalid`) on the input. The group switches t
 ## Disabled
 
 Use the native `disabled` attribute on the input. The group is dimmed and tinted. Add `data-disabled="true"` to the group to dim its addons too.
+
+```html
+<link rel="stylesheet" href="./styles/input.css">
+```
 
 <ComponentPreview
   name="input-group-disabled"
