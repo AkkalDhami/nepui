@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Radio Group</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/label.css" />
+    <link rel="stylesheet" href="../styles/field.css" />
+    <link rel="stylesheet" href="../styles/radio-group.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        margin: 0;
+        padding: 2rem 1rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: system-ui, sans-serif;
+      }
+      main {
+        display: grid;
+        gap: 2rem;
+        max-width: 40rem;
+        margin-inline: auto;
+      }
+
+      h2 {
+        margin: 0 0 0.75rem;
+        font-size: 0.875rem;
+        color: var(--np-muted-foreground);
+        font-weight: 500;
+      }
+      .row {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Class form</h2>
+        <div
+          class="np-radio-group"
+          role="radiogroup"
+          aria-label="Density"
+          style="width: fit-content"
+        >
+          <div class="row">
+            <input
+              class="np-radio-group-item"
+              type="radio"
+              name="density"
+              id="a1"
+              value="default"
+            />
+            <label class="np-label" for="a1">Default</label>
+          </div>
+          <div class="row">
+            <input
+              class="np-radio-group-item"
+              type="radio"
+              name="density"
+              id="a2"
+              value="comfortable"
+              checked
+            />
+            <label class="np-label" for="a2">Comfortable</label>
+          </div>
+          <div class="row">
+            <input
+              class="np-radio-group-item"
+              type="radio"
+              name="density"
+              id="a3"
+              value="compact"
+            />
+            <label class="np-label" for="a3">Compact</label>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Data-attribute form</h2>
+        <div
+          data-np-radio-group
+          role="radiogroup"
+          aria-label="Size"
+          style="width: fit-content"
+        >
+          <div class="row">
+            <input
+              data-np-radio-group-item
+              type="radio"
+              name="size"
+              id="b1"
+              value="sm"
+            />
+            <label class="np-label" for="b1">Small</label>
+          </div>
+          <div class="row">
+            <input
+              data-np-radio-group-item
+              type="radio"
+              name="size"
+              id="b2"
+              value="md"
+              checked
+            />
+            <label class="np-label" for="b2">Medium</label>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Horizontal</h2>
+        <div
+          class="np-radio-group"
+          data-orientation="horizontal"
+          role="radiogroup"
+          aria-label="Alignment"
+          style="width: fit-content"
+        >
+          <div class="row">
+            <input
+              class="np-radio-group-item"
+              type="radio"
+              name="align"
+              id="c1"
+              value="left"
+              checked
+            />
+            <label class="np-label" for="c1">Left</label>
+          </div>
+          <div class="row">
+            <input
+              class="np-radio-group-item"
+              type="radio"
+              name="align"
+              id="c2"
+              value="center"
+            />
+            <label class="np-label" for="c2">Center</label>
+          </div>
+          <div class="row">
+            <input
+              class="np-radio-group-item"
+              type="radio"
+              name="align"
+              id="c3"
+              value="right"
+            />
+            <label class="np-label" for="c3">Right</label>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Description</h2>
+        <div
+          class="np-radio-group"
+          role="radiogroup"
+          aria-label="Spacing"
+          style="width: 100%; max-width: 20rem"
+        >
+          <div class="np-field np-field-horizontal">
+            <input
+              class="np-radio-group-item"
+              type="radio"
+              name="spacing"
+              id="d1"
+              value="default"
+            />
+            <div class="np-field-content">
+              <label class="np-field-label" for="d1">Default</label>
+              <p class="np-field-description">
+                Standard spacing for most use cases.
+              </p>
+            </div>
+          </div>
+          <div class="np-field np-field-horizontal">
+            <input
+              class="np-radio-group-item"
+              type="radio"
+              name="spacing"
+              id="d2"
+              value="compact"
+              checked
+            />
+            <div class="np-field-content">
+              <label class="np-field-label" for="d2">Compact</label>
+              <p class="np-field-description">
+                Minimal spacing for dense layouts.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Choice card</h2>
+        <div
+          class="np-radio-group"
+          role="radiogroup"
+          aria-label="Plan"
+          style="width: 100%; max-width: 24rem"
+        >
+          <label class="np-field-label" for="card-plus">
+            <span class="np-field np-field-horizontal">
+              <span class="np-field-content">
+                <span class="np-field-title">Plus</span>
+                <span class="np-field-description"
+                  >For individuals and small teams.</span
+                >
+              </span>
+              <input
+                class="np-radio-group-item"
+                type="radio"
+                name="card-plan"
+                id="card-plus"
+                value="plus"
+                checked
+              />
+            </span>
+          </label>
+          <label class="np-field-label" for="card-pro">
+            <span class="np-field np-field-horizontal">
+              <span class="np-field-content">
+                <span class="np-field-title">Pro</span>
+                <span class="np-field-description"
+                  >For growing businesses.</span
+                >
+              </span>
+              <input
+                class="np-radio-group-item"
+                type="radio"
+                name="card-plan"
+                id="card-pro"
+                value="pro"
+              />
+            </span>
+          </label>
+          <label class="np-field-label" for="card-enterprise">
+            <span class="np-field np-field-horizontal">
+              <span class="np-field-content">
+                <span class="np-field-title">Enterprise</span>
+                <span class="np-field-description"
+                  >For large teams and organizations.</span
+                >
+              </span>
+              <input
+                class="np-radio-group-item"
+                type="radio"
+                name="card-plan"
+                id="card-enterprise"
+                value="enterprise"
+              />
+            </span>
+          </label>
+        </div>
+      </section>
+
+      <section>
+        <h2>Disabled</h2>
+        <div
+          class="np-radio-group"
+          role="radiogroup"
+          aria-label="Tier"
+          style="width: fit-content"
+        >
+          <div class="np-field np-field-horizontal">
+            <input
+              class="np-radio-group-item"
+              type="radio"
+              name="tier"
+              id="f1"
+              value="free"
+              checked
+            />
+            <label class="np-field-label" for="f1">Free</label>
+          </div>
+          <div class="np-field np-field-horizontal" data-disabled>
+            <input
+              class="np-radio-group-item"
+              type="radio"
+              name="tier"
+              id="f2"
+              value="pro"
+              disabled
+            />
+            <label class="np-field-label" for="f2">Pro</label>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Invalid</h2>
+        <div
+          class="np-radio-group"
+          role="radiogroup"
+          aria-label="Notifications"
+          style="width: fit-content"
+        >
+          <div class="np-field np-field-horizontal" data-invalid>
+            <input
+              class="np-radio-group-item"
+              type="radio"
+              name="notify"
+              id="g1"
+              value="email"
+              aria-invalid="true"
+            />
+            <label class="np-field-label" for="g1">Email</label>
+          </div>
+          <div class="np-field np-field-horizontal" data-invalid>
+            <input
+              class="np-radio-group-item"
+              type="radio"
+              name="notify"
+              id="g2"
+              value="sms"
+              aria-invalid="true"
+              checked
+            />
+            <label class="np-field-label" for="g2">SMS (checked)</label>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
