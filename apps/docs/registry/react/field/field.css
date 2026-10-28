@@ -48,7 +48,6 @@
   gap: calc(var(--np-spacing) * 3);
 }
 
-/* Nested groups are a little tighter */
 :is(.np-field-group, [data-np-field-group])
   > :is(.np-field-group, [data-np-field-group]) {
   gap: calc(var(--np-spacing) * 4);
@@ -115,10 +114,29 @@
     .np-field-horizontal,
     :is(.np-field, [data-np-field])[data-orientation="horizontal"]
   )
-  > :is(.np-checkbox, [data-np-checkbox], [data-slot="checkbox"]) {
+  > :is(
+    .np-checkbox,
+    [data-np-checkbox],
+    [data-slot="checkbox"],
+    .np-radio-group-item,
+    [data-np-radio-group-item],
+    [data-slot="radio-group-item"],
+    [data-slot="radio-group-item"],
+
+  ) {
   flex: 0 0 var(--np-checkbox-size, 1rem);
   width: var(--np-checkbox-size, 1rem);
   height: var(--np-checkbox-size, 1rem);
+}
+
+:is(
+    .np-field-horizontal,
+    :is(.np-field, [data-np-field])[data-orientation="horizontal"]
+  )
+  > :is(.np-switch, [data-np-switch], [data-slot="switch"], ) {
+  flex: 0 0 var(--np-switch-width, 2rem);
+  width: var(--np-switch-width, 2rem);
+  height: var(--np-switch-height, 1.15rem);
 }
 
 /* Responsive: vertical, then a row inside a wide field group */
@@ -200,7 +218,6 @@
   user-select: none;
 }
 
-/* Label that wraps a whole Field = a "choice card" */
 :is(.np-field-label, [data-np-field-label]):has(
   > :is(.np-field, [data-np-field])
 ) {
@@ -218,7 +235,6 @@
   padding: calc(var(--np-spacing) * 2.5);
 }
 
-/* Hover (not while checked or disabled) */
 :is(.np-field-label, [data-np-field-label]):has(
     > :is(.np-field, [data-np-field])
   ):not(:has(:disabled, [data-disabled])):not(
@@ -228,12 +244,14 @@
 }
 
 /* Checked */
+
 :is(.np-field-label, [data-np-field-label]):has([data-checked], input:checked) {
   border-color: var(--np-field-choice-border);
   background: var(--np-field-choice-bg);
 }
 
 /* Focus */
+
 :is(.np-field-label, [data-np-field-label]):has(
     > :is(.np-field, [data-np-field])
   ):has(:focus-visible) {
@@ -242,6 +260,7 @@
 }
 
 /* Disabled field dims its label and title */
+
 :is(.np-field, [data-np-field])[data-disabled="true"]
   :is(
     .np-field-label,
@@ -277,7 +296,6 @@
   text-align: start;
 }
 
-/* Right after a legend, pull it closer */
 :is(.np-field-legend, [data-np-field-legend])[data-variant="legend"]
   + :is(.np-field-description, [data-np-field-description]),
 .np-field-legend:not(.np-field-legend-label)
@@ -293,7 +311,6 @@
   margin-top: calc(var(--np-spacing) * -1);
 }
 
-/* Balanced lines next to a control */
 :is(
     .np-field-horizontal,
     :is(.np-field, [data-np-field])[data-orientation="horizontal"]

@@ -1,0 +1,156 @@
+/* nepui - Radio Group */
+
+.np-radio-group,
+[data-np-radio-group] {
+  --np-radio-group-gap: calc(var(--np-spacing) * 2);
+
+  box-sizing: border-box;
+  display: grid;
+  width: 100%;
+  gap: var(--np-radio-group-gap);
+}
+
+.np-radio-group-horizontal,
+:is(.np-radio-group, [data-np-radio-group])[data-orientation="horizontal"] {
+  --np-radio-group-gap: calc(var(--np-spacing) * 4);
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.np-radio-group-item,
+[data-np-radio-group-item] {
+  --np-radio-group-item-size: calc(var(--np-spacing) * 4);
+  --np-radio-group-dot-size: calc(var(--np-spacing) * 2);
+  --np-radio-group-dot-color: var(--np-primary-foreground);
+  --np-radio-group-border: var(--np-input, var(--np-border));
+  --np-radio-group-bg: transparent;
+  --np-radio-group-checked-bg: var(--np-primary);
+  --np-radio-group-checked-border: var(--np-primary);
+  --np-radio-group-invalid-border: var(--np-destructive);
+  --np-radio-group-invalid-ring: color-mix(
+    in oklch,
+    var(--np-destructive),
+    transparent 80%
+  );
+
+  box-sizing: border-box;
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  width: var(--np-radio-group-item-size);
+  height: var(--np-radio-group-item-size);
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--np-radio-group-border);
+  border-radius: var(--np-radius-full, 9999px);
+  background-color: var(--np-radio-group-bg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: var(--np-radio-group-dot-size) var(--np-radio-group-dot-size);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+:is(.np-radio-group-item, [data-np-radio-group-item]):not(input)::after {
+  content: "";
+  position: absolute;
+  inset-block: calc(var(--np-spacing) * -2);
+  inset-inline: calc(var(--np-spacing) * -3);
+}
+
+:is(.np-radio-group-item, [data-np-radio-group-item]):focus-visible {
+  border-color: var(--np-ring);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--np-ring), transparent 50%);
+}
+
+:is(.np-radio-group-item, [data-np-radio-group-item]):is(
+  :checked,
+  [data-checked],
+  [aria-checked="true"]
+) {
+  border-color: var(--np-radio-group-checked-border);
+  background-color: var(--np-radio-group-checked-bg);
+  background-image: radial-gradient(
+    circle closest-side,
+    var(--np-radio-group-dot-color) calc(100% - 0.5px),
+    transparent 100%
+  );
+}
+
+:is(.np-radio-group-item, [data-np-radio-group-item]):is(
+  :disabled,
+  [aria-disabled="true"],
+  [data-disabled]
+) {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+:is(.np-radio-group-item, [data-np-radio-group-item]):is(
+  [aria-invalid="true"],
+  [data-invalid]
+) {
+  border-color: var(--np-radio-group-invalid-border);
+  box-shadow: 0 0 0 3px var(--np-radio-group-invalid-ring);
+}
+
+:is(.np-radio-group-item, [data-np-radio-group-item]):is(
+    [aria-invalid="true"],
+    [data-invalid]
+  ):is(:checked, [data-checked], [aria-checked="true"]) {
+  border-color: var(--np-radio-group-checked-border);
+}
+
+:is(.dark, [data-theme="dark"])
+  :is(.np-radio-group-item, [data-np-radio-group-item]) {
+  --np-radio-group-bg: color-mix(
+    in oklab,
+    var(--np-radio-group-border) 30%,
+    transparent
+  );
+  --np-radio-group-invalid-border: color-mix(
+    in oklch,
+    var(--np-destructive),
+    transparent 50%
+  );
+  --np-radio-group-invalid-ring: color-mix(
+    in oklch,
+    var(--np-destructive),
+    transparent 60%
+  );
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light, [data-theme="light"])
+    :is(.np-radio-group-item, [data-np-radio-group-item]) {
+    --np-radio-group-bg: color-mix(
+      in oklab,
+      var(--np-radio-group-border) 30%,
+      transparent
+    );
+    --np-radio-group-invalid-border: color-mix(
+      in oklch,
+      var(--np-destructive),
+      transparent 50%
+    );
+    --np-radio-group-invalid-ring: color-mix(
+      in oklch,
+      var(--np-destructive),
+      transparent 60%
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .np-radio-group-item,
+  [data-np-radio-group-item] {
+    transition: none;
+  }
+}
