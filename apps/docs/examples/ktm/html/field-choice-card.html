@@ -1,41 +1,45 @@
-<div style="width: 100%; max-width: 24rem">
-  <div class="np-field-group">
-    <fieldset class="np-field-set">
-      <legend class="np-field-legend np-field-legend-label">
-        Compute Environment
-      </legend>
-      <p class="np-field-description">
-        Select the compute environment for your cluster.
-      </p>
-      <div class="np-field-group" style="gap: 0.75rem">
-        <label class="np-field-label" for="kubernetes">
-          <span class="np-field np-field-horizontal" role="group">
-            <span class="np-field-content">
-              <span class="np-field-title">Kubernetes</span>
-              <span class="np-field-description"
-                >Run GPU workloads on a K8s cluster.</span
-              >
-            </span>
-            <input
-              id="kubernetes"
-              type="checkbox"
-              class="np-checkbox"
-              checked
-            />
+<div class="np-field-group" style="width: 100%; max-width: 24rem">
+  <fieldset class="np-field-set">
+    <legend class="np-field-legend np-field-legend-label">
+      Compute Environment
+    </legend>
+    <p class="np-field-description">
+      Select the compute environment for your cluster.
+    </p>
+    <div class="np-radio-group">
+      <label class="np-field-label" for="kubernetes">
+        <span class="np-field np-field-horizontal" role="group">
+          <span class="np-field-content">
+            <span class="np-field-title">Kubernetes</span>
+            <span class="np-field-description"
+              >Run GPU workloads on a K8s cluster.</span
+            >
           </span>
-        </label>
-        <label class="np-field-label" for="vm">
-          <span class="np-field np-field-horizontal" role="group">
-            <span class="np-field-content">
-              <span class="np-field-title">Virtual Machine</span>
-              <span class="np-field-description"
-                >Access a cluster to run GPU workloads.</span
-              >
-            </span>
-            <input id="vm" type="checkbox" class="np-checkbox" />
+          <input
+            id="kubernetes"
+            name="compute-environment"
+            type="radio"
+            class="np-radio-group-item"
+            checked
+          />
+        </span>
+      </label>
+      <label class="np-field-label" for="vm">
+        <span class="np-field np-field-horizontal" role="group">
+          <span class="np-field-content">
+            <span class="np-field-title">Virtual Machine</span>
+            <span class="np-field-description"
+              >Access a cluster to run GPU workloads.</span
+            >
           </span>
-        </label>
-      </div>
-    </fieldset>
-  </div>
+          <input
+            id="vm"
+            name="compute-environment"
+            type="radio"
+            class="np-radio-group-item"
+          />
+        </span>
+      </label>
+    </div>
+  </fieldset>
 </div>

@@ -1,0 +1,207 @@
+---
+title: Switch
+description: A control that allows the user to toggle between checked and not checked.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="switch-demo"
+  target="html"
+  styles={["/label/label.css"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add switch"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="switch"
+        title="styles/switch.css"
+        fileTarget="styles/switch.css"
+      />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the design tokens and the component's CSS file to your HTML document.
+
+```html
+<head>
+  <link rel="stylesheet" href="./styles/tokens.css">
+  <link rel="stylesheet" href="./styles/switch.css">
+</head>
+```
+
+Use a native checkbox with `role="switch"`:
+
+```html
+<input class="np-switch" type="checkbox" role="switch" id="airplane-mode">
+<label for="airplane-mode">Airplane mode</label>
+```
+
+Or use the data attribute instead of the class:
+
+```html
+<input data-np-switch type="checkbox" role="switch" id="airplane-mode">
+```
+
+---
+
+## Label
+
+The demos use the [Label](/docs/components/html/label) styles, so link `label.css` before `switch.css`:
+
+```html
+<link rel="stylesheet" href="./styles/label.css">
+<link rel="stylesheet" href="./styles/switch.css">
+```
+
+<ComponentPreview
+  name="switch-demo"
+  target="html"
+  styles={["/label/label.css"]}
+/>
+
+---
+
+## Description
+
+This example uses the [Field](/docs/components/html/field) styles, so link `field.css` before `switch.css`:
+
+```html
+<link rel="stylesheet" href="./styles/field.css">
+<link rel="stylesheet" href="./styles/switch.css">
+```
+
+<ComponentPreview
+  name="switch-description"
+  target="html"
+  styles={["/field/field.css"]}
+/>
+
+---
+
+## Choice Card
+
+Wrap the field in a `np-field-label`. Inside a `<label>` only phrasing content is valid, so use `<span>` for the card parts. This also needs `field.css`.
+
+```html
+<link rel="stylesheet" href="./styles/field.css">
+<link rel="stylesheet" href="./styles/switch.css">
+```
+
+<ComponentPreview
+  name="switch-choice-card"
+  target="html"
+  styles={["/field/field.css"]}
+/>
+
+---
+
+## Disabled
+
+Add `disabled` to the input. Add `data-disabled` to the `np-field` to dim the label too. This also needs `field.css`.
+
+```html
+<link rel="stylesheet" href="./styles/field.css">
+<link rel="stylesheet" href="./styles/switch.css">
+```
+
+<ComponentPreview
+  name="switch-disabled"
+  target="html"
+  styles={["/field/field.css"]}
+/>
+
+---
+
+## Invalid
+
+Add `data-invalid` to the `np-field` and `aria-invalid="true"` (or `data-invalid`) to the input to show an error state. 
+
+```html showLineNumbers /data-invalid/ /aria-invalid="true"/
+<div class="np-field" data-orientation="horizontal" data-invalid>
+  <div class="np-field-content">
+    <label class="np-field-label" for="terms">Accept terms and conditions</label>
+  </div>
+  <input
+    class="np-switch"
+    type="checkbox"
+    role="switch"
+    id="terms"
+    aria-invalid="true"
+  />
+</div>
+```
+
+This also needs `field.css`.
+
+```html
+<link rel="stylesheet" href="./styles/field.css">
+<link rel="stylesheet" href="./styles/switch.css">
+```
+
+<ComponentPreview
+  name="switch-invalid"
+  target="html"
+  styles={["/field/field.css"]}
+/>
+
+---
+
+## Size
+
+Add `np-switch-sm` (or `data-size="sm"`) for the small size. This example also needs `label.css`.
+
+```html
+<link rel="stylesheet" href="./styles/label.css">
+<link rel="stylesheet" href="./styles/switch.css">
+```
+
+<ComponentPreview
+  name="switch-size"
+  target="html"
+  styles={["/label/label.css"]}
+/>
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Small | `data-size="sm"` | `np-switch-sm` |
+| Default | - | `np-switch` |
+
+---
+
+## Reference
+
+### Switch
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Switch | `data-np-switch` | `np-switch` |
+
+### States
+
+| State | Selector |
+| ----- | -------- |
+| Checked | `:checked`, `[data-checked]`, `[aria-checked="true"]` |
+| Disabled | `:disabled`, `[aria-disabled="true"]`, `[data-disabled]` |
+| Invalid | `[aria-invalid="true"]`, `[data-invalid]` |

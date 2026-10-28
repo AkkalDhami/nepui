@@ -243,6 +243,7 @@ h4 {
     padding: 0;
     counter-reset: line;
     box-decoration-break: clone;
+    z-index: 99999 !important;
   }
 
   [data-line-numbers] [data-line]::before {
@@ -258,10 +259,12 @@ h4 {
     background-color: var(--color-code);
     position: sticky;
     left: 0;
+    z-index: 99999 !important;
   }
 
   [data-line-numbers] [data-highlighted-line][data-line]::before {
     background-color: var(--color-code-highlight);
+    z-index: 99999 !important;
   }
 
   [data-line] {
@@ -306,6 +309,7 @@ h4 {
     padding-block: 0.1rem;
     font-family: var(--font-mono);
     font-size: 0.875rem;
+    box-shadow: 0 0 0 1px color-mix(in oklch, var(--ring), transparent 50%);
   }
 
   .cm-content {

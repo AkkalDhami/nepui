@@ -1,0 +1,228 @@
+---
+title: Radio Group
+description: A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="radio-group-demo"
+  target="html"
+  styles={["/label/label.css"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add radio-group"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="radio-group"
+        title="styles/radio-group.css"
+        fileTarget="styles/radio-group.css"
+      />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the design tokens and the component's CSS file to your HTML document.
+
+```html
+<head>
+  <link rel="stylesheet" href="./styles/tokens.css">
+  <link rel="stylesheet" href="./styles/radio-group.css">
+</head>
+```
+
+Use native radio inputs. Give the inputs in one group the same `name`.
+
+```html showLineNumbers
+<div class="np-radio-group" role="radiogroup" aria-label="Density">
+  <input
+    class="np-radio-group-item"
+    type="radio"
+    name="density"
+    value="default"
+    aria-label="Default"
+  />
+  <input
+    class="np-radio-group-item"
+    type="radio"
+    name="density"
+    value="comfortable"
+    aria-label="Comfortable"
+    checked
+  />
+  <input
+    class="np-radio-group-item"
+    type="radio"
+    name="density"
+    value="compact"
+    aria-label="Compact"
+  />
+</div>
+```
+
+Or use the data attributes instead of classes:
+
+```html showLineNumbers
+<div data-np-radio-group role="radiogroup" aria-label="Density">
+  <input
+    data-np-radio-group-item
+    type="radio"
+    name="density"
+    value="default"
+    aria-label="Default"
+  />
+  <input
+    data-np-radio-group-item
+    type="radio"
+    name="density"
+    value="comfortable"
+    aria-label="Comfortable"
+    checked
+  />
+</div>
+```
+
+Keyboard support (arrow keys, `Tab`, `Space`) comes from the native inputs. Give every input a `<label for>` or an `aria-label`.
+
+---
+
+## Composition
+Use the following composition to build a `RadioGroup`:
+
+```text
+RadioGroup
+├── RadioGroupItem
+└── RadioGroupItem
+```
+
+---
+
+## Horizontal
+
+Add `np-radio-group-horizontal` (or `data-orientation="horizontal"`) to lay the items out in a row.
+
+This example uses the [Label](/docs/components/html/label) styles, so link `label.css`:
+
+```html
+<link rel="stylesheet" href="./styles/label.css">
+<link rel="stylesheet" href="./styles/radio-group.css">
+```
+
+<ComponentPreview
+  name="radio-group-horizontal"
+  target="html"
+  styles={["/label/label.css"]}
+/>
+
+---
+
+## Description
+
+This example uses the [Field](/docs/components/html/field) styles, so link `field.css`:
+
+```html
+<link rel="stylesheet" href="./styles/field.css">
+<link rel="stylesheet" href="./styles/radio-group.css">
+```
+
+<ComponentPreview
+  name="radio-group-description"
+  target="html"
+  styles={["/field/field.css"]}
+/>
+
+---
+
+## Choice Card
+
+Wrap the field in a `np-field-label`. Inside a `<label>` only phrasing content is valid, so use `<span>` for the card parts.
+
+This example uses the [Field](/docs/components/html/field) styles, so link `field.css`:
+
+```html
+<link rel="stylesheet" href="./styles/field.css">
+<link rel="stylesheet" href="./styles/radio-group.css">
+```
+
+<ComponentPreview
+  name="radio-group-choice-card"
+  target="html"
+  styles={["/field/field.css"]}
+/>
+
+---
+
+## Disabled
+
+Add `disabled` to the input. Add `data-disabled` to the `np-field` to dim the label too.
+
+This example uses the [Field](/docs/components/html/field) styles, so link `field.css`:
+
+```html
+<link rel="stylesheet" href="./styles/field.css">
+<link rel="stylesheet" href="./styles/radio-group.css">
+```
+
+<ComponentPreview
+  name="radio-group-disabled"
+  target="html"
+  styles={["/field/field.css"]}
+/>
+
+---
+
+## Invalid
+
+Add `data-invalid` to the `np-field` and `aria-invalid="true"` (or `data-invalid`) to the input to show an error state. This also needs `field.css`.
+
+<ComponentPreview
+  name="radio-group-invalid"
+  target="html"
+  styles={["/field/field.css"]}
+/>
+
+---
+
+## Reference
+
+### Group and item
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Radio group | `data-np-radio-group` | `np-radio-group` |
+| Radio item | `data-np-radio-group-item` | `np-radio-group-item` |
+
+### Orientation
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Vertical (default) | - | `np-radio-group` |
+| Horizontal | `data-orientation="horizontal"` | `np-radio-group-horizontal` |
+
+### States
+
+| State | Selector |
+| ----- | -------- |
+| Checked | `:checked`, `[data-checked]`, `[aria-checked="true"]` |
+| Disabled | `:disabled`, `[aria-disabled="true"]`, `[data-disabled]` |
+| Invalid | `[aria-invalid="true"]`, `[data-invalid]` |

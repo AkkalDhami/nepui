@@ -79,7 +79,7 @@ Link the component's CSS file to your HTML document. Add the stylesheets of the 
 
 Then, build a field with the `np-field-*` classes.
 
-```html
+```html showLineNumbers
 <fieldset class="np-field-set">
   <legend class="np-field-legend">Profile</legend>
   <p class="np-field-description">This appears on invoices and emails.</p>
@@ -235,7 +235,49 @@ The legend has two sizes. The `label` variant uses label sizing, which is handy 
 
 ---
 
+## Radio
+
+This example uses the [Radio Group](/docs/components/html/radio-group) styles, so link `radio-group.css`:
+
+```html
+<link rel="stylesheet" href="./styles/field.css">
+<link rel="stylesheet" href="./styles/radio-group.css">
+```
+
+<ComponentPreview
+  name="radio-group-description"
+  target="html"
+  styles={["/field/field.css"]}
+/>
+
+---
+
+## Switch
+
+This example uses the [Switch](/docs/components/html/switch) styles, so link `switch.css`:
+
+```html
+<link rel="stylesheet" href="./styles/field.css">
+<link rel="stylesheet" href="./styles/switch.css">
+```
+
+<ComponentPreview
+  name="switch-description"
+  target="html"
+  styles={["/field/field.css"]}
+/>
+
+---
+
 ## Checkbox
+
+Link the following stylesheets:
+
+```html
+<link rel="stylesheet" href="./styles/label.css">
+<link rel="stylesheet" href="./styles/checkbox.css">
+<link rel="stylesheet" href="./styles/separator.css">
+```
 
 <ComponentPreview
   name="field-checkbox"
@@ -247,33 +289,34 @@ The legend has two sizes. The `label` variant uses label sizing, which is handy 
 
 ## Choice Card
 
-Wrap a field inside `np-field-label` to create a selectable card. The card is highlighted when it contains a checked control, and shows a focus ring when the control is focused.
+Wrap a field inside `np-field-label` to create a selectable card.
 
-Elements inside a `<label>` must be phrasing content, so use `<span>` for the parts inside the card.
+Link the following stylesheets:
+
+```html
+<link rel="stylesheet" href="./styles/radio-group.css.css">
+```
 
 <ComponentPreview
   name="field-choice-card"
   target="html"
-  styles={["/checkbox/checkbox.css"]}
+  styles={["/radio-group/radio-group.css"]}
 />
 
-```html
-<label class="np-field-label" for="kubernetes">
-  <span class="np-field np-field-horizontal" role="group">
-    <span class="np-field-content">
-      <span class="np-field-title">Kubernetes</span>
-      <span class="np-field-description">Run GPU workloads on a K8s cluster.</span>
-    </span>
-    <input id="kubernetes" type="checkbox" class="np-checkbox" />
-  </span>
-</label>
-```
 
 ---
 
 ## Field Group
 
 Stack fields with `np-field-group`. Add `np-field-separator` to divide them. It holds an `np-separator` line, and can show text on the line with `np-field-separator-content`.
+
+Link the following stylesheets:
+
+```html
+<link rel="stylesheet" href="./styles/label.css">
+<link rel="stylesheet" href="./styles/checkbox.css">
+<link rel="stylesheet" href="./styles/separator.css">
+```
 
 <ComponentPreview
   name="field-group"
@@ -296,6 +339,14 @@ Stack fields with `np-field-group`. Add `np-field-separator` to divide them. It 
 - **Horizontal fields:** use `np-field-horizontal` to align the label and control side-by-side. Pair with `np-field-content` to keep descriptions aligned.
 - **Responsive fields:** use `np-field-responsive` for automatic column layouts. `np-field-group` is a container, and responsive fields switch to a row when it is at least `28rem` wide. A responsive field outside a field group stays vertical.
 
+Link the following stylesheets:
+
+```html
+<link rel="stylesheet" href="./styles/label.css">
+<link rel="stylesheet" href="./styles/input.css">
+<link rel="stylesheet" href="./styles/button.css">
+```
+
 <ComponentPreview
   name="field-responsive"
   target="html"
@@ -314,13 +365,20 @@ Stack fields with `np-field-group`. Add `np-field-separator` to divide them. It 
 - Add `aria-invalid="true"` on the control itself for assistive technologies.
 - Put `np-field-error` right after the control, with `role="alert"`. Connect it with `aria-describedby`.
 
+Link the following stylesheets:
+
+```html
+<link rel="stylesheet" href="./styles/label.css">
+<link rel="stylesheet" href="./styles/input.css">
+```
+
 <ComponentPreview
   name="field-error"
   target="html"
   styles={["/label/label.css", "/input/input.css"]}
 />
 
-```html
+```html /data-invalid/ /aria-invalid="true"/
 <div class="np-field" role="group" data-invalid>
   <label class="np-field-label" for="email">Email</label>
   <input id="email" class="np-input" type="email" aria-invalid="true" aria-describedby="email-error" />
@@ -329,19 +387,6 @@ Stack fields with `np-field-group`. Add `np-field-separator` to divide them. It 
 ```
 
 For several messages, put a list with the `np-field-error-list` class inside `np-field-error`.
-
----
-
-## Disabled
-
-Add `data-disabled="true"` to the field to dim its label and title. Also disable the control itself with the native `disabled` attribute.
-
-```html
-<div class="np-field np-field-horizontal" role="group" data-disabled="true">
-  <input id="beta" type="checkbox" class="np-checkbox" disabled />
-  <label class="np-field-label" for="beta">Join the beta</label>
-</div>
-```
 
 ---
 
