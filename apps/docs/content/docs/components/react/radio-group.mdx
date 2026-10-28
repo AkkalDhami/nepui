@@ -1,0 +1,167 @@
+---
+title: Radio Group
+description: A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="radio-group-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/radio-group.json"
+      nepui="npx nepui@latest add radio-group --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react class-variance-authority cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="radio-group"
+        title="components/nepui/radio-group/radio-group.css"
+        fileTarget="components/nepui/radio-group/radio-group.css"
+      />
+      <ComponentSource
+        target="react"
+        name="radio-group"
+        title="components/nepui/radio-group/radio-group.tsx"
+        fileTarget="components/nepui/radio-group/radio-group.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="radio-group"
+        title="components/nepui/radio-group/index.ts"
+        fileTarget="components/nepui/radio-group/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import { RadioGroup, RadioGroupItem } from "@/components/nepui/radio-group"
+```
+
+```tsx
+<RadioGroup defaultValue="comfortable" aria-label="Density">
+  <RadioGroupItem value="default" aria-label="Default" />
+  <RadioGroupItem value="comfortable" aria-label="Comfortable" />
+  <RadioGroupItem value="compact" aria-label="Compact" />
+</RadioGroup>
+```
+
+Give every item a visible label (with `id` and `htmlFor`) or an `aria-label`, and give the group an `aria-label` or a legend.
+
+---
+
+## Composition
+Use the following composition to build a `RadioGroup`:
+
+```text
+RadioGroup
+├── RadioGroupItem
+└── RadioGroupItem
+```
+
+---
+
+## Horizontal
+
+Set `orientation="horizontal"` to lay the items out in a row.
+
+<ComponentPreview
+  name="radio-group-horizontal"
+/>
+
+---
+
+## Description
+
+Use [Field](/docs/components/react/field) to add a description under each label.
+
+<ComponentPreview
+  name="radio-group-description"
+/>
+
+---
+
+## Choice Card
+
+Wrap the item in a `FieldLabel` to make the whole card selectable.
+
+<ComponentPreview
+  name="radio-group-choice-card"
+/>
+
+---
+
+## Disabled
+
+Add `disabled` to a `RadioGroupItem`, or to `RadioGroup` to disable every item. Add `data-disabled` to the `Field` to dim the label too.
+
+<ComponentPreview
+  name="radio-group-disabled"
+/>
+
+---
+
+## Invalid
+
+Add `data-invalid` to the `Field` and `aria-invalid` to the `RadioGroupItem` to show an error state.
+
+```tsx showLineNumbers /data-invalid/ /aria-invalid/
+<Field orientation="horizontal" data-invalid>
+  <RadioGroupItem value="email" id="email" aria-invalid />
+  <FieldLabel htmlFor="email">Email</FieldLabel>
+</Field>
+```
+
+<ComponentPreview
+  name="radio-group-invalid"
+/>
+
+---
+
+## API Reference
+
+### RadioGroup
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `orientation` | `"vertical" \| "horizontal"` | `"vertical"` |
+| `value` | `string` | - |
+| `defaultValue` | `string` | - |
+| `onValueChange` | `(value: string, eventDetails) => void` | - |
+| `disabled` | `boolean` | `false` |
+| `readOnly` | `boolean` | `false` |
+| `required` | `boolean` | `false` |
+| `name` | `string` | - |
+
+`RadioGroup` also accepts the other props of the Base UI [Radio Group](https://base-ui.com/react/components/radio).
+
+### RadioGroupItem
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `value` | `string` | - |
+| `disabled` | `boolean` | `false` |
+| `id` | `string` | - |
+| `aria-invalid` | `boolean` | `false` |

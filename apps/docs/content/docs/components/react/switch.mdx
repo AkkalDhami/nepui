@@ -1,0 +1,141 @@
+---
+title: Switch
+description: A control that allows the user to toggle between checked and not checked.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="switch-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/switch.json"
+      nepui="npx nepui@latest add switch --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react class-variance-authority cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="switch"
+        title="components/nepui/switch/switch.css"
+        fileTarget="components/nepui/switch/switch.css"
+      />
+      <ComponentSource
+        target="react"
+        name="switch"
+        title="components/nepui/switch/switch.tsx"
+        fileTarget="components/nepui/switch/switch.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="switch"
+        title="components/nepui/switch/index.ts"
+        fileTarget="components/nepui/switch/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import { Switch } from "@/components/nepui/switch"
+```
+
+```tsx
+<Switch />
+```
+
+---
+
+## Description
+
+Use [Field](/docs/components/react/field) to add a description under the label.
+
+<ComponentPreview
+  name="switch-description"
+/>
+
+---
+
+## Choice Card
+
+Wrap the switch in a `FieldLabel` to make the whole card toggle it.
+
+<ComponentPreview
+  name="switch-choice-card"
+/>
+
+---
+
+## Disabled
+
+Add the `disabled` prop to `Switch`. Add `data-disabled` to the `Field` to dim the label too.
+
+<ComponentPreview
+  name="switch-disabled"
+/>
+
+---
+
+## Invalid
+
+Add `data-invalid` to the `Field` and `aria-invalid` to the `Switch` to show an error state.
+
+```tsx showLineNumbers /data-invalid/ /aria-invalid/
+<Field orientation="horizontal" data-invalid>
+  <FieldContent>
+    <FieldLabel htmlFor="terms">Accept terms and conditions</FieldLabel>
+  </FieldContent>
+  <Switch id="terms" aria-invalid />
+</Field>
+```
+
+<ComponentPreview
+  name="switch-invalid"
+/>
+
+---
+
+## Size
+
+Use the `size` prop to change the size of the switch.
+
+<ComponentPreview
+  name="switch-size"
+/>
+
+---
+
+## API Reference
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `size` | `"sm" \| "default"` | `"default"` |
+| `checked` | `boolean` | - |
+| `defaultChecked` | `boolean` | `false` |
+| `onCheckedChange` | `(checked: boolean, eventDetails) => void` | - |
+| `disabled` | `boolean` | `false` |
+| `readOnly` | `boolean` | `false` |
+| `required` | `boolean` | `false` |
+| `name` | `string` | - |
+
+`Switch` also accepts the other props of the [Base UI Switch root](https://base-ui.com/react/components/switch#api-reference).

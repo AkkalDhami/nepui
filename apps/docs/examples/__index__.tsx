@@ -75,6 +75,12 @@ import KtmReactKbdDemo from "./ktm/react/kbd-demo"
 import KtmReactKbdGroup from "./ktm/react/kbd-group"
 import KtmReactKbdInput from "./ktm/react/kbd-input"
 import KtmReactLabelDemo from "./ktm/react/label-demo"
+import KtmReactRadioGroupChoiceCard from "./ktm/react/radio-group-choice-card"
+import KtmReactRadioGroupDemo from "./ktm/react/radio-group-demo"
+import KtmReactRadioGroupDescription from "./ktm/react/radio-group-description"
+import KtmReactRadioGroupDisabled from "./ktm/react/radio-group-disabled"
+import KtmReactRadioGroupHorizontal from "./ktm/react/radio-group-horizontal"
+import KtmReactRadioGroupInvalid from "./ktm/react/radio-group-invalid"
 import KtmReactSelectDemo from "./ktm/react/select-demo"
 import KtmReactSelectDisabled from "./ktm/react/select-disabled"
 import KtmReactSelectGroups from "./ktm/react/select-groups"
@@ -99,6 +105,12 @@ import KtmReactSpinnerSize from "./ktm/react/spinner-size"
 import KtmReactSpinnerSpeed from "./ktm/react/spinner-speed"
 import KtmReactSpinnerThickness from "./ktm/react/spinner-thickness"
 import KtmReactStepsDemo from "./ktm/react/steps-demo"
+import KtmReactSwitchChoiceCard from "./ktm/react/switch-choice-card"
+import KtmReactSwitchDemo from "./ktm/react/switch-demo"
+import KtmReactSwitchDescription from "./ktm/react/switch-description"
+import KtmReactSwitchDisabled from "./ktm/react/switch-disabled"
+import KtmReactSwitchInvalid from "./ktm/react/switch-invalid"
+import KtmReactSwitchSize from "./ktm/react/switch-size"
 import KtmReactTextareaControlled from "./ktm/react/textarea-controlled"
 import KtmReactTextareaDemo from "./ktm/react/textarea-demo"
 import KtmReactTextareaDisabled from "./ktm/react/textarea-disabled"
@@ -183,6 +195,12 @@ export const ExamplesIndex: Record<
       "kbd-group": KtmReactKbdGroup,
       "kbd-input": KtmReactKbdInput,
       "label-demo": KtmReactLabelDemo,
+      "radio-group-choice-card": KtmReactRadioGroupChoiceCard,
+      "radio-group-demo": KtmReactRadioGroupDemo,
+      "radio-group-description": KtmReactRadioGroupDescription,
+      "radio-group-disabled": KtmReactRadioGroupDisabled,
+      "radio-group-horizontal": KtmReactRadioGroupHorizontal,
+      "radio-group-invalid": KtmReactRadioGroupInvalid,
       "select-demo": KtmReactSelectDemo,
       "select-disabled": KtmReactSelectDisabled,
       "select-groups": KtmReactSelectGroups,
@@ -207,6 +225,12 @@ export const ExamplesIndex: Record<
       "spinner-speed": KtmReactSpinnerSpeed,
       "spinner-thickness": KtmReactSpinnerThickness,
       "steps-demo": KtmReactStepsDemo,
+      "switch-choice-card": KtmReactSwitchChoiceCard,
+      "switch-demo": KtmReactSwitchDemo,
+      "switch-description": KtmReactSwitchDescription,
+      "switch-disabled": KtmReactSwitchDisabled,
+      "switch-invalid": KtmReactSwitchInvalid,
+      "switch-size": KtmReactSwitchSize,
       "textarea-controlled": KtmReactTextareaControlled,
       "textarea-demo": KtmReactTextareaDemo,
       "textarea-disabled": KtmReactTextareaDisabled,
@@ -285,6 +309,12 @@ export const ExamplesIndex: Record<
       "kbd-group": "ktm/html/kbd-group.html",
       "kbd-input": "ktm/html/kbd-input.html",
       "label-demo": "ktm/html/label-demo.html",
+      "radio-group-choice-card": "ktm/html/radio-group-choice-card.html",
+      "radio-group-demo": "ktm/html/radio-group-demo.html",
+      "radio-group-description": "ktm/html/radio-group-description.html",
+      "radio-group-disabled": "ktm/html/radio-group-disabled.html",
+      "radio-group-horizontal": "ktm/html/radio-group-horizontal.html",
+      "radio-group-invalid": "ktm/html/radio-group-invalid.html",
       "select-demo": "ktm/html/select-demo.html",
       "select-disabled": "ktm/html/select-disabled.html",
       "select-groups": "ktm/html/select-groups.html",
@@ -308,6 +338,12 @@ export const ExamplesIndex: Record<
       "spinner-speed": "ktm/html/spinner-speed.html",
       "spinner-thickness": "ktm/html/spinner-thickness.html",
       "steps-demo": "ktm/html/steps-demo.html",
+      "switch-choice-card": "ktm/html/switch-choice-card.html",
+      "switch-demo": "ktm/html/switch-demo.html",
+      "switch-description": "ktm/html/switch-description.html",
+      "switch-disabled": "ktm/html/switch-disabled.html",
+      "switch-invalid": "ktm/html/switch-invalid.html",
+      "switch-size": "ktm/html/switch-size.html",
       "textarea-controlled": "ktm/html/textarea-controlled.html",
       "textarea-demo": "ktm/html/textarea-demo.html",
       "textarea-disabled": "ktm/html/textarea-disabled.html",

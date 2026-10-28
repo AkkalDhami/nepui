@@ -40,7 +40,7 @@ export async function ComponentPreview({
     const highlightedCode = await highlightCode(trimCode(source), "html")
     const nameParts = name.split("-")
 
-    const groupedComponents = ["button-group", "input-group"]
+    const groupedComponents = ["button-group", "input-group", "radio-group"]
 
     const componentName = groupedComponents.includes(
       nameParts.slice(0, 2).join("-")
