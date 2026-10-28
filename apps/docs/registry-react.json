@@ -334,6 +334,52 @@
       ]
     },
     {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group",
+      "description": "A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time",
+      "files": [
+        {
+          "path": "registry/react/radio-group/radio-group.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/radio-group/radio-group.tsx"
+        },
+        {
+          "path": "registry/react/radio-group/radio-group.css",
+          "type": "registry:ui",
+          "target": "components/nepui/radio-group/radio-group.css"
+        },
+        {
+          "path": "registry/react/radio-group/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/radio-group/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "A control that allows the user to toggle between checked and not checked.",
+      "files": [
+        {
+          "path": "registry/react/switch/switch.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/switch/switch.tsx"
+        },
+        {
+          "path": "registry/react/switch/switch.css",
+          "type": "registry:ui",
+          "target": "components/nepui/switch/switch.css"
+        },
+        {
+          "path": "registry/react/switch/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/switch/index.ts"
+        }
+      ]
+    },
+    {
       "name": "input-group",
       "type": "registry:ui",
       "title": "Input Group",
