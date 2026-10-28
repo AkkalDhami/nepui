@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Switch</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/label.css" />
+    <link rel="stylesheet" href="../styles/field.css" />
+    <link rel="stylesheet" href="../styles/switch.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: system-ui, sans-serif;
+      }
+      main {
+        display: grid;
+        gap: 2rem;
+        max-width: 40rem;
+        margin-inline: auto;
+      }
+      h2 {
+        margin: 0 0 0.75rem;
+        font-size: 0.875rem;
+        color: var(--np-muted-foreground);
+        font-weight: 500;
+      }
+      .row {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .col {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Class form</h2>
+        <div class="col">
+          <div class="row">
+            <input class="np-switch" type="checkbox" role="switch" id="a1" />
+            <label class="np-label" for="a1">Airplane mode</label>
+          </div>
+          <div class="row">
+            <input
+              class="np-switch"
+              type="checkbox"
+              role="switch"
+              id="a2"
+              checked
+            />
+            <label class="np-label" for="a2">Wi-Fi (on)</label>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Data-attribute form</h2>
+        <div class="row">
+          <input data-np-switch type="checkbox" role="switch" id="b1" checked />
+          <label class="np-label" for="b1">Bluetooth</label>
+        </div>
+      </section>
+
+      <section>
+        <h2>Sizes (class and data-size)</h2>
+        <div class="col">
+          <div class="row">
+            <input
+              class="np-switch np-switch-sm"
+              type="checkbox"
+              role="switch"
+              id="c1"
+              checked
+            />
+            <label class="np-label" for="c1">Small</label>
+          </div>
+          <div class="row">
+            <input
+              class="np-switch"
+              data-size="sm"
+              type="checkbox"
+              role="switch"
+              id="c2"
+            />
+            <label class="np-label" for="c2">Small (data-size)</label>
+          </div>
+          <div class="row">
+            <input
+              class="np-switch"
+              type="checkbox"
+              role="switch"
+              id="c3"
+              checked
+            />
+            <label class="np-label" for="c3">Default</label>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Description</h2>
+        <div
+          class="np-field np-field-horizontal"
+          style="width: 100%; max-width: 24rem"
+        >
+          <div class="np-field-content">
+            <label class="np-field-label" for="d1">Share across devices</label>
+            <p class="np-field-description">
+              Focus is shared across devices, and turns off when you leave the
+              app.
+            </p>
+          </div>
+          <input class="np-switch" type="checkbox" role="switch" id="d1" />
+        </div>
+      </section>
+
+      <section>
+        <h2>Choice card</h2>
+        <label class="np-field-label" for="e1" style="max-width: 24rem">
+          <span class="np-field np-field-horizontal">
+            <span class="np-field-content">
+              <span class="np-field-title">Enable notifications</span>
+              <span class="np-field-description"
+                >Receive notifications when focus mode is enabled or
+                disabled.</span
+              >
+            </span>
+            <input
+              class="np-switch"
+              type="checkbox"
+              role="switch"
+              id="e1"
+              checked
+            />
+          </span>
+        </label>
+      </section>
+
+      <section>
+        <h2>Disabled</h2>
+        <div class="col">
+          <div
+            class="np-field np-field-horizontal"
+            data-disabled
+            style="width: fit-content"
+          >
+            <input
+              class="np-switch"
+              type="checkbox"
+              role="switch"
+              id="f1"
+              disabled
+            />
+            <label class="np-field-label" for="f1">Disabled</label>
+          </div>
+          <div
+            class="np-field np-field-horizontal"
+            data-disabled
+            style="width: fit-content"
+          >
+            <input
+              class="np-switch"
+              type="checkbox"
+              role="switch"
+              id="f2"
+              disabled
+              checked
+            />
+            <label class="np-field-label" for="f2">Disabled and on</label>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Invalid</h2>
+        <div
+          class="np-field np-field-horizontal"
+          data-invalid
+          style="width: 100%; max-width: 24rem"
+        >
+          <div class="np-field-content">
+            <label class="np-field-label" for="g1"
+              >Accept terms and conditions</label
+            >
+            <p class="np-field-description">
+              You must accept the terms and conditions to continue.
+            </p>
+          </div>
+          <input
+            class="np-switch"
+            type="checkbox"
+            role="switch"
+            id="g1"
+            aria-invalid="true"
+          />
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,155 @@
+/* nepui - Switch */
+
+.np-switch,
+[data-np-switch] {
+  --np-switch-width: calc(var(--np-spacing) * 8);
+  --np-switch-height: calc(var(--np-spacing) * 4.6);
+  --np-switch-thumb-size: calc(var(--np-spacing) * 4);
+  --np-switch-track-off: var(--np-input, var(--np-border));
+  --np-switch-track-on: var(--np-primary);
+  --np-switch-thumb-off: var(--np-background);
+  --np-switch-thumb-on: var(--np-background);
+  --np-switch-invalid-border: var(--np-destructive);
+  --np-switch-invalid-ring: color-mix(
+    in oklch,
+    var(--np-destructive),
+    transparent 80%
+  );
+
+  box-sizing: border-box;
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  width: var(--np-switch-width);
+  height: var(--np-switch-height);
+  margin: 0;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: var(--np-radius-full, 9999px);
+  background-color: var(--np-switch-track-off);
+  background-image: radial-gradient(
+    circle closest-side,
+    var(--np-switch-thumb-off) calc(100% - 0.5px),
+    transparent 100%
+  );
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: var(--np-switch-thumb-size) var(--np-switch-thumb-size);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  transition:
+    background-color 150ms ease,
+    background-position 150ms ease,
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+:is(.np-switch, [data-np-switch]):dir(rtl) {
+  background-position: right center;
+}
+
+:is(.np-switch, [data-np-switch]):not(input)::after {
+  content: "";
+  position: absolute;
+  inset-block: calc(var(--np-spacing) * -2);
+  inset-inline: calc(var(--np-spacing) * -3);
+}
+
+:is(.np-switch, [data-np-switch]):focus-visible {
+  border-color: var(--np-ring);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--np-ring), transparent 50%);
+}
+
+:is(.np-switch, [data-np-switch]):is(
+  :checked,
+  [data-checked],
+  [aria-checked="true"]
+) {
+  background-color: var(--np-switch-track-on);
+  background-image: radial-gradient(
+    circle closest-side,
+    var(--np-switch-thumb-on) calc(100% - 0.5px),
+    transparent 100%
+  );
+  background-position: right center;
+}
+
+:is(.np-switch, [data-np-switch]):is(
+    :checked,
+    [data-checked],
+    [aria-checked="true"]
+  ):dir(rtl) {
+  background-position: left center;
+}
+
+:is(.np-switch, [data-np-switch]):is(
+  :disabled,
+  [aria-disabled="true"],
+  [data-disabled]
+) {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+:is(.np-switch, [data-np-switch]):is([aria-invalid="true"], [data-invalid]) {
+  border-color: var(--np-switch-invalid-border);
+  box-shadow: 0 0 0 3px var(--np-switch-invalid-ring);
+}
+
+.np-switch-sm,
+:is(.np-switch, [data-np-switch])[data-size="sm"] {
+  --np-switch-width: calc(var(--np-spacing) * 6);
+  --np-switch-height: calc(var(--np-spacing) * 3.5);
+  --np-switch-thumb-size: calc(var(--np-spacing) * 3);
+}
+
+:is(.dark, [data-theme="dark"]) :is(.np-switch, [data-np-switch]) {
+  --np-switch-track-off: color-mix(
+    in oklab,
+    var(--np-input, var(--np-border)) 80%,
+    transparent
+  );
+  --np-switch-thumb-off: var(--np-foreground);
+  --np-switch-thumb-on: var(--np-primary-foreground);
+  --np-switch-invalid-border: color-mix(
+    in oklch,
+    var(--np-destructive),
+    transparent 50%
+  );
+  --np-switch-invalid-ring: color-mix(
+    in oklch,
+    var(--np-destructive),
+    transparent 60%
+  );
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light, [data-theme="light"]) :is(.np-switch, [data-np-switch]) {
+    --np-switch-track-off: color-mix(
+      in oklab,
+      var(--np-input, var(--np-border)) 80%,
+      transparent
+    );
+    --np-switch-thumb-off: var(--np-foreground);
+    --np-switch-thumb-on: var(--np-primary-foreground);
+    --np-switch-invalid-border: color-mix(
+      in oklch,
+      var(--np-destructive),
+      transparent 50%
+    );
+    --np-switch-invalid-ring: color-mix(
+      in oklch,
+      var(--np-destructive),
+      transparent 60%
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .np-switch,
+  [data-np-switch] {
+    transition: none;
+  }
+}
