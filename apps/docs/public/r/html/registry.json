@@ -300,6 +300,24 @@
       ]
     },
     {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "title": "Scroll Area",
+      "description": "Augments native scroll functionality for custom, cross-browser styling.",
+      "files": [
+        {
+          "path": "registry/html/scroll-area/scroll-area.html",
+          "type": "registry:ui",
+          "target": "html/scroll-area.html"
+        },
+        {
+          "path": "registry/html/scroll-area/scroll-area.css",
+          "type": "registry:ui",
+          "target": "styles/scroll-area.css"
+        }
+      ]
+    },
+    {
       "name": "input-group",
       "type": "registry:ui",
       "title": "Input Group",

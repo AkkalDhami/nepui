@@ -380,6 +380,29 @@
       ]
     },
     {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "title": "Scroll Area",
+      "description": "Augments native scroll functionality for custom, cross-browser styling.",
+      "files": [
+        {
+          "path": "registry/react/scroll-area/scroll-area.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/scroll-area/scroll-area.tsx"
+        },
+        {
+          "path": "registry/react/scroll-area/scroll-area.css",
+          "type": "registry:ui",
+          "target": "components/nepui/scroll-area/scroll-area.css"
+        },
+        {
+          "path": "registry/react/scroll-area/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/scroll-area/index.ts"
+        }
+      ]
+    },
+    {
       "name": "input-group",
       "type": "registry:ui",
       "title": "Input Group",
