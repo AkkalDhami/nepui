@@ -1,0 +1,165 @@
+---
+title: Scroll Area
+description: Augments native scroll functionality for custom, cross-browser styling.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="scroll-area-demo"
+  target="html"
+  styles={["/separator/separator.css"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add scroll-area"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="scroll-area"
+        title="styles/scroll-area.css"
+        fileTarget="styles/scroll-area.css"
+      />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the tokens and the stylesheet:
+
+```html
+<link rel="stylesheet" href="./styles/tokens.css">
+<link rel="stylesheet" href="./styles/scroll-area.css">
+```
+
+Add the class to the element that should scroll, and give it a size:
+
+```html
+<div
+  class="np-scroll-area"
+  role="region"
+  aria-label="Release tags"
+  tabindex="0"
+  style="height: 18rem; width: 12rem"
+>
+  <!-- Long content -->
+</div>
+```
+
+Or use the data attribute instead of the class:
+
+```html
+<div data-np-scroll-area role="region" aria-label="Release tags" tabindex="0">
+  <!-- Long content -->
+</div>
+```
+
+The element itself scrolls, using the browser's thin native scrollbar colored by the theme. Scrollbar thickness is controlled by the browser, so `--np-scroll-area-scrollbar-size` only affects the React flavour.
+
+---
+
+## Accessibility
+
+A scrollable element needs to be reachable with the keyboard. Add `tabindex="0"`, and give it `role="region"` with an `aria-label` so screen readers can name it. The focus ring is drawn for you.
+
+---
+
+## Horizontal
+
+Add `np-scroll-area-horizontal` class or `data-orientation="horizontal"` data attribute to limit scrolling to the x axis. Keep the content from wrapping, for example with `width: max-content`.
+
+<ComponentPreview
+  name="scroll-area-horizontal"
+  target="html"
+/>
+
+---
+
+## Both directions
+
+With no orientation class the element scrolls on both axes.
+
+<ComponentPreview
+  name="scroll-area-both"
+  target="html"
+/>
+
+---
+
+## Thumb color
+
+Set `--np-scroll-area-thumb-color` on the element to change the thumb color.
+
+<ComponentPreview
+  name="scroll-area-color"
+  target="html"
+/>
+
+---
+
+## Scroll fade
+
+Add `np-scroll-fade` (or `data-np-scroll-fade`) to a scroll area to fade the content at any edge that still has content to scroll to. The fade grows as you scroll away from an edge and disappears at the end. Change its length with `--np-scroll-fade-size`. The fade also works on any other scrolling element, with or without `np-scroll-area`.
+
+<ComponentPreview
+  name="scroll-area-fade"
+  target="html"
+/>
+
+The fade is a CSS mask driven by scroll-driven animations, so it needs a browser that supports `animation-timeline`. Elsewhere the content still scrolls, there is just no fade. The mask also fades the native scrollbar at the faded edges.
+
+---
+
+## Reference
+
+### Component
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Scroll area | `data-np-scroll-area` | `np-scroll-area` |
+
+### Orientation
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Both (default) | - | - |
+| Vertical | `data-orientation="vertical"` | `np-scroll-area-vertical` |
+| Horizontal | `data-orientation="horizontal"` | `np-scroll-area-horizontal` |
+
+### Features
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Fade | `data-np-scroll-fade` | `np-scroll-fade` |
+
+### Variables
+
+| Variable | Default | Description |
+| -------- | ------- | ----------- |
+| `--np-scroll-area-thumb-color` | `var(--np-border)` | Color of the scrollbar thumb. |
+| `--np-scroll-fade-size` | `calc(var(--np-spacing) * 10)` | Length of the fade at each edge (with fade). |
+| `--np-scroll-area-overflow-x` | `auto` | Overflow on the x axis. |
+| `--np-scroll-area-overflow-y` | `auto` | Overflow on the y axis. |
+
+---
+
+## Browser support
+
+The styled scrollbar uses `scrollbar-width` and `scrollbar-color`. Browsers without them show their default scrollbar, and everything still scrolls. The fade also needs `mask-image` and scroll-driven animations (`animation-timeline: scroll()`); check current support before relying on it.

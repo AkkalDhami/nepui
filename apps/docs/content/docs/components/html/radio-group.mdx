@@ -172,6 +172,18 @@ This example uses the [Field](/docs/components/html/field) styles, so link `fiel
 
 ---
 
+## Invalid
+
+Add `data-invalid` to the `np-field` and `aria-invalid="true"` (or `data-invalid`) to the input to show an error state. This also needs `field.css`.
+
+<ComponentPreview
+  name="radio-group-invalid"
+  target="html"
+  styles={["/field/field.css"]}
+/>
+
+---
+
 ## Disabled
 
 Add `disabled` to the input. Add `data-disabled` to the `np-field` to dim the label too.
@@ -185,18 +197,6 @@ This example uses the [Field](/docs/components/html/field) styles, so link `fiel
 
 <ComponentPreview
   name="radio-group-disabled"
-  target="html"
-  styles={["/field/field.css"]}
-/>
-
----
-
-## Invalid
-
-Add `data-invalid` to the `np-field` and `aria-invalid="true"` (or `data-invalid`) to the input to show an error state. This also needs `field.css`.
-
-<ComponentPreview
-  name="radio-group-invalid"
   target="html"
   styles={["/field/field.css"]}
 />
