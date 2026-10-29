@@ -14,13 +14,11 @@
   user-select: none;
 }
 
-/* Disabled via an ancestor: <div data-disabled="true"> … <label> … </div> */
-[data-disabled="true"] :is(.np-label, [data-np-label]) {
+[data-disabled]:not([data-disabled="false"]) :is(.np-label, [data-np-label]) {
   pointer-events: none;
   opacity: 0.5;
 }
 
-/* Disabled control placed BEFORE the label: <input disabled /> <label> */
 :is(input, select, textarea, button, [role="checkbox"], [role="switch"]):is(
     :disabled,
     [aria-disabled="true"],

@@ -120,9 +120,7 @@
     [data-slot="checkbox"],
     .np-radio-group-item,
     [data-np-radio-group-item],
-    [data-slot="radio-group-item"],
-    [data-slot="radio-group-item"],
-
+    [data-slot="radio-group-item"]
   ) {
   flex: 0 0 var(--np-checkbox-size, 1rem);
   width: var(--np-checkbox-size, 1rem);
@@ -133,7 +131,7 @@
     .np-field-horizontal,
     :is(.np-field, [data-np-field])[data-orientation="horizontal"]
   )
-  > :is(.np-switch, [data-np-switch], [data-slot="switch"], ) {
+  > :is(.np-switch, [data-np-switch], [data-slot="switch"]) {
   flex: 0 0 var(--np-switch-width, 2rem);
   width: var(--np-switch-width, 2rem);
   height: var(--np-switch-height, 1.15rem);
@@ -259,9 +257,18 @@
   box-shadow: 0 0 0 3px color-mix(in oklch, var(--np-ring), transparent 50%);
 }
 
-/* Disabled field dims its label and title */
+/* Disabled: dims the label and title */
 
-:is(.np-field, [data-np-field])[data-disabled="true"]
+:is(.np-field, [data-np-field]):is(
+    [data-disabled]:not([data-disabled="false"]),
+    :has(
+      > :is(
+        :disabled,
+        [aria-disabled="true"],
+        [data-disabled]:not([data-disabled="false"])
+      )
+    )
+  )
   :is(
     .np-field-label,
     [data-np-field-label],

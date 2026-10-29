@@ -1,0 +1,236 @@
+/* nepui — Scroll Area */
+
+.np-scroll-area,
+[data-np-scroll-area] {
+  --np-scroll-area-scrollbar-size: calc(var(--np-spacing) * 2.5);
+  --np-scroll-area-thumb-color: var(--np-border);
+  --np-scroll-area-overflow-x: auto;
+  --np-scroll-area-overflow-y: auto;
+
+  position: relative;
+  box-sizing: border-box;
+  overflow-x: var(--np-scroll-area-overflow-x);
+  overflow-y: var(--np-scroll-area-overflow-y);
+  scrollbar-width: thin;
+  scrollbar-color: var(--np-scroll-area-thumb-color) transparent;
+  transition: box-shadow 150ms ease;
+}
+
+:is(.np-scroll-area, [data-np-scroll-area]):focus-visible,
+:is(.np-scroll-area-viewport, [data-np-scroll-area-viewport]):focus-visible {
+  outline: 1px solid transparent;
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--np-ring), transparent 50%);
+}
+
+.np-scroll-area-vertical,
+:is(.np-scroll-area, [data-np-scroll-area])[data-orientation="vertical"] {
+  --np-scroll-area-overflow-x: hidden;
+}
+
+.np-scroll-area-horizontal,
+:is(.np-scroll-area, [data-np-scroll-area])[data-orientation="horizontal"] {
+  --np-scroll-area-overflow-y: hidden;
+}
+
+:is(.np-scroll-area, [data-np-scroll-area]):has(
+  > :is(.np-scroll-area-viewport, [data-np-scroll-area-viewport])
+) {
+  --np-scroll-area-overflow-x: visible;
+  --np-scroll-area-overflow-y: visible;
+}
+
+.np-scroll-area-viewport,
+[data-np-scroll-area-viewport] {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  outline: none;
+  scrollbar-width: none;
+  transition:
+    color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.np-scroll-area-scrollbar,
+[data-np-scroll-area-scrollbar] {
+  display: flex;
+  box-sizing: border-box;
+  width: var(--np-scroll-area-scrollbar-size, calc(var(--np-spacing) * 2.5));
+  height: 100%;
+  padding: 1px;
+  border-inline-start: 1px solid transparent;
+  touch-action: none;
+  user-select: none;
+}
+
+.np-scroll-area-scrollbar-horizontal,
+:is(
+  .np-scroll-area-scrollbar,
+  [data-np-scroll-area-scrollbar]
+)[data-orientation="horizontal"] {
+  flex-direction: column;
+  width: auto;
+  height: var(--np-scroll-area-scrollbar-size, calc(var(--np-spacing) * 2.5));
+  border-inline-start: 0;
+  border-block-start: 1px solid transparent;
+}
+
+.np-scroll-area-thumb,
+[data-np-scroll-area-thumb] {
+  position: relative;
+  flex: 1 1 0%;
+  border-radius: var(--np-radius-full);
+  background-color: var(--np-scroll-area-thumb-color, var(--np-border));
+  transition: background-color 150ms ease;
+}
+
+.np-scroll-area-corner,
+[data-np-scroll-area-corner] {
+  background: transparent;
+}
+
+.np-scroll-fade,
+[data-np-scroll-fade] {
+  --np-scroll-fade-size: calc(var(--np-spacing) * 10);
+  --np-scroll-fade-x-dir: to right;
+}
+
+@property --np-scroll-fade-x-start {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --np-scroll-fade-x-end {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --np-scroll-fade-y-start {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --np-scroll-fade-y-end {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@keyframes np-scroll-fade-x-start {
+  from {
+    --np-scroll-fade-x-start: 0px;
+  }
+  to {
+    --np-scroll-fade-x-start: var(--np-scroll-fade-size);
+  }
+}
+
+@keyframes np-scroll-fade-x-end {
+  from {
+    --np-scroll-fade-x-end: var(--np-scroll-fade-size);
+  }
+  to {
+    --np-scroll-fade-x-end: 0px;
+  }
+}
+
+@keyframes np-scroll-fade-y-start {
+  from {
+    --np-scroll-fade-y-start: 0px;
+  }
+  to {
+    --np-scroll-fade-y-start: var(--np-scroll-fade-size);
+  }
+}
+
+@keyframes np-scroll-fade-y-end {
+  from {
+    --np-scroll-fade-y-end: var(--np-scroll-fade-size);
+  }
+  to {
+    --np-scroll-fade-y-end: 0px;
+  }
+}
+
+:is(.np-scroll-fade, [data-np-scroll-fade]):dir(rtl) {
+  --np-scroll-fade-x-dir: to left;
+}
+
+:is(.np-scroll-fade, [data-np-scroll-fade]):not(
+  :has(> :is(.np-scroll-area-viewport, [data-np-scroll-area-viewport]))
+),
+:is(.np-scroll-fade, [data-np-scroll-fade])
+  :is(.np-scroll-area-viewport, [data-np-scroll-area-viewport]) {
+  mask-image:
+    linear-gradient(
+      to bottom,
+      transparent 0,
+      var(--np-foreground) var(--np-scroll-fade-y-start),
+      var(--np-foreground) calc(100% - var(--np-scroll-fade-y-end)),
+      transparent 100%
+    ),
+    linear-gradient(
+      var(--np-scroll-fade-x-dir),
+      transparent 0,
+      var(--np-foreground) var(--np-scroll-fade-x-start),
+      var(--np-foreground) calc(100% - var(--np-scroll-fade-x-end)),
+      transparent 100%
+    );
+  mask-composite: intersect;
+  mask-repeat: no-repeat;
+}
+
+:is(.np-scroll-fade, [data-np-scroll-fade])
+  :is(.np-scroll-area-viewport, [data-np-scroll-area-viewport]) {
+  --np-scroll-fade-y-start: min(
+    var(--np-scroll-fade-size),
+    var(--scroll-area-overflow-y-start, 0px)
+  );
+  --np-scroll-fade-y-end: min(
+    var(--np-scroll-fade-size),
+    var(--scroll-area-overflow-y-end, 0px)
+  );
+  --np-scroll-fade-x-start: min(
+    var(--np-scroll-fade-size),
+    var(--scroll-area-overflow-x-start, 0px)
+  );
+  --np-scroll-fade-x-end: min(
+    var(--np-scroll-fade-size),
+    var(--scroll-area-overflow-x-end, 0px)
+  );
+}
+
+@supports (animation-timeline: scroll()) {
+  :is(.np-scroll-fade, [data-np-scroll-fade]):not(
+    :has(> :is(.np-scroll-area-viewport, [data-np-scroll-area-viewport]))
+  ) {
+    animation-name:
+      np-scroll-fade-y-start, np-scroll-fade-y-end, np-scroll-fade-x-start,
+      np-scroll-fade-x-end;
+    animation-timeline:
+      scroll(self block), scroll(self block), scroll(self inline),
+      scroll(self inline);
+    animation-range:
+      0 var(--np-scroll-fade-size),
+      calc(100% - var(--np-scroll-fade-size)) 100%,
+      0 var(--np-scroll-fade-size),
+      calc(100% - var(--np-scroll-fade-size)) 100%;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .np-scroll-area,
+  [data-np-scroll-area],
+  .np-scroll-area-viewport,
+  [data-np-scroll-area-viewport],
+  .np-scroll-area-thumb,
+  [data-np-scroll-area-thumb] {
+    transition: none;
+  }
+}
