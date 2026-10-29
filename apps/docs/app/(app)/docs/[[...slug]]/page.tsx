@@ -154,7 +154,7 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
             </div>
 
             {doc.description && (
-              <p className="text-base text-muted-foreground sm:text-balance md:max-w-[80%]">
+              <p className="text-base text-muted-foreground sm:text-balance md:max-w-[70%]">
                 {doc.description}
               </p>
             )}
