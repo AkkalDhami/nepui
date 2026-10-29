@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Scroll Area</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/separator.css" />
+    <link rel="stylesheet" href="../styles/scroll-area.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem 4rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: var(--np-font-sans, system-ui, sans-serif);
+      }
+      main {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+        max-width: 44rem;
+        margin-inline: auto;
+      }
+      h2 {
+        margin: 0 0 0.25rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+      .hint {
+        margin: 0 0 0.75rem;
+        font-size: 0.8125rem;
+        color: var(--np-muted-foreground);
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+      }
+      .box {
+        border: 1px solid var(--np-border);
+        border-radius: var(--np-radius-md);
+      }
+      .pad {
+        padding: 1rem;
+        font-size: 0.875rem;
+      }
+      .line {
+        margin: 0 0 0.75rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Class form</h2>
+        <p class="hint">
+          <code>class="np-scroll-area"</code>. Scrolls on both axes by default.
+        </p>
+        <div
+          class="np-scroll-area box"
+          role="region"
+          aria-label="Release tags"
+          tabindex="0"
+          style="height: 14rem; width: 12rem"
+        >
+          <div class="pad">
+            <div class="line">v1.2.0-beta.50</div>
+            <div
+              class="np-separator"
+              role="separator"
+              style="margin-block: 0.5rem"
+            ></div>
+            <div class="line">v1.2.0-beta.49</div>
+            <div
+              class="np-separator"
+              role="separator"
+              style="margin-block: 0.5rem"
+            ></div>
+            <div class="line">v1.2.0-beta.48</div>
+            <div
+              class="np-separator"
+              role="separator"
+              style="margin-block: 0.5rem"
+            ></div>
+            <div class="line">v1.2.0-beta.47</div>
+            <div
+              class="np-separator"
+              role="separator"
+              style="margin-block: 0.5rem"
+            ></div>
+            <div class="line">v1.2.0-beta.46</div>
+            <div
+              class="np-separator"
+              role="separator"
+              style="margin-block: 0.5rem"
+            ></div>
+            <div class="line">v1.2.0-beta.45</div>
+            <div
+              class="np-separator"
+              role="separator"
+              style="margin-block: 0.5rem"
+            ></div>
+            <div class="line">v1.2.0-beta.44</div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Data-attribute form</h2>
+        <p class="hint"><code>data-np-scroll-area</code>, no class needed.</p>
+        <div
+          data-np-scroll-area
+          class="box"
+          role="region"
+          aria-label="Release notes"
+          tabindex="0"
+          style="height: 10rem; width: 100%; max-width: 20rem"
+        >
+          <div class="pad">
+            <p class="line">Added horizontal and vertical scrollbars.</p>
+            <p class="line">Thumb colour follows the border token.</p>
+            <p class="line">Keyboard focus shows the shared focus ring.</p>
+            <p class="line">Works without JavaScript in plain HTML.</p>
+            <p class="line">Respects light and dark themes.</p>
+            <p class="line">Override the thumb with one variable.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Orientation</h2>
+        <p class="hint">
+          <code>np-scroll-area-vertical</code> and
+          <code>np-scroll-area-horizontal</code> limit scrolling to one axis.
+        </p>
+        <div class="row">
+          <div
+            class="np-scroll-area np-scroll-area-vertical box"
+            role="region"
+            aria-label="Vertical example"
+            tabindex="0"
+            style="height: 8rem; width: 11rem"
+          >
+            <div class="pad" style="width: 20rem">
+              <p class="line">
+                Only the y axis scrolls here, even though this line is wider
+                than the box.
+              </p>
+              <p class="line">Second line.</p>
+              <p class="line">Third line.</p>
+              <p class="line">Fourth line.</p>
+            </div>
+          </div>
+          <div
+            data-np-scroll-area
+            data-orientation="horizontal"
+            class="box"
+            role="region"
+            aria-label="Horizontal example"
+            tabindex="0"
+            style="width: 14rem; white-space: nowrap"
+          >
+            <div class="pad" style="width: max-content">
+              Only the x axis scrolls here, so this line keeps going and going.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Scroll fade</h2>
+        <p class="hint">
+          <code>np-scroll-fade</code> or <code>data-np-scroll-fade</code> fades
+          the edges that still have content. Needs scroll-driven animations.
+        </p>
+        <div class="row">
+          <div
+            class="np-scroll-area np-scroll-fade box"
+            role="region"
+            aria-label="Fade, class form"
+            tabindex="0"
+            style="height: 10rem; width: 14rem"
+          >
+            <div class="pad">
+              <p class="line">Fade appears at the bottom first.</p>
+              <p class="line">Scroll down and the top edge fades too.</p>
+              <p class="line">At the end only the top edge fades.</p>
+              <p class="line">Line four</p>
+              <p class="line">Line five</p>
+              <p class="line">Line six</p>
+            </div>
+          </div>
+          <div
+            data-np-scroll-area
+            data-np-scroll-fade
+            class="box"
+            role="region"
+            aria-label="Fade, data-attribute form"
+            tabindex="0"
+            style="height: 10rem; width: 14rem; --np-scroll-fade-size: 4rem"
+          >
+            <div class="pad">
+              <p class="line">A longer fade with</p>
+              <p class="line">--np-scroll-fade-size: 4rem.</p>
+              <p class="line">Line three</p>
+              <p class="line">Line four</p>
+              <p class="line">Line five</p>
+              <p class="line">Line six</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Thumb colour</h2>
+        <p class="hint">
+          Set <code>--np-scroll-area-thumb-color</code> on the root.
+        </p>
+        <div
+          class="np-scroll-area box"
+          role="region"
+          aria-label="Coloured scrollbar"
+          tabindex="0"
+          style="
+            height: 8rem;
+            width: 12rem;
+            --np-scroll-area-thumb-color: var(--np-primary);
+          "
+        >
+          <div class="pad">
+            <p class="line">Line one</p>
+            <p class="line">Line two</p>
+            <p class="line">Line three</p>
+            <p class="line">Line four</p>
+            <p class="line">Line five</p>
+            <p class="line">Line six</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
