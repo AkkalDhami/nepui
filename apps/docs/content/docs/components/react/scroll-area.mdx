@@ -1,0 +1,134 @@
+---
+title: Scroll Area
+description: Augments native scroll functionality for custom, cross-browser styling.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="scroll-area-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/scroll-area.json"
+      nepui="npx nepui@latest add scroll-area --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="scroll-area"
+        title="components/nepui/scroll-area/scroll-area.css"
+        fileTarget="components/nepui/scroll-area/scroll-area.css"
+      />
+      <ComponentSource
+        target="react"
+        name="scroll-area"
+        title="components/nepui/scroll-area/scroll-area.tsx"
+        fileTarget="components/nepui/scroll-area/scroll-area.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="scroll-area"
+        title="components/nepui/scroll-area/index.ts"
+        fileTarget="components/nepui/scroll-area/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import { ScrollArea, ScrollBar } from "@/components/nepui/scroll-area"
+```
+
+```tsx
+<ScrollArea style={{ height: 288, width: 192 }}>
+  {/* Long content */}
+</ScrollArea>
+```
+
+Give the scroll area a fixed size (`height`, `width` or `max-height`). Without one, the content simply grows and nothing scrolls.
+
+---
+
+## Horizontal
+
+Add `<ScrollBar orientation="horizontal" />` as a child to scroll horizontally. Keep the content from wrapping, for example with `width: max-content`.
+
+<ComponentPreview
+  name="scroll-area-horizontal"
+/>
+
+---
+
+## Both directions
+
+Render both scrollbars when the content overflows on both axes. The corner between them is handled for you.
+
+<ComponentPreview
+  name="scroll-area-both"
+/>
+
+---
+
+## Thumb color
+
+Set `--np-scroll-area-thumb-color` on the scroll area to change the thumb color.
+
+<ComponentPreview
+  name="scroll-area-color"
+/>
+
+---
+
+## Scroll fade
+
+Add `fade` to fade the content at any edge that still has content to scroll to. The fade grows as you scroll away from an edge and disappears at the end. Change its length with `--np-scroll-fade-size`.
+
+<ComponentPreview
+  name="scroll-area-fade"
+/>
+
+---
+
+
+## API Reference
+
+This component wraps the [Base UI Scroll Area](https://base-ui.com/react/components/scroll-area). It accepts every prop of the matching Base UI part.
+
+### ScrollArea
+
+The root. It renders the viewport, a vertical `ScrollBar` and the corner for you.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `fade` | `boolean` | `false` |
+| `overflowEdgeThreshold` | `number \| Partial<{ xStart: number; xEnd: number; yStart: number; yEnd: number }>` | `0` |
+
+### ScrollBar
+
+A scrollbar track with its thumb. It only shows while the content overflows on its axis.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `orientation` | `"vertical" \| "horizontal"` | `"vertical"` |
+| `keepMounted` | `boolean` | `false` |

@@ -86,16 +86,6 @@ Wrap the switch in a `FieldLabel` to make the whole card toggle it.
 
 ---
 
-## Disabled
-
-Add the `disabled` prop to `Switch`. Add `data-disabled` to the `Field` to dim the label too.
-
-<ComponentPreview
-  name="switch-disabled"
-/>
-
----
-
 ## Invalid
 
 Add `data-invalid` to the `Field` and `aria-invalid` to the `Switch` to show an error state.
@@ -111,6 +101,28 @@ Add `data-invalid` to the `Field` and `aria-invalid` to the `Switch` to show an 
 
 <ComponentPreview
   name="switch-invalid"
+/>
+
+---
+
+
+## Disabled
+
+Add the `disabled` prop to `Switch`. Add `data-disabled` to the `Field` to dim the label too.
+
+```tsx showLineNumbers /data-disabled/ /disabled/
+<Field
+  orientation="horizontal"
+  data-disabled
+  style={{ width: "fit-content" }}
+>
+  <Switch id="sw-dis-off" disabled />
+  <FieldLabel htmlFor="sw-dis-off">Disabled</FieldLabel>
+</Field>
+```
+
+<ComponentPreview
+  name="switch-disabled"
 />
 
 ---

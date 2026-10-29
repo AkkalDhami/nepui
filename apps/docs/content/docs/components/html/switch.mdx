@@ -117,23 +117,6 @@ Wrap the field in a `np-field-label`. Inside a `<label>` only phrasing content i
 
 ---
 
-## Disabled
-
-Add `disabled` to the input. Add `data-disabled` to the `np-field` to dim the label too. This also needs `field.css`.
-
-```html
-<link rel="stylesheet" href="./styles/field.css">
-<link rel="stylesheet" href="./styles/switch.css">
-```
-
-<ComponentPreview
-  name="switch-disabled"
-  target="html"
-  styles={["/field/field.css"]}
-/>
-
----
-
 ## Invalid
 
 Add `data-invalid` to the `np-field` and `aria-invalid="true"` (or `data-invalid`) to the input to show an error state. 
@@ -162,6 +145,43 @@ This also needs `field.css`.
 
 <ComponentPreview
   name="switch-invalid"
+  target="html"
+  styles={["/field/field.css"]}
+/>
+
+---
+
+
+## Disabled
+
+Add `disabled` to the input. Add `data-disabled` to the `np-field` to dim the label too.
+
+```html showLineNumbers /data-disabled/ /disabled/
+<div
+  class="np-field np-field-horizontal"
+  data-disabled
+  style="width: fit-content"
+>
+  <input
+    class="np-switch"
+    type="checkbox"
+    role="switch"
+    id="sw-dis-off"
+    disabled
+  />
+  <label class="np-field-label" for="sw-dis-off">Disabled</label>
+</div>
+```
+
+Link the following stylesheets:
+
+```html
+<link rel="stylesheet" href="./styles/field.css">
+<link rel="stylesheet" href="./styles/switch.css">
+```
+
+<ComponentPreview
+  name="switch-disabled"
   target="html"
   styles={["/field/field.css"]}
 />
