@@ -83,12 +83,193 @@ Tokens used across the library:
 | Status             | `--np-destructive`, `--np-success`, `--np-warning` (`--np-info` is hard-coded in badge.css) |
 | Radius             | `--np-radius-md` (default control radius), `--np-radius-sm` (optional), `--np-radius`    |
 | Fonts              | `--np-font-sans`, `--np-font-mono` (optional, always give a fallback)                    |
-| Spacing unit       | `--spacing` (`0.25rem`, **unprefixed**)                                                  |
+| Spacing unit       | `--np-spacing` (`0.25rem`, **unprefixed**)                                                  |
 
-- **Spacing:** when porting Tailwind spacing, use `calc(var(--spacing) * n)` (Tailwind `p-2.5` → `calc(var(--spacing) * 2.5)`). Plain `rem` is acceptable for one-off values.
+- **Spacing:** when porting Tailwind spacing, use `calc(var(--np-spacing) * n)` (Tailwind `p-2.5` → `calc(var(--np-spacing) * 2.5)`). Plain `rem` is acceptable for one-off values.
 - **Colors are always `var(--np-…)`.** Never hard-code a color, except white text on solid status colors (`#fff`).
 - **Opacity** uses `color-mix`: `bg-primary/10` → `color-mix(in oklch, var(--np-primary) 10%, transparent)`. Use `oklch` for hue-preserving mixes, `oklab` for neutral ones. Be consistent inside one file.
 - Do not invent new global tokens. If a component needs a knob, make a component variable (`--np-<name>-<prop>`).
+
+
+**`tokens.css`**
+```css
+/**
+ * nepui — design tokens
+*/
+
+:root {
+  color-scheme: light;
+
+  --np-radius: 0.625rem;
+  --np-radius-sm: calc(var(--np-radius) * 0.6);
+  --np-radius-md: calc(var(--np-radius) * 0.8);
+  --np-radius-lg: var(--np-radius);
+  --np-radius-xl: calc(var(--np-radius) * 1.4);
+  --np-radius-2xl: calc(var(--np-radius) * 1.8);
+  --np-radius-3xl: calc(var(--np-radius) * 2.2);
+  --np-radius-4xl: calc(var(--np-radius) * 2.6);
+  --np-radius-full: 9999px;
+
+  --np-spacing: 0.25rem;
+
+  --np-background: #ffffff;
+  --np-foreground: #0a0a0a;
+
+  --np-card: #ffffff;
+  --np-card-foreground: #0a0a0a;
+
+  --np-popover: #ffffff;
+  --np-popover-foreground: #0a0a0a;
+
+  --np-primary: #12b417;
+  --np-primary-foreground: #ffffff;
+
+  --np-secondary: #f4f4f5;
+  --np-secondary-foreground: #18181b;
+
+  --np-muted: #f4f4f5;
+  --np-muted-foreground: #737373;
+
+  --np-accent: #f4f4f5;
+  --np-accent-foreground: #18181b;
+
+  --np-destructive: #e7000b;
+
+  --np-success: #16a34a;
+  --np-success-foreground: #fafafa;
+
+  --np-warning: #d97706;
+  --np-warning-foreground: #fafafa;
+
+  --np-border: #e5e5e5;
+  --np-input: #e4e4e7;
+  --np-ring: #a1a1a1;
+
+  --np-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --np-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --np-shadow-md:
+    0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --np-shadow-lg:
+    0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+/* Explicit dark theme — class or data-attribute toggle (next-themes, etc.) */
+.dark,
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --np-radius: 0.625rem;
+  --np-radius-sm: calc(var(--np-radius) * 0.6);
+  --np-radius-md: calc(var(--np-radius) * 0.8);
+  --np-radius-lg: var(--np-radius);
+  --np-radius-xl: calc(var(--np-radius) * 1.4);
+  --np-radius-2xl: calc(var(--np-radius) * 1.8);
+  --np-radius-3xl: calc(var(--np-radius) * 2.2);
+  --np-radius-4xl: calc(var(--np-radius) * 2.6);
+  --np-radius-full: 9999px;
+
+  --np-spacing: 0.25rem;
+
+  --np-background: #0a0a0a;
+  --np-foreground: #fafafa;
+
+  --np-card: #0a0a0a;
+  --np-card-foreground: #fafafa;
+
+  --np-popover: #ffffff;
+  --np-popover-foreground: #0a0a0a;
+
+  --np-primary: #ffffff;
+  --np-primary-foreground: #0a0a0a;
+
+  --np-secondary: #27272a;
+  --np-secondary-foreground: #fafafa;
+
+  --np-muted: #27272a;
+  --np-muted-foreground: #a1a1aa;
+
+  --np-accent: #27272a;
+  --np-accent-foreground: #fafafa;
+
+  --np-destructive: #e7000b;
+
+  --np-success: #01a041;
+  --np-success-foreground: #f0fdf4;
+
+  --np-warning: #ad4407;
+  --np-warning-foreground: #fffbeb;
+
+  --np-border: #ffffff1a;
+  --np-input: #ffffff26;
+  --np-ring: #737373;
+
+  --np-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --np-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.4), 0 1px 2px -1px rgb(0 0 0 / 0.4);
+  --np-shadow-md:
+    0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+  --np-shadow-lg:
+    0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+}
+
+/* OS-level dark mode when no explicit theme has been chosen */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not(.light) {
+    color-scheme: dark;
+
+    --np-radius: 0.625rem;
+    --np-radius-sm: calc(var(--np-radius) * 0.6);
+    --np-radius-md: calc(var(--np-radius) * 0.8);
+    --np-radius-lg: var(--np-radius);
+    --np-radius-xl: calc(var(--np-radius) * 1.4);
+    --np-radius-2xl: calc(var(--np-radius) * 1.8);
+    --np-radius-3xl: calc(var(--np-radius) * 2.2);
+    --np-radius-4xl: calc(var(--np-radius) * 2.6);
+    --np-radius-full: 9999px;
+
+    --np-spacing: 0.25rem;
+
+    --np-background: #0a0a0a;
+    --np-foreground: #fafafa;
+
+    --np-card: #0a0a0a;
+    --np-card-foreground: #fafafa;
+
+    --np-popover: #0a0a0a;
+    --np-popover-foreground: #fafafa;
+
+    --np-primary: #12b417;
+    --np-primary-foreground: #0a0a0a;
+
+    --np-secondary: #27272a;
+    --np-secondary-foreground: #fafafa;
+
+    --np-muted: #27272a;
+    --np-muted-foreground: #a1a1aa;
+
+    --np-accent: #27272a;
+    --np-accent-foreground: #fafafa;
+
+    --np-destructive: #e7000b;
+
+    --np-success: #01a041;
+    --np-success-foreground: #f0fdf4;
+
+    --np-warning: #ad4407;
+    --np-warning-foreground: #fffbeb;
+
+    --np-border: #ffffff1a;
+    --np-input: #ffffff26;
+    --np-ring: #737373;
+
+    --np-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+    --np-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.4), 0 1px 2px -1px rgb(0 0 0 / 0.4);
+    --np-shadow-md:
+      0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+    --np-shadow-lg:
+      0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+  }
+}
+```
 
 ---
 
@@ -445,7 +626,7 @@ Start from the shadcn source and the docs page of the **base** flavour (`https:/
 | `bg-primary/80`                           | `color-mix(in oklch, var(--np-primary) 80%, transparent)`        |
 | `border-input`                            | `var(--np-input, var(--np-border))`                              |
 | `rounded-lg` / `rounded-md`               | `var(--np-radius-md)`                                            |
-| `h-8`, `px-2.5`, `gap-1.5`                | `calc(var(--spacing) * 8)`, `calc(var(--spacing) * 2.5)`, …      |
+| `h-8`, `px-2.5`, `gap-1.5`                | `calc(var(--np-spacing) * 8)`, `calc(var(--np-spacing) * 2.5)`, …      |
 | `text-sm` / `text-xs`                     | `0.875rem` / `0.75rem`                                           |
 | `ring-3 ring-ring/50`                     | `box-shadow: 0 0 0 3px color-mix(in oklch, var(--np-ring), transparent 50%)` |
 | `disabled:opacity-50`                     | `:disabled { opacity: .5 }`                                      |
