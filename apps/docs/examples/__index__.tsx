@@ -81,6 +81,11 @@ import KtmReactRadioGroupDescription from "./ktm/react/radio-group-description"
 import KtmReactRadioGroupDisabled from "./ktm/react/radio-group-disabled"
 import KtmReactRadioGroupHorizontal from "./ktm/react/radio-group-horizontal"
 import KtmReactRadioGroupInvalid from "./ktm/react/radio-group-invalid"
+import KtmReactScrollAreaBoth from "./ktm/react/scroll-area-both"
+import KtmReactScrollAreaColor from "./ktm/react/scroll-area-color"
+import KtmReactScrollAreaDemo from "./ktm/react/scroll-area-demo"
+import KtmReactScrollAreaFade from "./ktm/react/scroll-area-fade"
+import KtmReactScrollAreaHorizontal from "./ktm/react/scroll-area-horizontal"
 import KtmReactSelectDemo from "./ktm/react/select-demo"
 import KtmReactSelectDisabled from "./ktm/react/select-disabled"
 import KtmReactSelectGroups from "./ktm/react/select-groups"
@@ -201,6 +206,11 @@ export const ExamplesIndex: Record<
       "radio-group-disabled": KtmReactRadioGroupDisabled,
       "radio-group-horizontal": KtmReactRadioGroupHorizontal,
       "radio-group-invalid": KtmReactRadioGroupInvalid,
+      "scroll-area-both": KtmReactScrollAreaBoth,
+      "scroll-area-color": KtmReactScrollAreaColor,
+      "scroll-area-demo": KtmReactScrollAreaDemo,
+      "scroll-area-fade": KtmReactScrollAreaFade,
+      "scroll-area-horizontal": KtmReactScrollAreaHorizontal,
       "select-demo": KtmReactSelectDemo,
       "select-disabled": KtmReactSelectDisabled,
       "select-groups": KtmReactSelectGroups,
@@ -315,6 +325,11 @@ export const ExamplesIndex: Record<
       "radio-group-disabled": "ktm/html/radio-group-disabled.html",
       "radio-group-horizontal": "ktm/html/radio-group-horizontal.html",
       "radio-group-invalid": "ktm/html/radio-group-invalid.html",
+      "scroll-area-both": "ktm/html/scroll-area-both.html",
+      "scroll-area-color": "ktm/html/scroll-area-color.html",
+      "scroll-area-demo": "ktm/html/scroll-area-demo.html",
+      "scroll-area-fade": "ktm/html/scroll-area-fade.html",
+      "scroll-area-horizontal": "ktm/html/scroll-area-horizontal.html",
       "select-demo": "ktm/html/select-demo.html",
       "select-disabled": "ktm/html/select-disabled.html",
       "select-groups": "ktm/html/select-groups.html",
