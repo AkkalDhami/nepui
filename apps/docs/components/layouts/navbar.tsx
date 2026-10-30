@@ -27,7 +27,7 @@ const NAV_ITEMS: NavItem[] = [
 const GITHUB_URL = siteConfig.github
 
 const navLinkClassName =
-  "inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground outline-none transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+  "inline-flex items-center gap-1 rounded-md px-2 py-1.5 text-sm font-medium text-muted-foreground outline-none hover:bg-muted transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
 
 function DesktopNavLink({ item }: { item: NavItem }) {
   if (item.external) {
