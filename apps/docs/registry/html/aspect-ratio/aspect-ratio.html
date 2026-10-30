@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Aspect Ratio</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/aspect-ratio.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem 4rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: var(--np-font-sans, system-ui, sans-serif);
+      }
+      main {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+        max-width: 40rem;
+        margin-inline: auto;
+      }
+      h2 {
+        margin: 0 0 0.25rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+      .hint {
+        margin: 0 0 0.75rem;
+        font-size: 0.8125rem;
+        color: var(--np-muted-foreground);
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: 1.5rem;
+      }
+      .fill {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        border: 1px dashed var(--np-border);
+        border-radius: var(--np-radius-md);
+        background: var(--np-muted);
+        color: var(--np-muted-foreground);
+        font-size: 0.875rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Class form</h2>
+        <p class="hint">
+          <code>class="np-aspect-ratio"</code> is 16 / 9 by default. A direct
+          <code>img</code> fills the box.
+        </p>
+        <div class="np-aspect-ratio" style="max-width: 24rem">
+          <img
+            alt="Landscape illustration"
+            src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'><rect width='4' height='3' fill='%23a1a1aa'/><circle cx='3' cy='1' r='.5' fill='%23fafafa'/><path d='M0 3L1.3 1.5 2.2 2.4 2.9 1.8 4 3Z' fill='%2352525b'/></svg>"
+            style="border-radius: var(--np-radius-md)"
+          />
+        </div>
+      </section>
+
+      <section>
+        <h2>Data-attribute form</h2>
+        <p class="hint"><code>data-np-aspect-ratio</code>, no class needed.</p>
+        <div data-np-aspect-ratio style="max-width: 24rem">
+          <img
+            alt="Landscape illustration"
+            src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'><rect width='4' height='3' fill='%23a1a1aa'/><circle cx='3' cy='1' r='.5' fill='%23fafafa'/><path d='M0 3L1.3 1.5 2.2 2.4 2.9 1.8 4 3Z' fill='%2352525b'/></svg>"
+            style="border-radius: var(--np-radius-md)"
+          />
+        </div>
+      </section>
+
+      <section>
+        <h2>Presets</h2>
+        <p class="hint">
+          <code>np-aspect-ratio-square</code> and
+          <code>np-aspect-ratio-portrait</code>, or <code>data-ratio</code>.
+        </p>
+        <div class="row">
+          <div
+            class="np-aspect-ratio np-aspect-ratio-square"
+            style="width: 12rem"
+          >
+            <img
+              alt="Landscape illustration"
+              src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'><rect width='4' height='3' fill='%23a1a1aa'/><circle cx='3' cy='1' r='.5' fill='%23fafafa'/><path d='M0 3L1.3 1.5 2.2 2.4 2.9 1.8 4 3Z' fill='%2352525b'/></svg>"
+              style="border-radius: var(--np-radius-md)"
+            />
+          </div>
+          <div data-np-aspect-ratio data-ratio="portrait" style="width: 9rem">
+            <img
+              alt="Landscape illustration"
+              src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'><rect width='4' height='3' fill='%23a1a1aa'/><circle cx='3' cy='1' r='.5' fill='%23fafafa'/><path d='M0 3L1.3 1.5 2.2 2.4 2.9 1.8 4 3Z' fill='%2352525b'/></svg>"
+              style="border-radius: var(--np-radius-md)"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Custom ratio</h2>
+        <p class="hint">
+          Set <code>--np-aspect-ratio-value</code>, for example
+          <code>3 / 2</code> or <code>2.39</code>.
+        </p>
+        <div class="row">
+          <div
+            class="np-aspect-ratio"
+            style="width: 14rem; --np-aspect-ratio-value: 3 / 2"
+          >
+            <img
+              alt="Landscape illustration"
+              src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'><rect width='4' height='3' fill='%23a1a1aa'/><circle cx='3' cy='1' r='.5' fill='%23fafafa'/><path d='M0 3L1.3 1.5 2.2 2.4 2.9 1.8 4 3Z' fill='%2352525b'/></svg>"
+              style="border-radius: var(--np-radius-md)"
+            />
+          </div>
+          <div
+            class="np-aspect-ratio"
+            style="width: 14rem; --np-aspect-ratio-value: 2.39"
+          >
+            <img
+              alt="Landscape illustration"
+              src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'><rect width='4' height='3' fill='%23a1a1aa'/><circle cx='3' cy='1' r='.5' fill='%23fafafa'/><path d='M0 3L1.3 1.5 2.2 2.4 2.9 1.8 4 3Z' fill='%2352525b'/></svg>"
+              style="border-radius: var(--np-radius-md)"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Fit</h2>
+        <p class="hint">
+          <code>--np-aspect-ratio-fit: contain</code> shows the whole image
+          instead of cropping it.
+        </p>
+        <div
+          class="np-aspect-ratio"
+          style="
+            max-width: 24rem;
+            --np-aspect-ratio-fit: contain;
+            --np-aspect-ratio-value: 1 / 1;
+          "
+        >
+          <img
+            alt="Landscape illustration"
+            src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'><rect width='4' height='3' fill='%23a1a1aa'/><circle cx='3' cy='1' r='.5' fill='%23fafafa'/><path d='M0 3L1.3 1.5 2.2 2.4 2.9 1.8 4 3Z' fill='%2352525b'/></svg>"
+            style="border-radius: var(--np-radius-md)"
+          />
+        </div>
+      </section>
+
+      <section>
+        <h2>Any content</h2>
+        <p class="hint">
+          Other children size themselves. Give them <code>height: 100%</code> to
+          fill.
+        </p>
+        <div class="np-aspect-ratio" style="max-width: 24rem">
+          <div class="fill">16 / 9</div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

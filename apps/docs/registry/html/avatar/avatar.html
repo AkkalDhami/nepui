@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Avatar</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/avatar.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem 4rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: var(--np-font-sans, system-ui, sans-serif);
+      }
+      main {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+        max-width: 40rem;
+        margin-inline: auto;
+      }
+      h2 {
+        margin: 0 0 0.25rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+      .hint {
+        margin: 0 0 0.75rem;
+        font-size: 0.8125rem;
+        color: var(--np-muted-foreground);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Class form</h2>
+        <p class="hint">
+          <code>np-avatar</code> with an <code>img</code> and a fallback. The
+          image sits on top; if it fails, <code>onerror</code> hides it.
+        </p>
+        <span class="np-avatar">
+          <img
+            class="np-avatar-image"
+            src="https://github.com/akkaldhami.png"
+            alt="@akkaldhami"
+            onerror="this.hidden = true"
+          />
+          <span class="np-avatar-fallback">CN</span>
+        </span>
+      </section>
+
+      <section>
+        <h2>Data-attribute form</h2>
+        <p class="hint">
+          <code>data-np-avatar</code> and the
+          <code>data-np-avatar-*</code> parts, no classes.
+        </p>
+        <span data-np-avatar>
+          <img
+            data-np-avatar-image
+            src="https://github.com/akkaldhami.png"
+            alt="@akkaldhami"
+            onerror="this.hidden = true"
+          />
+          <span data-np-avatar-fallback>CN</span>
+        </span>
+      </section>
+
+      <section>
+        <h2>Fallback only</h2>
+        <p class="hint">
+          No image, or one that cannot load (the second one points to a missing
+          file).
+        </p>
+        <div style="display: flex; align-items: center; gap: 1rem">
+          <span class="np-avatar">
+            <span class="np-avatar-fallback">CN</span>
+          </span>
+          <span class="np-avatar">
+            <img
+              class="np-avatar-image"
+              src="./missing.png"
+              alt="Missing"
+              onerror="this.hidden = true"
+            />
+            <span class="np-avatar-fallback">MS</span>
+          </span>
+        </div>
+      </section>
+
+      <section>
+        <h2>Sizes</h2>
+        <p class="hint">
+          <code>np-avatar-sm</code>, default, <code>np-avatar-lg</code>, or
+          <code>data-size</code>.
+        </p>
+        <div style="display: flex; align-items: center; gap: 1rem">
+          <span class="np-avatar np-avatar-sm">
+            <img
+              class="np-avatar-image"
+              src="https://github.com/akkaldhami.png"
+              alt="@akkaldhami"
+              onerror="this.hidden = true"
+            />
+            <span class="np-avatar-fallback">CN</span>
+          </span>
+          <span class="np-avatar">
+            <img
+              class="np-avatar-image"
+              src="https://github.com/akkaldhami.png"
+              alt="@akkaldhami"
+              onerror="this.hidden = true"
+            />
+            <span class="np-avatar-fallback">CN</span>
+          </span>
+          <span class="np-avatar np-avatar-lg">
+            <img
+              class="np-avatar-image"
+              src="https://github.com/akkaldhami.png"
+              alt="@akkaldhami"
+              onerror="this.hidden = true"
+            />
+            <span class="np-avatar-fallback">CN</span>
+          </span>
+          <span data-np-avatar data-size="lg">
+            <img
+              class="np-avatar-image"
+              src="https://github.com/akkaldhami.png"
+              alt="@akkaldhami"
+              onerror="this.hidden = true"
+            />
+            <span class="np-avatar-fallback">CN</span>
+          </span>
+        </div>
+      </section>
+
+      <section>
+        <h2>Badge</h2>
+        <p class="hint">
+          <code>np-avatar-badge</code> sits at the bottom end corner. Set
+          <code>--np-avatar-badge-color</code> to recolour it.
+        </p>
+        <div style="display: flex; align-items: center; gap: 1rem">
+          <span class="np-avatar">
+            <img
+              class="np-avatar-image"
+              src="https://github.com/akkaldhami.png"
+              alt="@akkaldhami"
+              onerror="this.hidden = true"
+            />
+            <span class="np-avatar-fallback">CN</span>
+            <span class="np-avatar-badge"></span>
+          </span>
+          <span class="np-avatar">
+            <img
+              class="np-avatar-image"
+              src="https://github.com/akkaldhami.png"
+              alt="@akkaldhami"
+              onerror="this.hidden = true"
+            />
+            <span class="np-avatar-fallback">CN</span>
+            <span
+              class="np-avatar-badge"
+              style="--np-avatar-badge-color: var(--np-success)"
+            ></span>
+          </span>
+          <span class="np-avatar np-avatar-lg">
+            <img
+              class="np-avatar-image"
+              src="https://github.com/akkaldhami.png"
+              alt="@akkaldhami"
+              onerror="this.hidden = true"
+            />
+            <span class="np-avatar-fallback">CN</span>
+            <span
+              class="np-avatar-badge"
+              style="--np-avatar-badge-color: var(--np-warning)"
+            ></span>
+          </span>
+        </div>
+      </section>
+
+      <section>
+        <h2>Badge with icon</h2>
+        <p class="hint">The icon is hidden on the small size.</p>
+        <div style="display: flex; align-items: center; gap: 1rem">
+          <span class="np-avatar">
+            <span class="np-avatar-fallback">PP</span>
+            <span class="np-avatar-badge">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14" />
+                <path d="M12 5v14" />
+              </svg>
+            </span>
+          </span>
+          <span class="np-avatar np-avatar-lg">
+            <span class="np-avatar-fallback">PP</span>
+            <span class="np-avatar-badge">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14" />
+                <path d="M12 5v14" />
+              </svg>
+            </span>
+          </span>
+        </div>
+      </section>
+
+      <section>
+        <h2>Group</h2>
+        <p class="hint"><code>np-avatar-group</code> overlaps its avatars.</p>
+        <div class="np-avatar-group">
+          <span class="np-avatar">
+            <img
+              class="np-avatar-image"
+              src="https://github.com/akkaldhami.png"
+              alt="@akkaldhami"
+              onerror="this.hidden = true"
+            />
+            <span class="np-avatar-fallback">CN</span>
+          </span>
+          <span class="np-avatar">
+            <img
+              class="np-avatar-image"
+              src="https://github.com/maxleiter.png"
+              alt="@maxleiter"
+              onerror="this.hidden = true"
+            />
+            <span class="np-avatar-fallback">LR</span>
+          </span>
+          <span class="np-avatar">
+            <img
+              class="np-avatar-image"
+              src="https://github.com/evilrabbit.png"
+              alt="@evilrabbit"
+              onerror="this.hidden = true"
+            />
+            <span class="np-avatar-fallback">ER</span>
+          </span>
+        </div>
+      </section>
+
+      <section>
+        <h2>Group count</h2>
+        <p class="hint">
+          <code>np-avatar-group-count</code> with text or an icon.
+        </p>
+        <div class="np-avatar-group">
+          <span class="np-avatar">
+            <img
+              class="np-avatar-image"
+              src="https://github.com/akkaldhami.png"
+              alt="@akkaldhami"
+              onerror="this.hidden = true"
+            />
+            <span class="np-avatar-fallback">CN</span>
+          </span>
+          <span class="np-avatar">
+            <img
+              class="np-avatar-image"
+              src="https://github.com/pratapchaulagain.png"
+              alt="@pratapchaulagain"
+              onerror="this.hidden = true"
+            />
+            <span class="np-avatar-fallback">LR</span>
+          </span>
+          <span class="np-avatar">
+            <img
+              class="np-avatar-image"
+              src="https://github.com/manisbhusal.png"
+              alt="@manisbhusal"
+              onerror="this.hidden = true"
+            />
+            <span class="np-avatar-fallback">ER</span>
+          </span>
+          <div class="np-avatar-group-count">+3</div>
+        </div>
+        <div style="height: 0.75rem"></div>
+        <div class="np-avatar-group">
+          <span class="np-avatar">
+            <img
+              class="np-avatar-image"
+              src="https://github.com/akkaldhami.png"
+              alt="@akkaldhami"
+              onerror="this.hidden = true"
+            />
+            <span class="np-avatar-fallback">CN</span>
+          </span>
+          <span class="np-avatar">
+            <img
+              class="np-avatar-image"
+              src="https://github.com/manisbhusal.png"
+              alt="@manisbhusal"
+              onerror="this.hidden = true"
+            />
+            <span class="np-avatar-fallback">LR</span>
+          </span>
+          <span class="np-avatar">
+            <img
+              class="np-avatar-image"
+              src="https://github.com/pratapchaulagain.png"
+              alt="@pratapchaulagain"
+              onerror="this.hidden = true"
+            />
+            <span class="np-avatar-fallback">ER</span>
+          </span>
+          <div class="np-avatar-group-count">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14" />
+              <path d="M12 5v14" />
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Group sizes</h2>
+        <p class="hint">
+          The count follows the size of the avatars in its group.
+        </p>
+        <div class="np-avatar-group">
+          <span class="np-avatar np-avatar-lg">
+            <img
+              class="np-avatar-image"
+              src="https://github.com/akkaldhami.png"
+              alt="@akkaldhami"
+              onerror="this.hidden = true"
+            />
+            <span class="np-avatar-fallback">CN</span>
+          </span>
+          <span class="np-avatar np-avatar-lg">
+            <img
+              class="np-avatar-image"
+              src="https://github.com/sabin-gtm.png"
+              alt="@sabin-gtm"
+              onerror="this.hidden = true"
+            />
+            <span class="np-avatar-fallback">LR</span>
+          </span>
+          <div class="np-avatar-group-count">+3</div>
+        </div>
+        <div class="np-avatar-group">
+          <span class="np-avatar np-avatar-sm">
+            <img
+              class="np-avatar-image"
+              src="https://github.com/akkaldhami.png"
+              alt="@akkaldhami"
+              onerror="this.hidden = true"
+            />
+            <span class="np-avatar-fallback">CN</span>
+          </span>
+          <span class="np-avatar np-avatar-sm">
+            <img
+              class="np-avatar-image"
+              src="https://github.com/sabin-gtm.png"
+              alt="@sabin-gtm"
+              onerror="this.hidden = true"
+            />
+            <span class="np-avatar-fallback">LR</span>
+          </span>
+          <div class="np-avatar-group-count">+3</div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Shape</h2>
+        <p class="hint">
+          Set <code>--np-avatar-radius</code> for a rounded square.
+        </p>
+        <span
+          class="np-avatar np-avatar-lg"
+          style="--np-avatar-radius: var(--np-radius-md)"
+        >
+          <img
+            class="np-avatar-image"
+            src="https://github.com/akkaldhami.png"
+            alt="@akkaldhami"
+            onerror="this.hidden = true"
+          />
+          <span class="np-avatar-fallback">CN</span>
+        </span>
+      </section>
+    </main>
+  </body>
+</html>
