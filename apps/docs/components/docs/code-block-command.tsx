@@ -130,7 +130,7 @@ export function ReactCodeBlockCommand({
         onValueChange={(value) => setRegistry(value as "nepui" | "shadcn")}
         className={cn("w-full min-w-0", className)}
       >
-        <TabsList className={"mb-4 bg-transparent"} variant={"line"}>
+        <TabsList className={"mb-4 hidden bg-transparent"} variant={"line"}>
           <TabsTrigger value="nepui" className={"text-base"}>
             nepui
           </TabsTrigger>
@@ -138,10 +138,10 @@ export function ReactCodeBlockCommand({
             shadcn
           </TabsTrigger>
         </TabsList>
-        <TabsContent value="nepui" className={"w-full min-w-0"}>
+        <TabsContent value="nepui" className={"mt-4 w-full min-w-0"}>
           <PackageManagerTabs command={nepui} className="mt-0" />
         </TabsContent>
-        <TabsContent value="shadcn" className={"mb-4 w-full min-w-0"}>
+        <TabsContent value="shadcn" className={"mb-4 hidden w-full min-w-0"}>
           <PackageManagerTabs command={shadcn} className="mt-0" />
         </TabsContent>
       </Tabs>

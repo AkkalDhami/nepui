@@ -53,14 +53,14 @@ export function HeroSection() {
           <Button
             nativeButton={false}
             size="lg"
-            className="rounded-full"
+            className="np-button-rounded"
             render={<Link href="/docs/components">Explore components</Link>}
           ></Button>
           <Button
             size="lg"
-            variant="outline"
+            variant="secondary"
             nativeButton={false}
-            className="rounded-full"
+            className="np-button-rounded"
             render={<Link href="/docs/">Get started</Link>}
           ></Button>
         </motion.div>
