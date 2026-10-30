@@ -167,6 +167,16 @@ export const mdxComponents = {
     )
   },
 
+  LINK: ({ className, ...props }) => (
+    <a
+      className={cn(
+        "font-medium text-muted-primary underline underline-offset-4 hover:text-foreground",
+        className
+      )}
+      {...props}
+    />
+  ),
+
   p: ({ className, ...props }) => (
     <p className={cn("text-muted-primary", className)} {...props} />
   ),
