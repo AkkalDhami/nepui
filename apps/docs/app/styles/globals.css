@@ -4,6 +4,10 @@
 @import "fumadocs-ui/css/neutral.css";
 @import "fumadocs-ui/css/preset.css";
 @import "./typeset.css";
+
+/* @import "../../registry/react/tokens.css"; */
+/* @import "../../registry/react/typeset/typeset.css"; */
+
 @import "../../registry/styles/colors.css";
 
 @custom-variant dark (&:is(.dark *));
@@ -325,9 +329,11 @@ h4 {
   [data-slot="docs"] pre[data-language="plaintext"] code {
     display: block !important;
     white-space: pre;
-    line-height: 0.95;
+    line-height: 0;
     font-family: var(--font-code);
     font-variant-ligatures: none;
+    padding-block: 0.8rem;
+    padding-inline: 0.25rem;
   }
 
   [data-rehype-pretty-code-figure] pre[data-language="text"] [data-line],
@@ -339,7 +345,7 @@ h4 {
     padding-top: 0;
     padding-bottom: 0;
     min-height: unset;
-    line-height: 0.95;
+    line-height: 0;
     display: block;
   }
 

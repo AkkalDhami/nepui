@@ -14,6 +14,7 @@ interface ComponentPreviewProps {
   className?: string
   height?: string
   styles?: string[]
+  scripts?: string[]
 }
 
 export async function ComponentPreview({
@@ -22,6 +23,7 @@ export async function ComponentPreview({
   className,
   styles,
   height,
+  scripts,
 }: ComponentPreviewProps) {
   const source = await getExampleSource({ target, name })
   if (!source) {
@@ -47,6 +49,7 @@ export async function ComponentPreview({
       "toggle-group",
       "scroll-area",
       "checkbox-group",
+      "aspect-ratio",
     ]
 
     const componentName = groupedComponents.includes(
@@ -77,6 +80,7 @@ export async function ComponentPreview({
               ...(styles ?? []),
             ]}
             className="mt-6"
+            scripts={scripts}
           />
         </TabsContent>
 

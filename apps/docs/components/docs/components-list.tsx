@@ -57,17 +57,20 @@ export function ComponentsList({
   }
 
   return (
-    <div
-      data-not-typeset
-      className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-x-8 lg:gap-x-16 lg:gap-y-6 xl:gap-x-20"
-    >
-      {list.map((component) => (
-        <ComponentLink
-          key={component.$id}
-          component={component}
-          showNewIndicator={variant === "all"}
-        />
-      ))}
+    <div className="mt-8 space-y-6">
+      <div
+        data-not-typeset
+        className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-x-8 lg:gap-x-16 lg:gap-y-6 xl:gap-x-20"
+      >
+        {list.map((component) => (
+          <ComponentLink
+            key={component.$id}
+            component={component}
+            showNewIndicator={variant === "all"}
+          />
+        ))}
+      </div>
+      <div className="flex justify-end">Total: {list.length}</div>
     </div>
   )
 }
