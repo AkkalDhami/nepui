@@ -1,0 +1,185 @@
+/* nepui - Avatar */
+
+.np-avatar,
+[data-np-avatar] {
+  --np-avatar-size: calc(var(--np-spacing) * 8);
+  --np-avatar-radius: var(--np-radius-full);
+  --np-avatar-font-size: 0.875rem;
+  --np-avatar-ring-blend: darken;
+  --np-avatar-badge-size: calc(var(--np-spacing) * 2.5);
+  --np-avatar-badge-icon-size: calc(var(--np-spacing) * 2);
+  --np-avatar-badge-icon-display: block;
+  --np-avatar-badge-color: var(--np-primary);
+  --np-avatar-badge-foreground: var(--np-primary-foreground);
+
+  position: relative;
+  display: grid;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: var(--np-avatar-size);
+  height: var(--np-avatar-size);
+  border-radius: var(--np-avatar-radius);
+  isolation: isolate;
+  user-select: none;
+}
+
+:is(.np-avatar, [data-np-avatar])::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border: 1px solid var(--np-border);
+  border-radius: var(--np-avatar-radius);
+  mix-blend-mode: var(--np-avatar-ring-blend);
+  pointer-events: none;
+}
+
+.np-avatar-sm,
+:is(.np-avatar, [data-np-avatar])[data-size="sm"] {
+  --np-avatar-size: calc(var(--np-spacing) * 6);
+  --np-avatar-font-size: 0.75rem;
+  --np-avatar-badge-size: calc(var(--np-spacing) * 2);
+  --np-avatar-badge-icon-display: none;
+}
+
+.np-avatar-lg,
+:is(.np-avatar, [data-np-avatar])[data-size="lg"] {
+  --np-avatar-size: calc(var(--np-spacing) * 10);
+  --np-avatar-badge-size: calc(var(--np-spacing) * 3);
+}
+
+.np-avatar-image,
+[data-np-avatar-image] {
+  position: relative;
+  z-index: 1;
+  display: block;
+  grid-area: 1 / 1;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--np-avatar-radius, var(--np-radius-full));
+  object-fit: cover;
+}
+
+:is(.np-avatar-image, [data-np-avatar-image])[hidden] {
+  display: none;
+}
+
+.np-avatar-fallback,
+[data-np-avatar-fallback] {
+  grid-area: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--np-avatar-radius, var(--np-radius-full));
+  background-color: var(--np-muted);
+  color: var(--np-muted-foreground);
+  font-size: var(--np-avatar-font-size, 0.875rem);
+}
+
+.np-avatar-badge,
+[data-np-avatar-badge] {
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline-end: 0;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: var(--np-avatar-badge-size, calc(var(--np-spacing) * 2.5));
+  height: var(--np-avatar-badge-size, calc(var(--np-spacing) * 2.5));
+  border-radius: var(--np-radius-full);
+  background-color: var(--np-avatar-badge-color, var(--np-primary));
+  color: var(--np-avatar-badge-foreground, var(--np-primary-foreground));
+  box-shadow: 0 0 0 2px var(--np-background);
+  user-select: none;
+}
+
+:is(.np-avatar-badge, [data-np-avatar-badge]) svg {
+  flex-shrink: 0;
+  pointer-events: none;
+  display: var(--np-avatar-badge-icon-display, block);
+}
+
+:is(.np-avatar-badge, [data-np-avatar-badge]) svg:not([class*="size-"]) {
+  width: var(--np-avatar-badge-icon-size, calc(var(--np-spacing) * 2));
+  height: var(--np-avatar-badge-icon-size, calc(var(--np-spacing) * 2));
+}
+
+.np-avatar-group,
+[data-np-avatar-group] {
+  --np-avatar-group-overlap: calc(var(--np-spacing) * 2);
+  --np-avatar-group-ring: var(--np-background);
+
+  display: flex;
+}
+
+:is(.np-avatar-group, [data-np-avatar-group]) > * + * {
+  margin-inline-start: calc(var(--np-avatar-group-overlap) * -1);
+}
+
+:is(.np-avatar-group, [data-np-avatar-group])
+  > :is(.np-avatar, [data-np-avatar]) {
+  box-shadow: 0 0 0 2px var(--np-avatar-group-ring);
+}
+
+.np-avatar-group-count,
+[data-np-avatar-group-count] {
+  --np-avatar-group-count-size: calc(var(--np-spacing) * 8);
+  --np-avatar-group-count-icon-size: calc(var(--np-spacing) * 4);
+
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: var(--np-avatar-group-count-size);
+  height: var(--np-avatar-group-count-size);
+  border-radius: var(--np-radius-full);
+  background-color: var(--np-muted);
+  color: var(--np-muted-foreground);
+  font-size: 0.875rem;
+  box-shadow: 0 0 0 2px var(--np-avatar-group-ring, var(--np-background));
+}
+
+:is(.np-avatar-group-count, [data-np-avatar-group-count]) svg {
+  flex-shrink: 0;
+}
+
+:is(.np-avatar-group-count, [data-np-avatar-group-count])
+  svg:not([class*="size-"]) {
+  width: var(--np-avatar-group-count-icon-size);
+  height: var(--np-avatar-group-count-icon-size);
+}
+
+:is(.np-avatar-group, [data-np-avatar-group]):has(
+    > :is(.np-avatar-lg, :is(.np-avatar, [data-np-avatar])[data-size="lg"])
+  )
+  > :is(.np-avatar-group-count, [data-np-avatar-group-count]) {
+  --np-avatar-group-count-size: calc(var(--np-spacing) * 10);
+  --np-avatar-group-count-icon-size: calc(var(--np-spacing) * 5);
+}
+
+:is(.np-avatar-group, [data-np-avatar-group]):has(
+    > :is(.np-avatar-sm, :is(.np-avatar, [data-np-avatar])[data-size="sm"])
+  )
+  > :is(.np-avatar-group-count, [data-np-avatar-group-count]) {
+  --np-avatar-group-count-size: calc(var(--np-spacing) * 6);
+  --np-avatar-group-count-icon-size: calc(var(--np-spacing) * 3);
+}
+
+:is(.dark, [data-theme="dark"]) :is(.np-avatar, [data-np-avatar]) {
+  --np-avatar-ring-blend: lighten;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light, [data-theme="light"]) :is(.np-avatar, [data-np-avatar]) {
+    --np-avatar-ring-blend: lighten;
+  }
+}
