@@ -1,0 +1,50 @@
+<div
+  class="np-alert"
+  role="alert"
+  style="
+    width: 100%;
+    max-width: 28rem;
+    --np-alert-bg: color-mix(
+      in oklch,
+      var(--np-warning) 8%,
+      var(--np-background)
+    );
+    --np-alert-border: color-mix(
+      in oklch,
+      var(--np-warning) 30%,
+      var(--np-border)
+    );
+    --np-alert-color: color-mix(
+      in oklch,
+      var(--np-warning),
+      var(--np-foreground) 40%
+    );
+    --np-alert-description-color: color-mix(
+      in oklch,
+      var(--np-warning),
+      var(--np-foreground) 40%
+    );
+  "
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <path
+      d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"
+    />
+    <path d="M12 9v4" />
+    <path d="M12 17h.01" />
+  </svg>
+  <div class="np-alert-title">Your subscription will expire in 3 days.</div>
+  <div class="np-alert-description">
+    Renew now to avoid service interruption or upgrade to a paid plan to
+    continue using the service.
+  </div>
+</div>

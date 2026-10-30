@@ -495,11 +495,11 @@ Show: class form, data-attribute form, every variant/size, disabled, invalid, da
 
 - One file per `ComponentPreview name="…"`. Name: `<name>-demo` for the main one, `<name>-<feature>` for the rest.
 - **React demo:** `"use client"`, a default-exported function named in PascalCase (`BadgeDemo`), imports from `@/registry/react/<name>` (and other components from their registry path). **Inline `style` only**: no Tailwind, no extra CSS files.
-- **HTML demo:** a fragment (no `<html>`, `<head>`, or `<link>`), classes, inline styles. The docs list needed stylesheets in `styles={[…]}`.
+- **HTML demo:** a fragment (no `<html>`, `<head>`, or `<link>`), classes, inline styles. The docs list needed stylesheets in `styles={[…]}`, and scripts in scripts={[..]}.
 - The two flavours must **look the same**: same content, same layout.
 - **The main demo (`<name>-demo`) must be simple and clear**: a few elements, no layout noise, shows the default use. Put realistic compositions in later, feature-specific demos.
 - **Do not use `.map()`** in demos. Write the elements out so the code is copy-paste friendly.
-- React demos use `@phosphor-icons/react/ssr` icons (`MagnifyingGlassIcon`, `CheckCircleIcon`, … always with the `Icon` suffix). HTML demos use inline SVG.
+- React demos use `@phosphor-icons/react` icons (`MagnifyingGlassIcon`, `CheckCircleIcon`, … always with the `Icon` suffix). HTML demos use inline SVG.
 - Give form controls accessible names (`aria-label` or `<label for>`); give groups `aria-label`.
 - Use the real tokens in inline styles: `var(--np-muted-foreground)`, `var(--np-border)`, `var(--np-destructive)`.
 - Width pattern for form demos: `style={{ width: "100%", maxWidth: "24rem" }}`.
@@ -567,6 +567,10 @@ contributor:
 (import line, then a minimal example)
 
 ---
+
+## Composition (if the structure is complex)
+
+--
 
 ## <Feature>   (one section per feature, each with a ComponentPreview)
 
