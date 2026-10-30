@@ -1,0 +1,125 @@
+---
+title: Aspect Ratio
+description: Displays content within a desired ratio.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="aspect-ratio-demo"
+  target="html"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add aspect-ratio"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="aspect-ratio"
+        title="styles/aspect-ratio.css"
+        fileTarget="styles/aspect-ratio.css"
+      />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the stylesheet:
+
+```html
+<link rel="stylesheet" href="./styles/aspect-ratio.css">
+```
+
+The default ratio is 16 / 9. Put an `img`, `video` or `iframe` directly inside and it fills the box:
+
+```html
+<div class="np-aspect-ratio" style="max-width: 24rem">
+  <img src="..." alt="Image" style="border-radius: var(--np-radius-md)">
+</div>
+```
+
+Or use the data attribute instead of the class:
+
+```html
+<div data-np-aspect-ratio style="max-width: 24rem">
+  <img src="..." alt="Image">
+</div>
+```
+
+For any other ratio, set `--np-aspect-ratio-value`:
+
+```html
+<div class="np-aspect-ratio" style="--np-aspect-ratio-value: 3 / 2">
+  <img src="..." alt="Image">
+</div>
+```
+
+Direct `img`, `video` and `iframe` children are cropped with `object-fit: cover`. Set `--np-aspect-ratio-fit: contain` to show the whole image. Give any other child `height: 100%` if it should fill the box too.
+
+---
+
+## Square
+
+Add `np-aspect-ratio-square` (or `data-ratio="square"`).
+
+<ComponentPreview
+  name="aspect-ratio-square"
+  target="html"
+/>
+
+---
+
+## Portrait
+
+Add `np-aspect-ratio-portrait` (or `data-ratio="portrait"`).
+
+<ComponentPreview
+  name="aspect-ratio-portrait"
+  target="html"
+/>
+
+---
+
+## Custom ratio
+
+Set `--np-aspect-ratio-value` on the element for any other ratio. This example uses a 21 / 9 ultrawide ratio with `style="--np-aspect-ratio-value: 21 / 9"`. A plain number such as `2.33` works too.
+
+<ComponentPreview
+  name="aspect-ratio-custom"
+  target="html"
+/>
+
+---
+
+## Reference
+
+### Component
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Aspect ratio | `data-np-aspect-ratio` | `np-aspect-ratio` |
+
+### Ratio
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| 16 / 9 (default) | - | - |
+| Square, 1 / 1 | `data-ratio="square"` | `np-aspect-ratio-square` |
+| Portrait, 9 / 16 | `data-ratio="portrait"` | `np-aspect-ratio-portrait` |

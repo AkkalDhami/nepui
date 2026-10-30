@@ -1,0 +1,190 @@
+---
+title: Avatar
+description: An image with a fallback for representing the user.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="avatar-demo"
+  target="html"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add avatar"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="avatar"
+        title="styles/avatar.css"
+        fileTarget="styles/avatar.css"
+      />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the tokens and the stylesheet:
+
+```html
+<link rel="stylesheet" href="./styles/tokens.css">
+<link rel="stylesheet" href="./styles/avatar.css">
+```
+
+Add the classes:
+
+```html
+<span class="np-avatar">
+  <img class="np-avatar-image" src="https://github.com/akkaldhami.png" alt="@akkaldhami" onerror="this.hidden = true">
+  <span class="np-avatar-fallback">CN</span>
+</span>
+```
+
+Or use the data attributes instead of the classes:
+
+```html
+<span data-np-avatar>
+  <img data-np-avatar-image src="https://github.com/akkaldhami.png" alt="@akkaldhami" onerror="this.hidden = true">
+  <span data-np-avatar-fallback>CN</span>
+</span>
+```
+
+---
+
+## Composition
+
+Use the following composition to build an `Avatar`:
+
+```text
+Avatar
+├── AvatarImage
+├── AvatarFallback
+└── AvatarBadge
+```
+
+Use the following composition to build an `AvatarGroup`:
+
+```text
+AvatarGroup
+├── Avatar
+│   ├── AvatarImage
+│   ├── AvatarFallback
+│   └── AvatarBadge
+├── Avatar
+│   ├── AvatarImage
+│   ├── AvatarFallback
+│   └── AvatarBadge
+└── AvatarGroupCount
+```
+
+---
+
+## Image and fallback
+
+With no JavaScript, the image and the fallback are stacked in the same spot and the image sits on top. While the image loads, the fallback shows through. 
+
+If the image fails to load, `onerror="this.hidden = true"` hides it so the fallback stays visible. Without that attribute a broken image would cover the fallback. Leave out the `img` for a fallback-only avatar.
+
+---
+
+## Badge
+
+Add `np-avatar-badge` to put a badge at the bottom end corner. Set `--np-avatar-badge-color` on the avatar or the badge to change its color.
+
+<ComponentPreview
+  name="avatar-badge"
+  target="html"
+/>
+
+---
+
+## Badge with icon
+
+Put an inline SVG inside the badge. It is hidden on the small size.
+
+<ComponentPreview
+  name="avatar-badge-icon"
+  target="html"
+/>
+
+---
+
+## Avatar group
+
+Wrap avatars in `np-avatar-group` so they overlap.
+
+<ComponentPreview
+  name="avatar-group"
+  target="html"
+/>
+
+---
+
+## Avatar group count
+
+Add `np-avatar-group-count` at the end of the group, with text or an icon.
+
+<ComponentPreview
+  name="avatar-group-count"
+  target="html"
+/>
+
+---
+
+## Avatar group with icon
+
+<ComponentPreview
+  name="avatar-group-icon"
+  target="html"
+/>
+
+---
+
+## Sizes
+
+Add `np-avatar-sm` or `np-avatar-lg` (or set `data-size`). The count in a group follows the size of its avatars.
+
+<ComponentPreview
+  name="avatar-sizes"
+  target="html"
+/>
+
+---
+
+## Reference
+
+### Component
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Avatar | `data-np-avatar` | `np-avatar` |
+| Image | `data-np-avatar-image` | `np-avatar-image` |
+| Fallback | `data-np-avatar-fallback` | `np-avatar-fallback` |
+| Badge | `data-np-avatar-badge` | `np-avatar-badge` |
+| Group | `data-np-avatar-group` | `np-avatar-group` |
+| Group count | `data-np-avatar-group-count` | `np-avatar-group-count` |
+
+### Size
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Default | - | - |
+| Small | `data-size="sm"` | `np-avatar-sm` |
+| Large | `data-size="lg"` | `np-avatar-lg` |

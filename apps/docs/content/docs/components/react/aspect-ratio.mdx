@@ -1,0 +1,112 @@
+---
+title: Aspect Ratio
+description: Displays content within a desired ratio.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="aspect-ratio-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/aspect-ratio.json"
+      nepui="npx nepui@latest add aspect-ratio --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="aspect-ratio"
+        title="components/nepui/aspect-ratio/aspect-ratio.css"
+        fileTarget="components/nepui/aspect-ratio/aspect-ratio.css"
+      />
+      <ComponentSource
+        target="react"
+        name="aspect-ratio"
+        title="components/nepui/aspect-ratio/aspect-ratio.tsx"
+        fileTarget="components/nepui/aspect-ratio/aspect-ratio.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="aspect-ratio"
+        title="components/nepui/aspect-ratio/index.ts"
+        fileTarget="components/nepui/aspect-ratio/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import { AspectRatio } from "@/components/nepui/aspect-ratio"
+```
+
+```tsx
+<AspectRatio ratio={16 / 9}>
+  <img src="..." alt="Image" style={{ borderRadius: "var(--np-radius-md)" }} />
+</AspectRatio>
+```
+
+An `img`, `video` or `iframe` that is a direct child fills the box and is cropped with `object-fit: cover`. Set `--np-aspect-ratio-fit: contain` on the component to show the whole image instead. Give any other child `height: 100%` if it should fill the box too.
+
+---
+
+## Square
+
+A square aspect ratio using `ratio={1 / 1}`. This is useful for displaying images in a square format.
+
+<ComponentPreview
+  name="aspect-ratio-square"
+/>
+
+---
+
+## Portrait
+
+A portrait aspect ratio using `ratio={9 / 16}`. This is useful for displaying images in a portrait format.
+
+<ComponentPreview
+  name="aspect-ratio-portrait"
+/>
+
+---
+
+## Custom ratio
+
+Pass any number to `ratio`. This example uses a 21 / 9 ultrawide ratio with `ratio={21 / 9}`.
+
+<ComponentPreview
+  name="aspect-ratio-custom"
+/>
+
+---
+
+## API Reference
+
+### AspectRatio
+
+The `AspectRatio` component displays content within a desired ratio. It renders a `div` and accepts every `div` prop.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `ratio` | `number` | - |
+| `className` | `string` | - |
