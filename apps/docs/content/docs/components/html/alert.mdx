@@ -1,0 +1,142 @@
+---
+title: Alert
+description: Displays a callout for user attention.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="alert-demo"
+  target="html"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add alert"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="alert"
+        title="styles/alert.css"
+        fileTarget="styles/alert.css"
+      />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the tokens and the stylesheet:
+
+```html
+<link rel="stylesheet" href="./styles/tokens.css">
+<link rel="stylesheet" href="./styles/alert.css">
+```
+
+Add the classes. A direct `svg` child becomes the icon:
+
+```html
+<div class="np-alert" role="alert">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="10" /><path d="M12 16v-4" /><path d="M12 8h.01" />
+  </svg>
+  <div class="np-alert-title">Heads up!</div>
+  <div class="np-alert-description">You can add components to your app using the CLI.</div>
+</div>
+```
+
+Or use the data attributes instead of the classes:
+
+```html
+<div data-np-alert role="alert">
+  <div data-np-alert-title>Heads up!</div>
+  <div data-np-alert-description>You can add components to your app using the CLI.</div>
+</div>
+```
+
+---
+
+## Composition
+
+```text
+Alert
+├── Icon
+├── AlertTitle
+├── AlertDescription
+└── AlertAction
+```
+
+---
+
+## Variants
+
+Add `np-alert-success`, `np-alert-info`, `np-alert-warning` or `np-alert-error` (or set `data-variant`).
+
+<ComponentPreview
+  name="alert-variants"
+  target="html"
+/>
+
+---
+
+## Action
+
+Add `np-alert-action` to pin a button to the top end corner. The alert reserves space for it. This example needs the Button stylesheet, so link `button.css` first (see [Button](/docs/components/html/button)).
+
+```html
+<link rel="stylesheet" href="./styles/button.css">
+```
+
+<ComponentPreview
+  name="alert-action"
+  target="html"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Custom colors
+
+The status variants only set the color variables, so you can override them on any alert to build your own.
+<ComponentPreview
+  name="alert-colors"
+  target="html"
+/>
+
+---
+
+## Reference
+
+### Component
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Alert | `data-np-alert` | `np-alert` |
+| Title | `data-np-alert-title` | `np-alert-title` |
+| Description | `data-np-alert-description` | `np-alert-description` |
+| Action | `data-np-alert-action` | `np-alert-action` |
+
+### Variant
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Default | - | - |
+| Success | `data-variant="success"` | `np-alert-success` |
+| Info | `data-variant="info"` | `np-alert-info` |
+| Warning | `data-variant="warning"` | `np-alert-warning` |
+| Error | `data-variant="error"` | `np-alert-error` |
