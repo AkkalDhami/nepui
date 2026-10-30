@@ -1,0 +1,160 @@
+---
+title: Alert
+description: Displays a callout for user attention.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="alert-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/alert.json"
+      nepui="npx nepui@latest add alert --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install class-variance-authority cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="alert"
+        title="components/nepui/alert/alert.css"
+        fileTarget="components/nepui/alert/alert.css"
+      />
+      <ComponentSource
+        target="react"
+        name="alert"
+        title="components/nepui/alert/alert.tsx"
+        fileTarget="components/nepui/alert/alert.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="alert"
+        title="components/nepui/alert/index.ts"
+        fileTarget="components/nepui/alert/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import {
+  Alert,
+  AlertAction,
+  AlertDescription,
+  AlertTitle,
+} from "@/components/nepui/alert"
+```
+
+```tsx
+<Alert>
+  <InfoIcon />
+  <AlertTitle>Heads up!</AlertTitle>
+  <AlertDescription>
+    You can add components and dependencies to your app using the cli.
+  </AlertDescription>
+  <AlertAction>
+    <Button size="xs">Enable</Button>
+  </AlertAction>
+</Alert>
+```
+
+Any `svg` placed directly inside the alert is used as the icon. Nepui components don't ship an icon library, so bring your own.
+
+---
+
+## Composition
+
+```text
+Alert
+├── Icon
+├── AlertTitle
+├── AlertDescription
+└── AlertAction
+```
+
+---
+
+## Variants
+
+Use `variant` to pick a status: `default`, `success`, `error`, `warning` or `info`.
+
+<ComponentPreview
+  name="alert-variants"
+/>
+
+---
+
+## Action
+
+Use `AlertAction` to add a button or other element to the top end corner of the alert. The alert reserves space for it. This example uses the [Button](/docs/components/react/button) component.
+
+<ComponentPreview
+  name="alert-action"
+/>
+
+---
+
+## Custom colors
+
+The status variants only set the color variables, so you can override them on any alert to build your own.
+
+<ComponentPreview
+  name="alert-colors"
+/>
+
+---
+
+## API Reference
+
+### Alert
+
+The `Alert` component displays a callout for user attention. It renders a `div` with `role="alert"`.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `variant` | `"default" \| "success" \| "error" \| "warning" \| "info" \| "destructive"` | `"default"` |
+| `className` | `string` | - |
+
+### AlertTitle
+
+The title of the alert.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `className` | `string` | - |
+
+### AlertDescription
+
+The description or content of the alert.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `className` | `string` | - |
+
+### AlertAction
+
+An action element, positioned in the top end corner of the alert.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `className` | `string` | - |

@@ -89,7 +89,7 @@ export function Example() {
 
 ## Invalid State
 
-Set `aria-invalid` on the checkbox to show the invalid styles.
+Set `aria-invalid` on the checkbox and `data-invalid` on the field wrapper to show the invalid styles.
 
 <ComponentPreview
   name="checkbox-invalid"
@@ -99,7 +99,7 @@ Set `aria-invalid` on the checkbox to show the invalid styles.
 
 ## Disabled State
 
-Set `aria-disabled` on the checkbox to show the disabled styles.
+Use the `disabled` prop to prevent interaction and add the `data-disabled` attribute to the `<Field>` component for disabled styles.
 
 <ComponentPreview
   name="checkbox-disabled"
