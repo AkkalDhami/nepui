@@ -17,6 +17,8 @@
   min-width: var(--np-kbd-height);
   padding: 0 0.25rem;
 
+  border: 1px solid var(--np-border);
+  border-block-end-width: 2px;
   border-radius: var(--np-kbd-radius);
   background: var(--np-kbd-bg);
   color: var(--np-kbd-color);

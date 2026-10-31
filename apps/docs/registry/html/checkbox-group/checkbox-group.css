@@ -1,0 +1,40 @@
+/* nepui — Checkbox Group */
+
+.np-checkbox-group,
+[data-np-checkbox-group] {
+  --np-checkbox-group-gap: calc(var(--np-spacing) * 3);
+  --np-checkbox-group-direction: column;
+  --np-checkbox-group-align: flex-start;
+  --np-checkbox-group-wrap: nowrap;
+  --np-checkbox-group-indent: calc(var(--np-spacing) * 4);
+
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: var(--np-checkbox-group-direction);
+  flex-wrap: var(--np-checkbox-group-wrap);
+  align-items: var(--np-checkbox-group-align);
+  gap: var(--np-checkbox-group-gap);
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.np-checkbox-group-horizontal,
+:is(
+  .np-checkbox-group,
+  [data-np-checkbox-group]
+)[data-orientation="horizontal"] {
+  --np-checkbox-group-gap: calc(var(--np-spacing) * 4);
+  --np-checkbox-group-direction: row;
+  --np-checkbox-group-align: center;
+  --np-checkbox-group-wrap: wrap;
+}
+
+.np-checkbox-group-child,
+[data-np-checkbox-group-child] {
+  margin-inline-start: var(
+    --np-checkbox-group-indent,
+    calc(var(--np-spacing) * 4)
+  );
+}
