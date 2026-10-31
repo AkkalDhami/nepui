@@ -273,50 +273,6 @@ export default function RootLayout({
 
 ---
 
-## Package managers
-
-The nepui CLI can be executed with your preferred package manager:
-
-### npm
-
-```bash
-npx nepui@latest add button --target react
-```
-
-### pnpm
-
-```bash
-pnpm dlx nepui@latest add button --target react
-```
-
-### yarn
-
-```bash
-yarn dlx nepui@latest add button --target react
-```
-
-### Bun
-
-```bash
-bunx nepui@latest add button --target react
-```
-
----
-
-## Add multiple components
-
-You can add components individually:
-
-```bash
-npx nepui@latest add button --target react
-npx nepui@latest add spinner --target react
-npx nepui@latest add copy-button --target react
-```
-
-This keeps your project lightweight because you only copy the components you actually need.
-
----
-
 ## What gets installed?
 
 nepui does not replace your application's architecture.
@@ -334,41 +290,11 @@ your-project/
 │       │   └── button.css
 │       │
 │       ├── spinner/
-│       │   ├── spinner.tsx
-│       │   └── spinner.css
-│       │
-│       └── copy-button/
-│           ├── copy-button.tsx
-│           └── copy-button.css
-│
+│           ├── spinner.tsx
+│           └── spinner.css
 └── ...
 ```
 
 You own these files.
 
 You can modify the markup, styles, props, animations, accessibility behavior, or component API to fit your application.
-
-## Updating components
-
-Because nepui components are added as source files, updates don't silently change your application.
-
-When a new version of a component is released, you can review the changes and update your local component when you're ready.
-
-This gives you control over your UI instead of introducing a runtime dependency on nepui.
-
-## HTML vs React
-
-|                       | HTML | React |
-| --------------------- | ---- | ----- |
-| HTML/CSS              | ✓    | ✓     |
-| JavaScript            | ✓    | ✓     |
-| React required        | No   | Yes   |
-| Tailwind required     | No   | No    |
-| Source ownership      | ✓    | ✓     |
-| Framework independent | ✓    | —     |
-| React composition     | —    | ✓     |
-| nepui CLI             | ✓    | ✓     |
-
-### Next step
-
-Once nepui is installed, choose a component from the **Components** section and follow its individual usage guide.

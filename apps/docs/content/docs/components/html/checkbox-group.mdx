@@ -1,0 +1,176 @@
+---
+title: Checkbox Group
+description: Provides shared state to a series of checkboxes.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="checkbox-group-demo"
+  target="html"
+  styles={["/checkbox/checkbox.css", "/label/label.css"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add checkbox-group"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="label"
+        title="styles/label.css"
+        fileTarget="styles/label.css"
+      />
+      <ComponentSource
+        target="html"
+        name="checkbox"
+        title="styles/checkbox.css"
+        fileTarget="styles/checkbox.css"
+      />
+      <ComponentSource
+        target="html"
+        name="checkbox-group"
+        title="styles/checkbox-group.css"
+        fileTarget="styles/checkbox-group.css"
+      />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the stylesheets:
+
+```html
+<link rel="stylesheet" href="./styles/tokens.css">
+<link rel="stylesheet" href="./styles/label.css">
+<link rel="stylesheet" href="./styles/checkbox.css">
+<link rel="stylesheet" href="./styles/checkbox-group.css">
+```
+
+Add the class to a wrapper and put labeled checkboxes inside:
+
+```html
+<div class="np-checkbox-group" role="group" aria-label="Select frameworks">
+  <label class="np-label"><input class="np-checkbox" type="checkbox" value="next" checked>Next.js</label>
+  <label class="np-label"><input class="np-checkbox" type="checkbox" value="vite">Vite</label>
+  <label class="np-label"><input class="np-checkbox" type="checkbox" value="astro">Astro</label>
+</div>
+```
+
+Or use the data attribute instead of the class:
+
+```html
+<div data-np-checkbox-group role="group" aria-label="Select frameworks">
+  <!-- labeled checkboxes -->
+</div>
+```
+
+---
+
+## Disabled item
+
+Add the native `disabled` attribute to an input. To disable the whole group, use a `fieldset disabled` as the group element.
+
+Link the stylesheets:
+
+```html
+<link rel="stylesheet" href="./styles/label.css">
+<link rel="stylesheet" href="./styles/checkbox.css">
+```
+
+<ComponentPreview
+  name="checkbox-group-disabled"
+  target="html"
+  styles={["/checkbox/checkbox.css", "/label/label.css"]}
+/>
+
+---
+
+## Horizontal
+
+Add `np-checkbox-group-horizontal` to lay the items out in a row. They wrap when there is not enough room.
+
+Link the stylesheets:
+
+```html
+<link rel="stylesheet" href="./styles/label.css">
+<link rel="stylesheet" href="./styles/checkbox.css">
+```
+
+<ComponentPreview
+  name="checkbox-group-horizontal"
+  target="html"
+  styles={["/checkbox/checkbox.css", "/label/label.css"]}
+/>
+
+---
+
+## Parent checkbox
+
+Mark the parent input with `data-parent` and add the `np-checkbox-group-child` class to indent the children.
+
+Link the stylesheets:
+
+```html
+<link rel="stylesheet" href="./styles/label.css">
+<link rel="stylesheet" href="./styles/checkbox.css">
+```
+
+<ComponentPreview
+  name="checkbox-group-parent"
+  target="html"
+  styles={["/checkbox/checkbox.css", "/label/label.css"]}
+/>
+
+---
+
+## Nested parent checkbox
+
+The same handler works with nested groups. Each group that holds a `data-parent` input tracks the checkboxes inside it, so put the handler on the outermost group.
+
+Link the stylesheets:
+
+```html
+<link rel="stylesheet" href="./styles/label.css">
+<link rel="stylesheet" href="./styles/checkbox.css">
+```
+
+<ComponentPreview
+  name="checkbox-group-nested"
+  target="html"
+  styles={["/checkbox/checkbox.css", "/label/label.css"]}
+/>
+
+---
+
+## Reference
+
+### Component
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Checkbox group | `data-np-checkbox-group` | `np-checkbox-group` |
+| Child (indent) | `data-np-checkbox-group-child` | `np-checkbox-group-child` |
+
+### Orientation
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Vertical (default) | - | - |
+| Horizontal | `data-orientation="horizontal"` | `np-checkbox-group-horizontal` |

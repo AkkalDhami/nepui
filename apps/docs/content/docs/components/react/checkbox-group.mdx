@@ -1,0 +1,145 @@
+---
+title: Checkbox Group
+description: Provides shared state to a series of checkboxes.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="checkbox-group-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/checkbox-group.json"
+      nepui="npx nepui@latest add checkbox-group --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="checkbox-group"
+        title="components/nepui/checkbox-group/checkbox-group.css"
+        fileTarget="components/nepui/checkbox-group/checkbox-group.css"
+      />
+      <ComponentSource
+        target="react"
+        name="checkbox-group"
+        title="components/nepui/checkbox-group/checkbox-group.tsx"
+        fileTarget="components/nepui/checkbox-group/checkbox-group.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="checkbox-group"
+        title="components/nepui/checkbox-group/index.ts"
+        fileTarget="components/nepui/checkbox-group/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import { Checkbox } from "@/components/nepui/checkbox"
+import { CheckboxGroup } from "@/components/nepui/checkbox-group"
+import { Label } from "@/components/nepui/label"
+```
+
+```tsx
+<CheckboxGroup aria-label="Select frameworks" defaultValue={["next"]}>
+  <Label>
+    <Checkbox value="next" />
+    Next.js
+  </Label>
+  <Label>
+    <Checkbox value="vite" />
+    Vite
+  </Label>
+  <Label>
+    <Checkbox value="astro" />
+    Astro
+  </Label>
+</CheckboxGroup>
+```
+
+Every checkbox needs an accessible name. Wrap it in a `Label`, and name the group with `aria-label` or `aria-labelledby`. To validate or label the group as a form field, wrap it with the [Field](/docs/components/react/field) components.
+
+---
+
+## Disabled item
+
+Pass `disabled` to a `Checkbox` to disable a single item. Pass it to the `CheckboxGroup` to disable them all.
+
+<ComponentPreview
+  name="checkbox-group-disabled"
+/>
+
+---
+
+## Horizontal
+
+Set `orientation="horizontal"` to lay the items out in a row. They wrap when there is not enough room.
+
+<ComponentPreview
+  name="checkbox-group-horizontal"
+/>
+
+---
+
+## Parent checkbox
+
+A checkbox that controls the others in the group:
+
+1. Make the group controlled with `value` and `onValueChange`.
+2. Pass every child value to `allValues`.
+3. Add the `parent` prop to the parent `Checkbox`.
+
+The group sets the parent's indeterminate state when only some children are checked. Add the `np-checkbox-group-child` class to indent the children.
+
+<ComponentPreview
+  name="checkbox-group-parent"
+/>
+
+---
+
+## Nested parent checkbox
+
+Nest a second `CheckboxGroup` for a sub-list. Keep both lists in state and sync them in `onValueChange`, as the example shows.
+
+<ComponentPreview
+  name="checkbox-group-nested"
+/>
+
+---
+
+## API Reference
+
+This component wraps the [Base UI Checkbox Group](https://base-ui.com/react/components/checkbox-group#api-reference) and accepts all of its props.
+
+### CheckboxGroup
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `value` | `string[]` | - |
+| `defaultValue` | `string[]` | - |
+| `onValueChange` | `(value: string[], eventDetails) => void` | - |
+| `allValues` | `string[]` | - |
+| `disabled` | `boolean` | `false` |
+| `orientation` | `"vertical" \| "horizontal"` | `"vertical"` |
