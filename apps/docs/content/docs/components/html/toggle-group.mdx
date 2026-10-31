@@ -1,0 +1,221 @@
+---
+title: Toggle Group
+description: A set of two-state buttons that can be toggled on or off.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  target="html"
+  name="toggle-group-demo"
+  styles={["/toggle/toggle.css"]}
+  scripts={["/toggle-group/toggle-group.js"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add toggle-group"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Add the <LINK href="/docs/components/html/toggle"><code>Toggle</code></LINK> stylesheet.</Step>
+      <ComponentSource
+        target="html"
+        name="toggle"
+        title="styles/toggle.css"
+        fileTarget="styles/toggle.css"
+      />
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="toggle-group"
+        title="styles/toggle-group.css"
+        fileTarget="styles/toggle-group.css"
+      />
+
+      <ComponentSource
+        target="html"
+        name="toggle-group"
+        title="javascripts/toggle-group.js"
+        fileTarget="javascripts/toggle-group.js"
+      />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Load `toggle.css` first, then `toggle-group.css`.
+
+```html
+<link rel="stylesheet" href="./styles/toggle.css" />
+<link rel="stylesheet" href="./styles/toggle-group.css" />
+
+<script src="./javascripts/toggle-group.js" defer></script>
+```
+
+```html
+<div class="np-toggle-group" role="group" aria-label="Text formatting">
+  <button type="button" class="np-toggle" aria-pressed="false" aria-label="Toggle bold">Bold</button>
+  <button type="button" class="np-toggle" aria-pressed="false" aria-label="Toggle italic">Italic</button>
+</div>
+```
+
+Or use the data attributes instead of the classes:
+
+```html
+<div data-np-toggle-group role="group" aria-label="Text formatting">
+  <button type="button" data-np-toggle aria-pressed="false" aria-label="Toggle bold">Bold</button>
+  <button type="button" data-np-toggle aria-pressed="false" aria-label="Toggle italic">Italic</button>
+</div>
+```
+
+Items are plain `np-toggle` buttons placed directly inside the group. Variant and size go on the group, not on each item. Give the group a `role="group"` and an `aria-label`, and give icon-only items their own `aria-label`.
+
+---
+
+## Single
+
+Only one item is pressed at a time. Pressing the active item again turns it off.
+
+<ComponentPreview
+  target="html"
+  name="toggle-group-single"
+  styles={["/toggle/toggle.css"]}
+  scripts={["/toggle-group/toggle-group.js"]}
+/>
+
+---
+
+## Outline
+
+Use `np-toggle-group-outline` or `data-variant="outline"`. Combine it with `np-toggle-group-connected` for one connected control.
+
+<ComponentPreview
+  target="html"
+  name="toggle-group-outline"
+  styles={["/toggle/toggle.css"]}
+  scripts={["/toggle-group/toggle-group.js"]}
+/>
+
+---
+
+## Size
+
+Use `np-toggle-group-sm`, `np-toggle-group-lg` or `data-size` on the group. Heights match Button and Input.
+
+<ComponentPreview
+  target="html"
+  name="toggle-group-size"
+  styles={["/toggle/toggle.css"]}
+  scripts={["/toggle-group/toggle-group.js"]}
+/>
+
+---
+
+## Spacing
+
+The default space between items is `2` steps of `0.25rem`. Use `np-toggle-group-connected` or `data-spacing="0"` to connect the items. For any other step, set `--np-toggle-group-spacing` on the group.
+
+<ComponentPreview
+  target="html"
+  name="toggle-group-spacing"
+  styles={["/toggle/toggle.css"]}
+  scripts={["/toggle-group/toggle-group.js"]}
+/>
+
+---
+
+## Vertical
+
+Use `np-toggle-group-vertical` or `data-orientation="vertical"`.
+
+<ComponentPreview
+  target="html"
+  name="toggle-group-vertical"
+  styles={["/toggle/toggle.css"]}
+  scripts={["/toggle-group/toggle-group.js"]}
+/>
+
+---
+
+## Disabled
+
+Add `data-disabled` (or `aria-disabled="true"`) to the group to dim every item, and the native `disabled` attribute to each button so it cannot be focused or clicked.
+
+<ComponentPreview
+  target="html"
+  name="toggle-group-disabled"
+  styles={["/toggle/toggle.css"]}
+  scripts={["/toggle-group/toggle-group.js"]}
+/>
+
+---
+
+## Reference
+
+### Variants
+
+| Name    | Data attribute           | Class alias                 |
+| ------- | ------------------------ | --------------------------- |
+| Default | -                        | `np-toggle-group`           |
+| Outline | `data-variant="outline"` | `np-toggle-group-outline`   |
+
+### Sizes
+
+| Name    | Data attribute   | Class alias             |
+| ------- | ---------------- | ----------------------- |
+| Small   | `data-size="sm"` | `np-toggle-group-sm`    |
+| Default | -                | `np-toggle-group`       |
+| Large   | `data-size="lg"` | `np-toggle-group-lg`    |
+
+### Orientation
+
+| Name       | Data attribute               | Class alias                 |
+| ---------- | ---------------------------- | --------------------------- |
+| Horizontal | -                            | `np-toggle-group`           |
+| Vertical   | `data-orientation="vertical"` | `np-toggle-group-vertical` |
+
+### Spacing
+
+| Name      | Data attribute    | Class alias                  |
+| --------- | ----------------- | ---------------------------- |
+| Default   | -                 | `np-toggle-group`            |
+| Connected | `data-spacing="0"` | `np-toggle-group-connected` |
+
+### Behavior
+
+These are read by `toggle-group.js`, the stylesheet ignores them.
+
+| Name     | Data attribute  | Class alias                  |
+| -------- | --------------- | ---------------------------- |
+| Single   | -               | `np-toggle-group`            |
+| Multiple | `data-multiple` | `np-toggle-group-multiple`   |
+
+### Parts
+
+| Name  | Data attribute  | Class alias                               |
+| ----- | --------------- | ----------------------------------------- |
+| Group | `data-np-toggle-group` | `np-toggle-group`                  |
+| Item  | `data-np-toggle`       | `np-toggle` (direct child of the group) |
+
+### States
+
+| State          | Selector                                   |
+| -------------- | ------------------------------------------ |
+| Disabled group | `[data-disabled]`, `[aria-disabled="true"]` |
+
+Item states (`aria-pressed`, `disabled`, `aria-invalid`) are described in [Toggle](/docs/components/html/toggle).

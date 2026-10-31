@@ -1,0 +1,321 @@
+---
+title: Typeset
+description: A styling system for HTML and rendered markdown, from blog posts to streaming chat. One CSS file you own.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="typeset-demo"
+  height="min-h-150"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/typeset.json"
+      nepui="npx nepui@latest add typeset --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="typeset"
+        title="components/nepui/typeset.css"
+        fileTarget="components/nepui/typeset.css"
+      />
+
+      <Step>Import it after your tokens, once, in your root layout or main CSS file. Update the path to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+You render markdown and get back plain HTML: headings, paragraphs, lists and tables. **Typeset** is one CSS file that styles all of it inside an `np-typeset` container, so you do not style each element by hand. The file lives in your project, so you can edit it.
+
+Import it after `tokens.css`:
+
+```tsx
+import "@/components/nepui/tokens.css"
+import "@/components/nepui/typeset.css"
+```
+
+Wrap your rendered markdown with `np-typeset`:
+
+```tsx
+<article className="np-typeset">
+  <YourMarkdownRenderer>{content}</YourMarkdownRenderer>
+</article>
+```
+
+Colors, radius and dark mode come from your nepui tokens, so there is no second palette. Typeset sets no maximum width, because your layout owns that.
+
+---
+
+## Principles
+
+Typeset condenses everything into three controls, which we call rhythm: **size**, **leading** and **flow**. Heading sizes, list indents, the gap under a heading and the space around a rule all derive from them.
+
+- **It fits its container.** Put it in a chat bubble and it follows the smaller type around it. Put it in an article and it scales with the page. On small screens it gets a small bump for readability.
+- **It is easy to tune.** Change three values and the whole document follows.
+- **It works with streaming.** New blocks do not restyle the ones already on screen.
+
+---
+
+## Presets
+
+A typeset is a small preset class. Add one next to `np-typeset`. Every preset has a class and a data attribute.
+
+| Preset | Data attribute | Size | Leading | Flow | Good for |
+| ------ | -------------- | ---- | ------- | ---- | -------- |
+| `np-typeset-chat` | `data-rhythm="chat"` | `1em` | `1.6` | `1em` | Chat bubbles and streaming answers |
+| `np-typeset-docs` | `data-rhythm="docs"` | `15px` | `1.75` | `1.5em` | Documentation |
+| `np-typeset-compact` | `data-rhythm="compact"` | `14px` | `1.6` | `1em` | Dense interfaces |
+| `np-typeset-article` | `data-rhythm="article"` | `18px` | `1.9` | `2em` | Long articles |
+| `np-typeset-large` | `data-rhythm="large"` | `16px` | `2` | `2em` | Readers who want larger type and more space |
+
+You can use more than one preset in the same app:
+
+```tsx
+<div className="np-typeset np-typeset-chat">...</div>
+<article className="np-typeset np-typeset-docs">...</article>
+```
+
+### Chat
+
+The `np-typeset-chat` preset is tight and follows the type size of its bubble.
+
+<ComponentPreview
+  name="typeset-chat"
+  height="min-h-120"
+/>
+
+### Article
+
+The `np-typeset-article` preset is larger and roomier.
+
+<ComponentPreview
+  name="typeset-article"
+  height="min-h-150"
+/>
+
+### Docs
+
+Use `np-typeset-docs` or `data-rhythm="docs"`
+
+<ComponentPreview
+  name="typeset-docs"
+  height="min-h-150"
+/>
+
+### Compact
+
+Use `np-typeset-compact` or `data-rhythm="compact"`
+
+<ComponentPreview
+  name="typeset-compact"
+  height="min-h-150"
+/>
+
+### Large
+
+Use `np-typeset-large` or `data-rhythm="large"`
+
+<ComponentPreview
+  name="typeset-large"
+  height="min-h-150"
+/>
+
+---
+
+## Fonts
+
+Typeset uses [Google Fonts](https://fonts.google.com). Add the font presets next to `np-typeset`:
+
+```tsx
+<article className="np-typeset np-typeset-docs np-typeset-inter np-typeset-jetbrains-mono">...</article>
+```
+
+### Body fonts
+
+| Preset | Data attribute | Google Font | Kind |
+| ------ | -------------- | ----------- | ---- |
+| `np-typeset-inter` | `data-font="inter"` | [Inter](https://fonts.google.com/specimen/Inter) | Sans |
+| `np-typeset-geist` | `data-font="geist"` | [Geist](https://fonts.google.com/specimen/Geist) | Sans |
+| `np-typeset-manrope` | `data-font="manrope"` | [Manrope](https://fonts.google.com/specimen/Manrope) | Sans |
+| `np-typeset-lora` | `data-font="lora"` | [Lora](https://fonts.google.com/specimen/Lora) | Serif |
+| `np-typeset-merriweather` | `data-font="merriweather"` | [Merriweather](https://fonts.google.com/specimen/Merriweather) | Serif |
+
+### Heading fonts
+
+| Preset | Data attribute | Google Font | Kind |
+| ------ | -------------- | ----------- | ---- |
+| `np-typeset-heading-inter` | `data-font-heading="inter"` | [Inter](https://fonts.google.com/specimen/Inter) | Sans |
+| `np-typeset-heading-geist` | `data-font-heading="geist"` | [Geist](https://fonts.google.com/specimen/Geist) | Sans |
+| `np-typeset-heading-manrope` | `data-font-heading="manrope"` | [Manrope](https://fonts.google.com/specimen/Manrope) | Sans |
+| `np-typeset-heading-lora` | `data-font-heading="lora"` | [Lora](https://fonts.google.com/specimen/Lora) | Serif |
+| `np-typeset-heading-merriweather` | `data-font-heading="merriweather"` | [Merriweather](https://fonts.google.com/specimen/Merriweather) | Serif |
+
+### Code fonts
+
+| Preset | Data attribute | Google Font |
+| ------ | -------------- | ----------- |
+| `np-typeset-mono-jetbrains-mono` | `data-font-mono="jetbrains-mono"` | [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono) |
+| `np-typeset-mono-fira-code` | `data-font-mono="fira-code"` | [Fira Code](https://fonts.google.com/specimen/Fira+Code) |
+| `np-typeset-mono-geist-mono` | `data-font-mono="geist-mono"` | [Geist Mono](https://fonts.google.com/specimen/Geist+Mono) |
+
+### Load the fonts
+
+The presets use the real Google Font names, so load the fonts you use once per page. Load only the ones you need, to keep the page fast:
+
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+  rel="stylesheet"
+>
+
+<!-- Or Load all fonts -->
+<link
+  href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Lora:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Merriweather:wght@400;700"
+  rel="stylesheet"
+/>
+```
+
+You can also load a font with `@import` in your CSS:
+
+```css
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+```
+
+With `next/font/google`, the family name is generated for you, so set the font variable in your own preset instead:
+
+```css
+.np-typeset-brand {
+  --np-typeset-font-heading: var(--font-inter);
+  --np-typeset-font-body: var(--font-inter);
+  --np-typeset-font-mono: var(--font-jetbrains-mono);
+}
+```
+
+---
+
+## Custom Typesets
+
+Make your own preset by setting the variables on a class. You can combine rhythm and fonts in one preset:
+
+```css
+.np-typeset-blog {
+  --np-typeset-font-body: "Lora", ui-serif, Georgia, serif;
+  --np-typeset-font-heading: "Playfair Display", ui-serif, Georgia, serif;
+  --np-typeset-size: 17px;
+  --np-typeset-leading: 1.85;
+  --np-typeset-flow: 1.75em;
+}
+```
+
+For a one-off change, set a value on the container:
+
+```tsx
+<article className="np-typeset" style={{ "--np-typeset-flow": "1.75em" }}>...</article>
+```
+
+### Variables
+
+| Variable | Default | What it does |
+| -------- | ------- | ------------ |
+| `--np-typeset-size` | `1em` | Base text size. `1em` follows the surrounding layout. |
+| `--np-typeset-leading` | `1.75` | Line height. |
+| `--np-typeset-flow` | `1.25em` | Space between blocks. Headings, lists and rules derive their spacing from it. |
+| `--np-typeset-font-body` | inherited | Font family of the text. |
+| `--np-typeset-font-heading` | the body font | Font family of headings. |
+| `--np-typeset-font-mono` | system monospace | Font family of code, `kbd` and `samp`. |
+| `--np-typeset-color` | `var(--np-foreground)` | Text color. Change it inside a colored surface such as a chat bubble. |
+| `--np-typeset-muted` | `var(--np-muted-foreground)` | Color of secondary text: small headings, list markers, captions. |
+| `--np-typeset-rule` | `var(--np-border)` | Color of lines: blockquote, rules and table separators. |
+| `--np-typeset-bump` | `1` (`1.125` below `48rem`, `1` in print) | Size bump on narrow screens. |
+| `--np-typeset-radius` | `var(--np-radius-lg)` | Corner radius of code blocks, images and videos. |
+
+---
+
+## Dark Mode
+
+Dark mode already follows your tokens. If the text feels tight on a dark surface, loosen the leading there:
+
+```css
+.dark .np-typeset {
+  --np-typeset-leading: 1.9;
+}
+```
+
+---
+
+## Responsive Table
+
+Tables stay real tables and wrap to fit. To scroll a wide one sideways instead, wrap it in `np-typeset-scroll`. It works for any wide block, not only tables.
+
+<ComponentPreview
+  name="typeset-table"
+/>
+
+---
+
+## Overrides
+
+Every Typeset rule has zero specificity, so a normal selector or a utility class on an element wins without `!important`:
+
+```tsx
+<div className="np-typeset">
+  <p className="my-lead">...</p>
+</div>
+```
+
+---
+
+## Opting Out
+
+To keep an element out of Typeset, add `np-typeset-not` (or `data-np-typeset-not`). It covers the element and everything inside it, including another `np-typeset` container.
+
+<ComponentPreview
+  name="typeset-opt-out"
+/>
+
+---
+
+## Streaming
+
+Typeset is written so that adding a new block never changes the styles of the blocks already on screen.
+
+- It uses no `:last-child`, `:has()` or `:empty` in layout rules, because their matches can change as content is added.
+- Spacing flows in one direction, with `margin-block-start` only. A new block adds its own space.
+- Table separators sit on the cells being added, so a new row does not restyle the row above it.
+
+Text that is still streaming can grow and wrap normally.
+
+---
+
+## Reference
+
+### Hooks
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Typeset container | `data-np-typeset` | `np-typeset` |
+| Opt out | `data-np-typeset-not` | `np-typeset-not` |
+| Scroll wrapper | `data-np-typeset-scroll` | `np-typeset-scroll` |
+| Rhythm preset | `data-rhythm="chat \| docs \| compact \| article \| large"` | `np-typeset-<name>` |
+| Font preset | `data-font="<font-name>"` | `np-typeset-<font-name>` |
+| Code font preset | `data-mono="<font-name>"` | `np-typeset-<font-name>` |
