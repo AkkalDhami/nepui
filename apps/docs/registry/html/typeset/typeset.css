@@ -1,0 +1,1243 @@
+:where(.np-typeset, [data-np-typeset]) {
+  --np-typeset-font-heading: inherit;
+  --np-typeset-font-body: inherit;
+  --np-typeset-font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    monospace;
+  --np-typeset-size: 1em;
+  --np-typeset-bump: 1;
+  --np-typeset-leading: 1.75;
+  --np-typeset-flow: 1.25em;
+  --np-typeset-color: var(--np-foreground);
+  --np-typeset-muted: var(--np-muted-foreground);
+  --np-typeset-rule: var(--np-border);
+  --np-typeset-radius: var(--np-radius-lg);
+
+  font-family: var(--np-typeset-font-body, inherit);
+  font-size: calc(var(--np-typeset-size) * var(--np-typeset-bump));
+  line-height: var(--np-typeset-leading);
+  color: var(--np-typeset-color);
+  overflow-wrap: break-word;
+  margin-trim: block-start;
+}
+
+@media (max-width: 47.9375rem) {
+  :where(.np-typeset, [data-np-typeset]) {
+    --np-typeset-bump: 1.125;
+  }
+}
+
+@media print {
+  :where(.np-typeset, [data-np-typeset]) {
+    --np-typeset-bump: 1;
+  }
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(p):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  margin-block-start: var(--np-typeset-flow);
+  margin-block-end: 0;
+  text-wrap: pretty;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(h1, h2, h3, h4, h5, h6):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  color: var(--np-typeset-color);
+  font-family: var(
+    --np-typeset-font-heading,
+    var(--np-typeset-font-body, inherit)
+  );
+  font-weight: 600;
+  margin-block-end: 0;
+  text-wrap: balance;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(h1):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  font-size: 1.75em;
+  line-height: 1.3;
+  margin-block-start: var(--np-typeset-flow);
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(h2):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  font-size: 1.25em;
+  line-height: 1.4;
+  margin-block-start: calc(var(--np-typeset-flow) * 1.4);
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(h3):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  font-size: 1.125em;
+  line-height: 1.45;
+  margin-block-start: var(--np-typeset-flow);
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(h4):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  font-size: 1em;
+  line-height: 1.5;
+  margin-block-start: var(--np-typeset-flow);
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(h5):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  font-size: 0.875em;
+  line-height: 1.5;
+  font-weight: 500;
+  color: var(--np-typeset-muted);
+  margin-block-start: calc(var(--np-typeset-flow) / 0.875);
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(h6):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  font-size: 0.8125em;
+  line-height: 1.5;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--np-typeset-muted);
+  margin-block-start: calc(var(--np-typeset-flow) / 0.8125);
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where([id]):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  scroll-margin-block-start: var(--np-typeset-flow);
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(:is(h1, h2, h3, h4) :is(code)):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  font-size: 0.9em;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(a):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  color: inherit;
+  font-weight: 500;
+  text-decoration-line: underline;
+  text-underline-offset: 4px;
+  color: var(--np-typeset-muted);
+  transition: text-decoration-color 150ms ease;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(a:hover):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  color: var(--np-typeset-color);
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(a:focus-visible):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  outline: 2px solid var(--np-ring);
+  outline-offset: 2px;
+  border-radius: 0.125em;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(:is(h1, h2, h3, h4, h5, h6) :is(a)):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  font-weight: inherit;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(strong, b):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  font-weight: 600;
+  color: var(--np-typeset-color);
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(em, i):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  font-style: italic;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(small):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  font-size: 0.875em;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(mark):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  background-color: color-mix(in oklch, var(--np-warning) 30%, transparent);
+  color: inherit;
+  padding: 0.05em 0.15em;
+  border-radius: 0.2em;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(abbr[title]):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 0.2em;
+  cursor: help;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(del, s):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  color: var(--np-typeset-muted);
+  text-decoration-line: line-through;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(sup, sub):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  font-size: 0.75em;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(sup):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  top: -0.5em;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(sub):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  bottom: -0.25em;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(sup a):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  text-decoration-line: none;
+  font-weight: 500;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(ul):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  list-style-type: disc;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(ol):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  list-style-type: decimal;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(ul ul):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  list-style-type: circle;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(ul ul ul):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  list-style-type: square;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(ol[type="a" i]):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  list-style-type: lower-alpha;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(ol[type="i" i]):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  list-style-type: lower-roman;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(ol[type="A" s]):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  list-style-type: upper-alpha;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(ol[type="I" s]):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  list-style-type: upper-roman;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(ul, ol):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  margin-block-start: var(--np-typeset-flow);
+  margin-block-end: 0;
+  padding-inline-start: 1.5em;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(li):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  margin-block-start: 0.5em;
+  padding-inline-start: 0.4em;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(li > p, li > ul, li > ol):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  margin-block-start: 0.5em;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(ul > li):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  )::marker,
+:where(.np-typeset, [data-np-typeset])
+  :where(ol > li):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  )::marker {
+  color: var(--np-typeset-muted);
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(ul.contains-task-list):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  list-style-type: none;
+  padding-inline-start: 0.25em;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(li.task-list-item > input[type="checkbox"]):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  margin-inline-end: 0.5em;
+  vertical-align: -0.1em;
+  accent-color: var(--np-primary);
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(details):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  margin-block-start: var(--np-typeset-flow);
+  margin-block-end: 0;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(summary):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  cursor: pointer;
+  font-weight: 500;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(summary):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  )::marker {
+  color: var(--np-typeset-muted);
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(kbd):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  font-family: var(--np-typeset-font-mono);
+  padding: 0.1em 0.4em;
+  border: 1px solid var(--np-typeset-rule);
+  border-block-end-width: 2px;
+  border-radius: var(--np-radius-sm);
+  background-color: var(--np-muted);
+  font-size: 0.8125em;
+  font-weight: 500;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(dl):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  margin-block-start: var(--np-typeset-flow);
+  margin-block-end: 0;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(dt):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  font-weight: 500;
+  margin-block-start: 1em;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(dt + dt):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  margin-block-start: 0.25em;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(dd):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  margin-block-start: 0.25em;
+  margin-inline-start: 0;
+  padding-inline-start: 1em;
+  color: var(--np-typeset-muted);
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(:not(pre) > code, samp):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  background-color: var(--np-muted);
+  font-family: var(--np-typeset-font-mono);
+  font-size: 0.85em;
+  border-radius: var(--np-radius-sm);
+  padding: 0.125em 0.3em;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(pre):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  background-color: var(--np-muted);
+  font-family: var(--np-typeset-font-mono);
+  font-size: 0.875em;
+  line-height: 1.5;
+  tab-size: 2;
+  direction: ltr;
+  border-radius: var(--np-typeset-radius);
+  padding: 0.75em 1em;
+  overflow-x: auto;
+  margin-block-start: calc(var(--np-typeset-flow) / 0.875);
+  margin-block-end: 0;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(pre code):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  background-color: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  padding: 0;
+  border-radius: 0;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(blockquote):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  border-inline-start: 2px solid var(--np-typeset-rule);
+  padding-inline-start: 1em;
+  margin-block-start: var(--np-typeset-flow);
+  margin-block-end: 0;
+  margin-inline: 0;
+  color: var(--np-typeset-muted);
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(hr):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  border: 0;
+  border-block-start: 1px solid var(--np-typeset-rule);
+  margin-block-start: calc(var(--np-typeset-flow) * 1.8);
+  margin-block-end: calc(var(--np-typeset-flow) * 1.6);
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(hr + h1, hr + h2, hr + h3, hr + h4):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  margin-block-start: var(--np-typeset-flow);
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(.footnotes, [data-footnotes]):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  margin-block-start: calc(var(--np-typeset-flow) * 2);
+  border-block-start: 1px solid var(--np-typeset-rule);
+  padding-block-start: var(--np-typeset-flow);
+  font-size: 0.875em;
+  color: var(--np-typeset-muted);
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(math[display="block"]):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  margin-block-start: var(--np-typeset-flow);
+  margin-block-end: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-block: 0.25em;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(img, video):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  border-radius: var(--np-typeset-radius);
+  max-width: 100%;
+  height: auto;
+  margin-block-start: var(--np-typeset-flow);
+  margin-block-end: 0;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(p img):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  margin-block-start: 0;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(figure):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  margin-block-start: var(--np-typeset-flow);
+  margin-block-end: 0;
+  margin-inline: 0;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(figcaption, caption):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  color: var(--np-typeset-muted);
+  font-size: 0.875em;
+  text-align: center;
+  margin-block-start: calc(0.75em / 0.875);
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(caption):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  caption-side: bottom;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(table):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  max-width: 100%;
+  font-size: 1em;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-block-end: 1px solid var(--np-typeset-rule);
+  margin-block-start: var(--np-typeset-flow);
+  margin-block-end: 0;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(.np-typeset-scroll, [data-np-typeset-scroll]):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  overflow-x: auto;
+  margin-block-start: var(--np-typeset-flow);
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(.np-typeset-scroll > *, [data-np-typeset-scroll] > *):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  margin-block-start: 0;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(.np-typeset-scroll table, [data-np-typeset-scroll] table):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  width: max-content;
+  max-width: none;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(thead th):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  font-weight: 500;
+  text-align: start;
+  white-space: nowrap;
+  padding: 0.65em 1em;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(thead td):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  color: var(--np-typeset-color);
+  font-weight: 500;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(:is(tbody, tfoot) :is(td, th)):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  padding: 0.75em 1em;
+  text-align: start;
+  vertical-align: top;
+  border-block-start: 1px solid var(--np-typeset-rule);
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(tbody th, tfoot th):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  font-weight: 500;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(th:first-child, td:first-child):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  padding-inline-start: 0;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(th[align="center"], td[align="center"]):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  text-align: center;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(th[align="right"], td[align="right"]):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  text-align: end;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(h1 + *, h2 + *, h3 + *, h4 + *, h5 + *, h6 + *):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  margin-block-start: 1em;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(li > blockquote, li > table, li > figure):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  margin-block-start: 0.5em;
+}
+
+:where(.np-typeset, [data-np-typeset])
+  :where(li > pre):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  margin-block-start: calc(0.5em / 0.875);
+}
+
+@media print {
+  :where(.np-typeset, [data-np-typeset])
+    :where(pre, table, blockquote, figure):not(
+      :where(
+        .np-typeset-not,
+        [data-np-typeset-not],
+        .np-typeset-not *,
+        [data-np-typeset-not] *
+      )
+    ) {
+    break-inside: avoid;
+  }
+
+  :where(.np-typeset, [data-np-typeset])
+    :where(h1, h2, h3, h4):not(
+      :where(
+        .np-typeset-not,
+        [data-np-typeset-not],
+        .np-typeset-not *,
+        [data-np-typeset-not] *
+      )
+    ) {
+    break-after: avoid;
+  }
+}
+
+@media (forced-colors: active) {
+  :where(.np-typeset, [data-np-typeset])
+    :where(:not(pre) > code):not(
+      :where(
+        .np-typeset-not,
+        [data-np-typeset-not],
+        .np-typeset-not *,
+        [data-np-typeset-not] *
+      )
+    ) {
+    border: 1px solid;
+  }
+}
+
+:where(.np-typeset, [data-np-typeset])
+  > :where(:first-child):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ),
+:where(.np-typeset, [data-np-typeset])
+  > :where(:first-child)
+  > :where(:first-child):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ),
+:where(.np-typeset, [data-np-typeset])
+  :where(
+    li > :first-child,
+    blockquote > :first-child,
+    td > :first-child,
+    th > :first-child,
+    dd > :first-child,
+    figure > :first-child,
+    figure > picture > img
+  ):not(
+    :where(
+      .np-typeset-not,
+      [data-np-typeset-not],
+      .np-typeset-not *,
+      [data-np-typeset-not] *
+    )
+  ) {
+  margin-block-start: 0;
+}
+
+.np-typeset-chat,
+:is(.np-typeset, [data-np-typeset])[data-rhythm="chat"] {
+  --np-typeset-leading: 1.6;
+  --np-typeset-flow: 1em;
+}
+
+.np-typeset-docs,
+:is(.np-typeset, [data-np-typeset])[data-rhythm="docs"] {
+  --np-typeset-size: 15px;
+  --np-typeset-leading: 1.75;
+  --np-typeset-flow: 1.5em;
+}
+
+.np-typeset-compact,
+:is(.np-typeset, [data-np-typeset])[data-rhythm="compact"] {
+  --np-typeset-size: 14px;
+  --np-typeset-leading: 1.6;
+  --np-typeset-flow: 1em;
+}
+
+.np-typeset-article,
+:is(.np-typeset, [data-np-typeset])[data-rhythm="article"] {
+  --np-typeset-size: 18px;
+  --np-typeset-leading: 1.9;
+  --np-typeset-flow: 2em;
+}
+
+.np-typeset-large,
+:is(.np-typeset, [data-np-typeset])[data-rhythm="large"] {
+  --np-typeset-size: 16px;
+  --np-typeset-leading: 2;
+  --np-typeset-flow: 2em;
+}
+
+.np-typeset-inter,
+:is(.np-typeset, [data-np-typeset])[data-font="inter"] {
+  --np-typeset-font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+.np-typeset-geist,
+:is(.np-typeset, [data-np-typeset])[data-font="geist"] {
+  --np-typeset-font-body: "Geist", ui-sans-serif, system-ui, sans-serif;
+}
+
+.np-typeset-manrope,
+:is(.np-typeset, [data-np-typeset])[data-font="manrope"] {
+  --np-typeset-font-body: "Manrope", ui-sans-serif, system-ui, sans-serif;
+}
+
+.np-typeset-lora,
+:is(.np-typeset, [data-np-typeset])[data-font="lora"] {
+  --np-typeset-font-body: "Lora", ui-serif, Georgia, serif;
+}
+
+.np-typeset-merriweather,
+:is(.np-typeset, [data-np-typeset])[data-font="merriweather"] {
+  --np-typeset-font-body: "Merriweather", ui-serif, Georgia, serif;
+}
+
+/* Heading fonts */
+
+.np-typeset-heading-inter,
+:is(.np-typeset, [data-np-typeset])[data-font-heading="inter"] {
+  --np-typeset-font-heading: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+.np-typeset-heading-geist,
+:is(.np-typeset, [data-np-typeset])[data-font-heading="geist"] {
+  --np-typeset-font-heading: "Geist", ui-sans-serif, system-ui, sans-serif;
+}
+
+.np-typeset-heading-manrope,
+:is(.np-typeset, [data-np-typeset])[data-font-heading="manrope"] {
+  --np-typeset-font-heading: "Manrope", ui-sans-serif, system-ui, sans-serif;
+}
+
+.np-typeset-heading-lora,
+:is(.np-typeset, [data-np-typeset])[data-font-heading="lora"] {
+  --np-typeset-font-heading: "Lora", ui-serif, Georgia, serif;
+}
+
+.np-typeset-heading-merriweather,
+:is(.np-typeset, [data-np-typeset])[data-font-heading="merriweather"] {
+  --np-typeset-font-heading: "Merriweather", ui-serif, Georgia, serif;
+}
+
+.np-typeset-mono-jetbrains-mono,
+:is(.np-typeset, [data-np-typeset])[data-font-mono="jetbrains-mono"] {
+  --np-typeset-font-mono:
+    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.np-typeset-mono-fira-code,
+:is(.np-typeset, [data-np-typeset])[data-font-mono="fira-code"] {
+  --np-typeset-font-mono:
+    "Fira Code", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.np-typeset-mono-geist-mono,
+:is(.np-typeset, [data-np-typeset])[data-font-mono="geist-mono"] {
+  --np-typeset-font-mono:
+    "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.np-typeset, [data-np-typeset])
+    :where(a):not(
+      :where(
+        .np-typeset-not,
+        [data-np-typeset-not],
+        .np-typeset-not *,
+        [data-np-typeset-not] *
+      )
+    ) {
+    transition: none;
+  }
+}

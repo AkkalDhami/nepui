@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Typeset</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Lora:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Merriweather:wght@400;700"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../tokens.css" />
+    <link rel="stylesheet" href="../styles/select.css" />
+    <link rel="stylesheet" href="./typeset.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: system-ui, sans-serif;
+      }
+      main {
+        display: grid;
+        gap: 2rem;
+        max-width: 44rem;
+        margin-inline: auto;
+      }
+      header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+      h1.page {
+        margin: 0;
+        font-size: 1.5rem;
+      }
+      h2.page {
+        margin: 0 0 0.75rem;
+        font-size: 0.875rem;
+        color: var(--np-muted-foreground);
+        font-weight: 500;
+      }
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .bubble {
+        max-width: 24rem;
+        padding: 0.75rem 1rem;
+        border-radius: var(--np-radius-lg);
+        background: var(--np-muted);
+        font-size: 0.875rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1 class="page">Typeset</h1>
+        <div class="controls">
+          <div class="np-select-wrapper">
+            <select
+              class="np-select np-select-sm"
+              aria-label="Heading font"
+              onchange="
+                var el = document.getElementById('sample')
+                if (this.value) el.dataset.fontHeading = this.value
+                else delete el.dataset.fontHeading
+              "
+            >
+              <option value="">Font Heading: default</option>
+              <option value="inter">Inter</option>
+              <option value="geist">Geist</option>
+              <option value="manrope">Manrope</option>
+              <option value="lora">Lora</option>
+              <option value="merriweather">Merriweather</option>
+            </select>
+          </div>
+          <div class="np-select-wrapper">
+            <select
+              class="np-select np-select-sm"
+              aria-label="Body font"
+              onchange="
+                var el = document.getElementById('sample')
+                if (this.value) el.dataset.font = this.value
+                else delete el.dataset.font
+              "
+            >
+              <option value="">Font Body: default</option>
+              <option value="inter">Inter</option>
+              <option value="geist">Geist</option>
+              <option value="manrope">Manrope</option>
+              <option value="lora">Lora</option>
+              <option value="merriweather">Merriweather</option>
+            </select>
+          </div>
+          <div class="np-select-wrapper">
+            <select
+              class="np-select np-select-sm"
+              aria-label="Code font"
+              onchange="
+                var el = document.getElementById('sample')
+                if (this.value) el.dataset.fontMono = this.value
+                else delete el.dataset.fontMono
+              "
+            >
+              <option value="">Code: default</option>
+              <option value="jetbrains-mono">JetBrains Mono</option>
+              <option value="fira-code">Fira Code</option>
+              <option value="geist-mono">Geist Mono</option>
+            </select>
+          </div>
+          <div class="np-select-wrapper">
+            <select
+              class="np-select np-select-sm"
+              aria-label="Rhythm"
+              onchange="
+                var el = document.getElementById('sample')
+                if (this.value) el.dataset.rhythm = this.value
+                else delete el.dataset.rhythm
+              "
+            >
+              <option value="">Rhythm: default</option>
+              <option value="chat">Chat</option>
+              <option value="docs">Docs</option>
+              <option value="article">Article</option>
+              <option value="compact">Compact</option>
+              <option value="large">Large</option>
+            </select>
+          </div>
+        </div>
+      </header>
+
+      <section>
+        <h2 class="page">
+          Article (data-np-typeset with data-font, data-mono, data-rhythm)
+        </h2>
+        <article id="sample" data-np-typeset>
+          <h1>Taxing Laughter: The Joke Tax</h1>
+          <p>
+            Once upon a time, in a far-off land, there was a very lazy king who
+            spent all day lounging on his throne. One day, his advisors came to
+            him with a problem: the kingdom was running out of money.
+          </p>
+          <h2>The Plan</h2>
+          <p>
+            The king thought long and hard, and finally came up with
+            <a href="#">a brilliant plan</a>: he would tax the
+            <strong>jokes</strong> in the <em>kingdom</em>. It was
+            <mark>not</mark> a popular idea.
+          </p>
+          <blockquote>
+            After all, everyone enjoys a good joke, so it is only fair that they
+            should pay for the privilege.
+          </blockquote>
+          <h3>The Joke Tax</h3>
+          <p>
+            The subjects were not amused. They grumbled, but the king was firm:
+          </p>
+          <ul>
+            <li>1st level of puns: 5 gold coins</li>
+            <li>
+              2nd level of jokes: 10 gold coins
+              <ul>
+                <li>Knock-knock jokes</li>
+                <li>Dad jokes</li>
+              </ul>
+            </li>
+            <li>3rd level of one-liners: 20 gold coins</li>
+          </ul>
+          <h4>The Collection</h4>
+          <ol>
+            <li>Open the royal ledger.</li>
+            <li>Count the laughs.</li>
+            <li>Send the bill.</li>
+          </ol>
+          <hr />
+          <h2>For developers</h2>
+          <p>
+            Inline code such as <code>np-typeset</code> and keys such as
+            <kbd>Ctrl</kbd> + <kbd>K</kbd> follow the code font.
+          </p>
+          <pre><code>(function () {
+  "use strict"
+
+  if (typeof document === "undefined" || document.__npToggle) return
+  document.__npToggle = true
+
+  const TOGGLE = ".np-toggle, [data-np-toggle]"
+  const GROUP = ".np-toggle-group, [data-np-toggle-group]"
+  const DISABLED = '[aria-disabled="true"], [data-disabled]'
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Element)) return
+
+    const toggle = event.target.closest(TOGGLE)
+    if (!toggle) return
+
+    // Group items are handled by toggle-group.js.
+    if (toggle.closest(GROUP)) return
+
+    if (toggle.disabled === true || toggle.matches(DISABLED)) return
+
+    const pressed = toggle.getAttribute("aria-pressed") !== "true"
+    toggle.setAttribute("aria-pressed", pressed ? "true" : "false")
+
+    toggle.dispatchEvent(
+      new CustomEvent("np-toggle-change", {
+        bubbles: true,
+        detail: { pressed },
+      })
+    )
+  })
+})()
+</code></pre>
+          <div class="np-typeset-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Preset</th>
+                  <th>Size</th>
+                  <th>Leading</th>
+                  <th>Flow</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>chat</td>
+                  <td>1em</td>
+                  <td>1.6</td>
+                  <td>1em</td>
+                </tr>
+                <tr>
+                  <td>docs</td>
+                  <td>15px</td>
+                  <td>1.75</td>
+                  <td>1.5em</td>
+                </tr>
+                <tr>
+                  <td>reading</td>
+                  <td>18px</td>
+                  <td>1.9</td>
+                  <td>2em</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <details>
+            <summary>What is flow?</summary>
+            <p>
+              Flow is the space between blocks. Headings and lists derive their
+              spacing from it.
+            </p>
+          </details>
+          <h5>Small heading</h5>
+          <h6>Smallest heading</h6>
+        </article>
+      </section>
+
+      <section>
+        <h2 class="page">Chat bubble (np-typeset-chat)</h2>
+        <div class="bubble">
+          <div class="np-typeset np-typeset-chat">
+            <p>Here is a quick way to start. Run the command below:</p>
+            <pre><code>npx nepui@latest add typeset</code></pre>
+            <ul>
+              <li>Wrap your content in <code>np-typeset</code></li>
+              <li>Pick a preset such as <code>np-typeset-chat</code></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="page">Opt out (np-typeset-not)</h2>
+        <div class="np-typeset">
+          <p>This paragraph is styled by Typeset.</p>
+          <div
+            class="np-typeset-not"
+            style="
+              margin-block-start: 1.25em;
+              padding: 0.75rem 1rem;
+              border: 1px dashed var(--np-border);
+              border-radius: var(--np-radius-lg);
+            "
+          >
+            <p style="margin: 0">
+              This one is inside np-typeset-not, so Typeset leaves it alone.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <article class="np-typeset">
+        <div>
+          <h1>A Morning at the Letterpress Museum</h1>
+          <p>
+            The first thing you notice is the smell: machine oil, paper dust,
+            and a century of ink that never fully dries. The second thing is the
+            sound. A working letterpress shop is not quiet, and the museum on
+            Greer Street keeps three presses working, because, as the docent
+            told me within a minute of my arrival,
+            <em>a silent press is just furniture</em>.
+          </p>
+          <p>
+            I went because I write software that arranges text on screens, and I
+            had started to suspect that everything hard about my job had been
+            solved a hundred years ago by people with steel tools and no undo. I
+            left four hours later with ink on my sleeve and a notebook full of
+            confirmations.
+          </p>
+          <figure>
+            <img
+              src="https://images.unsplash.com/photo-1629968417841-d87296c4205b?q=80&amp;w=800&amp;h=400&amp;fit=crop"
+              alt="Textured surface, worn by use."
+              width="800"
+              height="400"
+            />
+            <figcaption>Ink before it becomes language.</figcaption>
+          </figure>
+          <h2>The composing room</h2>
+          <p>
+            Type lives in shallow wooden drawers called cases, and the layout of
+            a case is itself a piece of interface design: the letters you reach
+            for most sit nearest your hand, in the biggest compartments. Nobody
+            alphabetized them. The arrangement was settled by frequency, argued
+            over for a generation, and then never changed again, which is
+            roughly the story of every good default I have ever shipped.
+          </p>
+          <p>
+            A compositor working at full speed sets about two thousand
+            characters an hour, reading the manuscript with one eye while the
+            other confirms each pick. The docent, a retired compositor named{"
+            "}
+            <strong>Ruth Okafor</strong>, demonstrated without looking down
+            once. When I asked how long that took to learn she said, &ldquo;The
+            hands take a year. Knowing when a line is wrong takes ten.&ldquo;
+          </p>
+          <blockquote>
+            <p>
+              Every em of space in this room is a physical object. You want more
+              air between two lines, you go get the lead and you carry it back.
+              It keeps your opinions about spacing very honest.
+            </p>
+          </blockquote>
+          <p>
+            That line rearranged something in my head. The strips of lead that
+            printers wedged between lines of type are why we still say
+            <a href="#">leading</a>. On my screen, spacing is a number I can
+            change in a keystroke, and so I change it constantly, carelessly.
+            Ruth&apos;s shop had exactly four widths of lead, and the whole
+            trade agreed on them, and a hundred years of books came out
+            beautiful anyway. Constraint was not the obstacle to the craft. It
+            was the craft.
+          </p>
+          <h2>What the metal knows</h2>
+          <figure>
+            <img
+              src="https://images.unsplash.com/photo-1637325258040-d2f09636ecf6?q=80&amp;w=800&amp;h=400&amp;fit=crop"
+              alt="Recycled paper, up close."
+              width="800"
+              height="400"
+            />
+            <figcaption>Space is material.</figcaption>
+          </figure>
+          <p>Three things the metal insists on, which screens let us forget:</p>
+          <ul>
+            <li>
+              <strong>Space is material.</strong> Word spaces, line leads, and
+              margins are objects with widths. Nothing is &quot;auto.&rdquo;
+              Someone chose everything.
+            </li>
+            <li>
+              <strong>Hierarchy is expensive.</strong> Changing size means
+              walking to a different case. Printers built emphasis from weight
+              and space first because size was the costly move, and their pages
+              read better for it.
+            </li>
+            <li>
+              <strong>The page is finished before it is printed.</strong> A
+              locked-up chase either holds together or it doesn&apos;t. There is
+              a satisfying finality to it that no deploy has ever given me.
+            </li>
+          </ul>
+          <p>
+            None of this is nostalgia, or not only. The constraints were real
+            costs, and digital type was right to remove them. But removal has a
+            second-order effect: when nothing is expensive, nothing forces a
+            decision, and unforced decisions drift. The printers&apos; defaults
+            survived because changing them was work. Ours have to survive on
+            discipline, which is a weaker material.
+          </p>
+          <hr />
+          <h2>Field notes</h2>
+          <p>Practical things I wrote down, in the order I wrote them:</p>
+          <ol>
+            <li>
+              Ruth sets solid (no leading) only for lines shorter than the
+              alphabet. Anything longer gets air. Our line-length rules agree,
+              which pleased me more than it should have.
+            </li>
+            <li>
+              The shop&apos;s &quot;house style&quot; fits on an index card
+              taped inside a cabinet door. Four leads, two faces, three sizes.
+              An entire design system, physically enumerable.
+            </li>
+            <li>
+              Apprentices learn distribution (putting type away) before
+              composition. You learn a system by returning things to it.
+            </li>
+          </ol>
+          <p>
+            The museum runs open studio on the first Saturday of every month,
+            and they will let you set your own name if you ask. Mine came out
+            crooked. Ruth looked at it for a moment and said it was a common
+            beginner&apos;s error: I had been so careful choosing the letters
+            that I forgot to check the spaces. I have been thinking about that
+            all week.
+          </p>
+          <p>
+            <em>
+              The Greer Street Press Museum is open Thursday through Sunday. If
+              you go, bring a jacket; the composing room is kept cold for the
+              metal.
+            </em>
+          </p>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

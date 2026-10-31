@@ -1,0 +1,159 @@
+/* nepui — Toggle Group */
+
+.np-toggle-group,
+[data-np-toggle-group] {
+  --np-toggle-group-spacing: 2;
+  --np-toggle-group-radius: var(--np-radius-md);
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: fit-content;
+  gap: calc(var(--np-spacing) * var(--np-toggle-group-spacing));
+  border-radius: var(--np-toggle-group-radius);
+}
+
+:is(.np-toggle-group, [data-np-toggle-group])
+  > :is(.np-toggle, [data-np-toggle]) {
+  position: relative;
+  flex-shrink: 0;
+}
+
+:is(.np-toggle-group, [data-np-toggle-group])
+  > :is(.np-toggle, [data-np-toggle]):focus-visible {
+  z-index: 10;
+}
+
+:is(.np-toggle-group, [data-np-toggle-group]):is(
+    [data-disabled],
+    [aria-disabled="true"]
+  )
+  > :is(.np-toggle, [data-np-toggle]) {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.np-toggle-group-vertical,
+:is(.np-toggle-group, [data-np-toggle-group])[data-orientation="vertical"] {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+:is(.np-toggle-group, [data-np-toggle-group]):is(
+    .np-toggle-group-outline,
+    [data-variant="outline"]
+  )
+  > :is(.np-toggle, [data-np-toggle]) {
+  --np-toggle-border-width: 1px;
+  --np-toggle-border-color: var(--np-input, var(--np-border));
+  --np-toggle-shadow: var(--np-shadow-sm);
+}
+
+:is(.np-toggle-group, [data-np-toggle-group]):is(
+  .np-toggle-group-sm,
+  [data-size="sm"]
+) {
+  --np-toggle-group-radius: min(var(--np-radius-md), 10px);
+}
+
+:is(.np-toggle-group, [data-np-toggle-group]):is(
+    .np-toggle-group-sm,
+    [data-size="sm"]
+  )
+  > :is(.np-toggle, [data-np-toggle]) {
+  --np-toggle-height: 1.75rem;
+  --np-toggle-min-width: 1.75rem;
+  --np-toggle-radius: min(var(--np-radius-md), 12px);
+  --np-toggle-font-size: 0.8rem;
+}
+
+:is(.np-toggle-group, [data-np-toggle-group]):is(
+    .np-toggle-group-lg,
+    [data-size="lg"]
+  )
+  > :is(.np-toggle, [data-np-toggle]) {
+  --np-toggle-height: 2.25rem;
+  --np-toggle-min-width: 2.25rem;
+}
+
+:is(.np-toggle-group, [data-np-toggle-group]):is(
+  .np-toggle-group-connected,
+  [data-spacing="0"]
+) {
+  --np-toggle-group-spacing: 0;
+}
+
+:is(.np-toggle-group, [data-np-toggle-group]):is(
+    .np-toggle-group-connected,
+    [data-spacing="0"]
+  )
+  > :is(.np-toggle, [data-np-toggle]) {
+  --np-toggle-padding-inline: calc(var(--np-spacing) * 2);
+  border-radius: 0;
+}
+
+:is(.np-toggle-group, [data-np-toggle-group]):is(
+    .np-toggle-group-connected,
+    [data-spacing="0"]
+  )
+  > :is(.np-toggle, [data-np-toggle]):first-child {
+  border-start-start-radius: var(--np-toggle-radius);
+  border-end-start-radius: var(--np-toggle-radius);
+}
+
+:is(.np-toggle-group, [data-np-toggle-group]):is(
+    .np-toggle-group-connected,
+    [data-spacing="0"]
+  )
+  > :is(.np-toggle, [data-np-toggle]):last-child {
+  border-start-end-radius: var(--np-toggle-radius);
+  border-end-end-radius: var(--np-toggle-radius);
+}
+
+:is(.np-toggle-group, [data-np-toggle-group]):is(
+    .np-toggle-group-connected,
+    [data-spacing="0"]
+  )
+  > :is(.np-toggle, [data-np-toggle]):not(:first-child) {
+  border-inline-start-width: 0;
+}
+
+:is(.np-toggle-group, [data-np-toggle-group]):is(
+    .np-toggle-group-connected,
+    [data-spacing="0"]
+  ):is(.np-toggle-group-vertical, [data-orientation="vertical"])
+  > :is(.np-toggle, [data-np-toggle]):first-child {
+  border-start-start-radius: var(--np-toggle-radius);
+  border-start-end-radius: var(--np-toggle-radius);
+  border-end-start-radius: 0;
+  border-end-end-radius: 0;
+}
+
+:is(.np-toggle-group, [data-np-toggle-group]):is(
+    .np-toggle-group-connected,
+    [data-spacing="0"]
+  ):is(.np-toggle-group-vertical, [data-orientation="vertical"])
+  > :is(.np-toggle, [data-np-toggle]):last-child {
+  border-end-start-radius: var(--np-toggle-radius);
+  border-end-end-radius: var(--np-toggle-radius);
+  border-start-start-radius: 0;
+  border-start-end-radius: 0;
+}
+
+:is(.np-toggle-group, [data-np-toggle-group]):is(
+    .np-toggle-group-connected,
+    [data-spacing="0"]
+  ):is(.np-toggle-group-vertical, [data-orientation="vertical"])
+  > :is(.np-toggle, [data-np-toggle]):only-child {
+  border-radius: var(--np-toggle-radius);
+}
+
+:is(.np-toggle-group, [data-np-toggle-group]):is(
+    .np-toggle-group-connected,
+    [data-spacing="0"]
+  ):is(.np-toggle-group-vertical, [data-orientation="vertical"])
+  > :is(.np-toggle, [data-np-toggle]):not(:first-child) {
+  border-inline-start-width: var(--np-toggle-border-width);
+  border-block-start-width: 0;
+}

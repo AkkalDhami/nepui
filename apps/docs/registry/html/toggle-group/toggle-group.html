@@ -1,0 +1,1062 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Toggle Group</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/toggle.css" />
+    <link rel="stylesheet" href="../styles/toggle-group.css" />
+    <script src="../javascripts/toggle-group.js" defer></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem 4rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: system-ui, sans-serif;
+      }
+      main {
+        max-width: 44rem;
+        margin-inline: auto;
+      }
+      h2 {
+        margin: 2rem 0 0.25rem;
+        font-size: 1rem;
+      }
+      p {
+        margin: 0 0 0.75rem;
+        color: var(--np-muted-foreground);
+        font-size: 0.875rem;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: 1.5rem;
+      }
+      section {
+        padding-block-end: 1.25rem;
+        border-block-end: 1px solid var(--np-border);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Class form</h2>
+        <p>
+          <code>class="np-toggle-group"</code> with plain
+          <code>np-toggle</code> items.
+        </p>
+        <div
+          class="np-toggle-group np-toggle-group-multiple"
+          role="group"
+          aria-label="Text formatting"
+        >
+          <button
+            type="button"
+            class="np-toggle"
+            aria-pressed="false"
+            value="bold"
+            aria-label="Toggle bold"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path
+                d="M6 12h9a4 4 0 0 1 0 8H7a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h7a4 4 0 0 1 0 8"
+              />
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="np-toggle"
+            aria-pressed="false"
+            value="italic"
+            aria-label="Toggle italic"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <line x1="19" x2="10" y1="4" y2="4" />
+              <line x1="14" x2="5" y1="20" y2="20" />
+              <line x1="15" x2="9" y1="4" y2="20" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="np-toggle"
+            aria-pressed="false"
+            value="underline"
+            aria-label="Toggle underline"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M6 4v6a6 6 0 0 0 12 0V4" />
+              <line x1="4" x2="20" y1="20" y2="20" />
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Data-attribute form</h2>
+        <p>
+          <code>data-np-toggle-group</code> with <code>data-variant</code>,
+          <code>data-size</code> and <code>data-spacing</code>. Items use
+          <code>data-np-toggle</code>.
+        </p>
+        <div
+          data-np-toggle-group
+          data-variant="outline"
+          data-size="sm"
+          data-spacing="0"
+          role="group"
+          aria-label="Text alignment"
+        >
+          <button
+            type="button"
+            data-np-toggle
+            aria-pressed="true"
+            value="left"
+            aria-label="Align left"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M15 12H3" />
+              <path d="M17 18H3" />
+              <path d="M21 6H3" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            data-np-toggle
+            aria-pressed="false"
+            value="center"
+            aria-label="Align center"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M17 12H7" />
+              <path d="M19 18H5" />
+              <path d="M21 6H3" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            data-np-toggle
+            aria-pressed="false"
+            value="right"
+            aria-label="Align right"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M21 12H9" />
+              <path d="M21 18H7" />
+              <path d="M21 6H3" />
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Multiple and single</h2>
+        <p>Multiple lets any item be on. Single keeps one item on at a time.</p>
+        <div class="row">
+          <div
+            class="np-toggle-group np-toggle-group-multiple"
+            role="group"
+            aria-label="Text formatting"
+          >
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="bold"
+              aria-label="Toggle bold"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M6 12h9a4 4 0 0 1 0 8H7a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h7a4 4 0 0 1 0 8"
+                />
+              </svg>
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="italic"
+              aria-label="Toggle italic"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <line x1="19" x2="10" y1="4" y2="4" />
+                <line x1="14" x2="5" y1="20" y2="20" />
+                <line x1="15" x2="9" y1="4" y2="20" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="underline"
+              aria-label="Toggle underline"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M6 4v6a6 6 0 0 0 12 0V4" />
+                <line x1="4" x2="20" y1="20" y2="20" />
+              </svg>
+            </button>
+          </div>
+          <div class="np-toggle-group" role="group" aria-label="Text alignment">
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="true"
+              value="left"
+              aria-label="Align left"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M15 12H3" />
+                <path d="M17 18H3" />
+                <path d="M21 6H3" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="center"
+              aria-label="Align center"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M17 12H7" />
+                <path d="M19 18H5" />
+                <path d="M21 6H3" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="right"
+              aria-label="Align right"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M21 12H9" />
+                <path d="M21 18H7" />
+                <path d="M21 6H3" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Variants</h2>
+        <p>Default and outline.</p>
+        <div class="row">
+          <div
+            class="np-toggle-group"
+            role="group"
+            aria-label="Default variant"
+          >
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="true"
+              value="top"
+            >
+              Top
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="bottom"
+            >
+              Bottom
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="left"
+            >
+              Left
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="right"
+            >
+              Right
+            </button>
+          </div>
+          <div
+            class="np-toggle-group np-toggle-group-outline"
+            role="group"
+            aria-label="Outline variant"
+          >
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="true"
+              value="top"
+            >
+              Top
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="bottom"
+            >
+              Bottom
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="left"
+            >
+              Left
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="right"
+            >
+              Right
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Sizes</h2>
+        <p>The group size applies to every item.</p>
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+          "
+        >
+          <div
+            class="np-toggle-group np-toggle-group-outline np-toggle-group-connected np-toggle-group-sm"
+            role="group"
+            aria-label="Small"
+          >
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="true"
+              value="top"
+            >
+              Top
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="bottom"
+            >
+              Bottom
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="left"
+            >
+              Left
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="right"
+            >
+              Right
+            </button>
+          </div>
+          <div
+            class="np-toggle-group np-toggle-group-outline np-toggle-group-connected"
+            role="group"
+            aria-label="Default"
+          >
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="true"
+              value="top"
+            >
+              Top
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="bottom"
+            >
+              Bottom
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="left"
+            >
+              Left
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="right"
+            >
+              Right
+            </button>
+          </div>
+          <div
+            class="np-toggle-group np-toggle-group-outline np-toggle-group-connected np-toggle-group-lg"
+            role="group"
+            aria-label="Large"
+          >
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="true"
+              value="top"
+            >
+              Top
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="bottom"
+            >
+              Bottom
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="left"
+            >
+              Left
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="right"
+            >
+              Right
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Spacing</h2>
+        <p>
+          Connected, default (2) and wide (4). Set
+          <code>--np-toggle-group-spacing</code> for any step.
+        </p>
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+          "
+        >
+          <div
+            class="np-toggle-group np-toggle-group-outline np-toggle-group-connected"
+            role="group"
+            aria-label="Connected"
+          >
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="true"
+              value="top"
+            >
+              Top
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="bottom"
+            >
+              Bottom
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="left"
+            >
+              Left
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="right"
+            >
+              Right
+            </button>
+          </div>
+          <div
+            class="np-toggle-group np-toggle-group-outline"
+            role="group"
+            aria-label="Default spacing"
+          >
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="true"
+              value="top"
+            >
+              Top
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="bottom"
+            >
+              Bottom
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="left"
+            >
+              Left
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="right"
+            >
+              Right
+            </button>
+          </div>
+          <div
+            class="np-toggle-group np-toggle-group-outline"
+            role="group"
+            aria-label="Wide spacing"
+            style="--np-toggle-group-spacing: 4"
+          >
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="true"
+              value="top"
+            >
+              Top
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="bottom"
+            >
+              Bottom
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="left"
+            >
+              Left
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="right"
+            >
+              Right
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Vertical</h2>
+        <div class="row">
+          <div
+            class="np-toggle-group np-toggle-group-outline np-toggle-group-connected np-toggle-group-vertical np-toggle-group-multiple"
+            role="group"
+            aria-label="Vertical connected"
+          >
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="bold"
+              aria-label="Toggle bold"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M6 12h9a4 4 0 0 1 0 8H7a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h7a4 4 0 0 1 0 8"
+                />
+              </svg>
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="italic"
+              aria-label="Toggle italic"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <line x1="19" x2="10" y1="4" y2="4" />
+                <line x1="14" x2="5" y1="20" y2="20" />
+                <line x1="15" x2="9" y1="4" y2="20" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="underline"
+              aria-label="Toggle underline"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M6 4v6a6 6 0 0 0 12 0V4" />
+                <line x1="4" x2="20" y1="20" y2="20" />
+              </svg>
+            </button>
+          </div>
+          <div
+            class="np-toggle-group np-toggle-group-outline np-toggle-group-vertical np-toggle-group-multiple"
+            role="group"
+            aria-label="Vertical spaced"
+          >
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="bold"
+              aria-label="Toggle bold"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M6 12h9a4 4 0 0 1 0 8H7a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h7a4 4 0 0 1 0 8"
+                />
+              </svg>
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="italic"
+              aria-label="Toggle italic"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <line x1="19" x2="10" y1="4" y2="4" />
+                <line x1="14" x2="5" y1="20" y2="20" />
+                <line x1="15" x2="9" y1="4" y2="20" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="underline"
+              aria-label="Toggle underline"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M6 4v6a6 6 0 0 0 12 0V4" />
+                <line x1="4" x2="20" y1="20" y2="20" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Disabled</h2>
+        <p>
+          Set <code>data-disabled</code> on the group and
+          <code>disabled</code> on each button.
+        </p>
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+          "
+        >
+          <div
+            class="np-toggle-group np-toggle-group-multiple"
+            role="group"
+            aria-label="Disabled"
+            data-disabled
+          >
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="bold"
+              aria-label="Toggle bold"
+              disabled
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M6 12h9a4 4 0 0 1 0 8H7a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h7a4 4 0 0 1 0 8"
+                />
+              </svg>
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="italic"
+              aria-label="Toggle italic"
+              disabled
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <line x1="19" x2="10" y1="4" y2="4" />
+                <line x1="14" x2="5" y1="20" y2="20" />
+                <line x1="15" x2="9" y1="4" y2="20" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="underline"
+              aria-label="Toggle underline"
+              disabled
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M6 4v6a6 6 0 0 0 12 0V4" />
+                <line x1="4" x2="20" y1="20" y2="20" />
+              </svg>
+            </button>
+          </div>
+          <div
+            class="np-toggle-group np-toggle-group-outline np-toggle-group-connected np-toggle-group-multiple"
+            role="group"
+            aria-label="Disabled outline"
+            data-disabled
+          >
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="bold"
+              aria-label="Toggle bold"
+              disabled
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M6 12h9a4 4 0 0 1 0 8H7a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h7a4 4 0 0 1 0 8"
+                />
+              </svg>
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="italic"
+              aria-label="Toggle italic"
+              disabled
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <line x1="19" x2="10" y1="4" y2="4" />
+                <line x1="14" x2="5" y1="20" y2="20" />
+                <line x1="15" x2="9" y1="4" y2="20" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              class="np-toggle"
+              aria-pressed="false"
+              value="underline"
+              aria-label="Toggle underline"
+              disabled
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M6 4v6a6 6 0 0 0 12 0V4" />
+                <line x1="4" x2="20" y1="20" y2="20" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
