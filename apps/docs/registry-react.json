@@ -403,6 +403,231 @@
       ]
     },
     {
+      "name": "meter",
+      "type": "registry:ui",
+      "title": "Meter",
+      "description": "A graphical display of a numeric value within a range.",
+      "files": [
+        {
+          "path": "registry/react/meter/meter.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/meter/meter.tsx"
+        },
+        {
+          "path": "registry/react/meter/meter.css",
+          "type": "registry:ui",
+          "target": "components/nepui/meter/meter.css"
+        },
+        {
+          "path": "registry/react/meter/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/meter/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+      "files": [
+        {
+          "path": "registry/react/progress/progress.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/progress/progress.tsx"
+        },
+        {
+          "path": "registry/react/progress/progress.css",
+          "type": "registry:ui",
+          "target": "components/nepui/progress/progress.css"
+        },
+        {
+          "path": "registry/react/progress/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/progress/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "description": "An input where the user selects a value from within a given range.",
+      "files": [
+        {
+          "path": "registry/react/slider/slider.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/slider/slider.tsx"
+        },
+        {
+          "path": "registry/react/slider/slider.css",
+          "type": "registry:ui",
+          "target": "components/nepui/slider/slider.css"
+        },
+        {
+          "path": "registry/react/slider/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/slider/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "Displays a callout for user attention.",
+      "files": [
+        {
+          "path": "registry/react/alert/alert.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/alert/alert.tsx"
+        },
+        {
+          "path": "registry/react/alert/alert.css",
+          "type": "registry:ui",
+          "target": "components/nepui/alert/alert.css"
+        },
+        {
+          "path": "registry/react/alert/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/alert/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-group",
+      "type": "registry:ui",
+      "title": "Checkbox Group",
+      "description": "Provides shared state to a series of checkboxes.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/react/checkbox.json",
+        "https://nepui.vercel.app/r/react/label.json"
+      ],
+      "files": [
+        {
+          "path": "registry/react/checkbox-group/checkbox-group.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/checkbox-group/checkbox-group.tsx"
+        },
+        {
+          "path": "registry/react/checkbox-group/checkbox-group.css",
+          "type": "registry:ui",
+          "target": "components/nepui/checkbox-group/checkbox-group.css"
+        },
+        {
+          "path": "registry/react/checkbox-group/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/checkbox-group/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "aspect-ratio",
+      "type": "registry:ui",
+      "title": "Aspect Ratio",
+      "description": "Displays content within a desired ratio.",
+      "files": [
+        {
+          "path": "registry/react/aspect-ratio/aspect-ratio.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/aspect-ratio/aspect-ratio.tsx"
+        },
+        {
+          "path": "registry/react/aspect-ratio/aspect-ratio.css",
+          "type": "registry:ui",
+          "target": "components/nepui/aspect-ratio/aspect-ratio.css"
+        },
+        {
+          "path": "registry/react/aspect-ratio/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/aspect-ratio/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "An image element with a fallback for representing the user.",
+      "files": [
+        {
+          "path": "registry/react/avatar/avatar.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/avatar/avatar.tsx"
+        },
+        {
+          "path": "registry/react/avatar/avatar.css",
+          "type": "registry:ui",
+          "target": "components/nepui/avatar/avatar.css"
+        },
+        {
+          "path": "registry/react/avatar/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/avatar/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "title": "Toggle",
+      "description": "A two-state button that can be either on or off.",
+      "files": [
+        {
+          "path": "registry/react/toggle/toggle.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/toggle/toggle.tsx"
+        },
+        {
+          "path": "registry/react/toggle/toggle.css",
+          "type": "registry:ui",
+          "target": "components/nepui/toggle/toggle.css"
+        },
+        {
+          "path": "registry/react/toggle/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/toggle/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "typeset",
+      "type": "registry:ui",
+      "title": "Typeset",
+      "description": "A styling system for HTML and rendered markdown, from blog posts to streaming chat. One CSS file you own.",
+      "files": [
+        {
+          "path": "registry/react/typeset.css",
+          "type": "registry:ui",
+          "target": "components/nepui/typeset.css"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:ui",
+      "title": "Toggle Group",
+      "description": "A set of two-state buttons that can be toggled on or off.",
+      "registryDependencies": ["https://nepui.vercel.app/r/react/toggle.json"],
+      "files": [
+        {
+          "path": "registry/react/toggle-group/toggle-group.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/toggle-group/toggle-group.tsx"
+        },
+        {
+          "path": "registry/react/toggle-group/toggle-group.css",
+          "type": "registry:ui",
+          "target": "components/nepui/toggle-group/toggle-group.css"
+        },
+        {
+          "path": "registry/react/toggle-group/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/toggle-group/index.ts"
+        }
+      ]
+    },
+    {
       "name": "input-group",
       "type": "registry:ui",
       "title": "Input Group",

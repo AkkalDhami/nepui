@@ -76,6 +76,28 @@
       ]
     },
     {
+      "name": "checkbox-group",
+      "type": "registry:ui",
+      "title": "Checkbox Group",
+      "description": "Provides shared state to a series of checkboxes.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/html/checkbox.json",
+        "https://nepui.vercel.app/r/html/label.json"
+      ],
+      "files": [
+        {
+          "path": "registry/html/checkbox-group/checkbox-group.html",
+          "type": "registry:ui",
+          "target": "html/checkbox-group.html"
+        },
+        {
+          "path": "registry/html/checkbox-group/checkbox-group.css",
+          "type": "registry:ui",
+          "target": "styles/checkbox-group.css"
+        }
+      ]
+    },
+    {
       "name": "input",
       "type": "registry:ui",
       "title": "Input",
@@ -211,8 +233,8 @@
       "title": "Field",
       "description": "Combine labels, controls, and help text to compose accessible form fields and grouped inputs.",
       "registryDependencies": [
-        "https://nepui.vercel.app/r/react/label.json",
-        "https://nepui.vercel.app/r/react/separator.json"
+        "https://nepui.vercel.app/r/html/label.json",
+        "https://nepui.vercel.app/r/html/separator.json"
       ],
       "files": [
         {
@@ -300,6 +322,184 @@
       ]
     },
     {
+      "name": "meter",
+      "type": "registry:ui",
+      "title": "Meter",
+      "description": "A graphical display of a numeric value within a range.",
+      "files": [
+        {
+          "path": "registry/html/meter/meter.html",
+          "type": "registry:ui",
+          "target": "html/meter.html"
+        },
+        {
+          "path": "registry/html/meter/meter.css",
+          "type": "registry:ui",
+          "target": "styles/meter.css"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+      "files": [
+        {
+          "path": "registry/html/progress/progress.html",
+          "type": "registry:ui",
+          "target": "html/progress.html"
+        },
+        {
+          "path": "registry/html/progress/progress.css",
+          "type": "registry:ui",
+          "target": "styles/progress.css"
+        }
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "description": "An input where the user selects a value from within a given range.",
+      "files": [
+        {
+          "path": "registry/html/slider/slider.html",
+          "type": "registry:ui",
+          "target": "html/slider.html"
+        },
+        {
+          "path": "registry/html/slider/slider.css",
+          "type": "registry:ui",
+          "target": "styles/slider.css"
+        },
+        {
+          "path": "registry/html/slider/slider.js",
+          "type": "registry:ui",
+          "target": "javascripts/slider.js"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "Displays a callout for user attention.",
+      "files": [
+        {
+          "path": "registry/html/alert/alert.html",
+          "type": "registry:ui",
+          "target": "html/alert.html"
+        },
+        {
+          "path": "registry/html/alert/alert.css",
+          "type": "registry:ui",
+          "target": "styles/alert.css"
+        }
+      ]
+    },
+    {
+      "name": "aspect-ratio",
+      "type": "registry:ui",
+      "title": "Aspect Ratio",
+      "description": "Displays content within a desired ratio.",
+      "files": [
+        {
+          "path": "registry/html/aspect-ratio/aspect-ratio.html",
+          "type": "registry:ui",
+          "target": "html/aspect-ratio.html"
+        },
+        {
+          "path": "registry/html/aspect-ratio/aspect-ratio.css",
+          "type": "registry:ui",
+          "target": "styles/aspect-ratio.css"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "An image element with a fallback for representing the user.",
+      "files": [
+        {
+          "path": "registry/html/avatar/avatar.html",
+          "type": "registry:ui",
+          "target": "html/avatar.html"
+        },
+        {
+          "path": "registry/html/avatar/avatar.css",
+          "type": "registry:ui",
+          "target": "styles/avatar.css"
+        }
+      ]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "title": "Toggle",
+      "description": "A two-state button that can be either on or off.",
+      "files": [
+        {
+          "path": "registry/html/toggle/toggle.html",
+          "type": "registry:ui",
+          "target": "html/toggle.html"
+        },
+        {
+          "path": "registry/html/toggle/toggle.css",
+          "type": "registry:ui",
+          "target": "styles/toggle.css"
+        },
+        {
+          "path": "registry/html/toggle/toggle.js",
+          "type": "registry:ui",
+          "target": "javascripts/toggle.js"
+        }
+      ]
+    },
+    {
+      "name": "typeset",
+      "type": "registry:ui",
+      "title": "Typeset",
+      "description": "A styling system for HTML and rendered markdown, from blog posts to streaming chat. One CSS file you own.",
+      "files": [
+        {
+          "path": "registry/html/typeset/typeset.html",
+          "type": "registry:ui",
+          "target": "html/typeset.html"
+        },
+        {
+          "path": "registry/html/typeset/typeset.css",
+          "type": "registry:ui",
+          "target": "styles/typeset.css"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:ui",
+      "title": "Toggle Group",
+      "description": "A set of two-state buttons that can be toggled on or off.",
+      "registryDependencies": ["https://nepui.vercel.app/r/html/toggle.json"],
+      "files": [
+        {
+          "path": "registry/html/toggle-group/toggle-group.html",
+          "type": "registry:ui",
+          "target": "html/toggle-group.html"
+        },
+        {
+          "path": "registry/html/toggle-group/toggle-group.css",
+          "type": "registry:ui",
+          "target": "styles/toggle-group.css"
+        },
+        {
+          "path": "registry/html/toggle-group/toggle-group.js",
+          "type": "registry:ui",
+          "target": "javascripts/toggle-group.js"
+        }
+      ]
+    },
+    {
       "name": "scroll-area",
       "type": "registry:ui",
       "title": "Scroll Area",
@@ -323,9 +523,9 @@
       "title": "Input Group",
       "description": "Add addons, buttons, and helper content to inputs.",
       "registryDependencies": [
-        "https://nepui.vercel.app/r/react/input.json",
-        "https://nepui.vercel.app/r/react/button.json",
-        "https://nepui.vercel.app/r/react/textarea.json"
+        "https://nepui.vercel.app/r/html/input.json",
+        "https://nepui.vercel.app/r/html/button.json",
+        "https://nepui.vercel.app/r/html/textarea.json"
       ],
       "files": [
         {
