@@ -1,16 +1,16 @@
 :root {
   --np-spinner-muted-color: rgba(0, 0, 0, 0.2);
-  --np-spinner-color: currentColor;
+  --np-spinner-color: var(--np-primary);
 }
 
 .dark {
-  --np-spinner-color: currentColor; /* red, #123456, rgba(255, 0, 0, 0.5) */
+  --np-spinner-color: var(--np-primary);
   --np-spinner-muted-color: rgba(255, 255, 255, 0.4);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not(.light) {
-    --np-spinner-color: currentColor;
+  :root:not(.light, [data-theme="light"]) {
+    --np-spinner-color: var(--np-primary);
     --np-spinner-muted-color: rgba(255, 255, 255, 0.4);
   }
 }

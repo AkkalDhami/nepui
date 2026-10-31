@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Checkbox Group</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/label.css" />
+    <link rel="stylesheet" href="../styles/checkbox.css" />
+    <link rel="stylesheet" href="../styles/checkbox-group.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem 4rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: var(--np-font-sans, system-ui, sans-serif);
+      }
+      main {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+        max-width: 40rem;
+        margin-inline: auto;
+      }
+
+      h2 {
+        margin: 0 0 0.25rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+      .hint {
+        margin: 0 0 0.75rem;
+        font-size: 0.8125rem;
+        color: var(--np-muted-foreground);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Class form</h2>
+        <p class="hint">
+          <code>class="np-checkbox-group"</code> on a
+          <code>role="group"</code> element.
+        </p>
+        <div
+          class="np-checkbox-group"
+          role="group"
+          aria-label="Select frameworks"
+        >
+          <label class="np-label"
+            ><input
+              class="np-checkbox"
+              type="checkbox"
+              value="next"
+              checked
+            />Next.js</label
+          >
+          <label class="np-label"
+            ><input
+              class="np-checkbox"
+              type="checkbox"
+              value="vite"
+            />Vite</label
+          >
+          <label class="np-label"
+            ><input
+              class="np-checkbox"
+              type="checkbox"
+              value="astro"
+            />Astro</label
+          >
+        </div>
+      </section>
+
+      <section>
+        <h2>Data-attribute form</h2>
+        <p class="hint">
+          <code>data-np-checkbox-group</code>, no class needed.
+        </p>
+        <div data-np-checkbox-group role="group" aria-label="Select tools">
+          <label class="np-label"
+            ><input
+              class="np-checkbox"
+              type="checkbox"
+              value="git"
+              checked
+            />Git</label
+          >
+          <label class="np-label"
+            ><input class="np-checkbox" type="checkbox" value="npm" />npm</label
+          >
+          <label class="np-label"
+            ><input
+              class="np-checkbox"
+              type="checkbox"
+              value="docker"
+            />Docker</label
+          >
+        </div>
+      </section>
+
+      <section>
+        <h2>Horizontal</h2>
+        <p class="hint">
+          <code>np-checkbox-group-horizontal</code> or
+          <code>data-orientation="horizontal"</code>.
+        </p>
+        <div
+          class="np-checkbox-group np-checkbox-group-horizontal"
+          role="group"
+          aria-label="Select frameworks, horizontal"
+        >
+          <label class="np-label"
+            ><input
+              class="np-checkbox"
+              type="checkbox"
+              value="next"
+              checked
+            />Next.js</label
+          >
+          <label class="np-label"
+            ><input
+              class="np-checkbox"
+              type="checkbox"
+              value="vite"
+            />Vite</label
+          >
+          <label class="np-label"
+            ><input
+              class="np-checkbox"
+              type="checkbox"
+              value="astro"
+              checked
+            />Astro</label
+          >
+        </div>
+      </section>
+
+      <section>
+        <h2>Disabled</h2>
+        <p class="hint">
+          Native <code>disabled</code> on an input, or on a
+          <code>fieldset</code> wrapping the group.
+        </p>
+        <div class="np-checkbox-group" role="group" aria-label="Disabled item">
+          <label class="np-label"
+            ><input
+              class="np-checkbox"
+              type="checkbox"
+              value="next"
+              checked
+            />Next.js</label
+          >
+          <label class="np-label"
+            ><input
+              class="np-checkbox"
+              type="checkbox"
+              value="vite"
+              disabled
+            />Vite</label
+          >
+          <label class="np-label"
+            ><input
+              class="np-checkbox"
+              type="checkbox"
+              value="astro"
+            />Astro</label
+          >
+        </div>
+      </section>
+
+      <section>
+        <h2>Parent checkbox</h2>
+        <p class="hint">
+          A few lines of <code>oninput</code> keep the parent in sync, including
+          its indeterminate state.
+        </p>
+        <div
+          class="np-checkbox-group"
+          role="group"
+          aria-labelledby="idx-frameworks"
+          oninput="
+            var t = event.target
+            function leaves(g) {
+              return g.querySelectorAll('input:not([data-parent])')
+            }
+            if (t.hasAttribute('data-parent')) {
+              leaves(t.closest('[role=group]')).forEach(function (i) {
+                i.checked = t.checked
+              })
+            }
+            this.querySelectorAll('[data-parent]').forEach(function (p) {
+              var l = leaves(p.closest('[role=group]')),
+                n = 0
+              l.forEach(function (i) {
+                if (i.checked) n++
+              })
+              p.checked = n === l.length
+              p.indeterminate = n > 0 && n !== l.length
+            })
+          "
+        >
+          <label class="np-label" id="idx-frameworks"
+            ><input
+              class="np-checkbox"
+              type="checkbox"
+              data-parent
+            />Frameworks</label
+          >
+          <label class="np-label np-checkbox-group-child"
+            ><input
+              class="np-checkbox"
+              type="checkbox"
+              value="next"
+            />Next.js</label
+          >
+          <label class="np-label np-checkbox-group-child"
+            ><input
+              class="np-checkbox"
+              type="checkbox"
+              value="vite"
+            />Vite</label
+          >
+          <label class="np-label np-checkbox-group-child"
+            ><input
+              class="np-checkbox"
+              type="checkbox"
+              value="astro"
+            />Astro</label
+          >
+        </div>
+      </section>
+
+      <section>
+        <h2>Nested parent</h2>
+        <p class="hint">
+          Each group with a <code>data-parent</code> checkbox tracks the
+          checkboxes inside it.
+        </p>
+        <div
+          class="np-checkbox-group"
+          role="group"
+          aria-labelledby="idx-perms"
+          oninput="
+            var t = event.target
+            function leaves(g) {
+              return g.querySelectorAll('input:not([data-parent])')
+            }
+            if (t.hasAttribute('data-parent')) {
+              leaves(t.closest('[role=group]')).forEach(function (i) {
+                i.checked = t.checked
+              })
+            }
+            this.querySelectorAll('[data-parent]').forEach(function (p) {
+              var l = leaves(p.closest('[role=group]')),
+                n = 0
+              l.forEach(function (i) {
+                if (i.checked) n++
+              })
+              p.checked = n === l.length
+              p.indeterminate = n > 0 && n !== l.length
+            })
+          "
+        >
+          <label class="np-label" id="idx-perms"
+            ><input class="np-checkbox" type="checkbox" data-parent />User
+            Permissions</label
+          >
+          <label class="np-label np-checkbox-group-child"
+            ><input
+              class="np-checkbox"
+              type="checkbox"
+              value="view-dashboard"
+            />View Dashboard</label
+          >
+          <label class="np-label np-checkbox-group-child"
+            ><input
+              class="np-checkbox"
+              type="checkbox"
+              value="access-reports"
+            />Access Reports</label
+          >
+          <div
+            class="np-checkbox-group np-checkbox-group-child"
+            role="group"
+            aria-labelledby="idx-manage"
+          >
+            <label class="np-label" id="idx-manage"
+              ><input class="np-checkbox" type="checkbox" data-parent />Manage
+              Users</label
+            >
+            <label class="np-label np-checkbox-group-child"
+              ><input
+                class="np-checkbox"
+                type="checkbox"
+                value="create-user"
+              />Create User</label
+            >
+            <label class="np-label np-checkbox-group-child"
+              ><input
+                class="np-checkbox"
+                type="checkbox"
+                value="edit-user"
+              />Edit User</label
+            >
+            <label class="np-label np-checkbox-group-child"
+              ><input
+                class="np-checkbox"
+                type="checkbox"
+                value="delete-user"
+              />Delete User</label
+            >
+            <label class="np-label np-checkbox-group-child"
+              ><input
+                class="np-checkbox"
+                type="checkbox"
+                value="assign-roles"
+              />Assign Roles</label
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

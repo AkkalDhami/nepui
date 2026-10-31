@@ -59,6 +59,11 @@ function Checkbox({ className, ...props }: CheckboxProps) {
       <CheckboxPrimitive.Indicator
         data-slot="checkbox-indicator"
         className="np-checkbox-indicator"
+        render={(props, state) => (
+          <span {...props}>
+            {state.indeterminate ? <MinusIcon /> : <CheckIcon />}
+          </span>
+        )}
       >
         <Icon />
       </CheckboxPrimitive.Indicator>
