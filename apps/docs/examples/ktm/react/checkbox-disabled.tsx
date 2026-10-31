@@ -1,38 +1,26 @@
 "use client"
 
 import { Checkbox } from "@/registry/react/checkbox"
-import { Label } from "@/registry/react/label"
+import { Field, FieldGroup, FieldLabel } from "@/registry/react/field"
 
 export default function CheckboxDisabled() {
   return (
-    <div
+    <FieldGroup
       style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "1.25rem",
+        marginInline: "auto",
+        width: "15rem",
       }}
     >
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "0.5rem",
-        }}
-      >
-        <Checkbox id="d1" disabled />
-        <Label htmlFor="d1">Disabled</Label>
-      </div>
-
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "0.5rem",
-        }}
-      >
-        <Checkbox id="d2" disabled defaultChecked />
-        <Label htmlFor="d2">Disabled checked</Label>
-      </div>
-    </div>
+      <Field orientation="horizontal" data-disabled>
+        <Checkbox
+          id="toggle-checkbox-disabled"
+          name="toggle-checkbox-disabled"
+          disabled
+        />
+        <FieldLabel htmlFor="toggle-checkbox-disabled">
+          Enable notifications
+        </FieldLabel>
+      </Field>
+    </FieldGroup>
   )
 }

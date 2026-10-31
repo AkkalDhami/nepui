@@ -1,19 +1,26 @@
 "use client"
 
 import { Checkbox } from "@/registry/react/checkbox"
-import { Label } from "@/registry/react/label"
+import { Field, FieldGroup, FieldLabel } from "@/registry/react/field"
 
 export default function CheckboxInvalid() {
   return (
-    <div
+    <FieldGroup
       style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "0.5rem",
+        marginInline: "auto",
+        width: "15rem",
       }}
     >
-      <Checkbox id="invalid" aria-invalid />
-      <Label htmlFor="invalid">You must accept to continue</Label>
-    </div>
+      <Field orientation="horizontal" data-invalid>
+        <Checkbox
+          id="terms-checkbox-invalid"
+          name="terms-checkbox-invalid"
+          aria-invalid
+        />
+        <FieldLabel htmlFor="terms-checkbox-invalid">
+          Accept terms and conditions
+        </FieldLabel>
+      </Field>
+    </FieldGroup>
   )
 }

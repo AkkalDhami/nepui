@@ -4,6 +4,21 @@
 
 import "server-only"
 
+import KtmReactAlertAction from "./ktm/react/alert-action"
+import KtmReactAlertColors from "./ktm/react/alert-colors"
+import KtmReactAlertDemo from "./ktm/react/alert-demo"
+import KtmReactAlertVariants from "./ktm/react/alert-variants"
+import KtmReactAspectRatioCustom from "./ktm/react/aspect-ratio-custom"
+import KtmReactAspectRatioDemo from "./ktm/react/aspect-ratio-demo"
+import KtmReactAspectRatioPortrait from "./ktm/react/aspect-ratio-portrait"
+import KtmReactAspectRatioSquare from "./ktm/react/aspect-ratio-square"
+import KtmReactAvatarBadgeIcon from "./ktm/react/avatar-badge-icon"
+import KtmReactAvatarBadge from "./ktm/react/avatar-badge"
+import KtmReactAvatarDemo from "./ktm/react/avatar-demo"
+import KtmReactAvatarGroupCount from "./ktm/react/avatar-group-count"
+import KtmReactAvatarGroupIcon from "./ktm/react/avatar-group-icon"
+import KtmReactAvatarGroup from "./ktm/react/avatar-group"
+import KtmReactAvatarSizes from "./ktm/react/avatar-sizes"
 import KtmReactBadgeAppearance from "./ktm/react/badge-appearance"
 import KtmReactBadgeColor from "./ktm/react/badge-color"
 import KtmReactBadgeDemo from "./ktm/react/badge-demo"
@@ -40,6 +55,11 @@ import KtmReactCheckboxControlled from "./ktm/react/checkbox-controlled"
 import KtmReactCheckboxDefaultChecked from "./ktm/react/checkbox-default-checked"
 import KtmReactCheckboxDemo from "./ktm/react/checkbox-demo"
 import KtmReactCheckboxDisabled from "./ktm/react/checkbox-disabled"
+import KtmReactCheckboxGroupDemo from "./ktm/react/checkbox-group-demo"
+import KtmReactCheckboxGroupDisabled from "./ktm/react/checkbox-group-disabled"
+import KtmReactCheckboxGroupHorizontal from "./ktm/react/checkbox-group-horizontal"
+import KtmReactCheckboxGroupNested from "./ktm/react/checkbox-group-nested"
+import KtmReactCheckboxGroupParent from "./ktm/react/checkbox-group-parent"
 import KtmReactCheckboxInvalid from "./ktm/react/checkbox-invalid"
 import KtmReactCopyButtonDemo from "./ktm/react/copy-button-demo"
 import KtmReactFieldCheckbox from "./ktm/react/field-checkbox"
@@ -75,6 +95,18 @@ import KtmReactKbdDemo from "./ktm/react/kbd-demo"
 import KtmReactKbdGroup from "./ktm/react/kbd-group"
 import KtmReactKbdInput from "./ktm/react/kbd-input"
 import KtmReactLabelDemo from "./ktm/react/label-demo"
+import KtmReactMeterDemo from "./ktm/react/meter-demo"
+import KtmReactMeterFormatted from "./ktm/react/meter-formatted"
+import KtmReactMeterNoLabel from "./ktm/react/meter-no-label"
+import KtmReactMeterRange from "./ktm/react/meter-range"
+import KtmReactMeterSizes from "./ktm/react/meter-sizes"
+import KtmReactMeterVariants from "./ktm/react/meter-variants"
+import KtmReactProgressColor from "./ktm/react/progress-color"
+import KtmReactProgressControlled from "./ktm/react/progress-controlled"
+import KtmReactProgressDemo from "./ktm/react/progress-demo"
+import KtmReactProgressIndeterminate from "./ktm/react/progress-indeterminate"
+import KtmReactProgressLabel from "./ktm/react/progress-label"
+import KtmReactProgressSize from "./ktm/react/progress-size"
 import KtmReactRadioGroupChoiceCard from "./ktm/react/radio-group-choice-card"
 import KtmReactRadioGroupDemo from "./ktm/react/radio-group-demo"
 import KtmReactRadioGroupDescription from "./ktm/react/radio-group-description"
@@ -103,6 +135,12 @@ import KtmReactSkeletonCard from "./ktm/react/skeleton-card"
 import KtmReactSkeletonDemo from "./ktm/react/skeleton-demo"
 import KtmReactSkeletonShape from "./ktm/react/skeleton-shape"
 import KtmReactSkeletonText from "./ktm/react/skeleton-text"
+import KtmReactSliderControlled from "./ktm/react/slider-controlled"
+import KtmReactSliderDemo from "./ktm/react/slider-demo"
+import KtmReactSliderDisabled from "./ktm/react/slider-disabled"
+import KtmReactSliderMultiple from "./ktm/react/slider-multiple"
+import KtmReactSliderRange from "./ktm/react/slider-range"
+import KtmReactSliderVertical from "./ktm/react/slider-vertical"
 import KtmReactSpinnerColor from "./ktm/react/spinner-color"
 import KtmReactSpinnerDemo from "./ktm/react/spinner-demo"
 import KtmReactSpinnerDirection from "./ktm/react/spinner-direction"
@@ -122,6 +160,27 @@ import KtmReactTextareaDisabled from "./ktm/react/textarea-disabled"
 import KtmReactTextareaField from "./ktm/react/textarea-field"
 import KtmReactTextareaInvalid from "./ktm/react/textarea-invalid"
 import KtmReactTextareaWithLabel from "./ktm/react/textarea-with-label"
+import KtmReactToggleDemo from "./ktm/react/toggle-demo"
+import KtmReactToggleDisabled from "./ktm/react/toggle-disabled"
+import KtmReactToggleFillIcon from "./ktm/react/toggle-fill-icon"
+import KtmReactToggleGroupDemo from "./ktm/react/toggle-group-demo"
+import KtmReactToggleGroupDisabled from "./ktm/react/toggle-group-disabled"
+import KtmReactToggleGroupOutline from "./ktm/react/toggle-group-outline"
+import KtmReactToggleGroupSingle from "./ktm/react/toggle-group-single"
+import KtmReactToggleGroupSize from "./ktm/react/toggle-group-size"
+import KtmReactToggleGroupSpacing from "./ktm/react/toggle-group-spacing"
+import KtmReactToggleGroupVertical from "./ktm/react/toggle-group-vertical"
+import KtmReactToggleOutline from "./ktm/react/toggle-outline"
+import KtmReactToggleSize from "./ktm/react/toggle-size"
+import KtmReactToggleText from "./ktm/react/toggle-text"
+import KtmReactTypesetArticle from "./ktm/react/typeset-article"
+import KtmReactTypesetChat from "./ktm/react/typeset-chat"
+import KtmReactTypesetCompact from "./ktm/react/typeset-compact"
+import KtmReactTypesetDemo from "./ktm/react/typeset-demo"
+import KtmReactTypesetDocs from "./ktm/react/typeset-docs"
+import KtmReactTypesetLarge from "./ktm/react/typeset-large"
+import KtmReactTypesetOptOut from "./ktm/react/typeset-opt-out"
+import KtmReactTypesetTable from "./ktm/react/typeset-table"
 
 export const ExamplesIndex: Record<
   string,
@@ -129,6 +188,21 @@ export const ExamplesIndex: Record<
 > = {
   ktm: {
     react: {
+      "alert-action": KtmReactAlertAction,
+      "alert-colors": KtmReactAlertColors,
+      "alert-demo": KtmReactAlertDemo,
+      "alert-variants": KtmReactAlertVariants,
+      "aspect-ratio-custom": KtmReactAspectRatioCustom,
+      "aspect-ratio-demo": KtmReactAspectRatioDemo,
+      "aspect-ratio-portrait": KtmReactAspectRatioPortrait,
+      "aspect-ratio-square": KtmReactAspectRatioSquare,
+      "avatar-badge-icon": KtmReactAvatarBadgeIcon,
+      "avatar-badge": KtmReactAvatarBadge,
+      "avatar-demo": KtmReactAvatarDemo,
+      "avatar-group-count": KtmReactAvatarGroupCount,
+      "avatar-group-icon": KtmReactAvatarGroupIcon,
+      "avatar-group": KtmReactAvatarGroup,
+      "avatar-sizes": KtmReactAvatarSizes,
       "badge-appearance": KtmReactBadgeAppearance,
       "badge-color": KtmReactBadgeColor,
       "badge-demo": KtmReactBadgeDemo,
@@ -165,6 +239,11 @@ export const ExamplesIndex: Record<
       "checkbox-default-checked": KtmReactCheckboxDefaultChecked,
       "checkbox-demo": KtmReactCheckboxDemo,
       "checkbox-disabled": KtmReactCheckboxDisabled,
+      "checkbox-group-demo": KtmReactCheckboxGroupDemo,
+      "checkbox-group-disabled": KtmReactCheckboxGroupDisabled,
+      "checkbox-group-horizontal": KtmReactCheckboxGroupHorizontal,
+      "checkbox-group-nested": KtmReactCheckboxGroupNested,
+      "checkbox-group-parent": KtmReactCheckboxGroupParent,
       "checkbox-invalid": KtmReactCheckboxInvalid,
       "copy-button-demo": KtmReactCopyButtonDemo,
       "field-checkbox": KtmReactFieldCheckbox,
@@ -200,6 +279,18 @@ export const ExamplesIndex: Record<
       "kbd-group": KtmReactKbdGroup,
       "kbd-input": KtmReactKbdInput,
       "label-demo": KtmReactLabelDemo,
+      "meter-demo": KtmReactMeterDemo,
+      "meter-formatted": KtmReactMeterFormatted,
+      "meter-no-label": KtmReactMeterNoLabel,
+      "meter-range": KtmReactMeterRange,
+      "meter-sizes": KtmReactMeterSizes,
+      "meter-variants": KtmReactMeterVariants,
+      "progress-color": KtmReactProgressColor,
+      "progress-controlled": KtmReactProgressControlled,
+      "progress-demo": KtmReactProgressDemo,
+      "progress-indeterminate": KtmReactProgressIndeterminate,
+      "progress-label": KtmReactProgressLabel,
+      "progress-size": KtmReactProgressSize,
       "radio-group-choice-card": KtmReactRadioGroupChoiceCard,
       "radio-group-demo": KtmReactRadioGroupDemo,
       "radio-group-description": KtmReactRadioGroupDescription,
@@ -228,6 +319,12 @@ export const ExamplesIndex: Record<
       "skeleton-demo": KtmReactSkeletonDemo,
       "skeleton-shape": KtmReactSkeletonShape,
       "skeleton-text": KtmReactSkeletonText,
+      "slider-controlled": KtmReactSliderControlled,
+      "slider-demo": KtmReactSliderDemo,
+      "slider-disabled": KtmReactSliderDisabled,
+      "slider-multiple": KtmReactSliderMultiple,
+      "slider-range": KtmReactSliderRange,
+      "slider-vertical": KtmReactSliderVertical,
       "spinner-color": KtmReactSpinnerColor,
       "spinner-demo": KtmReactSpinnerDemo,
       "spinner-direction": KtmReactSpinnerDirection,
@@ -247,8 +344,44 @@ export const ExamplesIndex: Record<
       "textarea-field": KtmReactTextareaField,
       "textarea-invalid": KtmReactTextareaInvalid,
       "textarea-with-label": KtmReactTextareaWithLabel,
+      "toggle-demo": KtmReactToggleDemo,
+      "toggle-disabled": KtmReactToggleDisabled,
+      "toggle-fill-icon": KtmReactToggleFillIcon,
+      "toggle-group-demo": KtmReactToggleGroupDemo,
+      "toggle-group-disabled": KtmReactToggleGroupDisabled,
+      "toggle-group-outline": KtmReactToggleGroupOutline,
+      "toggle-group-single": KtmReactToggleGroupSingle,
+      "toggle-group-size": KtmReactToggleGroupSize,
+      "toggle-group-spacing": KtmReactToggleGroupSpacing,
+      "toggle-group-vertical": KtmReactToggleGroupVertical,
+      "toggle-outline": KtmReactToggleOutline,
+      "toggle-size": KtmReactToggleSize,
+      "toggle-text": KtmReactToggleText,
+      "typeset-article": KtmReactTypesetArticle,
+      "typeset-chat": KtmReactTypesetChat,
+      "typeset-compact": KtmReactTypesetCompact,
+      "typeset-demo": KtmReactTypesetDemo,
+      "typeset-docs": KtmReactTypesetDocs,
+      "typeset-large": KtmReactTypesetLarge,
+      "typeset-opt-out": KtmReactTypesetOptOut,
+      "typeset-table": KtmReactTypesetTable,
     },
     html: {
+      "alert-action": "ktm/html/alert-action.html",
+      "alert-colors": "ktm/html/alert-colors.html",
+      "alert-demo": "ktm/html/alert-demo.html",
+      "alert-variants": "ktm/html/alert-variants.html",
+      "aspect-ratio-custom": "ktm/html/aspect-ratio-custom.html",
+      "aspect-ratio-demo": "ktm/html/aspect-ratio-demo.html",
+      "aspect-ratio-portrait": "ktm/html/aspect-ratio-portrait.html",
+      "aspect-ratio-square": "ktm/html/aspect-ratio-square.html",
+      "avatar-badge-icon": "ktm/html/avatar-badge-icon.html",
+      "avatar-badge": "ktm/html/avatar-badge.html",
+      "avatar-demo": "ktm/html/avatar-demo.html",
+      "avatar-group-count": "ktm/html/avatar-group-count.html",
+      "avatar-group-icon": "ktm/html/avatar-group-icon.html",
+      "avatar-group": "ktm/html/avatar-group.html",
+      "avatar-sizes": "ktm/html/avatar-sizes.html",
       "badge-appearance": "ktm/html/badge-appearance.html",
       "badge-color": "ktm/html/badge-color.html",
       "badge-demo": "ktm/html/badge-demo.html",
@@ -285,6 +418,11 @@ export const ExamplesIndex: Record<
       "checkbox-default-checked": "ktm/html/checkbox-default-checked.html",
       "checkbox-demo": "ktm/html/checkbox-demo.html",
       "checkbox-disabled": "ktm/html/checkbox-disabled.html",
+      "checkbox-group-demo": "ktm/html/checkbox-group-demo.html",
+      "checkbox-group-disabled": "ktm/html/checkbox-group-disabled.html",
+      "checkbox-group-horizontal": "ktm/html/checkbox-group-horizontal.html",
+      "checkbox-group-nested": "ktm/html/checkbox-group-nested.html",
+      "checkbox-group-parent": "ktm/html/checkbox-group-parent.html",
       "checkbox-invalid": "ktm/html/checkbox-invalid.html",
       "field-checkbox": "ktm/html/field-checkbox.html",
       "field-choice-card": "ktm/html/field-choice-card.html",
@@ -319,6 +457,18 @@ export const ExamplesIndex: Record<
       "kbd-group": "ktm/html/kbd-group.html",
       "kbd-input": "ktm/html/kbd-input.html",
       "label-demo": "ktm/html/label-demo.html",
+      "meter-demo": "ktm/html/meter-demo.html",
+      "meter-formatted": "ktm/html/meter-formatted.html",
+      "meter-no-label": "ktm/html/meter-no-label.html",
+      "meter-range": "ktm/html/meter-range.html",
+      "meter-sizes": "ktm/html/meter-sizes.html",
+      "meter-variants": "ktm/html/meter-variants.html",
+      "progress-color": "ktm/html/progress-color.html",
+      "progress-controlled": "ktm/html/progress-controlled.html",
+      "progress-demo": "ktm/html/progress-demo.html",
+      "progress-indeterminate": "ktm/html/progress-indeterminate.html",
+      "progress-label": "ktm/html/progress-label.html",
+      "progress-size": "ktm/html/progress-size.html",
       "radio-group-choice-card": "ktm/html/radio-group-choice-card.html",
       "radio-group-demo": "ktm/html/radio-group-demo.html",
       "radio-group-description": "ktm/html/radio-group-description.html",
@@ -346,6 +496,11 @@ export const ExamplesIndex: Record<
       "skeleton-demo": "ktm/html/skeleton-demo.html",
       "skeleton-shape": "ktm/html/skeleton-shape.html",
       "skeleton-text": "ktm/html/skeleton-text.html",
+      "slider-controlled": "ktm/html/slider-controlled.html",
+      "slider-demo": "ktm/html/slider-demo.html",
+      "slider-disabled": "ktm/html/slider-disabled.html",
+      "slider-multiple": "ktm/html/slider-multiple.html",
+      "slider-vertical": "ktm/html/slider-vertical.html",
       "spinner-color": "ktm/html/spinner-color.html",
       "spinner-demo": "ktm/html/spinner-demo.html",
       "spinner-direction": "ktm/html/spinner-direction.html",
@@ -365,6 +520,20 @@ export const ExamplesIndex: Record<
       "textarea-field": "ktm/html/textarea-field.html",
       "textarea-invalid": "ktm/html/textarea-invalid.html",
       "textarea-with-label": "ktm/html/textarea-with-label.html",
+      "toggle-demo": "ktm/html/toggle-demo.html",
+      "toggle-disabled": "ktm/html/toggle-disabled.html",
+      "toggle-fill-icon": "ktm/html/toggle-fill-icon.html",
+      "toggle-group-demo": "ktm/html/toggle-group-demo.html",
+      "toggle-group-disabled": "ktm/html/toggle-group-disabled.html",
+      "toggle-group-outline": "ktm/html/toggle-group-outline.html",
+      "toggle-group-single": "ktm/html/toggle-group-single.html",
+      "toggle-group-size": "ktm/html/toggle-group-size.html",
+      "toggle-group-spacing": "ktm/html/toggle-group-spacing.html",
+      "toggle-group-vertical": "ktm/html/toggle-group-vertical.html",
+      "toggle-outline": "ktm/html/toggle-outline.html",
+      "toggle-size": "ktm/html/toggle-size.html",
+      "toggle-text": "ktm/html/toggle-text.html",
+      "typeset-demo": "ktm/html/typeset-demo.html",
     },
   },
 }
