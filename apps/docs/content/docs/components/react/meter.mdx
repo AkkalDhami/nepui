@@ -1,0 +1,145 @@
+---
+title: Meter
+description: A graphical display of a numeric value within a range.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="meter-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/meter.json"
+      nepui="npx nepui@latest add meter --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react class-variance-authority cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="meter"
+        title="components/nepui/meter/meter.css"
+        fileTarget="components/nepui/meter/meter.css"
+      />
+      <ComponentSource
+        target="react"
+        name="meter"
+        title="components/nepui/meter/meter.tsx"
+        fileTarget="components/nepui/meter/meter.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="meter"
+        title="components/nepui/meter/index.ts"
+        fileTarget="components/nepui/meter/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import {
+  Meter,
+  MeterIndicator,
+  MeterLabel,
+  MeterTrack,
+  MeterValue,
+} from "@/components/nepui/meter"
+```
+
+```tsx
+<Meter value={40}>
+  <MeterLabel>Progress</MeterLabel>
+  <MeterValue />
+  <MeterTrack>
+    <MeterIndicator />
+  </MeterTrack>
+</Meter>
+```
+
+The label and the value share the first row, and the track fills the second row. The order of the parts in your JSX does not matter.
+
+---
+
+## Without Label and Value
+
+Without `children`, `Meter` renders the track and the indicator for you. Add an `aria-label` so the meter has an accessible name.
+
+<ComponentPreview
+  name="meter-no-label"
+/>
+
+---
+
+## Formatted Value
+
+Pass a function as `children` of `MeterValue` to format the text. It receives the formatted string and the raw value.
+
+<ComponentPreview
+  name="meter-formatted"
+/>
+
+---
+
+## Range
+
+Use `min` and `max` to set the range. The indicator shows where `value` falls inside it.
+
+<ComponentPreview
+  name="meter-range"
+/>
+
+---
+
+## Sizes
+
+Use the `size` prop to change the height of the track.
+
+<ComponentPreview
+  name="meter-sizes"
+/>
+
+---
+
+## Variants
+
+Use the `variant` prop to change the color of the indicator. The track uses a lighter tint of the same color.
+
+<ComponentPreview
+  name="meter-variants"
+/>
+
+---
+
+## API Reference
+
+### Meter
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `value` | `number` | - |
+| `min` | `number` | `0` |
+| `max` | `number` | `100` |
+| `variant` | `"default" \| "success" \| "warning" \| "destructive"` | `"default"` |
+| `size` | `"sm" \| "default" \| "lg"` | `"default"` |
+
+`Meter` also accepts the other props of the Base UI [Meter root](https://base-ui.com/react/components/meter#api-reference).

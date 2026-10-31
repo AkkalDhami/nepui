@@ -1,0 +1,195 @@
+---
+title: Progress
+description: Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="progress-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/progress.json"
+      nepui="npx nepui@latest add progress --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="progress"
+        title="components/nepui/progress/progress.css"
+        fileTarget="components/nepui/progress/progress.css"
+      />
+
+      <ComponentSource
+        target="react"
+        name="progress"
+        title="components/nepui/progress/progress.tsx"
+        fileTarget="components/nepui/progress/progress.tsx"
+      />
+
+      <ComponentSource
+        target="react"
+        name="progress"
+        title="components/nepui/progress/index.ts"
+        fileTarget="components/nepui/progress/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import {
+  Progress,
+  ProgressLabel,
+  ProgressValue,
+} from "@/components/nepui/progress"
+```
+
+```tsx
+<Progress value={33} aria-label="Progress" />
+```
+
+---
+
+## Composition
+
+Use the following composition to build a `Progress` with a label and a value:
+
+```text
+Progress
+├── ProgressLabel
+├── ProgressValue
+└── ProgressTrack
+    └── ProgressIndicator
+```
+
+`ProgressTrack` and `ProgressIndicator` are added by `Progress` after your children. You only write them yourself when you build the parts by hand with Base UI's `Progress.Root`.
+
+---
+
+## Label
+
+Use `ProgressLabel` and `ProgressValue` to add a label and a value display.
+
+<ComponentPreview
+  name="progress-label"
+/>
+
+`ProgressValue` shows the formatted value, for example `56%`. Use the `format` and `locale` props of `Progress` to change it.
+
+---
+
+## Controlled
+
+A progress bar that is controlled by state. Update `value` as the task moves forward.
+
+<ComponentPreview
+  name="progress-controlled"
+/>
+
+---
+
+## Indeterminate
+
+Set `value` to `null` when you don't know how long the task will take. The indicator slides along the track, and `data-indeterminate` is set on the parts.
+
+<ComponentPreview
+  name="progress-indeterminate"
+/>
+
+```tsx
+<Progress value={null} aria-label="Loading" />
+```
+
+The animation is turned off for users who prefer reduced motion.
+
+---
+
+## Size
+
+Set the `--np-progress-height` CSS variable to change the thickness of the bar. The default is `0.25rem`.
+
+<ComponentPreview
+  name="progress-size"
+/>
+
+---
+
+## Color
+
+Set the `--np-progress-color` CSS variable to change the color of the indicator.
+
+<ComponentPreview
+  name="progress-color"
+/>
+
+---
+
+## API Reference
+
+All parts are built on Base UI's [Progress](https://base-ui.com/react/components/progress#api-reference). Every prop of the matching Base UI part is accepted.
+
+### Progress
+ 
+| Prop              | Type                            | Default |
+| ----------------- | ------------------------------- | ------- |
+| `value`           | `number \| null`                | —       |
+| `min`             | `number`                        | `0`     |
+| `max`             | `number`                        | `100`   |
+| `format`          | `Intl.NumberFormatOptions`      | —       |
+| `locale`          | `Intl.LocalesArgument`          | —       |
+| `className` | `string \| (state) => string` | —       |
+
+### ProgressLabel
+ 
+An accessible label for the bar. Base UI connects it to the root.
+ 
+| Prop        | Type                          | Default |
+| ----------- | ----------------------------- | ------- |
+| `className` | `string \| (state) => string` | —       |
+ 
+### ProgressValue
+ 
+The formatted value. It accepts a render function as `children` to show something else.
+ 
+| Prop        | Type                                                        | Default |
+| ----------- | ----------------------------------------------------------- | ------- |
+| `children`  | `(formattedValue: string \| null, value: number \| null) => ReactNode` | — |
+| `className` | `string \| (state) => string`                               | —       |
+ 
+### ProgressTrack
+ 
+The rail that represents the whole task.
+ 
+| Prop        | Type                          | Default |
+| ----------- | ----------------------------- | ------- |
+| `className` | `string \| (state) => string` | —       |
+ 
+### ProgressIndicator
+ 
+The filled part of the track.
+ 
+| Prop        | Type                          | Default |
+| ----------- | ----------------------------- | ------- |
+| `className` | `string \| (state) => string` | —       |

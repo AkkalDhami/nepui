@@ -1,0 +1,143 @@
+---
+title: Progress
+description: Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="progress-demo"
+  target="html"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add progress"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="progress"
+        title="styles/progress.css"
+        fileTarget="styles/progress.css"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the design tokens and component's CSS file to your HTML document.
+
+```html
+<head>
+  <link rel="stylesheet" href="./styles/tokens.css">
+  <link rel="stylesheet" href="./styles/progress.css">
+</head>
+```
+
+Then, add the `np-progress` class to a native `<progress>` element. Set `value`, and set `max="100"` for a 0 to 100 scale.
+
+```html
+<progress class="np-progress" value="33" max="100" aria-label="Progress"></progress>
+```
+
+You can also use the `data-np-progress` attribute instead of the class.
+
+```html
+<progress data-np-progress value="33" max="100" aria-label="Progress"></progress>
+```
+
+The native `max` defaults to `1`, so `value="33"` without `max="100"` shows a full bar.
+
+---
+
+## Label
+
+Wrap a `<label>`, an `<output>` and the `<progress>` in `np-progress-root`. Connect the label and the output to the bar with `for` and `id`.
+
+<ComponentPreview
+  name="progress-label"
+  target="html"
+/>
+
+---
+
+## Controlled
+
+To control the slider using JavaScript, listen for input changes and update the corresponding `<output>` element.
+
+Link the stylesheet and script:
+
+```html
+<link rel="stylesheet" href="./styles/slider.css" />
+
+<script src="./javascripts/slider.js" defer></script>
+```
+
+<ComponentPreview
+  name="progress-controlled"
+  target="html"
+  styles={["/slider/slider.css"]}
+  scripts={["/slider/slider.js"]}
+/>
+
+---
+
+## Indeterminate
+
+Leave out the `value` attribute when you don't know how long the task will take.
+
+<ComponentPreview
+  name="progress-indeterminate"
+  target="html"
+/>
+
+---
+
+## Size
+
+Set the `--np-progress-height` CSS variable to change the thickness of the bar. The default is `0.25rem`.
+
+<ComponentPreview
+  name="progress-size"
+  target="html"
+/>
+
+---
+
+## Color
+
+Set the `--np-progress-color` CSS variable to change the color of the bar.
+
+<ComponentPreview
+  name="progress-color"
+  target="html"
+/>
+
+---
+
+
+## Parts
+
+| Part                   | Class               | Data attribute           |
+| ---------------------- | ------------------- | ------------------------ |
+| Bar (`<progress>`)     | `np-progress`       | `data-np-progress`       |
+| Root (label + bar)     | `np-progress-root`  | `data-np-progress-root`  |
+| Label                  | `np-progress-label` | `data-np-progress-label` |
+| Value text             | `np-progress-value` | `data-np-progress-value` |

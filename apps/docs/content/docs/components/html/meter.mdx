@@ -1,0 +1,153 @@
+---
+title: Meter
+description: A graphical display of a numeric value within a range.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="meter-demo"
+  target="html"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add meter"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="meter"
+        title="styles/meter.css"
+        fileTarget="styles/meter.css"
+      />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the design tokens and the component's CSS file to your HTML document.
+
+```html
+<head>
+  <link rel="stylesheet" href="./styles/tokens.css">
+<link rel="stylesheet" href="./styles/meter.css">
+```
+
+Use the native `<meter>` element as the track. The browser draws the bar from `value`, `min` and `max`, so there is nothing to calculate.
+
+```html
+<div class="np-meter">
+  <label class="np-meter-label" for="storage">Storage usage</label>
+  <span class="np-meter-value">75%</span>
+  <meter class="np-meter-track" id="storage" value="75" min="0" max="100">75%</meter>
+</div>
+```
+
+Or use the data attributes instead of classes:
+
+```html
+<div data-np-meter>
+  <meter data-np-meter-track aria-label="Storage usage" value="75" min="0" max="100">75%</meter>
+</div>
+```
+
+The text inside `<meter>` is only a fallback for very old browsers. The value text next to the label is plain text: write it yourself and keep it in sync with `value`.
+
+The browser's own low, high and optimum colors are replaced by the meter color, so `low`, `high` and `optimum` do not change the look. Use the [variants](#variants) instead.
+
+---
+
+## Without Label and Value
+
+Leave out the label and the value, and give the `<meter>` an `aria-label`.
+
+<ComponentPreview
+  name="meter-no-label"
+  target="html"
+/>
+
+---
+
+## Formatted Value
+
+The value is plain text, so write it however you like. Add `aria-valuetext` to the `<meter>` so screen readers read the same text.
+
+<ComponentPreview
+  name="meter-formatted"
+  target="html"
+/>
+
+---
+
+## Range
+
+Set `min` and `max` on the `<meter>`. The browser places `value` inside that range.
+
+<ComponentPreview
+  name="meter-range"
+  target="html"
+/>
+
+---
+
+## Sizes
+
+Add the alias next to `np-meter`, or set the data attribute.
+
+<ComponentPreview
+  name="meter-sizes"
+  target="html"
+/>
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Small | `data-size="sm"` | `np-meter-sm` |
+| Default | - | `np-meter` |
+| Large | `data-size="lg"` | `np-meter-lg` |
+
+---
+
+## Variants
+
+Add the alias next to `np-meter`, or set the data attribute.
+
+<ComponentPreview
+  name="meter-variants"
+  target="html"
+/>
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Default | - | `np-meter` |
+| Success | `data-variant="success"` | `np-meter-success` |
+| Warning | `data-variant="warning"` | `np-meter-warning` |
+| Destructive | `data-variant="destructive"` | `np-meter-destructive` |
+
+---
+
+## Reference
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Meter | `data-np-meter` | `np-meter` |
+| Label | `data-np-meter-label` | `np-meter-label` |
+| Value | `data-np-meter-value` | `np-meter-value` |
+| Track (`<meter>`) | `data-np-meter-track` | `np-meter-track` |
+
+The indicator part is only used by the [React version](/docs/components/react/meter), which draws the bar with a `div`.

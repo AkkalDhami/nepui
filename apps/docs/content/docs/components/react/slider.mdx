@@ -1,0 +1,139 @@
+---
+title: Slider
+description: An input where the user selects a value from within a given range.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="slider-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/slider.json"
+      nepui="npx nepui@latest add slider --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react class-variance-authority cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="slider"
+        title="components/nepui/slider/slider.css"
+        fileTarget="components/nepui/slider/slider.css"
+      />
+      <ComponentSource
+        target="react"
+        name="slider"
+        title="components/nepui/slider/slider.tsx"
+        fileTarget="components/nepui/slider/slider.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="slider"
+        title="components/nepui/slider/index.ts"
+        fileTarget="components/nepui/slider/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import { Slider } from "@/components/nepui/slider"
+```
+
+```tsx
+<Slider defaultValue={[33]} max={100} step={1} aria-label="Volume" />
+```
+
+---
+
+## Range
+
+Use an array with two values for a range slider.
+
+<ComponentPreview
+  name="slider-range"
+/>
+
+---
+
+## Multiple Thumbs
+
+Use an array with more values for more thumbs.
+
+<ComponentPreview
+  name="slider-multiple"
+/>
+
+---
+
+## Vertical
+
+Use `orientation="vertical"` for a vertical slider. Give it a height, because a vertical slider fills the height of its parent (at least `10rem`).
+
+<ComponentPreview
+  name="slider-vertical"
+/>
+
+---
+
+## Controlled
+
+Pass `value` and `onValueChange` to control the slider. This example uses the [Label](/docs/components/react/label) component.
+
+<ComponentPreview
+  name="slider-controlled"
+/>
+
+---
+
+## Disabled
+
+Use the `disabled` prop to disable the slider.
+
+<ComponentPreview
+  name="slider-disabled"
+/>
+
+---
+
+## API Reference
+
+### Slider
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `value` | `number \| number[]` | - |
+| `defaultValue` | `number \| number[]` | - |
+| `onValueChange` | `(value, eventDetails) => void` | - |
+| `onValueCommitted` | `(value, eventDetails) => void` | - |
+| `min` | `number` | `0` |
+| `max` | `number` | `100` |
+| `step` | `number` | `1` |
+| `largeStep` | `number` | `10` |
+| `minStepsBetweenValues` | `number` | `0` |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
+| `thumbAlignment` | `"center" \| "edge" \| "edge-client-only"` | `"edge"` |
+| `disabled` | `boolean` | `false` |
+| `name` | `string` | - |
+
+`Slider` also accepts the other props of the [Base UI Slider](https://base-ui.com/react/components/slider#api-reference).
