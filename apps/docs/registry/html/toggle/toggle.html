@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Toggle</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/toggle.css" />
+    <script src="../javascripts/toggle.js" defer></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem 4rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: system-ui, sans-serif;
+      }
+      main {
+        max-width: 44rem;
+        margin-inline: auto;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+      h1 {
+        margin: 0;
+        font-size: 1.5rem;
+      }
+      h2 {
+        margin: 2rem 0 0.25rem;
+        font-size: 1rem;
+      }
+      p {
+        margin: 0 0 0.75rem;
+        color: var(--np-muted-foreground);
+        font-size: 0.875rem;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      section {
+        padding-block-end: 1.25rem;
+        border-block-end: 1px solid var(--np-border);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Class form</h2>
+        <p><code>class="np-toggle"</code></p>
+        <div class="row">
+          <button
+            type="button"
+            class="np-toggle"
+            aria-pressed="false"
+            aria-label="Toggle bookmark"
+            data-fill-icon
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z" />
+            </svg>
+            Bookmark
+          </button>
+          <button
+            type="button"
+            class="np-toggle"
+            aria-pressed="false"
+            aria-label="Toggle italic"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <line x1="19" x2="10" y1="4" y2="4" />
+              <line x1="14" x2="5" y1="20" y2="20" />
+              <line x1="15" x2="9" y1="4" y2="20" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="np-toggle"
+            aria-pressed="true"
+            aria-label="Toggle bold"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path
+                d="M6 12h9a4 4 0 0 1 0 8H7a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h7a4 4 0 0 1 0 8"
+              />
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Data-attribute form</h2>
+        <p>
+          <code>data-np-toggle</code> with <code>data-variant</code> and
+          <code>data-size</code>, no classes.
+        </p>
+        <div class="row">
+          <button
+            type="button"
+            data-np-toggle
+            aria-pressed="false"
+            aria-label="Toggle bookmark"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z" />
+            </svg>
+            Bookmark
+          </button>
+          <button
+            type="button"
+            data-np-toggle
+            data-variant="outline"
+            aria-pressed="false"
+            aria-label="Toggle italic"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <line x1="19" x2="10" y1="4" y2="4" />
+              <line x1="14" x2="5" y1="20" y2="20" />
+              <line x1="15" x2="9" y1="4" y2="20" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            data-np-toggle
+            data-variant="outline"
+            data-size="lg"
+            aria-pressed="true"
+            aria-label="Toggle bold"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path
+                d="M6 12h9a4 4 0 0 1 0 8H7a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h7a4 4 0 0 1 0 8"
+              />
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Variants</h2>
+        <p>Default and outline, each off and on.</p>
+        <div class="row">
+          <button
+            type="button"
+            class="np-toggle"
+            aria-pressed="false"
+            aria-label="Toggle default off"
+          >
+            Default
+          </button>
+          <button
+            type="button"
+            class="np-toggle"
+            aria-pressed="true"
+            aria-label="Toggle default on"
+          >
+            Default
+          </button>
+          <button
+            type="button"
+            class="np-toggle np-toggle-outline"
+            aria-pressed="false"
+            aria-label="Toggle outline off"
+          >
+            Outline
+          </button>
+          <button
+            type="button"
+            class="np-toggle np-toggle-outline"
+            aria-pressed="true"
+            aria-label="Toggle outline on"
+          >
+            Outline
+          </button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Sizes</h2>
+        <p>
+          Small (1.75rem), default (2rem) and large (2.25rem) line up with
+          Button and Input.
+        </p>
+        <div class="row">
+          <button
+            type="button"
+            class="np-toggle np-toggle-outline np-toggle-sm"
+            aria-pressed="false"
+            aria-label="Toggle small"
+          >
+            Small
+          </button>
+          <button
+            type="button"
+            class="np-toggle np-toggle-outline"
+            aria-pressed="false"
+            aria-label="Toggle default"
+          >
+            Default
+          </button>
+          <button
+            type="button"
+            class="np-toggle np-toggle-outline np-toggle-lg"
+            aria-pressed="false"
+            aria-label="Toggle large"
+          >
+            Large
+          </button>
+        </div>
+      </section>
+
+      <section>
+        <h2>With text and icon</h2>
+        <div class="row">
+          <button
+            type="button"
+            class="np-toggle"
+            aria-pressed="false"
+            aria-label="Toggle italic"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <line x1="19" x2="10" y1="4" y2="4" />
+              <line x1="14" x2="5" y1="20" y2="20" />
+              <line x1="15" x2="9" y1="4" y2="20" />
+            </svg>
+            Italic
+          </button>
+          <button
+            type="button"
+            class="np-toggle np-toggle-outline"
+            aria-pressed="false"
+            aria-label="Toggle bold"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path
+                d="M6 12h9a4 4 0 0 1 0 8H7a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h7a4 4 0 0 1 0 8"
+              />
+            </svg>
+            Bold
+          </button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Fill icon</h2>
+        <p>
+          <code>np-toggle-fill-icon</code> or <code>data-fill-icon</code> fills
+          a stroke icon while pressed.
+        </p>
+        <div class="row">
+          <button
+            type="button"
+            class="np-toggle np-toggle-fill-icon"
+            aria-pressed="false"
+            aria-label="Toggle like"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path
+                d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+              />
+            </svg>
+            Like
+          </button>
+          <button
+            type="button"
+            data-np-toggle
+            data-fill-icon
+            aria-pressed="true"
+            aria-label="Toggle save"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z" />
+            </svg>
+            Save
+          </button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Disabled</h2>
+        <div class="row">
+          <button
+            type="button"
+            class="np-toggle"
+            aria-pressed="false"
+            aria-label="Toggle disabled"
+            disabled
+          >
+            Disabled
+          </button>
+          <button
+            type="button"
+            class="np-toggle np-toggle-outline"
+            aria-pressed="true"
+            aria-label="Toggle disabled on"
+            disabled
+          >
+            Disabled on
+          </button>
+          <button
+            type="button"
+            class="np-toggle"
+            aria-pressed="false"
+            aria-label="Toggle aria-disabled"
+            aria-disabled="true"
+          >
+            aria-disabled
+          </button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Invalid</h2>
+        <p><code>aria-invalid="true"</code> or <code>data-invalid</code>.</p>
+        <div class="row">
+          <button
+            type="button"
+            class="np-toggle"
+            aria-pressed="false"
+            aria-label="Toggle invalid"
+            aria-invalid="true"
+          >
+            Invalid
+          </button>
+          <button
+            type="button"
+            class="np-toggle np-toggle-outline"
+            aria-pressed="false"
+            aria-label="Toggle invalid outline"
+            aria-invalid="true"
+          >
+            Invalid outline
+          </button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
