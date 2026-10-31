@@ -1,0 +1,188 @@
+---
+title: Toggle
+description: A two-state button that can be either on or off.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  target="html"
+  name="toggle-demo"
+  scripts={["/toggle/toggle.js"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add toggle"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="toggle"
+        title="styles/toggle.css"
+        fileTarget="styles/toggle.css"
+      />
+      <ComponentSource
+        target="html"
+        name="toggle"
+        title="javascripts/toggle.js"
+        fileTarget="javascripts/toggle.js"
+      />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```html
+<link rel="stylesheet" href="./styles/toggle.css" />
+<script src="./javascripts/toggle.js" defer></script>
+```
+
+```html
+<button type="button" class="np-toggle" aria-pressed="false" aria-label="Toggle bold">
+  Bold
+</button>
+```
+
+Or use the data attribute instead of the class:
+
+```html
+<button type="button" data-np-toggle aria-pressed="false" aria-label="Toggle bold">
+  Bold
+</button>
+```
+
+The stylesheet only reads `aria-pressed`. <LINK href="#behavior">`toggle.js`</LINK> is the small script that flips it.
+
+Icon-only toggles have no visible text, so always give them an `aria-label`.
+
+---
+
+## Behavior
+
+`toggle.js` flips `aria-pressed` when a toggle is clicked. Load it once with `defer` and it handles every toggle on the page, including toggles added later.
+
+It skips toggles inside a [Toggle Group](/docs/components/html/toggle-group), which are handled by `toggle-group.js`. Load both scripts if you use both, and never add an inline `onclick` to a toggle.
+
+The script is optional. Skip it if you manage `aria-pressed` yourself, for example with htmx, Alpine or your own code. React users do not need it either, Base UI handles it.
+
+### Change event
+
+The toggle fires `np-toggle-change` after every change. It bubbles, so you can listen on the toggle or on `document`.
+
+```js
+document.addEventListener("np-toggle-change", (event) => {
+  const toggle = event.target
+  const { pressed } = event.detail
+})
+```
+
+Disabled toggles (`disabled`, `aria-disabled="true"` or `data-disabled`) ignore clicks. `Enter` and `Space` press the focused toggle, as with any button.
+
+---
+
+## Outline
+
+Use `np-toggle-outline` or `data-variant="outline"` for an outline style.
+
+<ComponentPreview
+  target="html"
+  name="toggle-outline"
+  scripts={["/toggle/toggle.js"]}
+/>
+
+---
+
+## With Text
+
+Combine an icon and a label inside the toggle. The gap and icon size are handled for you.
+
+<ComponentPreview
+  target="html"
+  name="toggle-text"
+  scripts={["/toggle/toggle.js"]}
+/>
+
+---
+
+## Size
+
+Heights match Button and Input (`1.75rem`, `2rem`, `2.25rem`), so they line up side by side.
+
+<ComponentPreview
+  target="html"
+  name="toggle-size"
+  scripts={["/toggle/toggle.js"]}
+/>
+
+---
+
+## Disabled
+
+Add the native `disabled` attribute. `aria-disabled="true"` and `data-disabled` work too.
+
+<ComponentPreview
+  target="html"
+  name="toggle-disabled"
+  scripts={["/toggle/toggle.js"]}
+/>
+
+---
+
+## Filled Icon
+
+Add `np-toggle-fill-icon` or `data-fill-icon` to fill a stroke-based icon with the foreground color while the toggle is pressed.
+
+<ComponentPreview
+  target="html"
+  name="toggle-fill-icon"
+  scripts={["/toggle/toggle.js"]}
+/>
+
+---
+
+## Reference
+
+### Variants
+
+| Name    | Data attribute          | Class alias         |
+| ------- | ----------------------- | ------------------- |
+| Default | -                       | `np-toggle`         |
+| Outline | `data-variant="outline"` | `np-toggle-outline` |
+
+### Sizes
+
+| Name    | Data attribute     | Class alias     |
+| ------- | ------------------ | --------------- |
+| Small   | `data-size="sm"`   | `np-toggle-sm`  |
+| Default | -                  | `np-toggle`     |
+| Large   | `data-size="lg"`   | `np-toggle-lg`  |
+
+### Features
+
+| Name      | Data attribute   | Class alias            |
+| --------- | ---------------- | ---------------------- |
+| Fill icon | `data-fill-icon` | `np-toggle-fill-icon`  |
+
+### States
+
+| State    | Selector                                              |
+| -------- | ----------------------------------------------------- |
+| Pressed  | `[aria-pressed="true"]`, `[data-pressed]`             |
+| Disabled | `:disabled`, `[aria-disabled="true"]`, `[data-disabled]` |
+| Invalid  | `[aria-invalid="true"]`, `[data-invalid]`             |
