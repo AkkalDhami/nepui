@@ -1,0 +1,145 @@
+/* nepui - Meter */
+
+.np-meter,
+[data-np-meter] {
+  --np-meter-height: calc(var(--np-spacing, 0.25rem) * 2);
+  --np-meter-color: var(--np-primary);
+  --np-meter-track: color-mix(in oklch, var(--np-meter-color), transparent 80%);
+  --np-meter-duration: 500ms;
+
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  width: 100%;
+}
+
+.np-meter-label,
+[data-np-meter-label] {
+  grid-column: 1;
+  grid-row: 1;
+  padding-block-end: calc(var(--np-spacing, 0.25rem) * 2);
+  color: var(--np-foreground);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.np-meter-value,
+[data-np-meter-value] {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: end;
+  padding-block-end: calc(var(--np-spacing, 0.25rem) * 2);
+  padding-inline-start: calc(var(--np-spacing, 0.25rem) * 2);
+  color: var(--np-muted-foreground);
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.25;
+}
+
+.np-meter-track,
+[data-np-meter-track] {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  width: 100%;
+  height: var(--np-meter-height);
+  overflow: hidden;
+  background-color: var(--np-meter-track);
+}
+
+.np-meter-indicator,
+[data-np-meter-indicator] {
+  display: block;
+  width: var(--np-meter-percentage, 0%);
+  height: 100%;
+  border-radius: inherit;
+  background-color: var(--np-meter-color);
+  transition: width var(--np-meter-duration) ease;
+}
+
+meter:is(.np-meter-track, [data-np-meter-track]) {
+  -webkit-appearance: none;
+  appearance: none;
+  border: 0;
+}
+
+meter:is(.np-meter-track, [data-np-meter-track])::-webkit-meter-inner-element {
+  box-sizing: border-box;
+  height: var(--np-meter-height);
+}
+
+meter:is(.np-meter-track, [data-np-meter-track])::-webkit-meter-bar {
+  box-sizing: border-box;
+  height: var(--np-meter-height);
+  border: 0;
+  background: none;
+}
+
+meter:is(.np-meter-track, [data-np-meter-track])::-webkit-meter-optimum-value,
+meter:is(
+    .np-meter-track,
+    [data-np-meter-track]
+  )::-webkit-meter-suboptimum-value,
+meter:is(
+    .np-meter-track,
+    [data-np-meter-track]
+  )::-webkit-meter-even-less-good-value {
+  box-sizing: border-box;
+  height: var(--np-meter-height);
+  background: var(--np-meter-color);
+  transition: width var(--np-meter-duration) ease;
+}
+
+meter:is(.np-meter-track, [data-np-meter-track])::-moz-meter-bar {
+  box-sizing: border-box;
+  height: var(--np-meter-height);
+  background: var(--np-meter-color);
+}
+
+:is(.np-meter, [data-np-meter]):is(
+  .np-meter-success,
+  [data-variant="success"]
+) {
+  --np-meter-color: var(--np-success);
+}
+
+:is(.np-meter, [data-np-meter]):is(
+  .np-meter-warning,
+  [data-variant="warning"]
+) {
+  --np-meter-color: var(--np-warning);
+}
+
+:is(.np-meter, [data-np-meter]):is(
+  .np-meter-destructive,
+  [data-variant="destructive"]
+) {
+  --np-meter-color: var(--np-destructive);
+}
+
+:is(.np-meter, [data-np-meter]):is(.np-meter-sm, [data-size="sm"]) {
+  --np-meter-height: calc(var(--np-spacing, 0.25rem) * 1);
+}
+
+:is(.np-meter, [data-np-meter]):is(.np-meter-lg, [data-size="lg"]) {
+  --np-meter-height: calc(var(--np-spacing, 0.25rem) * 3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .np-meter-indicator,
+  [data-np-meter-indicator],
+  meter:is(.np-meter-track, [data-np-meter-track])::-webkit-meter-optimum-value,
+  meter:is(
+      .np-meter-track,
+      [data-np-meter-track]
+    )::-webkit-meter-suboptimum-value,
+  meter:is(
+      .np-meter-track,
+      [data-np-meter-track]
+    )::-webkit-meter-even-less-good-value {
+    transition: none;
+  }
+}

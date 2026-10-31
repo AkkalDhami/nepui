@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Meter</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/meter.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: system-ui, sans-serif;
+      }
+      main {
+        display: grid;
+        gap: 2rem;
+        max-width: 24rem;
+        margin-inline: auto;
+      }
+      h2 {
+        margin: 0 0 0.75rem;
+        font-size: 0.875rem;
+        color: var(--np-muted-foreground);
+        font-weight: 500;
+      }
+      .col {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Class form</h2>
+        <div class="np-meter">
+          <label class="np-meter-label" for="a1">Storage usage</label>
+          <span class="np-meter-value">75%</span>
+          <meter class="np-meter-track" id="a1" value="75" min="0" max="100">
+            75%
+          </meter>
+        </div>
+      </section>
+
+      <section>
+        <h2>Data-attribute form</h2>
+        <div data-np-meter>
+          <label data-np-meter-label for="b1">Progress</label>
+          <span data-np-meter-value>40%</span>
+          <meter data-np-meter-track id="b1" value="40" min="0" max="100">
+            40%
+          </meter>
+        </div>
+      </section>
+
+      <section>
+        <h2>Without label and value</h2>
+        <div class="np-meter">
+          <meter
+            class="np-meter-track"
+            aria-label="Storage usage"
+            value="50"
+            min="0"
+            max="100"
+          >
+            50%
+          </meter>
+        </div>
+      </section>
+
+      <section>
+        <h2>Range (500 to 1000)</h2>
+        <div class="np-meter">
+          <label class="np-meter-label" for="c1">Bandwidth (Mbps)</label>
+          <span class="np-meter-value">700</span>
+          <meter
+            class="np-meter-track"
+            id="c1"
+            value="700"
+            min="500"
+            max="1000"
+          >
+            700
+          </meter>
+        </div>
+      </section>
+
+      <section>
+        <h2>Sizes (class and data-size)</h2>
+        <div class="col">
+          <div class="np-meter np-meter-sm">
+            <meter
+              class="np-meter-track"
+              aria-label="Small"
+              value="40"
+              min="0"
+              max="100"
+            >
+              40%
+            </meter>
+          </div>
+          <div class="np-meter">
+            <meter
+              class="np-meter-track"
+              aria-label="Default"
+              value="60"
+              min="0"
+              max="100"
+            >
+              60%
+            </meter>
+          </div>
+          <div class="np-meter" data-size="lg">
+            <meter
+              class="np-meter-track"
+              aria-label="Large"
+              value="80"
+              min="0"
+              max="100"
+            >
+              80%
+            </meter>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Variants (class and data-variant)</h2>
+        <div class="col">
+          <div class="np-meter np-meter-success">
+            <label class="np-meter-label" for="d1">Success</label>
+            <span class="np-meter-value">45%</span>
+            <meter class="np-meter-track" id="d1" value="45" min="0" max="100">
+              45%
+            </meter>
+          </div>
+          <div class="np-meter" data-variant="warning">
+            <label class="np-meter-label" for="d2"
+              >Warning (data-variant)</label
+            >
+            <span class="np-meter-value">70%</span>
+            <meter class="np-meter-track" id="d2" value="70" min="0" max="100">
+              70%
+            </meter>
+          </div>
+          <div class="np-meter np-meter-destructive">
+            <label class="np-meter-label" for="d3">Destructive</label>
+            <span class="np-meter-value">92%</span>
+            <meter class="np-meter-track" id="d3" value="92" min="0" max="100">
+              92%
+            </meter>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
