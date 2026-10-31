@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Progress - nepui</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/progress.css" />
+
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem;
+        font-family: system-ui, sans-serif;
+        background: var(--np-background);
+        color: var(--np-foreground);
+      }
+      .demo {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        max-width: 24rem;
+      }
+      h2 {
+        margin: 0 0 0.75rem;
+        font-size: 0.75rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        opacity: 0.6;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="demo">
+      <section>
+        <h2>Native progress (class)</h2>
+        <progress
+          class="np-progress"
+          value="33"
+          max="100"
+          aria-label="Progress"
+        ></progress>
+      </section>
+
+      <section>
+        <h2>Data attribute</h2>
+        <progress
+          data-np-progress
+          value="66"
+          max="100"
+          aria-label="Progress"
+        ></progress>
+      </section>
+
+      <section>
+        <h2>With label and value</h2>
+        <div class="np-progress-root">
+          <label class="np-progress-label" for="upload">Upload progress</label>
+          <output class="np-progress-value" for="upload">56%</output>
+          <progress
+            class="np-progress"
+            id="upload"
+            value="56"
+            max="100"
+          ></progress>
+        </div>
+      </section>
+
+      <section>
+        <h2>Indeterminate (no value attribute)</h2>
+        <progress class="np-progress" aria-label="Loading"></progress>
+      </section>
+
+      <section>
+        <h2>Height and color</h2>
+        <progress
+          class="np-progress"
+          value="72"
+          max="100"
+          aria-label="Storage"
+          style="
+            --np-progress-height: 0.75rem;
+            --np-progress-color: var(--np-destructive);
+          "
+        ></progress>
+      </section>
+    </main>
+  </body>
+</html>

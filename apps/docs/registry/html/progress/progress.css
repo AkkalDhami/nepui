@@ -1,0 +1,157 @@
+/* nepui — Progress */
+
+.np-progress,
+[data-np-progress] {
+  --np-progress-value: 0;
+  --np-progress-height: var(--np-spacing);
+  --np-progress-radius: 9999px;
+  --np-progress-track-bg: var(--np-muted);
+  --np-progress-color: var(--np-primary);
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--np-spacing) * 3);
+  width: 100%;
+}
+
+.np-progress-root,
+[data-np-progress-root],
+:is(.np-progress, [data-np-progress]):not(progress) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--np-spacing) * 3);
+  width: 100%;
+}
+
+.np-progress-label,
+[data-np-progress-label] {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.np-progress-value,
+[data-np-progress-value] {
+  margin-inline-start: auto;
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+progress:is(.np-progress, [data-np-progress]) {
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--np-progress-height, 0.25rem);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  border-radius: var(--np-progress-radius, 9999px);
+  background-color: var(--np-progress-track-bg, var(--np-muted));
+  color: var(--np-progress-color, var(--np-primary));
+}
+
+progress:is(.np-progress, [data-np-progress])::-webkit-progress-bar {
+  background: transparent;
+}
+
+progress:is(.np-progress, [data-np-progress])::-webkit-progress-value {
+  background: var(--np-progress-color, var(--np-primary));
+  transition: width 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+progress:is(.np-progress, [data-np-progress])::-moz-progress-bar {
+  background: var(--np-progress-color, var(--np-primary));
+}
+
+progress:is(.np-progress, [data-np-progress]):indeterminate {
+  background-image: linear-gradient(
+    var(--np-progress-color, var(--np-primary)),
+    var(--np-progress-color, var(--np-primary))
+  );
+  background-repeat: no-repeat;
+  background-size: 40% 100%;
+  animation: np-progress-native-indeterminate 1.5s ease-in-out infinite;
+}
+
+progress:is(.np-progress, [data-np-progress]):indeterminate:dir(rtl) {
+  animation-direction: reverse;
+}
+
+progress:is(
+    .np-progress,
+    [data-np-progress]
+  ):indeterminate::-webkit-progress-value {
+  background: transparent;
+}
+
+progress:is(.np-progress, [data-np-progress]):indeterminate::-moz-progress-bar {
+  background: transparent;
+}
+
+@keyframes np-progress-native-indeterminate {
+  from {
+    background-position: -66.67% 0;
+  }
+  to {
+    background-position: 166.67% 0;
+  }
+}
+
+.np-progress-track,
+[data-np-progress-track] {
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--np-progress-height, 0.25rem);
+  overflow: hidden;
+  border-radius: var(--np-progress-radius, 9999px);
+  background: var(--np-progress-track-bg, var(--np-muted));
+}
+
+.np-progress-indicator,
+[data-np-progress-indicator] {
+  flex-shrink: 0;
+  height: 100%;
+  background: var(--np-progress-color, var(--np-primary));
+  transition: width 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+:is(.np-progress-indicator, [data-np-progress-indicator])[data-indeterminate] {
+  width: 40%;
+  transition: none;
+  animation: np-progress-indeterminate 1.5s ease-in-out infinite;
+}
+
+@keyframes np-progress-indeterminate {
+  from {
+    margin-inline-start: -40%;
+  }
+  to {
+    margin-inline-start: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  progress:is(.np-progress, [data-np-progress])::-webkit-progress-value,
+  .np-progress-indicator,
+  [data-np-progress-indicator] {
+    transition: none;
+  }
+
+  progress:is(.np-progress, [data-np-progress]):indeterminate {
+    background-position: 30% 0;
+    animation: none;
+  }
+
+  :is(
+    .np-progress-indicator,
+    [data-np-progress-indicator]
+  )[data-indeterminate] {
+    margin-inline-start: 30%;
+    animation: none;
+  }
+}
