@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aspect-ratio",
+  "title": "Aspect Ratio",
+  "description": "Displays content within a desired ratio.",
+  "files": [
+    {
+      "path": "registry/react/aspect-ratio/aspect-ratio.tsx",
+      "content": "\"use client\"\n\nimport type { ComponentProps, CSSProperties } from \"react\"\nimport { cn } from \"cn\"\n\n// NOTE: Update these paths if needed\nimport \"../tokens.css\"\nimport \"./aspect-ratio.css\"\n\nfunction AspectRatio({\n  ratio,\n  className,\n  style,\n  ...props\n}: ComponentProps<\"div\"> & {\n  ratio: number\n}) {\n  return (\n    <div\n      data-slot=\"aspect-ratio\"\n      style={{ \"--np-aspect-ratio-value\": ratio, ...style } as CSSProperties}\n      className={cn(\"np-aspect-ratio\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { AspectRatio }\n",
+      "type": "registry:ui",
+      "target": "components/nepui/aspect-ratio/aspect-ratio.tsx"
+    },
+    {
+      "path": "registry/react/aspect-ratio/aspect-ratio.css",
+      "content": "/* nepui - Aspect Ratio */\n\n.np-aspect-ratio,\n[data-np-aspect-ratio] {\n  --np-aspect-ratio-value: 16 / 9;\n  --np-aspect-ratio-fit: cover;\n\n  position: relative;\n  box-sizing: border-box;\n  aspect-ratio: var(--np-aspect-ratio-value);\n}\n\n:is(.np-aspect-ratio, [data-np-aspect-ratio]) > :is(img, video, iframe) {\n  display: block;\n  width: 100%;\n  height: 100%;\n  border: 0;\n  object-fit: var(--np-aspect-ratio-fit);\n}\n\n.np-aspect-ratio-square,\n:is(.np-aspect-ratio, [data-np-aspect-ratio])[data-ratio=\"square\"] {\n  --np-aspect-ratio-value: 1 / 1;\n}\n\n.np-aspect-ratio-portrait,\n:is(.np-aspect-ratio, [data-np-aspect-ratio])[data-ratio=\"portrait\"] {\n  --np-aspect-ratio-value: 9 / 16;\n}\n",
+      "type": "registry:ui",
+      "target": "components/nepui/aspect-ratio/aspect-ratio.css"
+    },
+    {
+      "path": "registry/react/aspect-ratio/index.ts",
+      "content": "export * from \"./aspect-ratio\"\n",
+      "type": "registry:ui",
+      "target": "components/nepui/aspect-ratio/index.ts"
+    }
+  ],
+  "type": "registry:ui"
+}

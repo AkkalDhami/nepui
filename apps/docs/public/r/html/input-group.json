@@ -4,9 +4,9 @@
   "title": "Input Group",
   "description": "Add addons, buttons, and helper content to inputs.",
   "registryDependencies": [
-    "https://nepui.vercel.app/r/react/input.json",
-    "https://nepui.vercel.app/r/react/button.json",
-    "https://nepui.vercel.app/r/react/textarea.json"
+    "https://nepui.vercel.app/r/html/input.json",
+    "https://nepui.vercel.app/r/html/button.json",
+    "https://nepui.vercel.app/r/html/textarea.json"
   ],
   "files": [
     {

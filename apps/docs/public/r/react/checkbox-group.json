@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox-group",
+  "title": "Checkbox Group",
+  "description": "Provides shared state to a series of checkboxes.",
+  "registryDependencies": [
+    "https://nepui.vercel.app/r/react/checkbox.json",
+    "https://nepui.vercel.app/r/react/label.json"
+  ],
+  "files": [
+    {
+      "path": "registry/react/checkbox-group/checkbox-group.tsx",
+      "content": "\"use client\"\n\nimport { CheckboxGroup as CheckboxGroupPrimitive } from \"@base-ui/react/checkbox-group\"\nimport { cn } from \"cn\"\n\n// NOTE: Update these paths if needed\nimport \"../tokens.css\"\nimport \"./checkbox-group.css\"\n\nfunction CheckboxGroup({\n  className,\n  orientation = \"vertical\",\n  ...props\n}: CheckboxGroupPrimitive.Props & {\n  orientation?: \"vertical\" | \"horizontal\"\n}) {\n  return (\n    <CheckboxGroupPrimitive\n      data-slot=\"checkbox-group\"\n      data-orientation={orientation}\n      className={(state) =>\n        cn(\n          \"np-checkbox-group\",\n          orientation === \"horizontal\" && \"np-checkbox-group-horizontal\",\n          typeof className === \"function\" ? className(state) : className\n        )\n      }\n      {...props}\n    />\n  )\n}\n\nexport { CheckboxGroup }\n",
+      "type": "registry:ui",
+      "target": "components/nepui/checkbox-group/checkbox-group.tsx"
+    },
+    {
+      "path": "registry/react/checkbox-group/checkbox-group.css",
+      "content": "/* nepui — Checkbox Group */\n\n.np-checkbox-group,\n[data-np-checkbox-group] {\n  --np-checkbox-group-gap: calc(var(--np-spacing) * 3);\n  --np-checkbox-group-direction: column;\n  --np-checkbox-group-align: flex-start;\n  --np-checkbox-group-wrap: nowrap;\n  --np-checkbox-group-indent: calc(var(--np-spacing) * 4);\n\n  display: flex;\n  box-sizing: border-box;\n  flex-direction: var(--np-checkbox-group-direction);\n  flex-wrap: var(--np-checkbox-group-wrap);\n  align-items: var(--np-checkbox-group-align);\n  gap: var(--np-checkbox-group-gap);\n  min-width: 0;\n  margin: 0;\n  padding: 0;\n  border: 0;\n}\n\n.np-checkbox-group-horizontal,\n:is(\n  .np-checkbox-group,\n  [data-np-checkbox-group]\n)[data-orientation=\"horizontal\"] {\n  --np-checkbox-group-gap: calc(var(--np-spacing) * 4);\n  --np-checkbox-group-direction: row;\n  --np-checkbox-group-align: center;\n  --np-checkbox-group-wrap: wrap;\n}\n\n.np-checkbox-group-child,\n[data-np-checkbox-group-child] {\n  margin-inline-start: var(\n    --np-checkbox-group-indent,\n    calc(var(--np-spacing) * 4)\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/nepui/checkbox-group/checkbox-group.css"
+    },
+    {
+      "path": "registry/react/checkbox-group/index.ts",
+      "content": "export * from \"./checkbox-group\"\n",
+      "type": "registry:ui",
+      "target": "components/nepui/checkbox-group/index.ts"
+    }
+  ],
+  "type": "registry:ui"
+}
