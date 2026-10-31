@@ -1,0 +1,181 @@
+---
+title: Slider
+description: An input where the user selects a value from within a given range.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="slider-demo"
+  target="html"
+  scripts={["slider/slider.js"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add slider"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="slider"
+        title="styles/slider.css"
+        fileTarget="styles/slider.css"
+      />
+      <Step>Chrome and Safari need this small script to draw the filled track. It is optional, and you add it once per page.</Step>
+      <ComponentSource
+        target="html"
+        name="slider"
+        title="javascripts/slider.js"
+        fileTarget="javascripts/slider.js"
+      />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the stylesheet:
+
+```html
+<link rel="stylesheet" href="./styles/slider.css">
+```
+
+Use a native range input:
+
+```html
+<input
+  class="np-slider"
+  type="range"
+  min="0"
+  max="100"
+  step="1"
+  value="75"
+  aria-label="Volume"
+/>
+```
+
+Or use the data attribute instead of the class:
+
+```html
+<input
+  data-np-slider
+  type="range"
+  min="0"
+  max="100"
+  step="1"
+  value="75"
+  aria-label="Volume"
+/>
+```
+
+A native range input has one thumb. For more thumbs, put several inputs in a `np-slider-group` (see  <LINK href="#multiple-thumbs">Multiple Thumbs</LINK>).
+
+
+---
+
+## Filled track
+
+You only write `value`, `min` and `max`. Firefox fills the track up to the thumb by itself. Chrome and Safari give CSS no way to read the live value of a range input, so they need one small script to draw the fill. Add it once, near the end of the page:
+
+```html
+<script src="./javascripts/slider.js" defer></script>
+```
+
+The script finds every `np-slider` range input, reads its `value`, and keeps the `--np-slider-percentage` variable up to date as the value changes. You never set the variable yourself. Without the script the slider still works, but the track in Chrome and Safari is not filled.
+
+---
+
+## Multiple Thumbs
+
+Put several range inputs in a `np-slider-group` (or `data-np-slider-group`). A group needs `slider.js` in every browser, and the thumbs can cross each other.
+
+<ComponentPreview
+  name="slider-multiple"
+  target="html"
+  scripts={["slider/slider.js"]}
+/>
+
+Two inputs make a range slider.
+
+---
+
+## Controlled
+
+Link the stylesheet:
+
+```html
+<link rel="stylesheet" href="./styles/label.css">
+```
+
+<ComponentPreview
+  name="slider-controlled"
+  target="html"
+  styles={["/label/label.css"]}
+  scripts={["slider/slider.js"]}
+/>
+
+---
+
+## Disabled
+
+Add `disabled` to the input.
+
+<ComponentPreview
+  name="slider-disabled"
+  target="html"
+  scripts={["slider/slider.js"]}
+/>
+
+---
+
+## Vertical
+
+Add `np-slider-vertical` (or `data-orientation="vertical"`) for a vertical slider. It is `10rem` tall by default; set `height` on the input to change it. This uses `writing-mode`, which works in current Chrome, Edge, Safari and Firefox.
+
+<ComponentPreview
+  name="slider-vertical"
+  target="html"
+  scripts={["slider/slider.js"]}
+/>
+
+---
+
+## Reference
+
+### Slider
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Slider (`<input type="range">`) | `data-np-slider` | `np-slider` |
+| Group of thumbs | `data-np-slider-group` | `np-slider-group` |
+
+### Orientation
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Horizontal (default) | - | `np-slider` |
+| Vertical | `data-orientation="vertical"` | `np-slider-vertical` |
+
+### Parts
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Control | `data-np-slider-control` | `np-slider-control` |
+| Track | `data-np-slider-track` | `np-slider-track` |
+| Range | `data-np-slider-range` | `np-slider-range` |
+| Thumb | `data-np-slider-thumb` | `np-slider-thumb` |

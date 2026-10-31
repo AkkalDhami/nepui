@@ -1,0 +1,216 @@
+---
+title: Avatar
+description: An image element with a fallback for representing the user.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="avatar-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/avatar.json"
+      nepui="npx nepui@latest add avatar --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="avatar"
+        title="components/nepui/avatar/avatar.css"
+        fileTarget="components/nepui/avatar/avatar.css"
+      />
+      <ComponentSource
+        target="react"
+        name="avatar"
+        title="components/nepui/avatar/avatar.tsx"
+        fileTarget="components/nepui/avatar/avatar.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="avatar"
+        title="components/nepui/avatar/index.ts"
+        fileTarget="components/nepui/avatar/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/nepui/avatar"
+```
+
+```tsx
+<Avatar>
+  <AvatarImage src="https://github.com/akkaldhami.png" alt="@akkkaldhami" />
+  <AvatarFallback>CN</AvatarFallback>
+</Avatar>
+```
+
+The fallback shows while the image loads and when it fails to load.
+
+---
+
+## Composition
+
+Use the following composition to build an `Avatar`:
+
+```text
+Avatar
+├── AvatarImage
+├── AvatarFallback
+└── AvatarBadge
+```
+
+Use the following composition to build an `AvatarGroup`:
+
+```text
+AvatarGroup
+├── Avatar
+│   ├── AvatarImage
+│   ├── AvatarFallback
+│   └── AvatarBadge
+├── Avatar
+│   ├── AvatarImage
+│   ├── AvatarFallback
+│   └── AvatarBadge
+└── AvatarGroupCount
+```
+
+---
+
+## Badge
+
+Use `AvatarBadge` to add a badge to the avatar. It is positioned at the bottom end corner. Set `--np-avatar-badge-color` on the avatar or the badge to change its color.
+
+<ComponentPreview
+  name="avatar-badge"
+/>
+
+---
+
+## Badge with icon
+
+You can also put an icon inside `AvatarBadge`. It is hidden on the small size.
+
+<ComponentPreview
+  name="avatar-badge-icon"
+/>
+
+---
+
+## Avatar group
+
+Use `AvatarGroup` to stack avatars so they overlap.
+
+<ComponentPreview
+  name="avatar-group"
+/>
+
+---
+
+## Avatar group count
+
+Use `AvatarGroupCount` to add a count to the group.
+
+<ComponentPreview
+  name="avatar-group-count"
+/>
+
+---
+
+## Avatar group with icon
+
+You can also put an icon inside `AvatarGroupCount`.
+
+<ComponentPreview
+  name="avatar-group-icon"
+/>
+
+---
+
+## Sizes
+
+Use the `size` prop to change the size of the avatar. The count in a group follows the size of its avatars.
+
+<ComponentPreview
+  name="avatar-sizes"
+/>
+
+---
+
+## API Reference
+
+This component wraps the [Base UI Avatar](https://base-ui.com/react/components/avatar). `Avatar`, `AvatarImage` and `AvatarFallback` accept all props of the matching Base UI part.
+
+### Avatar
+
+The root. It wraps the image and fallback.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `size` | `"default" \| "sm" \| "lg"` | `"default"` |
+| `className` | `string \| (state) => string` | - |
+
+### AvatarImage
+
+Displays the avatar image. It only renders once the image has loaded.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `src` | `string` | - |
+| `alt` | `string` | - |
+| `className` | `string \| (state) => string` | - |
+
+### AvatarFallback
+
+Displayed when the image is loading or fails to load.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `delay` | `number` | - |
+| `className` | `string \| (state) => string` | - |
+
+### AvatarBadge
+
+A badge indicator at the bottom end corner of the avatar. Renders a `span`.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `className` | `string` | - |
+
+### AvatarGroup
+
+Displays a group of avatars with overlapping styling. Renders a `div`.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `className` | `string` | - |
+
+### AvatarGroupCount
+
+A count or icon at the end of an avatar group. Renders a `div`.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `className` | `string` | - |
