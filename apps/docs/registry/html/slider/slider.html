@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Slider</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/slider.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: system-ui, sans-serif;
+      }
+      main {
+        display: grid;
+        gap: 2rem;
+        max-width: 24rem;
+        margin-inline: auto;
+      }
+      h2 {
+        margin: 0 0 0.75rem;
+        font-size: 0.875rem;
+        color: var(--np-muted-foreground);
+        font-weight: 500;
+      }
+      .row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Class form</h2>
+        <input
+          class="np-slider"
+          type="range"
+          min="0"
+          max="100"
+          step="1"
+          value="75"
+          aria-label="Volume"
+        />
+      </section>
+
+      <section>
+        <h2>Data-attribute form</h2>
+        <input
+          data-np-slider
+          type="range"
+          min="0"
+          max="10"
+          step="1"
+          value="3"
+          aria-label="Brightness"
+        />
+      </section>
+
+      <section>
+        <h2>Custom color</h2>
+        <input
+          class="np-slider"
+          type="range"
+          min="0"
+          max="100"
+          value="60"
+          aria-label="Success"
+          style="--np-slider-range-bg: blue"
+        />
+      </section>
+
+      <section>
+        <h2>Disabled</h2>
+        <input
+          class="np-slider"
+          type="range"
+          min="0"
+          max="100"
+          value="50"
+          aria-label="Disabled slider"
+          disabled
+        />
+      </section>
+
+      <section>
+        <h2>Vertical (class and data-orientation)</h2>
+        <div class="row">
+          <input
+            class="np-slider np-slider-vertical"
+            type="range"
+            min="0"
+            max="100"
+            value="50"
+            aria-label="Left channel"
+            aria-orientation="vertical"
+          />
+          <input
+            class="np-slider"
+            data-orientation="vertical"
+            type="range"
+            min="0"
+            max="100"
+            value="25"
+            aria-label="Right channel"
+            aria-orientation="vertical"
+          />
+        </div>
+      </section>
+    </main>
+    <script src="../javascripts/slider.js" defer></script>
+  </body>
+</html>
