@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="./styles/label.css" />
+<link rel="stylesheet" href="./styles/checkbox.css" />
+
+<div
+  class="np-checkbox-group"
+  role="group"
+  aria-labelledby="frameworks-caption"
+  oninput="
+    var t = event.target
+    function leaves(g) {
+      return g.querySelectorAll('input:not([data-parent])')
+    }
+    if (t.hasAttribute('data-parent')) {
+      leaves(t.closest('[role=group]')).forEach(function (i) {
+        i.checked = t.checked
+      })
+    }
+    this.querySelectorAll('[data-parent]').forEach(function (p) {
+      var l = leaves(p.closest('[role=group]')),
+        n = 0
+      l.forEach(function (i) {
+        if (i.checked) n++
+      })
+      p.checked = n === l.length
+      p.indeterminate = n > 0 && n !== l.length
+    })
+  "
+>
+  <label class="np-label" id="frameworks-caption"
+    ><input
+      class="np-checkbox"
+      type="checkbox"
+      name="frameworks"
+      data-parent
+    />Frameworks</label
+  >
+  <label class="np-label np-checkbox-group-child"
+    ><input class="np-checkbox" type="checkbox" value="next" />Next.js</label
+  >
+  <label class="np-label np-checkbox-group-child"
+    ><input class="np-checkbox" type="checkbox" value="vite" />Vite</label
+  >
+  <label class="np-label np-checkbox-group-child"
+    ><input class="np-checkbox" type="checkbox" value="astro" />Astro</label
+  >
+</div>

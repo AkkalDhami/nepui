@@ -4,10 +4,6 @@
 @import "fumadocs-ui/css/neutral.css";
 @import "fumadocs-ui/css/preset.css";
 @import "./typeset.css";
-
-/* @import "../../registry/react/tokens.css"; */
-/* @import "../../registry/react/typeset/typeset.css"; */
-
 @import "../../registry/styles/colors.css";
 
 @custom-variant dark (&:is(.dark *));

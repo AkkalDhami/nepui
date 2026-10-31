@@ -30,7 +30,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { Separator } from "@/components/ui/separator"
 import { Spinner } from "@/components/ui/spinner"
 import { Route } from "next"
 import { NavItem } from "@/components/layouts/navbar"
@@ -425,7 +424,6 @@ export function CommandMenu({
           </div>
           {copyPayload && (
             <>
-              <Separator orientation="vertical" className="h-4!" />
               <div className="flex items-center gap-1">
                 <CommandMenuKbd>⌘</CommandMenuKbd>
                 <CommandMenuKbd>C</CommandMenuKbd>

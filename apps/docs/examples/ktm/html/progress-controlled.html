@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="./styles/slider.css" />
+
+<div
+  style="
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    max-width: 24rem;
+  "
+>
+  <div class="np-progress-root">
+    <label class="np-progress-label" for="progress-controlled">Progress</label>
+    <output
+      class="np-progress-value"
+      id="progress-controlled-value"
+      for="progress-controlled"
+      >50%</output
+    >
+    <progress
+      class="np-progress"
+      id="progress-controlled"
+      value="50"
+      max="100"
+    ></progress>
+  </div>
+
+  <input
+    type="range"
+    min="0"
+    max="100"
+    step="1"
+    value="50"
+    aria-label="Set progress"
+    class="np-slider"
+    oninput="
+      document.getElementById('progress-controlled').value = this.value
+      document.getElementById('progress-controlled-value').textContent =
+        this.value + '%'
+    "
+  />
+</div>
+
+<script src="./javascripts/slider.js" defer></script>
