@@ -476,6 +476,42 @@
       ]
     },
     {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "Displays a card with header, content, and footer.",
+      "files": [
+        {
+          "path": "registry/html/card/card.html",
+          "type": "registry:ui",
+          "target": "html/card.html"
+        },
+        {
+          "path": "registry/html/card/card.css",
+          "type": "registry:ui",
+          "target": "styles/card.css"
+        }
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "title": "Collapsible",
+      "description": "An interactive component which expands/collapses a panel.",
+      "files": [
+        {
+          "path": "registry/html/collapsible/collapsible.html",
+          "type": "registry:ui",
+          "target": "html/collapsible.html"
+        },
+        {
+          "path": "registry/html/collapsible/collapsible.css",
+          "type": "registry:ui",
+          "target": "styles/collapsible.css"
+        }
+      ]
+    },
+    {
       "name": "toggle-group",
       "type": "registry:ui",
       "title": "Toggle Group",
