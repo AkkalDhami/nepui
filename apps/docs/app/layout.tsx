@@ -44,7 +44,6 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      data-scroll-behavior="smooth"
       suppressHydrationWarning
       className={cn(
         "antialiased",
