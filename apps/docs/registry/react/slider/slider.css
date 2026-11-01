@@ -7,7 +7,7 @@
   --np-slider-min-length: calc(var(--np-spacing) * 40);
   --np-slider-track-bg: var(--np-muted);
   --np-slider-range-bg: var(--np-primary);
-  --np-slider-thumb-bg: var(--np-primary-foreground);
+  --np-slider-thumb-bg: var(--np-primary);
   --np-slider-thumb-border: var(--np-ring);
   --np-slider-thumb-ring: color-mix(in oklch, var(--np-ring), transparent 50%);
   --np-slider-direction: row;
