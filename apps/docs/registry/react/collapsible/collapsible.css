@@ -1,0 +1,139 @@
+/* nepui - Collapsible */
+
+.np-collapsible,
+[data-np-collapsible] {
+  --np-collapsible-duration: 200ms;
+  --np-collapsible-easing: ease;
+  --np-collapsible-icon-rotate: 180deg;
+  --np-collapsible-overflow: visible;
+
+  display: block;
+  box-sizing: border-box;
+}
+
+details:is(.np-collapsible, [data-np-collapsible]) {
+  interpolate-size: allow-keywords;
+}
+
+:where(.np-collapsible-trigger, [data-np-collapsible-trigger]) {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--np-radius-sm);
+  background-color: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  appearance: none;
+  outline: none;
+}
+
+summary:is(.np-collapsible-trigger, [data-np-collapsible-trigger]) {
+  list-style: none;
+}
+
+summary:is(
+    .np-collapsible-trigger,
+    [data-np-collapsible-trigger]
+  )::-webkit-details-marker {
+  display: none;
+}
+
+:is(.np-collapsible-trigger, [data-np-collapsible-trigger]):focus-visible {
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--np-ring), transparent 50%);
+}
+
+:is(.np-collapsible-trigger, [data-np-collapsible-trigger]):is(
+  :disabled,
+  [aria-disabled="true"],
+  [data-disabled]
+) {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.np-collapsible-icon,
+[data-np-collapsible-icon] {
+  flex-shrink: 0;
+  pointer-events: none;
+  transition: transform var(--np-collapsible-duration, 200ms)
+    var(--np-collapsible-easing, ease);
+}
+
+:is(.np-collapsible-trigger, [data-np-collapsible-trigger]):is(
+    [aria-expanded="true"],
+    [data-panel-open]
+  )
+  :is(.np-collapsible-icon, [data-np-collapsible-icon]),
+:is(.np-collapsible, [data-np-collapsible])[open]
+  > :is(.np-collapsible-trigger, [data-np-collapsible-trigger])
+  :is(.np-collapsible-icon, [data-np-collapsible-icon]) {
+  transform: rotate(var(--np-collapsible-icon-rotate, 180deg));
+}
+
+.np-collapsible-content,
+[data-np-collapsible-content] {
+  box-sizing: border-box;
+  height: var(--collapsible-panel-height, auto);
+  overflow: hidden;
+  transition: height var(--np-collapsible-duration, 200ms)
+    var(--np-collapsible-easing, ease);
+}
+
+:is(.np-collapsible-content, [data-np-collapsible-content]):is(
+  [data-starting-style],
+  [data-ending-style]
+) {
+  height: 0;
+}
+
+:is(.np-collapsible-content, [data-np-collapsible-content])[data-open]:not(
+    [data-starting-style],
+    [data-ending-style]
+  ) {
+  overflow: var(--np-collapsible-overflow, visible);
+  transition:
+    height var(--np-collapsible-duration, 200ms)
+      var(--np-collapsible-easing, ease),
+    overflow 0s linear var(--np-collapsible-duration, 200ms) allow-discrete;
+}
+
+details:is(.np-collapsible, [data-np-collapsible])
+  > :is(.np-collapsible-content, [data-np-collapsible-content]) {
+  overflow: visible;
+}
+
+@supports selector(::details-content) {
+  details:is(.np-collapsible, [data-np-collapsible])::details-content {
+    block-size: 0;
+    overflow: hidden;
+    transition:
+      block-size var(--np-collapsible-duration, 200ms)
+        var(--np-collapsible-easing, ease),
+      content-visibility var(--np-collapsible-duration, 200ms) allow-discrete;
+  }
+
+  details:is(.np-collapsible, [data-np-collapsible])[open]::details-content {
+    block-size: auto;
+    overflow: var(--np-collapsible-overflow, visible);
+    transition:
+      block-size var(--np-collapsible-duration, 200ms)
+        var(--np-collapsible-easing, ease),
+      content-visibility var(--np-collapsible-duration, 200ms) allow-discrete,
+      overflow 0s linear var(--np-collapsible-duration, 200ms) allow-discrete;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .np-collapsible-icon,
+  [data-np-collapsible-icon],
+  .np-collapsible-content,
+  [data-np-collapsible-content] {
+    transition: none;
+  }
+
+  details:is(.np-collapsible, [data-np-collapsible])::details-content {
+    transition: none;
+  }
+}

@@ -1,0 +1,680 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Collapsible</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/label.css" />
+    <link rel="stylesheet" href="../styles/input.css" />
+    <link rel="stylesheet" href="../styles/collapsible.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem 4rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: var(--np-font-sans, system-ui, sans-serif);
+      }
+      main {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+        max-width: 40rem;
+        margin-inline: auto;
+      }
+      h2 {
+        margin: 0 0 0.25rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+      .hint {
+        margin: 0 0 0.75rem;
+        font-size: 0.8125rem;
+        color: var(--np-muted-foreground);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Class form</h2>
+        <p class="hint">
+          <code>details.np-collapsible</code> with a
+          <code>summary.np-collapsible-trigger</code> first and a
+          <code>np-collapsible-content</code> after it.
+        </p>
+        <details
+          class="np-collapsible"
+          open
+          style="width: 100%; max-width: 22rem; font-size: 0.875rem"
+        >
+          <summary
+            class="np-collapsible-trigger"
+            style="
+              display: flex;
+              width: 100%;
+              align-items: center;
+              justify-content: space-between;
+              font-weight: 600;
+              cursor: pointer;
+            "
+          >
+            Order #4189
+            <svg
+              class="np-collapsible-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="16"
+              height="16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </summary>
+          <div class="np-collapsible-content">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                padding-top: 0.75rem;
+              "
+            >
+              <span style="color: var(--np-muted-foreground)">Status</span>
+              <span>Shipped</span>
+            </div>
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                padding-top: 0.75rem;
+              "
+            >
+              <span style="color: var(--np-muted-foreground)">Carrier</span>
+              <span>DHL Express</span>
+            </div>
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                padding-top: 0.75rem;
+              "
+            >
+              <span style="color: var(--np-muted-foreground)">Tracking</span>
+              <span>JD014600003SE</span>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <section>
+        <h2>Data-attribute form</h2>
+        <p class="hint">
+          <code>data-np-collapsible</code>, <code>-trigger</code>,
+          <code>-content</code> and <code>-icon</code>.
+        </p>
+        <details
+          data-np-collapsible
+          open
+          style="max-width: 22rem; font-size: 0.875rem"
+        >
+          <summary
+            data-np-collapsible-trigger
+            style="
+              display: flex;
+              width: 100%;
+              align-items: center;
+              justify-content: space-between;
+              font-weight: 600;
+              cursor: pointer;
+            "
+          >
+            Data-attribute form
+            <svg
+              data-np-collapsible-icon
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="16"
+              height="16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </summary>
+          <div data-np-collapsible-content>
+            <p
+              style="
+                margin: 0;
+                padding-top: 0.5rem;
+                color: var(--np-muted-foreground);
+              "
+            >
+              Same behaviour with <code>data-np-collapsible-*</code>.
+            </p>
+          </div>
+        </details>
+      </section>
+
+      <section>
+        <h2>Button trigger</h2>
+        <p class="hint">Put the Button classes on the <code>summary</code>.</p>
+        <details class="np-collapsible" style="width: 100%; max-width: 22rem">
+          <summary
+            class="np-collapsible-trigger np-button np-button-outline np-button-sm"
+          >
+            Product details
+            <svg
+              class="np-collapsible-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="16"
+              height="16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </summary>
+          <div class="np-collapsible-content">
+            <p
+              style="
+                margin: 0;
+                padding-top: 0.75rem;
+                font-size: 0.875rem;
+                color: var(--np-muted-foreground);
+              "
+            >
+              This product has a lightweight aluminum frame, a 14-hour battery
+              and a two-year warranty. It ships in recyclable packaging.
+            </p>
+          </div>
+        </details>
+      </section>
+
+      <section>
+        <h2>Settings panel</h2>
+        <p class="hint">
+          The content can hold form controls.
+          <code>--np-collapsible-overflow: visible</code> stops focus rings
+          being clipped.
+        </p>
+        <details
+          class="np-collapsible"
+          style="
+            width: 100%;
+            max-width: 22rem;
+            padding: 1rem;
+            border: 1px solid var(--np-border);
+            border-radius: var(--np-radius-md);
+            --np-collapsible-overflow: visible;
+          "
+        >
+          <summary
+            class="np-collapsible-trigger"
+            style="
+              display: flex;
+              width: 100%;
+              align-items: center;
+              justify-content: space-between;
+              gap: 1rem;
+              cursor: pointer;
+            "
+          >
+            <span style="display: flex; flex-direction: column; gap: 0.125rem">
+              <span style="font-size: 0.875rem; font-weight: 600">Radius</span>
+              <span
+                style="font-size: 0.8125rem; color: var(--np-muted-foreground)"
+                >Set the corner radius of the element.</span
+              >
+            </span>
+            <svg
+              class="np-collapsible-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="16"
+              height="16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </summary>
+          <div class="np-collapsible-content">
+            <div style="display: flex; gap: 0.75rem; padding-top: 1rem">
+              <div
+                style="
+                  display: flex;
+                  flex: 1;
+                  flex-direction: column;
+                  gap: 0.5rem;
+                "
+              >
+                <label class="np-label" for="radius-x">Radius X</label>
+                <input class="np-input" id="radius-x" value="8" />
+              </div>
+              <div
+                style="
+                  display: flex;
+                  flex: 1;
+                  flex-direction: column;
+                  gap: 0.5rem;
+                "
+              >
+                <label class="np-label" for="radius-y">Radius Y</label>
+                <input class="np-input" id="radius-y" value="8" />
+              </div>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <section>
+        <h2>File tree</h2>
+        <p class="hint">
+          Nested collapsibles. The icon rotates 90deg with
+          <code>--np-collapsible-icon-rotate</code>.
+        </p>
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            width: 100%;
+            max-width: 16rem;
+            font-size: 0.875rem;
+          "
+        >
+          <details class="np-collapsible" open>
+            <summary
+              class="np-collapsible-trigger"
+              style="
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                cursor: pointer;
+              "
+            >
+              <svg
+                class="np-collapsible-icon"
+                style="--np-collapsible-icon-rotate: 90deg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="16"
+                height="16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="16"
+                height="16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"
+                />
+              </svg>
+              components
+            </summary>
+            <div
+              class="np-collapsible-content"
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 0.25rem;
+                padding-top: 0.25rem;
+                padding-inline-start: 1.25rem;
+              "
+            >
+              <div style="display: flex; align-items: center; gap: 0.5rem">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="16"
+                  height="16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                  />
+                  <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                </svg>
+                button.tsx
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.5rem">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="16"
+                  height="16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                  />
+                  <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                </svg>
+                card.tsx
+              </div>
+            </div>
+          </details>
+          <details class="np-collapsible">
+            <summary
+              class="np-collapsible-trigger"
+              style="
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                cursor: pointer;
+              "
+            >
+              <svg
+                class="np-collapsible-icon"
+                style="--np-collapsible-icon-rotate: 90deg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="16"
+                height="16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="16"
+                height="16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"
+                />
+              </svg>
+              lib
+            </summary>
+            <div
+              class="np-collapsible-content"
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 0.25rem;
+                padding-top: 0.25rem;
+                padding-inline-start: 1.25rem;
+              "
+            >
+              <div style="display: flex; align-items: center; gap: 0.5rem">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="16"
+                  height="16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                  />
+                  <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                </svg>
+                utils.ts
+              </div>
+            </div>
+          </details>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 0.5rem;
+              padding-inline-start: 1.5rem;
+            "
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="16"
+              height="16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path
+                d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+              />
+              <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+            </svg>
+            app.tsx
+          </div>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 0.5rem;
+              padding-inline-start: 1.5rem;
+            "
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="16"
+              height="16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path
+                d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+              />
+              <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+            </svg>
+            package.json
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Exclusive group</h2>
+        <p class="hint">
+          Give several <code>details</code> the same <code>name</code> and only
+          one stays open.
+        </p>
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            max-width: 22rem;
+          "
+        >
+          <details class="np-collapsible" name="faq">
+            <summary
+              class="np-collapsible-trigger"
+              style="
+                display: flex;
+                width: 100%;
+                align-items: center;
+                justify-content: space-between;
+                font-weight: 600;
+                cursor: pointer;
+              "
+            >
+              Can I use this in my project?
+              <svg
+                class="np-collapsible-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="16"
+                height="16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </summary>
+            <div class="np-collapsible-content">
+              <p
+                style="
+                  margin: 0;
+                  padding-block: 0.5rem;
+                  font-size: 0.875rem;
+                  color: var(--np-muted-foreground);
+                "
+              >
+                Yes. Free for personal and commercial projects.
+              </p>
+            </div>
+          </details>
+          <details class="np-collapsible" name="faq">
+            <summary
+              class="np-collapsible-trigger"
+              style="
+                display: flex;
+                width: 100%;
+                align-items: center;
+                justify-content: space-between;
+                font-weight: 600;
+                cursor: pointer;
+              "
+            >
+              Is it accessible?
+              <svg
+                class="np-collapsible-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="16"
+                height="16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </summary>
+            <div class="np-collapsible-content">
+              <p
+                style="
+                  margin: 0;
+                  padding-block: 0.5rem;
+                  font-size: 0.875rem;
+                  color: var(--np-muted-foreground);
+                "
+              >
+                It is a native details element, so keyboard and screen readers
+                work.
+              </p>
+            </div>
+          </details>
+          <details class="np-collapsible" name="faq">
+            <summary
+              class="np-collapsible-trigger"
+              style="
+                display: flex;
+                width: 100%;
+                align-items: center;
+                justify-content: space-between;
+                font-weight: 600;
+                cursor: pointer;
+              "
+            >
+              Does it need JavaScript?
+              <svg
+                class="np-collapsible-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="16"
+                height="16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </summary>
+            <div class="np-collapsible-content">
+              <p
+                style="
+                  margin: 0;
+                  padding-block: 0.5rem;
+                  font-size: 0.875rem;
+                  color: var(--np-muted-foreground);
+                "
+              >
+                No.
+              </p>
+            </div>
+          </details>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
