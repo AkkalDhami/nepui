@@ -1,0 +1,136 @@
+---
+title: Collapsible
+description: An interactive component which expands and collapses a panel.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="collapsible-demo"
+  target="html"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add collapsible"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="collapsible"
+        title="styles/collapsible.css"
+        fileTarget="styles/collapsible.css"
+      />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the tokens and the stylesheet:
+
+```html
+<link rel="stylesheet" href="./styles/tokens.css">
+<link rel="stylesheet" href="./styles/collapsible.css">
+```
+
+Use a `details` element. The `summary` must come first, and it is the trigger:
+
+```html
+<details class="np-collapsible">
+  <summary class="np-collapsible-trigger">Can I use this in my project?</summary>
+  <div class="np-collapsible-content">
+    Yes. Free to use for personal and commercial projects.
+  </div>
+</details>
+```
+
+Or use the data attributes instead of the classes:
+
+```html
+<details data-np-collapsible>
+  <summary data-np-collapsible-trigger>Toggle</summary>
+  <div data-np-collapsible-content>Content</div>
+</details>
+```
+
+Add `open` to start expanded. The browser handles the keyboard, `aria-expanded` and find-in-page for you, so no JavaScript is needed.
+
+---
+
+## Icon
+
+Give an icon the `np-collapsible-icon` class (or `data-np-collapsible-icon`) inside the trigger to rotate it when the panel is open. The default is 180 degrees. Set `--np-collapsible-icon-rotate` on the icon to change it.
+
+---
+
+## Button trigger
+
+Put the Button classes on the `summary`. This example needs `button.css`, see [Button](/docs/components/html/button).
+
+Link the stylesheet:
+
+```html
+<link rel="stylesheet" href="./styles/button.css">
+```
+
+<ComponentPreview
+  name="collapsible-basic"
+  target="html"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Settings panel
+
+Link the stylesheets:
+
+```html
+<link rel="stylesheet" href="./styles/label.css">
+<link rel="stylesheet" href="./styles/input.css">
+```
+
+<ComponentPreview
+  name="collapsible-settings"
+  target="html"
+  styles={["/label/label.css", "/input/input.css"]}
+/>
+
+---
+
+## File tree
+
+Nest `details` elements to build a tree.
+
+<ComponentPreview
+  name="collapsible-file-tree"
+  target="html"
+/>
+
+---
+
+## Reference
+
+### Component
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Collapsible | `data-np-collapsible` | `np-collapsible` |
+| Trigger | `data-np-collapsible-trigger` | `np-collapsible-trigger` |
+| Content | `data-np-collapsible-content` | `np-collapsible-content` |
+| Icon | `data-np-collapsible-icon` | `np-collapsible-icon` |
