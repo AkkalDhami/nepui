@@ -1,6 +1,6 @@
 "use client"
 
-import { PlusIcon } from "@phosphor-icons/react/ssr"
+import { PlusIcon } from "@phosphor-icons/react"
 
 import {
   Avatar,

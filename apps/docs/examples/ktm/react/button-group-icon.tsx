@@ -6,7 +6,7 @@ import {
   TextAlignCenterIcon,
   TextAlignLeftIcon,
   TextAlignRightIcon,
-} from "@phosphor-icons/react/ssr"
+} from "@phosphor-icons/react"
 
 export default function ButtonGroupIcon() {
   return (

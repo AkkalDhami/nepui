@@ -1,0 +1,107 @@
+<div class="np-menu" style="--np-menu-anchor: --menu-radio">
+  <button
+    class="np-button np-button-outline"
+    type="button"
+    popovertarget="menu-radio"
+  >
+    Open
+  </button>
+
+  <div
+    id="menu-radio"
+    class="np-menu-content"
+    popover
+    role="menu"
+    aria-label="Panel Position"
+    style="width: 12rem"
+  >
+    <div class="np-menu-group" role="group" aria-labelledby="menu-radio-label">
+      <div class="np-menu-label" id="menu-radio-label">Panel Position</div>
+      <div class="np-menu-separator" role="separator"></div>
+
+      <div role="group">
+        <button
+          class="np-menu-item np-menu-radio-item"
+          type="button"
+          role="menuitemradio"
+          aria-checked="false"
+          onclick="
+            this.parentElement
+              .querySelectorAll('[role=menuitemradio]')
+              .forEach(function (i) {
+                i.setAttribute('aria-checked', i === this)
+              }, this)
+          "
+        >
+          <span class="np-menu-item-indicator"
+            ><svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M20 6 9 17l-5-5" /></svg
+          ></span>
+          Top
+        </button>
+        <button
+          class="np-menu-item np-menu-radio-item"
+          type="button"
+          role="menuitemradio"
+          aria-checked="true"
+          onclick="
+            this.parentElement
+              .querySelectorAll('[role=menuitemradio]')
+              .forEach(function (i) {
+                i.setAttribute('aria-checked', i === this)
+              }, this)
+          "
+        >
+          <span class="np-menu-item-indicator"
+            ><svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M20 6 9 17l-5-5" /></svg
+          ></span>
+          Bottom
+        </button>
+        <button
+          class="np-menu-item np-menu-radio-item"
+          type="button"
+          role="menuitemradio"
+          aria-checked="false"
+          onclick="
+            this.parentElement
+              .querySelectorAll('[role=menuitemradio]')
+              .forEach(function (i) {
+                i.setAttribute('aria-checked', i === this)
+              }, this)
+          "
+        >
+          <span class="np-menu-item-indicator"
+            ><svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M20 6 9 17l-5-5" /></svg
+          ></span>
+          Right
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

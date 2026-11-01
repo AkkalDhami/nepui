@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="./styles/button.css" />
+
+<div class="np-card" style="width: 100%; max-width: 24rem">
+  <div class="np-card-header">
+    <div class="np-card-title">Terms of Service</div>
+    <div class="np-card-description">
+      Review the terms before accepting the agreement.
+    </div>
+  </div>
+  <div
+    class="np-card-content"
+    style="margin-block-end: calc(var(--np-card-spacing) * -1)"
+  >
+    <div
+      role="region"
+      aria-label="Terms of Service text"
+      tabindex="0"
+      style="
+        display: grid;
+        gap: 0.75rem;
+        max-height: 10rem;
+        overflow-y: auto;
+        margin-inline: calc(var(--np-card-spacing) * -1);
+        padding: var(--np-card-spacing);
+        border-block-start: 1px solid var(--np-border);
+      "
+    >
+      <p style="margin: 0">
+        These terms govern your use of the workspace, including access to shared
+        documents, project files, and collaboration tools.
+      </p>
+      <p style="margin: 0">
+        You are responsible for the content you upload and for ensuring that
+        your team has the appropriate permissions to view or edit it.
+      </p>
+      <p style="margin: 0">
+        We may update features or limits as the service evolves. When those
+        changes materially affect your workflow, we will notify your workspace
+        administrators.
+      </p>
+    </div>
+  </div>
+  <div class="np-card-footer" style="justify-content: flex-end; gap: 0.5rem">
+    <button type="button" class="np-button np-button-outline">Decline</button>
+    <button type="button" class="np-button">Accept</button>
+  </div>
+</div>
