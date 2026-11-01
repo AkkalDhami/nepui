@@ -18,7 +18,7 @@
     },
     {
       "path": "registry/react/card/index.ts",
-      "content": "export *  from \"./card\"\n",
+      "content": "export * from \"./card\"\n",
       "type": "registry:ui",
       "target": "components/nepui/card/index.ts"
     }
