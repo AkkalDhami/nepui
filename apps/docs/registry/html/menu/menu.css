@@ -1,0 +1,368 @@
+/* nepui — Menu */
+
+.np-menu,
+[data-np-menu],
+.np-menu-sub,
+[data-np-menu-sub] {
+  position: relative;
+  display: inline-block;
+}
+
+.np-menu-sub,
+[data-np-menu-sub] {
+  display: block;
+}
+
+/* The trigger inside a wrapper becomes the anchor */
+:is(.np-menu, [data-np-menu], .np-menu-sub, [data-np-menu-sub])
+  > [popovertarget] {
+  anchor-name: var(--np-menu-anchor);
+}
+
+/* A popover popup: top layer, placed under its trigger, aligned to its start.
+   With no anchor support the insets stay `auto`, so it opens next to the trigger. */
+:is(.np-menu-content, [data-np-menu-content])[popover] {
+  position: fixed;
+  inset: auto;
+  margin: 0;
+  border: 0;
+  position-anchor: var(--np-menu-anchor);
+  top: calc(anchor(bottom) + var(--np-menu-offset, 0.25rem));
+  left: anchor(left);
+  min-width: max(var(--np-menu-min-width, 8rem), anchor-size(width));
+  position-try-fallbacks: flip-block, flip-inline;
+  opacity: 0;
+  transform: scale(0.95);
+  transition:
+    opacity 100ms ease,
+    transform 100ms ease,
+    display 100ms allow-discrete,
+    overlay 100ms allow-discrete;
+}
+
+:is(.np-menu-content, [data-np-menu-content])[popover]:popover-open {
+  opacity: 1;
+  transform: none;
+}
+
+@starting-style {
+  :is(.np-menu-content, [data-np-menu-content])[popover]:popover-open {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/* A submenu opens beside its trigger */
+:is(.np-menu-sub-content, [data-np-menu-sub-content])[popover] {
+  top: anchor(top);
+  left: calc(anchor(right) + var(--np-menu-offset, 0.25rem));
+  margin-top: -0.25rem;
+}
+
+/* ==========================================================================
+   Popup surface
+   ========================================================================== */
+
+.np-menu-positioner,
+[data-np-menu-positioner] {
+  isolation: isolate;
+  z-index: 50;
+  outline: none;
+}
+
+.np-menu-content,
+[data-np-menu-content] {
+  z-index: 50;
+  box-sizing: border-box;
+  min-width: max(var(--np-menu-min-width, 8rem), var(--anchor-width, 0px));
+  max-height: var(--available-height, 24rem);
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0.25rem;
+
+  border-radius: var(--np-menu-radius, var(--np-radius-md));
+  background: var(--np-menu-bg, var(--np-popover, var(--np-background)));
+  color: var(
+    --np-menu-color,
+    var(--np-popover-foreground, var(--np-foreground))
+  );
+  box-shadow:
+    0 0 0 1px color-mix(in oklch, var(--np-foreground) 10%, transparent),
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+  font-size: 0.875rem;
+  outline: none;
+  transform-origin: var(--transform-origin, top left);
+}
+
+.np-menu-sub-content,
+[data-np-menu-sub-content] {
+  --np-menu-min-width: 6rem;
+  min-width: max(var(--np-menu-min-width), 6rem);
+  box-shadow:
+    0 0 0 1px color-mix(in oklch, var(--np-foreground) 10%, transparent),
+    0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+/* Base UI open / close transition (scale, fade, slide from the trigger) */
+:is(.np-menu-content, [data-np-menu-content]):not([popover]) {
+  transition:
+    opacity 100ms ease,
+    transform 100ms ease,
+    translate 100ms ease;
+}
+
+:is(.np-menu-content, [data-np-menu-content]):not([popover]):is(
+    [data-starting-style],
+    [data-ending-style]
+  ) {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+:is(.np-menu-content, [data-np-menu-content])[data-side="bottom"]:is(
+    [data-starting-style],
+    [data-ending-style]
+  ) {
+  translate: 0 -0.5rem;
+}
+
+:is(.np-menu-content, [data-np-menu-content])[data-side="top"]:is(
+    [data-starting-style],
+    [data-ending-style]
+  ) {
+  translate: 0 0.5rem;
+}
+
+:is(.np-menu-content, [data-np-menu-content]):is(
+    [data-side="right"],
+    [data-side="inline-end"]
+  ):is([data-starting-style], [data-ending-style]) {
+  translate: -0.5rem 0;
+}
+
+:is(.np-menu-content, [data-np-menu-content]):is(
+    [data-side="left"],
+    [data-side="inline-start"]
+  ):is([data-starting-style], [data-ending-style]) {
+  translate: 0.5rem 0;
+}
+
+/* ==========================================================================
+   Group, label, separator
+   ========================================================================== */
+
+.np-menu-group,
+[data-np-menu-group] {
+  display: block;
+}
+
+.np-menu-label,
+[data-np-menu-label] {
+  padding: 0.25rem 0.375rem;
+  color: var(--np-muted-foreground);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.np-menu-separator,
+[data-np-menu-separator] {
+  height: 1px;
+  margin: 0.25rem -0.25rem;
+  border: 0;
+  background: var(--np-border);
+}
+
+/* ==========================================================================
+   Item
+   ========================================================================== */
+
+.np-menu-item,
+[data-np-menu-item] {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 0.25rem 0.375rem;
+
+  border: 0;
+  border-radius: var(--np-menu-item-radius, 0.375rem);
+  background: transparent;
+  color: inherit;
+
+  font: inherit;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  text-align: start;
+  text-decoration: none;
+
+  cursor: default;
+  outline: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+:is(.np-menu-item, [data-np-menu-item]) svg {
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+:is(.np-menu-item, [data-np-menu-item]) svg:not([class*="size-"]) {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Highlighted: keyboard, hover, or an open submenu */
+:is(.np-menu-item, [data-np-menu-item]):is(
+  :focus,
+  [data-highlighted],
+  [data-popup-open],
+  [data-open],
+  :hover
+) {
+  background: var(--np-menu-hover-bg, var(--np-accent, var(--np-muted)));
+  color: var(
+    --np-menu-hover-color,
+    var(--np-accent-foreground, var(--np-foreground))
+  );
+}
+
+/* Disabled */
+:is(.np-menu-item, [data-np-menu-item]):is(
+  :disabled,
+  [data-disabled],
+  [aria-disabled="true"]
+) {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Inset: room for the check mark column of a neighbouring checkbox item */
+:is(
+  .np-menu-item,
+  .np-menu-label,
+  [data-np-menu-item],
+  [data-np-menu-label]
+)[data-inset],
+.np-menu-inset {
+  padding-inline-start: 1.75rem;
+}
+
+/* Destructive */
+.np-menu-item-destructive,
+:is(.np-menu-item, [data-np-menu-item])[data-variant="destructive"] {
+  color: var(--np-destructive);
+}
+
+:is(
+  .np-menu-item-destructive,
+  :is(.np-menu-item, [data-np-menu-item])[data-variant="destructive"]
+):is(:focus, [data-highlighted], [data-popup-open], [data-open], :hover) {
+  background: var(
+    --np-menu-destructive-bg,
+    color-mix(in oklch, var(--np-destructive) 10%, transparent)
+  );
+  color: var(--np-destructive);
+}
+
+/* Checkbox and radio items: the check mark sits at the end */
+:is(.np-menu-checkbox-item, .np-menu-radio-item) {
+  padding-inline-end: 2rem;
+}
+
+.np-menu-item-indicator,
+[data-np-menu-item-indicator] {
+  position: absolute;
+  inset-inline-end: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* Plain HTML renders the indicator always; hide it unless checked */
+:is(.np-menu-checkbox-item, .np-menu-radio-item):is(
+    [aria-checked="false"],
+    [data-unchecked]
+  )
+  > :is(.np-menu-item-indicator, [data-np-menu-item-indicator]) {
+  display: none;
+}
+
+/* Submenu trigger */
+.np-menu-sub-chevron,
+[data-np-menu-sub-chevron] {
+  margin-inline-start: auto;
+}
+
+:dir(rtl) :is(.np-menu-sub-chevron, [data-np-menu-sub-chevron]) {
+  transform: scaleX(-1);
+}
+
+/* ==========================================================================
+   Shortcut
+   ========================================================================== */
+
+.np-menu-shortcut,
+[data-np-menu-shortcut] {
+  margin-inline-start: auto;
+  color: var(--np-muted-foreground);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+}
+
+:is(.np-menu-item, [data-np-menu-item]):is(
+    :focus,
+    [data-highlighted],
+    [data-popup-open],
+    [data-open],
+    :hover
+  )
+  :is(.np-menu-shortcut, [data-np-menu-shortcut]) {
+  color: var(
+    --np-menu-hover-color,
+    var(--np-accent-foreground, var(--np-foreground))
+  );
+}
+
+/* ==========================================================================
+   Reduced motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.np-menu-content, [data-np-menu-content]) {
+    transition: none;
+  }
+}
+
+/* ==========================================================================
+   Dark
+   1. Explicit: `.dark` or `data-theme="dark"` on any ancestor.
+   2. System: prefers-color-scheme, unless `.light` / `data-theme="light"`.
+   Variables are set on the popup; items inherit them (they are read with
+   fallbacks, never redeclared).
+   ========================================================================== */
+
+:is(.dark, [data-theme="dark"]) :is(.np-menu-content, [data-np-menu-content]) {
+  --np-menu-destructive-bg: color-mix(
+    in oklch,
+    var(--np-destructive) 20%,
+    transparent
+  );
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light, [data-theme="light"])
+    :is(.np-menu-content, [data-np-menu-content]) {
+    --np-menu-destructive-bg: color-mix(
+      in oklch,
+      var(--np-destructive) 20%,
+      transparent
+    );
+  }
+}
