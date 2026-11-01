@@ -1,0 +1,205 @@
+---
+title: Card
+description: Displays a card with header, content, and footer.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="card-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/card.json"
+      nepui="npx nepui@latest add card --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="card"
+        title="components/nepui/card/card.css"
+        fileTarget="components/nepui/card/card.css"
+      />
+      <ComponentSource
+        target="react"
+        name="card"
+        title="components/nepui/card/card.tsx"
+        fileTarget="components/nepui/card/card.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="card"
+        title="components/nepui/card/index.ts"
+        fileTarget="components/nepui/card/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/nepui/card"
+```
+
+```tsx
+<Card>
+  <CardHeader>
+    <CardTitle>Card Title</CardTitle>
+    <CardDescription>Card Description</CardDescription>
+    <CardAction>Card Action</CardAction>
+  </CardHeader>
+  <CardContent>
+    <p>Card Content</p>
+  </CardContent>
+  <CardFooter>
+    <p>Card Footer</p>
+  </CardFooter>
+</Card>
+```
+
+---
+
+## Composition
+
+Use the following composition to build a `Card`:
+
+```text
+Card
+├── CardHeader
+│   ├── CardTitle
+│   ├── CardDescription
+│   └── CardAction
+├── CardContent
+└── CardFooter
+```
+
+Every part is optional. A card with a `CardFooter` has no bottom padding, so the footer sits flush with the edge.
+
+---
+
+## Size
+
+Use the `size="sm"` prop to set the size of the card to small. The small size variant uses smaller spacing and a smaller title.
+
+<ComponentPreview
+  name="card-size"
+/>
+
+---
+
+## Spacing
+
+In addition to the `size` prop, you can use the `--np-card-spacing` CSS variable to control the spacing between sections and the inset of every part. Set it with `style` on the `Card`.
+
+<ComponentPreview
+  name="card-spacing"
+/>
+
+---
+
+## Edge to edge
+
+Use a negative inline margin of `calc(var(--np-card-spacing) * -1)` to make content go edge to edge while keeping it aligned with the card inset. When the edge-to-edge content sits above a footer, use a negative `margin-block-end` of the same value on `CardContent` to remove the section gap.
+
+<ComponentPreview
+  name="card-edge-to-edge"
+/>
+
+---
+
+## Image
+
+Add an image before the card header to create a card with an image. An `img` that is the first child removes the top padding and follows the card corners.
+
+<ComponentPreview
+  name="card-image"
+  height="min-h-120"
+/>
+
+---
+
+## API Reference
+
+### Card
+
+The `Card` component is the root container for card content.
+
+| Prop        | Type                | Default     |
+| ----------- | ------------------- | ----------- |
+| `size`      | `"default" \| "sm"` | `"default"` |
+| `className` | `string`            | -           |
+
+### CardHeader
+
+The `CardHeader` component is used for a title, description, and optional action. Add the `np-card-header-border` class to draw a divider below it.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` | -       |
+
+### CardTitle
+
+The `CardTitle` component is used for the card title.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` | -       |
+
+### CardDescription
+
+The `CardDescription` component is used for helper text under the title.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` | -       |
+
+### CardAction
+
+The `CardAction` component places content in the top-end corner of the header (for example, a button or a badge).
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` | -       |
+
+### CardContent
+
+The `CardContent` component is used for the main card body.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` | -       |
+
+### CardFooter
+
+The `CardFooter` component is used for actions and secondary content at the bottom of the card.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` | -       |

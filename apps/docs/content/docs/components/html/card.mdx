@@ -1,0 +1,179 @@
+---
+title: Card
+description: Displays a card with header, content, and footer.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  target="html"
+  name="card-demo"
+  styles={["/button/button.css", "/input/input.css", "/label/label.css"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add card"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="card"
+        title="styles/card.css"
+        fileTarget="styles/card.css"
+      />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the stylesheets:
+
+```html
+<link rel="stylesheet" href="./styles/tokens.css" />
+<link rel="stylesheet" href="./styles/card.css" />
+```
+
+```html
+<div class="np-card">
+  <div class="np-card-header">
+    <div class="np-card-title">Card Title</div>
+    <div class="np-card-description">Card Description</div>
+    <div class="np-card-action">Card Action</div>
+  </div>
+  <div class="np-card-content">
+    <p>Card Content</p>
+  </div>
+  <div class="np-card-footer">
+    <p>Card Footer</p>
+  </div>
+</div>
+```
+
+Or use the data attributes instead of the classes:
+
+```html
+<div data-np-card>
+  <div data-np-card-header>
+    <div data-np-card-title>Card Title</div>
+    <div data-np-card-description>Card Description</div>
+    <div data-np-card-action>Card Action</div>
+  </div>
+  <div data-np-card-content>
+    <p>Card Content</p>
+  </div>
+  <div data-np-card-footer>
+    <p>Card Footer</p>
+  </div>
+</div>
+```
+
+Parts are plain elements, so use whatever fits: a `<section>` or `<article>` for the card, an `<h3>` for the title, a `<p>` for the description. Every part is optional. A card with a footer has no bottom padding, so the footer sits flush with the edge.
+
+---
+
+## Size
+
+Use `np-card-sm` or `data-size="sm"` to set the size of the card to small. The small size variant uses smaller spacing and a smaller title.
+
+Link the stylesheet:
+
+```html
+<link rel="stylesheet" href="./styles/button.css" />
+```
+
+<ComponentPreview
+  target="html"
+  name="card-size"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Spacing
+
+In addition to the size, you can use the `--np-card-spacing` CSS variable to control the spacing between sections and the inset of every part. Set it with `style` on the card.
+
+<ComponentPreview
+  target="html"
+  name="card-spacing"
+  height="520px"
+/>
+
+---
+
+## Edge to edge
+
+Use a negative inline margin of `calc(var(--np-card-spacing) * -1)` to make content go edge to edge while keeping it aligned with the card inset. When the edge-to-edge content sits above a footer, use a negative `margin-block-end` of the same value on the content part to remove the section gap.
+
+Link the stylesheet:
+
+```html
+<link rel="stylesheet" href="./styles/button.css" />
+```
+
+<ComponentPreview
+  target="html"
+  name="card-edge-to-edge"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Image
+
+Add an `img` before the card header to create a card with an image. An `img` that is the first child removes the top padding and follows the card corners. Give the image its own size, for example `width: 100%` and an `aspect-ratio`.
+
+The badge in this example needs the [Badge](/docs/components/html/badge) stylesheet.
+
+Link the stylesheets:
+
+```html
+<link rel="stylesheet" href="./styles/button.css" />
+<link rel="stylesheet" href="./styles/badge.css" />
+```
+
+<ComponentPreview
+  target="html"
+  name="card-image"
+  styles={["/button/button.css", "/badge/badge.css"]}
+/>
+
+---
+
+
+## Reference
+
+### Parts
+
+| Name        | Data attribute            | Class alias           |
+| ----------- | ------------------------- | --------------------- |
+| Card        | `data-np-card`            | `np-card`             |
+| Header      | `data-np-card-header`     | `np-card-header`      |
+| Title       | `data-np-card-title`      | `np-card-title`       |
+| Description | `data-np-card-description` | `np-card-description` |
+| Action      | `data-np-card-action`     | `np-card-action`      |
+| Content     | `data-np-card-content`    | `np-card-content`     |
+| Footer      | `data-np-card-footer`     | `np-card-footer`      |
+
+### Sizes
+
+| Name    | Data attribute   | Class alias  |
+| ------- | ---------------- | ------------ |
+| Default | -                | `np-card`    |
+| Small   | `data-size="sm"` | `np-card-sm` |
