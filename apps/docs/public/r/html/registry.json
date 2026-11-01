@@ -286,6 +286,29 @@
       ]
     },
     {
+      "name": "menu",
+      "type": "registry:ui",
+      "title": "Menu",
+      "description": "Displays a menu to the user — such as a set of actions or functions — triggered by a button.",
+      "files": [
+        {
+          "path": "registry/html/menu/menu.html",
+          "type": "registry:ui",
+          "target": "html/menu.html"
+        },
+        {
+          "path": "registry/html/menu/menu.css",
+          "type": "registry:ui",
+          "target": "styles/menu.css"
+        },
+        {
+          "path": "registry/html/menu/menu.js",
+          "type": "registry:ui",
+          "target": "javascripts/menu.js"
+        }
+      ]
+    },
+    {
       "name": "radio-group",
       "type": "registry:ui",
       "title": "Radio Group",
