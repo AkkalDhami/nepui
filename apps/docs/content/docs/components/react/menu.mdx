@@ -1,0 +1,276 @@
+---
+title: Menu
+description: Displays a menu to the user, such as a set of actions or functions, triggered by a button.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="menu-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/menu.json"
+      nepui="npx nepui@latest add menu --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="menu"
+        title="components/nepui/menu/menu.css"
+        fileTarget="components/nepui/menu/menu.css"
+      />
+
+      <ComponentSource
+        target="react"
+        name="menu"
+        title="components/nepui/menu/menu.tsx"
+        fileTarget="components/nepui/menu/menu.tsx"
+      />
+
+      <ComponentSource
+        target="react"
+        name="menu"
+        title="components/nepui/menu/index.ts"
+        fileTarget="components/nepui/menu/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import {
+  Menu,
+  MenuContent,
+  MenuGroup,
+  MenuItem,
+  MenuLabel,
+  MenuSeparator,
+  MenuTrigger,
+} from "@/components/nepui/menu"
+```
+
+```tsx
+<Menu>
+  <MenuTrigger render={<Button variant="outline" />}>Open</MenuTrigger>
+  <MenuContent>
+    <MenuGroup>
+      <MenuLabel>My Account</MenuLabel>
+      <MenuItem>Profile</MenuItem>
+      <MenuItem>Billing</MenuItem>
+    </MenuGroup>
+    <MenuSeparator />
+    <MenuItem>Log out</MenuItem>
+  </MenuContent>
+</Menu>
+```
+
+`Menu` is built on Base UI's [Menu](https://base-ui.com/react/components/menu). It handles focus, keyboard navigation (arrow keys, `Home`, `End`, typeahead), `Escape` and click-outside for you.
+
+`MenuLabel` must be inside a `MenuGroup`.
+
+---
+
+## Composition
+
+```text
+Menu
+├── MenuTrigger
+└── MenuContent
+    ├── MenuGroup
+    │   ├── MenuLabel
+    │   └── MenuItem
+    ├── MenuSeparator
+    ├── MenuCheckboxItem
+    ├── MenuRadioGroup
+    │   └── MenuRadioItem
+    └── MenuSub
+        ├── MenuSubTrigger
+        └── MenuSubContent
+```
+
+---
+
+## Basic
+
+A menu with a group label, a few items and a separator. Set the width of the menu with `style` or `className` on `MenuContent`. By default it is as wide as its content, with a minimum of `8rem`, and never narrower than the trigger.
+
+<ComponentPreview
+  name="menu-demo"
+/>
+
+---
+
+## Submenu
+
+Use `MenuSub`, `MenuSubTrigger` and `MenuSubContent` to nest a menu.
+
+<ComponentPreview
+  name="menu-submenu"
+/>
+
+---
+
+## Shortcuts
+
+Use `MenuShortcut` to show a keyboard shortcut. It is pushed to the end of the item.
+
+<ComponentPreview
+  name="menu-shortcuts"
+/>
+
+`MenuShortcut` is only a hint. It does not register the shortcut.
+
+---
+
+## Icons
+
+Add an icon before the label. Icons are sized to `1rem` automatically and use the text color of the item.
+
+<ComponentPreview
+  name="menu-icons"
+/>
+
+---
+
+## Checkboxes
+
+Use `MenuCheckboxItem` for items that toggle. The menu stays open when you click one.
+
+<ComponentPreview
+  name="menu-checkboxes"
+/>
+
+---
+
+## Radio Group
+
+Use `MenuRadioGroup` and `MenuRadioItem` when exactly one option can be chosen.
+
+<ComponentPreview
+  name="menu-radio"
+/>
+
+---
+
+## Destructive
+
+Use `variant="destructive"` on `MenuItem` for actions that delete or remove something.
+
+<ComponentPreview
+  name="menu-destructive"
+/>
+
+---
+
+## API Reference
+
+All parts are built on Base UI's [Menu](https://base-ui.com/react/components/menu#api-reference). Every prop of the matching Base UI part is accepted.
+
+### Menu
+
+The root. It holds the open state.
+
+| Prop           | Type                      | Default |
+| -------------- | ------------------------- | ------- |
+| `open`         | `boolean`                 | —       |
+| `defaultOpen`  | `boolean`                 | `false` |
+| `onOpenChange` | `(open: boolean) => void` | —       |
+| `modal`        | `boolean`                 | `true`  |
+| `disabled`     | `boolean`                 | `false` |
+
+### MenuTrigger
+
+The button that opens the menu. Use `render` to render your own element, such as a [Button](/docs/components/react/button).
+
+| Prop     | Type                             | Default |
+| -------- | -------------------------------- | ------- |
+| `render` | `React.ReactElement \| function` | —       |
+
+### MenuContent
+
+The popup. It portals, positions and animates itself.
+
+| Prop          | Type                                                                | Default    |
+| ------------- | ------------------------------------------------------------------- | ---------- |
+| `side`        | `"top" \| "bottom" \| "left" \| "right" \| "inline-start" \| "inline-end"` | `"bottom"` |
+| `align`       | `"start" \| "center" \| "end"`                                      | `"start"`  |
+| `sideOffset`  | `number`                                                            | `4`        |
+| `alignOffset` | `number`                                                            | `0`        |
+| `className`   | `string \| (state) => string`                                       | —          |
+
+### MenuGroup
+
+Groups related items. Give it a `MenuLabel` to name it.
+
+### MenuLabel
+
+A heading for a group. It must be inside a `MenuGroup`.
+
+| Prop    | Type      | Default |
+| ------- | --------- | ------- |
+| `inset` | `boolean` | `false` |
+
+### MenuItem
+
+An action.
+
+| Prop           | Type                        | Default     |
+| -------------- | --------------------------- | ----------- |
+| `variant`      | `"default" \| "destructive"` | `"default"` |
+| `inset`        | `boolean`                   | `false`     |
+| `disabled`     | `boolean`                   | `false`     |
+| `closeOnClick` | `boolean`                   | `true`      |
+| `onClick`      | `(event) => void`           | —           |
+
+### MenuCheckboxItem
+
+An item that toggles. It does not close the menu when clicked.
+
+| Prop              | Type                         | Default |
+| ----------------- | ---------------------------- | ------- |
+| `checked`         | `boolean`                    | —       |
+| `defaultChecked`  | `boolean`                    | `false` |
+| `onCheckedChange` | `(checked: boolean) => void` | —       |
+| `inset`           | `boolean`                    | `false` |
+| `disabled`        | `boolean`                    | `false` |
+
+### MenuRadioGroup
+
+Groups radio items and holds the chosen value.
+
+| Prop            | Type                      | Default |
+| --------------- | ------------------------- | ------- |
+| `value`         | `string`                  | —       |
+| `defaultValue`  | `string`                  | —       |
+| `onValueChange` | `(value: string) => void` | —       |
+
+### MenuRadioItem
+
+One option of a radio group.
+
+| Prop       | Type      | Default |
+| ---------- | --------- | ------- |
+| `value`    | `string`  | —       |
+| `inset`    | `boolean` | `false` |
+| `disabled` | `boolean` | `false` |

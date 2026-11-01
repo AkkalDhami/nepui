@@ -1,0 +1,315 @@
+---
+title: Menu
+description: Displays a menu to the user, such as a set of actions or functions, triggered by a button.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="menu-demo"
+  target="html"
+  styles={["/button/button.css"]}
+  scripts={["/menu/menu.js"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add menu"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="menu"
+        title="styles/menu.css"
+        fileTarget="styles/menu.css"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the component's CSS file to your HTML document, along with [Button](/docs/components/html/button) for the trigger.
+
+```html
+<head>
+  <link rel="stylesheet" href="./styles/tokens.css">
+  <link rel="stylesheet" href="./styles/button.css">
+  <link rel="stylesheet" href="./styles/menu.css">
+</head>
+```
+
+The HTML menu uses the browser's native [Popover API](https://developer.mozilla.org/docs/Web/API/Popover_API) to open and close, and CSS anchor positioning to sit under its trigger. You need no JavaScript to open it, close it with `Escape`, or close it by clicking outside.
+
+```html
+<div class="np-menu" style="--np-menu-anchor: --account">
+  <button class="np-button np-button-outline" type="button" popovertarget="account">
+    Open
+  </button>
+
+  <div id="account" class="np-menu-content" popover role="menu" aria-label="My Account">
+    <button class="np-menu-item" type="button" role="menuitem">Profile</button>
+    <button class="np-menu-item" type="button" role="menuitem">Billing</button>
+    <div class="np-menu-separator" role="separator"></div>
+    <button class="np-menu-item" type="button" role="menuitem">Log out</button>
+  </div>
+</div>
+```
+
+Every part also works with a `data-np-*` attribute instead of the class, for example `data-np-menu-content` and `data-np-menu-item`.
+
+---
+
+## Anchoring
+
+The wrapper (`np-menu`) carries one `--np-menu-anchor` name. It links the trigger and the popup, so you need a **unique dashed name for each menu** on the page.
+
+```html
+<div class="np-menu" style="--np-menu-anchor: --account"> ... </div>
+<div class="np-menu" style="--np-menu-anchor: --actions"> ... </div>
+```
+
+Use the `--np-menu-offset` variable to change the gap to the trigger (default `0.25rem`). In browsers without anchor positioning, the popup opens next to the trigger instead of under it.
+
+---
+
+## Parts
+
+| Part                  | Class                                    | Data attribute                  |
+| --------------------- | ---------------------------------------- | ------------------------------- |
+| Wrapper               | `np-menu`                                | `data-np-menu`                  |
+| Content (popup)       | `np-menu-content`                        | `data-np-menu-content`          |
+| Group                 | `np-menu-group`                          | `data-np-menu-group`            |
+| Label                 | `np-menu-label`                          | `data-np-menu-label`            |
+| Item                  | `np-menu-item`                           | `data-np-menu-item`             |
+| Destructive item      | `np-menu-item-destructive`               | `data-variant="destructive"`    |
+| Inset                 | `np-menu-inset`                          | `data-inset`                    |
+| Checkbox item         | `np-menu-item np-menu-checkbox-item`     | —                               |
+| Radio item            | `np-menu-item np-menu-radio-item`        | —                               |
+| Check mark            | `np-menu-item-indicator`                 | `data-np-menu-item-indicator`   |
+| Submenu wrapper       | `np-menu-sub`                            | `data-np-menu-sub`              |
+| Submenu trigger       | `np-menu-item np-menu-sub-trigger`       | —                               |
+| Submenu popup         | `np-menu-content np-menu-sub-content`    | `data-np-menu-sub-content`      |
+| Submenu chevron       | `np-menu-sub-chevron`                    | `data-np-menu-sub-chevron`      |
+| Separator             | `np-menu-separator`                      | `data-np-menu-separator`        |
+| Shortcut              | `np-menu-shortcut`                       | `data-np-menu-shortcut`         |
+
+---
+
+## Closing on click
+
+Clicking outside or pressing `Escape` closes the menu. To close it when an item is chosen, make the item a hide button for the popup:
+
+```html
+<button
+  class="np-menu-item"
+  type="button"
+  role="menuitem"
+  popovertarget="account"
+  popovertargetaction="hide"
+>
+  Profile
+</button>
+```
+
+Checkbox and radio items stay open, so they don't need it.
+
+---
+
+## Basic
+
+<ComponentPreview
+  name="menu-demo"
+  target="html"
+  styles={["/button/button.css"]}
+  scripts={["/menu/menu.js"]}
+/>
+
+---
+
+## Submenu
+
+Wrap a trigger item and its popup in `np-menu-sub`, with its own unique `--np-menu-anchor`. The submenu popup goes inside the parent popup, so the parent stays open while the submenu is open.
+
+<ComponentPreview
+  name="menu-submenu"
+  target="html"
+  styles={["/button/button.css"]}
+  scripts={["/menu/menu.js"]}
+/>
+
+---
+
+## Shortcuts
+
+<ComponentPreview
+  name="menu-shortcuts"
+  target="html"
+  styles={["/button/button.css"]}
+  scripts={["/menu/menu.js"]}
+/>
+
+---
+
+## Icons
+
+Add an inline SVG before the label. Icons are sized to `1rem` automatically. Mark decorative icons as hidden.
+
+<ComponentPreview
+  name="menu-icons"
+  target="html"
+  styles={["/button/button.css"]}
+  scripts={["/menu/menu.js"]}
+/>
+
+---
+
+## Checkboxes
+
+Use `role="menuitemcheckbox"` and `aria-checked`. The check mark is shown only when `aria-checked` is not `"false"`. Toggle the attribute yourself.
+
+<ComponentPreview
+  name="menu-checkboxes"
+  target="html"
+  styles={["/button/button.css"]}
+  scripts={["/menu/menu.js"]}
+/>
+
+```html
+<button
+  class="np-menu-item np-menu-checkbox-item"
+  type="button"
+  role="menuitemcheckbox"
+  aria-checked="true"
+  onclick="this.setAttribute('aria-checked', this.getAttribute('aria-checked') !== 'true')"
+>
+  <span class="np-menu-item-indicator"><!-- check icon --></span>
+  Status Bar
+</button>
+```
+
+---
+
+## Radio Group
+
+Use `role="menuitemradio"` with `aria-checked`, and clear the other items of the group when one is chosen.
+
+<ComponentPreview
+  name="menu-radio"
+  target="html"
+  styles={["/button/button.css"]}
+  scripts={["/menu/menu.js"]}
+/>
+
+---
+
+## Destructive
+
+<ComponentPreview
+  name="menu-destructive"
+  target="html"
+  styles={["/button/button.css"]}
+  scripts={["/menu/menu.js"]}
+/>
+
+---
+
+## RTL
+
+Wrap the menu in an element with `dir="rtl"`. The popup aligns to the start edge of the trigger, and the chevron of a submenu is flipped.
+
+<ComponentPreview
+  name="menu-rtl"
+  target="html"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Keyboard navigation
+
+The native popover gives you `Escape`, outside click and focus return. Arrow-key navigation is not built in. Add this small script if you want it, or use the [React version](/docs/components/react/menu), which is built on Base UI and handles it fully, including typeahead and submenus.
+
+```html
+<script>
+  // Focus the first item when a menu opens
+  document.addEventListener(
+    "toggle",
+    (event) => {
+      if (event.newState === "open" && event.target.matches('[role="menu"]')) {
+        event.target.querySelector('[role^="menuitem"]:not(:disabled)')?.focus()
+      }
+    },
+    true
+  )
+
+  // Arrow keys, Home and End move between the items of the open menu
+  document.addEventListener("keydown", (event) => {
+    const menu = event.target.closest('[role="menu"]')
+    if (!menu) return
+
+    const items = [...menu.querySelectorAll('[role^="menuitem"]:not(:disabled)')].filter(
+      (item) => item.closest('[role="menu"]') === menu
+    )
+    const index = items.indexOf(document.activeElement)
+    let next
+
+    if (event.key === "ArrowDown") next = items[(index + 1) % items.length]
+    else if (event.key === "ArrowUp") next = items[(index - 1 + items.length) % items.length]
+    else if (event.key === "Home") next = items[0]
+    else if (event.key === "End") next = items[items.length - 1]
+
+    if (next) {
+      event.preventDefault()
+      next.focus()
+    }
+  })
+</script>
+```
+
+---
+
+## Customization
+
+Override these CSS variables inline, on the menu, or on any parent.
+
+| Variable                | Default                                                  | Description                        |
+| ----------------------- | -------------------------------------------------------- | ---------------------------------- |
+| `--np-menu-anchor`      | —                                                        | Dashed name linking trigger and popup |
+| `--np-menu-offset`      | `0.25rem`                                                | Gap between trigger and popup      |
+| `--np-menu-bg`          | `var(--np-popover, var(--np-background))`                | Background of the menu             |
+| `--np-menu-color`       | `var(--np-popover-foreground, var(--np-foreground))`     | Text color of the menu             |
+| `--np-menu-radius`      | `var(--np-radius-md)`                                    | Corner radius of the menu          |
+| `--np-menu-min-width`   | `8rem`                                                   | Minimum width                      |
+| `--np-menu-item-radius` | `0.375rem`                                               | Corner radius of an item           |
+| `--np-menu-hover-bg`    | `var(--np-accent, var(--np-muted))`                      | Background of the highlighted item |
+| `--np-menu-hover-color` | `var(--np-accent-foreground, var(--np-foreground))`      | Text color of the highlighted item |
+
+---
+
+## Accessibility
+
+- Give the popup `role="menu"` and a name with `aria-label` or `aria-labelledby`. Give each item `role="menuitem"`, `menuitemcheckbox` or `menuitemradio`.
+- Use real `<button>` elements for items, so they are focusable and activate with `Enter` and `Space`.
+- Mark a submenu trigger with `aria-haspopup="menu"`.
+- Put `role="separator"` on separators, and `role="group"` on groups.
+- Add the keyboard script above, or use the React version, if your menu needs arrow-key navigation.
+
+## Browser support
+
+The menu needs the Popover API and CSS anchor positioning. Both are available in current versions of Chrome, Edge, Safari and Firefox. In an older browser the popup opens next to the trigger, and still opens, closes and works with the keyboard.
