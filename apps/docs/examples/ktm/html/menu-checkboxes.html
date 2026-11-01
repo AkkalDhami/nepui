@@ -1,0 +1,101 @@
+<div class="np-menu" style="--np-menu-anchor: --menu-checkboxes">
+  <button
+    class="np-button np-button-outline"
+    type="button"
+    popovertarget="menu-checkboxes"
+  >
+    Open
+  </button>
+
+  <div
+    id="menu-checkboxes"
+    class="np-menu-content"
+    popover
+    role="menu"
+    aria-label="Appearance"
+    style="width: 14rem"
+  >
+    <div
+      class="np-menu-group"
+      role="group"
+      aria-labelledby="menu-checkboxes-label"
+    >
+      <div class="np-menu-label" id="menu-checkboxes-label">Appearance</div>
+      <div class="np-menu-separator" role="separator"></div>
+
+      <button
+        class="np-menu-item np-menu-checkbox-item"
+        type="button"
+        role="menuitemcheckbox"
+        aria-checked="true"
+        onclick="
+          this.setAttribute(
+            'aria-checked',
+            this.getAttribute('aria-checked') !== 'true'
+          )
+        "
+      >
+        <span class="np-menu-item-indicator"
+          ><svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M20 6 9 17l-5-5" /></svg
+        ></span>
+        Status Bar
+      </button>
+      <button
+        class="np-menu-item np-menu-checkbox-item"
+        type="button"
+        role="menuitemcheckbox"
+        aria-checked="false"
+        disabled
+      >
+        <span class="np-menu-item-indicator"
+          ><svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M20 6 9 17l-5-5" /></svg
+        ></span>
+        Activity Bar
+      </button>
+      <button
+        class="np-menu-item np-menu-checkbox-item"
+        type="button"
+        role="menuitemcheckbox"
+        aria-checked="false"
+        onclick="
+          this.setAttribute(
+            'aria-checked',
+            this.getAttribute('aria-checked') !== 'true'
+          )
+        "
+      >
+        <span class="np-menu-item-indicator"
+          ><svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M20 6 9 17l-5-5" /></svg
+        ></span>
+        Panel
+      </button>
+    </div>
+  </div>
+</div>

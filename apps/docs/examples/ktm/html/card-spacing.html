@@ -1,0 +1,31 @@
+<div
+  style="
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    max-width: 24rem;
+  "
+>
+  <div class="np-card">
+    <div class="np-card-header">
+      <div class="np-card-title">16px spacing</div>
+      <div class="np-card-description">The default spacing.</div>
+    </div>
+    <div class="np-card-content">Sections and insets share one value.</div>
+  </div>
+  <div class="np-card" style="--np-card-spacing: calc(var(--np-spacing) * 6)">
+    <div class="np-card-header">
+      <div class="np-card-title">24px spacing</div>
+      <div class="np-card-description">Set on the card.</div>
+    </div>
+    <div class="np-card-content">Sections and insets share one value.</div>
+  </div>
+  <div class="np-card" style="--np-card-spacing: calc(var(--np-spacing) * 8)">
+    <div class="np-card-header">
+      <div class="np-card-title">32px spacing</div>
+      <div class="np-card-description">Set on the card.</div>
+    </div>
+    <div class="np-card-content">Sections and insets share one value.</div>
+  </div>
+</div>

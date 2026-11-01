@@ -1,0 +1,39 @@
+<div class="np-menu" style="--np-menu-anchor: --menu-shortcuts">
+  <button
+    class="np-button np-button-outline"
+    type="button"
+    popovertarget="menu-shortcuts"
+  >
+    Open
+  </button>
+
+  <div
+    id="menu-shortcuts"
+    class="np-menu-content"
+    popover
+    role="menu"
+    aria-label="My Account"
+    style="width: 14rem"
+  >
+    <div
+      class="np-menu-group"
+      role="group"
+      aria-labelledby="menu-shortcuts-label"
+    >
+      <div class="np-menu-label" id="menu-shortcuts-label">My Account</div>
+      <button class="np-menu-item" type="button" role="menuitem">
+        Profile <span class="np-menu-shortcut">⇧⌘P</span>
+      </button>
+      <button class="np-menu-item" type="button" role="menuitem">
+        Billing <span class="np-menu-shortcut">⌘B</span>
+      </button>
+      <button class="np-menu-item" type="button" role="menuitem">
+        Settings <span class="np-menu-shortcut">⌘S</span>
+      </button>
+    </div>
+    <div class="np-menu-separator" role="separator"></div>
+    <button class="np-menu-item" type="button" role="menuitem">
+      Log out <span class="np-menu-shortcut">⇧⌘Q</span>
+    </button>
+  </div>
+</div>

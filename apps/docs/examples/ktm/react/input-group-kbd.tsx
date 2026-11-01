@@ -1,7 +1,7 @@
 "use client"
 
 import { Kbd } from "@/registry/react/kbd"
-import { MagnifyingGlassIcon } from "@phosphor-icons/react/ssr"
+import { MagnifyingGlassIcon } from "@phosphor-icons/react"
 import {
   InputGroup,
   InputGroupAddon,

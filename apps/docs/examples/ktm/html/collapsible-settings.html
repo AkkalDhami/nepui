@@ -1,0 +1,59 @@
+<link rel="stylesheet" href="./styles/label.css" />
+<link rel="stylesheet" href="./styles/input.css" />
+
+<details
+  class="np-collapsible"
+  style="
+    width: 100%;
+    max-width: 22rem;
+    padding: 1rem;
+    border: 1px solid var(--np-border);
+    border-radius: var(--np-radius-md);
+  "
+>
+  <summary
+    class="np-collapsible-trigger"
+    style="
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      cursor: pointer;
+    "
+  >
+    <span style="display: flex; flex-direction: column; gap: 0.125rem">
+      <span style="font-size: 0.875rem; font-weight: 600">Radius</span>
+      <span style="font-size: 0.8125rem; color: var(--np-muted-foreground)"
+        >Set the corner radius of the element.</span
+      >
+    </span>
+    <svg
+      class="np-collapsible-icon"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      width="16"
+      height="16"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="m6 9 6 6 6-6" />
+    </svg>
+  </summary>
+  <div class="np-collapsible-content">
+    <div style="display: flex; gap: 0.75rem; padding-top: 1rem">
+      <div style="display: flex; flex: 1; flex-direction: column; gap: 0.5rem">
+        <label class="np-label" for="radius-x">Radius X</label>
+        <input class="np-input" id="radius-x" value="8" />
+      </div>
+      <div style="display: flex; flex: 1; flex-direction: column; gap: 0.5rem">
+        <label class="np-label" for="radius-y">Radius Y</label>
+        <input class="np-input" id="radius-y" value="8" />
+      </div>
+    </div>
+  </div>
+</details>

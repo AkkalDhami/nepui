@@ -1,0 +1,59 @@
+<div class="np-menu" style="--np-menu-anchor: --menu-demo">
+  <button
+    class="np-button np-button-outline"
+    type="button"
+    popovertarget="menu-demo"
+  >
+    Open
+  </button>
+
+  <div
+    id="menu-demo"
+    class="np-menu-content"
+    popover
+    role="menu"
+    aria-label="My Account"
+    style="width: 12rem"
+  >
+    <div class="np-menu-group" role="group" aria-labelledby="menu-demo-label">
+      <div class="np-menu-label" id="menu-demo-label">My Account</div>
+      <button
+        class="np-menu-item"
+        type="button"
+        role="menuitem"
+        popovertarget="menu-demo"
+        popovertargetaction="hide"
+      >
+        Profile
+      </button>
+      <button
+        class="np-menu-item"
+        type="button"
+        role="menuitem"
+        popovertarget="menu-demo"
+        popovertargetaction="hide"
+      >
+        Billing
+      </button>
+      <button
+        class="np-menu-item"
+        type="button"
+        role="menuitem"
+        popovertarget="menu-demo"
+        popovertargetaction="hide"
+      >
+        Settings
+      </button>
+    </div>
+    <div class="np-menu-separator" role="separator"></div>
+    <button
+      class="np-menu-item"
+      type="button"
+      role="menuitem"
+      popovertarget="menu-demo"
+      popovertargetaction="hide"
+    >
+      Log out
+    </button>
+  </div>
+</div>

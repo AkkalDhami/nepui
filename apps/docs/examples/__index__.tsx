@@ -51,6 +51,11 @@ import KtmReactButtonSecondary from "./ktm/react/button-secondary"
 import KtmReactButtonSize from "./ktm/react/button-size"
 import KtmReactButtonSpinner from "./ktm/react/button-spinner"
 import KtmReactButtonWithIcon from "./ktm/react/button-with-icon"
+import KtmReactCardDemo from "./ktm/react/card-demo"
+import KtmReactCardEdgeToEdge from "./ktm/react/card-edge-to-edge"
+import KtmReactCardImage from "./ktm/react/card-image"
+import KtmReactCardSize from "./ktm/react/card-size"
+import KtmReactCardSpacing from "./ktm/react/card-spacing"
 import KtmReactCheckboxControlled from "./ktm/react/checkbox-controlled"
 import KtmReactCheckboxDefaultChecked from "./ktm/react/checkbox-default-checked"
 import KtmReactCheckboxDemo from "./ktm/react/checkbox-demo"
@@ -61,6 +66,10 @@ import KtmReactCheckboxGroupHorizontal from "./ktm/react/checkbox-group-horizont
 import KtmReactCheckboxGroupNested from "./ktm/react/checkbox-group-nested"
 import KtmReactCheckboxGroupParent from "./ktm/react/checkbox-group-parent"
 import KtmReactCheckboxInvalid from "./ktm/react/checkbox-invalid"
+import KtmReactCollapsibleBasic from "./ktm/react/collapsible-basic"
+import KtmReactCollapsibleDemo from "./ktm/react/collapsible-demo"
+import KtmReactCollapsibleFileTree from "./ktm/react/collapsible-file-tree"
+import KtmReactCollapsibleSettings from "./ktm/react/collapsible-settings"
 import KtmReactCopyButtonDemo from "./ktm/react/copy-button-demo"
 import KtmReactFieldCheckbox from "./ktm/react/field-checkbox"
 import KtmReactFieldChoiceCard from "./ktm/react/field-choice-card"
@@ -95,6 +104,13 @@ import KtmReactKbdDemo from "./ktm/react/kbd-demo"
 import KtmReactKbdGroup from "./ktm/react/kbd-group"
 import KtmReactKbdInput from "./ktm/react/kbd-input"
 import KtmReactLabelDemo from "./ktm/react/label-demo"
+import KtmReactMenuCheckboxes from "./ktm/react/menu-checkboxes"
+import KtmReactMenuDemo from "./ktm/react/menu-demo"
+import KtmReactMenuDestructive from "./ktm/react/menu-destructive"
+import KtmReactMenuIcons from "./ktm/react/menu-icons"
+import KtmReactMenuRadio from "./ktm/react/menu-radio"
+import KtmReactMenuShortcuts from "./ktm/react/menu-shortcuts"
+import KtmReactMenuSubmenu from "./ktm/react/menu-submenu"
 import KtmReactMeterDemo from "./ktm/react/meter-demo"
 import KtmReactMeterFormatted from "./ktm/react/meter-formatted"
 import KtmReactMeterNoLabel from "./ktm/react/meter-no-label"
@@ -235,6 +251,11 @@ export const ExamplesIndex: Record<
       "button-size": KtmReactButtonSize,
       "button-spinner": KtmReactButtonSpinner,
       "button-with-icon": KtmReactButtonWithIcon,
+      "card-demo": KtmReactCardDemo,
+      "card-edge-to-edge": KtmReactCardEdgeToEdge,
+      "card-image": KtmReactCardImage,
+      "card-size": KtmReactCardSize,
+      "card-spacing": KtmReactCardSpacing,
       "checkbox-controlled": KtmReactCheckboxControlled,
       "checkbox-default-checked": KtmReactCheckboxDefaultChecked,
       "checkbox-demo": KtmReactCheckboxDemo,
@@ -245,6 +266,10 @@ export const ExamplesIndex: Record<
       "checkbox-group-nested": KtmReactCheckboxGroupNested,
       "checkbox-group-parent": KtmReactCheckboxGroupParent,
       "checkbox-invalid": KtmReactCheckboxInvalid,
+      "collapsible-basic": KtmReactCollapsibleBasic,
+      "collapsible-demo": KtmReactCollapsibleDemo,
+      "collapsible-file-tree": KtmReactCollapsibleFileTree,
+      "collapsible-settings": KtmReactCollapsibleSettings,
       "copy-button-demo": KtmReactCopyButtonDemo,
       "field-checkbox": KtmReactFieldCheckbox,
       "field-choice-card": KtmReactFieldChoiceCard,
@@ -279,6 +304,13 @@ export const ExamplesIndex: Record<
       "kbd-group": KtmReactKbdGroup,
       "kbd-input": KtmReactKbdInput,
       "label-demo": KtmReactLabelDemo,
+      "menu-checkboxes": KtmReactMenuCheckboxes,
+      "menu-demo": KtmReactMenuDemo,
+      "menu-destructive": KtmReactMenuDestructive,
+      "menu-icons": KtmReactMenuIcons,
+      "menu-radio": KtmReactMenuRadio,
+      "menu-shortcuts": KtmReactMenuShortcuts,
+      "menu-submenu": KtmReactMenuSubmenu,
       "meter-demo": KtmReactMeterDemo,
       "meter-formatted": KtmReactMeterFormatted,
       "meter-no-label": KtmReactMeterNoLabel,
@@ -414,6 +446,11 @@ export const ExamplesIndex: Record<
       "button-size": "ktm/html/button-size.html",
       "button-spinner": "ktm/html/button-spinner.html",
       "button-with-icon": "ktm/html/button-with-icon.html",
+      "card-demo": "ktm/html/card-demo.html",
+      "card-edge-to-edge": "ktm/html/card-edge-to-edge.html",
+      "card-image": "ktm/html/card-image.html",
+      "card-size": "ktm/html/card-size.html",
+      "card-spacing": "ktm/html/card-spacing.html",
       "checkbox-controlled": "ktm/html/checkbox-controlled.html",
       "checkbox-default-checked": "ktm/html/checkbox-default-checked.html",
       "checkbox-demo": "ktm/html/checkbox-demo.html",
@@ -424,6 +461,10 @@ export const ExamplesIndex: Record<
       "checkbox-group-nested": "ktm/html/checkbox-group-nested.html",
       "checkbox-group-parent": "ktm/html/checkbox-group-parent.html",
       "checkbox-invalid": "ktm/html/checkbox-invalid.html",
+      "collapsible-basic": "ktm/html/collapsible-basic.html",
+      "collapsible-demo": "ktm/html/collapsible-demo.html",
+      "collapsible-file-tree": "ktm/html/collapsible-file-tree.html",
+      "collapsible-settings": "ktm/html/collapsible-settings.html",
       "field-checkbox": "ktm/html/field-checkbox.html",
       "field-choice-card": "ktm/html/field-choice-card.html",
       "field-demo": "ktm/html/field-demo.html",
@@ -457,6 +498,13 @@ export const ExamplesIndex: Record<
       "kbd-group": "ktm/html/kbd-group.html",
       "kbd-input": "ktm/html/kbd-input.html",
       "label-demo": "ktm/html/label-demo.html",
+      "menu-checkboxes": "ktm/html/menu-checkboxes.html",
+      "menu-demo": "ktm/html/menu-demo.html",
+      "menu-destructive": "ktm/html/menu-destructive.html",
+      "menu-icons": "ktm/html/menu-icons.html",
+      "menu-radio": "ktm/html/menu-radio.html",
+      "menu-shortcuts": "ktm/html/menu-shortcuts.html",
+      "menu-submenu": "ktm/html/menu-submenu.html",
       "meter-demo": "ktm/html/meter-demo.html",
       "meter-formatted": "ktm/html/meter-formatted.html",
       "meter-no-label": "ktm/html/meter-no-label.html",
