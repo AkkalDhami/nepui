@@ -1,16 +1,41 @@
 # nepui
 
-CLI for installing [nepui](https://nepui.vercel.app) components — HTML or React, plain CSS, no runtime or component-library dependencies. Components are copied from a remote registry, source-first, in the spirit of shadcn-style CLIs.
+CLI for installing [nepui](https://nepui.vercel.app) components — HTML or React, plain CSS. Components are copied from a remote registry, source-first, in the spirit of shadcn-style CLIs.
 
 ## Usage
 
 ```bash
-npx nepui add button --target react
-npx nepui add button --target html
+npx nepui@latest init --target react
+npx nepui@latest init --target html
+
+npx nepui@latest init --target react . # current directory
+npx nepui@latest init --target react my-app
+
+npx nepui@latest init                 # prompts for target and directory
+
+npx nepui@latest add button --target react
+npx nepui@latest add button --target html
+
+npx nepui@latest add button card spinner input textarea field avatar item --target react
+npx nepui@latest add button card spinner input textarea field avatar item --target html
+
+npx nepui@latest add --all --target html
+npx nepui@latest add --all --target react
+
 npx nepui@latest add button --target react
 ```
 
-`--target` is required for `add` and must be `html` or `react`.
+`init` downloads `tokens.css` to `components/nepui/tokens.css` for React or
+`styles/tokens.css` for HTML, inside the selected project directory. React
+initialization requires a valid `package.json` in that directory before it
+installs dependencies.
+
+React initialization also installs
+`class-variance-authority`, `cn`, and `@base-ui/react` using the project's
+package manager.
+
+`add` accepts one or more component names, comma-separated names, or `--all`.
+The target defaults to `html` and must be `html` or `react`.
 
 [GitHub Repo](https://github.com/AkkalDhami/nepui)
 
@@ -19,23 +44,11 @@ npx nepui@latest add button --target react
 ### Listing components
 
 ```bash
-npx nepui list                     # defaults to --target html
-npx nepui list --target react
-npx nepui ls --json
-npx nepui ls --json --target react
+npx nepui@latest list                     # defaults to --target html
+npx nepui@latest list --target react
+npx nepui@latest ls --json
+npx nepui@latest ls --json --target react
 ```
-
-## How it works
-
-1. Fetches `<registry>/r/<target>/<component>.json`.
-2. Validates the response (`name`, `files`, `files[].content`, ...).
-3. Resolves a safe destination for every file:
-   - React: `components/ui/<component>/<filename>`
-   - HTML: `.html`/`.js` → `html/<filename>`, `.css` → `styles/<filename>`
-4. Warns and asks before overwriting any existing file (Overwrite / Skip / Cancel). A clean install with no conflicts needs no prompts.
-5. Writes files, then prints exactly what was created.
-
-The registry response's `files[].content` is written verbatim — nothing is reformatted, reparsed, or modified.
 
 ## License
 
