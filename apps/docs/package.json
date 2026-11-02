@@ -4,7 +4,9 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "predev": "tsx scripts/copy-tokens.mts",
     "dev": "next dev",
+    "prebuild": "tsx scripts/copy-tokens.mts",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
