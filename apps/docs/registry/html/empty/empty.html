@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Empty</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/empty.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: system-ui, sans-serif;
+      }
+      main {
+        display: grid;
+        gap: 2rem;
+        max-width: 32rem;
+        margin-inline: auto;
+      }
+      h2 {
+        margin: 0 0 0.75rem;
+        font-size: 0.875rem;
+        color: var(--np-muted-foreground);
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Class form</h2>
+        <div class="np-empty">
+          <div class="np-empty-header">
+            <div class="np-empty-media np-empty-media-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M10 10.5 8 13l2 2.5" />
+                <path d="m14 10.5 2 2.5-2 2.5" />
+                <path
+                  d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"
+                />
+              </svg>
+            </div>
+            <div class="np-empty-title">No Projects Yet</div>
+            <p class="np-empty-description">
+              You haven’t created any projects yet. Get started by creating your
+              first project.
+            </p>
+          </div>
+          <div class="np-empty-content">
+            <div style="display: flex; gap: 0.5rem">
+              <button class="np-button" type="button">Create Project</button>
+              <button class="np-button np-button-outline" type="button">
+                Import Project
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Data-attribute form</h2>
+        <div data-np-empty>
+          <div data-np-empty-header>
+            <div data-np-empty-media data-variant="icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
+                <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
+              </svg>
+            </div>
+            <div data-np-empty-title>No Notifications</div>
+            <p data-np-empty-description>
+              You’re all caught up. New notifications will appear here.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Outline (class and data-appearance)</h2>
+        <div class="np-empty np-empty-outline">
+          <div class="np-empty-header">
+            <div class="np-empty-media np-empty-media-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
+              </svg>
+            </div>
+            <div class="np-empty-title">Cloud Storage Empty</div>
+            <p class="np-empty-description">
+              Upload files to your cloud storage to access them anywhere.
+            </p>
+          </div>
+          <div class="np-empty-content">
+            <button
+              class="np-button np-button-outline np-button-sm"
+              type="button"
+            >
+              Upload Files
+            </button>
+          </div>
+        </div>
+        <div
+          class="np-empty"
+          data-appearance="outline"
+          style="margin-top: 1rem"
+        >
+          <div class="np-empty-header">
+            <div class="np-empty-title">Outline with data-appearance</div>
+            <p class="np-empty-description">No media here, just text.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Background (--np-empty-bg)</h2>
+        <div
+          class="np-empty"
+          style="
+            --np-empty-bg: linear-gradient(
+              to bottom,
+              color-mix(in oklab, var(--np-muted) 50%, transparent) 30%,
+              var(--np-background)
+            );
+          "
+        >
+          <div class="np-empty-header">
+            <div class="np-empty-title">No Notifications</div>
+            <p class="np-empty-description">
+              You’re all caught up. New notifications will appear here.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Links in the description</h2>
+        <div class="np-empty">
+          <div class="np-empty-header">
+            <div class="np-empty-title">404 - Not Found</div>
+            <p class="np-empty-description">
+              The page you’re looking for doesn’t exist.
+            </p>
+          </div>
+          <div class="np-empty-content">
+            <button class="np-button np-button-sm" type="button">
+              Go Home
+            </button>
+            <p class="np-empty-description">
+              Need help? <a href="#">Contact support</a>
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

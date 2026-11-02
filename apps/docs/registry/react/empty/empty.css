@@ -1,0 +1,123 @@
+/* nepui - Empty */
+
+.np-empty,
+[data-np-empty] {
+  --spacing: 0.25rem;
+  --np-empty-gap: calc(var(--spacing) * 4);
+  --np-empty-padding: calc(var(--spacing) * 6);
+  --np-empty-radius: var(--np-radius-xl);
+  --np-empty-bg: transparent;
+  --np-empty-border: var(--np-border);
+  --np-empty-border-width: 0px;
+  --np-empty-max-width: calc(var(--spacing) * 96);
+  --np-empty-media-size: calc(var(--spacing) * 8);
+  --np-empty-media-radius: var(--np-radius-lg);
+  --np-empty-media-bg: var(--np-muted);
+  --np-empty-media-color: var(--np-foreground);
+  --np-empty-icon-size: calc(var(--spacing) * 4);
+
+  box-sizing: border-box;
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--np-empty-gap);
+  min-width: 0;
+  padding: var(--np-empty-padding);
+  border: var(--np-empty-border-width) dashed var(--np-empty-border);
+  border-radius: var(--np-empty-radius);
+  background: var(--np-empty-bg);
+  text-align: center;
+  text-wrap: balance;
+}
+
+:is(.np-empty, [data-np-empty]):is(
+  .np-empty-outline,
+  [data-appearance="outline"]
+) {
+  --np-empty-border-width: 1px;
+}
+
+.np-empty-header,
+[data-np-empty-header] {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--spacing) * 2);
+  max-width: var(--np-empty-max-width);
+}
+
+.np-empty-media,
+[data-np-empty-media] {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  margin-block-end: calc(var(--spacing) * 2);
+  background-color: transparent;
+}
+
+:is(.np-empty-media, [data-np-empty-media]) svg {
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+:is(.np-empty-media, [data-np-empty-media]):is(
+  .np-empty-media-icon,
+  [data-variant="icon"]
+) {
+  width: var(--np-empty-media-size);
+  height: var(--np-empty-media-size);
+  border-radius: var(--np-empty-media-radius);
+  background-color: var(--np-empty-media-bg);
+  color: var(--np-empty-media-color);
+}
+
+:is(.np-empty-media, [data-np-empty-media]):is(
+    .np-empty-media-icon,
+    [data-variant="icon"]
+  )
+  svg:not([class*="size-"]) {
+  width: var(--np-empty-icon-size);
+  height: var(--np-empty-icon-size);
+}
+
+.np-empty-title,
+[data-np-empty-title] {
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.25rem;
+}
+
+.np-empty-description,
+[data-np-empty-description] {
+  color: var(--np-muted-foreground);
+  font-size: 0.875rem;
+  line-height: 1.625;
+}
+
+:is(.np-empty-description, [data-np-empty-description]) > a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+:is(.np-empty-description, [data-np-empty-description]) > a:hover {
+  color: var(--np-primary);
+}
+
+.np-empty-content,
+[data-np-empty-content] {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--spacing) * 2.5);
+  width: 100%;
+  min-width: 0;
+  max-width: var(--np-empty-max-width);
+  font-size: 0.875rem;
+  text-wrap: balance;
+}
