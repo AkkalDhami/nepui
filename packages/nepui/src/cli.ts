@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs"
 import { fileURLToPath } from "node:url"
 import path from "node:path"
 import { addCommand, type AddOptions } from "@/commands/add.js"
+import { initCommand, type InitOptions } from "@/commands/init.js"
 import { listCommand, type ListOptions } from "@/commands/list.js"
 
 function readPackageVersion(): string {
@@ -26,18 +27,26 @@ export function createProgram(): Command {
     .version(readPackageVersion(), "-V, --version", "output the version number")
 
   program
+    .command("init")
+    .argument("[directory]", "Project directory to initialize")
+    .description("Initialize nepui design tokens for a target")
+    .option("--target <target>", "Project target: html or react")
+    .option("--force", "Overwrite existing files")
+    .option("--local", "Use the local registry (for development)")
+    .action(async (directory: string | undefined, options: InitOptions) => {
+      await initCommand({ ...options, directory })
+    })
+
+  program
     .command("add")
-    .argument("<component>", "Name of the component to add")
-    .description("Add a nepui component")
-    .option(
-      "--target <target>",
-      "Component target: html or react (required)",
-      "html"
-    )
+    .argument("[components...]", "Names of the components to add")
+    .description("Add one or more nepui components")
+    .option("--target <target>", "Component target: html or react", "html")
+    .option("--all", "Add every available component for the target")
     .option("--force", "Overwrite existing files")
     .option("--local", "Add components from local environment(for development)")
-    .action(async (component: string, options: AddOptions) => {
-      await addCommand(component, options)
+    .action(async (components: string[] | undefined, options: AddOptions) => {
+      await addCommand(components ?? [], options)
     })
 
   program

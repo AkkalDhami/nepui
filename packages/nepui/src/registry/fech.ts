@@ -24,6 +24,31 @@ export function buildIndexUrl(target: Target, local?: boolean): string {
   return `${base}/r/${target}/registry.json`
 }
 
+/** Build the URL for the shared design tokens stylesheet. */
+export function buildTokensUrl(local?: boolean): string {
+  const base = local ? DEFAULT_DEVELOPMENT_REGISTRY_URL : getRegistryBaseUrl()
+  return `${base}/styles/tokens.css`
+}
+
+/** Fetch the shared design tokens stylesheet as plain text. */
+export async function fetchTokens(local?: boolean): Promise<string> {
+  const url = buildTokensUrl(local)
+  const response = await performFetch(url)
+
+  if (!response.ok) {
+    throw new RegistryError(
+      `Could not fetch design tokens:\n${url}\n\nThe registry responded with status ${response.status}.`,
+      url
+    )
+  }
+
+  const content = await response.text()
+  if (!content.trim()) {
+    throw new RegistryError(`The design tokens file is empty:\n${url}`, url)
+  }
+  return content
+}
+
 /**
  * Fetch a single component's JSON from the registry and validate it.
  * Throws `ComponentNotFoundError` on 404, `RegistryError` on other

@@ -12,14 +12,17 @@ export interface InstallResult {
 }
 
 export async function installFiles(
-  resolved: ResolvedFile[]
+  resolved: ResolvedFile[],
+  force = false
 ): Promise<InstallResult> {
   const { existing, fresh } = await partitionByExistence(resolved)
 
   const toWrite: ResolvedFile[] = [...fresh]
   const skipped: ResolvedFile[] = []
 
-  if (existing.length > 0) {
+  if (force) {
+    toWrite.push(...existing)
+  } else if (existing.length > 0) {
     const decisions = await resolveConflicts(existing)
     for (const entry of existing) {
       const decision = decisions.get(entry.absolutePath)
