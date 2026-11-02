@@ -38,15 +38,20 @@ export function resolveRelativeDestination(
 
   if (target === "react") {
     return path.join(
-      file.target ? file.target : (DEFAULT_PATHS.react, componentName, filename)
+      file.target ?? DEFAULT_PATHS.react,
+      ...(file.target ? [] : [componentName, filename])
     )
   }
 
   if (ext === ".css") {
-    return path.join(file.target ? file.target : (DEFAULT_PATHS.css, filename))
+    return file.target
+      ? path.join(file.target)
+      : path.join(DEFAULT_PATHS.css, filename)
   }
 
-  return path.join(file.target ? file.target : (DEFAULT_PATHS.html, filename))
+  return file.target
+    ? path.join(file.target)
+    : path.join(DEFAULT_PATHS.html, filename)
 }
 
 /**
@@ -54,7 +59,14 @@ export function resolveRelativeDestination(
  * inside `process.cwd()`. Throws `UnsafePathError` if it would not.
  */
 export function resolveSafeAbsolutePath(relativePath: string): string {
-  const cwd = process.cwd()
+  return resolveSafeAbsolutePathInRoot(relativePath, process.cwd())
+}
+
+function resolveSafeAbsolutePathInRoot(
+  relativePath: string,
+  rootDirectory: string
+): string {
+  const cwd = path.resolve(rootDirectory)
   const absolute = path.resolve(cwd, relativePath)
   const cwdWithSep = cwd.endsWith(path.sep) ? cwd : cwd + path.sep
 
@@ -80,11 +92,15 @@ export interface ResolvedFile {
 export function resolveAllDestinations(
   files: RegistryFile[],
   target: Target,
-  componentName: string
+  componentName: string,
+  projectRoot = process.cwd()
 ): ResolvedFile[] {
   return files.map((file) => {
     const relativePath = resolveRelativeDestination(file, target, componentName)
-    const absolutePath = resolveSafeAbsolutePath(relativePath)
+    const absolutePath = resolveSafeAbsolutePathInRoot(
+      relativePath,
+      projectRoot
+    )
     return { file, relativePath, absolutePath }
   })
 }
