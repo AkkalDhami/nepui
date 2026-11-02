@@ -14,7 +14,7 @@ import {
   GearIcon,
   SignOutIcon,
   UserIcon,
-} from "@phosphor-icons/react/ssr"
+} from "@phosphor-icons/react"
 
 export default function MenuIcons() {
   return (

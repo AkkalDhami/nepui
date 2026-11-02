@@ -4,6 +4,11 @@
 
 import "server-only"
 
+import KtmReactAccordionBorders from "./ktm/react/accordion-borders"
+import KtmReactAccordionCard from "./ktm/react/accordion-card"
+import KtmReactAccordionDemo from "./ktm/react/accordion-demo"
+import KtmReactAccordionDisabled from "./ktm/react/accordion-disabled"
+import KtmReactAccordionMultiple from "./ktm/react/accordion-multiple"
 import KtmReactAlertAction from "./ktm/react/alert-action"
 import KtmReactAlertColors from "./ktm/react/alert-colors"
 import KtmReactAlertDemo from "./ktm/react/alert-demo"
@@ -71,6 +76,10 @@ import KtmReactCollapsibleDemo from "./ktm/react/collapsible-demo"
 import KtmReactCollapsibleFileTree from "./ktm/react/collapsible-file-tree"
 import KtmReactCollapsibleSettings from "./ktm/react/collapsible-settings"
 import KtmReactCopyButtonDemo from "./ktm/react/copy-button-demo"
+import KtmReactEmptyBackground from "./ktm/react/empty-background"
+import KtmReactEmptyDemo from "./ktm/react/empty-demo"
+import KtmReactEmptyNotFound from "./ktm/react/empty-not-found"
+import KtmReactEmptyOutline from "./ktm/react/empty-outline"
 import KtmReactFieldCheckbox from "./ktm/react/field-checkbox"
 import KtmReactFieldChoiceCard from "./ktm/react/field-choice-card"
 import KtmReactFieldDemo from "./ktm/react/field-demo"
@@ -99,6 +108,15 @@ import KtmReactInputGroupTextarea from "./ktm/react/input-group-textarea"
 import KtmReactInputInvalid from "./ktm/react/input-invalid"
 import KtmReactInputSize from "./ktm/react/input-size"
 import KtmReactInputWithLabel from "./ktm/react/input-with-label"
+import KtmReactItemAvatar from "./ktm/react/item-avatar"
+import KtmReactItemDemo from "./ktm/react/item-demo"
+import KtmReactItemGroup from "./ktm/react/item-group"
+import KtmReactItemHeader from "./ktm/react/item-header"
+import KtmReactItemIcon from "./ktm/react/item-icon"
+import KtmReactItemImage from "./ktm/react/item-image"
+import KtmReactItemLink from "./ktm/react/item-link"
+import KtmReactItemSize from "./ktm/react/item-size"
+import KtmReactItemVariant from "./ktm/react/item-variant"
 import KtmReactKbdButton from "./ktm/react/kbd-button"
 import KtmReactKbdDemo from "./ktm/react/kbd-demo"
 import KtmReactKbdGroup from "./ktm/react/kbd-group"
@@ -204,6 +222,11 @@ export const ExamplesIndex: Record<
 > = {
   ktm: {
     react: {
+      "accordion-borders": KtmReactAccordionBorders,
+      "accordion-card": KtmReactAccordionCard,
+      "accordion-demo": KtmReactAccordionDemo,
+      "accordion-disabled": KtmReactAccordionDisabled,
+      "accordion-multiple": KtmReactAccordionMultiple,
       "alert-action": KtmReactAlertAction,
       "alert-colors": KtmReactAlertColors,
       "alert-demo": KtmReactAlertDemo,
@@ -271,6 +294,10 @@ export const ExamplesIndex: Record<
       "collapsible-file-tree": KtmReactCollapsibleFileTree,
       "collapsible-settings": KtmReactCollapsibleSettings,
       "copy-button-demo": KtmReactCopyButtonDemo,
+      "empty-background": KtmReactEmptyBackground,
+      "empty-demo": KtmReactEmptyDemo,
+      "empty-not-found": KtmReactEmptyNotFound,
+      "empty-outline": KtmReactEmptyOutline,
       "field-checkbox": KtmReactFieldCheckbox,
       "field-choice-card": KtmReactFieldChoiceCard,
       "field-demo": KtmReactFieldDemo,
@@ -299,6 +326,15 @@ export const ExamplesIndex: Record<
       "input-invalid": KtmReactInputInvalid,
       "input-size": KtmReactInputSize,
       "input-with-label": KtmReactInputWithLabel,
+      "item-avatar": KtmReactItemAvatar,
+      "item-demo": KtmReactItemDemo,
+      "item-group": KtmReactItemGroup,
+      "item-header": KtmReactItemHeader,
+      "item-icon": KtmReactItemIcon,
+      "item-image": KtmReactItemImage,
+      "item-link": KtmReactItemLink,
+      "item-size": KtmReactItemSize,
+      "item-variant": KtmReactItemVariant,
       "kbd-button": KtmReactKbdButton,
       "kbd-demo": KtmReactKbdDemo,
       "kbd-group": KtmReactKbdGroup,
@@ -399,6 +435,11 @@ export const ExamplesIndex: Record<
       "typeset-table": KtmReactTypesetTable,
     },
     html: {
+      "accordion-borders": "ktm/html/accordion-borders.html",
+      "accordion-card": "ktm/html/accordion-card.html",
+      "accordion-demo": "ktm/html/accordion-demo.html",
+      "accordion-disabled": "ktm/html/accordion-disabled.html",
+      "accordion-multiple": "ktm/html/accordion-multiple.html",
       "alert-action": "ktm/html/alert-action.html",
       "alert-colors": "ktm/html/alert-colors.html",
       "alert-demo": "ktm/html/alert-demo.html",
@@ -465,6 +506,10 @@ export const ExamplesIndex: Record<
       "collapsible-demo": "ktm/html/collapsible-demo.html",
       "collapsible-file-tree": "ktm/html/collapsible-file-tree.html",
       "collapsible-settings": "ktm/html/collapsible-settings.html",
+      "empty-background": "ktm/html/empty-background.html",
+      "empty-demo": "ktm/html/empty-demo.html",
+      "empty-not-found": "ktm/html/empty-not-found.html",
+      "empty-outline": "ktm/html/empty-outline.html",
       "field-checkbox": "ktm/html/field-checkbox.html",
       "field-choice-card": "ktm/html/field-choice-card.html",
       "field-demo": "ktm/html/field-demo.html",
@@ -493,6 +538,15 @@ export const ExamplesIndex: Record<
       "input-invalid": "ktm/html/input-invalid.html",
       "input-label": "ktm/html/input-label.html",
       "input-size": "ktm/html/input-size.html",
+      "item-avatar": "ktm/html/item-avatar.html",
+      "item-demo": "ktm/html/item-demo.html",
+      "item-group": "ktm/html/item-group.html",
+      "item-header": "ktm/html/item-header.html",
+      "item-icon": "ktm/html/item-icon.html",
+      "item-image": "ktm/html/item-image.html",
+      "item-link": "ktm/html/item-link.html",
+      "item-size": "ktm/html/item-size.html",
+      "item-variant": "ktm/html/item-variant.html",
       "kbd-button": "ktm/html/kbd-button.html",
       "kbd-demo": "ktm/html/kbd-demo.html",
       "kbd-group": "ktm/html/kbd-group.html",

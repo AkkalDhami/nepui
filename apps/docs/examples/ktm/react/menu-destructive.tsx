@@ -9,7 +9,7 @@ import {
   MenuSeparator,
   MenuTrigger,
 } from "@/registry/react/menu"
-import { PencilSimpleIcon, TrashIcon } from "@phosphor-icons/react/ssr"
+import { PencilSimpleIcon, TrashIcon } from "@phosphor-icons/react"
 
 export default function MenuDestructive() {
   return (
