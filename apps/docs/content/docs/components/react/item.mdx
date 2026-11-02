@@ -1,0 +1,295 @@
+---
+title: Item
+description: A versatile component for displaying content with media, title, description, and actions.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="item-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/item.json"
+      nepui="npx nepui@latest add item --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react class-variance-authority cn" className="mt-6"/>
+
+      <Step>
+        Add the <LINK href="/docs/components/react/separator">Separator</LINK> component. `ItemSeparator` is built on it.
+      </Step>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="item"
+        title="components/nepui/item/item.css"
+        fileTarget="components/nepui/item/item.css"
+      />
+      <ComponentSource
+        target="react"
+        name="item"
+        title="components/nepui/item/item.tsx"
+        fileTarget="components/nepui/item/item.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="item"
+        title="components/nepui/item/index.ts"
+        fileTarget="components/nepui/item/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import {
+  Item,
+  ItemActions,
+  ItemContent,
+  ItemDescription,
+  ItemMedia,
+  ItemTitle,
+} from "@/components/nepui/item"
+```
+
+```tsx
+<Item>
+  <ItemMedia variant="icon">
+    <Icon />
+  </ItemMedia>
+  <ItemContent>
+    <ItemTitle>Title</ItemTitle>
+    <ItemDescription>Description</ItemDescription>
+  </ItemContent>
+  <ItemActions>
+    <Button>Action</Button>
+  </ItemActions>
+</Item>
+```
+
+The `Item` component is a straightforward flex container that can house nearly any type of content. Use it to display a title, description, and actions. Group it with the `ItemGroup` component to create a list of items.
+
+---
+
+## Composition
+
+Use the following composition to build an `Item`:
+
+```text
+ItemGroup
+└── Item
+    ├── ItemHeader
+    ├── ItemMedia
+    ├── ItemContent
+    │   ├── ItemTitle
+    │   └── ItemDescription
+    ├── ItemActions
+    └── ItemFooter
+```
+
+---
+
+## Item vs Field
+
+Use [Field](/docs/components/react/field) if you need to display a form input such as a checkbox, input, radio, or select.
+
+If you only need to display content such as a title, description, and actions, use `Item`.
+
+---
+
+## Variant
+
+Use the `variant` prop to change the visual style of the item.
+
+<ComponentPreview
+  name="item-variant"
+/>
+
+---
+
+## Size
+
+Use the `size` prop to change the size of the item. Available sizes are `default`, `sm`, and `xs`.
+
+<ComponentPreview
+  name="item-size"
+/>
+
+---
+
+## Icon
+
+Use `ItemMedia` with `variant="icon"` to display an icon. It sits in a small boxed square. Set `--np-item-media-bg` and `--np-item-media-border` to `transparent` for a plain icon.
+
+<ComponentPreview
+  name="item-icon"
+/>
+
+---
+
+## Avatar
+
+Use `ItemMedia` to display an [Avatar](/docs/components/react/avatar) or an `AvatarGroup`.
+
+<ComponentPreview
+  name="item-avatar"
+/>
+
+---
+
+## Image
+
+Use `ItemMedia` with `variant="image"` to display an image. The image is cropped to fill the box.
+
+<ComponentPreview
+  name="item-image"
+/>
+
+---
+
+## Group
+
+Use `ItemGroup` to group related items together, and `ItemSeparator` to divide them. The group has `role="list"` and each `Item` inside it gets `role="listitem"`.
+
+<ComponentPreview
+  name="item-group"
+/>
+
+---
+
+## Header
+
+Use `ItemHeader` to add a header above the item content, and `ItemFooter` to add a footer below it. Both take the full width.
+
+<ComponentPreview
+  name="item-header"
+/>
+
+---
+
+## Link
+
+Use the `render` prop to render the item as a link. The hover and focus states are applied to the anchor element. Render it as a `button` the same way.
+
+<ComponentPreview
+  name="item-link"
+/>
+
+An item rendered with `render` does not get `role="listitem"`, so do not put it directly inside an `ItemGroup`. Wrap it in your own `div role="listitem"` if you need a list.
+
+---
+
+## States
+
+Add `aria-current` (or `data-selected`) to mark an item as selected. A link, button or `data-interactive` item gets hover styles. `aria-disabled="true"` (or `data-disabled`, or a disabled button) dims it and blocks pointer events.
+
+---
+
+## API Reference
+
+### Item
+
+The main component for displaying content with media, title, description, and actions. It renders a `div` and accepts every `div` prop.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `variant` | `"default" \| "outline" \| "muted"` | `"default"` |
+| `size` | `"default" \| "sm" \| "xs"` | `"default"` |
+| `render` | `ReactElement \| (props, state) => ReactElement` | - |
+| `className` | `string` | - |
+
+`itemVariants` is exported too, so you can give the same look to a non-React element.
+
+### ItemGroup
+
+A container that groups related items together. It renders a `div` with `role="list"`.
+
+```tsx
+<ItemGroup>
+  <Item />
+  <Item />
+</ItemGroup>
+```
+
+### ItemSeparator
+
+A separator between items in a group. It renders the nepui `Separator`.
+
+```tsx
+<ItemGroup>
+  <Item />
+  <ItemSeparator />
+  <Item />
+</ItemGroup>
+```
+
+### ItemMedia
+
+Use `ItemMedia` to display media content such as icons, images, or avatars.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `variant` | `"default" \| "icon" \| "image"` | `"default"` |
+| `className` | `string` | - |
+
+```tsx
+<ItemMedia variant="icon">
+  <Icon />
+</ItemMedia>
+```
+
+```tsx
+<ItemMedia variant="image">
+  <img src="..." alt="..." />
+</ItemMedia>
+```
+
+### ItemContent
+
+Wraps the title and description of the item. It takes the remaining width.
+
+```tsx
+<ItemContent>
+  <ItemTitle>Title</ItemTitle>
+  <ItemDescription>Description</ItemDescription>
+</ItemContent>
+```
+
+### ItemTitle
+
+Displays the title of the item.
+
+### ItemDescription
+
+Displays the description of the item. It is clamped to two lines, which `--np-item-description-lines` changes.
+
+### ItemActions
+
+Container for action buttons or other interactive elements.
+
+### ItemHeader
+
+Displays a header above the item content.
+
+### ItemFooter
+
+Displays a footer below the item content.

@@ -1,0 +1,180 @@
+---
+title: Empty
+description: Use the Empty component to display an empty state.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="empty-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/empty.json"
+      nepui="npx nepui@latest add empty --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install class-variance-authority cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="empty"
+        title="components/nepui/empty/empty.css"
+        fileTarget="components/nepui/empty/empty.css"
+      />
+      <ComponentSource
+        target="react"
+        name="empty"
+        title="components/nepui/empty/empty.tsx"
+        fileTarget="components/nepui/empty/empty.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="empty"
+        title="components/nepui/empty/index.ts"
+        fileTarget="components/nepui/empty/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "@/components/nepui/empty"
+```
+
+```tsx
+<Empty>
+  <EmptyHeader>
+    <EmptyMedia variant="icon">
+      <Icon />
+    </EmptyMedia>
+    <EmptyTitle>No data</EmptyTitle>
+    <EmptyDescription>No data found</EmptyDescription>
+  </EmptyHeader>
+  <EmptyContent>
+    <Button>Add data</Button>
+  </EmptyContent>
+</Empty>
+```
+
+The examples on this page use [Button](/docs/components/react/button).
+
+---
+
+## Composition
+
+Use the following composition to build an empty state:
+
+```text
+Empty
+├── EmptyHeader
+│   ├── EmptyMedia
+│   ├── EmptyTitle
+│   └── EmptyDescription
+└── EmptyContent
+```
+
+---
+
+## Outline
+
+Use `appearance="outline"` on `Empty` for a dashed border.
+
+<ComponentPreview
+  name="empty-outline"
+/>
+
+---
+
+## Background
+
+Set the `--np-empty-bg` variable to add a color or a gradient. It accepts anything that `background` accepts.
+
+<ComponentPreview
+  name="empty-background"
+/>
+
+---
+
+## Not Found
+
+Put links inside `EmptyDescription`. Links in it are underlined and change color on hover.
+
+<ComponentPreview
+  name="empty-not-found"
+/>
+
+---
+
+## API Reference
+
+### Empty
+
+The main component of the empty state. Wraps the `EmptyHeader` and `EmptyContent` components.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `appearance` | `"default" \| "outline"` | `"default"` |
+| `className` | `string` | - |
+
+### EmptyHeader
+
+Wraps the media, the title and the description.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `className` | `string` | - |
+
+### EmptyMedia
+
+The media of the empty state, such as an icon or an image.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `variant` | `"default" \| "icon"` | `"default"` |
+| `className` | `string` | - |
+
+### EmptyTitle
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `className` | `string` | - |
+
+### EmptyDescription
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `className` | `string` | - |
+
+### EmptyContent
+
+The content of the empty state, such as a button, an input or a link.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `className` | `string` | - |

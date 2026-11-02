@@ -1,53 +1,101 @@
 ---
 title: CLI
-description: Install and manage nepui components from the command line.
+description: Initialize a project and install nepui components from the command line.
 ---
 
+Use the nepui CLI to initialize a project and add component source files directly into your app.
 
 ```bash
-npx nepui add button
+npx nepui@latest init --target react
+npx nepui@latest init --target html
+
+npx nepui@latest add button --target react
+npx nepui@latest add button card spinner --target html
+npx nepui@latest add --all --target react
+```
+
+No separate install step is required. Run the CLI on demand with `npx`, or pin a version in CI with `npx nepui@latest`.
+
+## Initialize a project
+
+```bash
+npx nepui@latest init [directory] --target <html|react>
+```
+
+`init` creates the base nepui token stylesheet for your project and sets up the correct folder structure for the selected target.
+
+Examples:
+
+```bash
+npx nepui@latest init --target react
+npx nepui@latest init --target html
 ```
 
 ```bash
-npx nepui add button --target react
+npx nepui@latest init --target react .
+npx nepui@latest init --target react my-app
+npx nepui@latest init --target html my-app
 ```
-
-No install step - run it on demand with `npx`. Pin a version in CI with `npx nepui@latest`.
-
-## Add a component
 
 ```bash
-npx nepui add <component> --target <html|react>
+npx nepui@latest init
 ```
 
-**Default target is `html`.**
+If you do not pass a directory, the CLI prompts you for the target and folder.
 
+For React projects, it writes the base token file to `components/nepui/tokens.css`.
+For HTML projects, it writes it to `styles/tokens.css`.
 
-If a destination file already exists, you're prompted to **Overwrite**, **Skip**, or **Cancel** - nothing is silently replaced. An unknown component or an invalid `--target` fails immediately with no files written.
+React initialization also installs the required dependencies for the project when needed.
 
-## List components
+## Install components
 
 ```bash
-npx nepui list [--target html|react] [--json]
+npx nepui@latest add <component> [<component>...] --target <html|react>
 ```
+
+You can add:
+
+- one component
+- multiple components
+- every available component with `--all`
+
+Examples:
+
+```bash
+npx nepui@latest add button --target react
+npx nepui@latest add button card spinner --target react
+npx nepui@latest add button card spinner --target html
+npx nepui@latest add --all --target html
+npx nepui@latest add --all --target react
+```
+
+The default target is `html`.
+
+If a destination file already exists, the CLI asks whether to overwrite it, skip it, or cancel. Nothing is silently replaced. An unknown component name or an invalid `--target` value fails immediately, and no files are written.
+
+Use either component names or `--all`; do not combine them in the same command.
+
+## List available components
+
+```bash
+npx nepui list [--target <html|react>] [--json]
+```
+
+Aliases:
 
 ```bash
 npx nepui ls
-```
-
-```bash
 npx nepui ls --target react
+npx nepui ls --json
+npx nepui ls --json --target react
 ```
 
-```bash
-npx nepui ls --target --json
-```
-
-Defaults to `--target html`. Plain output is an alphabetical list; `--json` prints only the JSON object to stdout (safe to pipe into `jq`), with nothing else written on success.
+By default, the CLI lists components for the `html` target. Plain output is an alphabetical list. With `--json`, it prints only the JSON object to stdout, which is safe to pipe into tools like `jq`.
 
 ## Reference
 
-| | |
+| Option | Description |
 | --- | --- |
 | `-V, --version` | Print the installed CLI version |
 | `-h, --help` | Show help for `nepui` or any subcommand |
