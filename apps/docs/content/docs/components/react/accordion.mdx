@@ -1,0 +1,203 @@
+---
+title: Accordion
+description: A vertically stacked set of interactive headings that each reveal a section of content.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="accordion-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/accordion.json"
+      nepui="npx nepui@latest add accordion --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="accordion"
+        title="components/nepui/accordion/accordion.css"
+        fileTarget="components/nepui/accordion/accordion.css"
+      />
+      <ComponentSource
+        target="react"
+        name="accordion"
+        title="components/nepui/accordion/accordion.tsx"
+        fileTarget="components/nepui/accordion/accordion.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="accordion"
+        title="components/nepui/accordion/index.ts"
+        fileTarget="components/nepui/accordion/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/nepui/accordion"
+```
+
+```tsx
+<Accordion defaultValue={["item-1"]}>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Is it accessible?</AccordionTrigger>
+    <AccordionContent>
+      Yes. It adheres to the WAI-ARIA design pattern.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+`value` and `defaultValue` are always arrays of the open items' `value`s, for example `["item-1"]`.
+
+---
+
+## Composition
+
+Use the following composition to build an `Accordion`:
+
+```text
+Accordion
+├── AccordionItem
+│   ├── AccordionTrigger
+│   └── AccordionContent
+└── AccordionItem
+    ├── AccordionTrigger
+    └── AccordionContent
+```
+
+`AccordionTrigger` renders the heading that wraps the button, so you do not add one yourself. The chevron is drawn by the stylesheet.
+
+---
+
+## Basic
+
+By default an accordion shows one item at a time. The first example at the top of this page opens the first item with `defaultValue`.
+
+---
+
+## Multiple
+
+Use the `multiple` prop to allow multiple items to be open at the same time.
+
+<ComponentPreview
+  name="accordion-multiple"
+/>
+
+---
+
+## Disabled
+
+Use the `disabled` prop on `AccordionItem` to disable individual items. Set it on `Accordion` to disable all of them.
+
+<ComponentPreview
+  name="accordion-disabled"
+/>
+
+---
+
+## Borders
+
+Use `variant="bordered"` to draw a border around the accordion and inset the items.
+
+<ComponentPreview
+  name="accordion-borders"
+/>
+
+---
+
+## Card
+
+Wrap the `Accordion` in a [Card](/docs/components/react/card) component. Add the Card component to your project first, this example uses it.
+
+<ComponentPreview
+  name="accordion-card"
+/>
+
+---
+
+## Custom icon
+
+The chevron is a CSS mask, so any icon works. Set `--np-accordion-icon` to a `url()` and, for an icon that should not flip, set `--np-accordion-icon-rotate-open` to `0deg`.
+
+```tsx
+<Accordion
+  style={{
+    "--np-accordion-icon": 'url("/icons/plus.svg")',
+    "--np-accordion-icon-rotate-open": "45deg",
+  } as CSSProperties}
+>
+  ...
+</Accordion>
+```
+
+---
+
+## API Reference
+
+Built on the [Base UI Accordion](https://base-ui.com/react/components/accordion#api-reference). All Base UI props are supported, the tables list the ones you will use most.
+
+### Accordion
+
+| Prop            | Type                                                                      | Default     |
+| --------------- | ------------------------------------------------------------------------- | ----------- |
+| `variant`       | `"default" \| "bordered"`                                                 | `"default"` |
+| `multiple`      | `boolean`                                                                 | `false`     |
+| `value`         | `string[]`                                                                | -           |
+| `defaultValue`  | `string[]`                                                                | -           |
+| `onValueChange` | `(value: string[], eventDetails: Accordion.Root.ChangeEventDetails) => void` | -        |
+| `disabled`      | `boolean`                                                                 | `false`     |
+| `loopFocus`     | `boolean`                                                                 | `true`      |
+| `keepMounted`   | `boolean`                                                                 | `false`     |
+| `className`     | `string \| (state) => string`                                             | -           |
+
+### AccordionItem
+
+| Prop           | Type                                | Default |
+| -------------- | ----------------------------------- | ------- |
+| `value`        | `string`                            | -       |
+| `disabled`     | `boolean`                           | `false` |
+| `onOpenChange` | `(open: boolean) => void`           | -       |
+| `className`    | `string \| (state) => string`       | -       |
+
+### AccordionTrigger
+
+| Prop        | Type                          | Default |
+| ----------- | ----------------------------- | ------- |
+| `className` | `string \| (state) => string` | -       |
+
+### AccordionContent
+
+| Prop              | Type                          | Default |
+| ----------------- | ----------------------------- | ------- |
+| `keepMounted`     | `boolean`                     | `false` |
+| `hiddenUntilFound` | `boolean`                    | `false` |
+| `className`       | `string \| (state) => string` | -       |
