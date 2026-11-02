@@ -286,6 +286,63 @@
       ]
     },
     {
+      "name": "empty",
+      "type": "registry:ui",
+      "title": "Empty",
+      "description": "Use the Empty component to display an empty state.",
+      "files": [
+        {
+          "path": "registry/html/empty/empty.html",
+          "type": "registry:ui",
+          "target": "html/empty.html"
+        },
+        {
+          "path": "registry/html/empty/empty.css",
+          "type": "registry:ui",
+          "target": "styles/empty.css"
+        }
+      ]
+    },
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "A vertically stacked set of interactive headings that each reveal a section of content.",
+      "files": [
+        {
+          "path": "registry/html/accordion/accordion.html",
+          "type": "registry:ui",
+          "target": "html/accordion.html"
+        },
+        {
+          "path": "registry/html/accordion/accordion.css",
+          "type": "registry:ui",
+          "target": "styles/accordion.css"
+        }
+      ]
+    },
+    {
+      "name": "item",
+      "type": "registry:ui",
+      "title": "Item",
+      "description": "A versatile component for displaying content with media, title, description, and actions.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/html/separator.json"
+      ],
+      "files": [
+        {
+          "path": "registry/html/item/item.html",
+          "type": "registry:ui",
+          "target": "html/item.html"
+        },
+        {
+          "path": "registry/html/item/item.css",
+          "type": "registry:ui",
+          "target": "styles/item.css"
+        }
+      ]
+    },
+    {
       "name": "menu",
       "type": "registry:ui",
       "title": "Menu",
