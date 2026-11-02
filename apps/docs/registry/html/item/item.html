@@ -1,0 +1,783 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Item</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/separator.css" />
+    <link rel="stylesheet" href="../styles/avatar.css" />
+    <link rel="stylesheet" href="../styles/item.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem 4rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: var(--np-font-sans, system-ui, sans-serif);
+      }
+      main {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+        max-width: 40rem;
+        margin-inline: auto;
+      }
+      h2 {
+        margin: 0 0 0.25rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+      .hint {
+        margin: 0 0 0.75rem;
+        font-size: 0.8125rem;
+        color: var(--np-muted-foreground);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Class form</h2>
+        <p class="hint">
+          <code>np-item</code> with media, content and actions.
+        </p>
+        <div style="width: 100%; max-width: 28rem">
+          <div class="np-item np-item-outline">
+            <div class="np-item-content">
+              <div class="np-item-title">Basic Item</div>
+              <p class="np-item-description">
+                A simple item with title and description.
+              </p>
+            </div>
+            <div class="np-item-actions">
+              <button
+                class="np-button np-button-outline np-button-sm"
+                type="button"
+              >
+                Action
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Data-attribute form</h2>
+        <p class="hint"><code>data-np-item</code>, no classes.</p>
+        <div data-np-item data-variant="outline" style="max-width: 28rem">
+          <div data-np-item-media data-variant="icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <polyline points="22 12 16 12 14 15 10 15 8 12 2 12" />
+              <path
+                d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"
+              />
+            </svg>
+          </div>
+          <div data-np-item-content>
+            <div data-np-item-title>Data-attribute form</div>
+            <p data-np-item-description>
+              Same look with <code>data-np-item-*</code> and
+              <code>data-variant</code>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Variants</h2>
+        <p class="hint">
+          Default, <code>np-item-outline</code> and <code>np-item-muted</code>,
+          or <code>data-variant</code>.
+        </p>
+        <div
+          style="
+            display: flex;
+            width: 100%;
+            max-width: 28rem;
+            flex-direction: column;
+            gap: 1rem;
+          "
+        >
+          <div class="np-item">
+            <div class="np-item-media np-item-media-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <polyline points="22 12 16 12 14 15 10 15 8 12 2 12" />
+                <path
+                  d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"
+                />
+              </svg>
+            </div>
+            <div class="np-item-content">
+              <div class="np-item-title">Default Variant</div>
+              <p class="np-item-description">
+                Transparent background with no border.
+              </p>
+            </div>
+          </div>
+          <div class="np-item np-item-outline">
+            <div class="np-item-media np-item-media-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <polyline points="22 12 16 12 14 15 10 15 8 12 2 12" />
+                <path
+                  d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"
+                />
+              </svg>
+            </div>
+            <div class="np-item-content">
+              <div class="np-item-title">Outline Variant</div>
+              <p class="np-item-description">
+                Outlined style with a visible border.
+              </p>
+            </div>
+          </div>
+          <div class="np-item np-item-muted">
+            <div class="np-item-media np-item-media-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <polyline points="22 12 16 12 14 15 10 15 8 12 2 12" />
+                <path
+                  d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"
+                />
+              </svg>
+            </div>
+            <div class="np-item-content">
+              <div class="np-item-title">Muted Variant</div>
+              <p class="np-item-description">
+                Muted background for secondary content.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Sizes</h2>
+        <p class="hint">
+          Default, <code>np-item-sm</code> and <code>np-item-xs</code>, or
+          <code>data-size</code>.
+        </p>
+        <div
+          style="
+            display: flex;
+            width: 100%;
+            max-width: 28rem;
+            flex-direction: column;
+            gap: 1rem;
+          "
+        >
+          <div class="np-item np-item-outline">
+            <div class="np-item-media np-item-media-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <polyline points="22 12 16 12 14 15 10 15 8 12 2 12" />
+                <path
+                  d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"
+                />
+              </svg>
+            </div>
+            <div class="np-item-content">
+              <div class="np-item-title">Default Size</div>
+              <p class="np-item-description">
+                The standard size for most use cases.
+              </p>
+            </div>
+          </div>
+          <div class="np-item np-item-outline np-item-sm">
+            <div class="np-item-media np-item-media-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <polyline points="22 12 16 12 14 15 10 15 8 12 2 12" />
+                <path
+                  d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"
+                />
+              </svg>
+            </div>
+            <div class="np-item-content">
+              <div class="np-item-title">Small Size</div>
+              <p class="np-item-description">
+                A compact size for dense layouts.
+              </p>
+            </div>
+          </div>
+          <div class="np-item np-item-outline np-item-xs">
+            <div class="np-item-media np-item-media-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <polyline points="22 12 16 12 14 15 10 15 8 12 2 12" />
+                <path
+                  d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"
+                />
+              </svg>
+            </div>
+            <div class="np-item-content">
+              <div class="np-item-title">Extra Small Size</div>
+              <p class="np-item-description">
+                The most compact size available.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Media</h2>
+        <p class="hint">Icon, image and avatar.</p>
+        <div style="width: 100%; max-width: 28rem">
+          <div class="np-item np-item-outline">
+            <div class="np-item-media np-item-media-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+                />
+                <path d="M12 8v4" />
+                <path d="M12 16h.01" />
+              </svg>
+            </div>
+            <div class="np-item-content">
+              <div class="np-item-title">Security Alert</div>
+              <p class="np-item-description">
+                New login detected from unknown device.
+              </p>
+            </div>
+            <div class="np-item-actions">
+              <button
+                class="np-button np-button-outline np-button-sm"
+                type="button"
+              >
+                Review
+              </button>
+            </div>
+          </div>
+        </div>
+        <div style="height: 1rem"></div>
+        <div
+          style="
+            display: flex;
+            width: 100%;
+            max-width: 28rem;
+            flex-direction: column;
+            gap: 1rem;
+          "
+        >
+          <div class="np-item np-item-outline">
+            <div class="np-item-media">
+              <span class="np-avatar np-avatar-lg">
+                <img
+                  class="np-avatar-image"
+                  src="https://github.com/akkaldhami.png"
+                  alt="Akkal Dhami"
+                  onerror="this.hidden = true"
+                />
+                <span class="np-avatar-fallback">AD</span>
+              </span>
+            </div>
+            <div class="np-item-content">
+              <div class="np-item-title">Akkal Dhami</div>
+              <p class="np-item-description">Last seen 5 months ago</p>
+            </div>
+            <div class="np-item-actions">
+              <button
+                class="np-button np-button-outline np-button-icon-sm"
+                type="button"
+                aria-label="Invite"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14" />
+                  <path d="M12 5v14" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="np-item np-item-outline">
+            <div class="np-item-media">
+              <div class="np-avatar-group">
+                <span class="np-avatar">
+                  <img
+                    class="np-avatar-image"
+                    src="https://github.com/akkaldhami.png"
+                    alt="@akkaldhami"
+                    onerror="this.hidden = true"
+                  />
+                  <span class="np-avatar-fallback">AD</span>
+                </span>
+                <span class="np-avatar">
+                  <img
+                    class="np-avatar-image"
+                    src="https://github.com/pratapchaulagain.png"
+                    alt="@pratapchaulagain"
+                    onerror="this.hidden = true"
+                  />
+                  <span class="np-avatar-fallback">PC</span>
+                </span>
+                <span class="np-avatar">
+                  <img
+                    class="np-avatar-image"
+                    src="https://github.com/manisbhusal.png"
+                    alt="@manisbhusal"
+                    onerror="this.hidden = true"
+                  />
+                  <span class="np-avatar-fallback">MB</span>
+                </span>
+              </div>
+            </div>
+            <div class="np-item-content">
+              <div class="np-item-title">No Team Members</div>
+              <p class="np-item-description">
+                Invite your team to collaborate on this project.
+              </p>
+            </div>
+            <div class="np-item-actions">
+              <button
+                class="np-button np-button-outline np-button-sm"
+                type="button"
+              >
+                Invite
+              </button>
+            </div>
+          </div>
+        </div>
+        <div style="height: 1rem"></div>
+        <div style="width: 100%; max-width: 28rem">
+          <div class="np-item-group">
+            <a class="np-item np-item-outline" href="#">
+              <div class="np-item-media np-item-media-image">
+                <img
+                  alt=""
+                  src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'><rect width='4' height='4' fill='%23a1a1aa'/><circle cx='2' cy='2' r='1' fill='%23fafafa' fill-opacity='.7'/></svg>"
+                />
+              </div>
+              <div class="np-item-content">
+                <div class="np-item-title">Midnight City Lights</div>
+                <p class="np-item-description">Electric Nights - Neon Dreams</p>
+              </div>
+              <div class="np-item-content" style="flex: none; text-align: end">
+                <p class="np-item-description">3:45</p>
+              </div>
+            </a>
+            <a class="np-item np-item-outline" href="#">
+              <div class="np-item-media np-item-media-image">
+                <img
+                  alt=""
+                  src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'><rect width='4' height='4' fill='%2394a3b8'/><circle cx='2' cy='2' r='1' fill='%23fafafa' fill-opacity='.7'/></svg>"
+                />
+              </div>
+              <div class="np-item-content">
+                <div class="np-item-title">Coffee Shop Conversations</div>
+                <p class="np-item-description">
+                  Urban Stories - The Morning Brew
+                </p>
+              </div>
+              <div class="np-item-content" style="flex: none; text-align: end">
+                <p class="np-item-description">4:05</p>
+              </div>
+            </a>
+            <a class="np-item np-item-outline" href="#">
+              <div class="np-item-media np-item-media-image">
+                <img
+                  alt=""
+                  src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'><rect width='4' height='4' fill='%2386efac'/><circle cx='2' cy='2' r='1' fill='%23fafafa' fill-opacity='.7'/></svg>"
+                />
+              </div>
+              <div class="np-item-content">
+                <div class="np-item-title">Digital Rain</div>
+                <p class="np-item-description">Binary Beats - Cyber Symphony</p>
+              </div>
+              <div class="np-item-content" style="flex: none; text-align: end">
+                <p class="np-item-description">3:30</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Group</h2>
+        <p class="hint">
+          <code>np-item-group</code> with
+          <code>np-separator np-item-separator</code> between items.
+        </p>
+        <div style="width: 100%; max-width: 28rem">
+          <div class="np-item-group" role="list">
+            <div class="np-item" role="listitem">
+              <div class="np-item-media">
+                <span class="np-avatar">
+                  <img
+                    class="np-avatar-image"
+                    src="https://github.com/akkaldhami.png"
+                    alt="Akkal Dhami"
+                    onerror="this.hidden = true"
+                  />
+                  <span class="np-avatar-fallback">AD</span>
+                </span>
+              </div>
+              <div class="np-item-content">
+                <div class="np-item-title">Akkal Dhami</div>
+                <p class="np-item-description">@akkaldhami</p>
+              </div>
+              <div class="np-item-actions">
+                <button
+                  class="np-button np-button-ghost np-button-icon-sm"
+                  type="button"
+                  aria-label="Add akkaldhami"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="M12 5v14" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="np-separator np-item-separator" role="separator"></div>
+            <div class="np-item" role="listitem">
+              <div class="np-item-media">
+                <span class="np-avatar">
+                  <img
+                    class="np-avatar-image"
+                    src="https://github.com/pratapchaulagain.png"
+                    alt="pratapchaulagain"
+                    onerror="this.hidden = true"
+                  />
+                  <span class="np-avatar-fallback">PC</span>
+                </span>
+              </div>
+              <div class="np-item-content">
+                <div class="np-item-title">pratapchaulagain</div>
+                <p class="np-item-description">@pratapchaulagain</p>
+              </div>
+              <div class="np-item-actions">
+                <button
+                  class="np-button np-button-ghost np-button-icon-sm"
+                  type="button"
+                  aria-label="Add pratapchaulagain"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="M12 5v14" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="np-separator np-item-separator" role="separator"></div>
+            <div class="np-item" role="listitem">
+              <div class="np-item-media">
+                <span class="np-avatar">
+                  <img
+                    class="np-avatar-image"
+                    src="https://github.com/manisbhusal.png"
+                    alt="manisbhusal"
+                    onerror="this.hidden = true"
+                  />
+                  <span class="np-avatar-fallback">MB</span>
+                </span>
+              </div>
+              <div class="np-item-content">
+                <div class="np-item-title">manisbhusal</div>
+                <p class="np-item-description">@manisbhusal</p>
+              </div>
+              <div class="np-item-actions">
+                <button
+                  class="np-button np-button-ghost np-button-icon-sm"
+                  type="button"
+                  aria-label="Add manisbhusal"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="M12 5v14" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Header and footer</h2>
+        <p class="hint">Full-width rows above and below the content.</p>
+        <div
+          class="np-item-group"
+          role="list"
+          style="
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            width: 100%;
+            max-width: 36rem;
+            gap: 1rem;
+          "
+        >
+          <div class="np-item np-item-outline" role="listitem">
+            <div class="np-item-header">
+              <img
+                alt="v0-1.5-sm"
+                src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'><rect width='4' height='4' fill='%23a1a1aa'/><circle cx='2' cy='2' r='1' fill='%23fafafa' fill-opacity='.7'/></svg>"
+                style="
+                  width: 100%;
+                  aspect-ratio: 1;
+                  border-radius: var(--np-radius-sm);
+                  object-fit: cover;
+                "
+              />
+            </div>
+            <div class="np-item-content">
+              <div class="np-item-title">v0-1.5-sm</div>
+              <p class="np-item-description">
+                Everyday tasks and UI generation.
+              </p>
+            </div>
+            <div class="np-item-footer">Fast</div>
+          </div>
+          <div class="np-item np-item-outline" role="listitem">
+            <div class="np-item-header">
+              <img
+                alt="v0-1.5-lg"
+                src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'><rect width='4' height='4' fill='%2394a3b8'/><circle cx='2' cy='2' r='1' fill='%23fafafa' fill-opacity='.7'/></svg>"
+                style="
+                  width: 100%;
+                  aspect-ratio: 1;
+                  border-radius: var(--np-radius-sm);
+                  object-fit: cover;
+                "
+              />
+            </div>
+            <div class="np-item-content">
+              <div class="np-item-title">v0-1.5-lg</div>
+              <p class="np-item-description">Advanced thinking or reasoning.</p>
+            </div>
+            <div class="np-item-footer">Thorough</div>
+          </div>
+          <div class="np-item np-item-outline" role="listitem">
+            <div class="np-item-header">
+              <img
+                alt="v0-2.0-mini"
+                src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'><rect width='4' height='4' fill='%2386efac'/><circle cx='2' cy='2' r='1' fill='%23fafafa' fill-opacity='.7'/></svg>"
+                style="
+                  width: 100%;
+                  aspect-ratio: 1;
+                  border-radius: var(--np-radius-sm);
+                  object-fit: cover;
+                "
+              />
+            </div>
+            <div class="np-item-content">
+              <div class="np-item-title">v0-2.0-mini</div>
+              <p class="np-item-description">Open Source model for everyone.</p>
+            </div>
+            <div class="np-item-footer">Open</div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Link</h2>
+        <p class="hint">
+          Make the item an <code>a</code>, or a <code>button</code>.
+        </p>
+        <div
+          style="
+            display: flex;
+            width: 100%;
+            max-width: 28rem;
+            flex-direction: column;
+            gap: 1rem;
+          "
+        >
+          <a class="np-item" href="#">
+            <div class="np-item-content">
+              <div class="np-item-title">Visit our documentation</div>
+              <p class="np-item-description">
+                Learn how to get started with our components.
+              </p>
+            </div>
+            <div class="np-item-actions">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </div>
+          </a>
+          <a
+            class="np-item np-item-outline"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div class="np-item-content">
+              <div class="np-item-title">External resource</div>
+              <p class="np-item-description">
+                Opens in a new tab with security attributes.
+              </p>
+            </div>
+            <div class="np-item-actions">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M15 3h6v6" />
+                <path d="M10 14 21 3" />
+                <path
+                  d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                />
+              </svg>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section>
+        <h2>States</h2>
+        <p class="hint">Selected, interactive and disabled.</p>
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            max-width: 28rem;
+          "
+        >
+          <div class="np-item np-item-outline" aria-current="true">
+            <div class="np-item-content">
+              <div class="np-item-title">Selected</div>
+              <p class="np-item-description">
+                Use aria-current or data-selected.
+              </p>
+            </div>
+          </div>
+          <a class="np-item np-item-outline" href="#">
+            <div class="np-item-content">
+              <div class="np-item-title">Interactive</div>
+              <p class="np-item-description">
+                A link or button gets hover and focus styles.
+              </p>
+            </div>
+          </a>
+          <button class="np-item np-item-outline" type="button" disabled>
+            <div class="np-item-content">
+              <div class="np-item-title">Disabled</div>
+              <p class="np-item-description">Dimmed and not clickable.</p>
+            </div>
+          </button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
