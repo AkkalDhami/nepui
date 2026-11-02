@@ -1,0 +1,199 @@
+/* nepui — Accordion */
+
+.np-accordion,
+[data-np-accordion] {
+  --np-accordion-padding-block: calc(var(--np-spacing) * 2.5);
+  --np-accordion-inset: 0px;
+  --np-accordion-radius: var(--np-radius-md);
+  --np-accordion-icon-size: 1rem;
+  --np-accordion-icon-color: var(--np-muted-foreground);
+  --np-accordion-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  --np-accordion-icon-rotate-open: 180deg;
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: 0.875rem;
+  line-height: calc(1.25 / 0.875);
+}
+
+.np-accordion-bordered,
+:is(.np-accordion, [data-np-accordion])[data-variant="bordered"] {
+  --np-accordion-inset: calc(var(--np-spacing) * 4);
+
+  border: 1px solid var(--np-border);
+  border-radius: var(--np-accordion-radius);
+}
+
+.np-accordion-item,
+[data-np-accordion-item] {
+  padding-inline: var(--np-accordion-inset);
+}
+
+:is(.np-accordion-item, [data-np-accordion-item]):not(:last-child) {
+  border-block-end: 1px solid var(--np-border);
+}
+
+.np-accordion-header,
+[data-np-accordion-header] {
+  display: flex;
+  margin: 0;
+  font: inherit;
+}
+
+.np-accordion-trigger,
+[data-np-accordion-trigger] {
+  box-sizing: border-box;
+  display: flex;
+  flex: 1;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: calc(var(--np-spacing) * 2);
+  width: 100%;
+  margin: 0;
+  padding-block: var(--np-accordion-padding-block);
+  padding-inline: 0;
+  border: 1px solid transparent;
+  border-radius: var(--np-accordion-radius);
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-weight: 500;
+  text-align: start;
+  list-style: none;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  transition-property: color, border-color, box-shadow;
+  transition-duration: 150ms;
+  transition-timing-function: ease;
+}
+
+:is(
+  .np-accordion-trigger,
+  [data-np-accordion-trigger]
+)::-webkit-details-marker {
+  display: none;
+}
+
+:is(.np-accordion-trigger, [data-np-accordion-trigger])::marker {
+  content: "";
+}
+
+:is(.np-accordion-trigger, [data-np-accordion-trigger])::after {
+  content: "";
+  flex-shrink: 0;
+  width: var(--np-accordion-icon-size);
+  height: var(--np-accordion-icon-size);
+  margin-block-start: calc((1.25rem - var(--np-accordion-icon-size)) / 2);
+  background-color: var(--np-accordion-icon-color);
+  -webkit-mask: var(--np-accordion-icon) center / contain no-repeat;
+  mask: var(--np-accordion-icon) center / contain no-repeat;
+  pointer-events: none;
+  transition: transform 150ms ease;
+}
+
+:is(.np-accordion-trigger, [data-np-accordion-trigger]):hover {
+  text-decoration: underline;
+}
+
+:is(.np-accordion-trigger, [data-np-accordion-trigger]):focus-visible {
+  border-color: var(--np-ring);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--np-ring), transparent 50%);
+}
+
+:is(.np-accordion-trigger, [data-np-accordion-trigger]):is(
+    [aria-expanded="true"],
+    [data-panel-open]
+  )::after,
+:is(.np-accordion-item, [data-np-accordion-item])[open]
+  > :is(.np-accordion-trigger, [data-np-accordion-trigger])::after {
+  transform: rotate(var(--np-accordion-icon-rotate-open));
+}
+
+:is(.np-accordion-trigger, [data-np-accordion-trigger]):is(
+  :disabled,
+  [aria-disabled="true"],
+  [data-disabled]
+),
+:is(.np-accordion-item, [data-np-accordion-item]):is(
+    [data-disabled],
+    [aria-disabled="true"]
+  )
+  > :is(.np-accordion-trigger, [data-np-accordion-trigger]) {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.np-accordion-content,
+[data-np-accordion-content] {
+  height: var(--accordion-panel-height);
+  overflow: hidden;
+  transition: height 150ms ease;
+}
+
+:is(.np-accordion-content, [data-np-accordion-content]):is(
+  [data-starting-style],
+  [data-ending-style]
+) {
+  height: 0;
+}
+
+:is(.np-accordion-content, [data-np-accordion-content])::after {
+  content: "";
+  display: block;
+  height: var(--np-accordion-padding-block);
+}
+
+:is(.np-accordion-content, [data-np-accordion-content]) p {
+  margin: 0;
+}
+
+:is(.np-accordion-content, [data-np-accordion-content]) p:not(:last-child) {
+  margin-block-end: calc(var(--np-spacing) * 4);
+}
+
+:is(.np-accordion-content, [data-np-accordion-content]) a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+:is(.np-accordion-content, [data-np-accordion-content]) a:hover {
+  color: var(--np-foreground);
+}
+
+@supports selector(::details-content) {
+  details:is(.np-accordion-item, [data-np-accordion-item]) {
+    interpolate-size: allow-keywords;
+  }
+
+  details:is(.np-accordion-item, [data-np-accordion-item])::details-content {
+    block-size: 0;
+    overflow: clip;
+    transition-property: block-size, content-visibility;
+    transition-duration: 150ms;
+    transition-timing-function: ease;
+    transition-behavior: allow-discrete;
+  }
+
+  details:is(
+      .np-accordion-item,
+      [data-np-accordion-item]
+    )[open]::details-content {
+    block-size: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.np-accordion-trigger, [data-np-accordion-trigger]),
+  :is(.np-accordion-trigger, [data-np-accordion-trigger])::after,
+  .np-accordion-content,
+  [data-np-accordion-content] {
+    transition: none;
+  }
+
+  details:is(.np-accordion-item, [data-np-accordion-item])::details-content {
+    transition: none;
+  }
+}
