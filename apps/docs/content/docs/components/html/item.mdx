@@ -1,0 +1,225 @@
+---
+title: Item
+description: A versatile component for displaying content with media, title, description, and actions.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="item-demo"
+  target="html"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add item"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>
+        Add the <LINK href="/docs/components/html/separator">Separator</LINK> component. 
+      </Step>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="item"
+        title="styles/item.css"
+        fileTarget="styles/item.css"
+      />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the tokens and the stylesheet:
+
+```html
+<link rel="stylesheet" href="./styles/tokens.css">
+<link rel="stylesheet" href="./styles/item.css">
+```
+
+Add the classes:
+
+```html
+<div class="np-item np-item-outline">
+  <div class="np-item-media np-item-media-icon">
+    <svg>...</svg>
+  </div>
+  <div class="np-item-content">
+    <div class="np-item-title">Title</div>
+    <p class="np-item-description">Description</p>
+  </div>
+  <div class="np-item-actions">
+    <button class="np-button np-button-outline np-button-sm" type="button">Action</button>
+  </div>
+</div>
+```
+
+Or use the data attributes instead of the classes:
+
+```html
+<div data-np-item data-variant="outline">
+  <div data-np-item-media data-variant="icon">...</div>
+  <div data-np-item-content>
+    <div data-np-item-title>Title</div>
+    <p data-np-item-description>Description</p>
+  </div>
+</div>
+```
+
+Item needs no JavaScript. Interactivity comes from the native element you choose: use an `a` for navigation or a `button` for an action.
+
+---
+
+## Variant
+
+Add `np-item-outline` or `np-item-muted` (or set `data-variant`).
+
+<ComponentPreview
+  name="item-variant"
+  target="html"
+/>
+
+---
+
+## Size
+
+Add `np-item-sm` or `np-item-xs` (or set `data-size`).
+
+<ComponentPreview
+  name="item-size"
+  target="html"
+/>
+
+---
+
+## Icon
+
+Add `np-item-media-icon` (or `data-variant="icon"`) to the media. It sits in a small boxed square. Set `--np-item-media-bg` and `--np-item-media-border` to `transparent` for a plain icon.
+
+<ComponentPreview
+  name="item-icon"
+  target="html"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Avatar
+
+Put an avatar inside the media. This example needs the [Avatar](/docs/components/html/avatar) stylesheet.
+
+<ComponentPreview
+  name="item-avatar"
+  target="html"
+  styles={["/button/button.css", "/avatar/avatar.css"]}
+/>
+
+---
+
+## Image
+
+Add `np-item-media-image` (or `data-variant="image"`) and put an `img` inside. The image is cropped to fill the box.
+
+<ComponentPreview
+  name="item-image"
+  target="html"
+/>
+
+---
+
+## Group
+
+Wrap items in `np-item-group` with `role="list"` and give each item `role="listitem"`. Divide them with the Separator and the `np-item-separator` class. This example needs the [Separator](/docs/components/html/separator), Avatar and Button stylesheets.
+
+<ComponentPreview
+  name="item-group"
+  target="html"
+  styles={["/button/button.css", "/avatar/avatar.css", "/separator/separator.css"]}
+/>
+
+---
+
+## Header
+
+Use `np-item-header` and `np-item-footer` for full-width rows above and below the content.
+
+<ComponentPreview
+  name="item-header"
+  target="html"
+/>
+
+---
+
+## Link
+
+Make the item an `a` or a `button`. Hover and focus styles are applied to it. Leave out `role="listitem"` on a link and wrap it in a `div role="listitem"` if it sits in a list.
+
+<ComponentPreview
+  name="item-link"
+  target="html"
+/>
+
+---
+
+## States
+
+Add `aria-current` (or `data-selected`) to mark an item as selected. An `a`, a `button` or an element with `data-interactive` gets hover styles. `aria-disabled="true"`, `data-disabled` or a disabled button dims the item and blocks pointer events.
+
+---
+
+## Reference
+
+### Component
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Item | `data-np-item` | `np-item` |
+| Group | `data-np-item-group` | `np-item-group` |
+| Separator | `data-np-item-separator` | `np-item-separator` |
+| Media | `data-np-item-media` | `np-item-media` |
+| Content | `data-np-item-content` | `np-item-content` |
+| Title | `data-np-item-title` | `np-item-title` |
+| Description | `data-np-item-description` | `np-item-description` |
+| Actions | `data-np-item-actions` | `np-item-actions` |
+| Header | `data-np-item-header` | `np-item-header` |
+| Footer | `data-np-item-footer` | `np-item-footer` |
+
+### Variant
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Default | - | - |
+| Outline | `data-variant="outline"` | `np-item-outline` |
+| Muted | `data-variant="muted"` | `np-item-muted` |
+
+### Size
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Default | - | - |
+| Small | `data-size="sm"` | `np-item-sm` |
+| Extra small | `data-size="xs"` | `np-item-xs` |
+
+### Media variant
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Default | - | - |
+| Icon | `data-variant="icon"` | `np-item-media-icon` |
+| Image | `data-variant="image"` | `np-item-media-image` |

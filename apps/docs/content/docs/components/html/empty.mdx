@@ -1,0 +1,177 @@
+---
+title: Empty
+description: Use the Empty component to display an empty state.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="empty-demo"
+  target="html"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add empty"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="empty"
+        title="styles/empty.css"
+        fileTarget="styles/empty.css"
+      />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the stylesheet:
+
+```html
+<link rel="stylesheet" href="./styles/empty.css">
+```
+
+```html
+<div class="np-empty">
+  <div class="np-empty-header">
+    <div class="np-empty-media np-empty-media-icon">
+      <svg>...</svg>
+    </div>
+    <div class="np-empty-title">No data</div>
+    <p class="np-empty-description">No data found</p>
+  </div>
+  <div class="np-empty-content">
+    <button class="np-button" type="button">Add data</button>
+  </div>
+</div>
+```
+
+Or use the data attributes instead of classes:
+
+```html
+<div data-np-empty>
+  <div data-np-empty-header>
+    <div data-np-empty-media data-variant="icon"><svg>...</svg></div>
+    <div data-np-empty-title>No data</div>
+    <p data-np-empty-description>No data found</p>
+  </div>
+  <div data-np-empty-content>...</div>
+</div>
+```
+
+The examples on this page use the [Button](/docs/components/html/button) styles, so link `button.css` before `empty.css`.
+
+---
+
+## Composition
+
+Use the following composition to build an empty state:
+
+```text
+Empty
+├── EmptyHeader
+│   ├── EmptyMedia
+│   ├── EmptyTitle
+│   └── EmptyDescription
+└── EmptyContent
+```
+
+---
+
+## Outline
+
+Add `np-empty-outline` (or `data-appearance="outline"`) for a dashed border.
+
+Link the stylesheet:
+
+```html
+<link rel="stylesheet" href="./styles/button.css">
+```
+
+<ComponentPreview
+  name="empty-outline"
+  target="html"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Background
+
+Set the `--np-empty-bg` variable to add a color or a gradient. It accepts anything that `background` accepts.
+
+Link the stylesheet:
+
+```html
+<link rel="stylesheet" href="./styles/button.css">
+```
+
+<ComponentPreview
+  name="empty-background"
+  target="html"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Not Found
+
+Put links inside `EmptyDescription`. Links in it are underlined and change color on hover.
+
+Link the stylesheet:
+
+```html
+<link rel="stylesheet" href="./styles/button.css">
+```
+
+<ComponentPreview
+  name="empty-not-found"
+  target="html"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## API Reference
+
+### Parts
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Empty | `data-np-empty` | `np-empty` |
+| Header | `data-np-empty-header` | `np-empty-header` |
+| Media | `data-np-empty-media` | `np-empty-media` |
+| Title | `data-np-empty-title` | `np-empty-title` |
+| Description | `data-np-empty-description` | `np-empty-description` |
+| Content | `data-np-empty-content` | `np-empty-content` |
+
+### Appearance
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Default | - | `np-empty` |
+| Outline | `data-appearance="outline"` | `np-empty-outline` |
+
+### Media variant
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Default | - | `np-empty-media` |
+| Icon | `data-variant="icon"` | `np-empty-media-icon` |

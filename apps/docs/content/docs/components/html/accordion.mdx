@@ -1,0 +1,184 @@
+---
+title: Accordion
+description: A vertically stacked set of interactive headings that each reveal a section of content.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  target="html"
+  name="accordion-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add accordion"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="accordion"
+        title="styles/accordion.css"
+        fileTarget="styles/accordion.css"
+      />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the stylesheet:
+
+```html
+<link rel="stylesheet" href="./styles/accordion.css" />
+```
+
+The HTML flavour is built on the native `<details>` and `<summary>` elements, so it needs no JavaScript and keyboard and screen reader support come from the browser.
+
+```html
+<div class="np-accordion">
+  <details class="np-accordion-item" name="faq" open>
+    <summary class="np-accordion-trigger">Is it accessible?</summary>
+    <div class="np-accordion-content">
+      Yes. It adheres to the WAI-ARIA design pattern.
+    </div>
+  </details>
+</div>
+```
+
+Or use the data attributes instead of the classes:
+
+```html
+<div data-np-accordion>
+  <details data-np-accordion-item name="faq" open>
+    <summary data-np-accordion-trigger>Is it accessible?</summary>
+    <div data-np-accordion-content>
+      Yes. It adheres to the WAI-ARIA design pattern.
+    </div>
+  </details>
+</div>
+```
+
+The chevron is drawn by the stylesheet, so a trigger contains only its text. Add `open` to a `<details>` to open it by default.
+
+---
+
+## Single or multiple
+
+Give every `<details>` in a group the same `name` and only one can be open at a time. Leave `name` out and any number can be open.
+
+<ComponentPreview
+  target="html"
+  name="accordion-multiple"
+/>
+
+The example above has no `name`, so all three items open independently. The demo at the top shares `name="accordion-demo"`, so it opens one at a time.
+
+---
+
+## Disabled
+
+`<details>` has no native `disabled`. Add `data-disabled` to the item, then `tabindex="-1"` and `aria-disabled="true"` to the summary so the pointer and the keyboard both skip it.
+
+<ComponentPreview
+  target="html"
+  name="accordion-disabled"
+/>
+
+---
+
+## Borders
+
+Use `np-accordion-bordered` or `data-variant="bordered"` to draw a border around the accordion and inset the items.
+
+<ComponentPreview
+  target="html"
+  name="accordion-borders"
+/>
+
+---
+
+## Card
+
+Wrap the accordion in a [Card](/docs/components/html/card). Load the Card stylesheet before this one.
+
+Link the stylesheet:
+
+```html
+<link rel="stylesheet" href="./styles/card.css" />
+```
+
+<ComponentPreview
+  target="html"
+  name="accordion-card"
+  styles={["/card/card.css"]}
+/>
+
+---
+
+## Custom icon
+
+The chevron is a CSS mask, so any icon works. Set `--np-accordion-icon` to a `url()` and, for an icon that should not flip, set `--np-accordion-icon-rotate-open` to `0deg`.
+
+```html
+<div
+  class="np-accordion"
+  style="
+    --np-accordion-icon: url('/icons/plus.svg');
+    --np-accordion-icon-rotate-open: 45deg;
+  "
+>
+  ...
+</div>
+```
+
+---
+
+## Browser support
+
+Opening and closing works in every browser that supports `<details>`. Three details depend on newer features:
+
+- Single-open groups use `<details name>`: Chrome 120, Safari 17.2, Firefox 130. In older browsers every item behaves as if it had no `name`.
+- The height animation uses `::details-content` and `interpolate-size`. Where they are missing, items open and close without animation.
+- The chevron uses CSS masks.
+
+---
+
+## Reference
+
+### Parts
+
+| Name    | Data attribute          | Class alias             | Element              |
+| ------- | ----------------------- | ----------------------- | -------------------- |
+| Accordion | `data-np-accordion`   | `np-accordion`          | `div`                |
+| Item    | `data-np-accordion-item` | `np-accordion-item`    | `details`            |
+| Trigger | `data-np-accordion-trigger` | `np-accordion-trigger` | `summary`         |
+| Content | `data-np-accordion-content` | `np-accordion-content` | `div`             |
+
+### Variants
+
+| Name     | Data attribute           | Class alias              |
+| -------- | ------------------------ | ------------------------ |
+| Default  | -                        | `np-accordion`           |
+| Bordered | `data-variant="bordered"` | `np-accordion-bordered` |
+
+### States
+
+| State    | Selector                                                         |
+| -------- | ---------------------------------------------------------------- |
+| Open     | `details[open]`                                                  |
+| Disabled | `[data-disabled]` or `[aria-disabled="true"]` on the item        |
