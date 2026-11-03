@@ -6,6 +6,7 @@
   --np-kbd-radius: var(--np-radius-sm, 0.25rem);
   --np-kbd-bg: var(--np-muted);
   --np-kbd-color: var(--np-muted-foreground);
+  --np-kbd-border-color: var(--np-border);
 
   display: inline-flex;
   align-items: center;
@@ -17,7 +18,7 @@
   min-width: var(--np-kbd-height);
   padding: 0 0.25rem;
 
-  border: 1px solid var(--np-border);
+  border: 1px solid var(--np-kbd-border-color);
   border-block-end-width: 2px;
   border-radius: var(--np-kbd-radius);
   background: var(--np-kbd-bg);
@@ -61,6 +62,7 @@
   )
   :is(.np-kbd, [data-np-kbd]) {
   --np-kbd-bg: color-mix(in oklch, var(--np-background) 20%, transparent);
+  --np-kbd-border-color: var(--np-background);
   --np-kbd-color: var(--np-background);
 }
 
