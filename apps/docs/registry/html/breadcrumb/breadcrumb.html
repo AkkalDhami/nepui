@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Breadcrumb</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/breadcrumb.css" />
+    <script src="../javascripts/breadcrumb.js" defer></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem 4rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: system-ui, sans-serif;
+      }
+      main {
+        max-width: 44rem;
+        margin-inline: auto;
+      }
+      h2 {
+        margin: 2rem 0 0.25rem;
+        font-size: 1rem;
+      }
+      p.hint {
+        margin: 0 0 0.75rem;
+        color: var(--np-muted-foreground);
+        font-size: 0.875rem;
+      }
+      section {
+        padding-block-end: 1.25rem;
+        border-block-end: 1px solid var(--np-border);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Class form</h2>
+        <p class="hint">
+          <code>class="np-breadcrumb"</code> with
+          <code>np-breadcrumb-*</code> parts.
+        </p>
+        <nav class="np-breadcrumb" aria-label="Breadcrumb">
+          <ol class="np-breadcrumb-list">
+            <li class="np-breadcrumb-item">
+              <a class="np-breadcrumb-link" href="#">Home</a>
+            </li>
+            <li
+              class="np-breadcrumb-separator"
+              role="presentation"
+              aria-hidden="true"
+            ></li>
+            <li class="np-breadcrumb-item">
+              <a class="np-breadcrumb-link" href="#">Components</a>
+            </li>
+            <li
+              class="np-breadcrumb-separator"
+              role="presentation"
+              aria-hidden="true"
+            ></li>
+            <li class="np-breadcrumb-item">
+              <span
+                class="np-breadcrumb-page"
+                role="link"
+                aria-disabled="true"
+                aria-current="page"
+                >Breadcrumb</span
+              >
+            </li>
+          </ol>
+        </nav>
+      </section>
+      <section>
+        <h2>Data-attribute form</h2>
+        <p class="hint">
+          <code>data-np-breadcrumb</code> and <code>data-np-breadcrumb-*</code>,
+          no classes.
+        </p>
+        <nav data-np-breadcrumb aria-label="Breadcrumb">
+          <ol data-np-breadcrumb-list>
+            <li data-np-breadcrumb-item>
+              <a data-np-breadcrumb-link href="#">Home</a>
+            </li>
+            <li
+              data-np-breadcrumb-separator
+              role="presentation"
+              aria-hidden="true"
+            ></li>
+            <li data-np-breadcrumb-item>
+              <a data-np-breadcrumb-link href="#">Components</a>
+            </li>
+            <li
+              data-np-breadcrumb-separator
+              role="presentation"
+              aria-hidden="true"
+            ></li>
+            <li data-np-breadcrumb-item>
+              <span
+                data-np-breadcrumb-page
+                role="link"
+                aria-disabled="true"
+                aria-current="page"
+                >Breadcrumb</span
+              >
+            </li>
+          </ol>
+        </nav>
+      </section>
+      <section>
+        <h2>Custom separator</h2>
+        <p class="hint">
+          Put any text or icon inside the separator. Keep the default one truly
+          empty.
+        </p>
+        <nav class="np-breadcrumb" aria-label="Breadcrumb">
+          <ol class="np-breadcrumb-list">
+            <li class="np-breadcrumb-item">
+              <a class="np-breadcrumb-link" href="#">Home</a>
+            </li>
+            <li
+              class="np-breadcrumb-separator"
+              role="presentation"
+              aria-hidden="true"
+            >
+              /
+            </li>
+            <li class="np-breadcrumb-item">
+              <a class="np-breadcrumb-link" href="#">Components</a>
+            </li>
+            <li
+              class="np-breadcrumb-separator"
+              role="presentation"
+              aria-hidden="true"
+            >
+              /
+            </li>
+            <li class="np-breadcrumb-item">
+              <span
+                class="np-breadcrumb-page"
+                role="link"
+                aria-disabled="true"
+                aria-current="page"
+                >Breadcrumb</span
+              >
+            </li>
+          </ol>
+        </nav>
+      </section>
+      <section>
+        <h2>Collapsed</h2>
+        <p class="hint">A static ellipsis stands in for hidden items.</p>
+        <nav class="np-breadcrumb" aria-label="Breadcrumb">
+          <ol class="np-breadcrumb-list">
+            <li class="np-breadcrumb-item">
+              <a class="np-breadcrumb-link" href="#">Home</a>
+            </li>
+            <li
+              class="np-breadcrumb-separator"
+              role="presentation"
+              aria-hidden="true"
+            ></li>
+            <li class="np-breadcrumb-item">
+              <span class="np-breadcrumb-ellipsis">
+                <span class="np-breadcrumb-ellipsis-label">More</span>
+              </span>
+            </li>
+            <li
+              class="np-breadcrumb-separator"
+              role="presentation"
+              aria-hidden="true"
+            ></li>
+            <li class="np-breadcrumb-item">
+              <a class="np-breadcrumb-link" href="#">Components</a>
+            </li>
+            <li
+              class="np-breadcrumb-separator"
+              role="presentation"
+              aria-hidden="true"
+            ></li>
+            <li class="np-breadcrumb-item">
+              <span
+                class="np-breadcrumb-page"
+                role="link"
+                aria-disabled="true"
+                aria-current="page"
+                >Breadcrumb</span
+              >
+            </li>
+          </ol>
+        </nav>
+      </section>
+      <section>
+        <h2>Expandable</h2>
+        <p class="hint">
+          With <code>breadcrumb.js</code> and <code>data-max-items</code> the
+          middle items collapse, and the ellipsis becomes a button. Click it.
+        </p>
+        <nav
+          class="np-breadcrumb"
+          aria-label="Collapsed breadcrumb"
+          data-max-items="4"
+        >
+          <ol class="np-breadcrumb-list">
+            <li class="np-breadcrumb-item">
+              <a class="np-breadcrumb-link" href="#">Home</a>
+            </li>
+            <li
+              class="np-breadcrumb-separator"
+              role="presentation"
+              aria-hidden="true"
+            ></li>
+            <li class="np-breadcrumb-item">
+              <a class="np-breadcrumb-link" href="#">Docs</a>
+            </li>
+            <li
+              class="np-breadcrumb-separator"
+              role="presentation"
+              aria-hidden="true"
+            ></li>
+            <li class="np-breadcrumb-item">
+              <a class="np-breadcrumb-link" href="#">Guides</a>
+            </li>
+            <li
+              class="np-breadcrumb-separator"
+              role="presentation"
+              aria-hidden="true"
+            ></li>
+            <li class="np-breadcrumb-item">
+              <a class="np-breadcrumb-link" href="#">Components</a>
+            </li>
+            <li
+              class="np-breadcrumb-separator"
+              role="presentation"
+              aria-hidden="true"
+            ></li>
+            <li class="np-breadcrumb-item">
+              <a class="np-breadcrumb-link" href="#">Navigation</a>
+            </li>
+            <li
+              class="np-breadcrumb-separator"
+              role="presentation"
+              aria-hidden="true"
+            ></li>
+            <li class="np-breadcrumb-item">
+              <span
+                class="np-breadcrumb-page"
+                role="link"
+                aria-disabled="true"
+                aria-current="page"
+                >Breadcrumb</span
+              >
+            </li>
+          </ol>
+        </nav>
+      </section>
+      <section>
+        <h2>Current link</h2>
+        <p class="hint">
+          Routers such as Next and React Router mark the active link with
+          <code>aria-current="page"</code>. It is styled as the current page, so
+          the last item can stay a link.
+        </p>
+        <nav class="np-breadcrumb" aria-label="Breadcrumb">
+          <ol class="np-breadcrumb-list">
+            <li class="np-breadcrumb-item">
+              <a class="np-breadcrumb-link" href="#">Home</a>
+            </li>
+            <li
+              class="np-breadcrumb-separator"
+              role="presentation"
+              aria-hidden="true"
+            ></li>
+            <li class="np-breadcrumb-item">
+              <a class="np-breadcrumb-link" href="#">Components</a>
+            </li>
+            <li
+              class="np-breadcrumb-separator"
+              role="presentation"
+              aria-hidden="true"
+            ></li>
+            <li class="np-breadcrumb-item">
+              <a class="np-breadcrumb-link" href="#" aria-current="page"
+                >Breadcrumb</a
+              >
+            </li>
+          </ol>
+        </nav>
+      </section>
+      <section>
+        <h2>Items before and after</h2>
+        <p class="hint">
+          <code>data-items-before="2"</code> and
+          <code>data-items-after="1"</code> keep two items at the start and one
+          at the end.
+        </p>
+        <nav
+          class="np-breadcrumb"
+          aria-label="Custom collapse"
+          data-max-items="4"
+          data-items-before="2"
+          data-items-after="1"
+        >
+          <ol class="np-breadcrumb-list">
+            <li class="np-breadcrumb-item">
+              <a class="np-breadcrumb-link" href="#">Home</a>
+            </li>
+            <li
+              class="np-breadcrumb-separator"
+              role="presentation"
+              aria-hidden="true"
+            ></li>
+            <li class="np-breadcrumb-item">
+              <a class="np-breadcrumb-link" href="#">Docs</a>
+            </li>
+            <li
+              class="np-breadcrumb-separator"
+              role="presentation"
+              aria-hidden="true"
+            ></li>
+            <li class="np-breadcrumb-item">
+              <a class="np-breadcrumb-link" href="#">Guides</a>
+            </li>
+            <li
+              class="np-breadcrumb-separator"
+              role="presentation"
+              aria-hidden="true"
+            ></li>
+            <li class="np-breadcrumb-item">
+              <a class="np-breadcrumb-link" href="#">Components</a>
+            </li>
+            <li
+              class="np-breadcrumb-separator"
+              role="presentation"
+              aria-hidden="true"
+            ></li>
+            <li class="np-breadcrumb-item">
+              <a class="np-breadcrumb-link" href="#">Navigation</a>
+            </li>
+            <li
+              class="np-breadcrumb-separator"
+              role="presentation"
+              aria-hidden="true"
+            ></li>
+            <li class="np-breadcrumb-item">
+              <span
+                class="np-breadcrumb-page"
+                role="link"
+                aria-disabled="true"
+                aria-current="page"
+                >Breadcrumb</span
+              >
+            </li>
+          </ol>
+        </nav>
+      </section>
+      <section>
+        <h2>Wrapping</h2>
+        <p class="hint">
+          Long trails wrap instead of overflowing. Resize the window.
+        </p>
+        <nav
+          style="max-width: 24rem"
+          class="np-breadcrumb"
+          aria-label="Wrapping"
+        >
+          <ol class="np-breadcrumb-list">
+            <li class="np-breadcrumb-item">
+              <a class="np-breadcrumb-link" href="#">Home</a>
+            </li>
+            <li
+              class="np-breadcrumb-separator"
+              role="presentation"
+              aria-hidden="true"
+            ></li>
+            <li class="np-breadcrumb-item">
+              <a class="np-breadcrumb-link" href="#"
+                >Documentation and guides</a
+              >
+            </li>
+            <li
+              class="np-breadcrumb-separator"
+              role="presentation"
+              aria-hidden="true"
+            ></li>
+            <li class="np-breadcrumb-item">
+              <a class="np-breadcrumb-link" href="#">Components and patterns</a>
+            </li>
+            <li
+              class="np-breadcrumb-separator"
+              role="presentation"
+              aria-hidden="true"
+            ></li>
+            <li class="np-breadcrumb-item">
+              <a class="np-breadcrumb-link" href="#">Navigation components</a>
+            </li>
+            <li
+              class="np-breadcrumb-separator"
+              role="presentation"
+              aria-hidden="true"
+            ></li>
+            <li class="np-breadcrumb-item">
+              <a class="np-breadcrumb-link" href="#">Breadcrumb variations</a>
+            </li>
+            <li
+              class="np-breadcrumb-separator"
+              role="presentation"
+              aria-hidden="true"
+            ></li>
+            <li class="np-breadcrumb-item">
+              <span
+                class="np-breadcrumb-page"
+                role="link"
+                aria-disabled="true"
+                aria-current="page"
+                >A deliberately long page title that keeps going</span
+              >
+            </li>
+          </ol>
+        </nav>
+      </section>
+      <section>
+        <h2>Variables</h2>
+        <p class="hint">
+          Set <code>--np-breadcrumb-*</code> variables on the breadcrumb.
+        </p>
+        <nav
+          class="np-breadcrumb"
+          aria-label="Breadcrumb"
+          style="
+            --np-breadcrumb-font-size: 1rem;
+            --np-breadcrumb-gap: 0.75rem;
+            --np-breadcrumb-hover-color: var(--np-primary);
+          "
+        >
+          <ol class="np-breadcrumb-list">
+            <li class="np-breadcrumb-item">
+              <a class="np-breadcrumb-link" href="#">Home</a>
+            </li>
+            <li class="np-breadcrumb-separator" aria-hidden="true"></li>
+            <li class="np-breadcrumb-item">
+              <a class="np-breadcrumb-link" href="#">Components</a>
+            </li>
+            <li class="np-breadcrumb-separator" aria-hidden="true"></li>
+            <li class="np-breadcrumb-item">
+              <span class="np-breadcrumb-page" aria-current="page"
+                >Breadcrumb</span
+              >
+            </li>
+          </ol>
+        </nav>
+      </section>
+    </main>
+  </body>
+</html>
