@@ -21,16 +21,16 @@
   --np-badge-tint-border-dark: 25%;
   --np-badge-outline-bg: var(--np-background);
 
-  --np-badge-height: 1.5rem;
-  --np-badge-padding-x: 0.475rem;
-  --np-badge-padding-y: 0.125rem;
-  --np-badge-gap: 0.375rem;
+  --np-badge-height: 1.25rem;
+  --np-badge-padding-x: 0.5rem;
+  --np-badge-padding-y: 0.0625rem;
+  --np-badge-gap: 0.25rem;
   --np-badge-font-size: 0.75rem;
-  --np-badge-line-height: 1rem;
+  --np-badge-line-height: 1;
   --np-badge-icon-size: 0.75rem;
   --np-badge-radius: 9999px;
 
-  --np-badge-dot-size: 0.375rem;
+  --np-badge-dot-size: 0.3125rem;
   --np-badge-dot-color: currentColor;
   --np-badge-pulse-duration: 1.6s;
 
@@ -210,40 +210,50 @@
 
 .np-badge-xs,
 :is(.np-badge, [data-np-badge])[data-size="xs"] {
-  --np-badge-height: 1.25rem;
+  --np-badge-height: 1rem;
   --np-badge-padding-x: 0.25rem;
-  --np-badge-padding-y: 0.0625rem;
-  --np-badge-font-size: 0.6rem;
+  --np-badge-padding-y: 0;
+  --np-badge-gap: 0.25rem;
+  --np-badge-font-size: 0.625rem;
+  --np-badge-line-height: 0.75rem;
+  --np-badge-icon-size: 0.625rem;
   --np-badge-dot-size: 0.25rem;
-  --np-badge-line-height: 1;
 }
 
 .np-badge-sm,
 :is(.np-badge, [data-np-badge])[data-size="sm"] {
-  --np-badge-height: 1.375rem;
-  --np-badge-padding-x: 0.25rem;
-  --np-badge-padding-y: 0.0625rem;
-  --np-badge-font-size: 0.625rem;
-  --np-badge-dot-size: 0.3125rem;
-  --np-badge-line-height: 1;
+  --np-badge-height: 1.125rem;
+  --np-badge-padding-x: 0.375rem;
+  --np-badge-padding-y: 0;
+  --np-badge-gap: 0.25rem;
+  --np-badge-font-size: 0.6875rem;
+  --np-badge-line-height: 0.875rem;
+  --np-badge-icon-size: 0.6875rem;
+  --np-badge-dot-size: 0.25rem;
 }
 
 .np-badge-lg,
 :is(.np-badge, [data-np-badge])[data-size="lg"] {
-  --np-badge-height: 1.625rem;
-  --np-badge-padding-x: 0.5rem;
-  --np-badge-dot-size: 0.4375rem;
+  --np-badge-height: 1.5rem;
+  --np-badge-padding-x: 0.625rem;
+  --np-badge-padding-y: 0.0625rem;
+  --np-badge-gap: 0.375rem;
+  --np-badge-font-size: 0.875rem;
+  --np-badge-line-height: 1.25rem;
+  --np-badge-icon-size: 0.875rem;
+  --np-badge-dot-size: 0.375rem;
 }
 
 .np-badge-xl,
 :is(.np-badge, [data-np-badge])[data-size="xl"] {
   --np-badge-height: 1.75rem;
-  --np-badge-padding-x: 0.5rem;
-  --np-badge-padding-y: 0.1875rem;
+  --np-badge-padding-x: 0.75rem;
+  --np-badge-padding-y: 0.0625rem;
   --np-badge-gap: 0.375rem;
-  --np-badge-font-size: 0.875rem;
-  --np-badge-line-height: 1.25rem;
-  --np-badge-dot-size: 0.5rem;
+  --np-badge-font-size: 1rem;
+  --np-badge-line-height: 1.5rem;
+  --np-badge-icon-size: 1rem;
+  --np-badge-dot-size: 0.4375rem;
 }
 
 /* Radius */
