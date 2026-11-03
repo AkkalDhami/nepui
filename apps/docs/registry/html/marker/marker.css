@@ -1,0 +1,186 @@
+/* nepui - Marker */
+
+.np-marker,
+[data-np-marker] {
+  --np-marker-gap: calc(var(--np-spacing) * 2);
+  --np-marker-color: var(--np-muted-foreground);
+  --np-marker-hover-color: var(--np-foreground);
+  --np-marker-line: var(--np-border);
+  --np-marker-icon-size: calc(var(--np-spacing) * 4);
+  --np-marker-radius: var(--np-radius-sm);
+
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--np-marker-gap);
+  width: 100%;
+  margin: 0;
+  color: var(--np-marker-color);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  text-align: start;
+}
+
+:is(a, button):is(.np-marker, [data-np-marker]) {
+  width: fit-content;
+  padding: 0;
+  border: 0;
+  border-radius: var(--np-marker-radius);
+  background: none;
+  font-family: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  transition:
+    color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+:is(a, button):is(.np-marker, [data-np-marker]):hover {
+  color: var(--np-marker-hover-color);
+}
+
+:is(a, button):is(.np-marker, [data-np-marker]):focus-visible {
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--np-ring), transparent 50%);
+}
+
+:is(a, button):is(.np-marker, [data-np-marker]):is(
+    :disabled,
+    [aria-disabled="true"],
+    [data-disabled]
+  ) {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+:is(.np-marker, [data-np-marker]):is(
+  .np-marker-border,
+  [data-variant="border"]
+) {
+  width: 100%;
+  padding-block-end: calc(var(--np-spacing) * 2);
+  border-block-end: 1px solid var(--np-marker-line);
+}
+
+:is(.np-marker, [data-np-marker]):is(
+  .np-marker-separator,
+  [data-variant="separator"]
+) {
+  --np-marker-gap: calc(var(--np-spacing) * 3);
+
+  justify-content: center;
+  width: 100%;
+}
+
+:is(.np-marker, [data-np-marker]):is(
+    .np-marker-separator,
+    [data-variant="separator"]
+  )::before,
+:is(.np-marker, [data-np-marker]):is(
+    .np-marker-separator,
+    [data-variant="separator"]
+  )::after {
+  content: "";
+  flex: 1 1 0%;
+  height: 0;
+  border-block-start: 1px solid var(--np-marker-line);
+}
+
+:is(.np-marker, [data-np-marker]):is(
+  .np-marker-vertical,
+  [data-orientation="vertical"]
+) {
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.np-marker-icon,
+[data-np-marker-icon] {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+:is(.np-marker-icon, [data-np-marker-icon]) svg {
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+:is(.np-marker-icon, [data-np-marker-icon]) svg:not([class*="size-"]) {
+  width: var(--np-marker-icon-size);
+  height: var(--np-marker-icon-size);
+}
+
+:is(.np-marker-icon, [data-np-marker-icon]):is(.np-marker-spin, [data-spin])
+  svg {
+  animation: np-marker-spin 1s linear infinite;
+}
+
+.np-marker-content,
+[data-np-marker-content] {
+  min-width: 0;
+}
+
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  :is(.np-marker-content, [data-np-marker-content]):is(
+    .np-marker-shimmer,
+    [data-shimmer]
+  ) {
+    --np-marker-shimmer-base: var(--np-muted-foreground);
+    --np-marker-shimmer-highlight: var(--np-foreground);
+
+    background-image: linear-gradient(
+      110deg,
+      var(--np-marker-shimmer-base) 40%,
+      var(--np-marker-shimmer-highlight) 50%,
+      var(--np-marker-shimmer-base) 60%
+    );
+    background-size: 250% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: np-marker-shimmer 2s linear infinite;
+  }
+}
+
+@keyframes np-marker-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes np-marker-shimmer {
+  from {
+    background-position: 150% 0;
+  }
+
+  to {
+    background-position: -50% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(a, button):is(.np-marker, [data-np-marker]) {
+    transition: none;
+  }
+
+  :is(.np-marker-icon, [data-np-marker-icon]):is(.np-marker-spin, [data-spin])
+    svg {
+    animation: none;
+  }
+
+  :is(.np-marker-content, [data-np-marker-content]):is(
+    .np-marker-shimmer,
+    [data-shimmer]
+  ) {
+    background-image: none;
+    -webkit-text-fill-color: currentColor;
+    color: inherit;
+    animation: none;
+  }
+}
