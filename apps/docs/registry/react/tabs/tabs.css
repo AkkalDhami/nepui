@@ -1,0 +1,248 @@
+/* nepui — Tabs */
+
+.np-tabs,
+[data-np-tabs] {
+  --np-tabs-gap: calc(var(--np-spacing) * 2);
+  --np-tabs-direction: column;
+  --np-tabs-list-direction: row;
+  --np-tabs-list-height: calc(var(--np-spacing) * 8);
+  --np-tabs-trigger-width: auto;
+  --np-tabs-trigger-justify: center;
+  --np-tabs-indicator-inset-block: auto calc(var(--np-spacing) * -1.25);
+  --np-tabs-indicator-inset-inline: 0 0;
+  --np-tabs-indicator-width: auto;
+  --np-tabs-indicator-height: 0.125rem;
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: var(--np-tabs-direction);
+  gap: var(--np-tabs-gap);
+}
+
+.np-tabs-vertical,
+:is(.np-tabs, [data-np-tabs])[data-orientation="vertical"] {
+  --np-tabs-direction: row;
+  --np-tabs-list-direction: column;
+  --np-tabs-list-height: fit-content;
+  --np-tabs-trigger-width: 100%;
+  --np-tabs-trigger-justify: flex-start;
+  --np-tabs-indicator-inset-block: 0 0;
+  --np-tabs-indicator-inset-inline: auto calc(var(--np-spacing) * -1);
+  --np-tabs-indicator-width: 0.125rem;
+  --np-tabs-indicator-height: auto;
+}
+
+.np-tabs-list,
+[data-np-tabs-list] {
+  --np-tabs-list-bg: var(--np-muted);
+  --np-tabs-list-radius: var(--np-radius-md);
+  --np-tabs-list-padding: 3px;
+  --np-tabs-list-gap: 0px;
+  --np-tabs-color: color-mix(in oklab, var(--np-foreground) 60%, transparent);
+  --np-tabs-hover-color: var(--np-foreground);
+  --np-tabs-active-bg: var(--np-background);
+  --np-tabs-active-color: var(--np-foreground);
+  --np-tabs-active-border: var(--np-border);
+  --np-tabs-active-shadow: var(--np-shadow-sm);
+  --np-tabs-indicator-color: var(--np-foreground);
+  --np-tabs-indicator-active-opacity: 0;
+
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-direction: var(--np-tabs-list-direction, row);
+  align-items: center;
+  justify-content: center;
+  gap: var(--np-tabs-list-gap);
+  width: fit-content;
+  height: var(--np-tabs-list-height, calc(var(--np-spacing) * 8));
+  padding: var(--np-tabs-list-padding);
+  border-radius: var(--np-tabs-list-radius);
+  background-color: var(--np-tabs-list-bg);
+  color: var(--np-muted-foreground);
+}
+
+.np-tabs-line,
+:is(.np-tabs-list, [data-np-tabs-list])[data-variant="line"] {
+  --np-tabs-list-bg: transparent;
+  --np-tabs-list-radius: 0;
+  --np-tabs-list-gap: calc(var(--np-spacing) * 1);
+  --np-tabs-active-bg: transparent;
+  --np-tabs-active-border: transparent;
+  --np-tabs-active-shadow: 0 0 #0000;
+  --np-tabs-indicator-active-opacity: 1;
+}
+
+.np-tabs-trigger,
+[data-np-tabs-trigger] {
+  --np-tabs-trigger-height: calc(100% - 1px);
+  --np-tabs-trigger-padding: calc(var(--np-spacing) * 0.5)
+    calc(var(--np-spacing) * 1.5);
+  --np-tabs-trigger-gap: calc(var(--np-spacing) * 1.5);
+  --np-tabs-trigger-radius: var(--np-radius-sm);
+  --np-tabs-trigger-font-size: 0.875rem;
+  --np-tabs-icon-size: 1rem;
+
+  position: relative;
+  box-sizing: border-box;
+  display: inline-flex;
+  flex: 1 1 0%;
+  align-items: center;
+  justify-content: var(--np-tabs-trigger-justify, center);
+  gap: var(--np-tabs-trigger-gap);
+  width: var(--np-tabs-trigger-width, auto);
+  height: var(--np-tabs-trigger-height);
+  margin: 0;
+  padding: var(--np-tabs-trigger-padding);
+  border: 1px solid transparent;
+  border-radius: var(--np-tabs-trigger-radius);
+  background-color: transparent;
+  box-shadow: none;
+  outline: none;
+  color: var(--np-tabs-color);
+  font: inherit;
+  font-size: var(--np-tabs-trigger-font-size);
+  font-weight: 500;
+  line-height: 1.25rem;
+  text-transform: none;
+  white-space: nowrap;
+  transition:
+    color 150ms ease,
+    background-color 150ms ease,
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+:is(.np-tabs-trigger, [data-np-tabs-trigger]):hover {
+  color: var(--np-tabs-hover-color);
+}
+
+:is(.np-tabs-trigger, [data-np-tabs-trigger]):is(
+  [aria-selected="true"],
+  [data-active]
+) {
+  border-color: var(--np-tabs-active-border);
+  background-color: var(--np-tabs-active-bg);
+  color: var(--np-tabs-active-color);
+  box-shadow: var(--np-tabs-active-shadow);
+}
+
+:is(.np-tabs-trigger, [data-np-tabs-trigger]):focus-visible {
+  border-color: var(--np-ring);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--np-ring), transparent 50%);
+}
+
+:is(.np-tabs-trigger, [data-np-tabs-trigger]):is(
+    [aria-selected="true"],
+    [data-active]
+  ):focus-visible {
+  box-shadow:
+    0 0 0 3px color-mix(in oklch, var(--np-ring), transparent 50%),
+    var(--np-tabs-active-shadow);
+}
+
+:is(.np-tabs-trigger, [data-np-tabs-trigger]):is(
+  :disabled,
+  [aria-disabled="true"],
+  [data-disabled]
+) {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+:is(.np-tabs-trigger, [data-np-tabs-trigger]) svg {
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+:is(.np-tabs-trigger, [data-np-tabs-trigger]) svg:not([class*="size-"]) {
+  width: var(--np-tabs-icon-size);
+  height: var(--np-tabs-icon-size);
+}
+
+:is(.np-tabs-trigger, [data-np-tabs-trigger])::after {
+  content: "";
+  position: absolute;
+  inset-block: var(
+    --np-tabs-indicator-inset-block,
+    auto calc(var(--np-spacing) * -1.25)
+  );
+  inset-inline: var(--np-tabs-indicator-inset-inline, 0 0);
+  width: var(--np-tabs-indicator-width, auto);
+  height: var(--np-tabs-indicator-height, 0.125rem);
+  background-color: var(--np-tabs-indicator-color);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 150ms ease;
+}
+
+:is(.np-tabs-trigger, [data-np-tabs-trigger]):is(
+    [aria-selected="true"],
+    [data-active]
+  )::after {
+  opacity: var(--np-tabs-indicator-active-opacity, 0);
+}
+
+.np-tabs-content,
+[data-np-tabs-content] {
+  box-sizing: border-box;
+  flex: 1 1 0%;
+  border-radius: var(--np-radius-sm);
+  outline: none;
+  font-size: 0.875rem;
+}
+
+:is(.np-tabs-content, [data-np-tabs-content]):focus-visible {
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--np-ring), transparent 50%);
+}
+
+:is(.np-tabs-content, [data-np-tabs-content])[hidden] {
+  display: none;
+}
+
+:is(.dark, [data-theme="dark"]) :is(.np-tabs-list, [data-np-tabs-list]) {
+  --np-tabs-color: var(--np-muted-foreground);
+  --np-tabs-active-bg: color-mix(
+    in oklab,
+    var(--np-input, var(--np-border)) 30%,
+    transparent
+  );
+  --np-tabs-active-border: var(--np-input, var(--np-border));
+}
+
+:is(.dark, [data-theme="dark"])
+  :is(
+    .np-tabs-line,
+    :is(.np-tabs-list, [data-np-tabs-list])[data-variant="line"]
+  ) {
+  --np-tabs-active-bg: transparent;
+  --np-tabs-active-border: transparent;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light, [data-theme="light"])
+    :is(.np-tabs-list, [data-np-tabs-list]) {
+    --np-tabs-color: var(--np-muted-foreground);
+    --np-tabs-active-bg: color-mix(
+      in oklab,
+      var(--np-input, var(--np-border)) 30%,
+      transparent
+    );
+    --np-tabs-active-border: var(--np-input, var(--np-border));
+  }
+
+  :root:not(.light, [data-theme="light"])
+    :is(
+      .np-tabs-line,
+      :is(.np-tabs-list, [data-np-tabs-list])[data-variant="line"]
+    ) {
+    --np-tabs-active-bg: transparent;
+    --np-tabs-active-border: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.np-tabs-trigger, [data-np-tabs-trigger]),
+  :is(.np-tabs-trigger, [data-np-tabs-trigger])::after {
+    transition: none;
+  }
+}
