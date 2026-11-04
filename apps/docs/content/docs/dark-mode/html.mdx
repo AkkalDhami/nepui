@@ -1,0 +1,155 @@
+---
+title: HTML
+description: Add system-aware dark mode and a theme toggle to an HTML site.
+---
+
+The nepui token stylesheet follows the user's system color preference by
+default. Add the `.dark` or `.light` class to `<html>` to override it.
+
+## Set up the page
+
+Load `theme.js` before the token stylesheet so a saved theme is applied before
+the page is styled. The script also wires up the toggle button and the `d`
+keyboard shortcut.
+
+```html title="index.html"
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="./javascripts/theme.js"></script>
+    <link rel="stylesheet" href="./styles/tokens.css" />
+    <link rel="stylesheet" href="./styles/button.css" />
+    <style>
+      body {
+        margin: 0 auto;
+        max-width: 40rem;
+        padding: 1rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+      }
+    </style>
+    <title>My site</title>
+  </head>
+  <body>
+    <button
+      class="np-button np-button-outline np-button-icon"
+      type="button"
+      id="np-theme-toggle-button"
+      aria-label="Toggle theme"
+      aria-pressed="false"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        width="1.15rem"
+        height="1.15rem"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.75"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <circle cx="12" cy="12" r="4" />
+        <path
+          d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"
+        />
+      </svg>
+    </button>
+    <p>Click the button or press <kbd>d</kbd> to change the theme.</p>
+  </body>
+</html>
+```
+
+## Add the theme script
+
+Create `javascripts/theme.js`:
+
+```js title="javascripts/theme.js"
+(function () {
+  const root = document.documentElement
+  const savedTheme = localStorage.getItem("nepui-theme")
+
+  if (savedTheme === "light" || savedTheme === "dark") {
+    root.classList.remove("light", "dark")
+    root.classList.add(savedTheme)
+  }
+
+  const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+
+  function isDarkTheme() {
+    if (root.classList.contains("dark")) return true
+    if (root.classList.contains("light")) return false
+    return systemTheme.matches
+  }
+
+  function isTypingTarget(target) {
+    return (
+      target instanceof HTMLElement &&
+      (target.isContentEditable ||
+        ["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName))
+    )
+  }
+
+  function syncButton(button) {
+    const isDark = isDarkTheme()
+    button.setAttribute("aria-pressed", String(isDark))
+    button.setAttribute(
+      "aria-label",
+      isDark ? "Switch to light theme" : "Switch to dark theme"
+    )
+    button.querySelector("svg").innerHTML = isDark
+      ? '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/>'
+      : '<path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6.5 6.5 0 0 0 8.268 8.268c.344-.215.825-.003.803.401"/>'
+  }
+
+  function toggleTheme(button) {
+    const nextTheme = isDarkTheme() ? "light" : "dark"
+    root.classList.remove("light", "dark")
+    root.classList.add(nextTheme)
+    localStorage.setItem("nepui-theme", nextTheme)
+    syncButton(button)
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const button = document.querySelector("#np-theme-toggle-button")
+    if (button) {
+      button.addEventListener("click", function () {
+        toggleTheme(button)
+      })
+      syncButton(button)
+    }
+
+    document.addEventListener("keydown", function (event) {
+      if (
+        !button ||
+        event.defaultPrevented ||
+        event.repeat ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.altKey ||
+        event.key.toLowerCase() !== "d" ||
+        isTypingTarget(event.target)
+      ) {
+        return
+      }
+
+      toggleTheme(button)
+    })
+
+    systemTheme.addEventListener("change", function () {
+      if (button) syncButton(button)
+    })
+  })
+})()
+```
+
+The chosen theme is stored in `localStorage` and overrides the system
+preference. To return to system mode, clear the saved theme and explicit class:
+
+```js
+localStorage.removeItem("nepui-theme")
+document.documentElement.classList.remove("light", "dark")
+```
