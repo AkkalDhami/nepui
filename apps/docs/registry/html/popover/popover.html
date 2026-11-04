@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Popover</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/label.css" />
+    <link rel="stylesheet" href="../styles/input.css" />
+    <link rel="stylesheet" href="../styles/popover.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem 8rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: var(--np-font-sans, system-ui, sans-serif);
+      }
+      main {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+        max-width: 40rem;
+        margin-inline: auto;
+      }
+      section > h2 {
+        margin: 0 0 0.25rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+      .hint {
+        margin: 0 0 0.75rem;
+        font-size: 0.8125rem;
+        color: var(--np-muted-foreground);
+      }
+    </style>
+    <script src="../javascripts/popover.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Class form</h2>
+        <p class="hint">
+          <code>popover</code> attribute + <code>np-popover</code>. The button
+          uses <code>popovertarget</code>.
+        </p>
+        <button
+          class="np-button np-button-outline"
+          type="button"
+          popovertarget="popover-demo-panel"
+        >
+          Open popover
+        </button>
+        <div id="popover-demo-panel" class="np-popover" popover>
+          <div class="np-popover-header">
+            <h2 class="np-popover-title">Dimensions</h2>
+            <p class="np-popover-description">
+              Set the dimensions for the layer.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Data-attribute form</h2>
+        <p class="hint"><code>data-np-popover</code> and its parts.</p>
+        <button
+          class="np-button np-button-outline"
+          type="button"
+          popovertarget="idx-data"
+        >
+          Data-attribute form
+        </button>
+        <div id="idx-data" data-np-popover popover>
+          <div data-np-popover-header>
+            <h2 data-np-popover-title>Data attributes</h2>
+            <p data-np-popover-description>
+              Same look with <code>data-np-popover-*</code>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Align</h2>
+        <p class="hint"><code>data-align</code> start, center or end.</p>
+        <div style="display: flex; gap: 0.5rem">
+          <button
+            class="np-button np-button-outline np-button-sm"
+            type="button"
+            popovertarget="popover-align-start"
+          >
+            Start
+          </button>
+          <div
+            id="popover-align-start"
+            class="np-popover"
+            popover
+            data-align="start"
+            style="width: 10rem"
+          >
+            <div class="np-popover-header">
+              <h2 class="np-popover-title">Aligned to start</h2>
+              <p class="np-popover-description">
+                Its left edge lines up with the trigger.
+              </p>
+            </div>
+          </div>
+          <button
+            class="np-button np-button-outline np-button-sm"
+            type="button"
+            popovertarget="popover-align-center"
+          >
+            Center
+          </button>
+          <div
+            id="popover-align-center"
+            class="np-popover"
+            popover
+            data-align="center"
+            style="width: 10rem"
+          >
+            <div class="np-popover-header">
+              <h2 class="np-popover-title">Aligned to center</h2>
+              <p class="np-popover-description">
+                It is centered on the trigger.
+              </p>
+            </div>
+          </div>
+          <button
+            class="np-button np-button-outline np-button-sm"
+            type="button"
+            popovertarget="popover-align-end"
+          >
+            End
+          </button>
+          <div
+            id="popover-align-end"
+            class="np-popover"
+            popover
+            data-align="end"
+            style="width: 10rem"
+          >
+            <div class="np-popover-header">
+              <h2 class="np-popover-title">Aligned to end</h2>
+              <p class="np-popover-description">
+                Its right edge lines up with the trigger.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Side</h2>
+        <p class="hint">
+          <code>data-side</code> top, right, bottom or left. It flips when there
+          is no room.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem">
+          <button
+            class="np-button np-button-outline np-button-sm"
+            type="button"
+            popovertarget="popover-side-top"
+          >
+            Top
+          </button>
+          <div
+            id="popover-side-top"
+            class="np-popover"
+            popover
+            data-side="top"
+            style="width: 10rem"
+          >
+            <div class="np-popover-header">
+              <h2 class="np-popover-title">Top</h2>
+              <p class="np-popover-description">Opens above the trigger.</p>
+            </div>
+          </div>
+          <button
+            class="np-button np-button-outline np-button-sm"
+            type="button"
+            popovertarget="popover-side-right"
+          >
+            Right
+          </button>
+          <div
+            id="popover-side-right"
+            class="np-popover"
+            popover
+            data-side="right"
+            style="width: 10rem"
+          >
+            <div class="np-popover-header">
+              <h2 class="np-popover-title">Right</h2>
+              <p class="np-popover-description">Opens to the right.</p>
+            </div>
+          </div>
+          <button
+            class="np-button np-button-outline np-button-sm"
+            type="button"
+            popovertarget="popover-side-bottom"
+          >
+            Bottom
+          </button>
+          <div
+            id="popover-side-bottom"
+            class="np-popover"
+            popover
+            data-side="bottom"
+            style="width: 10rem"
+          >
+            <div class="np-popover-header">
+              <h2 class="np-popover-title">Bottom</h2>
+              <p class="np-popover-description">Opens below the trigger.</p>
+            </div>
+          </div>
+          <button
+            class="np-button np-button-outline np-button-sm"
+            type="button"
+            popovertarget="popover-side-left"
+          >
+            Left
+          </button>
+          <div
+            id="popover-side-left"
+            class="np-popover"
+            popover
+            data-side="left"
+            style="width: 10rem"
+          >
+            <div class="np-popover-header">
+              <h2 class="np-popover-title">Left</h2>
+              <p class="np-popover-description">Opens to the left.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>With form</h2>
+        <p class="hint">Focus moves to the first field when it opens.</p>
+        <button
+          class="np-button np-button-outline"
+          type="button"
+          popovertarget="popover-form-panel"
+        >
+          Open popover
+        </button>
+        <div
+          id="popover-form-panel"
+          class="np-popover"
+          popover
+          style="width: 20rem"
+        >
+          <div class="np-popover-header">
+            <h2 class="np-popover-title">Dimensions</h2>
+            <p class="np-popover-description">
+              Set the dimensions for the layer.
+            </p>
+          </div>
+          <div style="display: grid; gap: 0.5rem">
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 6rem 1fr;
+                align-items: center;
+                gap: 0.5rem;
+              "
+            >
+              <label class="np-label" for="popover-width">Width</label>
+              <input class="np-input" id="popover-width" value="100%" />
+            </div>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 6rem 1fr;
+                align-items: center;
+                gap: 0.5rem;
+              "
+            >
+              <label class="np-label" for="popover-max-width">Max. width</label>
+              <input class="np-input" id="popover-max-width" value="300px" />
+            </div>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 6rem 1fr;
+                align-items: center;
+                gap: 0.5rem;
+              "
+            >
+              <label class="np-label" for="popover-height">Height</label>
+              <input class="np-input" id="popover-height" value="25px" />
+            </div>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 6rem 1fr;
+                align-items: center;
+                gap: 0.5rem;
+              "
+            >
+              <label class="np-label" for="popover-max-height"
+                >Max. height</label
+              >
+              <input class="np-input" id="popover-max-height" value="none" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Close button</h2>
+        <p class="hint">Close it from inside.</p>
+        <button
+          class="np-button np-button-outline"
+          type="button"
+          popovertarget="idx-close"
+        >
+          With a close button
+        </button>
+        <div id="idx-close" class="np-popover" popover>
+          <div class="np-popover-header">
+            <h2 class="np-popover-title">Close button</h2>
+            <p class="np-popover-description">
+              A button with <code>popovertargetaction="hide"</code> closes it.
+            </p>
+          </div>
+          <button
+            class="np-button np-button-outline np-button-sm"
+            type="button"
+            popovertarget="idx-close"
+            popovertargetaction="hide"
+          >
+            Close
+          </button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Manual</h2>
+        <p class="hint">Stays open until closed.</p>
+        <button
+          class="np-button np-button-outline"
+          type="button"
+          popovertarget="idx-manual"
+        >
+          Manual popover
+        </button>
+        <div id="idx-manual" class="np-popover" popover="manual">
+          <div class="np-popover-header">
+            <h2 class="np-popover-title">popover="manual"</h2>
+            <p class="np-popover-description">
+              It does not close on outside click or Escape. Use the button.
+            </p>
+          </div>
+          <button
+            class="np-button np-button-outline np-button-sm"
+            type="button"
+            popovertarget="idx-manual"
+            popovertargetaction="hide"
+          >
+            Close
+          </button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Variables</h2>
+        <p class="hint">Set them on the popover.</p>
+        <button
+          class="np-button np-button-outline"
+          type="button"
+          popovertarget="idx-custom"
+        >
+          Custom look
+        </button>
+        <div
+          id="idx-custom"
+          class="np-popover"
+          popover
+          style="
+            --np-popover-width: 14rem;
+            --np-popover-radius: var(--np-radius-xl);
+            --np-popover-padding: 1rem;
+            --np-popover-duration: 200ms;
+          "
+        >
+          <div class="np-popover-header">
+            <h2 class="np-popover-title">Custom look</h2>
+            <p class="np-popover-description">
+              Width, radius, padding and speed are variables.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
