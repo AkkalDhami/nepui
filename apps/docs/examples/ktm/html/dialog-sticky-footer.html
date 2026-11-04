@@ -1,0 +1,100 @@
+<button
+  type="button"
+  class="np-button np-button-outline"
+  commandfor="dialog-sticky-footer"
+  command="show-modal"
+>
+  Sticky Footer
+</button>
+
+<dialog
+  id="dialog-sticky-footer"
+  class="np-dialog-content"
+  closedby="any"
+  aria-labelledby="dialog-sticky-footer-title"
+  aria-describedby="dialog-sticky-footer-description"
+>
+  <div class="np-dialog-header">
+    <h2 class="np-dialog-title" id="dialog-sticky-footer-title">
+      Terms of service
+    </h2>
+    <p class="np-dialog-description" id="dialog-sticky-footer-description">
+      Scroll to read all of it. The actions stay in view.
+    </p>
+  </div>
+  <div
+    style="
+      display: grid;
+      gap: 0.75rem;
+      margin: 0 -1rem;
+      padding: 0 1rem;
+      max-height: 12rem;
+      overflow-y: auto;
+    "
+    tabindex="0"
+    role="region"
+    aria-label="Terms of service text"
+  >
+    <p style="margin: 0">
+      By using this service, you agree to the terms described below. Please read
+      them carefully before you continue.
+    </p>
+    <p style="margin: 0">
+      You are responsible for keeping your account details safe, and for
+      everything that happens under your account.
+    </p>
+    <p style="margin: 0">
+      We may update these terms from time to time. When we do, we will let you
+      know by email or inside the app.
+    </p>
+    <p style="margin: 0">
+      You may stop using the service at any time. We may suspend accounts that
+      break these terms.
+    </p>
+    <p style="margin: 0">
+      If you have questions about these terms, contact our support team and we
+      will be happy to help.
+    </p>
+  </div>
+  <div class="np-dialog-footer">
+    <button
+      type="button"
+      class="np-button np-button-outline"
+      commandfor="dialog-sticky-footer"
+      command="close"
+    >
+      Decline
+    </button>
+    <button
+      type="button"
+      class="np-button"
+      commandfor="dialog-sticky-footer"
+      command="close"
+    >
+      Accept
+    </button>
+  </div>
+  <button
+    type="button"
+    class="np-button np-button-ghost np-button-icon-sm np-dialog-close"
+    commandfor="dialog-sticky-footer"
+    command="close"
+    aria-label="Close"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M18 6 6 18" />
+      <path d="m6 6 12 12" />
+    </svg>
+  </button>
+</dialog>

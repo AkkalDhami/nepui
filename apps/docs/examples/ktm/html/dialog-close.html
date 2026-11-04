@@ -1,0 +1,39 @@
+<button
+  type="button"
+  class="np-button np-button-outline"
+  commandfor="dialog-close"
+  command="show-modal"
+>
+  Share
+</button>
+
+<dialog
+  id="dialog-close"
+  class="np-dialog-content"
+  closedby="any"
+  aria-labelledby="dialog-close-title"
+  aria-describedby="dialog-close-description"
+>
+  <div class="np-dialog-header">
+    <h2 class="np-dialog-title" id="dialog-close-title">Share link</h2>
+    <p class="np-dialog-description" id="dialog-close-description">
+      Anyone who has this link will be able to view this.
+    </p>
+  </div>
+  <input
+    class="np-input"
+    aria-label="Link"
+    value="https://nepui.vercel.app/docs/installation"
+    readonly
+  />
+  <div class="np-dialog-footer" style="justify-content: flex-start">
+    <button
+      type="button"
+      class="np-button np-button-secondary"
+      commandfor="dialog-close"
+      command="close"
+    >
+      Close
+    </button>
+  </div>
+</dialog>

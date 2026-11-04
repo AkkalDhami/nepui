@@ -1,0 +1,41 @@
+<button
+  type="button"
+  class="np-button np-button-outline"
+  commandfor="dialog-no-close"
+  command="show-modal"
+>
+  No Close Button
+</button>
+
+<dialog
+  id="dialog-no-close"
+  class="np-dialog-content"
+  closedby="any"
+  aria-labelledby="dialog-no-close-title"
+  aria-describedby="dialog-no-close-description"
+>
+  <div class="np-dialog-header">
+    <h2 class="np-dialog-title" id="dialog-no-close-title">Delete project?</h2>
+    <p class="np-dialog-description" id="dialog-no-close-description">
+      This project and all of its files will be deleted. You can not undo this.
+    </p>
+  </div>
+  <div class="np-dialog-footer">
+    <button
+      type="button"
+      class="np-button np-button-outline"
+      commandfor="dialog-no-close"
+      command="close"
+    >
+      Cancel
+    </button>
+    <button
+      type="button"
+      class="np-button np-button-destructive"
+      commandfor="dialog-no-close"
+      command="close"
+    >
+      Delete
+    </button>
+  </div>
+</dialog>

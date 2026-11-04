@@ -1,0 +1,65 @@
+<link rel="stylesheet" href="./styles/button.css" />
+
+<div style="display: flex; gap: 0.5rem">
+  <button
+    class="np-button np-button-outline np-button-sm"
+    type="button"
+    popovertarget="popover-align-start"
+  >
+    Start
+  </button>
+  <div
+    id="popover-align-start"
+    class="np-popover"
+    popover
+    data-align="start"
+    style="width: 10rem"
+  >
+    <div class="np-popover-header">
+      <h2 class="np-popover-title">Aligned to start</h2>
+      <p class="np-popover-description">
+        Its left edge lines up with the trigger.
+      </p>
+    </div>
+  </div>
+  <button
+    class="np-button np-button-outline np-button-sm"
+    type="button"
+    popovertarget="popover-align-center"
+  >
+    Center
+  </button>
+  <div
+    id="popover-align-center"
+    class="np-popover"
+    popover
+    data-align="center"
+    style="width: 10rem"
+  >
+    <div class="np-popover-header">
+      <h2 class="np-popover-title">Aligned to center</h2>
+      <p class="np-popover-description">It is centered on the trigger.</p>
+    </div>
+  </div>
+  <button
+    class="np-button np-button-outline np-button-sm"
+    type="button"
+    popovertarget="popover-align-end"
+  >
+    End
+  </button>
+  <div
+    id="popover-align-end"
+    class="np-popover"
+    popover
+    data-align="end"
+    style="width: 10rem"
+  >
+    <div class="np-popover-header">
+      <h2 class="np-popover-title">Aligned to end</h2>
+      <p class="np-popover-description">
+        Its right edge lines up with the trigger.
+      </p>
+    </div>
+  </div>
+</div>

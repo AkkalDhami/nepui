@@ -1,0 +1,80 @@
+<button
+  type="button"
+  class="np-button np-button-outline"
+  commandfor="dialog-scrollable"
+  command="show-modal"
+>
+  Scrollable Content
+</button>
+
+<dialog
+  id="dialog-scrollable"
+  class="np-dialog-content"
+  closedby="any"
+  aria-labelledby="dialog-scrollable-title"
+  aria-describedby="dialog-scrollable-description"
+>
+  <div class="np-dialog-header">
+    <h2 class="np-dialog-title" id="dialog-scrollable-title">Privacy policy</h2>
+    <p class="np-dialog-description" id="dialog-scrollable-description">
+      The header stays in view while the content scrolls.
+    </p>
+  </div>
+  <div
+    style="
+      display: grid;
+      gap: 0.75rem;
+      margin: 0 -1rem;
+      padding: 0 1rem;
+      max-height: 12rem;
+      overflow-y: auto;
+    "
+    tabindex="0"
+    role="region"
+    aria-label="Privacy policy text"
+  >
+    <p style="margin: 0">
+      We collect only the information we need to run the service, such as your
+      name, your email and how you use the app.
+    </p>
+    <p style="margin: 0">
+      We never sell your personal data. We share it only with partners who help
+      us run the service, and only when we have to.
+    </p>
+    <p style="margin: 0">
+      You can ask for a copy of your data, or ask us to delete it, at any time
+      from your account settings.
+    </p>
+    <p style="margin: 0">
+      We keep your data for as long as your account is open, and for a short
+      time after it is closed.
+    </p>
+    <p style="margin: 0">
+      If this policy changes in a way that matters, we will tell you before the
+      change takes effect.
+    </p>
+  </div>
+  <button
+    type="button"
+    class="np-button np-button-ghost np-button-icon-sm np-dialog-close"
+    commandfor="dialog-scrollable"
+    command="close"
+    aria-label="Close"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M18 6 6 18" />
+      <path d="m6 6 12 12" />
+    </svg>
+  </button>
+</dialog>

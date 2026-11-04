@@ -1,0 +1,270 @@
+<link rel="stylesheet" href="./styles/badge.css" />
+<link rel="stylesheet" href="./styles/menu.css" />
+<link rel="stylesheet" href="./styles/button.css" />
+
+<script src="./javascripts/menu.js" defer></script>
+
+<div style="width: 100%; max-width: 36rem">
+  <div class="np-table-container">
+    <table class="np-table">
+      <thead class="np-table-header">
+        <tr class="np-table-row">
+          <th class="np-table-head" scope="col">Product</th>
+          <th class="np-table-head" scope="col">Status</th>
+          <th class="np-table-head np-table-end" scope="col">Price</th>
+          <th class="np-table-head np-table-end" scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody class="np-table-body">
+        <tr class="np-table-row">
+          <td class="np-table-cell" style="font-weight: 500">Wireless Mouse</td>
+          <td class="np-table-cell">
+            <span
+              class="np-badge"
+              data-variant="success"
+              data-appearance="light"
+              >In stock</span
+            >
+          </td>
+          <td class="np-table-cell np-table-end">$29.99</td>
+          <td class="np-table-cell np-table-end">
+            <div class="np-menu" style="--np-menu-anchor: --table-action-demo1">
+              <button
+                class="np-button np-button-ghost np-button-icon-sm"
+                type="button"
+                popovertarget="table-action-demo1"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="1" />
+                  <circle cx="19" cy="12" r="1" />
+                  <circle cx="5" cy="12" r="1" />
+                </svg>
+              </button>
+
+              <div
+                id="table-action-demo1"
+                class="np-menu-content"
+                popover
+                role="menu"
+                aria-label="My Account"
+                style="width: 12rem"
+              >
+                <div
+                  class="np-menu-group"
+                  role="group"
+                  aria-labelledby="table-action-demo-label"
+                >
+                  <button
+                    class="np-menu-item"
+                    type="button"
+                    role="menuitem"
+                    popovertarget="table-action-demo1"
+                    popovertargetaction="hide"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    class="np-menu-item"
+                    type="button"
+                    role="menuitem"
+                    popovertarget="table-action-demo1"
+                    popovertargetaction="hide"
+                  >
+                    Duplicate
+                  </button>
+                  <div class="np-menu-separator" role="separator"></div>
+                  <button
+                    class="np-menu-item np-menu-item-destructive"
+                    type="button"
+                    role="menuitem"
+                    popovertarget="table-action-demo1"
+                    popovertargetaction="hide"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr class="np-table-row">
+          <td class="np-table-cell" style="font-weight: 500">
+            Mechanical Keyboard
+          </td>
+          <td class="np-table-cell">
+            <span
+              class="np-badge"
+              data-variant="warning"
+              data-appearance="light"
+              >Low stock</span
+            >
+          </td>
+          <td class="np-table-cell np-table-end">$129.99</td>
+          <td class="np-table-cell np-table-end">
+            <div class="np-menu" style="--np-menu-anchor: --table-action-demo2">
+              <button
+                class="np-button np-button-ghost np-button-icon-sm"
+                type="button"
+                popovertarget="table-action-demo2"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="1" />
+                  <circle cx="19" cy="12" r="1" />
+                  <circle cx="5" cy="12" r="1" />
+                </svg>
+              </button>
+
+              <div
+                id="table-action-demo2"
+                class="np-menu-content"
+                popover
+                role="menu"
+                aria-label="My Account"
+                style="width: 12rem"
+              >
+                <div
+                  class="np-menu-group"
+                  role="group"
+                  aria-labelledby="table-action-demo2-label"
+                >
+                  <button
+                    class="np-menu-item"
+                    type="button"
+                    role="menuitem"
+                    popovertarget="table-action-demo2"
+                    popovertargetaction="hide"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    class="np-menu-item"
+                    type="button"
+                    role="menuitem"
+                    popovertarget="table-action-demo2"
+                    popovertargetaction="hide"
+                  >
+                    Duplicate
+                  </button>
+                  <div class="np-menu-separator" role="separator"></div>
+                  <button
+                    class="np-menu-item np-menu-item-destructive"
+                    type="button"
+                    role="menuitem"
+                    popovertarget="table-action-demo2"
+                    popovertargetaction="hide"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr class="np-table-row">
+          <td class="np-table-cell" style="font-weight: 500">USB-C Hub</td>
+          <td class="np-table-cell">
+            <span
+              class="np-badge"
+              data-variant="destructive"
+              data-appearance="light"
+              >Out of stock</span
+            >
+          </td>
+          <td class="np-table-cell np-table-end">$49.99</td>
+          <td class="np-table-cell np-table-end">
+            <div class="np-menu" style="--np-menu-anchor: --table-action-demo">
+              <button
+                class="np-button np-button-ghost np-button-icon-sm"
+                type="button"
+                popovertarget="table-action-demo"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="1" />
+                  <circle cx="19" cy="12" r="1" />
+                  <circle cx="5" cy="12" r="1" />
+                </svg>
+              </button>
+
+              <div
+                id="table-action-demo"
+                class="np-menu-content"
+                popover
+                role="menu"
+                aria-label="My Account"
+                style="width: 12rem"
+              >
+                <div
+                  class="np-menu-group"
+                  role="group"
+                  aria-labelledby="table-action-demo-label"
+                >
+                  <button
+                    class="np-menu-item"
+                    type="button"
+                    role="menuitem"
+                    popovertarget="table-action-demo"
+                    popovertargetaction="hide"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    class="np-menu-item"
+                    type="button"
+                    role="menuitem"
+                    popovertarget="table-action-demo"
+                    popovertargetaction="hide"
+                  >
+                    Duplicate
+                  </button>
+                  <div class="np-menu-separator" role="separator"></div>
+                  <button
+                    class="np-menu-item np-menu-item-destructive"
+                    type="button"
+                    role="menuitem"
+                    popovertarget="table-action-demo"
+                    popovertargetaction="hide"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
