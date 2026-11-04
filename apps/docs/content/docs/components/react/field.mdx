@@ -248,17 +248,17 @@ Stack `Field` components with `FieldGroup`. Add `FieldSeparator` to divide them.
 - Add `aria-invalid` on the input itself for assistive technologies.
 - Render `FieldError` immediately after the control or inside `FieldContent` to keep error messages aligned with the field.
 
-<ComponentPreview
-  name="field-error"
-/>
-
-```tsx
+```tsx /data-invalid/ /aria-invalid/
 <Field data-invalid>
   <FieldLabel htmlFor="email">Email</FieldLabel>
   <Input id="email" type="email" aria-invalid />
   <FieldError>Enter a valid email address.</FieldError>
 </Field>
 ```
+
+<ComponentPreview
+  name="field-error"
+/>
 
 ---
 

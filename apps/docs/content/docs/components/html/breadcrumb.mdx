@@ -1,0 +1,212 @@
+---
+title: Breadcrumb
+description: Displays the path to the current resource using a hierarchy of links.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  target="html"
+  name="breadcrumb-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add breadcrumb"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project. The script is optional, it only collapses long trails.</Step>
+      <ComponentSource
+        target="html"
+        name="breadcrumb"
+        title="styles/breadcrumb.css"
+        fileTarget="styles/breadcrumb.css"
+      />
+      <ComponentSource
+        target="html"
+        name="breadcrumb"
+        title="javascripts/breadcrumb.js"
+        fileTarget="javascripts/breadcrumb.js"
+      />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```html
+<link rel="stylesheet" href="./styles/breadcrumb.css" />
+```
+
+```html
+<nav class="np-breadcrumb" aria-label="Breadcrumb">
+  <ol class="np-breadcrumb-list">
+    <li class="np-breadcrumb-item">
+      <a class="np-breadcrumb-link" href="/">Home</a>
+    </li>
+    <li class="np-breadcrumb-separator" role="presentation" aria-hidden="true"></li>
+    <li class="np-breadcrumb-item">
+      <a class="np-breadcrumb-link" href="/components">Components</a>
+    </li>
+    <li class="np-breadcrumb-separator" role="presentation" aria-hidden="true"></li>
+    <li class="np-breadcrumb-item">
+      <span class="np-breadcrumb-page" role="link" aria-disabled="true" aria-current="page">Breadcrumb</span>
+    </li>
+  </ol>
+</nav>
+```
+
+Or use the data attributes instead of the classes: `data-np-breadcrumb`, `data-np-breadcrumb-list`, `data-np-breadcrumb-item`, `data-np-breadcrumb-link`, `data-np-breadcrumb-page`, `data-np-breadcrumb-separator`.
+
+Items and separators alternate. An **empty** separator draws a chevron, so keep it as `<li ...></li>` with nothing inside, not even a space. The last item is the current page: use `np-breadcrumb-page` with `aria-current="page"` instead of a link.
+
+---
+
+
+## Composition
+
+Use the following composition to build a `Breadcrumb`:
+
+```text
+Breadcrumb
+└── BreadcrumbList
+    ├── BreadcrumbItem
+    │   └── BreadcrumbLink
+    ├── BreadcrumbSeparator
+    ├── BreadcrumbItem
+    │   └── BreadcrumbLink
+    ├── BreadcrumbSeparator
+    └── BreadcrumbItem
+        └── BreadcrumbPage
+```
+
+---
+
+## Basic
+
+<ComponentPreview
+  target="html"
+  name="breadcrumb-demo"
+/>
+
+---
+
+## Custom separator
+
+Put any text or icon inside the separator to use your own. The default chevron is not drawn when the separator has content.
+
+<ComponentPreview
+  target="html"
+  name="breadcrumb-separator"
+/>
+
+---
+
+## Collapsed
+
+Use a static ellipsis to show that items are hidden. The label inside is for screen readers.
+
+<ComponentPreview
+  target="html"
+  name="breadcrumb-collapsed"
+/>
+
+---
+
+## Expandable
+
+Add `breadcrumb.js` and set `data-max-items` on the `<nav>`. When the trail has more items than that, the middle items collapse behind an ellipsis button, and pressing it reveals them and moves focus to the first revealed link.
+
+The full trail stays in the markup, so without the script (or with JavaScript off) every item is shown.
+
+```html
+<script src="./scripts/breadcrumb.js" defer></script>
+```
+
+<ComponentPreview
+  target="html"
+  name="breadcrumb-expandable"
+  scripts={["/breadcrumb/breadcrumb.js"]}
+/>
+
+### Script options
+
+Set these on the `<nav>`.
+
+| Attribute             | Description                                                              | Default                |
+| --------------------- | ------------------------------------------------------------------------ | ---------------------- |
+| `data-max-items`      | Collapse when the trail has more items than this. Required to opt in.    | -                      |
+| `data-items-before`   | Items kept before the ellipsis.                                          | `1`                    |
+| `data-items-after`    | Items kept after the ellipsis.                                           | `2`                    |
+| `data-ellipsis-label` | Accessible name of the ellipsis button. Translate it for your language.  | `"Show hidden items"`  |
+
+Nothing collapses when there are no more items than `data-max-items`, or when `data-items-before` plus `data-items-after` already covers every item.
+
+### Event and API
+
+The `<nav>` fires `np-breadcrumb-expand` (it bubbles) after the hidden items are revealed.
+
+```js
+document.addEventListener("np-breadcrumb-expand", (event) => {
+  console.log("expanded", event.target)
+})
+```
+
+For breadcrumbs added to the page after it loads, call `init`:
+
+| Method                              | Description                                  |
+| ----------------------------------- | -------------------------------------------- |
+| `window.npBreadcrumb.init(root)`    | Collapse the breadcrumbs inside `root` (default `document`). |
+| `window.npBreadcrumb.collapse(nav)` | Collapse one breadcrumb again.               |
+| `window.npBreadcrumb.expand(nav)`   | Expand one breadcrumb.                       |
+
+---
+
+## Link component
+
+Links that come from a router or framework are plain `<a>` elements, so give them the `np-breadcrumb-link` class (or the `data-np-breadcrumb-link` attribute). Most routers add `aria-current="page"` to the active link. The breadcrumb styles that link as the current page, so the last item can stay a link instead of a `np-breadcrumb-page` span.
+
+<ComponentPreview
+  target="html"
+  name="breadcrumb-link"
+/>
+
+A link can also be a `<button>`, for example a menu trigger. It is reset to look like a link, and while its menu is open (`aria-expanded="true"` or `data-popup-open`) it stays highlighted.
+
+---
+
+## Reference
+
+### Parts
+
+| Name      | Data attribute                  | Class alias                    | Element           |
+| --------- | ------------------------------- | ------------------------------ | ----------------- |
+| Breadcrumb | `data-np-breadcrumb`           | `np-breadcrumb`                | `nav`             |
+| List      | `data-np-breadcrumb-list`       | `np-breadcrumb-list`           | `ol`              |
+| Item      | `data-np-breadcrumb-item`       | `np-breadcrumb-item`           | `li`              |
+| Link      | `data-np-breadcrumb-link`       | `np-breadcrumb-link`           | `a`               |
+| Page      | `data-np-breadcrumb-page`       | `np-breadcrumb-page`           | `span`            |
+| Separator | `data-np-breadcrumb-separator`  | `np-breadcrumb-separator`      | `li`              |
+| Ellipsis  | `data-np-breadcrumb-ellipsis`   | `np-breadcrumb-ellipsis`       | `span` or `button` |
+| Ellipsis label | `data-np-breadcrumb-ellipsis-label` | `np-breadcrumb-ellipsis-label` | `span`     |
+
+### States
+
+| State        | Selector                                                          |
+| ------------ | ----------------------------------------------------------------- |
+| Current link | `[aria-current="page"]` on `np-breadcrumb-link`                   |
+| Menu open    | `[aria-expanded="true"]` or `[data-popup-open]` on a link or ellipsis |
+| Hidden item  | `[hidden]`, used by `breadcrumb.js` for collapsed items           |

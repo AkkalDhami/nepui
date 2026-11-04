@@ -1,0 +1,242 @@
+---
+title: Breadcrumb
+description: Displays the path to the current resource using a hierarchy of links.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="breadcrumb-dropdown"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/breadcrumb.json"
+      nepui="npx nepui@latest add breadcrumb --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="breadcrumb"
+        title="components/nepui/breadcrumb/breadcrumb.css"
+        fileTarget="components/nepui/breadcrumb/breadcrumb.css"
+      />
+      <ComponentSource
+        target="react"
+        name="breadcrumb"
+        title="components/nepui/breadcrumb/breadcrumb.tsx"
+        fileTarget="components/nepui/breadcrumb/breadcrumb.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="breadcrumb"
+        title="components/nepui/breadcrumb/index.ts"
+        fileTarget="components/nepui/breadcrumb/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/nepui/breadcrumb"
+```
+
+```tsx
+<Breadcrumb>
+  <BreadcrumbList>
+    <BreadcrumbItem>
+      <BreadcrumbLink render={<a href="/" />}>Home</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbLink render={<a href="/components" />}>
+        Components
+      </BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+    </BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>
+```
+
+`Breadcrumb` renders a `<nav aria-label="breadcrumb">`. Pass your own `aria-label` to translate it.
+
+---
+
+## Composition
+
+Use the following composition to build a `Breadcrumb`:
+
+```text
+Breadcrumb
+└── BreadcrumbList
+    ├── BreadcrumbItem
+    │   └── BreadcrumbLink
+    ├── BreadcrumbSeparator
+    ├── BreadcrumbItem
+    │   └── BreadcrumbLink
+    ├── BreadcrumbSeparator
+    └── BreadcrumbItem
+        └── BreadcrumbPage
+```
+
+---
+
+## Basic
+
+A basic breadcrumb with a home link and a components link, as in the example at the top of this page. The last item is a `BreadcrumbPage`, which marks the current page and is not a link.
+
+<ComponentPreview
+  name="breadcrumb-demo"
+/>
+
+
+---
+
+## Custom separator
+
+Use `children` on `BreadcrumbSeparator` to create a custom separator. Without children it draws a chevron that follows the text direction.
+
+<ComponentPreview
+  name="breadcrumb-separator"
+/>
+
+---
+
+## Dropdown
+
+Compose a `BreadcrumbItem` with the [Menu](/docs/components/react/menu) component to create a dropdown in the breadcrumb. Add the Menu component to your project first, this example uses it.
+
+`BreadcrumbEllipsis` renders as the menu trigger itself, with `render={<button type="button" />}`. It stays highlighted while the menu is open, and `label` gives the button its accessible name.
+
+<ComponentPreview
+  name="breadcrumb-dropdown"
+/>
+
+---
+
+## Collapsed
+
+Use `BreadcrumbEllipsis` to show a collapsed state when the breadcrumb is too long.
+
+<ComponentPreview
+  name="breadcrumb-collapsed"
+/>
+
+---
+
+## Expandable
+
+`BreadcrumbEllipsis` accepts `render`, so it can be a real button. This example swaps the ellipsis for the hidden items when it is pressed. Give the button an accessible name with `label`.
+
+<ComponentPreview
+  name="breadcrumb-expandable"
+/>
+
+---
+
+## Link component
+
+To use a custom link component from your routing library, use the `render` prop on `BreadcrumbLink`. The props you pass to `render` are merged with the breadcrumb's, so your link keeps its own behavior and gets the styles.
+
+The demo below uses a small router-style link. Like Next's `Link` or React Router's `NavLink`, it marks the active link with `aria-current="page"`. The breadcrumb styles that link as the current page, so the last item can stay a link. Click "Home" to move the current page.
+
+<ComponentPreview
+  name="breadcrumb-link"
+/>
+
+`BreadcrumbLink` can also render a `<button>`, for example `render={<button type="button" />}`, to use it as a menu trigger. A link whose menu is open (`aria-expanded="true"` or `data-popup-open`) stays highlighted.
+
+---
+
+
+## API Reference
+
+### Breadcrumb
+
+The `Breadcrumb` component is the root navigation element that wraps all breadcrumb components.
+
+| Prop         | Type     | Default        |
+| ------------ | -------- | -------------- |
+| `aria-label` | `string` | `"breadcrumb"` |
+| `className`  | `string` | -              |
+
+### BreadcrumbList
+
+The `BreadcrumbList` component displays the ordered list of breadcrumb items.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` | -       |
+
+### BreadcrumbItem
+
+The `BreadcrumbItem` component wraps individual breadcrumb items.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` | -       |
+
+### BreadcrumbLink
+
+The `BreadcrumbLink` component displays a clickable link in the breadcrumb.
+
+| Prop        | Type                       | Default |
+| ----------- | -------------------------- | ------- |
+| `render`    | `ReactElement \| function` | `<a />` |
+| `className` | `string`                   | -       |
+
+### BreadcrumbPage
+
+The `BreadcrumbPage` component displays the current page in the breadcrumb (non-clickable).
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` | -       |
+
+### BreadcrumbSeparator
+
+The `BreadcrumbSeparator` component displays a separator between breadcrumb items. You can pass custom children to override the default chevron.
+
+| Prop        | Type        | Default |
+| ----------- | ----------- | ------- |
+| `children`  | `ReactNode` | -       |
+| `className` | `string`    | -       |
+
+### BreadcrumbEllipsis
+
+The `BreadcrumbEllipsis` component displays an ellipsis indicator for collapsed breadcrumb items.
+
+| Prop        | Type                       | Default  |
+| ----------- | -------------------------- | -------- |
+| `label`     | `string`                   | `"More"` |
+| `render`    | `ReactElement \| function` | `<span />` |
+| `className` | `string`                   | -        |
