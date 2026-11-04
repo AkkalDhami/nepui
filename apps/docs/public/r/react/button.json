@@ -18,7 +18,7 @@
     },
     {
       "path": "registry/react/button/index.ts",
-      "content": "export { Button, buttonVariants } from \"./button\"\nexport type { ButtonProps, ButtonVariant, ButtonSize } from \"./button\"\n",
+      "content": "export * from \"./button\"\n",
       "type": "registry:ui",
       "target": "components/nepui/button/index.ts"
     }

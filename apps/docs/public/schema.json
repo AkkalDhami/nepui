@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nepui.vercel.app/schema.json",
+  "title": "nepui Configuration",
+  "description": "Configuration file for the nepui CLI. Defines the component installation target and the project's source directory.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "The URL of the JSON Schema used to validate this configuration file. Enables editor autocomplete, validation, and inline documentation."
+    },
+    "target": {
+      "type": "string",
+      "enum": ["react", "html"],
+      "default": "react",
+      "description": "The target environment for nepui components. Use 'react' to install React components or 'html' to install plain HTML, CSS, and JavaScript components."
+    },
+    "src": {
+      "type": "string",
+      "default": "./src",
+      "description": "The root directory of your application source code, relative to the project root. The nepui CLI uses this directory as the base when resolving component installation paths."
+    }
+  },
+  "required": ["target"],
+  "additionalProperties": false
+}

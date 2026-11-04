@@ -706,6 +706,260 @@
       ]
     },
     {
+      "name": "marker",
+      "type": "registry:ui",
+      "title": "Marker",
+      "description": "Displays an inline status, system note, bordered row, or labeled separator in a conversation.",
+      "files": [
+        {
+          "path": "registry/react/marker/marker.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/marker/marker.tsx"
+        },
+        {
+          "path": "registry/react/marker/marker.css",
+          "type": "registry:ui",
+          "target": "components/nepui/marker/marker.css"
+        },
+        {
+          "path": "registry/react/marker/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/marker/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "Displays rich content in a portal, triggered by a button.",
+      "files": [
+        {
+          "path": "registry/react/popover/popover.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/popover/popover.tsx"
+        },
+        {
+          "path": "registry/react/popover/popover.css",
+          "type": "registry:ui",
+          "target": "components/nepui/popover/popover.css"
+        },
+        {
+          "path": "registry/react/popover/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/popover/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "description": "Displays the path to the current resource using a hierarchy of links.",
+      "files": [
+        {
+          "path": "registry/react/breadcrumb/breadcrumb.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/breadcrumb/breadcrumb.tsx"
+        },
+        {
+          "path": "registry/react/breadcrumb/breadcrumb.css",
+          "type": "registry:ui",
+          "target": "components/nepui/breadcrumb/breadcrumb.css"
+        },
+        {
+          "path": "registry/react/breadcrumb/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/breadcrumb/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "description": "Displays the path to the current resource using a hierarchy of links.",
+      "files": [
+        {
+          "path": "registry/react/breadcrumb/breadcrumb.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/breadcrumb/breadcrumb.tsx"
+        },
+        {
+          "path": "registry/react/breadcrumb/breadcrumb.css",
+          "type": "registry:ui",
+          "target": "components/nepui/breadcrumb/breadcrumb.css"
+        },
+        {
+          "path": "registry/react/breadcrumb/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/breadcrumb/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+      "files": [
+        {
+          "path": "registry/react/tooltip/tooltip.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/tooltip/tooltip.tsx"
+        },
+        {
+          "path": "registry/react/tooltip/tooltip.css",
+          "type": "registry:ui",
+          "target": "components/nepui/tooltip/tooltip.css"
+        },
+        {
+          "path": "registry/react/tooltip/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/tooltip/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Table",
+      "description": "A responsive table component.",
+      "files": [
+        {
+          "path": "registry/react/table/table.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/table/table.tsx"
+        },
+        {
+          "path": "registry/react/table/table.css",
+          "type": "registry:ui",
+          "target": "components/nepui/table/table.css"
+        },
+        {
+          "path": "registry/react/table/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/table/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "A set of layered sections of content, known as tab panels, that are displayed one at a time.",
+      "files": [
+        {
+          "path": "registry/react/tabs/tabs.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/tabs/tabs.tsx"
+        },
+        {
+          "path": "registry/react/tabs/tabs.css",
+          "type": "registry:ui",
+          "target": "components/nepui/tabs/tabs.css"
+        },
+        {
+          "path": "registry/react/tabs/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/tabs/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.",
+      "registryDependencies": ["https://nepui.vercel.app/r/react/button.json"],
+      "files": [
+        {
+          "path": "registry/react/dialog/dialog.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/dialog/dialog.tsx"
+        },
+        {
+          "path": "registry/react/dialog/dialog.css",
+          "type": "registry:ui",
+          "target": "components/nepui/dialog/dialog.css"
+        },
+        {
+          "path": "registry/react/dialog/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/dialog/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "otp-field",
+      "type": "registry:ui",
+      "title": "OTP Field",
+      "description": "A segmented input for one-time passwords and verification codes.",
+      "files": [
+        {
+          "path": "registry/react/otp-field/otp-field.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/otp-field/otp-field.tsx"
+        },
+        {
+          "path": "registry/react/otp-field/otp-field.css",
+          "type": "registry:ui",
+          "target": "components/nepui/otp-field/otp-field.css"
+        },
+        {
+          "path": "registry/react/otp-field/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/otp-field/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "title": "Hover Card",
+      "description": "For sighted users to preview content available behind a link.",
+      "files": [
+        {
+          "path": "registry/react/hover-card/hover-card.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/hover-card/hover-card.tsx"
+        },
+        {
+          "path": "registry/react/hover-card/hover-card.css",
+          "type": "registry:ui",
+          "target": "components/nepui/hover-card/hover-card.css"
+        },
+        {
+          "path": "registry/react/hover-card/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/hover-card/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "A vertically stacked set of interactive headings that each reveal a section of content.",
+      "files": [
+        {
+          "path": "registry/react/accordion/accordion.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/accordion/accordion.tsx"
+        },
+        {
+          "path": "registry/react/accordion/accordion.css",
+          "type": "registry:ui",
+          "target": "components/nepui/accordion/accordion.css"
+        },
+        {
+          "path": "registry/react/accordion/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/accordion/index.ts"
+        }
+      ]
+    },
+    {
       "name": "item",
       "type": "registry:ui",
       "title": "Item",

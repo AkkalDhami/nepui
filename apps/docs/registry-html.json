@@ -343,6 +343,189 @@
       ]
     },
     {
+      "name": "marker",
+      "type": "registry:ui",
+      "title": "Marker",
+      "description": "Displays an inline status, system note, bordered row, or labeled separator in a conversation.",
+      "files": [
+        {
+          "path": "registry/html/marker/marker.html",
+          "type": "registry:ui",
+          "target": "html/marker.html"
+        },
+        {
+          "path": "registry/html/marker/marker.css",
+          "type": "registry:ui",
+          "target": "styles/marker.css"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "Displays rich content in a portal, triggered by a button.",
+      "files": [
+        {
+          "path": "registry/html/popover/popover.html",
+          "type": "registry:ui",
+          "target": "html/popover.html"
+        },
+        {
+          "path": "registry/html/popover/popover.css",
+          "type": "registry:ui",
+          "target": "styles/popover.css"
+        },
+        {
+          "path": "registry/html/popover/popover.js",
+          "type": "registry:ui",
+          "target": "javascripts/popover.js"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "description": "Displays the path to the current resource using a hierarchy of links.",
+      "files": [
+        {
+          "path": "registry/html/breadcrumb/breadcrumb.html",
+          "type": "registry:ui",
+          "target": "html/breadcrumb.html"
+        },
+        {
+          "path": "registry/html/breadcrumb/breadcrumb.css",
+          "type": "registry:ui",
+          "target": "styles/breadcrumb.css"
+        },
+        {
+          "path": "registry/html/breadcrumb/breadcrumb.js",
+          "type": "registry:ui",
+          "target": "javascripts/breadcrumb.js"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+      "files": [
+        {
+          "path": "registry/html/tooltip/tooltip.html",
+          "type": "registry:ui",
+          "target": "html/tooltip.html"
+        },
+        {
+          "path": "registry/html/tooltip/tooltip.css",
+          "type": "registry:ui",
+          "target": "styles/tooltip.css"
+        }
+      ]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Table",
+      "description": "A responsive table component.",
+      "files": [
+        {
+          "path": "registry/html/table/table.html",
+          "type": "registry:ui",
+          "target": "html/table.html"
+        },
+        {
+          "path": "registry/html/table/table.css",
+          "type": "registry:ui",
+          "target": "styles/table.css"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "A set of layered sections of content, known as tab panels, that are displayed one at a time.",
+      "files": [
+        {
+          "path": "registry/html/tabs/tabs.html",
+          "type": "registry:ui",
+          "target": "html/tabs.html"
+        },
+        {
+          "path": "registry/html/tabs/tabs.css",
+          "type": "registry:ui",
+          "target": "styles/tabs.css"
+        },
+        {
+          "path": "registry/html/tabs/tabs.js",
+          "type": "registry:ui",
+          "target": "javascripts/tabs.js"
+        }
+      ]
+    },
+    {
+      "name": "otp-field",
+      "type": "registry:ui",
+      "title": "OTP Field",
+      "description": "A segmented input for one-time passwords and verification codes.",
+      "files": [
+        {
+          "path": "registry/html/otp-field/otp-field.html",
+          "type": "registry:ui",
+          "target": "html/otp-field.html"
+        },
+        {
+          "path": "registry/html/otp-field/otp-field.css",
+          "type": "registry:ui",
+          "target": "styles/otp-field.css"
+        },
+        {
+          "path": "registry/html/otp-field/otp-field.js",
+          "type": "registry:ui",
+          "target": "javascripts/otp-field.js"
+        }
+      ]
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "title": "Hover Card",
+      "description": "For sighted users to preview content available behind a link.",
+      "files": [
+        {
+          "path": "registry/html/hover-card/hover-card.html",
+          "type": "registry:ui",
+          "target": "html/hover-card.html"
+        },
+        {
+          "path": "registry/html/hover-card/hover-card.css",
+          "type": "registry:ui",
+          "target": "styles/hover-card.css"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.",
+      "registryDependencies": ["https://nepui.vercel.app/r/react/button.json"],
+      "files": [
+        {
+          "path": "registry/html/dialog/dialog.html",
+          "type": "registry:ui",
+          "target": "html/dialog.html"
+        },
+        {
+          "path": "registry/html/dialog/dialog.css",
+          "type": "registry:ui",
+          "target": "styles/dialog.css"
+        }
+      ]
+    },
+    {
       "name": "menu",
       "type": "registry:ui",
       "title": "Menu",

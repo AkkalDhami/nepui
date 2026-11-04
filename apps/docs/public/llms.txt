@@ -16,14 +16,88 @@
 * [Button](https://nepui.vercel.app/docs/components/html/button): A button triggers an action, submits a form, or performs another user-initiated operation.
 * [Spinner](https://nepui.vercel.app/docs/components/html/spinner): An indicator that can be used to show a loading state.
 * [Label](https://nepui.vercel.app/docs/components/html/label): Renders an accessible label associated with controls.
+* [Checkbox](https://nepui.vercel.app/docs/components/html/checkbox): A control that allows the user to toggle between checked and not checked.
+* [Checkbox Group](https://nepui.vercel.app/docs/components/html/checkbox-group): Provides shared state to a series of checkboxes.
 * [Input](https://nepui.vercel.app/docs/components/html/input): A text input component for forms and user data entry with built-in styling and accessibility features.
+* [Steps](https://nepui.vercel.app/docs/components/html/steps): A multi-step process indicator that guides users through a sequence of actions or tasks.
+* [Badge](https://nepui.vercel.app/docs/components/html/badge): A badge displays a short piece of information, such as a status, a label or a count.
+* [Button Group](https://nepui.vercel.app/docs/components/html/button-group): A container that groups related buttons together with consistent styling.
+* [Separator](https://nepui.vercel.app/docs/components/html/separator): Visually or semantically separates content.
+* [Skeleton](https://nepui.vercel.app/docs/components/html/skeleton): Use to show a placeholder while content is loading.
+* [Textarea](https://nepui.vercel.app/docs/components/html/textarea): Displays a form textarea or a component that looks like a textarea.
+* [Field](https://nepui.vercel.app/docs/components/html/field): Combine labels, controls, and help text to compose accessible form fields and grouped inputs.
+* [Kbd](https://nepui.vercel.app/docs/components/html/kbd): Used to display textual user input from keyboard.
+* [Select](https://nepui.vercel.app/docs/components/html/select): Displays a list of options for the user to pick from, as a Base UI popup or as a native select.
+* [Empty](https://nepui.vercel.app/docs/components/html/empty): Use the Empty component to display an empty state.
+* [Accordion](https://nepui.vercel.app/docs/components/html/accordion): A vertically stacked set of interactive headings that each reveal a section of content.
+* [Item](https://nepui.vercel.app/docs/components/html/item): A versatile component for displaying content with media, title, description, and actions.
+* [Marker](https://nepui.vercel.app/docs/components/html/marker): Displays an inline status, system note, bordered row, or labeled separator in a conversation.
+* [Popover](https://nepui.vercel.app/docs/components/html/popover): Displays rich content in a portal, triggered by a button.
+* [Breadcrumb](https://nepui.vercel.app/docs/components/html/breadcrumb): Displays the path to the current resource using a hierarchy of links.
+* [Tooltip](https://nepui.vercel.app/docs/components/html/tooltip): A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
+* [Table](https://nepui.vercel.app/docs/components/html/table): A responsive table component.
+* [Tabs](https://nepui.vercel.app/docs/components/html/tabs): A set of layered sections of content, known as tab panels, that are displayed one at a time.
+* [OTP Field](https://nepui.vercel.app/docs/components/html/otp-field): A segmented input for one-time passwords and verification codes.
+* [Menu](https://nepui.vercel.app/docs/components/html/menu): Displays a menu to the user — such as a set of actions or functions — triggered by a button.
+* [Radio Group](https://nepui.vercel.app/docs/components/html/radio-group): A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time
+* [Switch](https://nepui.vercel.app/docs/components/html/switch): A control that allows the user to toggle between checked and not checked.
+* [Meter](https://nepui.vercel.app/docs/components/html/meter): A graphical display of a numeric value within a range.
+* [Progress](https://nepui.vercel.app/docs/components/html/progress): Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.
+* [Slider](https://nepui.vercel.app/docs/components/html/slider): An input where the user selects a value from within a given range.
+* [Alert](https://nepui.vercel.app/docs/components/html/alert): Displays a callout for user attention.
+* [Aspect Ratio](https://nepui.vercel.app/docs/components/html/aspect-ratio): Displays content within a desired ratio.
+* [Avatar](https://nepui.vercel.app/docs/components/html/avatar): An image element with a fallback for representing the user.
+* [Toggle](https://nepui.vercel.app/docs/components/html/toggle): A two-state button that can be either on or off.
+* [Typeset](https://nepui.vercel.app/docs/components/html/typeset): A styling system for HTML and rendered markdown, from blog posts to streaming chat. One CSS file you own.
+* [Card](https://nepui.vercel.app/docs/components/html/card): Displays a card with header, content, and footer.
+* [Collapsible](https://nepui.vercel.app/docs/components/html/collapsible): An interactive component which expands/collapses a panel.
+* [Toggle Group](https://nepui.vercel.app/docs/components/html/toggle-group): A set of two-state buttons that can be toggled on or off.
+* [Scroll Area](https://nepui.vercel.app/docs/components/html/scroll-area): Augments native scroll functionality for custom, cross-browser styling.
+* [Input Group](https://nepui.vercel.app/docs/components/html/input-group): Add addons, buttons, and helper content to inputs.
 
 ### React
 
 * [Button](https://nepui.vercel.app/docs/components/react/button): A button triggers an action, submits a form, or performs another user-initiated operation.
 * [Spinner](https://nepui.vercel.app/docs/components/react/spinner): An indicator that can be used to show a loading state.
 * [Label](https://nepui.vercel.app/docs/components/react/label): Renders an accessible label associated with controls.
+* [Checkbox](https://nepui.vercel.app/docs/components/react/checkbox): A control that allows the user to toggle between checked and not checked.
 * [Input](https://nepui.vercel.app/docs/components/react/input): A text input component for forms and user data entry with built-in styling and accessibility features.
+* [Steps](https://nepui.vercel.app/docs/components/react/steps): A multi-step process indicator that guides users through a sequence of actions or tasks.
+* [Badge](https://nepui.vercel.app/docs/components/react/badge): A badge displays a short piece of information, such as a status, a label or a count.
+* [Button Group](https://nepui.vercel.app/docs/components/react/button-group): A container that groups related buttons together with consistent styling.
+* [Separator](https://nepui.vercel.app/docs/components/react/separator): Visually or semantically separates content.
+* [Skeleton](https://nepui.vercel.app/docs/components/react/skeleton): Use to show a placeholder while content is loading.
+* [Textarea](https://nepui.vercel.app/docs/components/react/textarea): Displays a form textarea or a component that looks like a textarea.
+* [Field](https://nepui.vercel.app/docs/components/react/field): Combine labels, controls, and help text to compose accessible form fields and grouped inputs.
+* [Kbd](https://nepui.vercel.app/docs/components/react/kbd): Used to display textual user input from keyboard.
+* [Select](https://nepui.vercel.app/docs/components/react/select): Displays a list of options for the user to pick from, as a Base UI popup or as a native select.
+* [Radio Group](https://nepui.vercel.app/docs/components/react/radio-group): A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time
+* [Switch](https://nepui.vercel.app/docs/components/react/switch): A control that allows the user to toggle between checked and not checked.
+* [Scroll Area](https://nepui.vercel.app/docs/components/react/scroll-area): Augments native scroll functionality for custom, cross-browser styling.
+* [Meter](https://nepui.vercel.app/docs/components/react/meter): A graphical display of a numeric value within a range.
+* [Progress](https://nepui.vercel.app/docs/components/react/progress): Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.
+* [Slider](https://nepui.vercel.app/docs/components/react/slider): An input where the user selects a value from within a given range.
+* [Alert](https://nepui.vercel.app/docs/components/react/alert): Displays a callout for user attention.
+* [Checkbox Group](https://nepui.vercel.app/docs/components/react/checkbox-group): Provides shared state to a series of checkboxes.
+* [Aspect Ratio](https://nepui.vercel.app/docs/components/react/aspect-ratio): Displays content within a desired ratio.
+* [Avatar](https://nepui.vercel.app/docs/components/react/avatar): An image element with a fallback for representing the user.
+* [Toggle](https://nepui.vercel.app/docs/components/react/toggle): A two-state button that can be either on or off.
+* [Card](https://nepui.vercel.app/docs/components/react/card): Displays a card with header, content, and footer.
+* [Collapsible](https://nepui.vercel.app/docs/components/react/collapsible): An interactive component which expands/collapses a panel.
+* [Menu](https://nepui.vercel.app/docs/components/react/menu): Displays a menu to the user — such as a set of actions or functions — triggered by a button.
+* [Empty](https://nepui.vercel.app/docs/components/react/empty): Use the Empty component to display an empty state.
+* [Accordion](https://nepui.vercel.app/docs/components/react/accordion): A vertically stacked set of interactive headings that each reveal a section of content.
+* [Marker](https://nepui.vercel.app/docs/components/react/marker): Displays an inline status, system note, bordered row, or labeled separator in a conversation.
+* [Popover](https://nepui.vercel.app/docs/components/react/popover): Displays rich content in a portal, triggered by a button.
+* [Breadcrumb](https://nepui.vercel.app/docs/components/react/breadcrumb): Displays the path to the current resource using a hierarchy of links.
+* [Tooltip](https://nepui.vercel.app/docs/components/react/tooltip): A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
+* [Table](https://nepui.vercel.app/docs/components/react/table): A responsive table component.
+* [Tabs](https://nepui.vercel.app/docs/components/react/tabs): A set of layered sections of content, known as tab panels, that are displayed one at a time.
+* [OTP Field](https://nepui.vercel.app/docs/components/react/otp-field): A segmented input for one-time passwords and verification codes.
+* [Item](https://nepui.vercel.app/docs/components/react/item): A versatile component for displaying content with media, title, description, and actions.
+* [Typeset](https://nepui.vercel.app/docs/components/react/typeset): A styling system for HTML and rendered markdown, from blog posts to streaming chat. One CSS file you own.
+* [Toggle Group](https://nepui.vercel.app/docs/components/react/toggle-group): A set of two-state buttons that can be toggled on or off.
+* [Input Group](https://nepui.vercel.app/docs/components/react/input-group): Add addons, buttons, and helper content to inputs.
 
 ## Supported Targets
 
@@ -63,22 +137,56 @@ The component registry provides machine-readable component definitions.
 
 ## CLI
 
-nepui provides a CLI for adding components to a project.
+Use the nepui CLI to initialize a project, add component source files, and list available components. No separate install step is required; run it with `npx`. The CLI requires Node.js 18 or later.
+
+### Initialize a project
 
 ```bash
-npx nepui add <component> --target <html|react>
+npx nepui@latest init [directory] --target <html|react>
 ```
 
-**Default target: `html`**
-
-Examples:
+Initialization creates the base token stylesheet and target-specific folder structure. React projects also install required dependencies when needed. If no directory is provided, the CLI prompts for the target and folder.
 
 ```bash
-npx nepui add button
-npx nepui add button --target react
-npx nepui add spinner
-npx nepui add spinner --target react
+npx nepui@latest init --target react
+npx nepui@latest init --target html my-app
 ```
+
+React tokens are written to `components/nepui/tokens.css`; HTML tokens are written to `styles/tokens.css`.
+
+### Add components
+
+```bash
+npx nepui@latest add <component> [<component>...] --target <html|react>
+npx nepui@latest add --all --target <html|react>
+```
+
+The default target is `html`. Add one or more component names, or use `--all` to add every component for the selected target. Do not combine component names with `--all`.
+
+```bash
+npx nepui@latest add button --target react
+npx nepui@latest add button card spinner --target html
+npx nepui@latest add --all --target react
+```
+
+If a destination file already exists, the CLI asks whether to overwrite, skip, or cancel. Unknown component names and invalid targets fail without writing files.
+
+### List components
+
+```bash
+npx nepui@latest list [--target <html|react>] [--json]
+```
+
+`list` also has the `ls` alias. The default target is `html`; plain output is alphabetical. `--json` prints a JSON object to stdout for piping into other tools.
+
+```bash
+npx nepui@latest ls --target react
+npx nepui@latest ls --json --target html
+```
+
+Use `--version` to print the CLI version and `--help` to show help for the CLI or a subcommand.
+
+See the [CLI documentation](https://nepui.vercel.app/docs/cli) for full usage details.
 
 ## Source
 
