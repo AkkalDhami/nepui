@@ -31,7 +31,7 @@ type FlatLink = {
 
 const TOP_LEVEL_SECTIONS = [
   {
-    name: "Introduction",
+    name: "Installation",
     href: "/docs",
   },
   // {
@@ -49,6 +49,10 @@ const TOP_LEVEL_SECTIONS = [
   {
     name: "CLI",
     href: "/docs/cli",
+  },
+  {
+    name: "Dark Mode",
+    href: "/docs/dark-mode",
   },
 ]
 

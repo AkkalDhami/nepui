@@ -243,7 +243,6 @@ h4 {
     padding: 0;
     counter-reset: line;
     box-decoration-break: clone;
-    z-index: 99999 !important;
   }
 
   [data-line-numbers] [data-line]::before {
@@ -259,12 +258,10 @@ h4 {
     background-color: var(--color-code);
     position: sticky;
     left: 0;
-    z-index: 99999 !important;
   }
 
   [data-line-numbers] [data-highlighted-line][data-line]::before {
     background-color: var(--color-code-highlight);
-    z-index: 99999 !important;
   }
 
   [data-line] {

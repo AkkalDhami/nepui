@@ -20,6 +20,7 @@ import { ComponentSource } from "@/components/docs/component-source"
 import { ColorPalette } from "@/components/docs/color-palette"
 import { Kbd } from "@/components/ui/kbd"
 import { Callout } from "@/components/docs/callout"
+import Link from "next/link"
 
 function getNodeText(node: React.ReactNode): string {
   if (typeof node === "string" || typeof node === "number") {
@@ -368,5 +369,15 @@ export const mdxComponents = {
   ),
   Tab: ({ className, ...props }: React.ComponentProps<"div">) => (
     <div className={cn(className)} {...props} />
+  ),
+  LinkedCard: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
+    <Link
+      data-not-typeset
+      className={cn(
+        "flex w-full flex-col items-center rounded-2xl bg-muted/80 p-6 text-foreground transition-colors hover:bg-muted sm:p-10",
+        className
+      )}
+      {...props}
+    />
   ),
 } satisfies MDXComponents

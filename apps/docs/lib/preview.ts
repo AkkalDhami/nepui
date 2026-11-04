@@ -48,11 +48,14 @@ ${type === "docs" ? DOCS_THEME_MODE_CSS : PLAYGROUND_THEME_MODE_CSS}
 *::before,
 *::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html,
 body {
   margin: 0;
+  padding: 0;
   min-height: 100%;
 }
 
