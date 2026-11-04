@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Tabs</title>
+    <link rel="stylesheet" href="../tokens.css" />
+    <link rel="stylesheet" href="./tabs.css" />
+    <script src="./tabs.js" defer></script>
+
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem 4rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: system-ui, sans-serif;
+      }
+      main {
+        display: grid;
+        gap: 2.5rem;
+        max-width: 44rem;
+        margin-inline: auto;
+      }
+      h2 {
+        margin: 0 0 0.75rem;
+        font-size: 1rem;
+      }
+      p {
+        margin: 0 0 0.75rem;
+        color: var(--np-muted-foreground);
+        font-size: 0.875rem;
+      }
+      .demo {
+        width: 100%;
+        max-width: 24rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Class form</h2>
+        <p>Click a tab, or focus one and use the arrow keys, Home and End.</p>
+        <div class="demo">
+          <div class="np-tabs">
+            <div class="np-tabs-list" role="tablist" aria-label="Settings">
+              <button
+                type="button"
+                class="np-tabs-trigger"
+                role="tab"
+                id="c-account"
+                aria-selected="true"
+                aria-controls="c-account-panel"
+              >
+                Account
+              </button>
+              <button
+                type="button"
+                class="np-tabs-trigger"
+                role="tab"
+                id="c-password"
+                aria-selected="false"
+                aria-controls="c-password-panel"
+                tabindex="-1"
+              >
+                Password
+              </button>
+            </div>
+            <div
+              class="np-tabs-content"
+              role="tabpanel"
+              id="c-account-panel"
+              aria-labelledby="c-account"
+              tabindex="0"
+            >
+              Make changes to your account here.
+            </div>
+            <div
+              class="np-tabs-content"
+              role="tabpanel"
+              id="c-password-panel"
+              aria-labelledby="c-password"
+              tabindex="0"
+              hidden
+            >
+              Change your password here.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Data-attribute form</h2>
+        <p>Same tabs, no classes.</p>
+        <div class="demo">
+          <div data-np-tabs>
+            <div data-np-tabs-list role="tablist" aria-label="Settings">
+              <button
+                type="button"
+                data-np-tabs-trigger
+                role="tab"
+                id="d-account"
+                aria-selected="true"
+                aria-controls="d-account-panel"
+              >
+                Account
+              </button>
+              <button
+                type="button"
+                data-np-tabs-trigger
+                role="tab"
+                id="d-password"
+                aria-selected="false"
+                aria-controls="d-password-panel"
+                tabindex="-1"
+              >
+                Password
+              </button>
+            </div>
+            <div
+              data-np-tabs-content
+              role="tabpanel"
+              id="d-account-panel"
+              aria-labelledby="d-account"
+              tabindex="0"
+            >
+              Make changes to your account here.
+            </div>
+            <div
+              data-np-tabs-content
+              role="tabpanel"
+              id="d-password-panel"
+              aria-labelledby="d-password"
+              tabindex="0"
+              hidden
+            >
+              Change your password here.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Line</h2>
+        <p>
+          <code>np-tabs-line</code> or <code>data-variant="line"</code> on the
+          list.
+        </p>
+        <div class="demo">
+          <div class="np-tabs">
+            <div
+              class="np-tabs-list np-tabs-line"
+              role="tablist"
+              aria-label="Project"
+            >
+              <button
+                type="button"
+                class="np-tabs-trigger"
+                role="tab"
+                id="l-overview"
+                aria-selected="true"
+                aria-controls="l-overview-panel"
+              >
+                Overview
+              </button>
+              <button
+                type="button"
+                class="np-tabs-trigger"
+                role="tab"
+                id="l-analytics"
+                aria-selected="false"
+                aria-controls="l-analytics-panel"
+                tabindex="-1"
+              >
+                Analytics
+              </button>
+              <button
+                type="button"
+                class="np-tabs-trigger"
+                role="tab"
+                id="l-reports"
+                aria-selected="false"
+                aria-controls="l-reports-panel"
+                tabindex="-1"
+              >
+                Reports
+              </button>
+            </div>
+            <div
+              class="np-tabs-content"
+              role="tabpanel"
+              id="l-overview-panel"
+              aria-labelledby="l-overview"
+              tabindex="0"
+            >
+              View your key metrics and recent project activity.
+            </div>
+            <div
+              class="np-tabs-content"
+              role="tabpanel"
+              id="l-analytics-panel"
+              aria-labelledby="l-analytics"
+              tabindex="0"
+              hidden
+            >
+              Track performance and user engagement metrics.
+            </div>
+            <div
+              class="np-tabs-content"
+              role="tabpanel"
+              id="l-reports-panel"
+              aria-labelledby="l-reports"
+              tabindex="0"
+              hidden
+            >
+              Generate and download your detailed reports.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Vertical</h2>
+        <p>
+          <code>np-tabs-vertical</code> or
+          <code>data-orientation="vertical"</code> on the root. Add
+          <code>aria-orientation="vertical"</code> to the list.
+        </p>
+        <div class="demo">
+          <div class="np-tabs np-tabs-vertical">
+            <div
+              class="np-tabs-list"
+              role="tablist"
+              aria-orientation="vertical"
+              aria-label="Settings"
+            >
+              <button
+                type="button"
+                class="np-tabs-trigger"
+                role="tab"
+                id="v-account"
+                aria-selected="true"
+                aria-controls="v-account-panel"
+              >
+                Account
+              </button>
+              <button
+                type="button"
+                class="np-tabs-trigger"
+                role="tab"
+                id="v-password"
+                aria-selected="false"
+                aria-controls="v-password-panel"
+                tabindex="-1"
+              >
+                Password
+              </button>
+              <button
+                type="button"
+                class="np-tabs-trigger"
+                role="tab"
+                id="v-notifications"
+                aria-selected="false"
+                aria-controls="v-notifications-panel"
+                tabindex="-1"
+              >
+                Notifications
+              </button>
+            </div>
+            <div
+              class="np-tabs-content"
+              role="tabpanel"
+              id="v-account-panel"
+              aria-labelledby="v-account"
+              tabindex="0"
+            >
+              Make changes to your account here.
+            </div>
+            <div
+              class="np-tabs-content"
+              role="tabpanel"
+              id="v-password-panel"
+              aria-labelledby="v-password"
+              tabindex="0"
+              hidden
+            >
+              Change your password here.
+            </div>
+            <div
+              class="np-tabs-content"
+              role="tabpanel"
+              id="v-notifications-panel"
+              aria-labelledby="v-notifications"
+              tabindex="0"
+              hidden
+            >
+              Configure your notification preferences.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Vertical line</h2>
+        <div class="demo">
+          <div class="np-tabs np-tabs-vertical">
+            <div
+              class="np-tabs-list np-tabs-line"
+              role="tablist"
+              aria-orientation="vertical"
+              aria-label="Settings"
+            >
+              <button
+                type="button"
+                class="np-tabs-trigger"
+                role="tab"
+                id="vl-account"
+                aria-selected="true"
+                aria-controls="vl-account-panel"
+              >
+                Account
+              </button>
+              <button
+                type="button"
+                class="np-tabs-trigger"
+                role="tab"
+                id="vl-password"
+                aria-selected="false"
+                aria-controls="vl-password-panel"
+                tabindex="-1"
+              >
+                Password
+              </button>
+              <button
+                type="button"
+                class="np-tabs-trigger"
+                role="tab"
+                id="vl-notifications"
+                aria-selected="false"
+                aria-controls="vl-notifications-panel"
+                tabindex="-1"
+              >
+                Notifications
+              </button>
+            </div>
+            <div
+              class="np-tabs-content"
+              role="tabpanel"
+              id="vl-account-panel"
+              aria-labelledby="vl-account"
+              tabindex="0"
+            >
+              Make changes to your account here.
+            </div>
+            <div
+              class="np-tabs-content"
+              role="tabpanel"
+              id="vl-password-panel"
+              aria-labelledby="vl-password"
+              tabindex="0"
+              hidden
+            >
+              Change your password here.
+            </div>
+            <div
+              class="np-tabs-content"
+              role="tabpanel"
+              id="vl-notifications-panel"
+              aria-labelledby="vl-notifications"
+              tabindex="0"
+              hidden
+            >
+              Configure your notification preferences.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Disabled</h2>
+        <div class="demo">
+          <div class="np-tabs">
+            <div class="np-tabs-list" role="tablist" aria-label="Pages">
+              <button
+                type="button"
+                class="np-tabs-trigger"
+                role="tab"
+                id="x-home"
+                aria-selected="true"
+                aria-controls="x-home-panel"
+              >
+                Home
+              </button>
+              <button
+                type="button"
+                class="np-tabs-trigger"
+                role="tab"
+                id="x-disabled"
+                aria-selected="false"
+                aria-controls="x-disabled-panel"
+                tabindex="-1"
+                disabled
+              >
+                Disabled
+              </button>
+            </div>
+            <div
+              class="np-tabs-content"
+              role="tabpanel"
+              id="x-home-panel"
+              aria-labelledby="x-home"
+              tabindex="0"
+            >
+              This tab is enabled.
+            </div>
+            <div
+              class="np-tabs-content"
+              role="tabpanel"
+              id="x-disabled-panel"
+              aria-labelledby="x-disabled"
+              tabindex="0"
+              hidden
+            >
+              This tab can not be reached.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Icons</h2>
+        <div class="demo">
+          <div class="np-tabs">
+            <div class="np-tabs-list" role="tablist" aria-label="View">
+              <button
+                type="button"
+                class="np-tabs-trigger"
+                role="tab"
+                id="i-preview"
+                aria-selected="true"
+                aria-controls="i-preview-panel"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="M10 4v4" />
+                  <path d="M2 8h20" />
+                  <path d="M6 4v4" />
+                </svg>
+                Preview
+              </button>
+              <button
+                type="button"
+                class="np-tabs-trigger"
+                role="tab"
+                id="i-code"
+                aria-selected="false"
+                aria-controls="i-code-panel"
+                tabindex="-1"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <polyline points="16 18 22 12 16 6" />
+                  <polyline points="8 6 2 12 8 18" />
+                </svg>
+                Code
+              </button>
+            </div>
+            <div
+              class="np-tabs-content"
+              role="tabpanel"
+              id="i-preview-panel"
+              aria-labelledby="i-preview"
+              tabindex="0"
+            >
+              See how the component looks.
+            </div>
+            <div
+              class="np-tabs-content"
+              role="tabpanel"
+              id="i-code-panel"
+              aria-labelledby="i-code"
+              tabindex="0"
+              hidden
+            >
+              Read the source of the component.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Custom variables</h2>
+        <p>
+          Set variables on the list to restyle it. Here the active tab is filled
+          with the primary colour.
+        </p>
+        <div class="demo">
+          <div class="np-tabs">
+            <div
+              class="np-tabs-list"
+              role="tablist"
+              aria-label="Plans"
+              style="
+                --np-tabs-list-bg: color-mix(
+                  in oklch,
+                  var(--np-primary) 12%,
+                  transparent
+                );
+                --np-tabs-active-bg: var(--np-primary);
+                --np-tabs-active-color: var(--np-primary-foreground);
+                --np-tabs-list-radius: 9999px;
+              "
+            >
+              <button
+                type="button"
+                class="np-tabs-trigger"
+                role="tab"
+                id="s-monthly"
+                aria-selected="true"
+                aria-controls="s-monthly-panel"
+                style="--np-tabs-trigger-radius: 9999px"
+              >
+                Monthly
+              </button>
+              <button
+                type="button"
+                class="np-tabs-trigger"
+                role="tab"
+                id="s-yearly"
+                aria-selected="false"
+                aria-controls="s-yearly-panel"
+                tabindex="-1"
+                style="--np-tabs-trigger-radius: 9999px"
+              >
+                Yearly
+              </button>
+            </div>
+            <div
+              class="np-tabs-content"
+              role="tabpanel"
+              id="s-monthly-panel"
+              aria-labelledby="s-monthly"
+              tabindex="0"
+            >
+              Billed every month.
+            </div>
+            <div
+              class="np-tabs-content"
+              role="tabpanel"
+              id="s-yearly-panel"
+              aria-labelledby="s-yearly"
+              tabindex="0"
+              hidden
+            >
+              Billed once a year.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Activate on focus</h2>
+        <p>
+          <code>data-activate-on-focus</code> on the list. Arrow keys select as
+          they move.
+        </p>
+        <div class="demo">
+          <div class="np-tabs">
+            <div
+              class="np-tabs-list"
+              role="tablist"
+              aria-label="Sections"
+              data-activate-on-focus
+            >
+              <button
+                type="button"
+                class="np-tabs-trigger"
+                role="tab"
+                id="a-one"
+                aria-selected="true"
+                aria-controls="a-one-panel"
+              >
+                One
+              </button>
+              <button
+                type="button"
+                class="np-tabs-trigger"
+                role="tab"
+                id="a-two"
+                aria-selected="false"
+                aria-controls="a-two-panel"
+                tabindex="-1"
+              >
+                Two
+              </button>
+              <button
+                type="button"
+                class="np-tabs-trigger"
+                role="tab"
+                id="a-three"
+                aria-selected="false"
+                aria-controls="a-three-panel"
+                tabindex="-1"
+              >
+                Three
+              </button>
+            </div>
+            <div
+              class="np-tabs-content"
+              role="tabpanel"
+              id="a-one-panel"
+              aria-labelledby="a-one"
+              tabindex="0"
+            >
+              First panel.
+            </div>
+            <div
+              class="np-tabs-content"
+              role="tabpanel"
+              id="a-two-panel"
+              aria-labelledby="a-two"
+              tabindex="0"
+              hidden
+            >
+              Second panel.
+            </div>
+            <div
+              class="np-tabs-content"
+              role="tabpanel"
+              id="a-three-panel"
+              aria-labelledby="a-three"
+              tabindex="0"
+              hidden
+            >
+              Third panel.
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
