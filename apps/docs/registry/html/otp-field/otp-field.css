@@ -1,0 +1,161 @@
+/* nepui - OTP Field */
+
+.np-otp-field,
+[data-np-otp-field] {
+  --spacing: 0.25rem;
+  --np-otp-field-gap: calc(var(--spacing) * 2);
+  --np-otp-field-slot-size: calc(var(--spacing) * 9);
+  --np-otp-field-font-size: 1rem;
+  --np-otp-field-radius: var(--np-radius-md);
+  --np-otp-field-border: var(--np-input, var(--np-border));
+  --np-otp-field-bg: transparent;
+  --np-otp-field-placeholder: var(--np-muted-foreground);
+  --np-otp-field-invalid-border: var(--np-destructive);
+  --np-otp-field-invalid-ring: color-mix(
+    in oklch,
+    var(--np-destructive),
+    transparent 80%
+  );
+  --np-otp-field-separator-width: calc(var(--spacing) * 3);
+  --np-otp-field-separator-thickness: calc(var(--spacing) * 0.5);
+  --np-otp-field-separator-color: var(--np-muted-foreground);
+
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--np-otp-field-gap);
+  width: fit-content;
+}
+
+:is(.np-otp-field, [data-np-otp-field]):is(.np-otp-field-sm, [data-size="sm"]) {
+  --np-otp-field-gap: calc(var(--spacing) * 1.5);
+  --np-otp-field-slot-size: calc(var(--spacing) * 8);
+  --np-otp-field-font-size: 0.875rem;
+  --np-otp-field-separator-width: calc(var(--spacing) * 2);
+}
+
+:is(.np-otp-field, [data-np-otp-field]):is(.np-otp-field-lg, [data-size="lg"]) {
+  --np-otp-field-gap: calc(var(--spacing) * 2.5);
+  --np-otp-field-slot-size: calc(var(--spacing) * 11);
+  --np-otp-field-font-size: 1.25rem;
+  --np-otp-field-separator-width: calc(var(--spacing) * 4);
+}
+
+.np-otp-field-input,
+[data-np-otp-field-input] {
+  box-sizing: border-box;
+  display: block;
+  flex: none;
+  width: var(--np-otp-field-slot-size);
+  height: var(--np-otp-field-slot-size);
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--np-otp-field-border);
+  border-radius: var(--np-otp-field-radius);
+  background-color: var(--np-otp-field-bg);
+  color: inherit;
+  font-family: inherit;
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  text-align: center;
+  outline: none;
+  transition:
+    color 150ms ease,
+    background-color 150ms ease,
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+@media (min-width: 48rem) {
+  .np-otp-field-input,
+  [data-np-otp-field-input] {
+    font-size: var(--np-otp-field-font-size);
+  }
+}
+
+:is(.np-otp-field-input, [data-np-otp-field-input])::placeholder {
+  color: var(--np-otp-field-placeholder);
+}
+
+:is(.np-otp-field-input, [data-np-otp-field-input]):focus-visible {
+  border-color: var(--np-ring);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--np-ring), transparent 50%);
+}
+
+:is(.np-otp-field-input, [data-np-otp-field-input]):focus-visible::placeholder {
+  color: transparent;
+}
+
+:is(.np-otp-field-input, [data-np-otp-field-input]):is(
+  :disabled,
+  [aria-disabled="true"],
+  [data-disabled]
+) {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+:is(.np-otp-field-input, [data-np-otp-field-input]):is(
+  [aria-invalid="true"],
+  [aria-invalid],
+  [data-invalid]
+) {
+  border-color: var(--np-otp-field-invalid-border);
+  box-shadow: 0 0 0 3px var(--np-otp-field-invalid-ring);
+}
+
+.np-otp-field-separator,
+[data-np-otp-field-separator] {
+  flex: none;
+  width: var(--np-otp-field-separator-width);
+  height: var(--np-otp-field-separator-thickness);
+  border-radius: var(--np-radius-full, 9999px);
+  background-color: var(--np-otp-field-separator-color);
+}
+
+:is(.dark, [data-theme="dark"]) :is(.np-otp-field, [data-np-otp-field]) {
+  --np-otp-field-bg: color-mix(
+    in oklab,
+    var(--np-otp-field-border) 30%,
+    transparent
+  );
+  --np-otp-field-invalid-border: color-mix(
+    in oklab,
+    var(--np-destructive) 50%,
+    transparent
+  );
+  --np-otp-field-invalid-ring: color-mix(
+    in oklab,
+    var(--np-destructive) 20%,
+    transparent
+  );
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light, [data-theme="light"])
+    :is(.np-otp-field, [data-np-otp-field]) {
+    --np-otp-field-bg: color-mix(
+      in oklab,
+      var(--np-otp-field-border) 30%,
+      transparent
+    );
+    --np-otp-field-invalid-border: color-mix(
+      in oklab,
+      var(--np-destructive) 50%,
+      transparent
+    );
+    --np-otp-field-invalid-ring: color-mix(
+      in oklab,
+      var(--np-destructive) 20%,
+      transparent
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .np-otp-field-input,
+  [data-np-otp-field-input] {
+    transition: none;
+  }
+}
