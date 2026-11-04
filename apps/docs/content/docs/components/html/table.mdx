@@ -1,0 +1,197 @@
+---
+title: Table
+description: A responsive table component.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  target="html"
+  name="table-demo"
+  styles={["/badge/badge.css"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add table"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="table"
+        title="styles/table.css"
+        fileTarget="styles/table.css"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the stylesheet, after `tokens.css`:
+
+```html
+<link rel="stylesheet" href="./styles/table.css">
+```
+
+Wrap the table in a container so wide tables scroll sideways:
+
+```html
+<div class="np-table-container">
+  <table class="np-table">
+    <caption class="np-table-caption">A list of your recent invoices.</caption>
+    <thead class="np-table-header">
+      <tr class="np-table-row">
+        <th class="np-table-head" scope="col" style="width: 6.25rem">Invoice</th>
+        <th class="np-table-head" scope="col">Status</th>
+        <th class="np-table-head" scope="col">Method</th>
+        <th class="np-table-head np-table-end" scope="col">Amount</th>
+      </tr>
+    </thead>
+    <tbody class="np-table-body">
+      <tr class="np-table-row">
+        <td class="np-table-cell">INV001</td>
+        <td class="np-table-cell">Paid</td>
+        <td class="np-table-cell">Credit Card</td>
+        <td class="np-table-cell np-table-end">$250.00</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+```
+
+Or use the data attributes instead of classes:
+
+```html
+<div data-np-table-container>
+  <table data-np-table>
+    <caption data-np-table-caption>A list of your recent invoices.</caption>
+    <thead data-np-table-header>
+      <tr data-np-table-row>
+        <th data-np-table-head scope="col">Invoice</th>
+        <th data-np-table-head data-align="end" scope="col">Amount</th>
+      </tr>
+    </thead>
+    <tbody data-np-table-body>
+      <tr data-np-table-row>
+        <td data-np-table-cell>INV001</td>
+        <td data-np-table-cell data-align="end">$250.00</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+```
+
+Cells never wrap their content, so a long value widens the table and scrolls it sideways. If the scroll container can overflow, add `tabindex="0"` and an `aria-label` so keyboard users can scroll it.
+
+Colours come from tokens, so dark mode needs no extra setup. Hover and footer backgrounds use `color-mix()`, and the checkbox column padding uses `:has()`, both of which need a modern browser.
+
+---
+
+## Composition
+
+Use the following composition to build a `Table`:
+
+```text
+Table
+├── TableCaption
+├── TableHeader
+│   └── TableRow
+│       ├── TableHead
+│       ├── TableHead
+│       ├── TableHead
+│       └── TableHead
+├── TableBody
+│   ├── TableRow
+│   │   ├── TableCell
+│   │   ├── TableCell
+│   │   ├── TableCell
+│   │   └── TableCell
+│   └── TableRow
+│       ├── TableCell
+│       ├── TableCell
+│       ├── TableCell
+│       └── TableCell
+└── TableFooter
+```
+
+---
+
+## Footer
+
+Use the `<tfoot>` element with the `np-table-footer` class to add a footer to the table.
+
+<ComponentPreview
+  target="html"
+  name="table-footer"
+/>
+
+---
+
+## Actions
+
+Combine the table with other components, such as [Badge](/docs/components/html/badge) and [Menu](/docs/components/html/menu). Link their stylesheets and scripts first:
+
+```html
+<link rel="stylesheet" href="./styles/badge.css">
+<link rel="stylesheet" href="./styles/menu.css">
+<link rel="stylesheet" href="./styles/button.css">
+
+<script src="./javascripts/menu.js" defer></script>
+```
+
+<ComponentPreview
+  target="html"
+  name="table-status"
+  styles={["/badge/badge.css", "/menu/menu.css", "/button/button.css"]}
+  scripts={["/menu/menu.js"]}
+/>
+
+---
+
+## Reference
+
+### Parts
+
+| Name | Data attribute | Class alias |
+| --- | --- | --- |
+| Container | `data-np-table-container` | `np-table-container` |
+| Table | `data-np-table` | `np-table` |
+| Header (`<thead>`) | `data-np-table-header` | `np-table-header` |
+| Body (`<tbody>`) | `data-np-table-body` | `np-table-body` |
+| Footer (`<tfoot>`) | `data-np-table-footer` | `np-table-footer` |
+| Row (`<tr>`) | `data-np-table-row` | `np-table-row` |
+| Head (`<th>`) | `data-np-table-head` | `np-table-head` |
+| Cell (`<td>`) | `data-np-table-cell` | `np-table-cell` |
+| Caption (`<caption>`) | `data-np-table-caption` | `np-table-caption` |
+
+### Alignment
+
+Apply to a head or a cell. The default is `start`.
+
+| Name | Data attribute | Class alias |
+| --- | --- | --- |
+| Start | - | - |
+| Center | `data-align="center"` | `np-table-center` |
+| End | `data-align="end"` | `np-table-end` |
+
+### Row state
+
+| Name | Selector |
+| --- | --- |
+| Selected | `data-state="selected"`, `data-selected` or `aria-selected="true"` |

@@ -1,0 +1,218 @@
+---
+title: Table
+description: A responsive table component.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="table-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/table.json"
+      nepui="npx nepui@latest add table --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="table"
+        title="components/nepui/table/table.css"
+        fileTarget="components/nepui/table/table.css"
+      />
+      <ComponentSource
+        target="react"
+        name="table"
+        title="components/nepui/table/table.tsx"
+        fileTarget="components/nepui/table/table.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="table"
+        title="components/nepui/table/index.ts"
+        fileTarget="components/nepui/table/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/nepui/table"
+```
+
+```tsx showLineNumbers
+<Table>
+  <TableCaption>A list of your recent invoices.</TableCaption>
+  <TableHeader>
+    <TableRow>
+      <TableHead style={{ width: "6.25rem" }}>Invoice</TableHead>
+      <TableHead>Status</TableHead>
+      <TableHead>Method</TableHead>
+      <TableHead align="end">Amount</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>INV001</TableCell>
+      <TableCell>Paid</TableCell>
+      <TableCell>Credit Card</TableCell>
+      <TableCell align="end">$250.00</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+```
+
+`Table` wraps the `<table>` in its own scroll container. `className` lands on the table, and `containerClassName` lands on the wrapper. Cells never wrap their content, so a long value widens the table and scrolls it sideways instead.
+
+Use `align="center"` or `align="end"` on `TableHead` and `TableCell` to align numbers and actions. `end` follows the writing direction, so it works in RTL.
+
+Colours come from tokens, so dark mode needs no extra setup. Hover and footer backgrounds use `color-mix()`, and the checkbox column padding uses `:has()`, both of which need a modern browser.
+
+---
+
+## Composition
+
+Use the following composition to build a `Table`:
+
+```text
+Table
+├── TableCaption
+├── TableHeader
+│   └── TableRow
+│       ├── TableHead
+│       ├── TableHead
+│       ├── TableHead
+│       └── TableHead
+├── TableBody
+│   ├── TableRow
+│   │   ├── TableCell
+│   │   ├── TableCell
+│   │   ├── TableCell
+│   │   └── TableCell
+│   └── TableRow
+│       ├── TableCell
+│       ├── TableCell
+│       ├── TableCell
+│       └── TableCell
+└── TableFooter
+```
+
+---
+
+## Footer
+
+Use the `<TableFooter />` component to add a footer to the table.
+
+<ComponentPreview
+  name="table-footer"
+/>
+
+---
+
+## Actions
+
+Combine the table with other components, such as [Badge](/docs/components/react/badge) and [Menu](/docs/components/react/menu). Add them to your project first.
+
+<ComponentPreview
+  name="table-status"
+/>
+
+---
+
+
+## API Reference
+
+### Table
+
+Renders a scroll container with a `<table>` inside. Accepts all native `table` props.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `containerClassName` | `string` | - |
+
+### TableHeader
+
+Renders a `<thead>`. Accepts all native `thead` props.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+
+### TableBody
+
+Renders a `<tbody>`. Accepts all native `tbody` props.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+
+### TableFooter
+
+Renders a `<tfoot>`. Accepts all native `tfoot` props.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+
+### TableRow
+
+Renders a `<tr>`. Accepts all native `tr` props. Use `data-state="selected"` to mark it as selected.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+
+### TableHead
+
+Renders a `<th>`. Accepts all native `th` props except `align`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `align` | `"start" \| "center" \| "end"` | `"start"` |
+| `className` | `string` | - |
+
+### TableCell
+
+Renders a `<td>`. Accepts all native `td` props except `align`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `align` | `"start" \| "center" \| "end"` | `"start"` |
+| `className` | `string` | - |
+
+### TableCaption
+
+Renders a `<caption>` below the table. Accepts all native `caption` props.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |

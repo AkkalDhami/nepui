@@ -1,0 +1,220 @@
+---
+title: Popover
+description: Displays rich content in a portal, triggered by a button.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="popover-form"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/popover.json"
+      nepui="npx nepui@latest add popover --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="popover"
+        title="components/nepui/popover/popover.css"
+        fileTarget="components/nepui/popover/popover.css"
+      />
+      <ComponentSource
+        target="react"
+        name="popover"
+        title="components/nepui/popover/popover.tsx"
+        fileTarget="components/nepui/popover/popover.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="popover"
+        title="components/nepui/popover/index.ts"
+        fileTarget="components/nepui/popover/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import {
+  Popover,
+  PopoverContent,
+  PopoverDescription,
+  PopoverHeader,
+  PopoverTitle,
+  PopoverTrigger,
+} from "@/components/nepui/popover"
+```
+
+```tsx
+<Popover>
+  <PopoverTrigger render={<Button variant="outline" />}>
+    Open Popover
+  </PopoverTrigger>
+  <PopoverContent>
+    <PopoverHeader>
+      <PopoverTitle>Title</PopoverTitle>
+      <PopoverDescription>Description text here.</PopoverDescription>
+    </PopoverHeader>
+  </PopoverContent>
+</Popover>
+```
+
+---
+
+## Composition
+
+Use the following composition to build a `Popover`:
+
+```text
+Popover
+├── PopoverTrigger
+└── PopoverContent
+    ├── PopoverHeader
+    │   ├── PopoverTitle
+    │   └── PopoverDescription
+    └── PopoverClose
+```
+
+---
+
+## Basic
+
+A simple popover with a header, title, and description.
+
+<ComponentPreview
+  name="popover-demo"
+/>
+
+---
+
+## Align
+
+Use the `align` prop on `PopoverContent` to control the alignment along the side. It can be `start`, `center` or `end`.
+
+<ComponentPreview
+  name="popover-align"
+/>
+
+---
+
+## Side
+
+Use the `side` prop on `PopoverContent` to choose `top`, `right`, `bottom` or `left`. The popover flips to the other side when there is no room, and `sideOffset` and `alignOffset` fine-tune the distance in pixels.
+
+<ComponentPreview
+  name="popover-side"
+/>
+
+---
+
+## With Form
+
+A popover with form fields inside. This example uses the [Input](/docs/components/react/input) and [Field](/docs/components/react/field) components. Focus moves to the first field when the popover opens.
+
+<ComponentPreview
+  name="popover-form"
+/>
+
+---
+
+## With Close Button
+A popover with a close button in the top right corner. The `PopoverClose` component can be used to render a button that closes the popover.
+
+<ComponentPreview
+  name="popover-close"
+/>
+
+---
+
+## API Reference
+
+This component wraps the [Base UI Popover](https://base-ui.com/react/components/popover). Each part accepts all props of the matching Base UI part, including hover opening (`openOnHover` on the trigger), detached triggers (`handle`) and `modal` on the root.
+
+### Popover
+
+Groups all parts. It renders no element of its own.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `open` | `boolean` | - |
+| `defaultOpen` | `boolean` | `false` |
+| `onOpenChange` | `(open: boolean, eventDetails) => void` | - |
+| `modal` | `boolean \| "trap-focus"` | `false` |
+
+### PopoverTrigger
+
+A button that opens the popover.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `render` | `ReactElement \| (props, state) => ReactElement` | - |
+| `openOnHover` | `boolean` | `false` |
+| `delay` | `number` | `300` |
+| `className` | `string \| (state) => string` | - |
+
+### PopoverContent
+
+The popover panel, rendered in a portal.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `side` | `"top" \| "right" \| "bottom" \| "left" \| "inline-start" \| "inline-end"` | `"bottom"` |
+| `align` | `"start" \| "center" \| "end"` | `"center"` |
+| `sideOffset` | `number` | `4` |
+| `alignOffset` | `number` | `0` |
+| `className` | `string \| (state) => string` | - |
+
+### PopoverHeader
+
+Groups the title and description. Renders a `div`.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `className` | `string` | - |
+
+### PopoverTitle
+
+A heading that labels the popover. Renders an `h2`.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `className` | `string \| (state) => string` | - |
+
+### PopoverDescription
+
+Extra information about the popover. Renders a `p`.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `className` | `string \| (state) => string` | - |
+
+### PopoverClose
+
+A button that closes the popover.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `render` | `ReactElement \| (props, state) => ReactElement` | - |
+| `className` | `string \| (state) => string` | - |
