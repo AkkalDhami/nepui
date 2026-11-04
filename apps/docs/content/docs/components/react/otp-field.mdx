@@ -1,0 +1,244 @@
+---
+title: OTP Field
+description: A segmented input for one-time passwords and verification codes.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="otp-field-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/otp-field.json"
+      nepui="npx nepui@latest add otp-field --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react class-variance-authority cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="otp-field"
+        title="components/nepui/otp-field/otp-field.css"
+        fileTarget="components/nepui/otp-field/otp-field.css"
+      />
+      <ComponentSource
+        target="react"
+        name="otp-field"
+        title="components/nepui/otp-field/otp-field.tsx"
+        fileTarget="components/nepui/otp-field/otp-field.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="otp-field"
+        title="components/nepui/otp-field/index.ts"
+        fileTarget="components/nepui/otp-field/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+OTP Field needs a recent version of `@base-ui/react`, which includes the OTP Field component.
+
+---
+
+## Usage
+
+```tsx
+import {
+  OTPField,
+  OTPFieldInput,
+  OTPFieldSeparator,
+} from "@/components/nepui/otp-field"
+```
+
+```tsx
+<OTPField aria-label="Verification code" length={6}>
+  <OTPFieldInput />
+  <OTPFieldInput aria-label="Character 2 of 6" />
+  <OTPFieldInput aria-label="Character 3 of 6" />
+  <OTPFieldSeparator />
+  <OTPFieldInput aria-label="Character 4 of 6" />
+  <OTPFieldInput aria-label="Character 5 of 6" />
+  <OTPFieldInput aria-label="Character 6 of 6" />
+</OTPField>
+```
+
+Each slot is a real `<input>`, and the number of `OTPFieldInput` parts must match `length`. Slots are ordered by their position in the tree.
+
+---
+
+## Labeling
+
+Label the field with a visible `<label>` (or `FieldLabel`) that points to the `id` of `OTPField`. The first slot uses that label, and every other slot needs its own `aria-label`, such as `Character 2 of 6`, so assistive tech can say which slot has focus.
+
+<ComponentPreview
+  name="otp-field-demo"
+/>
+
+---
+
+## Separator
+
+Use `OTPFieldSeparator` between slot groups, as in `123-456`.
+
+<ComponentPreview
+  name="otp-field-separator"
+/>
+
+---
+
+## Size
+
+Use the `size` prop on `OTPField` to change every slot.
+
+<ComponentPreview
+  name="otp-field-size"
+/>
+
+---
+
+## Alphanumeric
+
+Use `validationType="alphanumeric"` for recovery, backup or invite codes that mix letters and numbers.
+
+<ComponentPreview
+  name="otp-field-alphanumeric"
+/>
+
+---
+
+## Mask
+
+Set `mask` on `OTPField` to obscure the code while it is typed.
+
+<ComponentPreview
+  name="otp-field-mask"
+/>
+
+---
+
+## Invalid
+
+Add `data-invalid` to the `Field` and `aria-invalid` on the slots to show an error state.
+
+```tsx /data-invalid/ /aria-invalid/
+<Field data-invalid>
+  <FieldLabel htmlFor="email">Email</FieldLabel>
+  ....
+  <OTPFieldInput aria-invalid />
+   ...
+  <FieldError>Please enter a valid code.</FieldError>
+</Field>
+```
+
+<ComponentPreview
+  name="otp-field-invalid"
+/>
+
+---
+
+## Disabled
+
+Set `disabled` on `OTPField` to disable every slot.
+
+<ComponentPreview
+  name="otp-field-disabled"
+/>
+
+---
+
+## Completion and Submit
+
+Pass `autoSubmit` to submit the owning form when every slot is filled. Use `onValueComplete` to react to a complete code without submitting, and `onValueChange` to follow every change.
+
+```tsx
+<OTPField
+  length={6}
+  autoSubmit
+  onValueComplete={(code) => verify(code)}
+>
+  ...
+</OTPField>
+```
+
+---
+
+## Custom Normalization
+
+Use `normalizeValue` to clean pasted or typed text before it reaches state. Pair it with `validationType="none"` when your function is the whole rule, and with `inputMode` for the keyboard hint. `onValueInvalid` runs when characters are rejected.
+
+```tsx
+<OTPField
+  length={6}
+  inputMode="numeric"
+  validationType="none"
+  normalizeValue={(value) => value.replace(/[^0-3]/g, "")}
+  onValueInvalid={(value) => console.log("Ignored characters in", value)}
+>
+  ...
+</OTPField>
+```
+
+---
+
+## API Reference
+
+### OTPField
+
+The root. It accepts the props of the Base UI [OTP Field root](https://base-ui.com/react/components/otp-field).
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `length` | `number` (required) | - |
+| `size` | `"sm" \| "default" \| "lg"` | `"default"` |
+| `validationType` | `"numeric" \| "alpha" \| "alphanumeric" \| "none"` | `"numeric"` |
+| `mask` | `boolean` | `false` |
+| `value` | `string` | - |
+| `defaultValue` | `string` | - |
+| `onValueChange` | `(value, eventDetails) => void` | - |
+| `onValueComplete` | `(value, eventDetails) => void` | - |
+| `onValueInvalid` | `(value, eventDetails) => void` | - |
+| `normalizeValue` | `(value: string) => string` | - |
+| `autoSubmit` | `boolean` | `false` |
+| `autoComplete` | `string` | `"one-time-code"` |
+| `inputMode` | `"numeric" \| "text" \| ...` | - |
+| `disabled` | `boolean` | `false` |
+| `readOnly` | `boolean` | `false` |
+| `required` | `boolean` | `false` |
+| `name` | `string` | - |
+| `id` | `string` | - |
+| `className` | `string \| (state) => string` | - |
+
+### OTPFieldInput
+
+One character slot.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `placeholder` | `string` | - |
+| `aria-label` | `string` | - |
+| `aria-invalid` | `boolean` | `false` |
+| `className` | `string \| (state) => string` | - |
+
+### OTPFieldSeparator
+
+A short line between groups of slots.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `className` | `string \| (state) => string` | - |

@@ -1,0 +1,231 @@
+---
+title: Marker
+description: Displays an inline status, system note, bordered row, or labeled separator in a conversation.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="marker-demo"
+  target="html"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add marker"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="marker"
+        title="styles/marker.css"
+        fileTarget="styles/marker.css"
+      />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the stylesheet:
+
+```html
+<link rel="stylesheet" href="./styles/marker.css">
+```
+
+```html
+<div class="np-marker">
+  <span class="np-marker-icon" aria-hidden="true"><svg>...</svg></span>
+  <span class="np-marker-content">Explored 4 files</span>
+</div>
+```
+
+Or use the data attributes instead of classes:
+
+```html
+<div data-np-marker>
+  <span data-np-marker-icon aria-hidden="true"><svg>...</svg></span>
+  <span data-np-marker-content>Explored 4 files</span>
+</div>
+```
+
+Add `aria-hidden="true"` to the icon slot yourself, since plain HTML cannot do it for you.
+
+---
+
+## Composition
+
+Use the following composition to build a marker:
+
+```text
+Marker
+├── MarkerIcon
+└── MarkerContent
+```
+
+---
+
+## Features
+
+- Inline marker, bordered row and labeled separator variants.
+- A decorative icon slot that is hidden from assistive tech.
+- Use a `<a>` or `<button>` as the root for link and button markers.
+- A shimmer effect for streaming status text, and a spinning icon for progress.
+- A vertical layout that stacks the icon above the text.
+
+---
+
+## Variants
+
+Use a variant class to switch between an inline marker, a bordered row and a labeled separator.
+
+<ComponentPreview
+  name="marker-variants"
+  target="html"
+/>
+
+| Variant | Description |
+| ------- | ----------- |
+| `default` | An inline marker for status, notes and actions. |
+| `border` | A default marker with a bottom border under the row. |
+| `separator` | A centered label with divider lines on each side. |
+
+---
+
+## Status
+
+Set `role="status"` and add a spinning icon for streaming or in-progress markers, so updates are announced. Add `np-marker-spin` (or `data-spin`) to the icon slot, or put a Spinner in it.
+
+<ComponentPreview
+  name="marker-status"
+  target="html"
+/>
+
+---
+
+## Shimmer
+
+Add `np-marker-shimmer` (or `data-shimmer`) to the content for an animated streaming-text effect. The animation stops when the user prefers reduced motion.
+
+<ComponentPreview
+  name="marker-shimmer"
+  target="html"
+/>
+
+---
+
+## Separator
+
+Use the `separator` variant for labeled dividers, such as dates or section breaks, in a conversation.
+
+<ComponentPreview
+  name="marker-separator"
+  target="html"
+/>
+
+---
+
+## Border
+
+Use the `border` variant for status rows that keep the default alignment while separating the next row.
+
+<ComponentPreview
+  name="marker-border"
+  target="html"
+/>
+
+---
+
+## With Icon
+
+Use the icon slot to show an icon next to the content. Add `np-marker-vertical` (or `data-orientation="vertical"`) to stack the icon above the content.
+
+<ComponentPreview
+  name="marker-icon"
+  target="html"
+/>
+
+---
+
+## Links and Buttons
+
+Use `<a class="np-marker">` or `<button class="np-marker">`. The marker gets a hover color and a focus ring.
+
+<ComponentPreview
+  name="marker-interactive"
+  target="html"
+/>
+
+---
+
+## Accessibility
+
+`Marker` is presentational by default. The right semantics depend on how you use it, so choose the role by intent.
+
+### Status and Progress
+
+For streaming or progress markers such as "Thinking..." or a running tool, set `role="status"` so assistive tech announces the update as it appears.
+
+### Labeled Separators
+
+A separator that carries text, such as a date or a section label, needs no role. The divider lines are decorative CSS, and the text is announced as ordinary content. Do not add `role="separator"` to a labeled divider: a separator takes its name from `aria-label`, so the visible label would not be announced.
+
+### Bordered Markers
+
+A bordered marker has the same semantics as the default one. The bottom border is decorative, so choose `role="status"`, a link or button, or no role, based on its purpose.
+
+### Decorative Icons
+
+The icon slot is hidden from assistive tech with `aria-hidden`, so the text next to it carries the meaning. For an icon-only marker, give the marker an `aria-label` or visible text so it is not announced as empty.
+
+### Interactive Markers
+
+When a marker links or triggers an action, render it as a real `<a>` or `<button>` so it is focusable and has the right role. The accessible name comes from the marker text.
+
+---
+
+## API Reference
+
+### Parts
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Marker | `data-np-marker` | `np-marker` |
+| Icon | `data-np-marker-icon` | `np-marker-icon` |
+| Content | `data-np-marker-content` | `np-marker-content` |
+
+### Variants
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Default | - | `np-marker` |
+| Border | `data-variant="border"` | `np-marker-border` |
+| Separator | `data-variant="separator"` | `np-marker-separator` |
+
+### Orientation
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Horizontal (default) | - | `np-marker` |
+| Vertical | `data-orientation="vertical"` | `np-marker-vertical` |
+
+### Features
+
+| Name | Data attribute | Class alias | On |
+| ---- | -------------- | ----------- | -- |
+| Spin | `data-spin` | `np-marker-spin` | Icon |
+| Shimmer | `data-shimmer` | `np-marker-shimmer` | Content |
