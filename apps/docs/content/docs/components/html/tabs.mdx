@@ -1,0 +1,222 @@
+---
+title: Tabs
+description: A set of layered sections of content, known as tab panels, that are displayed one at a time.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  target="html"
+  name="tabs-demo"
+  scripts={["/tabs/tabs.js"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add tabs"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="tabs"
+        title="styles/tabs.css"
+        fileTarget="styles/tabs.css"
+      />
+      <ComponentSource
+        target="html"
+        name="tabs"
+        title="javascripts/tabs.js"
+        fileTarget="javascripts/tabs.js"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the stylesheet, after `tokens.css`, and the script:
+
+```html
+<link rel="stylesheet" href="./styles/tabs.css">
+<script src="./scripts/tabs.js" defer></script>
+```
+
+Follow the WAI-ARIA tabs pattern. Each tab points to its panel with `aria-controls`, each panel points back with `aria-labelledby`, and every panel except the active one is `hidden`. Only the active tab has `tabindex="0"`.
+
+```html
+<div class="np-tabs">
+  <div class="np-tabs-list" role="tablist" aria-label="Settings">
+    <button type="button" class="np-tabs-trigger" role="tab"
+      id="account-tab" aria-selected="true" aria-controls="account-panel">Account</button>
+    <button type="button" class="np-tabs-trigger" role="tab"
+      id="password-tab" aria-selected="false" aria-controls="password-panel" tabindex="-1">Password</button>
+  </div>
+  <div class="np-tabs-content" role="tabpanel"
+    id="account-panel" aria-labelledby="account-tab" tabindex="0">Make changes to your account here.</div>
+  <div class="np-tabs-content" role="tabpanel"
+    id="password-panel" aria-labelledby="password-tab" tabindex="0" hidden>Change your password here.</div>
+</div>
+```
+
+Or use the data attributes instead of classes:
+
+```html
+<div data-np-tabs>
+  <div data-np-tabs-list role="tablist" aria-label="Settings">
+    <button type="button" data-np-tabs-trigger role="tab"
+      id="account-tab" aria-selected="true" aria-controls="account-panel">Account</button>
+    ...
+  </div>
+  <div data-np-tabs-content role="tabpanel"
+    id="account-panel" aria-labelledby="account-tab" tabindex="0">...</div>
+</div>
+```
+
+Colours come from tokens, so dark mode needs no extra setup. The default list uses a translucent active tab in dark mode, and the `line` variant stays transparent. The styles use `color-mix()` and logical inset properties, which need a modern browser.
+
+
+---
+
+## Composition
+
+Use the following composition to build `Tabs`:
+
+```text
+Tabs
+├── TabsList
+│   ├── TabsTrigger
+│   └── TabsTrigger
+├── TabsContent
+└── TabsContent
+```
+
+---
+
+## Line
+
+Use `np-tabs-line` on the list for a transparent list with an underline under the active tab.
+
+<ComponentPreview
+  target="html"
+  name="tabs-line"
+  scripts={["/tabs/tabs.js"]}
+/>
+
+---
+
+## Vertical
+
+Use `np-tabs-vertical` on the root, and `aria-orientation="vertical"` on the list. It works with the line variant too, and the indicator moves to the side.
+
+<ComponentPreview
+  target="html"
+  name="tabs-vertical"
+  scripts={["/tabs/tabs.js"]}
+/>
+
+---
+
+## Disabled
+
+Use `disabled` on a trigger. The script skips it with the arrow keys.
+
+<ComponentPreview
+  target="html"
+  name="tabs-disabled"
+  scripts={["/tabs/tabs.js"]}
+/>
+
+---
+
+## Icons
+
+Put an inline SVG before the label. Icons are sized to `1rem` unless they set their own size.
+
+<ComponentPreview
+  target="html"
+  name="tabs-icons"
+  scripts={["/tabs/tabs.js"]}
+/>
+
+---
+
+## Reference
+
+### Parts
+
+| Name | Data attribute | Class alias |
+| --- | --- | --- |
+| Root | `data-np-tabs` | `np-tabs` |
+| List | `data-np-tabs-list` | `np-tabs-list` |
+| Trigger | `data-np-tabs-trigger` | `np-tabs-trigger` |
+| Content | `data-np-tabs-content` | `np-tabs-content` |
+
+### Variant
+
+Apply to the list. The default has no hook.
+
+| Name | Data attribute | Class alias |
+| --- | --- | --- |
+| Default | - | - |
+| Line | `data-variant="line"` | `np-tabs-line` |
+
+### Orientation
+
+Apply to the root. The default is horizontal.
+
+| Name | Data attribute | Class alias |
+| --- | --- | --- |
+| Horizontal | - | - |
+| Vertical | `data-orientation="vertical"` | `np-tabs-vertical` |
+
+### State
+
+Apply to the trigger.
+
+| Name | Selector |
+| --- | --- |
+| Active | `aria-selected="true"` or `data-active` |
+| Disabled | `disabled`, `aria-disabled="true"` or `data-disabled` |
+
+---
+
+### Script
+
+Switching panels needs script, and plain CSS cannot do it. `tabs.js` is optional and has no dependencies. It handles:
+
+- clicking a tab
+- a roving `tabindex`
+- arrow keys, Home and End (Up and Down for vertical tabs, and reversed in `dir="rtl"`)
+- keeping `aria-selected`, `data-active` and `hidden` in sync
+
+The CSS never depends on it. If you already have your own tab logic, keep it and set `aria-selected="true"` (or `data-active`) on the active tab, and `hidden` on the other panels.
+
+As with Base UI, arrow keys move focus, and Enter or Space selects the focused tab. A native `<button>` does this for you.
+
+| Attribute on the tablist | Effect |
+| --- | --- |
+| `data-activate-on-focus` | Arrow keys also select the focused tab. |
+| `data-no-loop` | Do not wrap from the last tab to the first. |
+
+The script fires an `np-tabs-change` event from the tablist. It bubbles, and `event.detail` has the `tab` and the `panel`.
+
+```js
+document.addEventListener("np-tabs-change", (event) => {
+  console.log(event.detail.tab.id)
+})
+```

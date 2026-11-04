@@ -1,0 +1,160 @@
+---
+title: Tooltip
+description: A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  target="html"
+  name="tooltip-demo"
+  styles={["/toggle-group/toggle-group.css","/toggle/toggle.css"]}
+  scripts={["/toggle-group/toggle-group.js"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add tooltip"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="tooltip"
+        title="styles/tooltip.css"
+        fileTarget="styles/tooltip.css"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the stylesheet, after `tokens.css`:
+
+```html
+<link rel="stylesheet" href="./styles/tooltip.css">
+```
+
+Wrap the trigger and the content in one `np-tooltip` element. Link the trigger to the content with `aria-describedby`, and give the content `role="tooltip"`:
+
+```html
+<span class="np-tooltip">
+  <button type="button" aria-describedby="library-tooltip">Hover</button>
+  <span class="np-tooltip-content" id="library-tooltip" role="tooltip">
+    Add to library
+    <span class="np-tooltip-arrow" aria-hidden="true"></span>
+  </span>
+</span>
+```
+
+Or use the data attributes instead of classes:
+
+```html
+<span data-np-tooltip>
+  <button type="button" aria-describedby="library-tooltip">Hover</button>
+  <span data-np-tooltip-content id="library-tooltip" role="tooltip">
+    Add to library
+    <span data-np-tooltip-arrow aria-hidden="true"></span>
+  </span>
+</span>
+```
+
+The tooltip opens on hover and on keyboard focus (`:focus-visible`), and can be hovered without closing. It needs no JavaScript, which means a few things work differently from the React version:
+
+- There is no collision detection. Pick a `side` with room.
+- The tooltip cannot be dismissed with Escape.
+- The content must be inside the wrapper, and the wrapper should be a `span` when it sits inside a paragraph or a label.
+
+Colours come from tokens, so dark mode needs no extra setup. The tooltip swaps the foreground and background tokens. It uses `:has()`, `:dir()` and `color-mix()`, which need a modern browser.
+
+---
+
+## Side examples
+
+<ComponentPreview
+  target="html"
+  name="tooltip-side"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## With Keyboard Shortcut
+
+Put a `kbd` inside the content. The tooltip restyles it to match. This example uses the [Kbd](/docs/components/html/kbd) and [Button](/docs/components/html/button) components. Link their stylesheets first:
+
+```html
+<link rel="stylesheet" href="./styles/button.css">
+<link rel="stylesheet" href="./styles/kbd.css">
+```
+
+<ComponentPreview
+  target="html"
+  name="tooltip-shortcut"
+  styles={["/button/button.css", "/kbd/kbd.css"]}
+/>
+
+---
+
+## Disabled Button
+
+A disabled button cannot take focus. Put `tabindex="0"` on the wrapper, and move `aria-describedby` there, so keyboard users can reach the tooltip.
+
+<ComponentPreview
+  target="html"
+  name="tooltip-disabled"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Reference
+
+### Parts
+
+| Name | Data attribute | Class alias |
+| --- | --- | --- |
+| Tooltip (wrapper) | `data-np-tooltip` | `np-tooltip` |
+| Content | `data-np-tooltip-content` | `np-tooltip-content` |
+| Arrow | `data-np-tooltip-arrow` | `np-tooltip-arrow` |
+
+### Side
+
+Apply to the content. The default is `top`.
+
+| Name | Data attribute | Class alias |
+| --- | --- | --- |
+| Top | - | - |
+| Bottom | `data-side="bottom"` | `np-tooltip-bottom` |
+| Left | `data-side="left"` | `np-tooltip-left` |
+| Right | `data-side="right"` | `np-tooltip-right` |
+| Inline start | `data-side="inline-start"` | `np-tooltip-inline-start` |
+| Inline end | `data-side="inline-end"` | `np-tooltip-inline-end` |
+
+`inline-start` and `inline-end` follow the writing direction, so they swap sides inside `dir="rtl"`.
+
+### State
+
+Apply to the wrapper.
+
+| Name | Selector |
+| --- | --- |
+| Open on hover | `:hover` |
+| Open on keyboard focus | `:focus-visible` on the wrapper or inside it |
+| Force open | `data-popup-open` |
+| Never open | `data-disabled` or `aria-disabled="true"` |

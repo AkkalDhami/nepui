@@ -1,0 +1,198 @@
+---
+title: Tabs
+description: A set of layered sections of content, known as tab panels, that are displayed one at a time.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="tabs-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/tabs.json"
+      nepui="npx nepui@latest add tabs --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react class-variance-authority cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="tabs"
+        title="components/nepui/tabs/tabs.css"
+        fileTarget="components/nepui/tabs/tabs.css"
+      />
+      <ComponentSource
+        target="react"
+        name="tabs"
+        title="components/nepui/tabs/tabs.tsx"
+        fileTarget="components/nepui/tabs/tabs.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="tabs"
+        title="components/nepui/tabs/index.ts"
+        fileTarget="components/nepui/tabs/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/nepui/tabs"
+```
+
+```tsx showLineNumbers
+<Tabs defaultValue="account" className="w-[400px]">
+  <TabsList>
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="password">Password</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">Make changes to your account here.</TabsContent>
+  <TabsContent value="password">Change your password here.</TabsContent>
+</Tabs>
+```
+
+Each `TabsTrigger` needs a `value`, and the `TabsContent` with the same `value` is shown while it is active. To control the active tab yourself, pass `value` and `onValueChange` to `Tabs`.
+
+```tsx showLineNumbers
+const [tab, setTab] = useState("account")
+
+<Tabs value={tab} onValueChange={setTab}>
+  ...
+</Tabs>
+```
+
+By default the arrow keys move focus between tabs, and Enter or Space selects the focused one. Pass `activateOnFocus` to `TabsList` to select as you move.
+
+The default list uses a translucent active tab in dark mode, and the `line` variant stays transparent. Colours come from tokens, so no extra setup is needed. The styles use `color-mix()` and logical inset properties, which need a modern browser.
+
+---
+
+## Composition
+
+Use the following composition to build `Tabs`:
+
+```text
+Tabs
+├── TabsList
+│   ├── TabsTrigger
+│   └── TabsTrigger
+├── TabsContent
+└── TabsContent
+```
+
+---
+
+## Line
+
+Use `variant="line"` on `TabsList` for a transparent list with an underline under the active tab.
+
+<ComponentPreview
+  name="tabs-line"
+/>
+
+---
+
+## Vertical
+
+Use `orientation="vertical"` on `Tabs` to stack the triggers beside the panel. The arrow keys switch to Up and Down. It works with `variant="line"` too, and the indicator moves to the side.
+
+<ComponentPreview
+  name="tabs-vertical"
+/>
+
+---
+
+## Disabled
+
+Use `disabled` on a `TabsTrigger` to make it unavailable. Arrow keys skip it.
+
+<ComponentPreview
+  name="tabs-disabled"
+/>
+
+---
+
+## Icons
+
+Put an icon before the label. Icons are sized to `1rem` unless they set their own size.
+
+<ComponentPreview
+  name="tabs-icons"
+/>
+
+---
+
+## API Reference
+
+### Tabs
+
+Wraps [Base UI Tabs.Root](https://base-ui.com/react/components/tabs). Renders a `<div>`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `defaultValue` | `string \| number \| null` | `0` |
+| `value` | `string \| number \| null` | - |
+| `onValueChange` | `(value, eventDetails) => void` | - |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
+| `className` | `string \| (state) => string` | - |
+
+### TabsList
+
+Renders a `<div>` with `role="tablist"`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `"default" \| "line"` | `"default"` |
+| `activateOnFocus` | `boolean` | `false` |
+| `loopFocus` | `boolean` | `true` |
+| `className` | `string \| (state) => string` | - |
+
+### TabsTrigger
+
+Renders a `<button>` with `role="tab"`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string \| number` | - |
+| `disabled` | `boolean` | `false` |
+| `nativeButton` | `boolean` | `true` |
+| `className` | `string \| (state) => string` | - |
+
+`value` is required. Set `nativeButton` to `false` when you `render` a non-button element, such as a link.
+
+### TabsContent
+
+Renders a `<div>` with `role="tabpanel"`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string \| number` | - |
+| `keepMounted` | `boolean` | `false` |
+| `className` | `string \| (state) => string` | - |
+
+`value` is required. Set `keepMounted` to keep an inactive panel in the DOM.
