@@ -1,0 +1,204 @@
+---
+title: Popover
+description: Displays rich content in a portal, triggered by a button.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="popover-form"
+  target="html"
+  styles={["/button/button.css", "/field/field.css", "/input/input.css"]}
+  scripts={["/popover/popover.js"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add popover"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following stylesheet into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="popover"
+        title="styles/popover.css"
+        fileTarget="styles/popover.css"
+      />
+      <Step>Copy and paste the following script into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="popover"
+        title="javascripts/popover.js"
+        fileTarget="javascripts/popover.js"
+      />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the tokens and the stylesheet, and load the script once on the page:
+
+```html
+<link rel="stylesheet" href="./styles/tokens.css">
+<link rel="stylesheet" href="./styles/popover.css">
+<script type="module" src="./scripts/popover.js"></script>
+```
+
+Add the `popover` attribute and the class to the panel, and point a button at it with `popovertarget`:
+
+```html
+<button class="np-button np-button-outline" type="button" popovertarget="dimensions">
+  Open popover
+</button>
+
+<div id="dimensions" class="np-popover" popover>
+  <div class="np-popover-header">
+    <h2 class="np-popover-title">Dimensions</h2>
+    <p class="np-popover-description">Set the dimensions for the layer.</p>
+  </div>
+</div>
+```
+
+Or use the data attributes instead of the classes:
+
+```html
+<div id="dimensions" data-np-popover popover>
+  <div data-np-popover-header>
+    <h2 data-np-popover-title>Dimensions</h2>
+    <p data-np-popover-description>Set the dimensions for the layer.</p>
+  </div>
+</div>
+```
+
+---
+
+## How it works
+
+The browser's native [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) does the hard parts: it shows the panel in the top layer, closes it on Escape or an outside click, and returns focus to the button. The script only adds placement: it positions the panel next to the button that opened it, flips it to the other side when there is no room, keeps it inside the viewport, and follows scrolling and resizing. It also moves focus to the first field or button inside when it opens.
+
+Without the script the panel still opens and closes, but it appears centered in the viewport instead of next to the button.
+
+---
+
+## Attributes
+
+Set these on the panel. They are read the first time it opens.
+
+| Attribute | Values | Default |
+| --------- | ------ | ------- |
+| `data-side` | `top`, `right`, `bottom`, `left`, `inline-start`, `inline-end` | `bottom` |
+| `data-align` | `start`, `center`, `end` | `center` |
+| `data-side-offset` | pixels | `4` |
+| `data-align-offset` | pixels | `0` |
+| `data-collision-padding` | pixels from the viewport edge | `8` |
+| `data-anchor` | a CSS selector to position against instead of the button | - |
+| `data-initial-focus` | `none` to leave focus where it is | - |
+
+While it is open the script writes the side and alignment it actually used back to `data-side` and `data-align`, so the animation can slide from the right edge.
+
+---
+
+## Align
+
+Link the stylesheet:
+
+```html
+<link rel="stylesheet" href="./styles/button.css">
+```
+
+<ComponentPreview
+  name="popover-align"
+  target="html"
+  styles={["/button/button.css"]}
+  scripts={["/popover/popover.js"]}
+/>
+
+---
+
+## Side
+
+Link the stylesheet:
+
+```html
+<link rel="stylesheet" href="./styles/button.css">
+```
+
+<ComponentPreview
+  name="popover-side"
+  target="html"
+  styles={["/button/button.css"]}
+  scripts={["/popover/popover.js"]}
+/>
+
+---
+
+## With Form
+
+Controls inside the panel work as usual. This example needs the Label and Input stylesheets.
+
+Link the stylesheets:
+
+```html
+<link rel="stylesheet" href="./styles/field.css">
+<link rel="stylesheet" href="./styles/input.css">
+<link rel="stylesheet" href="./styles/button.css">
+```
+
+<ComponentPreview
+  name="popover-form"
+  target="html"
+  styles={["/button/button.css", "/field/field.css", "/input/input.css"]}
+  scripts={["/popover/popover.js"]}
+/>
+
+---
+
+## With Close Button
+
+Escape and a click outside close the panel. For a button inside it, point at the panel and add `popovertargetaction="hide"`:
+
+```html
+<button type="button" popovertarget="dimensions" popovertargetaction="hide">Close</button>
+```
+
+Use `popover="manual"` to turn off the Escape and outside-click closing.
+
+Link the stylesheet:
+
+```html
+<link rel="stylesheet" href="./styles/button.css">
+```
+
+<ComponentPreview
+  name="popover-close"
+  target="html"
+  styles={["/button/button.css"]}
+  scripts={["/popover/popover.js"]}
+/>
+
+---
+
+## Reference
+
+### Component
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Popover panel | `data-np-popover` | `np-popover` |
+| Header | `data-np-popover-header` | `np-popover-header` |
+| Title | `data-np-popover-title` | `np-popover-title` |
+| Description | `data-np-popover-description` | `np-popover-description` |
