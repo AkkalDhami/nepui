@@ -1,0 +1,244 @@
+---
+title: Dialog
+description: A window overlaid on the primary window or another dialog, rendering the content underneath inert.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  target="html"
+  name="dialog-demo"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add dialog"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Add the <LINK href="/docs/components/html/button">Button</LINK> stylesheet to your project. The close button and the footer buttons use it.</Step>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="dialog"
+        title="styles/dialog.css"
+        fileTarget="styles/dialog.css"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the stylesheet, after `tokens.css` and `button.css`:
+
+```html
+<link rel="stylesheet" href="./styles/button.css">
+<link rel="stylesheet" href="./styles/dialog.css">
+```
+
+The dialog is a native [`<dialog>`](https://developer.mozilla.org/docs/Web/HTML/Element/dialog) element, and it is the box. The browser provides the top layer, the focus trap, Escape to close, and makes the page behind inert. The overlay is the dialog's `::backdrop`, so there is no overlay element.
+
+```html showLineNumbers /commandfor="my-dialog"/ /command="show-modal"/ /command="close"/
+<button type="button" class="np-button np-button-outline"
+  commandfor="my-dialog" command="show-modal">Open Dialog</button>
+
+<dialog id="my-dialog" class="np-dialog-content" closedby="any"
+  aria-labelledby="my-dialog-title" aria-describedby="my-dialog-description">
+  <div class="np-dialog-header">
+    <h2 class="np-dialog-title" id="my-dialog-title">Are you absolutely sure?</h2>
+    <p class="np-dialog-description" id="my-dialog-description">This action cannot be undone.</p>
+  </div>
+  <div class="np-dialog-footer">
+    <button type="button" class="np-button np-button-outline" commandfor="my-dialog" command="close">Cancel</button>
+    <button type="button" class="np-button" commandfor="my-dialog" command="close">Continue</button>
+  </div>
+  <button type="button" class="np-button np-button-ghost np-button-icon-sm np-dialog-close"
+    commandfor="my-dialog" command="close" aria-label="Close">
+    <svg ... aria-hidden="true"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+  </button>
+</dialog>
+```
+
+Or use the data attributes instead of classes:
+
+```html
+<dialog id="my-dialog" data-np-dialog-content closedby="any" aria-labelledby="my-dialog-title">
+  <div data-np-dialog-header>
+    <h2 data-np-dialog-title id="my-dialog-title">Are you absolutely sure?</h2>
+    <p data-np-dialog-description>This action cannot be undone.</p>
+  </div>
+  <div data-np-dialog-footer>...</div>
+  <button type="button" class="np-button np-button-ghost np-button-icon-sm"
+    data-np-dialog-close commandfor="my-dialog" command="close" aria-label="Close">...</button>
+</dialog>
+```
+
+Give the dialog an accessible name with `aria-labelledby`, pointing at the title. Add `aria-describedby` for the description.
+
+Put the corner close button last in the dialog. When a modal dialog opens, the browser focuses the first focusable element, so the last position keeps focus on your content. Add `autofocus` to a specific control to choose where focus starts.
+
+Colours come from tokens, so dark mode needs no extra setup. The styles use `@starting-style`, `transition-behavior: allow-discrete`, `:modal`, `:has()` and `color-mix()`, which need a modern browser.
+
+---
+
+## Composition
+
+Use the following composition to build a `Dialog`:
+
+```text
+Dialog
+├── DialogTrigger
+└── DialogContent
+    ├── DialogHeader
+    │   ├── DialogTitle
+    │   └── DialogDescription
+    └── DialogFooter
+```
+
+---
+
+## Form
+
+Fields go between the header and the footer. The footer fills the full width of the box, so it only looks right when the box padding is the default one, or when you change `--np-dialog-padding` instead of the padding.
+
+This example uses the [Input](/docs/components/html/input) and [Label](/docs/components/html/label) components. Link their stylesheets first:
+
+```html
+<link rel="stylesheet" href="./styles/input.css">
+<link rel="stylesheet" href="./styles/label.css">
+```
+
+<ComponentPreview
+  target="html"
+  name="dialog-form"
+  styles={["/button/button.css", "/input/input.css", "/label/label.css"]}
+/>
+
+---
+
+## Custom close button
+
+Leave out the corner button, and close the dialog from the footer.
+
+<ComponentPreview
+  target="html"
+  name="dialog-close"
+  styles={["/button/button.css", "/input/input.css"]}
+/>
+
+---
+
+## No close button
+
+Leave out the corner button and `closedby="any"` when the user has to pick one of the footer actions. Escape still closes the dialog.
+
+<ComponentPreview
+  target="html"
+  name="dialog-no-close"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Sticky footer
+
+Scroll only the middle of the dialog, so the header and the footer stay in view. The scroll area is a plain element with a `max-height` and `overflow-y: auto`. Give it `tabindex="0"`, a `role="region"` and an `aria-label` so keyboard users can scroll it.
+
+<ComponentPreview
+  target="html"
+  name="dialog-sticky-footer"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Scrollable content
+
+The box itself scrolls when it is taller than the window, because it is limited to the viewport height minus `2rem`. Use a scroll area inside the box, as here, when you want the header to stay in view.
+
+<ComponentPreview
+  target="html"
+  name="dialog-scrollable"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Reference
+
+### Opening and closing
+
+No JavaScript is needed. Use the invoker attributes on a button:
+
+| Attribute | Value | Effect |
+| --- | --- | --- |
+| `commandfor` | the dialog's `id` | Which dialog the button controls. |
+| `command` | `show-modal` | Opens the dialog as a modal. |
+| `command` | `close` | Closes the dialog. |
+
+You can also close it with a `<form method="dialog">`, which closes the dialog when the form is submitted. The button that submitted the form gives the dialog its `returnValue`.
+
+```html
+<form method="dialog">
+  <button type="submit" value="cancel">Cancel</button>
+  <button type="submit" value="save">Save changes</button>
+</form>
+```
+
+Browsers without invoker commands need the JavaScript API. A one-line handler is enough:
+
+```html
+<button type="button" onclick="document.getElementById('my-dialog').showModal()">Open</button>
+<button type="button" onclick="this.closest('dialog').close()">Close</button>
+```
+
+---
+
+### Light dismiss
+
+Add `closedby="any"` to close the dialog on Escape or a click on the overlay. This matches the React version. Without it, a modal dialog closes only with Escape, or with one of your own close buttons. For a dialog the user has to answer, leave it off.
+
+---
+
+### Page scroll
+
+The stylesheet stops the page behind an open modal dialog from scrolling, with a rule on `html:has(dialog…:modal)`. It keeps the scrollbar gutter, so the page does not shift.
+
+---
+
+### Parts
+
+| Name | Data attribute | Class alias |
+| --- | --- | --- |
+| Content (the `<dialog>`) | `data-np-dialog-content` | `np-dialog-content` |
+| Header | `data-np-dialog-header` | `np-dialog-header` |
+| Footer | `data-np-dialog-footer` | `np-dialog-footer` |
+| Title | `data-np-dialog-title` | `np-dialog-title` |
+| Description | `data-np-dialog-description` | `np-dialog-description` |
+| Close | `data-np-dialog-close` | `np-dialog-close` |
+| Overlay | `data-np-dialog-overlay` | `np-dialog-overlay` |
+
+The overlay hook is for React, where the overlay is an element. In HTML the overlay is the `::backdrop` of the dialog, and the overlay variables are set on the `<dialog>`.
+
+### State
+
+| Name | Selector |
+| --- | --- |
+| Open | `[open]` |
+| Open as a modal | `:modal` |

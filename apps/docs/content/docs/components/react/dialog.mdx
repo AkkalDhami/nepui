@@ -1,0 +1,273 @@
+---
+title: Dialog
+description: A window overlaid on the primary window or another dialog, rendering the content underneath inert.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="dialog-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/dialog.json"
+      nepui="npx nepui@latest add dialog --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react cn" className="mt-6"/>
+
+      <Step>Install the nepui dependencies:</Step>
+      <PackageManagerTabs command="npx nepui@latest add button --target react" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="dialog"
+        title="components/nepui/dialog/dialog.css"
+        fileTarget="components/nepui/dialog/dialog.css"
+      />
+      <ComponentSource
+        target="react"
+        name="dialog"
+        title="components/nepui/dialog/dialog.tsx"
+        fileTarget="components/nepui/dialog/dialog.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="dialog"
+        title="components/nepui/dialog/index.ts"
+        fileTarget="components/nepui/dialog/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/nepui/dialog"
+```
+
+```tsx
+<Dialog>
+  <DialogTrigger>Open</DialogTrigger>
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle>Are you absolutely sure?</DialogTitle>
+      <DialogDescription>
+        This action cannot be undone. This will permanently delete your account
+        and remove your data from our servers.
+      </DialogDescription>
+    </DialogHeader>
+  </DialogContent>
+</Dialog>
+```
+
+`DialogTrigger` renders a `<button>`. Use the `render` prop to render a nepui [Button](/docs/components/react/button) instead:
+
+```tsx
+<DialogTrigger render={<Button variant="outline" />}>Open</DialogTrigger>
+```
+
+`DialogContent` renders the overlay, the box and a close button in a portal. The title and description give the dialog its accessible name and description, so always include a `DialogTitle`.
+
+The dialog is rendered in a portal, so set your theme class on `<html>` or `<body>`, not on a nested wrapper. Colours come from tokens. The styles use `color-mix()`, `:has()` and the individual `scale` and `translate` properties, which need a modern browser.
+
+---
+
+## Composition
+
+Use the following composition to build a `Dialog`:
+
+```text
+Dialog
+├── DialogTrigger
+└── DialogContent
+    ├── DialogHeader
+    │   ├── DialogTitle
+    │   └── DialogDescription
+    └── DialogFooter
+```
+
+---
+
+## Controlled
+
+Pass `open` and `onOpenChange` to control the dialog yourself. You can then close it from your own code, for example after a save.
+
+```tsx
+const [open, setOpen] = useState(false)
+
+<Dialog open={open} onOpenChange={setOpen}>
+  ...
+  <DialogFooter>
+    <Button onClick={() => setOpen(false)}>Save changes</Button>
+  </DialogFooter>
+</Dialog>
+```
+
+---
+
+## Destructive action
+
+<ComponentPreview
+  name="dialog-basic"
+/>
+
+---
+
+## Custom close button
+
+Hide the corner button with `showCloseButton={false}`, and close the dialog from the footer with `DialogClose`. Use `render` to make it a `Button`.
+
+<ComponentPreview
+  name="dialog-close"
+/>
+
+---
+
+## No close button
+
+Hide the corner button when the user has to pick one of the footer actions. Escape and a click outside still close the dialog. To stop those too, pass `disablePointerDismissal` to `Dialog`, and handle `onOpenChange` for the Escape key.
+
+<ComponentPreview
+  name="dialog-no-close"
+/>
+
+---
+
+## Sticky footer
+
+Scroll only the middle of the dialog, so the header and the footer stay in view. The scroll area is a plain element with a `max-height` and `overflow-y: auto`. The negative margin and padding let its scrollbar reach the edge of the box.
+
+<ComponentPreview
+  name="dialog-sticky-footer"
+/>
+
+---
+
+## Scrollable content
+
+The box itself scrolls when it is taller than the window, because it is limited to the viewport height minus `2rem`. Use a scroll area inside the box, as here, when you want the header to stay in view.
+
+<ComponentPreview
+  name="dialog-scrollable"
+/>
+
+---
+
+## API Reference
+
+### Dialog
+
+Wraps [Base UI Dialog.Root](https://base-ui.com/react/components/dialog). Renders no element.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `open` | `boolean` | - |
+| `defaultOpen` | `boolean` | `false` |
+| `onOpenChange` | `(open: boolean, eventDetails) => void` | - |
+| `modal` | `boolean \| "trap-focus"` | `true` |
+| `disablePointerDismissal` | `boolean` | `false` |
+
+With `modal={true}` focus is trapped, the page does not scroll, and the page behind is inert. `"trap-focus"` traps focus but lets the page scroll and be used.
+
+### DialogTrigger
+
+Renders a `<button>`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `render` | `ReactElement \| (props, state) => ReactElement` | - |
+| `nativeButton` | `boolean` | `true` |
+| `className` | `string \| (state) => string` | - |
+
+### DialogContent
+
+Renders the overlay and the popup in a portal. Accepts the props of Base UI `Dialog.Popup`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `showCloseButton` | `boolean` | `true` |
+| `initialFocus` | `boolean \| RefObject \| (interactionType) => HTMLElement \| boolean` | - |
+| `finalFocus` | `boolean \| RefObject \| (interactionType) => HTMLElement \| boolean` | - |
+| `className` | `string \| (state) => string` | - |
+
+### DialogHeader
+
+Renders a `<div>`. Accepts all native `div` props.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+
+### DialogFooter
+
+Renders a `<div>`. Accepts all native `div` props.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `showCloseButton` | `boolean` | `false` |
+| `className` | `string` | - |
+
+With `showCloseButton`, an outlined `Close` button is added after the children.
+
+### DialogTitle
+
+Renders an `<h2>`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string \| (state) => string` | - |
+
+### DialogDescription
+
+Renders a `<p>`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string \| (state) => string` | - |
+
+### DialogClose
+
+Renders a `<button>` that closes the dialog.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `render` | `ReactElement \| (props, state) => ReactElement` | - |
+| `nativeButton` | `boolean` | `true` |
+| `className` | `string \| (state) => string` | - |
+
+### DialogOverlay
+
+Renders the dimmed layer behind the dialog. `DialogContent` already renders one.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string \| (state) => string` | - |
+
+### DialogPortal
+
+Renders its children at the end of `<body>`. Accepts `container` and `keepMounted`.
