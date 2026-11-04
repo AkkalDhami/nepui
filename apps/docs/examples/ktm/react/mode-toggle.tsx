@@ -22,7 +22,13 @@ export default function ModeToggle({ className }: { className?: string }) {
         size="icon-lg"
         aria-label="Toggle theme"
       >
-        <span className="size-[1.15rem]" aria-hidden="true" />
+        <span
+          style={{
+            width: "1.15rem",
+            height: "1.15rem",
+          }}
+          aria-hidden="true"
+        />
       </Button>
     )
   }
@@ -73,7 +79,13 @@ export default function ModeToggle({ className }: { className?: string }) {
           </svg>
         )
       ) : (
-        <span className="size-[1.15rem]" aria-hidden />
+        <span
+          style={{
+            width: "1.15rem",
+            height: "1.15rem",
+          }}
+          aria-hidden
+        />
       )}
     </Button>
   )

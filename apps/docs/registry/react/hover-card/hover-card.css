@@ -1,0 +1,302 @@
+/* nepui - Hover Card */
+
+.np-hover-card-content,
+[data-np-hover-card-content] {
+  --np-hover-card-width: calc(var(--np-spacing) * 64);
+  --np-hover-card-padding: calc(var(--np-spacing) * 2.5);
+  --np-hover-card-radius: var(--np-radius-lg);
+  --np-hover-card-bg: var(--np-popover);
+  --np-hover-card-fg: var(--np-popover-foreground);
+  --np-hover-card-shadow: var(--np-shadow-md);
+  --np-hover-card-ring: color-mix(
+    in oklch,
+    var(--np-foreground) 10%,
+    transparent
+  );
+  --np-hover-card-duration: 100ms;
+  --np-hover-card-slide-x: 0px;
+  --np-hover-card-slide-y: 0px;
+
+  box-sizing: border-box;
+  position: relative;
+  width: var(--np-hover-card-width);
+  padding: var(--np-hover-card-padding);
+  border-radius: var(--np-hover-card-radius);
+  background-color: var(--np-hover-card-bg);
+  color: var(--np-hover-card-fg);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  box-shadow:
+    0 0 0 1px var(--np-hover-card-ring),
+    var(--np-hover-card-shadow);
+  outline: none;
+  transform-origin: var(--transform-origin, center);
+}
+
+.np-hover-card-positioner,
+[data-np-hover-card-positioner] {
+  isolation: isolate;
+  z-index: var(--np-hover-card-z-index, 50);
+}
+
+.np-hover-card-trigger,
+[data-np-hover-card-trigger] {
+  border-radius: var(--np-radius-sm);
+  cursor: pointer;
+  outline: none;
+}
+
+:is(.np-hover-card-trigger, [data-np-hover-card-trigger]):focus-visible {
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--np-ring), transparent 50%);
+}
+
+:is(.np-hover-card-content, [data-np-hover-card-content])[data-side="bottom"] {
+  --np-hover-card-slide-y: calc(var(--np-spacing) * -2);
+}
+
+:is(.np-hover-card-content, [data-np-hover-card-content])[data-side="top"] {
+  --np-hover-card-slide-y: calc(var(--np-spacing) * 2);
+}
+
+:is(.np-hover-card-content, [data-np-hover-card-content]):is(
+  [data-side="inline-end"],
+  [data-side="right"]
+) {
+  --np-hover-card-slide-x: calc(var(--np-spacing) * -2);
+}
+
+:is(.np-hover-card-content, [data-np-hover-card-content]):is(
+  [data-side="inline-start"],
+  [data-side="left"]
+) {
+  --np-hover-card-slide-x: calc(var(--np-spacing) * 2);
+}
+
+:is(.np-hover-card-content, [data-np-hover-card-content])[data-open] {
+  animation: np-hover-card-in var(--np-hover-card-duration) ease;
+}
+
+:is(.np-hover-card-content, [data-np-hover-card-content])[data-closed] {
+  animation: np-hover-card-out var(--np-hover-card-duration) ease forwards;
+}
+
+.np-hover-card,
+[data-np-hover-card] {
+  --np-spacing: 0.25rem;
+  --np-hover-card-offset: calc(var(--np-spacing) * 1);
+  --np-hover-card-delay: 600ms;
+  --np-hover-card-close-delay: 300ms;
+  --np-hover-card-center: -50%;
+
+  position: relative;
+  display: inline-block;
+}
+
+:is(.np-hover-card, [data-np-hover-card]):dir(rtl) {
+  --np-hover-card-center: 50%;
+}
+
+:is(.np-hover-card, [data-np-hover-card])
+  > :is(.np-hover-card-content, [data-np-hover-card-content]) {
+  --np-hover-card-slide-y: calc(var(--np-spacing) * -2);
+
+  position: absolute;
+  z-index: 50;
+  inset-block-start: calc(100% + var(--np-hover-card-offset));
+  inset-block-end: auto;
+  inset-inline-start: 50%;
+  inset-inline-end: auto;
+  translate: var(--np-hover-card-center) 0;
+  visibility: hidden;
+  opacity: 0;
+  transform: translate(
+      var(--np-hover-card-slide-x),
+      var(--np-hover-card-slide-y)
+    )
+    scale(0.95);
+  transition:
+    opacity var(--np-hover-card-duration) ease var(--np-hover-card-close-delay),
+    transform var(--np-hover-card-duration) ease
+      var(--np-hover-card-close-delay),
+    visibility 0s linear
+      calc(var(--np-hover-card-close-delay) + var(--np-hover-card-duration));
+}
+
+:is(.np-hover-card, [data-np-hover-card]):is(:hover, :focus-within)
+  > :is(.np-hover-card-content, [data-np-hover-card-content]) {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+  transition:
+    opacity var(--np-hover-card-duration) ease var(--np-hover-card-delay),
+    transform var(--np-hover-card-duration) ease var(--np-hover-card-delay),
+    visibility 0s linear var(--np-hover-card-delay);
+}
+
+:is(.np-hover-card, [data-np-hover-card]):is(
+    .np-hover-card-top,
+    [data-side="top"]
+  )
+  > :is(.np-hover-card-content, [data-np-hover-card-content]) {
+  --np-hover-card-slide-y: calc(var(--np-spacing) * 2);
+
+  inset-block-start: auto;
+  inset-block-end: calc(100% + var(--np-hover-card-offset));
+}
+
+:is(.np-hover-card, [data-np-hover-card]):is(
+    .np-hover-card-right,
+    [data-side="right"]
+  )
+  > :is(.np-hover-card-content, [data-np-hover-card-content]) {
+  --np-hover-card-slide-x: calc(var(--np-spacing) * -2);
+  --np-hover-card-slide-y: 0px;
+
+  inset-block-start: 50%;
+  inset-block-end: auto;
+  inset-inline-start: auto;
+  inset-inline-end: auto;
+  left: calc(100% + var(--np-hover-card-offset));
+  right: auto;
+  translate: 0 -50%;
+}
+
+:is(.np-hover-card, [data-np-hover-card]):is(
+    .np-hover-card-left,
+    [data-side="left"]
+  )
+  > :is(.np-hover-card-content, [data-np-hover-card-content]) {
+  --np-hover-card-slide-x: calc(var(--np-spacing) * 2);
+  --np-hover-card-slide-y: 0px;
+
+  inset-block-start: 50%;
+  inset-block-end: auto;
+  inset-inline-start: auto;
+  inset-inline-end: auto;
+  left: auto;
+  right: calc(100% + var(--np-hover-card-offset));
+  translate: 0 -50%;
+}
+
+:is(.np-hover-card, [data-np-hover-card]):not(
+    :is(
+      .np-hover-card-top,
+      .np-hover-card-right,
+      .np-hover-card-left,
+      [data-side="top"],
+      [data-side="right"],
+      [data-side="left"]
+    )
+  ):is(.np-hover-card-start, [data-align="start"])
+  > :is(.np-hover-card-content, [data-np-hover-card-content]) {
+  inset-inline-start: 0;
+  inset-inline-end: auto;
+  translate: 0 0;
+}
+
+:is(.np-hover-card, [data-np-hover-card]):not(
+    :is(
+      .np-hover-card-top,
+      .np-hover-card-right,
+      .np-hover-card-left,
+      [data-side="top"],
+      [data-side="right"],
+      [data-side="left"]
+    )
+  ):is(.np-hover-card-end, [data-align="end"])
+  > :is(.np-hover-card-content, [data-np-hover-card-content]) {
+  inset-inline-start: auto;
+  inset-inline-end: 0;
+  translate: 0 0;
+}
+
+:is(.np-hover-card, [data-np-hover-card]):is(
+    .np-hover-card-top,
+    [data-side="top"]
+  ):is(.np-hover-card-start, [data-align="start"])
+  > :is(.np-hover-card-content, [data-np-hover-card-content]) {
+  inset-inline-start: 0;
+  inset-inline-end: auto;
+  translate: 0 0;
+}
+
+:is(.np-hover-card, [data-np-hover-card]):is(
+    .np-hover-card-top,
+    [data-side="top"]
+  ):is(.np-hover-card-end, [data-align="end"])
+  > :is(.np-hover-card-content, [data-np-hover-card-content]) {
+  inset-inline-start: auto;
+  inset-inline-end: 0;
+  translate: 0 0;
+}
+
+:is(.np-hover-card, [data-np-hover-card]):is(
+    .np-hover-card-left,
+    [data-side="left"]
+  ):is(.np-hover-card-start, [data-align="start"])
+  > :is(.np-hover-card-content, [data-np-hover-card-content]) {
+  inset-block-start: 0;
+  translate: 0 0;
+}
+
+:is(.np-hover-card, [data-np-hover-card]):is(
+    .np-hover-card-left,
+    [data-side="left"]
+  ):is(.np-hover-card-end, [data-align="end"])
+  > :is(.np-hover-card-content, [data-np-hover-card-content]) {
+  inset-block-start: auto;
+  inset-block-end: 0;
+  translate: 0 0;
+}
+
+:is(.np-hover-card, [data-np-hover-card]):is(
+    .np-hover-card-right,
+    [data-side="right"]
+  ):is(.np-hover-card-start, [data-align="start"])
+  > :is(.np-hover-card-content, [data-np-hover-card-content]) {
+  inset-block-start: 0;
+  translate: 0 0;
+}
+
+:is(.np-hover-card, [data-np-hover-card]):is(
+    .np-hover-card-right,
+    [data-side="right"]
+  ):is(.np-hover-card-end, [data-align="end"])
+  > :is(.np-hover-card-content, [data-np-hover-card-content]) {
+  inset-block-start: auto;
+  inset-block-end: 0;
+  translate: 0 0;
+}
+
+@keyframes np-hover-card-in {
+  from {
+    opacity: 0;
+    transform: translate(
+        var(--np-hover-card-slide-x),
+        var(--np-hover-card-slide-y)
+      )
+      scale(0.95);
+  }
+}
+
+@keyframes np-hover-card-out {
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.np-hover-card-content, [data-np-hover-card-content])[data-open],
+  :is(.np-hover-card-content, [data-np-hover-card-content])[data-closed] {
+    animation: none;
+  }
+
+  :is(.np-hover-card, [data-np-hover-card])
+    > :is(.np-hover-card-content, [data-np-hover-card-content]),
+  :is(.np-hover-card, [data-np-hover-card]):is(:hover, :focus-within)
+    > :is(.np-hover-card-content, [data-np-hover-card-content]) {
+    transition: none;
+  }
+}
