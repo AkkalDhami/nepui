@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Table</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/badge.css" />
+    <link rel="stylesheet" href="../styles/checkbox.css" />
+    <link rel="stylesheet" href="../styles/table.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem 4rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: system-ui, sans-serif;
+      }
+      main {
+        display: grid;
+        gap: 2.5rem;
+        max-width: 44rem;
+        margin-inline: auto;
+      }
+      h2 {
+        margin: 0 0 0.75rem;
+        font-size: 1rem;
+      }
+      p {
+        margin: 0 0 0.75rem;
+        color: var(--np-muted-foreground);
+        font-size: 0.875rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Class form</h2>
+        <div class="np-table-container">
+          <table class="np-table">
+            <caption class="np-table-caption">
+              A list of your recent invoices.
+            </caption>
+            <thead class="np-table-header">
+              <tr class="np-table-row">
+                <th class="np-table-head" scope="col" style="width: 6.25rem">
+                  Invoice
+                </th>
+                <th class="np-table-head" scope="col">Status</th>
+                <th class="np-table-head" scope="col">Method</th>
+                <th class="np-table-head np-table-end" scope="col">Amount</th>
+              </tr>
+            </thead>
+            <tbody class="np-table-body">
+              <tr class="np-table-row">
+                <td class="np-table-cell" style="font-weight: 500">INV001</td>
+                <td class="np-table-cell">Paid</td>
+                <td class="np-table-cell">Credit Card</td>
+                <td class="np-table-cell np-table-end">$250.00</td>
+              </tr>
+              <tr class="np-table-row">
+                <td class="np-table-cell" style="font-weight: 500">INV002</td>
+                <td class="np-table-cell">Pending</td>
+                <td class="np-table-cell">PayPal</td>
+                <td class="np-table-cell np-table-end">$150.00</td>
+              </tr>
+              <tr class="np-table-row">
+                <td class="np-table-cell" style="font-weight: 500">INV003</td>
+                <td class="np-table-cell">Unpaid</td>
+                <td class="np-table-cell">Bank Transfer</td>
+                <td class="np-table-cell np-table-end">$350.00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>Data-attribute form</h2>
+        <div data-np-table-container>
+          <table data-np-table>
+            <caption data-np-table-caption>
+              Same table, no classes.
+            </caption>
+            <thead data-np-table-header>
+              <tr data-np-table-row>
+                <th data-np-table-head scope="col" style="width: 6.25rem">
+                  Invoice
+                </th>
+                <th data-np-table-head scope="col">Status</th>
+                <th data-np-table-head scope="col">Method</th>
+                <th data-np-table-head data-align="end" scope="col">Amount</th>
+              </tr>
+            </thead>
+            <tbody data-np-table-body>
+              <tr data-np-table-row>
+                <td data-np-table-cell style="font-weight: 500">INV001</td>
+                <td data-np-table-cell>Paid</td>
+                <td data-np-table-cell>Credit Card</td>
+                <td data-np-table-cell data-align="end">$250.00</td>
+              </tr>
+              <tr data-np-table-row>
+                <td data-np-table-cell style="font-weight: 500">INV002</td>
+                <td data-np-table-cell>Pending</td>
+                <td data-np-table-cell>PayPal</td>
+                <td data-np-table-cell data-align="end">$150.00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>Footer</h2>
+        <div class="np-table-container">
+          <table class="np-table">
+            <thead class="np-table-header">
+              <tr class="np-table-row">
+                <th class="np-table-head" scope="col">Invoice</th>
+                <th class="np-table-head" scope="col">Status</th>
+                <th class="np-table-head" scope="col">Method</th>
+                <th class="np-table-head np-table-end" scope="col">Amount</th>
+              </tr>
+            </thead>
+            <tbody class="np-table-body">
+              <tr class="np-table-row">
+                <td class="np-table-cell" style="font-weight: 500">INV001</td>
+                <td class="np-table-cell">Paid</td>
+                <td class="np-table-cell">Credit Card</td>
+                <td class="np-table-cell np-table-end">$250.00</td>
+              </tr>
+              <tr class="np-table-row">
+                <td class="np-table-cell" style="font-weight: 500">INV002</td>
+                <td class="np-table-cell">Pending</td>
+                <td class="np-table-cell">PayPal</td>
+                <td class="np-table-cell np-table-end">$150.00</td>
+              </tr>
+              <tr class="np-table-row">
+                <td class="np-table-cell" style="font-weight: 500">INV003</td>
+                <td class="np-table-cell">Unpaid</td>
+                <td class="np-table-cell">Bank Transfer</td>
+                <td class="np-table-cell np-table-end">$350.00</td>
+              </tr>
+            </tbody>
+            <tfoot class="np-table-footer">
+              <tr class="np-table-row">
+                <td class="np-table-cell" colspan="3">Total</td>
+                <td class="np-table-cell np-table-end">$750.00</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>Selected row</h2>
+        <p>
+          Add <code>data-state="selected"</code> to a row. Hover the other rows
+          to see the hover background.
+        </p>
+        <div class="np-table-container">
+          <table class="np-table">
+            <thead class="np-table-header">
+              <tr class="np-table-row">
+                <th class="np-table-head" scope="col" style="width: 2rem">
+                  <input
+                    type="checkbox"
+                    class="np-checkbox"
+                    aria-label="Select all products"
+                  />
+                </th>
+                <th class="np-table-head" scope="col">Product</th>
+                <th class="np-table-head np-table-end" scope="col">Price</th>
+              </tr>
+            </thead>
+            <tbody class="np-table-body">
+              <tr class="np-table-row">
+                <td class="np-table-cell">
+                  <input
+                    type="checkbox"
+                    class="np-checkbox"
+                    aria-label="Select Wireless Mouse"
+                  />
+                </td>
+                <td class="np-table-cell" style="font-weight: 500">
+                  Wireless Mouse
+                </td>
+                <td class="np-table-cell np-table-end">$29.99</td>
+              </tr>
+              <tr class="np-table-row" data-state="selected">
+                <td class="np-table-cell">
+                  <input
+                    type="checkbox"
+                    class="np-checkbox"
+                    aria-label="Select Mechanical Keyboard"
+                    checked
+                  />
+                </td>
+                <td class="np-table-cell" style="font-weight: 500">
+                  Mechanical Keyboard
+                </td>
+                <td class="np-table-cell np-table-end">$129.99</td>
+              </tr>
+              <tr class="np-table-row">
+                <td class="np-table-cell">
+                  <input
+                    type="checkbox"
+                    class="np-checkbox"
+                    aria-label="Select USB-C Hub"
+                  />
+                </td>
+                <td class="np-table-cell" style="font-weight: 500">
+                  USB-C Hub
+                </td>
+                <td class="np-table-cell np-table-end">$49.99</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>Status and actions</h2>
+        <div class="np-table-container">
+          <table class="np-table">
+            <thead class="np-table-header">
+              <tr class="np-table-row">
+                <th class="np-table-head" scope="col">Product</th>
+                <th class="np-table-head" scope="col">Status</th>
+                <th class="np-table-head np-table-end" scope="col">Price</th>
+                <th
+                  class="np-table-head np-table-end"
+                  scope="col"
+                  style="width: 3rem"
+                >
+                  <span
+                    style="
+                      position: absolute;
+                      width: 1px;
+                      height: 1px;
+                      overflow: hidden;
+                      clip: rect(0 0 0 0);
+                      white-space: nowrap;
+                    "
+                    >Actions</span
+                  >
+                </th>
+              </tr>
+            </thead>
+            <tbody class="np-table-body">
+              <tr class="np-table-row">
+                <td class="np-table-cell" style="font-weight: 500">
+                  Wireless Mouse
+                </td>
+                <td class="np-table-cell">
+                  <span
+                    class="np-badge"
+                    data-variant="success"
+                    data-appearance="light"
+                    >In stock</span
+                  >
+                </td>
+                <td class="np-table-cell np-table-end">$29.99</td>
+                <td class="np-table-cell np-table-end">
+                  <button
+                    type="button"
+                    class="np-button np-button-ghost np-button-icon-sm"
+                    aria-label="Open menu for Wireless Mouse"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <circle cx="12" cy="12" r="1" />
+                      <circle cx="19" cy="12" r="1" />
+                      <circle cx="5" cy="12" r="1" />
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+              <tr class="np-table-row">
+                <td class="np-table-cell" style="font-weight: 500">
+                  Mechanical Keyboard
+                </td>
+                <td class="np-table-cell">
+                  <span
+                    class="np-badge"
+                    data-variant="warning"
+                    data-appearance="light"
+                    >Low stock</span
+                  >
+                </td>
+                <td class="np-table-cell np-table-end">$129.99</td>
+                <td class="np-table-cell np-table-end">
+                  <button
+                    type="button"
+                    class="np-button np-button-ghost np-button-icon-sm"
+                    aria-label="Open menu for Mechanical Keyboard"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <circle cx="12" cy="12" r="1" />
+                      <circle cx="19" cy="12" r="1" />
+                      <circle cx="5" cy="12" r="1" />
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+              <tr class="np-table-row">
+                <td class="np-table-cell" style="font-weight: 500">
+                  USB-C Hub
+                </td>
+                <td class="np-table-cell">
+                  <span
+                    class="np-badge"
+                    data-variant="destructive"
+                    data-appearance="light"
+                    >Out of stock</span
+                  >
+                </td>
+                <td class="np-table-cell np-table-end">$49.99</td>
+                <td class="np-table-cell np-table-end">
+                  <button
+                    type="button"
+                    class="np-button np-button-ghost np-button-icon-sm"
+                    aria-label="Open menu for USB-C Hub"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <circle cx="12" cy="12" r="1" />
+                      <circle cx="19" cy="12" r="1" />
+                      <circle cx="5" cy="12" r="1" />
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>Alignment</h2>
+        <div class="np-table-container">
+          <table class="np-table">
+            <thead class="np-table-header">
+              <tr class="np-table-row">
+                <th class="np-table-head" scope="col">Start (default)</th>
+                <th class="np-table-head np-table-center" scope="col">
+                  Center
+                </th>
+                <th class="np-table-head np-table-end" scope="col">End</th>
+              </tr>
+            </thead>
+            <tbody class="np-table-body">
+              <tr class="np-table-row">
+                <td class="np-table-cell">Left</td>
+                <td class="np-table-cell np-table-center">Middle</td>
+                <td class="np-table-cell np-table-end">Right</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>Custom variables</h2>
+        <p>
+          Denser rows with <code>--np-table-cell-padding</code> and
+          <code>--np-table-head-height</code>, set on the table.
+        </p>
+        <div class="np-table-container">
+          <table
+            class="np-table"
+            style="
+              --np-table-cell-padding: 0.25rem 0.5rem;
+              --np-table-head-height: 2rem;
+            "
+          >
+            <thead class="np-table-header">
+              <tr class="np-table-row">
+                <th class="np-table-head" scope="col">Invoice</th>
+                <th class="np-table-head" scope="col">Status</th>
+                <th class="np-table-head np-table-end" scope="col">Amount</th>
+              </tr>
+            </thead>
+            <tbody class="np-table-body">
+              <tr class="np-table-row">
+                <td class="np-table-cell">INV001</td>
+                <td class="np-table-cell">Paid</td>
+                <td class="np-table-cell np-table-end">$250.00</td>
+              </tr>
+              <tr class="np-table-row">
+                <td class="np-table-cell">INV002</td>
+                <td class="np-table-cell">Pending</td>
+                <td class="np-table-cell np-table-end">$150.00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
