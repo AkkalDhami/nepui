@@ -1,0 +1,169 @@
+---
+title: Hover Card
+description: For sighted users to preview content available behind a link.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="hover-card-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/hover-card.json"
+      nepui="npx nepui@latest add hover-card --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="hover-card"
+        title="components/nepui/hover-card/hover-card.css"
+        fileTarget="components/nepui/hover-card/hover-card.css"
+      />
+      <ComponentSource
+        target="react"
+        name="hover-card"
+        title="components/nepui/hover-card/hover-card.tsx"
+        fileTarget="components/nepui/hover-card/hover-card.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="hover-card"
+        title="components/nepui/hover-card/index.ts"
+        fileTarget="components/nepui/hover-card/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/nepui/hover-card"
+```
+
+```tsx
+<HoverCard>
+  <HoverCardTrigger href="/docs">Docs</HoverCardTrigger>
+  <HoverCardContent>The docs of the project.</HoverCardContent>
+</HoverCard>
+```
+
+`HoverCardTrigger` renders a link by default. Use the `render` prop to render another element, such as a [Button](/docs/components/react/button):
+
+```tsx
+<HoverCardTrigger render={<Button variant="link" />}>@nextjs</HoverCardTrigger>
+```
+
+The examples on this page also use [Avatar](/docs/components/react/avatar), [Badge](/docs/components/react/badge) and [Separator](/docs/components/react/separator).
+
+---
+
+## Profile
+
+Compose the card with other components, such as an avatar, a badge and a separator.
+
+<ComponentPreview
+  name="hover-card-profile"
+/>
+
+---
+
+## Sides
+
+Use the `side` prop on `HoverCardContent` to choose where the card appears. It can be `top`, `right`, `bottom`, `left`, `inline-start` or `inline-end`.
+
+<ComponentPreview
+  name="hover-card-sides"
+/>
+
+---
+
+## Alignment
+
+Use `align` on `HoverCardContent` (`start`, `center` or `end`) to align the card with the trigger.
+
+---
+
+## Trigger Delays
+
+Use `delay` and `closeDelay` on `HoverCardTrigger` to control when the card opens and closes. Both are in milliseconds, and the defaults are `600` and `300`.
+
+<ComponentPreview
+  name="hover-card-delay"
+/>
+
+---
+
+## Inline Link
+
+A hover card works well as a preview for a link in text. The link still works for everyone, so the card must never be the only place that has the information.
+
+<ComponentPreview
+  name="hover-card-inline"
+/>
+
+---
+
+## Accessibility
+
+A hover card is for sighted users who use a pointer. Touch screens have no hover, and screen readers do not announce the card. Make sure the content behind the card is also available on the page the trigger links to. The card also opens when the trigger gets keyboard focus.
+
+---
+
+## API Reference
+
+### HoverCard
+
+The root. It accepts the props of the Base UI [Preview Card root](https://base-ui.com/react/components/preview-card).
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `open` | `boolean` | - |
+| `defaultOpen` | `boolean` | `false` |
+| `onOpenChange` | `(open, eventDetails) => void` | - |
+
+### HoverCardTrigger
+
+The element that opens the card. It renders a link.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `delay` | `number` | `600` |
+| `closeDelay` | `number` | `300` |
+| `render` | `ReactElement \| function` | - |
+| `className` | `string \| (state) => string` | - |
+
+### HoverCardContent
+
+The card.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `side` | `"top" \| "right" \| "bottom" \| "left" \| "inline-start" \| "inline-end"` | `"bottom"` |
+| `sideOffset` | `number` | `4` |
+| `align` | `"start" \| "center" \| "end"` | `"center"` |
+| `alignOffset` | `number` | `4` |
+| `className` | `string \| (state) => string` | - |

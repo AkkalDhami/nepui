@@ -1,0 +1,171 @@
+---
+title: Hover Card
+description: For sighted users to preview content available behind a link.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="hover-card-demo"
+  target="html"
+  styles={["/button/button.css", "/avatar/avatar.css"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add hover-card"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="hover-card"
+        title="styles/hover-card.css"
+        fileTarget="styles/hover-card.css"
+      />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the stylesheet:
+
+```html
+<link rel="stylesheet" href="./styles/hover-card.css">
+```
+
+Put the trigger and the card in one `np-hover-card` wrapper. The card opens when the wrapper is hovered or focused, with no JavaScript:
+
+```html
+<div class="np-hover-card">
+  <a class="np-hover-card-trigger" href="/docs">Docs</a>
+  <div class="np-hover-card-content">The docs of the project.</div>
+</div>
+```
+
+Or use the data attributes instead of classes: `data-np-hover-card`, `data-np-hover-card-trigger` and `data-np-hover-card-content`.
+
+Use a `div` wrapper for block content, or a `span` wrapper with a `span` card when the trigger sits inside a paragraph. The examples on this page also use the [Button](/docs/components/html/button), [Avatar](/docs/components/html/avatar), [Badge](/docs/components/html/badge) and [Separator](/docs/components/html/separator) styles, so link their stylesheets before `hover-card.css`.
+
+---
+
+## Profile
+
+Compose the card with other components, such as an avatar, a badge and a separator.
+
+Link the stylesheets:
+
+```html
+<link rel="stylesheet" href="./styles/button.css">
+<link rel="stylesheet" href="./styles/avatar.css">
+<link rel="stylesheet" href="./styles/badge.css">
+<link rel="stylesheet" href="./styles/separator.css">
+```
+
+<ComponentPreview
+  name="hover-card-profile"
+  target="html"
+  styles={["/button/button.css", "/avatar/avatar.css", "/badge/badge.css", "/separator/separator.css"]}
+/>
+
+---
+
+## Sides
+
+Add `np-hover-card-top`, `np-hover-card-right` or `np-hover-card-left` (or `data-side`) to the wrapper to choose where the card appears. The default is `bottom`.
+
+Link the stylesheet:
+
+```html
+<link rel="stylesheet" href="./styles/button.css">
+```
+
+<ComponentPreview
+  name="hover-card-sides"
+  target="html"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Alignment
+
+Add `np-hover-card-start` or `np-hover-card-end` (or `data-align`) to the wrapper to align the card with the trigger. The default is centered.
+
+---
+
+## Trigger Delays
+
+Set `--np-hover-card-delay` and `--np-hover-card-close-delay` on the wrapper to control when the card opens and closes. The defaults are `600ms` and `300ms`.
+
+Link the stylesheet:
+
+```html
+<link rel="stylesheet" href="./styles/button.css">
+```
+
+<ComponentPreview
+  name="hover-card-delay"
+  target="html"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Inline Link
+
+A hover card works well as a preview for a link in text. The link still works for everyone, so the card must never be the only place that has the information.
+
+<ComponentPreview
+  name="hover-card-inline"
+  target="html"
+/>
+
+---
+
+## Accessibility
+
+A hover card is for sighted users who use a pointer. Touch screens have no hover, and screen readers do not announce the card. Make sure the content behind the card is also available on the page the trigger links to. The card also opens when the trigger gets keyboard focus.
+
+---
+
+## API Reference
+
+### Parts
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Wrapper | `data-np-hover-card` | `np-hover-card` |
+| Trigger | `data-np-hover-card-trigger` | `np-hover-card-trigger` |
+| Content | `data-np-hover-card-content` | `np-hover-card-content` |
+
+### Side
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Bottom (default) | - | `np-hover-card` |
+| Top | `data-side="top"` | `np-hover-card-top` |
+| Right | `data-side="right"` | `np-hover-card-right` |
+| Left | `data-side="left"` | `np-hover-card-left` |
+
+### Align
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Center (default) | - | `np-hover-card` |
+| Start | `data-align="start"` | `np-hover-card-start` |
+| End | `data-align="end"` | `np-hover-card-end` |
