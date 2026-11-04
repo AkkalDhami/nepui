@@ -50,6 +50,10 @@ export async function ComponentPreview({
       "scroll-area",
       "checkbox-group",
       "aspect-ratio",
+      "otp-field",
+      "alert-dialog",
+      "context-menu",
+      "hover-card",
     ]
 
     const componentName = groupedComponents.includes(
@@ -100,7 +104,6 @@ export async function ComponentPreview({
 
   if (target === "react") {
     const refactoredSource = source
-      ?.replaceAll("@nepui/react/", "@/components/nepui/")
       ?.replaceAll("@/registry/react/", "@/components/nepui/")
       ?.replaceAll("export default function", "export function")
 
@@ -133,7 +136,7 @@ export async function ComponentPreview({
         <TabsContent value="code">
           <ComponentSource
             name={name}
-            code={source}
+            code={refactoredSource}
             highlightedCode={highlightedCode}
             language="tsx"
             title={`${name}.tsx`}
