@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — OTP Field</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/label.css" />
+    <link rel="stylesheet" href="../styles/otp-field.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: system-ui, sans-serif;
+      }
+      main {
+        display: grid;
+        gap: 2rem;
+        max-width: 28rem;
+        margin-inline: auto;
+      }
+      h2 {
+        margin: 0 0 0.75rem;
+        font-size: 0.875rem;
+        color: var(--np-muted-foreground);
+        font-weight: 500;
+      }
+      .field {
+        display: grid;
+        gap: 0.5rem;
+        width: fit-content;
+      }
+      .note {
+        margin: 0;
+        font-size: 0.875rem;
+        color: var(--np-muted-foreground);
+      }
+      #log {
+        margin: 0;
+        font-size: 0.875rem;
+      }
+    </style>
+
+    <script src="../javascripts/otp-field.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Class form</h2>
+        <div class="field">
+          <label class="np-label" id="i1-label" for="i1"
+            >Verification code</label
+          >
+          <div class="np-otp-field" role="group" aria-labelledby="i1-label">
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              autocomplete="one-time-code"
+              id="i1"
+            />
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              aria-label="Character 2 of 6"
+            />
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              aria-label="Character 3 of 6"
+            />
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              aria-label="Character 4 of 6"
+            />
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              aria-label="Character 5 of 6"
+            />
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              aria-label="Character 6 of 6"
+            />
+          </div>
+          <p class="note">Enter the 6-digit code. Try pasting 123456.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Data-attribute form</h2>
+        <div class="field">
+          <label class="np-label" id="i2-label" for="i2"
+            >Verification code</label
+          >
+          <div data-np-otp-field role="group" aria-labelledby="i2-label">
+            <input
+              data-np-otp-field-input
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              autocomplete="one-time-code"
+              id="i2"
+            />
+            <input
+              data-np-otp-field-input
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              aria-label="Character 2 of 6"
+            />
+            <input
+              data-np-otp-field-input
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              aria-label="Character 3 of 6"
+            />
+            <input
+              data-np-otp-field-input
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              aria-label="Character 4 of 6"
+            />
+            <input
+              data-np-otp-field-input
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              aria-label="Character 5 of 6"
+            />
+            <input
+              data-np-otp-field-input
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              aria-label="Character 6 of 6"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Separator</h2>
+        <div class="field">
+          <label class="np-label" id="i3-label" for="i3"
+            >Verification code</label
+          >
+          <div class="np-otp-field" role="group" aria-labelledby="i3-label">
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              autocomplete="one-time-code"
+              id="i3"
+            />
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              aria-label="Character 2 of 6"
+            />
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              aria-label="Character 3 of 6"
+            />
+            <div class="np-otp-field-separator"></div>
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              aria-label="Character 4 of 6"
+            />
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              aria-label="Character 5 of 6"
+            />
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              aria-label="Character 6 of 6"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Sizes (class and data-size)</h2>
+        <div class="field">
+          <label class="np-label" id="i4-label" for="i4">Small</label>
+          <div
+            class="np-otp-field np-otp-field-sm"
+            role="group"
+            aria-labelledby="i4-label"
+          >
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              autocomplete="one-time-code"
+              id="i4"
+            />
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              aria-label="Character 2 of 4"
+            />
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              aria-label="Character 3 of 4"
+            />
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              aria-label="Character 4 of 4"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Large</h2>
+        <div class="field">
+          <label class="np-label" id="i5-label" for="i5">Large</label>
+          <div
+            class="np-otp-field"
+            role="group"
+            aria-labelledby="i5-label"
+            data-size="lg"
+          >
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              autocomplete="one-time-code"
+              id="i5"
+            />
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              aria-label="Character 2 of 4"
+            />
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              aria-label="Character 3 of 4"
+            />
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              aria-label="Character 4 of 4"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Alphanumeric (data-validation, data-uppercase)</h2>
+        <div class="field">
+          <label class="np-label" id="i6-label" for="i6">Recovery code</label>
+          <div
+            class="np-otp-field"
+            role="group"
+            aria-labelledby="i6-label"
+            data-validation="alphanumeric"
+            data-uppercase
+          >
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="text"
+              maxlength="1"
+              autocomplete="one-time-code"
+              id="i6"
+            />
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="text"
+              maxlength="1"
+              aria-label="Character 2 of 6"
+            />
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="text"
+              maxlength="1"
+              aria-label="Character 3 of 6"
+            />
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="text"
+              maxlength="1"
+              aria-label="Character 4 of 6"
+            />
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="text"
+              maxlength="1"
+              aria-label="Character 5 of 6"
+            />
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="text"
+              maxlength="1"
+              aria-label="Character 6 of 6"
+            />
+          </div>
+          <p class="note">Letters and numbers, converted to uppercase.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Mask</h2>
+        <div class="field">
+          <label class="np-label" id="i7-label" for="i7">Access code</label>
+          <div class="np-otp-field" role="group" aria-labelledby="i7-label">
+            <input
+              class="np-otp-field-input"
+              type="password"
+              inputmode="numeric"
+              maxlength="1"
+              autocomplete="one-time-code"
+              id="i7"
+            />
+            <input
+              class="np-otp-field-input"
+              type="password"
+              inputmode="numeric"
+              maxlength="1"
+              aria-label="Character 2 of 6"
+            />
+            <input
+              class="np-otp-field-input"
+              type="password"
+              inputmode="numeric"
+              maxlength="1"
+              aria-label="Character 3 of 6"
+            />
+            <input
+              class="np-otp-field-input"
+              type="password"
+              inputmode="numeric"
+              maxlength="1"
+              aria-label="Character 4 of 6"
+            />
+            <input
+              class="np-otp-field-input"
+              type="password"
+              inputmode="numeric"
+              maxlength="1"
+              aria-label="Character 5 of 6"
+            />
+            <input
+              class="np-otp-field-input"
+              type="password"
+              inputmode="numeric"
+              maxlength="1"
+              aria-label="Character 6 of 6"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Invalid</h2>
+        <div class="field">
+          <label class="np-label" id="i8-label" for="i8"
+            >Verification code</label
+          >
+          <div class="np-otp-field" role="group" aria-labelledby="i8-label">
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              value="6"
+              autocomplete="one-time-code"
+              id="i8"
+              aria-invalid="true"
+            />
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              value="5"
+              aria-label="Character 2 of 6"
+              aria-invalid="true"
+            />
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              value="4"
+              aria-label="Character 3 of 6"
+              aria-invalid="true"
+            />
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              value="3"
+              aria-label="Character 4 of 6"
+              aria-invalid="true"
+            />
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              value="2"
+              aria-label="Character 5 of 6"
+              aria-invalid="true"
+            />
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              value="1"
+              aria-label="Character 6 of 6"
+              aria-invalid="true"
+            />
+          </div>
+          <p class="note">Code must be 123456.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Disabled</h2>
+        <div class="field">
+          <label class="np-label" id="i9-label" for="i9"
+            >Verification code</label
+          >
+          <div class="np-otp-field" role="group" aria-labelledby="i9-label">
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              value="1"
+              autocomplete="one-time-code"
+              id="i9"
+              disabled
+            />
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              value="2"
+              aria-label="Character 2 of 6"
+              disabled
+            />
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              value="3"
+              aria-label="Character 3 of 6"
+              disabled
+            />
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              value="4"
+              aria-label="Character 4 of 6"
+              disabled
+            />
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              value="5"
+              aria-label="Character 5 of 6"
+              disabled
+            />
+            <input
+              class="np-otp-field-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              value="6"
+              aria-label="Character 6 of 6"
+              disabled
+            />
+          </div>
+        </div>
+      </section>
+      <p id="log" aria-live="polite">Waiting for a complete code...</p>
+    </main>
+
+    <script>
+      document.addEventListener("np-otp-complete", function (event) {
+        // console.log(event.detail)
+        document.getElementById("log").textContent =
+          "otp-complete: " + event.detail.value
+      })
+    </script>
+  </body>
+</html>
