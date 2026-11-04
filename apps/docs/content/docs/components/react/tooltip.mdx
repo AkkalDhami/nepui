@@ -1,0 +1,193 @@
+---
+title: Tooltip
+description: A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="tooltip-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/tooltip.json"
+      nepui="npx nepui@latest add tooltip --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="tooltip"
+        title="components/nepui/tooltip/tooltip.css"
+        fileTarget="components/nepui/tooltip/tooltip.css"
+      />
+      <ComponentSource
+        target="react"
+        name="tooltip"
+        title="components/nepui/tooltip/tooltip.tsx"
+        fileTarget="components/nepui/tooltip/tooltip.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="tooltip"
+        title="components/nepui/tooltip/index.ts"
+        fileTarget="components/nepui/tooltip/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Wrap your app in `TooltipProvider`, usually in the root layout.
+
+```tsx showLineNumbers title="app/layout.tsx"
+import { TooltipProvider } from "@/components/nepui/tooltip"
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>
+        <TooltipProvider>{children}</TooltipProvider>
+      </body>
+    </html>
+  )
+}
+```
+
+```tsx
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/nepui/tooltip"
+```
+
+```tsx
+<Tooltip>
+  <TooltipTrigger>Hover</TooltipTrigger>
+  <TooltipContent>
+    <p>Add to library</p>
+  </TooltipContent>
+</Tooltip>
+```
+
+`TooltipTrigger` renders a `<button>`. Use the `render` prop to render something else, such as a nepui [Button](/docs/components/react/button):
+
+```tsx
+<TooltipTrigger render={<Button variant="outline" />}>Hover</TooltipTrigger>
+```
+
+The tooltip swaps the foreground and background tokens, so it stays high contrast in light and dark mode. It is rendered in a portal, so set your theme class on `<html>` or `<body>`, not on a nested wrapper.
+
+---
+
+## Composition
+
+Use the following composition to build a `Tooltip`:
+
+```text
+Tooltip
+├── TooltipTrigger
+└── TooltipContent
+```
+
+---
+
+## Side
+
+Use the `side` prop on `TooltipContent` to change where the tooltip appears. Use `align` to line it up with the start or end of the trigger.
+
+<ComponentPreview
+  name="tooltip-side"
+/>
+
+---
+
+## With Keyboard Shortcut
+
+Put a [Kbd](/docs/components/react/kbd) inside the content. The tooltip restyles it to match.
+
+<ComponentPreview
+  name="tooltip-shortcut"
+/>
+
+---
+
+## Disabled Button
+
+A disabled button does not fire pointer or focus events, so the tooltip cannot open on it. Render the trigger as a wrapping element, such as a `span` with `tabIndex={0}`, and put the disabled button inside.
+
+<ComponentPreview
+  name="tooltip-disabled"
+/>
+
+---
+
+## API Reference
+
+### TooltipProvider
+
+Wraps [Base UI Tooltip.Provider](https://base-ui.com/react/components/tooltip). Renders no element.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `delay` | `number` | `0` |
+| `closeDelay` | `number` | - |
+| `timeout` | `number` | `400` |
+
+`timeout` is how long after a tooltip closes that the next one opens instantly.
+
+### Tooltip
+
+Wraps Base UI `Tooltip.Root`. Renders no element.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `open` | `boolean` | - |
+| `defaultOpen` | `boolean` | `false` |
+| `onOpenChange` | `(open: boolean, eventDetails) => void` | - |
+| `disabled` | `boolean` | `false` |
+| `trackCursorAxis` | `"none" \| "x" \| "y" \| "both"` | `"none"` |
+
+### TooltipTrigger
+
+Wraps Base UI `Tooltip.Trigger`. Renders a `<button>`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `delay` | `number` | `600`, or the Provider's `delay` |
+| `closeDelay` | `number` | `0` |
+| `disabled` | `boolean` | `false` |
+| `render` | `ReactElement \| (props, state) => ReactElement` | - |
+| `className` | `string \| (state) => string` | - |
+
+### TooltipContent
+
+Renders the popup, its positioner and an arrow inside a portal. Accepts the props of Base UI `Tooltip.Popup`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `side` | `"top" \| "bottom" \| "left" \| "right" \| "inline-start" \| "inline-end"` | `"top"` |
+| `sideOffset` | `number` | `4` |
+| `align` | `"start" \| "center" \| "end"` | `"center"` |
+| `alignOffset` | `number` | `0` |
+| `arrow` | `boolean` | `true` |
+| `className` | `string \| (state) => string` | - |
