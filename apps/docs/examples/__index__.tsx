@@ -35,6 +35,12 @@ import KtmReactBadgeSize from "./ktm/react/badge-size"
 import KtmReactBadgeVariant from "./ktm/react/badge-variant"
 import KtmReactBadgeWithIcon from "./ktm/react/badge-with-icon"
 import KtmReactBadgeWithSpinner from "./ktm/react/badge-with-spinner"
+import KtmReactBreadcrumbCollapsed from "./ktm/react/breadcrumb-collapsed"
+import KtmReactBreadcrumbDemo from "./ktm/react/breadcrumb-demo"
+import KtmReactBreadcrumbDropdown from "./ktm/react/breadcrumb-dropdown"
+import KtmReactBreadcrumbExpandable from "./ktm/react/breadcrumb-expandable"
+import KtmReactBreadcrumbLink from "./ktm/react/breadcrumb-link"
+import KtmReactBreadcrumbSeparator from "./ktm/react/breadcrumb-separator"
 import KtmReactButtonDefault from "./ktm/react/button-default"
 import KtmReactButtonDemo from "./ktm/react/button-demo"
 import KtmReactButtonDestructive from "./ktm/react/button-destructive"
@@ -76,6 +82,12 @@ import KtmReactCollapsibleDemo from "./ktm/react/collapsible-demo"
 import KtmReactCollapsibleFileTree from "./ktm/react/collapsible-file-tree"
 import KtmReactCollapsibleSettings from "./ktm/react/collapsible-settings"
 import KtmReactCopyButtonDemo from "./ktm/react/copy-button-demo"
+import KtmReactDialogBasic from "./ktm/react/dialog-basic"
+import KtmReactDialogClose from "./ktm/react/dialog-close"
+import KtmReactDialogDemo from "./ktm/react/dialog-demo"
+import KtmReactDialogNoClose from "./ktm/react/dialog-no-close"
+import KtmReactDialogScrollable from "./ktm/react/dialog-scrollable"
+import KtmReactDialogStickyFooter from "./ktm/react/dialog-sticky-footer"
 import KtmReactEmptyBackground from "./ktm/react/empty-background"
 import KtmReactEmptyDemo from "./ktm/react/empty-demo"
 import KtmReactEmptyNotFound from "./ktm/react/empty-not-found"
@@ -89,6 +101,11 @@ import KtmReactFieldGroup from "./ktm/react/field-group"
 import KtmReactFieldInput from "./ktm/react/field-input"
 import KtmReactFieldResponsive from "./ktm/react/field-responsive"
 import KtmReactFieldTextarea from "./ktm/react/field-textarea"
+import KtmReactHoverCardDelay from "./ktm/react/hover-card-delay"
+import KtmReactHoverCardDemo from "./ktm/react/hover-card-demo"
+import KtmReactHoverCardInline from "./ktm/react/hover-card-inline"
+import KtmReactHoverCardProfile from "./ktm/react/hover-card-profile"
+import KtmReactHoverCardSides from "./ktm/react/hover-card-sides"
 import KtmReactInputBasic from "./ktm/react/input-basic"
 import KtmReactInputControlled from "./ktm/react/input-controlled"
 import KtmReactInputDemo from "./ktm/react/input-demo"
@@ -122,6 +139,14 @@ import KtmReactKbdDemo from "./ktm/react/kbd-demo"
 import KtmReactKbdGroup from "./ktm/react/kbd-group"
 import KtmReactKbdInput from "./ktm/react/kbd-input"
 import KtmReactLabelDemo from "./ktm/react/label-demo"
+import KtmReactMarkerBorder from "./ktm/react/marker-border"
+import KtmReactMarkerDemo from "./ktm/react/marker-demo"
+import KtmReactMarkerIcon from "./ktm/react/marker-icon"
+import KtmReactMarkerInteractive from "./ktm/react/marker-interactive"
+import KtmReactMarkerSeparator from "./ktm/react/marker-separator"
+import KtmReactMarkerShimmer from "./ktm/react/marker-shimmer"
+import KtmReactMarkerStatus from "./ktm/react/marker-status"
+import KtmReactMarkerVariants from "./ktm/react/marker-variants"
 import KtmReactMenuCheckboxes from "./ktm/react/menu-checkboxes"
 import KtmReactMenuDemo from "./ktm/react/menu-demo"
 import KtmReactMenuDestructive from "./ktm/react/menu-destructive"
@@ -135,6 +160,19 @@ import KtmReactMeterNoLabel from "./ktm/react/meter-no-label"
 import KtmReactMeterRange from "./ktm/react/meter-range"
 import KtmReactMeterSizes from "./ktm/react/meter-sizes"
 import KtmReactMeterVariants from "./ktm/react/meter-variants"
+import KtmReactModeToggle from "./ktm/react/mode-toggle"
+import KtmReactOtpFieldAlphanumeric from "./ktm/react/otp-field-alphanumeric"
+import KtmReactOtpFieldDemo from "./ktm/react/otp-field-demo"
+import KtmReactOtpFieldDisabled from "./ktm/react/otp-field-disabled"
+import KtmReactOtpFieldInvalid from "./ktm/react/otp-field-invalid"
+import KtmReactOtpFieldMask from "./ktm/react/otp-field-mask"
+import KtmReactOtpFieldSeparator from "./ktm/react/otp-field-separator"
+import KtmReactOtpFieldSize from "./ktm/react/otp-field-size"
+import KtmReactPopoverAlign from "./ktm/react/popover-align"
+import KtmReactPopoverClose from "./ktm/react/popover-close"
+import KtmReactPopoverDemo from "./ktm/react/popover-demo"
+import KtmReactPopoverForm from "./ktm/react/popover-form"
+import KtmReactPopoverSide from "./ktm/react/popover-side"
 import KtmReactProgressColor from "./ktm/react/progress-color"
 import KtmReactProgressControlled from "./ktm/react/progress-controlled"
 import KtmReactProgressDemo from "./ktm/react/progress-demo"
@@ -188,6 +226,14 @@ import KtmReactSwitchDescription from "./ktm/react/switch-description"
 import KtmReactSwitchDisabled from "./ktm/react/switch-disabled"
 import KtmReactSwitchInvalid from "./ktm/react/switch-invalid"
 import KtmReactSwitchSize from "./ktm/react/switch-size"
+import KtmReactTableDemo from "./ktm/react/table-demo"
+import KtmReactTableFooter from "./ktm/react/table-footer"
+import KtmReactTableStatus from "./ktm/react/table-status"
+import KtmReactTabsDemo from "./ktm/react/tabs-demo"
+import KtmReactTabsDisabled from "./ktm/react/tabs-disabled"
+import KtmReactTabsIcons from "./ktm/react/tabs-icons"
+import KtmReactTabsLine from "./ktm/react/tabs-line"
+import KtmReactTabsVertical from "./ktm/react/tabs-vertical"
 import KtmReactTextareaControlled from "./ktm/react/textarea-controlled"
 import KtmReactTextareaDemo from "./ktm/react/textarea-demo"
 import KtmReactTextareaDisabled from "./ktm/react/textarea-disabled"
@@ -207,6 +253,10 @@ import KtmReactToggleGroupVertical from "./ktm/react/toggle-group-vertical"
 import KtmReactToggleOutline from "./ktm/react/toggle-outline"
 import KtmReactToggleSize from "./ktm/react/toggle-size"
 import KtmReactToggleText from "./ktm/react/toggle-text"
+import KtmReactTooltipDemo from "./ktm/react/tooltip-demo"
+import KtmReactTooltipDisabled from "./ktm/react/tooltip-disabled"
+import KtmReactTooltipShortcut from "./ktm/react/tooltip-shortcut"
+import KtmReactTooltipSide from "./ktm/react/tooltip-side"
 import KtmReactTypesetArticle from "./ktm/react/typeset-article"
 import KtmReactTypesetChat from "./ktm/react/typeset-chat"
 import KtmReactTypesetCompact from "./ktm/react/typeset-compact"
@@ -253,6 +303,12 @@ export const ExamplesIndex: Record<
       "badge-variant": KtmReactBadgeVariant,
       "badge-with-icon": KtmReactBadgeWithIcon,
       "badge-with-spinner": KtmReactBadgeWithSpinner,
+      "breadcrumb-collapsed": KtmReactBreadcrumbCollapsed,
+      "breadcrumb-demo": KtmReactBreadcrumbDemo,
+      "breadcrumb-dropdown": KtmReactBreadcrumbDropdown,
+      "breadcrumb-expandable": KtmReactBreadcrumbExpandable,
+      "breadcrumb-link": KtmReactBreadcrumbLink,
+      "breadcrumb-separator": KtmReactBreadcrumbSeparator,
       "button-default": KtmReactButtonDefault,
       "button-demo": KtmReactButtonDemo,
       "button-destructive": KtmReactButtonDestructive,
@@ -294,6 +350,12 @@ export const ExamplesIndex: Record<
       "collapsible-file-tree": KtmReactCollapsibleFileTree,
       "collapsible-settings": KtmReactCollapsibleSettings,
       "copy-button-demo": KtmReactCopyButtonDemo,
+      "dialog-basic": KtmReactDialogBasic,
+      "dialog-close": KtmReactDialogClose,
+      "dialog-demo": KtmReactDialogDemo,
+      "dialog-no-close": KtmReactDialogNoClose,
+      "dialog-scrollable": KtmReactDialogScrollable,
+      "dialog-sticky-footer": KtmReactDialogStickyFooter,
       "empty-background": KtmReactEmptyBackground,
       "empty-demo": KtmReactEmptyDemo,
       "empty-not-found": KtmReactEmptyNotFound,
@@ -307,6 +369,11 @@ export const ExamplesIndex: Record<
       "field-input": KtmReactFieldInput,
       "field-responsive": KtmReactFieldResponsive,
       "field-textarea": KtmReactFieldTextarea,
+      "hover-card-delay": KtmReactHoverCardDelay,
+      "hover-card-demo": KtmReactHoverCardDemo,
+      "hover-card-inline": KtmReactHoverCardInline,
+      "hover-card-profile": KtmReactHoverCardProfile,
+      "hover-card-sides": KtmReactHoverCardSides,
       "input-basic": KtmReactInputBasic,
       "input-controlled": KtmReactInputControlled,
       "input-demo": KtmReactInputDemo,
@@ -340,6 +407,14 @@ export const ExamplesIndex: Record<
       "kbd-group": KtmReactKbdGroup,
       "kbd-input": KtmReactKbdInput,
       "label-demo": KtmReactLabelDemo,
+      "marker-border": KtmReactMarkerBorder,
+      "marker-demo": KtmReactMarkerDemo,
+      "marker-icon": KtmReactMarkerIcon,
+      "marker-interactive": KtmReactMarkerInteractive,
+      "marker-separator": KtmReactMarkerSeparator,
+      "marker-shimmer": KtmReactMarkerShimmer,
+      "marker-status": KtmReactMarkerStatus,
+      "marker-variants": KtmReactMarkerVariants,
       "menu-checkboxes": KtmReactMenuCheckboxes,
       "menu-demo": KtmReactMenuDemo,
       "menu-destructive": KtmReactMenuDestructive,
@@ -353,6 +428,19 @@ export const ExamplesIndex: Record<
       "meter-range": KtmReactMeterRange,
       "meter-sizes": KtmReactMeterSizes,
       "meter-variants": KtmReactMeterVariants,
+      "mode-toggle": KtmReactModeToggle,
+      "otp-field-alphanumeric": KtmReactOtpFieldAlphanumeric,
+      "otp-field-demo": KtmReactOtpFieldDemo,
+      "otp-field-disabled": KtmReactOtpFieldDisabled,
+      "otp-field-invalid": KtmReactOtpFieldInvalid,
+      "otp-field-mask": KtmReactOtpFieldMask,
+      "otp-field-separator": KtmReactOtpFieldSeparator,
+      "otp-field-size": KtmReactOtpFieldSize,
+      "popover-align": KtmReactPopoverAlign,
+      "popover-close": KtmReactPopoverClose,
+      "popover-demo": KtmReactPopoverDemo,
+      "popover-form": KtmReactPopoverForm,
+      "popover-side": KtmReactPopoverSide,
       "progress-color": KtmReactProgressColor,
       "progress-controlled": KtmReactProgressControlled,
       "progress-demo": KtmReactProgressDemo,
@@ -406,6 +494,14 @@ export const ExamplesIndex: Record<
       "switch-disabled": KtmReactSwitchDisabled,
       "switch-invalid": KtmReactSwitchInvalid,
       "switch-size": KtmReactSwitchSize,
+      "table-demo": KtmReactTableDemo,
+      "table-footer": KtmReactTableFooter,
+      "table-status": KtmReactTableStatus,
+      "tabs-demo": KtmReactTabsDemo,
+      "tabs-disabled": KtmReactTabsDisabled,
+      "tabs-icons": KtmReactTabsIcons,
+      "tabs-line": KtmReactTabsLine,
+      "tabs-vertical": KtmReactTabsVertical,
       "textarea-controlled": KtmReactTextareaControlled,
       "textarea-demo": KtmReactTextareaDemo,
       "textarea-disabled": KtmReactTextareaDisabled,
@@ -425,6 +521,10 @@ export const ExamplesIndex: Record<
       "toggle-outline": KtmReactToggleOutline,
       "toggle-size": KtmReactToggleSize,
       "toggle-text": KtmReactToggleText,
+      "tooltip-demo": KtmReactTooltipDemo,
+      "tooltip-disabled": KtmReactTooltipDisabled,
+      "tooltip-shortcut": KtmReactTooltipShortcut,
+      "tooltip-side": KtmReactTooltipSide,
       "typeset-article": KtmReactTypesetArticle,
       "typeset-chat": KtmReactTypesetChat,
       "typeset-compact": KtmReactTypesetCompact,
@@ -466,6 +566,11 @@ export const ExamplesIndex: Record<
       "badge-variant": "ktm/html/badge-variant.html",
       "badge-with-icon": "ktm/html/badge-with-icon.html",
       "badge-with-spinner": "ktm/html/badge-with-spinner.html",
+      "breadcrumb-collapsed": "ktm/html/breadcrumb-collapsed.html",
+      "breadcrumb-demo": "ktm/html/breadcrumb-demo.html",
+      "breadcrumb-expandable": "ktm/html/breadcrumb-expandable.html",
+      "breadcrumb-link": "ktm/html/breadcrumb-link.html",
+      "breadcrumb-separator": "ktm/html/breadcrumb-separator.html",
       "button-default": "ktm/html/button-default.html",
       "button-demo": "ktm/html/button-demo.html",
       "button-destructive": "ktm/html/button-destructive.html",
@@ -506,6 +611,12 @@ export const ExamplesIndex: Record<
       "collapsible-demo": "ktm/html/collapsible-demo.html",
       "collapsible-file-tree": "ktm/html/collapsible-file-tree.html",
       "collapsible-settings": "ktm/html/collapsible-settings.html",
+      "dialog-close": "ktm/html/dialog-close.html",
+      "dialog-demo": "ktm/html/dialog-demo.html",
+      "dialog-form": "ktm/html/dialog-form.html",
+      "dialog-no-close": "ktm/html/dialog-no-close.html",
+      "dialog-scrollable": "ktm/html/dialog-scrollable.html",
+      "dialog-sticky-footer": "ktm/html/dialog-sticky-footer.html",
       "empty-background": "ktm/html/empty-background.html",
       "empty-demo": "ktm/html/empty-demo.html",
       "empty-not-found": "ktm/html/empty-not-found.html",
@@ -519,6 +630,11 @@ export const ExamplesIndex: Record<
       "field-input": "ktm/html/field-input.html",
       "field-responsive": "ktm/html/field-responsive.html",
       "field-textarea": "ktm/html/field-textarea.html",
+      "hover-card-delay": "ktm/html/hover-card-delay.html",
+      "hover-card-demo": "ktm/html/hover-card-demo.html",
+      "hover-card-inline": "ktm/html/hover-card-inline.html",
+      "hover-card-profile": "ktm/html/hover-card-profile.html",
+      "hover-card-sides": "ktm/html/hover-card-sides.html",
       "input-basic": "ktm/html/input-basic.html",
       "input-controlled": "ktm/html/input-controlled.html",
       "input-demo": "ktm/html/input-demo.html",
@@ -552,6 +668,14 @@ export const ExamplesIndex: Record<
       "kbd-group": "ktm/html/kbd-group.html",
       "kbd-input": "ktm/html/kbd-input.html",
       "label-demo": "ktm/html/label-demo.html",
+      "marker-border": "ktm/html/marker-border.html",
+      "marker-demo": "ktm/html/marker-demo.html",
+      "marker-icon": "ktm/html/marker-icon.html",
+      "marker-interactive": "ktm/html/marker-interactive.html",
+      "marker-separator": "ktm/html/marker-separator.html",
+      "marker-shimmer": "ktm/html/marker-shimmer.html",
+      "marker-status": "ktm/html/marker-status.html",
+      "marker-variants": "ktm/html/marker-variants.html",
       "menu-checkboxes": "ktm/html/menu-checkboxes.html",
       "menu-demo": "ktm/html/menu-demo.html",
       "menu-destructive": "ktm/html/menu-destructive.html",
@@ -565,6 +689,18 @@ export const ExamplesIndex: Record<
       "meter-range": "ktm/html/meter-range.html",
       "meter-sizes": "ktm/html/meter-sizes.html",
       "meter-variants": "ktm/html/meter-variants.html",
+      "otp-field-alphanumeric": "ktm/html/otp-field-alphanumeric.html",
+      "otp-field-demo": "ktm/html/otp-field-demo.html",
+      "otp-field-disabled": "ktm/html/otp-field-disabled.html",
+      "otp-field-invalid": "ktm/html/otp-field-invalid.html",
+      "otp-field-mask": "ktm/html/otp-field-mask.html",
+      "otp-field-separator": "ktm/html/otp-field-separator.html",
+      "otp-field-size": "ktm/html/otp-field-size.html",
+      "popover-align": "ktm/html/popover-align.html",
+      "popover-close": "ktm/html/popover-close.html",
+      "popover-demo": "ktm/html/popover-demo.html",
+      "popover-form": "ktm/html/popover-form.html",
+      "popover-side": "ktm/html/popover-side.html",
       "progress-color": "ktm/html/progress-color.html",
       "progress-controlled": "ktm/html/progress-controlled.html",
       "progress-demo": "ktm/html/progress-demo.html",
@@ -616,6 +752,14 @@ export const ExamplesIndex: Record<
       "switch-disabled": "ktm/html/switch-disabled.html",
       "switch-invalid": "ktm/html/switch-invalid.html",
       "switch-size": "ktm/html/switch-size.html",
+      "table-demo": "ktm/html/table-demo.html",
+      "table-footer": "ktm/html/table-footer.html",
+      "table-status": "ktm/html/table-status.html",
+      "tabs-demo": "ktm/html/tabs-demo.html",
+      "tabs-disabled": "ktm/html/tabs-disabled.html",
+      "tabs-icons": "ktm/html/tabs-icons.html",
+      "tabs-line": "ktm/html/tabs-line.html",
+      "tabs-vertical": "ktm/html/tabs-vertical.html",
       "textarea-controlled": "ktm/html/textarea-controlled.html",
       "textarea-demo": "ktm/html/textarea-demo.html",
       "textarea-disabled": "ktm/html/textarea-disabled.html",
@@ -635,6 +779,10 @@ export const ExamplesIndex: Record<
       "toggle-outline": "ktm/html/toggle-outline.html",
       "toggle-size": "ktm/html/toggle-size.html",
       "toggle-text": "ktm/html/toggle-text.html",
+      "tooltip-demo": "ktm/html/tooltip-demo.html",
+      "tooltip-disabled": "ktm/html/tooltip-disabled.html",
+      "tooltip-shortcut": "ktm/html/tooltip-shortcut.html",
+      "tooltip-side": "ktm/html/tooltip-side.html",
       "typeset-demo": "ktm/html/typeset-demo.html",
     },
   },
