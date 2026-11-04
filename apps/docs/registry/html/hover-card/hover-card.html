@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Hover Card</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/avatar.css" />
+    <link rel="stylesheet" href="../styles/badge.css" />
+    <link rel="stylesheet" href="../styles/separator.css" />
+    <link rel="stylesheet" href="../styles/hover-card.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem 12rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: system-ui, sans-serif;
+        overflow: hidden;
+      }
+      main {
+        display: grid;
+        gap: 3rem;
+        max-width: 36rem;
+        margin-inline: auto;
+      }
+      h2 {
+        margin: 0 0 0.75rem;
+        font-size: 0.875rem;
+        color: var(--np-muted-foreground);
+        font-weight: 500;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.75rem;
+        padding-block: 5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Class form</h2>
+        <div class="np-hover-card">
+          <a class="np-hover-card-trigger np-button np-button-link" href="#"
+            >@nextjs</a
+          >
+          <div class="np-hover-card-content" style="width: 20rem">
+            <div
+              style="display: flex; justify-content: space-between; gap: 1rem"
+            >
+              <span class="np-avatar"
+                ><img
+                  class="np-avatar-image"
+                  src="https://github.com/vercel.png"
+                  alt="@nextjs"
+                /><span class="np-avatar-fallback">VC</span></span
+              >
+              <div style="display: grid; gap: 0.25rem">
+                <h4 style="margin: 0; font-size: 0.875rem; font-weight: 600">
+                  @nextjs
+                </h4>
+                <p style="margin: 0; font-size: 0.875rem">
+                  The React Framework – created and maintained by @vercel.
+                </p>
+                <div
+                  style="font-size: 0.75rem; color: var(--np-muted-foreground)"
+                >
+                  Joined December 2021
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Data-attribute form</h2>
+        <div data-np-hover-card>
+          <a
+            data-np-hover-card-trigger
+            class="np-button np-button-outline"
+            href="#"
+            >Hover me</a
+          >
+          <div data-np-hover-card-content>
+            <p style="margin: 0">Styled with data attributes only.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Sides (class and data-side)</h2>
+        <div class="row">
+          <div
+            class="np-hover-card np-hover-card-left"
+            style="
+              --np-hover-card-delay: 100ms;
+              --np-hover-card-close-delay: 100ms;
+            "
+          >
+            <a
+              class="np-hover-card-trigger np-button np-button-outline"
+              href="#"
+              >Left</a
+            >
+            <div class="np-hover-card-content">
+              <p style="margin: 0">Left side.</p>
+            </div>
+          </div>
+          <div
+            class="np-hover-card np-hover-card-top"
+            style="
+              --np-hover-card-delay: 100ms;
+              --np-hover-card-close-delay: 100ms;
+            "
+          >
+            <a
+              class="np-hover-card-trigger np-button np-button-outline"
+              href="#"
+              >Top</a
+            >
+            <div class="np-hover-card-content">
+              <p style="margin: 0">Top side.</p>
+            </div>
+          </div>
+          <div
+            class="np-hover-card"
+            style="
+              --np-hover-card-delay: 100ms;
+              --np-hover-card-close-delay: 100ms;
+            "
+          >
+            <a
+              class="np-hover-card-trigger np-button np-button-outline"
+              href="#"
+              >Bottom</a
+            >
+            <div class="np-hover-card-content">
+              <p style="margin: 0">Bottom side.</p>
+            </div>
+          </div>
+          <div
+            class="np-hover-card"
+            data-side="right"
+            style="
+              --np-hover-card-delay: 100ms;
+              --np-hover-card-close-delay: 100ms;
+            "
+          >
+            <a
+              class="np-hover-card-trigger np-button np-button-outline"
+              href="#"
+              >Right (data-side)</a
+            >
+            <div class="np-hover-card-content">
+              <p style="margin: 0">Right side.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Alignment (start and end)</h2>
+        <div class="row" style="padding-block: 1rem 6rem">
+          <div
+            class="np-hover-card np-hover-card-start"
+            style="--np-hover-card-delay: 100ms"
+          >
+            <a
+              class="np-hover-card-trigger np-button np-button-outline"
+              href="#"
+              >Start</a
+            >
+            <div class="np-hover-card-content">
+              <p style="margin: 0">Aligned to the start.</p>
+            </div>
+          </div>
+          <div
+            class="np-hover-card np-hover-card-end"
+            style="--np-hover-card-delay: 100ms"
+          >
+            <a
+              class="np-hover-card-trigger np-button np-button-outline"
+              href="#"
+              >End</a
+            >
+            <div class="np-hover-card-content">
+              <p style="margin: 0">Aligned to the end.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Inline link</h2>
+        <p style="margin: 0; line-height: 1.75">
+          Build your app with
+          <span class="np-hover-card">
+            <a
+              class="np-hover-card-trigger"
+              href="#"
+              style="
+                font-weight: 500;
+                text-decoration: underline;
+                text-underline-offset: 4px;
+              "
+              >Next.js</a
+            >
+            <span class="np-hover-card-content"
+              >The React framework for production, with routing, rendering and
+              data fetching built in.</span
+            >
+          </span>
+          and style it with plain CSS.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
