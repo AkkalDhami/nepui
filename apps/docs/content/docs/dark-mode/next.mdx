@@ -1,0 +1,124 @@
+---
+title: Next.js
+description: Adding dark mode to your Next.js app.
+---
+
+## Install next-themes
+
+Start by installing `next-themes`:
+
+```bash
+npm install next-themes
+```
+
+## Create a theme provider
+
+```tsx title="components/theme-provider.tsx" showLineNumbers
+"use client"
+
+import * as React from "react"
+import { ThemeProvider as NextThemesProvider, useTheme } from "next-themes"
+
+function ThemeProvider({
+  children,
+  ...props
+}: React.ComponentProps<typeof NextThemesProvider>) {
+  return (
+    <NextThemesProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+      {...props}
+    >
+      <ThemeHotkey />
+      {children}
+    </NextThemesProvider>
+  )
+}
+
+function isTypingTarget(target: EventTarget | null) {
+  if (!(target instanceof HTMLElement)) {
+    return false
+  }
+
+  return (
+    target.isContentEditable ||
+    target.tagName === "INPUT" ||
+    target.tagName === "TEXTAREA" ||
+    target.tagName === "SELECT"
+  )
+}
+
+function ThemeHotkey() {
+  const { resolvedTheme, setTheme } = useTheme()
+
+  React.useEffect(() => {
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.defaultPrevented || event.repeat) {
+        return
+      }
+
+      if (event.metaKey || event.ctrlKey || event.altKey) {
+        return
+      }
+
+      if (event.key.toLowerCase() !== "d") {
+        return
+      }
+
+      if (isTypingTarget(event.target)) {
+        return
+      }
+
+      setTheme(resolvedTheme === "dark" ? "light" : "dark")
+    }
+
+    window.addEventListener("keydown", onKeyDown)
+
+    return () => {
+      window.removeEventListener("keydown", onKeyDown)
+    }
+  }, [resolvedTheme, setTheme])
+
+  return null
+}
+
+export { ThemeProvider }
+```
+
+## Wrap your root layout
+
+Add the `ThemeProvider` to your root layout and add the `suppressHydrationWarning` prop to the `html` tag.
+
+```tsx {1,6,9-14,16} title="app/layout.tsx" showLineNumbers
+import { ThemeProvider } from "@/components/theme-provider"
+
+export default function RootLayout({ children }: RootLayoutProps) {
+  return (
+    <>
+      <html lang="en" suppressHydrationWarning>
+        <head />
+        <body>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </body>
+      </html>
+    </>
+  )
+}
+```
+
+## Add a mode toggle
+
+Place a mode toggle on your site to toggle between light and dark mode.
+
+<ComponentPreview
+  name="mode-toggle"
+/>
