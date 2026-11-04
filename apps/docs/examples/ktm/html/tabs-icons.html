@@ -1,0 +1,76 @@
+<div class="np-tabs" style="width: 100%; max-width: 24rem">
+  <div class="np-tabs-list" role="tablist" aria-label="View">
+    <button
+      type="button"
+      class="np-tabs-trigger"
+      role="tab"
+      id="tabs-icons-preview"
+      aria-selected="true"
+      aria-controls="tabs-icons-preview-panel"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <rect x="2" y="4" width="20" height="16" rx="2" />
+        <path d="M10 4v4" />
+        <path d="M2 8h20" />
+        <path d="M6 4v4" />
+      </svg>
+      Preview
+    </button>
+    <button
+      type="button"
+      class="np-tabs-trigger"
+      role="tab"
+      id="tabs-icons-code"
+      aria-selected="false"
+      aria-controls="tabs-icons-code-panel"
+      tabindex="-1"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <polyline points="16 18 22 12 16 6" />
+        <polyline points="8 6 2 12 8 18" />
+      </svg>
+      Code
+    </button>
+  </div>
+  <div
+    class="np-tabs-content"
+    role="tabpanel"
+    id="tabs-icons-preview-panel"
+    aria-labelledby="tabs-icons-preview"
+    tabindex="0"
+  >
+    See how the component looks.
+  </div>
+  <div
+    class="np-tabs-content"
+    role="tabpanel"
+    id="tabs-icons-code-panel"
+    aria-labelledby="tabs-icons-code"
+    tabindex="0"
+    hidden
+  >
+    Read the source of the component.
+  </div>
+</div>

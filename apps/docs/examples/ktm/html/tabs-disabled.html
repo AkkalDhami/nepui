@@ -1,0 +1,45 @@
+<div class="np-tabs" style="width: 100%; max-width: 24rem">
+  <div class="np-tabs-list" role="tablist" aria-label="Pages">
+    <button
+      type="button"
+      class="np-tabs-trigger"
+      role="tab"
+      id="tabs-disabled-home"
+      aria-selected="true"
+      aria-controls="tabs-disabled-home-panel"
+    >
+      Home
+    </button>
+    <button
+      type="button"
+      class="np-tabs-trigger"
+      role="tab"
+      id="tabs-disabled-disabled"
+      aria-selected="false"
+      aria-controls="tabs-disabled-disabled-panel"
+      tabindex="-1"
+      disabled
+    >
+      Disabled
+    </button>
+  </div>
+  <div
+    class="np-tabs-content"
+    role="tabpanel"
+    id="tabs-disabled-home-panel"
+    aria-labelledby="tabs-disabled-home"
+    tabindex="0"
+  >
+    This tab is enabled.
+  </div>
+  <div
+    class="np-tabs-content"
+    role="tabpanel"
+    id="tabs-disabled-disabled-panel"
+    aria-labelledby="tabs-disabled-disabled"
+    tabindex="0"
+    hidden
+  >
+    This tab can not be reached.
+  </div>
+</div>

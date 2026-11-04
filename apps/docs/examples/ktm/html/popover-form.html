@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="./styles/field.css" />
+<link rel="stylesheet" href="./styles/input.css" />
+<link rel="stylesheet" href="./styles/button.css" />
+
+<button
+  class="np-button np-button-outline"
+  type="button"
+  popovertarget="popover-form-panel"
+>
+  Open popover
+</button>
+<div id="popover-form-panel" class="np-popover" popover style="width: 20rem">
+  <div class="np-popover-header">
+    <h2 class="np-popover-title">Dimensions</h2>
+    <p class="np-popover-description">Set the dimensions for the layer.</p>
+  </div>
+  <div class="np-field-group">
+    <div class="np-field">
+      <label class="np-field-label" for="popover-width">Width</label>
+      <input class="np-input" id="popover-width" value="100%" />
+    </div>
+
+    <div class="np-field">
+      <label class="np-field-label" for="popover-height">Height</label>
+      <input class="np-input" id="popover-height" value="25px" />
+    </div>
+  </div>
+</div>
