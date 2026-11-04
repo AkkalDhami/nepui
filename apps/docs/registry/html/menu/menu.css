@@ -1,4 +1,53 @@
-/* nepui — Menu */
+/* nepui — Menu
+   A list of actions that opens from a trigger (a dropdown menu).
+   One stylesheet for BOTH flavours; every part has a class and a data attribute.
+
+     Content          .np-menu-content          [data-np-menu-content]
+     Sub content      .np-menu-sub-content      [data-np-menu-sub-content]
+     Group            .np-menu-group            [data-np-menu-group]
+     Label            .np-menu-label            [data-np-menu-label]
+     Item             .np-menu-item             [data-np-menu-item]
+       destructive    .np-menu-item-destructive  or  data-variant="destructive"
+       inset          data-inset  (or .np-menu-inset)
+     Checkbox item    .np-menu-item.np-menu-checkbox-item
+     Radio item       .np-menu-item.np-menu-radio-item
+     Item indicator   .np-menu-item-indicator   (the check mark)
+     Sub trigger      .np-menu-item.np-menu-sub-trigger
+     Separator        .np-menu-separator        [data-np-menu-separator]
+     Shortcut         .np-menu-shortcut         [data-np-menu-shortcut]
+
+   React (Base UI Menu): Base UI positions the popup and sets data-open,
+   data-closed, data-side, data-starting-style, data-ending-style and, on
+   items, data-highlighted / data-disabled / data-checked.
+
+   HTML (native Popover API + menu.js):
+     <div class="np-menu">
+       <button class="np-button np-button-outline" popovertarget="account">Open</button>
+       <div id="account" class="np-menu-content" popover role="menu" aria-label="Account">
+         <button class="np-menu-item" role="menuitem">Profile</button>
+       </div>
+     </div>
+   The native popover gives the top layer, open / close, Escape and outside
+   click. menu.js adds automatic positioning (flip, shift, max-height),
+   keyboard navigation, typeahead, hover submenus and focus management.
+   Without menu.js the popup still opens and closes, next to its trigger.
+
+   Variables (set inline, or on any parent; read with fallbacks):
+     --np-menu-bg            default: var(--np-popover, var(--np-background))
+     --np-menu-color         default: var(--np-popover-foreground, var(--np-foreground))
+     --np-menu-radius        default: var(--np-radius-md)
+     --np-menu-min-width     default: 8rem
+     --np-menu-item-radius   default: 0.375rem
+     --np-menu-hover-bg      default: var(--np-accent, var(--np-muted))
+     --np-menu-hover-color   default: var(--np-accent-foreground, var(--np-foreground))
+
+   Tokens used: --np-background --np-foreground --np-muted --np-muted-foreground
+   --np-border --np-destructive --np-radius-md
+   Optional: --np-popover --np-popover-foreground --np-accent --np-accent-foreground */
+
+/* ==========================================================================
+   HTML wrappers and native popover positioning
+   ========================================================================== */
 
 .np-menu,
 [data-np-menu],
@@ -13,24 +62,14 @@
   display: block;
 }
 
-/* The trigger inside a wrapper becomes the anchor */
-:is(.np-menu, [data-np-menu], .np-menu-sub, [data-np-menu-sub])
-  > [popovertarget] {
-  anchor-name: var(--np-menu-anchor);
-}
-
-/* A popover popup: top layer, placed under its trigger, aligned to its start.
-   With no anchor support the insets stay `auto`, so it opens next to the trigger. */
+/* A popover popup. menu.js sets `left`, `top`, `max-height`, `data-side` and
+   `--transform-origin` on it. Without the script it stays at its static
+   position, next to the trigger. */
 :is(.np-menu-content, [data-np-menu-content])[popover] {
   position: fixed;
   inset: auto;
   margin: 0;
   border: 0;
-  position-anchor: var(--np-menu-anchor);
-  top: calc(anchor(bottom) + var(--np-menu-offset, 0.25rem));
-  left: anchor(left);
-  min-width: max(var(--np-menu-min-width, 8rem), anchor-size(width));
-  position-try-fallbacks: flip-block, flip-inline;
   opacity: 0;
   transform: scale(0.95);
   transition:
@@ -50,13 +89,6 @@
     opacity: 0;
     transform: scale(0.95);
   }
-}
-
-/* A submenu opens beside its trigger */
-:is(.np-menu-sub-content, [data-np-menu-sub-content])[popover] {
-  top: anchor(top);
-  left: calc(anchor(right) + var(--np-menu-offset, 0.25rem));
-  margin-top: -0.25rem;
 }
 
 /* ==========================================================================
@@ -99,7 +131,6 @@
 .np-menu-sub-content,
 [data-np-menu-sub-content] {
   --np-menu-min-width: 6rem;
-  min-width: max(var(--np-menu-min-width), 6rem);
   box-shadow:
     0 0 0 1px color-mix(in oklch, var(--np-foreground) 10%, transparent),
     0 10px 15px -3px rgb(0 0 0 / 0.1),
@@ -339,14 +370,6 @@
     transition: none;
   }
 }
-
-/* ==========================================================================
-   Dark
-   1. Explicit: `.dark` or `data-theme="dark"` on any ancestor.
-   2. System: prefers-color-scheme, unless `.light` / `data-theme="light"`.
-   Variables are set on the popup; items inherit them (they are read with
-   fallbacks, never redeclared).
-   ========================================================================== */
 
 :is(.dark, [data-theme="dark"]) :is(.np-menu-content, [data-np-menu-content]) {
   --np-menu-destructive-bg: color-mix(

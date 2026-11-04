@@ -10,7 +10,9 @@
   var HOVER_CLOSE_GRACE = 150
   var TYPEAHEAD_RESET = 500
 
-  //  * Positioning (pure, so it can be tested without a browser)
+  /* ------------------------------------------------------------------ *
+   * Positioning (pure, so it can be tested without a browser)
+   * ------------------------------------------------------------------ */
 
   function clamp(value, min, max) {
     if (max < min) return min
@@ -97,7 +99,9 @@
     }
   }
 
-  //  * Helpers
+  /* ------------------------------------------------------------------ *
+   * Helpers
+   * ------------------------------------------------------------------ */
 
   var uid = 0
   var openMenus = new Set()
@@ -160,7 +164,9 @@
     return isNaN(n) ? fallback : n
   }
 
-  //  * One menu (a root menu or a submenu)
+  /* ------------------------------------------------------------------ *
+   * One menu (a root menu or a submenu)
+   * ------------------------------------------------------------------ */
 
   function setup(wrapper) {
     if (wrapper.__npMenu) return
@@ -431,17 +437,7 @@
       else if (event.key === "Home") next = items[0]
       else if (event.key === "End") next = items[items.length - 1]
       else if (event.key === forward) {
-        var current = document.activeElement
-        if (
-          current &&
-          isSubTrigger(current) &&
-          current.closest('[role="menu"]') === content
-        ) {
-          event.preventDefault()
-          current.dispatchEvent(
-            new KeyboardEvent("keydown", { key: forward, bubbles: false })
-          )
-        }
+        // On a submenu trigger, the trigger's own listener opens the submenu.
         return
       } else if (event.key === back) {
         if (sub) {
@@ -492,7 +488,9 @@
     })
   }
 
-  //  * Public API
+  /* ------------------------------------------------------------------ *
+   * Public API
+   * ------------------------------------------------------------------ */
 
   function init(root) {
     var scope = root || document

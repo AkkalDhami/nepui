@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Tooltip</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/kbd.css" />
+    <link rel="stylesheet" href="../styles/tooltip.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem 4rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: system-ui, sans-serif;
+      }
+      main {
+        display: grid;
+        gap: 2.5rem;
+        max-width: 44rem;
+        margin-inline: auto;
+      }
+      h2 {
+        margin: 0 0 0.75rem;
+        font-size: 1rem;
+      }
+      p {
+        margin: 0 0 0.75rem;
+        color: var(--np-muted-foreground);
+        font-size: 0.875rem;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 2.5rem 7rem;
+      }
+      .row-open {
+        gap: 9rem;
+        padding: 3.5rem 9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Class form</h2>
+        <p>Hover or focus the button.</p>
+        <span class="np-tooltip">
+          <button
+            type="button"
+            class="np-button np-button-outline"
+            aria-describedby="tt-class"
+          >
+            Hover
+          </button>
+          <span class="np-tooltip-content" id="tt-class" role="tooltip">
+            Add to library
+            <span class="np-tooltip-arrow" aria-hidden="true"></span>
+          </span>
+        </span>
+      </section>
+
+      <section>
+        <h2>Data-attribute form</h2>
+        <p>Same tooltip, no classes.</p>
+        <span data-np-tooltip>
+          <button
+            type="button"
+            class="np-button np-button-outline"
+            aria-describedby="tt-data"
+          >
+            Hover
+          </button>
+          <span data-np-tooltip-content id="tt-data" role="tooltip">
+            Add to library
+            <span data-np-tooltip-arrow aria-hidden="true"></span>
+          </span>
+        </span>
+      </section>
+
+      <section>
+        <h2>Sides</h2>
+        <div class="row">
+          <span class="np-tooltip">
+            <button
+              type="button"
+              class="np-button np-button-outline"
+              aria-describedby="tt-left"
+            >
+              Left
+            </button>
+            <span
+              class="np-tooltip-content np-tooltip-left"
+              id="tt-left"
+              role="tooltip"
+            >
+              Add to library
+              <span class="np-tooltip-arrow" aria-hidden="true"></span>
+            </span>
+          </span>
+          <span class="np-tooltip">
+            <button
+              type="button"
+              class="np-button np-button-outline"
+              aria-describedby="tt-top"
+            >
+              Top
+            </button>
+            <span class="np-tooltip-content" id="tt-top" role="tooltip">
+              Add to library
+              <span class="np-tooltip-arrow" aria-hidden="true"></span>
+            </span>
+          </span>
+          <span class="np-tooltip">
+            <button
+              type="button"
+              class="np-button np-button-outline"
+              aria-describedby="tt-bottom"
+            >
+              Bottom
+            </button>
+            <span
+              class="np-tooltip-content np-tooltip-bottom"
+              id="tt-bottom"
+              role="tooltip"
+            >
+              Add to library
+              <span class="np-tooltip-arrow" aria-hidden="true"></span>
+            </span>
+          </span>
+          <span class="np-tooltip">
+            <button
+              type="button"
+              class="np-button np-button-outline"
+              aria-describedby="tt-right"
+            >
+              Right
+            </button>
+            <span
+              class="np-tooltip-content np-tooltip-right"
+              id="tt-right"
+              role="tooltip"
+            >
+              Add to library
+              <span class="np-tooltip-arrow" aria-hidden="true"></span>
+            </span>
+          </span>
+        </div>
+      </section>
+
+      <section>
+        <h2>Always open</h2>
+        <p>
+          <code>data-popup-open</code> on the wrapper forces the tooltip open.
+          Handy for screenshots and for checking every side at once.
+        </p>
+        <div class="row row-open">
+          <span class="np-tooltip" data-popup-open>
+            <button
+              type="button"
+              class="np-button np-button-outline"
+              aria-describedby="tt-open-left"
+            >
+              Left
+            </button>
+            <span
+              class="np-tooltip-content np-tooltip-left"
+              id="tt-open-left"
+              role="tooltip"
+            >
+              Add to library
+              <span class="np-tooltip-arrow" aria-hidden="true"></span>
+            </span>
+          </span>
+          <span class="np-tooltip" data-popup-open>
+            <button
+              type="button"
+              class="np-button np-button-outline"
+              aria-describedby="tt-open-top"
+            >
+              Top
+            </button>
+            <span class="np-tooltip-content" id="tt-open-top" role="tooltip">
+              Add to library
+              <span class="np-tooltip-arrow" aria-hidden="true"></span>
+            </span>
+          </span>
+          <span class="np-tooltip" data-popup-open>
+            <button
+              type="button"
+              class="np-button np-button-outline"
+              aria-describedby="tt-open-bottom"
+            >
+              Bottom
+            </button>
+            <span
+              class="np-tooltip-content np-tooltip-bottom"
+              id="tt-open-bottom"
+              role="tooltip"
+            >
+              Add to library
+              <span class="np-tooltip-arrow" aria-hidden="true"></span>
+            </span>
+          </span>
+          <span class="np-tooltip" data-popup-open>
+            <button
+              type="button"
+              class="np-button np-button-outline"
+              aria-describedby="tt-open-right"
+            >
+              Right
+            </button>
+            <span
+              class="np-tooltip-content np-tooltip-right"
+              id="tt-open-right"
+              role="tooltip"
+            >
+              Add to library
+              <span class="np-tooltip-arrow" aria-hidden="true"></span>
+            </span>
+          </span>
+        </div>
+      </section>
+
+      <section>
+        <h2>With keyboard shortcut</h2>
+        <span class="np-tooltip">
+          <button
+            type="button"
+            class="np-button np-button-outline np-button-icon-sm"
+            aria-label="Save"
+            aria-describedby="tt-shortcut"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path
+                d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"
+              />
+              <path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7" />
+              <path d="M7 3v4a1 1 0 0 0 1 1h7" />
+            </svg>
+          </button>
+          <span class="np-tooltip-content" id="tt-shortcut" role="tooltip">
+            Save Changes <kbd class="np-kbd">S</kbd>
+            <span class="np-tooltip-arrow" aria-hidden="true"></span>
+          </span>
+        </span>
+      </section>
+
+      <section>
+        <h2>Disabled button</h2>
+        <p>The wrapper takes focus, because a disabled button cannot.</p>
+        <span class="np-tooltip" tabindex="0" aria-describedby="tt-disabled">
+          <button type="button" class="np-button np-button-outline" disabled>
+            Disabled
+          </button>
+          <span class="np-tooltip-content" id="tt-disabled" role="tooltip">
+            This feature is currently unavailable
+            <span class="np-tooltip-arrow" aria-hidden="true"></span>
+          </span>
+        </span>
+      </section>
+
+      <section>
+        <h2>Tooltip turned off</h2>
+        <p>
+          <code>data-disabled</code> on the wrapper keeps the tooltip closed.
+        </p>
+        <span class="np-tooltip" data-disabled>
+          <button
+            type="button"
+            class="np-button np-button-outline"
+            aria-describedby="tt-off"
+          >
+            No tooltip
+          </button>
+          <span class="np-tooltip-content" id="tt-off" role="tooltip">
+            You will never see this
+            <span class="np-tooltip-arrow" aria-hidden="true"></span>
+          </span>
+        </span>
+      </section>
+
+      <section>
+        <h2>No arrow, custom variables, open delay</h2>
+        <p>Remove the arrow element, then set variables on the content.</p>
+        <div class="row">
+          <span class="np-tooltip">
+            <button
+              type="button"
+              class="np-button np-button-outline"
+              aria-describedby="tt-noarrow"
+            >
+              No arrow
+            </button>
+            <span class="np-tooltip-content" id="tt-noarrow" role="tooltip"
+              >Add to library</span
+            >
+          </span>
+          <span class="np-tooltip">
+            <button
+              type="button"
+              class="np-button np-button-outline"
+              aria-describedby="tt-custom"
+            >
+              Custom
+            </button>
+            <span
+              class="np-tooltip-content"
+              id="tt-custom"
+              role="tooltip"
+              style="
+                --np-tooltip-bg: var(--np-destructive);
+                --np-tooltip-color: #fff;
+                --np-tooltip-radius: 9999px;
+              "
+            >
+              Careful
+              <span class="np-tooltip-arrow" aria-hidden="true"></span>
+            </span>
+          </span>
+          <span class="np-tooltip">
+            <button
+              type="button"
+              class="np-button np-button-outline"
+              aria-describedby="tt-delay"
+            >
+              Delayed
+            </button>
+            <span
+              class="np-tooltip-content"
+              id="tt-delay"
+              role="tooltip"
+              style="--np-tooltip-delay: 600ms"
+            >
+              Opens after 600ms
+              <span class="np-tooltip-arrow" aria-hidden="true"></span>
+            </span>
+          </span>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
