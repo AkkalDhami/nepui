@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Dialog</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/input.css" />
+    <link rel="stylesheet" href="../styles/label.css" />
+    <link rel="stylesheet" href="../styles/dialog.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem 4rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: system-ui, sans-serif;
+      }
+      main {
+        display: grid;
+        gap: 2.5rem;
+        max-width: 44rem;
+        margin-inline: auto;
+      }
+      h2 {
+        margin: 0 0 0.75rem;
+        font-size: 1rem;
+      }
+      p {
+        margin: 0 0 0.75rem;
+        color: var(--np-muted-foreground);
+        font-size: 0.875rem;
+      }
+      .filler {
+        height: 60rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Class form</h2>
+        <p>
+          The <code>&lt;dialog&gt;</code> element is the box. Open it with
+          <code>command="show-modal"</code>. It closes with Escape, a click
+          outside (<code>closedby="any"</code>), or a button with
+          <code>command="close"</code>.
+        </p>
+        <button
+          type="button"
+          class="np-button np-button-outline"
+          commandfor="c-dialog"
+          command="show-modal"
+        >
+          Open Dialog
+        </button>
+        <dialog
+          id="c-dialog"
+          class="np-dialog-content"
+          closedby="any"
+          aria-labelledby="c-title"
+          aria-describedby="c-description"
+        >
+          <div class="np-dialog-header">
+            <h2 class="np-dialog-title" id="c-title">
+              Are you absolutely sure?
+            </h2>
+            <p class="np-dialog-description" id="c-description">
+              This action cannot be undone. This will permanently delete your
+              account and remove your data from our servers.
+            </p>
+          </div>
+          <button
+            type="button"
+            class="np-button np-button-ghost np-button-icon-sm np-dialog-close"
+            commandfor="c-dialog"
+            command="close"
+            aria-label="Close"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
+          </button>
+        </dialog>
+      </section>
+
+      <section>
+        <h2>Data-attribute form</h2>
+        <p>Same dialog, no classes.</p>
+        <button
+          type="button"
+          class="np-button np-button-outline"
+          commandfor="d-dialog"
+          command="show-modal"
+        >
+          Open Dialog
+        </button>
+        <dialog
+          id="d-dialog"
+          data-np-dialog-content
+          closedby="any"
+          aria-labelledby="d-title"
+          aria-describedby="d-description"
+        >
+          <div data-np-dialog-header>
+            <h2 data-np-dialog-title id="d-title">Are you absolutely sure?</h2>
+            <p data-np-dialog-description id="d-description">
+              This action cannot be undone. This will permanently delete your
+              account and remove your data from our servers.
+            </p>
+          </div>
+          <div data-np-dialog-footer>
+            <button
+              type="button"
+              class="np-button np-button-outline"
+              commandfor="d-dialog"
+              command="close"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="np-button"
+              commandfor="d-dialog"
+              command="close"
+            >
+              Continue
+            </button>
+          </div>
+          <button
+            type="button"
+            class="np-button np-button-ghost np-button-icon-sm"
+            data-np-dialog-close
+            commandfor="d-dialog"
+            command="close"
+            aria-label="Close"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
+          </button>
+        </dialog>
+      </section>
+
+      <section>
+        <h2>With a form</h2>
+        <p>
+          A <code>&lt;form method="dialog"&gt;</code> closes the dialog on
+          submit, with no script. Focus starts on the field marked
+          <code>autofocus</code>.
+        </p>
+        <button
+          type="button"
+          class="np-button np-button-outline"
+          commandfor="f-dialog"
+          command="show-modal"
+        >
+          Edit Profile
+        </button>
+        <dialog
+          id="f-dialog"
+          class="np-dialog-content"
+          closedby="any"
+          aria-labelledby="f-title"
+          aria-describedby="f-description"
+        >
+          <div class="np-dialog-header">
+            <h2 class="np-dialog-title" id="f-title">Edit profile</h2>
+            <p class="np-dialog-description" id="f-description">
+              Make changes to your profile here. Click save when you are done.
+            </p>
+          </div>
+          <form method="dialog" style="display: grid; gap: 1rem">
+            <div style="display: grid; gap: 0.5rem">
+              <label class="np-label" for="f-name">Name</label>
+              <input class="np-input" id="f-name" value="Jane Doe" autofocus />
+            </div>
+            <div style="display: grid; gap: 0.5rem">
+              <label class="np-label" for="f-username">Username</label>
+              <input class="np-input" id="f-username" value="@janedoe" />
+            </div>
+            <div class="np-dialog-footer">
+              <button
+                type="button"
+                class="np-button np-button-outline"
+                commandfor="f-dialog"
+                command="close"
+              >
+                Cancel
+              </button>
+              <button type="submit" class="np-button">Save changes</button>
+            </div>
+          </form>
+          <button
+            type="button"
+            class="np-button np-button-ghost np-button-icon-sm np-dialog-close"
+            commandfor="f-dialog"
+            command="close"
+            aria-label="Close"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
+          </button>
+        </dialog>
+      </section>
+
+      <section>
+        <h2>Custom close button</h2>
+        <p>No corner button; a secondary button in the footer closes it.</p>
+        <button
+          type="button"
+          class="np-button np-button-outline"
+          commandfor="s-dialog"
+          command="show-modal"
+        >
+          Share
+        </button>
+        <dialog
+          id="s-dialog"
+          class="np-dialog-content"
+          closedby="any"
+          aria-labelledby="s-title"
+          aria-describedby="s-description"
+        >
+          <div class="np-dialog-header">
+            <h2 class="np-dialog-title" id="s-title">Share link</h2>
+            <p class="np-dialog-description" id="s-description">
+              Anyone who has this link will be able to view this.
+            </p>
+          </div>
+          <input
+            class="np-input"
+            aria-label="Link"
+            value="https://nepui.vercel.app/docs"
+            readonly
+          />
+          <div class="np-dialog-footer" style="justify-content: flex-start">
+            <button
+              type="button"
+              class="np-button np-button-secondary"
+              commandfor="s-dialog"
+              command="close"
+            >
+              Close
+            </button>
+          </div>
+        </dialog>
+      </section>
+
+      <section>
+        <h2>Must choose (no light dismiss)</h2>
+        <p>
+          Without <code>closedby="any"</code> a click outside does nothing.
+          Escape still closes it.
+        </p>
+        <button
+          type="button"
+          class="np-button np-button-outline"
+          commandfor="n-dialog"
+          command="show-modal"
+        >
+          No Close Button
+        </button>
+        <dialog
+          id="n-dialog"
+          class="np-dialog-content"
+          aria-labelledby="n-title"
+          aria-describedby="n-description"
+        >
+          <div class="np-dialog-header">
+            <h2 class="np-dialog-title" id="n-title">Delete project?</h2>
+            <p class="np-dialog-description" id="n-description">
+              This project and all of its files will be deleted. You can not
+              undo this.
+            </p>
+          </div>
+          <div class="np-dialog-footer">
+            <button
+              type="button"
+              class="np-button np-button-outline"
+              commandfor="n-dialog"
+              command="close"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="np-button np-button-destructive"
+              commandfor="n-dialog"
+              command="close"
+            >
+              Delete
+            </button>
+          </div>
+        </dialog>
+      </section>
+
+      <section>
+        <h2>Scrollable content and sticky footer</h2>
+        <button
+          type="button"
+          class="np-button np-button-outline"
+          commandfor="t-dialog"
+          command="show-modal"
+        >
+          Sticky Footer
+        </button>
+        <dialog
+          id="t-dialog"
+          class="np-dialog-content"
+          closedby="any"
+          aria-labelledby="t-title"
+          aria-describedby="t-description"
+        >
+          <div class="np-dialog-header">
+            <h2 class="np-dialog-title" id="t-title">Terms of service</h2>
+            <p class="np-dialog-description" id="t-description">
+              Scroll to read all of it. The actions stay in view.
+            </p>
+          </div>
+          <div
+            style="
+              display: grid;
+              gap: 0.75rem;
+              margin: 0 -1rem;
+              padding: 0 1rem;
+              max-height: 12rem;
+              overflow-y: auto;
+            "
+            tabindex="0"
+            role="region"
+            aria-label="Terms of service text"
+          >
+            <p style="margin: 0; color: inherit">
+              By using this service, you agree to the terms described below.
+              Please read them carefully before you continue.
+            </p>
+            <p style="margin: 0; color: inherit">
+              You are responsible for keeping your account details safe, and for
+              everything that happens under your account.
+            </p>
+            <p style="margin: 0; color: inherit">
+              We may update these terms from time to time. When we do, we will
+              let you know by email or inside the app.
+            </p>
+            <p style="margin: 0; color: inherit">
+              You may stop using the service at any time. We may suspend
+              accounts that break these terms.
+            </p>
+            <p style="margin: 0; color: inherit">
+              If you have questions about these terms, contact our support team
+              and we will be happy to help.
+            </p>
+          </div>
+          <div class="np-dialog-footer">
+            <button
+              type="button"
+              class="np-button np-button-outline"
+              commandfor="t-dialog"
+              command="close"
+            >
+              Decline
+            </button>
+            <button
+              type="button"
+              class="np-button"
+              commandfor="t-dialog"
+              command="close"
+            >
+              Accept
+            </button>
+          </div>
+          <button
+            type="button"
+            class="np-button np-button-ghost np-button-icon-sm np-dialog-close"
+            commandfor="t-dialog"
+            command="close"
+            aria-label="Close"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
+          </button>
+        </dialog>
+      </section>
+
+      <section>
+        <h2>Custom variables</h2>
+        <p>
+          Wider, with a smaller radius, set on the <code>&lt;dialog&gt;</code>.
+          The overlay variables work here too, because the backdrop reads them
+          from its dialog.
+        </p>
+        <button
+          type="button"
+          class="np-button np-button-outline"
+          commandfor="v-dialog"
+          command="show-modal"
+        >
+          Wide dialog
+        </button>
+        <dialog
+          id="v-dialog"
+          class="np-dialog-content"
+          closedby="any"
+          aria-labelledby="v-title"
+          aria-describedby="v-description"
+          style="
+            --np-dialog-max-width: 32rem;
+            --np-dialog-radius: var(--np-radius-md);
+            --np-dialog-overlay-bg: color-mix(
+              in oklab,
+              var(--np-foreground) 40%,
+              transparent
+            );
+            --np-dialog-overlay-blur: 0px;
+          "
+        >
+          <div class="np-dialog-header">
+            <h2 class="np-dialog-title" id="v-title">Wide dialog</h2>
+            <p class="np-dialog-description" id="v-description">
+              A max width of 32rem, a smaller radius and a darker overlay
+              without blur.
+            </p>
+          </div>
+          <button
+            type="button"
+            class="np-button np-button-ghost np-button-icon-sm np-dialog-close"
+            commandfor="v-dialog"
+            command="close"
+            aria-label="Close"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
+          </button>
+        </dialog>
+      </section>
+
+      <section>
+        <h2>Opening with the JavaScript API</h2>
+        <p>
+          Browsers without invoker commands need <code>showModal()</code> and
+          <code>close()</code>. A one-line handler is enough.
+        </p>
+        <button
+          type="button"
+          class="np-button np-button-outline"
+          onclick="document.getElementById('j-dialog').showModal()"
+        >
+          Open with showModal()
+        </button>
+        <dialog
+          id="j-dialog"
+          class="np-dialog-content"
+          closedby="any"
+          aria-labelledby="j-title"
+          aria-describedby="j-description"
+        >
+          <div class="np-dialog-header">
+            <h2 class="np-dialog-title" id="j-title">Opened from script</h2>
+            <p class="np-dialog-description" id="j-description">
+              The same dialog, opened with <code>showModal()</code> instead of
+              an invoker command.
+            </p>
+          </div>
+          <div class="np-dialog-footer">
+            <button
+              type="button"
+              class="np-button"
+              onclick="this.closest('dialog').close()"
+            >
+              Done
+            </button>
+          </div>
+        </dialog>
+      </section>
+
+      <section>
+        <h2>Page scroll lock</h2>
+        <p>
+          This page is taller than the window on purpose. While a dialog is open
+          the page behind it does not scroll.
+        </p>
+        <div class="filler" aria-hidden="true"></div>
+      </section>
+    </main>
+  </body>
+</html>
