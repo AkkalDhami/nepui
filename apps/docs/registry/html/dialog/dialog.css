@@ -1,0 +1,229 @@
+/* nepui — Dialog */
+
+.np-dialog-content,
+[data-np-dialog-content] {
+  --np-dialog-max-width: 24rem;
+  --np-dialog-padding: calc(var(--np-spacing) * 4);
+  --np-dialog-gap: calc(var(--np-spacing) * 4);
+  --np-dialog-radius: var(--np-radius-xl);
+  --np-dialog-bg: var(--np-background);
+  --np-dialog-color: var(--np-foreground);
+  --np-dialog-ring: color-mix(in oklab, var(--np-foreground) 10%, transparent);
+  --np-dialog-font-size: 0.875rem;
+  --np-dialog-duration: 100ms;
+  --np-dialog-scale: 0.95;
+  --np-dialog-overlay-bg: color-mix(
+    in oklab,
+    var(--np-foreground) 10%,
+    transparent
+  );
+  --np-dialog-overlay-blur: 4px;
+
+  position: fixed;
+  inset: 50% auto auto 50%;
+  z-index: 50;
+  box-sizing: border-box;
+  display: grid;
+  gap: var(--np-dialog-gap);
+  width: 100%;
+  max-width: min(var(--np-dialog-max-width), calc(100% - 2rem));
+  max-height: calc(100% - 2rem);
+  margin: 0;
+  padding: var(--np-dialog-padding);
+  overflow-y: auto;
+  border: 0;
+  border-radius: var(--np-dialog-radius);
+  outline: none;
+  background-color: var(--np-dialog-bg);
+  box-shadow: 0 0 0 1px var(--np-dialog-ring);
+  color: var(--np-dialog-color);
+  font-size: var(--np-dialog-font-size);
+  translate: -50% -50%;
+  opacity: 1;
+  scale: 1;
+  transition:
+    opacity var(--np-dialog-duration) ease,
+    scale var(--np-dialog-duration) ease;
+}
+
+:is(.np-dialog-content, [data-np-dialog-content])[data-starting-style],
+:is(.np-dialog-content, [data-np-dialog-content])[data-ending-style] {
+  opacity: 0;
+  scale: var(--np-dialog-scale);
+}
+
+dialog:is(.np-dialog-content, [data-np-dialog-content]) {
+  transition:
+    opacity var(--np-dialog-duration) ease,
+    scale var(--np-dialog-duration) ease,
+    overlay var(--np-dialog-duration) ease allow-discrete,
+    display var(--np-dialog-duration) ease allow-discrete;
+}
+
+dialog:is(.np-dialog-content, [data-np-dialog-content]):not([open]) {
+  display: none;
+  opacity: 0;
+  scale: var(--np-dialog-scale);
+}
+
+@starting-style {
+  dialog:is(.np-dialog-content, [data-np-dialog-content])[open] {
+    opacity: 0;
+    scale: var(--np-dialog-scale);
+  }
+}
+
+html:has(dialog:is(.np-dialog-content, [data-np-dialog-content]):modal) {
+  overflow: hidden;
+  scrollbar-gutter: stable;
+}
+
+.np-dialog-overlay,
+[data-np-dialog-overlay] {
+  --np-dialog-overlay-bg: color-mix(
+    in oklab,
+    var(--np-foreground) 10%,
+    transparent
+  );
+  --np-dialog-overlay-blur: 4px;
+  --np-dialog-duration: 100ms;
+
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  isolation: isolate;
+  background-color: var(--np-dialog-overlay-bg);
+  backdrop-filter: blur(var(--np-dialog-overlay-blur));
+  opacity: 1;
+  transition: opacity var(--np-dialog-duration) ease;
+}
+
+:is(.np-dialog-overlay, [data-np-dialog-overlay])[data-starting-style],
+:is(.np-dialog-overlay, [data-np-dialog-overlay])[data-ending-style] {
+  opacity: 0;
+}
+
+dialog:is(.np-dialog-content, [data-np-dialog-content])::backdrop {
+  background-color: transparent;
+  backdrop-filter: blur(0);
+  transition:
+    background-color var(--np-dialog-duration) ease,
+    backdrop-filter var(--np-dialog-duration) ease,
+    overlay var(--np-dialog-duration) ease allow-discrete,
+    display var(--np-dialog-duration) ease allow-discrete;
+}
+
+dialog:is(.np-dialog-content, [data-np-dialog-content])[open]::backdrop {
+  background-color: var(--np-dialog-overlay-bg);
+  backdrop-filter: blur(var(--np-dialog-overlay-blur));
+}
+
+@starting-style {
+  dialog:is(.np-dialog-content, [data-np-dialog-content])[open]::backdrop {
+    background-color: transparent;
+    backdrop-filter: blur(0);
+  }
+}
+
+:is(.np-dialog-content, [data-np-dialog-content])
+  :is(.np-dialog-close, [data-np-dialog-close]) {
+  position: absolute;
+  inset-block-start: calc(var(--np-spacing) * 2);
+  inset-inline-end: calc(var(--np-spacing) * 2);
+}
+
+.np-dialog-header,
+[data-np-dialog-header] {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--np-spacing) * 2);
+}
+
+.np-dialog-title,
+[data-np-dialog-title] {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.np-dialog-description,
+[data-np-dialog-description] {
+  margin: 0;
+  color: var(--np-muted-foreground);
+  font-size: 0.875rem;
+}
+
+:is(.np-dialog-description, [data-np-dialog-description]) a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+:is(.np-dialog-description, [data-np-dialog-description]) a:hover {
+  color: var(--np-foreground);
+}
+
+.np-dialog-footer,
+[data-np-dialog-footer] {
+  --np-dialog-footer-bg: color-mix(in oklab, var(--np-muted) 50%, transparent);
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: calc(var(--np-spacing) * 2);
+  margin-inline: calc(var(--np-dialog-padding, 1rem) * -1);
+  margin-block-end: calc(var(--np-dialog-padding, 1rem) * -1);
+  padding: var(--np-dialog-padding, 1rem);
+  border-top: 1px solid var(--np-border);
+  border-end-start-radius: var(--np-dialog-radius, 0);
+  border-end-end-radius: var(--np-dialog-radius, 0);
+  background-color: var(--np-dialog-footer-bg);
+}
+
+@media (min-width: 40rem) {
+  .np-dialog-footer,
+  [data-np-dialog-footer] {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}
+
+:is(.dark, [data-theme="dark"])
+  :is(
+    .np-dialog-content,
+    [data-np-dialog-content],
+    .np-dialog-overlay,
+    [data-np-dialog-overlay]
+  ) {
+  --np-dialog-overlay-bg: color-mix(
+    in oklab,
+    var(--np-background) 10%,
+    transparent
+  );
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light, [data-theme="light"])
+    :is(
+      .np-dialog-content,
+      [data-np-dialog-content],
+      .np-dialog-overlay,
+      [data-np-dialog-overlay]
+    ) {
+    --np-dialog-overlay-bg: color-mix(
+      in oklab,
+      var(--np-background) 10%,
+      transparent
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.np-dialog-content, [data-np-dialog-content]),
+  dialog:is(.np-dialog-content, [data-np-dialog-content]),
+  :is(.np-dialog-overlay, [data-np-dialog-overlay]),
+  dialog:is(.np-dialog-content, [data-np-dialog-content])::backdrop {
+    transition: none;
+  }
+}
