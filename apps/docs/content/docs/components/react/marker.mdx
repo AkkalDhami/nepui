@@ -1,0 +1,227 @@
+---
+title: Marker
+description: Displays an inline status, system note, bordered row, or labeled separator in a conversation.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="marker-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/marker.json"
+      nepui="npx nepui@latest add marker --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react class-variance-authority cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="marker"
+        title="components/nepui/marker/marker.css"
+        fileTarget="components/nepui/marker/marker.css"
+      />
+      <ComponentSource
+        target="react"
+        name="marker"
+        title="components/nepui/marker/marker.tsx"
+        fileTarget="components/nepui/marker/marker.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="marker"
+        title="components/nepui/marker/index.ts"
+        fileTarget="components/nepui/marker/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import { Marker, MarkerContent, MarkerIcon } from "@/components/nepui/marker"
+```
+
+```tsx
+<Marker>
+  <MarkerIcon>
+    <CheckIcon />
+  </MarkerIcon>
+  <MarkerContent>Explored 4 files</MarkerContent>
+</Marker>
+```
+
+---
+
+## Composition
+
+Use the following composition to build a marker:
+
+```text
+Marker
+├── MarkerIcon
+└── MarkerContent
+```
+
+---
+
+## Features
+
+- Inline marker, bordered row and labeled separator variants.
+- A decorative icon slot that is hidden from assistive tech.
+- A polymorphic root through `render`, for link and button markers.
+- A shimmer effect for streaming status text, and a spinning icon for progress.
+- A vertical layout that stacks the icon above the text.
+
+---
+
+## Variants
+
+Use `variant` to switch between an inline marker, a bordered row and a labeled separator.
+
+<ComponentPreview
+  name="marker-variants"
+/>
+
+| Variant | Description |
+| ------- | ----------- |
+| `default` | An inline marker for status, notes and actions. |
+| `border` | A default marker with a bottom border under the row. |
+| `separator` | A centered label with divider lines on each side. |
+
+---
+
+## Status
+
+Set `role="status"` and add a spinning icon for streaming or in-progress markers, so updates are announced. Use the `spin` prop on `MarkerIcon`, or put a Spinner in it.
+
+<ComponentPreview
+  name="marker-status"
+/>
+
+---
+
+## Shimmer
+
+Add `shimmer` to `MarkerContent` for an animated streaming-text effect. The animation stops when the user prefers reduced motion.
+
+<ComponentPreview
+  name="marker-shimmer"
+/>
+
+---
+
+## Separator
+
+Use the `separator` variant for labeled dividers, such as dates or section breaks, in a conversation.
+
+<ComponentPreview
+  name="marker-separator"
+/>
+
+---
+
+## Border
+
+Use the `border` variant for status rows that keep the default alignment while separating the next row.
+
+<ComponentPreview
+  name="marker-border"
+/>
+
+---
+
+## With Icon
+
+Use `MarkerIcon` to show an icon next to the content. Use `orientation="vertical"` to stack the icon above the content.
+
+<ComponentPreview
+  name="marker-icon"
+/>
+
+---
+
+## Links and Buttons
+
+Turn a marker into a link or a button with the `render` prop on `Marker`. The marker gets a hover color and a focus ring.
+
+<ComponentPreview
+  name="marker-interactive"
+/>
+
+---
+
+## Accessibility
+
+`Marker` is presentational by default. The right semantics depend on how you use it, so choose the role by intent.
+
+### Status and Progress
+
+For streaming or progress markers such as "Thinking..." or a running tool, set `role="status"` so assistive tech announces the update as it appears.
+
+### Labeled Separators
+
+A separator that carries text, such as a date or a section label, needs no role. The divider lines are decorative CSS, and the text is announced as ordinary content. Do not add `role="separator"` to a labeled divider: a separator takes its name from `aria-label`, so the visible label would not be announced.
+
+### Bordered Markers
+
+A bordered marker has the same semantics as the default one. The bottom border is decorative, so choose `role="status"`, a link or button, or no role, based on its purpose.
+
+### Decorative Icons
+
+The icon slot is hidden from assistive tech with `aria-hidden`, so the text next to it carries the meaning. For an icon-only marker, give the marker an `aria-label` or visible text so it is not announced as empty.
+
+### Interactive Markers
+
+When a marker links or triggers an action, render it as a real `<a>` or `<button>` so it is focusable and has the right role. The accessible name comes from the marker text.
+
+---
+
+## API Reference
+
+### Marker
+
+The root marker element. The file also exports `markerVariants` for composing the marker styles into custom components.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `variant` | `"default" \| "border" \| "separator"` | `"default"` | The marker layout. |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | Use `vertical` to stack the icon above the content. |
+| `render` | `ReactElement \| function` | - | Render as a different element, such as a link. |
+| `className` | `string` | - | Additional classes for the root element. |
+
+### MarkerIcon
+
+A decorative icon slot. It is hidden from assistive tech with `aria-hidden`.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `spin` | `boolean` | `false` | Rotate the icon. |
+| `className` | `string` | - | Additional classes for the icon slot. |
+
+### MarkerContent
+
+The marker text.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `shimmer` | `boolean` | `false` | Animate the text. |
+| `className` | `string` | - | Additional classes for the content. |
