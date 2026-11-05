@@ -15,6 +15,7 @@ interface ComponentPreviewProps {
   height?: string
   styles?: string[]
   scripts?: string[]
+  scriptType?: "module" | "text/javascript"
 }
 
 export async function ComponentPreview({
@@ -24,6 +25,7 @@ export async function ComponentPreview({
   styles,
   height,
   scripts,
+  scriptType,
 }: ComponentPreviewProps) {
   const source = await getExampleSource({ target, name })
   if (!source) {
@@ -85,6 +87,7 @@ export async function ComponentPreview({
             ]}
             className="mt-6"
             scripts={scripts}
+            scriptType={scriptType}
           />
         </TabsContent>
 

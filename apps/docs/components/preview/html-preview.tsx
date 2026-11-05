@@ -14,6 +14,7 @@ interface HtmlPreviewProps {
   styles?: string[]
   className?: string
   scripts?: string[]
+  scriptType?: "module" | "text/javascript"
 }
 
 export async function HtmlPreview({
@@ -23,6 +24,7 @@ export async function HtmlPreview({
   styles = ["/app/styles/globals.css"],
   className,
   scripts,
+  scriptType,
 }: HtmlPreviewProps) {
   const targetCss = styles
   const paths = Array.isArray(targetCss) ? targetCss : [targetCss]
@@ -60,6 +62,7 @@ export async function HtmlPreview({
       tokens={tokens ?? null}
       className={cn("rounded-xl border", className)}
       js={js || null}
+      scriptType={scriptType}
     />
   )
 }

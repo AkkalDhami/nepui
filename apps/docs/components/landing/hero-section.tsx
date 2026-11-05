@@ -41,10 +41,8 @@ export function HeroSection() {
           variants={item}
           className="mb-8 max-w-[56ch] text-lg text-muted-foreground"
         >
-          A foundational system of accessible components for HTML and React —
-          styled with plain CSS you can read, own, and override.
-          {/* A foundational system of accessible components for HTML and React,
-          built with CSS, not Tailwind. */}
+          nepui is a CSS-first design system. Accessible components for HTML and
+          React, styled with plain CSS you can read, own, and override.
         </motion.p>
         <motion.div
           variants={item}

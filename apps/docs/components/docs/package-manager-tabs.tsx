@@ -7,6 +7,7 @@ import { useConfig } from "@/hooks/use-config"
 import { PackageManager } from "@/types"
 import { getPackageManagerIcon } from "@/components/icons"
 import { CopyButton } from "@/components/docs/copy-button"
+import { IconSwap, IconSwapItem } from "@/components/ui/icon-swap"
 
 const pkgManagers = ["npm", "pnpm", "bun", "yarn"]
 
@@ -34,7 +35,15 @@ export default function PackageManagerTabs({
       )}
     >
       <TabsList className={cn("bg-transparent pl-4")}>
-        <div className="mr-4 flex items-center gap-3">{Icon}</div>
+        <IconSwap>
+          <IconSwapItem
+            className="mr-4 flex items-center gap-3"
+            key={packageManager}
+          >
+            {Icon}
+          </IconSwapItem>
+        </IconSwap>
+
         {pkgManagers.map((m) => {
           return (
             <TabsTrigger
