@@ -9,6 +9,7 @@ interface HtmlPreviewFrameProps {
   html: string
   css: string
   js: string | null
+  scriptType?: "module" | "text/javascript"
   tokens: string | null
   className?: string
   height?: string
@@ -33,7 +34,8 @@ function buildPreviewDocument(
   html: string,
   css: string,
   js?: string | null,
-  tokens?: string | null
+  tokens?: string | null,
+  scriptType: "module" | "text/javascript" = "text/javascript"
 ) {
   return `<!doctype html>
 <html>
@@ -53,7 +55,7 @@ function buildPreviewDocument(
   <body>
     ${html}
     <script>${RESIZE_SCRIPT}</script>
-    ${js ? `<script>${js}</script>` : ""}
+    ${js ? `<script type="${scriptType}">${js}</script>` : ""}
   </body>
 </html>`
 }
@@ -62,6 +64,7 @@ export function HtmlPreviewFrame({
   html,
   css,
   js,
+  scriptType,
   tokens,
   height = "460px",
   className,
@@ -69,8 +72,8 @@ export function HtmlPreviewFrame({
   const iframeRef = useRef<HTMLIFrameElement>(null)
 
   const document = useMemo(
-    () => buildPreviewDocument(html, css, js, tokens),
-    [html, css, js, tokens]
+    () => buildPreviewDocument(html, css, js, tokens, scriptType),
+    [html, css, js, tokens, scriptType]
   )
 
   useEffect(() => {

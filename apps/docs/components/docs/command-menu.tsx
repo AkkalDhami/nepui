@@ -34,18 +34,12 @@ import { Spinner } from "@/components/ui/spinner"
 import { Route } from "next"
 import { NavItem } from "@/components/layouts/navbar"
 import { Kbd, KbdGroup } from "@/components/ui/kbd"
-import { TargetType, useConfig } from "@/hooks/use-config"
+import { useConfig } from "@/hooks/use-config"
 import { convertNpmCommand } from "./package-manager-tabs"
 import { PackageManager } from "@/types"
 
-const getInstallCommand = (
-  packageManager: string,
-  name: string,
-  target: TargetType
-) => {
-  const command = convertNpmCommand(
-    `npx nepui@latest add ${name} ${target ? `--target ${target}` : ""}`
-  )
+const getInstallCommand = (packageManager: string, name: string) => {
+  const command = convertNpmCommand(`npx nepui@latest add ${name}`)
   return command[packageManager as PackageManager]
 }
 
@@ -152,7 +146,7 @@ export function CommandMenu({
   const [renderDelayedGroups, setRenderDelayedGroups] = React.useState(false)
   const [selectedType, setSelectedType] = React.useState<SelectedType>(null)
   const [copyPayload, setCopyPayload] = React.useState("")
-  const { packageManager, target } = useConfig()
+  const { packageManager } = useConfig()
   const { search, setSearch, query } = useDocsSearch({ type: "fetch" })
 
   const searchTimeoutRef =
@@ -209,21 +203,21 @@ export function CommandMenu({
       if (isComponent) {
         const componentName = url.split("/").pop() ?? ""
         setSelectedType("component")
-        setCopyPayload(getInstallCommand(packageManager, componentName, target))
+        setCopyPayload(getInstallCommand(packageManager, componentName))
       } else {
         setSelectedType("page")
         setCopyPayload("")
       }
     },
-    [packageManager, target]
+    [packageManager]
   )
 
   const highlightBlock = React.useCallback(
     (block: { name: string }) => {
       setSelectedType("block")
-      setCopyPayload(getInstallCommand(packageManager, block.name, target))
+      setCopyPayload(getInstallCommand(packageManager, block.name))
     },
-    [packageManager, target]
+    [packageManager]
   )
 
   const navItemsSection = React.useMemo(() => {

@@ -100,12 +100,19 @@ function SidebarLink({
   children: React.ReactNode
 }) {
   const pathname = normalize(usePathname())
+  const componentTarget = pathname.match(
+    /^\/docs\/components\/(react|html)(?:\/|$)/
+  )?.[1]
+  const targetUrl =
+    urls.find((candidate) =>
+      candidate.startsWith(`/docs/components/${componentTarget}/`)
+    ) ?? url
   const active = urls.includes(pathname)
-  const isNew = PAGES_NEW.includes(url)
+  const isNew = PAGES_NEW.includes(targetUrl)
 
   return (
     <Link
-      href={url as never}
+      href={targetUrl as never}
       target={external ? "_blank" : undefined}
       rel={external ? "noreferrer noopener" : undefined}
       data-active={active}
