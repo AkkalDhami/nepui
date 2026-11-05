@@ -4,7 +4,7 @@ description: A versatile component for displaying content with media, title, des
 contributor:
   - name: Akkal Dhami
     url: https://www.akkal.com.np
-    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+    avatar: https://github.com/akkaldhami.png
 ---
 
 <ComponentPreview
@@ -19,7 +19,7 @@ contributor:
   cli={
     <ReactCodeBlockCommand
       shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/item.json"
-      nepui="npx nepui@latest add item --target react"
+      nepui="npx nepui@latest add item"
     />
   }
   manual={
@@ -27,9 +27,8 @@ contributor:
       <Step>Install the following dependencies:</Step>
       <PackageManagerTabs command="npm install @base-ui/react class-variance-authority cn" className="mt-6"/>
 
-      <Step>
-        Add the <LINK href="/docs/components/react/separator">Separator</LINK> component. `ItemSeparator` is built on it.
-      </Step>
+      <Step>Install the required nepui dependencies:</Step>
+      <PackageManagerTabs command="npx nepui@latest add separator" className="mt-6"/>
 
       <Step>Copy and paste the following code into your project.</Step>
       <ComponentSource

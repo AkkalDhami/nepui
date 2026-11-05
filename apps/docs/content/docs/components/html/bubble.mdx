@@ -47,9 +47,9 @@ Link the stylesheet, after `tokens.css`:
 ```
 
 ```html
-+ <div class="np-bubble">
+ <div class="np-bubble">
   <div class="np-bubble-content">
--   I checked the registry output and removed the stale route.
+   I checked the registry output and removed the stale route.
   </div>
   <div class="np-bubble-reactions" role="img" aria-label="Reaction: thumbs up">
     <span>👍</span>
@@ -59,7 +59,7 @@ Link the stylesheet, after `tokens.css`:
 
 Or use the data attributes instead of classes:
 
-```html showLineNumbers
+```html
 <div data-np-bubble data-variant="secondary" data-align="end">
   <div data-np-bubble-content>Hello</div>
 </div>
@@ -143,6 +143,7 @@ Put the `np-bubble-content` class on a `<button>` or an `<a>`. It gets a hover s
 
 ## Reference
 
+### Component
 Each part supports the `data-np-*` attribute or its class alias.
 
 | Part      | Data attribute             | Class alias           |
@@ -151,6 +152,8 @@ Each part supports the `data-np-*` attribute or its class alias.
 | Content   | `data-np-bubble-content`   | `np-bubble-content`   |
 | Group     | `data-np-bubble-group`     | `np-bubble-group`     |
 | Reactions | `data-np-bubble-reactions` | `np-bubble-reactions` |
+
+### Variant
 
 Use these classes or attributes to customize a bubble:
 

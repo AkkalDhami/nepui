@@ -4,12 +4,14 @@ description: Displays the path to the current resource using a hierarchy of link
 contributor:
   - name: Akkal Dhami
     url: https://www.akkal.com.np
-    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+    avatar: https://github.com/akkaldhami.png
 ---
 
 <ComponentPreview
   target="html"
   name="breadcrumb-demo"
+  styles={["/breadcrumb/breadcrumb.css", "/menu/menu.css"]}
+  scripts={["/menu/menu.js"]}
 />
 
 ---
@@ -47,9 +49,22 @@ contributor:
 
 ## Usage
 
+Link the stylesheets:
+
 ```html
 <link rel="stylesheet" href="./styles/breadcrumb.css" />
+<link rel="stylesheet" href="./styles/menu.css" />
 ```
+
+The dropdown in the example also uses Menu's script for positioning and keyboard navigation:
+
+```html
+<script src="./javascripts/menu.js" defer></script>
+```
+
+Install Menu to use the dropdown:
+
+<PackageManagerTabs command="npx nepui@latest add menu" className="mt-4"/>
 
 ```html
 <nav class="np-breadcrumb" aria-label="Breadcrumb">
@@ -100,6 +115,8 @@ Breadcrumb
 <ComponentPreview
   target="html"
   name="breadcrumb-demo"
+  styles={["/breadcrumb/breadcrumb.css", "/menu/menu.css"]}
+  scripts={["/menu/menu.js"]}
 />
 
 ---
