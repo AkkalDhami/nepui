@@ -775,25 +775,124 @@
       ]
     },
     {
-      "name": "breadcrumb",
+      "name": "combobox",
       "type": "registry:ui",
-      "title": "Breadcrumb",
-      "description": "Displays the path to the current resource using a hierarchy of links.",
+      "title": "Combobox",
+      "description": "Autocomplete input with a list of suggestions.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/react/button.json",
+        "https://nepui.vercel.app/r/react/input-group.json"
+      ],
       "files": [
         {
-          "path": "registry/react/breadcrumb/breadcrumb.tsx",
+          "path": "registry/react/combobox/combobox.tsx",
           "type": "registry:ui",
-          "target": "components/nepui/breadcrumb/breadcrumb.tsx"
+          "target": "components/nepui/combobox/combobox.tsx"
         },
         {
-          "path": "registry/react/breadcrumb/breadcrumb.css",
+          "path": "registry/react/combobox/combobox.css",
           "type": "registry:ui",
-          "target": "components/nepui/breadcrumb/breadcrumb.css"
+          "target": "components/nepui/combobox/combobox.css"
         },
         {
-          "path": "registry/react/breadcrumb/index.ts",
+          "path": "registry/react/combobox/index.ts",
           "type": "registry:ui",
-          "target": "components/nepui/breadcrumb/index.ts"
+          "target": "components/nepui/combobox/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "description": "A succinct message that is displayed temporarily.",
+      "registryDependencies": ["https://nepui.vercel.app/r/react/button.json"],
+      "files": [
+        {
+          "path": "registry/react/toast/toast.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/toast/toast.tsx"
+        },
+        {
+          "path": "registry/react/toast/toast.css",
+          "type": "registry:ui",
+          "target": "components/nepui/toast/toast.css"
+        },
+        {
+          "path": "registry/react/toast/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/toast/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "description": "Extends the Dialog component to display content that complements the main content of the screen.",
+      "registryDependencies": ["https://nepui.vercel.app/r/react/button.json"],
+      "files": [
+        {
+          "path": "registry/react/sheet/sheet.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/sheet/sheet.tsx"
+        },
+        {
+          "path": "registry/react/sheet/sheet.css",
+          "type": "registry:ui",
+          "target": "components/nepui/sheet/sheet.css"
+        },
+        {
+          "path": "registry/react/sheet/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/sheet/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "bubble",
+      "type": "registry:ui",
+      "title": "Bubble",
+      "description": "Displays conversational content in a message bubble. Supports variants, alignment, grouping, reactions, and collapsible content.",
+      "files": [
+        {
+          "path": "registry/react/bubble/bubble.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/bubble/bubble.tsx"
+        },
+        {
+          "path": "registry/react/bubble/bubble.css",
+          "type": "registry:ui",
+          "target": "components/nepui/bubble/bubble.css"
+        },
+        {
+          "path": "registry/react/bubble/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/bubble/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "title": "Alert Dialog",
+      "description": "A modal dialog that interrupts the user with important content and expects a response.",
+      "registryDependencies": ["https://nepui.vercel.app/r/react/button.json"],
+      "files": [
+        {
+          "path": "registry/react/alert-dialog/alert-dialog.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/alert-dialog/alert-dialog.tsx"
+        },
+        {
+          "path": "registry/react/alert-dialog/alert-dialog.css",
+          "type": "registry:ui",
+          "target": "components/nepui/alert-dialog/alert-dialog.css"
+        },
+        {
+          "path": "registry/react/alert-dialog/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/alert-dialog/index.ts"
         }
       ]
     },
