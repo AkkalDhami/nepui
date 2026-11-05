@@ -1,0 +1,201 @@
+---
+title: Toast
+description: A succinct message that is displayed temporarily.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://github.com/akkaldhami.png
+---
+
+<ComponentPreview
+  name="toast-demo"
+  target="html"
+  styles={["/button/button.css"]}
+  scripts={["/toast/toast.js"]}
+  scriptType="module"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add toast"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the required nepui dependencies:</Step>
+      <PackageManagerTabs command="npx nepui@latest add button" className="mt-6"/>
+
+      <Step>Copy and paste the following stylesheet into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="toast"
+        title="styles/toast.css"
+        fileTarget="styles/toast.css"
+      />
+      <Step>Copy and paste the following script into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="toast"
+        title="javascripts/toast.js"
+        fileTarget="javascripts/toast.js"
+      />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the tokens, the Button styles and the stylesheet, and load the script once on the page:
+
+```html
+<link rel="stylesheet" href="./styles/tokens.css">
+<link rel="stylesheet" href="./styles/button.css">
+<link rel="stylesheet" href="./styles/toast.css">
+
+<script type="module" src="./javascripts/toast.js"></script>
+```
+
+There is no markup to add. The script creates the viewport and each toast when you show one. Use a trigger button with data attributes:
+
+```html
+<button class="np-button np-button-outline" type="button"
+  data-np-toast-trigger
+  data-toast-title="Event created"
+  data-toast-description="Sunday, December 3 at 9:00 AM">
+  Show Toast
+</button>
+```
+
+Or call it from JavaScript:
+
+```js
+import { toast } from "./javascripts/toast.js"
+
+toast.add({
+  title: "Event created",
+  description: "Sunday, December 3 at 9:00 AM",
+})
+```
+
+The script also sets `window.npToast`, so an inline handler such as `onclick="npToast.add({ title: 'Saved' })"` works without importing it.
+
+Toasts stack at the top center of the screen. Hover or focus the stack to spread it out, which also pauses the timers. Swipe a toast up, left or right, or press Escape on a focused one, to dismiss it.
+
+---
+
+## Types
+
+Set `data-toast-type` (or `type` in JavaScript) to render a status icon: `success`, `info`, `warning`, `error` or `loading`. Errors are announced as alerts, the rest as status messages.
+
+<ComponentPreview
+  name="toast-types"
+  target="html"
+  styles={["/button/button.css"]}
+  scripts={["/toast/toast.js"]}
+  scriptType="module"
+/>
+
+---
+
+## Action
+
+Set `data-toast-action` to the button label, or pass `actionProps` in JavaScript. The button closes the toast, and `onClick` runs first.
+
+<ComponentPreview
+  name="toast-action"
+  target="html"
+  styles={["/button/button.css"]}
+  scripts={["/toast/toast.js"]}
+  scriptType="module"
+/>
+
+```js
+const id = toast.add({
+  title: "Event created",
+  actionProps: {
+    children: "Undo",
+    onClick() {
+      toast.close(id)
+    },
+  },
+})
+```
+
+---
+
+## Promise
+
+Use `toast.promise` to update one toast as an asynchronous task moves through loading, success, and error states. A trigger button can simulate it with `data-toast-promise` (milliseconds), `data-toast-loading`, `data-toast-success` and `data-toast-error`.
+
+<ComponentPreview
+  name="toast-promise"
+  target="html"
+  styles={["/button/button.css"]}
+  scripts={["/toast/toast.js"]}
+  scriptType="module"
+/>
+
+```js
+toast.promise(fetch("/api/events", { method: "POST" }), {
+  loading: "Creating event...",
+  success: "Event created",
+  error: "Failed to create event",
+})
+```
+
+---
+
+## JavaScript API
+
+| Function | Description |
+| -------- | ----------- |
+| `toast.add(options)` | Shows a toast and returns its id. A string is the title. |
+| `toast.success(title, options)` | The same with `type: "success"`. Also `info`, `warning`, `error` and `loading`. |
+| `toast.update(id, options)` | Changes a toast that is showing. |
+| `toast.close(id)` | Closes a toast. Without an id it closes all of them. |
+| `toast.promise(promise, messages)` | Shows a loading toast and turns it into a success or error toast. |
+| `toast.configure(options)` | Sets `limit`, `timeout`, `swipeThreshold` and `swipeDirection`. |
+
+Options for `toast.add`:
+
+| Option | Type | Default |
+| ------ | ---- | ------- |
+| `title` | `string` | - |
+| `description` | `string` | - |
+| `type` | `"success" \| "info" \| "warning" \| "error" \| "loading"` | - |
+| `timeout` | `number` | `5000`, and `0` (stays) for `loading` |
+| `actionProps` | `{ children: string, onClick?: (event) => void }` | - |
+| `swipeDirection` | `("up" \| "down" \| "left" \| "right")[]` | `["up", "left", "right"]` |
+| `onClose` | `() => void` | - |
+| `id` | `string` | generated |
+
+Trigger attributes: `data-np-toast-trigger`, `data-toast-title`, `data-toast-description`, `data-toast-type`, `data-toast-timeout`, `data-toast-action`, and for promises `data-toast-promise`, `data-toast-loading`, `data-toast-success`, `data-toast-error`, `data-toast-fail`.
+
+---
+
+## Reference
+
+### Component
+
+The script uses these classes. They also have `data-np-*` forms, for example `data-np-toast`, if you build the markup yourself.
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Viewport | `data-np-toast-viewport` | `np-toast-viewport` |
+| Toast | `data-np-toast` | `np-toast` |
+| Content | `data-np-toast-content` | `np-toast-content` |
+| Icon | `data-np-toast-icon` | `np-toast-icon` |
+| Body | `data-np-toast-body` | `np-toast-body` |
+| Title | `data-np-toast-title` | `np-toast-title` |
+| Description | `data-np-toast-description` | `np-toast-description` |
+| Action | `data-np-toast-action` | `np-toast-action` |
+| Close | `data-np-toast-close` | `np-toast-close` |
