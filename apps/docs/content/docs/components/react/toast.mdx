@@ -1,0 +1,198 @@
+---
+title: Toast
+description: A succinct message that is displayed temporarily.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://github.com/akkaldhami.png
+---
+
+<ComponentPreview
+  name="toast-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/toast.json"
+      nepui="npx nepui@latest add toast --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react cn" className="mt-6"/>
+
+      <Step>Install the required nepui dependencies:</Step>
+      <PackageManagerTabs command="npx nepui@latest add button" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="toast"
+        title="components/nepui/toast/toast.css"
+        fileTarget="components/nepui/toast/toast.css"
+      />
+      <ComponentSource
+        target="react"
+        name="toast"
+        title="components/nepui/toast/toast.tsx"
+        fileTarget="components/nepui/toast/toast.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="toast"
+        title="components/nepui/toast/index.ts"
+        fileTarget="components/nepui/toast/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+**Add the `Toaster` component to root layout.**
+
+```tsx title="app/layout.tsx" showLineNumbers {1, 8}
+import { Toaster } from "@/components/nepui/toast"
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>
+        {children}
+        <Toaster />
+      </body>
+    </html>
+  )
+}
+```
+
+```tsx title="main.tsx" showLineNumbers {9, 4}
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+
+import { Toaster } from "@/components/nepui/toast"
+import App from "./App.tsx";
+
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
+      <Toaster />
+      <App />
+  </StrictMode>,
+);
+```
+
+---
+
+## Usage
+
+```tsx
+import { toast } from "@/components/nepui/toast"
+```
+
+```tsx
+toast.add({
+  title: "Event created",
+  description: "Sunday, December 3 at 9:00 AM",
+})
+```
+
+Toasts stack at the top center of the screen. Hover or focus the stack to spread it out, which also pauses the timers. Swipe a toast up, left or right to dismiss it.
+
+---
+
+## Types
+
+Set the `type` option to render a status icon. The built-in renderer recognizes `success`, `info`, `warning`, `error`, and `loading`.
+
+<ComponentPreview
+  name="toast-types"
+/>
+
+---
+
+## Action
+
+Pass button props with `actionProps` to render an action.
+
+<ComponentPreview
+  name="toast-action"
+/>
+
+```tsx
+const id = toast.add({
+  title: "Event created",
+  actionProps: {
+    children: "Undo",
+    onClick() {
+      toast.close(id)
+    },
+  },
+})
+```
+
+---
+
+## Promise
+
+Use `toast.promise` to update one toast as an asynchronous task moves through loading, success, and error states.
+
+<ComponentPreview
+  name="toast-promise"
+/>
+
+---
+
+## Styling
+
+Set these variables on the toast (for example with `className` on `Toast`, or in your own CSS).
+
+| Variable | Default | Description |
+| -------- | ------- | ----------- |
+| `--np-toast-gap` | `0.75rem` | Space between toasts when the stack is expanded. |
+| `--np-toast-peek` | `0.75rem` | How much each stacked toast peeks out below the one in front. |
+| `--np-toast-scale-step` | `0.1` | How much smaller each stacked toast gets. |
+| `--np-toast-radius` | `var(--np-radius-full)` | Corner radius. Use `var(--np-radius-lg)` for a card. |
+| `--np-toast-bg` | `var(--np-popover)` | Background color. |
+| `--np-toast-color` | `var(--np-popover-foreground)` | Text color. |
+| `--np-toast-border` | `var(--np-border)` | Border color. |
+| `--np-toast-shadow` | `var(--np-shadow-lg)` | Drop shadow. |
+| `--np-toast-duration` | `500ms` | Length of the move and stack animation. |
+| `--np-toast-icon-size` | `1.25rem` | Status icon size. |
+| `--np-toast-info-color` | `var(--np-info, oklch(0.546 0.245 262.881))` | Icon color of the info type. |
+
+---
+
+## API Reference
+
+This component wraps the [Base UI Toast](https://base-ui.com/react/components/toast). See its documentation for manager options, stacking, swipe dismissal and the primitive API. The animation that the source of this component did with a motion library is plain CSS here, so there is no extra dependency.
+
+### toast
+
+The shared toast manager.
+
+| Method | Description |
+| ------ | ----------- |
+| `toast.add(options)` | Shows a toast and returns its id. Options include `title`, `description`, `type`, `timeout` and `actionProps`. |
+| `toast.update(id, options)` | Changes a toast that is showing. |
+| `toast.close(id)` | Closes a toast. |
+| `toast.promise(promise, messages)` | Shows a loading toast and turns it into a success or error toast. |
+
+### Toaster
+
+Provides the manager and renders every toast. It accepts all Base UI `Toast.Provider` props, such as `limit` and `timeout`.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `toastManager` | `ToastManager` | `toast` |
+| `limit` | `number` | `3` |
+| `timeout` | `number` | `5000` |
+
+### Toast parts
+
+`Toast`, `ToastContent`, `ToastTitle`, `ToastDescription`, `ToastAction`, `ToastClose`, `ToastViewport`, `ToastPortal` and `ToastProvider` are exported for custom layouts. `Toast` accepts `swipeDirection` (default `["up", "left", "right"]`). `ToastAction` and `ToastClose` render nepui Buttons and accept a `render` prop to change that.
