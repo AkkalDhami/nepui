@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Toast</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/toast.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem 8rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: var(--np-font-sans, system-ui, sans-serif);
+      }
+      main {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+        max-width: 40rem;
+        margin-inline: auto;
+      }
+      section > h2 {
+        margin: 0 0 0.25rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+      .hint {
+        margin: 0 0 0.75rem;
+        font-size: 0.8125rem;
+        color: var(--np-muted-foreground);
+      }
+    </style>
+    <script type="module" src="../javascripts/toast.js"></script>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Basic</h2>
+        <p class="hint">
+          A button with <code>data-np-toast-trigger</code> and
+          <code>data-toast-*</code> options. Hover the stack to expand it, swipe
+          a toast away, or press Escape on a focused one.
+        </p>
+        <button
+          class="np-button np-button-outline"
+          type="button"
+          data-np-toast-trigger
+          data-toast-title="Event created"
+          data-toast-description="Sunday, December 3 at 9:00 AM"
+        >
+          Show Toast
+        </button>
+      </section>
+
+      <section>
+        <h2>Types</h2>
+        <p class="hint"><code>data-toast-type</code> adds a status icon.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem">
+          <button
+            class="np-button np-button-outline"
+            type="button"
+            data-np-toast-trigger
+            data-toast-title="Event created"
+            data-toast-description="Sunday, December 3 at 9:00 AM"
+          >
+            Default
+          </button>
+          <button
+            class="np-button np-button-outline"
+            type="button"
+            data-np-toast-trigger
+            data-toast-type="success"
+            data-toast-title="Event created"
+            data-toast-description="Sunday, December 3 at 9:00 AM"
+          >
+            Success
+          </button>
+          <button
+            class="np-button np-button-outline"
+            type="button"
+            data-np-toast-trigger
+            data-toast-type="info"
+            data-toast-title="Be at the area 10 minutes before"
+            data-toast-description="The venue opens at 8:50 AM."
+          >
+            Info
+          </button>
+          <button
+            class="np-button np-button-outline"
+            type="button"
+            data-np-toast-trigger
+            data-toast-type="warning"
+            data-toast-title="Event starts in 10 minutes"
+            data-toast-description="Sunday, December 3 at 9:00 AM"
+          >
+            Warning
+          </button>
+          <button
+            class="np-button np-button-outline"
+            type="button"
+            data-np-toast-trigger
+            data-toast-type="error"
+            data-toast-title="Event failed to create"
+            data-toast-description="Please try again."
+          >
+            Error
+          </button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Action</h2>
+        <p class="hint">
+          <code>data-toast-action</code> adds a button that closes the toast.
+        </p>
+        <button
+          class="np-button np-button-outline"
+          type="button"
+          data-np-toast-trigger
+          data-toast-title="Event created"
+          data-toast-description="Sunday, December 3 at 9:00 AM"
+          data-toast-action="Undo"
+        >
+          Show Toast
+        </button>
+      </section>
+
+      <section>
+        <h2>Promise</h2>
+        <p class="hint">Loading, then success or error, in one toast.</p>
+        <button
+          class="np-button np-button-outline"
+          type="button"
+          data-np-toast-trigger
+          data-toast-promise="2000"
+          data-toast-loading="Creating event..."
+          data-toast-success="Event created"
+          data-toast-error="Failed to create event"
+        >
+          Create Event
+        </button>
+      </section>
+
+      <section>
+        <h2>JavaScript</h2>
+        <p class="hint">
+          The same API from your own code through <code>window.npToast</code>.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem">
+          <button
+            class="np-button np-button-outline"
+            type="button"
+            onclick="
+              npToast.add({
+                title: 'Saved',
+                description: 'Your changes were saved.',
+                type: 'success',
+              })
+            "
+          >
+            toast.add()
+          </button>
+          <button
+            class="np-button np-button-outline"
+            type="button"
+            onclick="
+              npToast.error('Upload failed', {
+                description: 'The file is too large.',
+              })
+            "
+          >
+            toast.error()
+          </button>
+          <button
+            class="np-button np-button-outline"
+            type="button"
+            onclick="
+              npToast.add({
+                title: 'Stays until closed',
+                description: 'timeout: 0 never auto-dismisses.',
+                timeout: 0,
+              })
+            "
+          >
+            timeout: 0
+          </button>
+          <button
+            class="np-button np-button-outline"
+            type="button"
+            onclick="
+              npToast.promise(new Promise((r) => setTimeout(r, 1500)), {
+                loading: 'Saving…',
+                success: 'Saved',
+                error: 'Failed',
+              })
+            "
+          >
+            toast.promise()
+          </button>
+          <button
+            class="np-button np-button-ghost"
+            type="button"
+            onclick="npToast.close()"
+          >
+            Close all
+          </button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
