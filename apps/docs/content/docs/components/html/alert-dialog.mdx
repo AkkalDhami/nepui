@@ -1,0 +1,189 @@
+---
+title: Alert Dialog
+description: A modal dialog that interrupts the user with important content and expects a response.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://github.com/akkaldhami.png
+---
+
+<ComponentPreview
+  name="alert-dialog-demo"
+  target="html"
+  styles={["/button/button.css", "/alert-dialog/alert-dialog.css"]}
+  scripts={["/alert-dialog/alert-dialog.js"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add alert-dialog"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the required nepui dependencies:</Step>
+      <PackageManagerTabs command="npx nepui@latest add button" className="mt-6"/>
+
+      <Step>Copy and paste the following stylesheet into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="alert-dialog"
+        title="styles/alert-dialog.css"
+        fileTarget="styles/alert-dialog.css"
+      />
+      <Step>Copy and paste the following script into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="alert-dialog"
+        title="javascripts/alert-dialog.js"
+        fileTarget="javascripts/alert-dialog.js"
+      />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the tokens, the Button styles and the stylesheet, and load the script once on the page:
+
+```html
+<link rel="stylesheet" href="./styles/tokens.css" />
+<link rel="stylesheet" href="./styles/button.css" />
+<link rel="stylesheet" href="./styles/alert-dialog.css" />
+<script src="./javascripts/alert-dialog.js" defer></script>
+```
+
+Use a native [`<dialog>`](https://developer.mozilla.org/docs/Web/HTML/Element/dialog) with `role="alertdialog"`. Open it with a button that uses `commandfor` and `command="show-modal"`. Use a regular button for the action so it does not close the dialog; give the cancel button `commandfor` and `command="close"` to dismiss it:
+
+```html
+<button class="np-button np-button-outline" type="button"
+  commandfor="confirm" command="show-modal">Show Dialog</button>
+
+<dialog id="confirm" class="np-alert-dialog" role="alertdialog"
+  aria-labelledby="confirm-title" aria-describedby="confirm-description">
+  <div class="np-alert-dialog-header">
+    <h2 id="confirm-title" class="np-alert-dialog-title">Are you absolutely sure?</h2>
+    <p id="confirm-description" class="np-alert-dialog-description">
+      This action cannot be undone.
+    </p>
+  </div>
+  <div class="np-alert-dialog-footer">
+    <button class="np-button np-button-outline" type="button"
+      commandfor="confirm" command="close" value="cancel" autofocus>Cancel</button>
+    <button class="np-button" type="button">Continue</button>
+  </div>
+</dialog>
+```
+
+Or use the data attributes instead of the classes: `data-np-alert-dialog`, `data-np-alert-dialog-header`, `data-np-alert-dialog-footer` and so on.
+
+---
+
+## Composition
+
+Use the following composition to build an `AlertDialog`:
+
+```text
+AlertDialog
+├── AlertDialogTrigger
+└── AlertDialogContent
+    ├── AlertDialogHeader
+    │   ├── AlertDialogMedia
+    │   ├── AlertDialogTitle
+    │   └── AlertDialogDescription
+    └── AlertDialogFooter
+        ├── AlertDialogCancel
+        └── AlertDialogAction
+```
+
+---
+
+## How it works
+
+The browser's native `dialog` element does the hard parts: it shows the panel in the top layer, makes the rest of the page inert, traps focus, closes on Escape and returns focus to the button. A click on the dimmed backdrop does not close it, which is what makes it an alert dialog.
+
+The `commandfor` and `command` attributes open and close it without any JavaScript in browsers that support invoker commands. The script only adds that behavior where it is missing.
+
+Put `autofocus` on the safest button, normally Cancel, so keyboard users start there. When Cancel closes the dialog, `dialog.returnValue` is set to the button's `value`.
+
+---
+
+## Small
+
+Add `np-alert-dialog-sm` (or `data-size="sm"`). The footer buttons then share one row.
+
+<ComponentPreview
+  name="alert-dialog-small"
+  target="html"
+  styles={["/button/button.css", "/alert-dialog/alert-dialog.css"]}
+  scripts={["/alert-dialog/alert-dialog.js"]}
+/>
+
+---
+
+## Media
+
+Add an `np-alert-dialog-media` element with an inline SVG as the first child of the header.
+
+<ComponentPreview
+  name="alert-dialog-media"
+  target="html"
+  styles={["/button/button.css", "/alert-dialog/alert-dialog.css"]}
+  scripts={["/alert-dialog/alert-dialog.js"]}
+/>
+
+---
+
+## Small with media
+
+<ComponentPreview
+  name="alert-dialog-small-media"
+  target="html"
+  styles={["/button/button.css", "/alert-dialog/alert-dialog.css"]}
+  scripts={["/alert-dialog/alert-dialog.js"]}
+/>
+
+---
+
+## Destructive
+
+Use the destructive Button for the action.
+
+<ComponentPreview
+  name="alert-dialog-destructive"
+  target="html"
+  styles={["/button/button.css", "/alert-dialog/alert-dialog.css"]}
+  scripts={["/alert-dialog/alert-dialog.js"]}
+/>
+
+---
+
+## Reference
+
+### Component
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Alert dialog | `data-np-alert-dialog` | `np-alert-dialog` |
+| Overlay (React only) | `data-np-alert-dialog-overlay` | `np-alert-dialog-overlay` |
+| Header | `data-np-alert-dialog-header` | `np-alert-dialog-header` |
+| Media | `data-np-alert-dialog-media` | `np-alert-dialog-media` |
+| Title | `data-np-alert-dialog-title` | `np-alert-dialog-title` |
+| Description | `data-np-alert-dialog-description` | `np-alert-dialog-description` |
+| Footer | `data-np-alert-dialog-footer` | `np-alert-dialog-footer` |
+
+### Size
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Default | - | - |
+| Small | `data-size="sm"` | `np-alert-dialog-sm` |

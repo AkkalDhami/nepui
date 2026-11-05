@@ -1,0 +1,238 @@
+---
+title: Alert Dialog
+description: A modal dialog that interrupts the user with important content and expects a response.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://github.com/akkaldhami.png
+---
+
+<ComponentPreview
+  name="alert-dialog-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/alert-dialog.json"
+      nepui="npx nepui@latest add alert-dialog"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react cn" className="mt-6"/>
+
+      <Step>Install the required nepui dependencies:</Step>
+      <PackageManagerTabs command="npx nepui@latest add button" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="alert-dialog"
+        title="components/nepui/alert-dialog/alert-dialog.css"
+        fileTarget="components/nepui/alert-dialog/alert-dialog.css"
+      />
+      <ComponentSource
+        target="react"
+        name="alert-dialog"
+        title="components/nepui/alert-dialog/alert-dialog.tsx"
+        fileTarget="components/nepui/alert-dialog/alert-dialog.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="alert-dialog"
+        title="components/nepui/alert-dialog/index.ts"
+        fileTarget="components/nepui/alert-dialog/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/nepui/alert-dialog"
+```
+
+```tsx
+<AlertDialog>
+  <AlertDialogTrigger render={<Button variant="outline" />}>
+    Show Dialog
+  </AlertDialogTrigger>
+  <AlertDialogContent>
+    <AlertDialogHeader>
+      <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+      <AlertDialogDescription>
+        This action cannot be undone. This will permanently delete your account
+        from our servers.
+      </AlertDialogDescription>
+    </AlertDialogHeader>
+    <AlertDialogFooter>
+      <AlertDialogCancel>Cancel</AlertDialogCancel>
+      <AlertDialogAction>Continue</AlertDialogAction>
+    </AlertDialogFooter>
+  </AlertDialogContent>
+</AlertDialog>
+```
+
+Unlike a regular dialog, an alert dialog is not closed by clicking outside it. `AlertDialogCancel` closes it; `AlertDialogAction` is a regular button and leaves the dialog open so you can handle the action first. To close after handling it, control the dialog with `open` and `onOpenChange`.
+
+---
+
+## Composition
+
+Use the following composition to build an `AlertDialog`:
+
+```text
+AlertDialog
+├── AlertDialogTrigger
+└── AlertDialogContent
+    ├── AlertDialogHeader
+    │   ├── AlertDialogMedia
+    │   ├── AlertDialogTitle
+    │   └── AlertDialogDescription
+    └── AlertDialogFooter
+        ├── AlertDialogCancel
+        └── AlertDialogAction
+```
+
+---
+
+## Basic
+
+A basic alert dialog with a title, description, and cancel and continue buttons.
+
+<ComponentPreview
+  name="alert-dialog-demo"
+/>
+
+---
+
+## Small
+
+Use the `size="sm"` prop to make the alert dialog smaller. The footer buttons then share one row.
+
+<ComponentPreview
+  name="alert-dialog-small"
+/>
+
+---
+
+## Media
+
+Use the `AlertDialogMedia` component to add a media element such as an icon or image to the alert dialog.
+
+<ComponentPreview
+  name="alert-dialog-media"
+/>
+
+---
+
+## Small with media
+
+Combine `size="sm"` with `AlertDialogMedia`.
+
+<ComponentPreview
+  name="alert-dialog-small-media"
+/>
+
+---
+
+## Destructive
+
+Use `variant="destructive"` on `AlertDialogAction` for a destructive action.
+
+<ComponentPreview
+  name="alert-dialog-destructive"
+/>
+
+---
+
+## API Reference
+
+This component wraps the [Base UI Alert Dialog](https://base-ui.com/react/components/alert-dialog). Each part accepts all props of the matching Base UI part.
+
+### AlertDialog
+
+Groups all parts. It renders no element of its own.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `open` | `boolean` | - |
+| `defaultOpen` | `boolean` | `false` |
+| `onOpenChange` | `(open: boolean, eventDetails) => void` | - |
+
+### AlertDialogTrigger
+
+A button that opens the dialog.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `render` | `ReactElement \| (props, state) => ReactElement` | - |
+| `className` | `string \| (state) => string` | - |
+
+### AlertDialogContent
+
+The dialog panel. It renders the portal and the overlay for you.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `size` | `"default" \| "sm"` | `"default"` |
+| `className` | `string \| (state) => string` | - |
+
+### AlertDialogHeader
+
+Groups the media, title and description. Renders a `div`.
+
+### AlertDialogFooter
+
+The bar that holds the buttons. Renders a `div`.
+
+### AlertDialogMedia
+
+A boxed icon or image in the header. Renders a `div`.
+
+### AlertDialogTitle
+
+The heading that labels the dialog. Renders an `h2`.
+
+### AlertDialogDescription
+
+Explains what the dialog is asking. Renders a `p`.
+
+### AlertDialogAction
+
+The confirming button. It renders a nepui `Button` and does not close the dialog automatically.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `variant` | `"default" \| "destructive" \| ...` | `"default"` |
+| `size` | `"default" \| "sm" \| ...` | `"default"` |
+
+### AlertDialogCancel
+
+The dismissing button. It renders an outline `Button` and closes the dialog.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `variant` | `"outline" \| ...` | `"outline"` |
+| `size` | `"default" \| "sm" \| ...` | `"default"` |
