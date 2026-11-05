@@ -93,10 +93,14 @@ export function resolveAllDestinations(
   files: RegistryFile[],
   target: Target,
   componentName: string,
-  projectRoot = process.cwd()
+  projectRoot = process.cwd(),
+  sourceDirectory = "."
 ): ResolvedFile[] {
   return files.map((file) => {
-    const relativePath = resolveRelativeDestination(file, target, componentName)
+    const relativePath = path.join(
+      sourceDirectory,
+      resolveRelativeDestination(file, target, componentName)
+    )
     const absolutePath = resolveSafeAbsolutePathInRoot(
       relativePath,
       projectRoot
