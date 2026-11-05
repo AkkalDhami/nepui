@@ -1,7 +1,61 @@
+<link rel="stylesheet" href="./styles/menu.css" />
+
 <nav class="np-breadcrumb" aria-label="Breadcrumb">
   <ol class="np-breadcrumb-list">
     <li class="np-breadcrumb-item">
       <a class="np-breadcrumb-link" href="#">Home</a>
+    </li>
+    <li
+      class="np-breadcrumb-separator"
+      role="presentation"
+      aria-hidden="true"
+    ></li>
+    <li class="np-breadcrumb-item">
+      <div class="np-menu" style="--np-menu-anchor: --breadcrumb-demo-menu">
+        <button
+          class="np-breadcrumb-ellipsis"
+          type="button"
+          aria-label="Toggle menu"
+          popovertarget="breadcrumb-demo-menu"
+        ></button>
+        <div
+          id="breadcrumb-demo-menu"
+          class="np-menu-content"
+          popover
+          role="menu"
+          aria-label="More breadcrumb destinations"
+        >
+          <div class="np-menu-group" role="group">
+            <button
+              class="np-menu-item"
+              type="button"
+              role="menuitem"
+              popovertarget="breadcrumb-demo-menu"
+              popovertargetaction="hide"
+            >
+              Documentation
+            </button>
+            <button
+              class="np-menu-item"
+              type="button"
+              role="menuitem"
+              popovertarget="breadcrumb-demo-menu"
+              popovertargetaction="hide"
+            >
+              Themes
+            </button>
+            <button
+              class="np-menu-item"
+              type="button"
+              role="menuitem"
+              popovertarget="breadcrumb-demo-menu"
+              popovertargetaction="hide"
+            >
+              GitHub
+            </button>
+          </div>
+        </div>
+      </div>
     </li>
     <li
       class="np-breadcrumb-separator"

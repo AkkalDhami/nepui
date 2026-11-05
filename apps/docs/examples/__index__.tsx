@@ -12,6 +12,11 @@ import KtmReactAccordionMultiple from "./ktm/react/accordion-multiple"
 import KtmReactAlertAction from "./ktm/react/alert-action"
 import KtmReactAlertColors from "./ktm/react/alert-colors"
 import KtmReactAlertDemo from "./ktm/react/alert-demo"
+import KtmReactAlertDialogDemo from "./ktm/react/alert-dialog-demo"
+import KtmReactAlertDialogDestructive from "./ktm/react/alert-dialog-destructive"
+import KtmReactAlertDialogMedia from "./ktm/react/alert-dialog-media"
+import KtmReactAlertDialogSmallMedia from "./ktm/react/alert-dialog-small-media"
+import KtmReactAlertDialogSmall from "./ktm/react/alert-dialog-small"
 import KtmReactAlertVariants from "./ktm/react/alert-variants"
 import KtmReactAspectRatioCustom from "./ktm/react/aspect-ratio-custom"
 import KtmReactAspectRatioDemo from "./ktm/react/aspect-ratio-demo"
@@ -41,6 +46,12 @@ import KtmReactBreadcrumbDropdown from "./ktm/react/breadcrumb-dropdown"
 import KtmReactBreadcrumbExpandable from "./ktm/react/breadcrumb-expandable"
 import KtmReactBreadcrumbLink from "./ktm/react/breadcrumb-link"
 import KtmReactBreadcrumbSeparator from "./ktm/react/breadcrumb-separator"
+import KtmReactBubbleAlignment from "./ktm/react/bubble-alignment"
+import KtmReactBubbleDemo from "./ktm/react/bubble-demo"
+import KtmReactBubbleGroup from "./ktm/react/bubble-group"
+import KtmReactBubbleLink from "./ktm/react/bubble-link"
+import KtmReactBubbleReactions from "./ktm/react/bubble-reactions"
+import KtmReactBubbleVariants from "./ktm/react/bubble-variants"
 import KtmReactButtonDefault from "./ktm/react/button-default"
 import KtmReactButtonDemo from "./ktm/react/button-demo"
 import KtmReactButtonDestructive from "./ktm/react/button-destructive"
@@ -81,6 +92,16 @@ import KtmReactCollapsibleBasic from "./ktm/react/collapsible-basic"
 import KtmReactCollapsibleDemo from "./ktm/react/collapsible-demo"
 import KtmReactCollapsibleFileTree from "./ktm/react/collapsible-file-tree"
 import KtmReactCollapsibleSettings from "./ktm/react/collapsible-settings"
+import KtmReactComboboxAutoHighlight from "./ktm/react/combobox-auto-highlight"
+import KtmReactComboboxClear from "./ktm/react/combobox-clear"
+import KtmReactComboboxCustom from "./ktm/react/combobox-custom"
+import KtmReactComboboxDemo from "./ktm/react/combobox-demo"
+import KtmReactComboboxDisabled from "./ktm/react/combobox-disabled"
+import KtmReactComboboxGroups from "./ktm/react/combobox-groups"
+import KtmReactComboboxInputGroup from "./ktm/react/combobox-input-group"
+import KtmReactComboboxInvalid from "./ktm/react/combobox-invalid"
+import KtmReactComboboxMultiple from "./ktm/react/combobox-multiple"
+import KtmReactComboboxPopup from "./ktm/react/combobox-popup"
 import KtmReactCopyButtonDemo from "./ktm/react/copy-button-demo"
 import KtmReactDialogBasic from "./ktm/react/dialog-basic"
 import KtmReactDialogClose from "./ktm/react/dialog-close"
@@ -202,6 +223,10 @@ import KtmReactSelectSizes from "./ktm/react/select-sizes"
 import KtmReactSeparatorDemo from "./ktm/react/separator-demo"
 import KtmReactSeparatorList from "./ktm/react/separator-list"
 import KtmReactSeparatorVertical from "./ktm/react/separator-vertical"
+import KtmReactSheetBasic from "./ktm/react/sheet-basic"
+import KtmReactSheetDemo from "./ktm/react/sheet-demo"
+import KtmReactSheetNoClose from "./ktm/react/sheet-no-close"
+import KtmReactSheetSide from "./ktm/react/sheet-side"
 import KtmReactSkeletonAvatar from "./ktm/react/skeleton-avatar"
 import KtmReactSkeletonCard from "./ktm/react/skeleton-card"
 import KtmReactSkeletonDemo from "./ktm/react/skeleton-demo"
@@ -240,6 +265,10 @@ import KtmReactTextareaDisabled from "./ktm/react/textarea-disabled"
 import KtmReactTextareaField from "./ktm/react/textarea-field"
 import KtmReactTextareaInvalid from "./ktm/react/textarea-invalid"
 import KtmReactTextareaWithLabel from "./ktm/react/textarea-with-label"
+import KtmReactToastAction from "./ktm/react/toast-action"
+import KtmReactToastDemo from "./ktm/react/toast-demo"
+import KtmReactToastPromise from "./ktm/react/toast-promise"
+import KtmReactToastTypes from "./ktm/react/toast-types"
 import KtmReactToggleDemo from "./ktm/react/toggle-demo"
 import KtmReactToggleDisabled from "./ktm/react/toggle-disabled"
 import KtmReactToggleFillIcon from "./ktm/react/toggle-fill-icon"
@@ -280,6 +309,11 @@ export const ExamplesIndex: Record<
       "alert-action": KtmReactAlertAction,
       "alert-colors": KtmReactAlertColors,
       "alert-demo": KtmReactAlertDemo,
+      "alert-dialog-demo": KtmReactAlertDialogDemo,
+      "alert-dialog-destructive": KtmReactAlertDialogDestructive,
+      "alert-dialog-media": KtmReactAlertDialogMedia,
+      "alert-dialog-small-media": KtmReactAlertDialogSmallMedia,
+      "alert-dialog-small": KtmReactAlertDialogSmall,
       "alert-variants": KtmReactAlertVariants,
       "aspect-ratio-custom": KtmReactAspectRatioCustom,
       "aspect-ratio-demo": KtmReactAspectRatioDemo,
@@ -309,6 +343,12 @@ export const ExamplesIndex: Record<
       "breadcrumb-expandable": KtmReactBreadcrumbExpandable,
       "breadcrumb-link": KtmReactBreadcrumbLink,
       "breadcrumb-separator": KtmReactBreadcrumbSeparator,
+      "bubble-alignment": KtmReactBubbleAlignment,
+      "bubble-demo": KtmReactBubbleDemo,
+      "bubble-group": KtmReactBubbleGroup,
+      "bubble-link": KtmReactBubbleLink,
+      "bubble-reactions": KtmReactBubbleReactions,
+      "bubble-variants": KtmReactBubbleVariants,
       "button-default": KtmReactButtonDefault,
       "button-demo": KtmReactButtonDemo,
       "button-destructive": KtmReactButtonDestructive,
@@ -349,6 +389,16 @@ export const ExamplesIndex: Record<
       "collapsible-demo": KtmReactCollapsibleDemo,
       "collapsible-file-tree": KtmReactCollapsibleFileTree,
       "collapsible-settings": KtmReactCollapsibleSettings,
+      "combobox-auto-highlight": KtmReactComboboxAutoHighlight,
+      "combobox-clear": KtmReactComboboxClear,
+      "combobox-custom": KtmReactComboboxCustom,
+      "combobox-demo": KtmReactComboboxDemo,
+      "combobox-disabled": KtmReactComboboxDisabled,
+      "combobox-groups": KtmReactComboboxGroups,
+      "combobox-input-group": KtmReactComboboxInputGroup,
+      "combobox-invalid": KtmReactComboboxInvalid,
+      "combobox-multiple": KtmReactComboboxMultiple,
+      "combobox-popup": KtmReactComboboxPopup,
       "copy-button-demo": KtmReactCopyButtonDemo,
       "dialog-basic": KtmReactDialogBasic,
       "dialog-close": KtmReactDialogClose,
@@ -470,6 +520,10 @@ export const ExamplesIndex: Record<
       "separator-demo": KtmReactSeparatorDemo,
       "separator-list": KtmReactSeparatorList,
       "separator-vertical": KtmReactSeparatorVertical,
+      "sheet-basic": KtmReactSheetBasic,
+      "sheet-demo": KtmReactSheetDemo,
+      "sheet-no-close": KtmReactSheetNoClose,
+      "sheet-side": KtmReactSheetSide,
       "skeleton-avatar": KtmReactSkeletonAvatar,
       "skeleton-card": KtmReactSkeletonCard,
       "skeleton-demo": KtmReactSkeletonDemo,
@@ -508,6 +562,10 @@ export const ExamplesIndex: Record<
       "textarea-field": KtmReactTextareaField,
       "textarea-invalid": KtmReactTextareaInvalid,
       "textarea-with-label": KtmReactTextareaWithLabel,
+      "toast-action": KtmReactToastAction,
+      "toast-demo": KtmReactToastDemo,
+      "toast-promise": KtmReactToastPromise,
+      "toast-types": KtmReactToastTypes,
       "toggle-demo": KtmReactToggleDemo,
       "toggle-disabled": KtmReactToggleDisabled,
       "toggle-fill-icon": KtmReactToggleFillIcon,
@@ -543,6 +601,11 @@ export const ExamplesIndex: Record<
       "alert-action": "ktm/html/alert-action.html",
       "alert-colors": "ktm/html/alert-colors.html",
       "alert-demo": "ktm/html/alert-demo.html",
+      "alert-dialog-demo": "ktm/html/alert-dialog-demo.html",
+      "alert-dialog-destructive": "ktm/html/alert-dialog-destructive.html",
+      "alert-dialog-media": "ktm/html/alert-dialog-media.html",
+      "alert-dialog-small-media": "ktm/html/alert-dialog-small-media.html",
+      "alert-dialog-small": "ktm/html/alert-dialog-small.html",
       "alert-variants": "ktm/html/alert-variants.html",
       "aspect-ratio-custom": "ktm/html/aspect-ratio-custom.html",
       "aspect-ratio-demo": "ktm/html/aspect-ratio-demo.html",
@@ -571,6 +634,12 @@ export const ExamplesIndex: Record<
       "breadcrumb-expandable": "ktm/html/breadcrumb-expandable.html",
       "breadcrumb-link": "ktm/html/breadcrumb-link.html",
       "breadcrumb-separator": "ktm/html/breadcrumb-separator.html",
+      "bubble-alignment": "ktm/html/bubble-alignment.html",
+      "bubble-demo": "ktm/html/bubble-demo.html",
+      "bubble-group": "ktm/html/bubble-group.html",
+      "bubble-link": "ktm/html/bubble-link.html",
+      "bubble-reactions": "ktm/html/bubble-reactions.html",
+      "bubble-variants": "ktm/html/bubble-variants.html",
       "button-default": "ktm/html/button-default.html",
       "button-demo": "ktm/html/button-demo.html",
       "button-destructive": "ktm/html/button-destructive.html",
@@ -611,6 +680,16 @@ export const ExamplesIndex: Record<
       "collapsible-demo": "ktm/html/collapsible-demo.html",
       "collapsible-file-tree": "ktm/html/collapsible-file-tree.html",
       "collapsible-settings": "ktm/html/collapsible-settings.html",
+      "combobox-auto-highlight": "ktm/html/combobox-auto-highlight.html",
+      "combobox-clear": "ktm/html/combobox-clear.html",
+      "combobox-custom": "ktm/html/combobox-custom.html",
+      "combobox-demo": "ktm/html/combobox-demo.html",
+      "combobox-disabled": "ktm/html/combobox-disabled.html",
+      "combobox-groups": "ktm/html/combobox-groups.html",
+      "combobox-input-group": "ktm/html/combobox-input-group.html",
+      "combobox-invalid": "ktm/html/combobox-invalid.html",
+      "combobox-multiple": "ktm/html/combobox-multiple.html",
+      "combobox-popup": "ktm/html/combobox-popup.html",
       "dialog-close": "ktm/html/dialog-close.html",
       "dialog-demo": "ktm/html/dialog-demo.html",
       "dialog-form": "ktm/html/dialog-form.html",
@@ -729,6 +808,10 @@ export const ExamplesIndex: Record<
       "separator-demo": "ktm/html/separator-demo.html",
       "separator-list": "ktm/html/separator-list.html",
       "separator-vertical": "ktm/html/separator-vertical.html",
+      "sheet-basic": "ktm/html/sheet-basic.html",
+      "sheet-demo": "ktm/html/sheet-demo.html",
+      "sheet-no-close": "ktm/html/sheet-no-close.html",
+      "sheet-side": "ktm/html/sheet-side.html",
       "skeleton-avatar": "ktm/html/skeleton-avatar.html",
       "skeleton-card": "ktm/html/skeleton-card.html",
       "skeleton-demo": "ktm/html/skeleton-demo.html",
@@ -766,6 +849,10 @@ export const ExamplesIndex: Record<
       "textarea-field": "ktm/html/textarea-field.html",
       "textarea-invalid": "ktm/html/textarea-invalid.html",
       "textarea-with-label": "ktm/html/textarea-with-label.html",
+      "toast-action": "ktm/html/toast-action.html",
+      "toast-demo": "ktm/html/toast-demo.html",
+      "toast-promise": "ktm/html/toast-promise.html",
+      "toast-types": "ktm/html/toast-types.html",
       "toggle-demo": "ktm/html/toggle-demo.html",
       "toggle-disabled": "ktm/html/toggle-disabled.html",
       "toggle-fill-icon": "ktm/html/toggle-fill-icon.html",

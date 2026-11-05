@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="./styles/button.css" />
+<link rel="stylesheet" href="./styles/alert-dialog.css" />
+
+<button
+  class="np-button np-button-outline"
+  type="button"
+  commandfor="alert-dialog-demo-dialog"
+  command="show-modal"
+>
+  Show Dialog
+</button>
+<dialog
+  id="alert-dialog-demo-dialog"
+  class="np-alert-dialog"
+  role="alertdialog"
+  aria-labelledby="alert-dialog-demo-dialog-title"
+  aria-describedby="alert-dialog-demo-dialog-description"
+>
+  <div class="np-alert-dialog-header">
+    <h2 id="alert-dialog-demo-dialog-title" class="np-alert-dialog-title">
+      Are you absolutely sure?
+    </h2>
+    <p
+      id="alert-dialog-demo-dialog-description"
+      class="np-alert-dialog-description"
+    >
+      This action cannot be undone. This will permanently delete your account
+      from our servers.
+    </p>
+  </div>
+  <div class="np-alert-dialog-footer">
+    <button
+      class="np-button np-button-outline"
+      value="cancel"
+      commandfor="alert-dialog-demo-dialog"
+      command="close"
+      autofocus
+    >
+      Cancel
+    </button>
+    <button class="np-button" type="button">Continue</button>
+  </div>
+</dialog>
