@@ -160,6 +160,11 @@
 }
 
 :is(.np-input-group, [data-np-input-group])
+  :is(.np-input-group-input, [data-np-input-group-input]) {
+  height: 100%;
+}
+
+:is(.np-input-group, [data-np-input-group])
   :is(.np-input-group-textarea, [data-np-input-group-textarea]) {
   resize: none;
   padding-block: calc(var(--np-spacing, 0.25rem) * 2);
@@ -174,7 +179,7 @@
   justify-content: center;
   gap: calc(var(--np-spacing, 0.25rem) * 2);
   height: auto;
-  padding-block: calc(var(--np-spacing, 0.25rem) * 1.5);
+  padding-block: 0;
   padding-inline: calc(var(--np-spacing, 0.25rem) * 2) 0;
   order: -9999;
 

@@ -1,0 +1,250 @@
+/* nepui — Sheet */
+
+.np-sheet-content,
+[data-np-sheet-content] {
+  --np-sheet-width: 75%;
+  --np-sheet-max-width: 24rem;
+  --np-sheet-height: 100%;
+  --np-sheet-bg: var(--np-background);
+  --np-sheet-color: var(--np-foreground);
+  --np-sheet-border-color: var(--np-border);
+  --np-sheet-shadow: var(--np-shadow-lg);
+  --np-sheet-gap: calc(var(--np-spacing) * 4);
+  --np-sheet-font-size: 0.875rem;
+  --np-sheet-offset: 2.5rem;
+  --np-sheet-duration: 200ms;
+  --np-sheet-overlay-bg: color-mix(
+    in oklab,
+    var(--np-foreground) 10%,
+    transparent
+  );
+  --np-sheet-overlay-blur: 4px;
+  --np-sheet-overlay-duration: 150ms;
+
+  /* Right (the default). The other sides redefine these four. */
+  --np-sheet-inset: 0 0 0 auto;
+  --np-sheet-border-width: 0 0 0 1px;
+  --np-sheet-from-x: var(--np-sheet-offset);
+  --np-sheet-from-y: 0px;
+
+  position: fixed;
+  inset: var(--np-sheet-inset);
+  z-index: 50;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--np-sheet-gap);
+  width: var(--np-sheet-width);
+  max-width: var(--np-sheet-max-width);
+  height: var(--np-sheet-height);
+  max-height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  border-style: solid;
+  border-width: var(--np-sheet-border-width);
+  border-color: var(--np-sheet-border-color);
+  outline: none;
+  background-color: var(--np-sheet-bg);
+  box-shadow: var(--np-sheet-shadow);
+  color: var(--np-sheet-color);
+  font-size: var(--np-sheet-font-size);
+  translate: 0 0;
+  opacity: 1;
+  transition:
+    opacity var(--np-sheet-duration) ease-in-out,
+    translate var(--np-sheet-duration) ease-in-out;
+}
+
+:is(.np-sheet-left, [data-side="left"]):is(
+  .np-sheet-content,
+  [data-np-sheet-content]
+) {
+  --np-sheet-inset: 0 auto 0 0;
+  --np-sheet-border-width: 0 1px 0 0;
+  --np-sheet-from-x: calc(var(--np-sheet-offset) * -1);
+}
+
+:is(.np-sheet-top, [data-side="top"]):is(
+  .np-sheet-content,
+  [data-np-sheet-content]
+) {
+  --np-sheet-inset: 0 0 auto 0;
+  --np-sheet-width: 100%;
+  --np-sheet-max-width: none;
+  --np-sheet-height: auto;
+  --np-sheet-border-width: 0 0 1px 0;
+  --np-sheet-from-x: 0px;
+  --np-sheet-from-y: calc(var(--np-sheet-offset) * -1);
+}
+
+:is(.np-sheet-bottom, [data-side="bottom"]):is(
+  .np-sheet-content,
+  [data-np-sheet-content]
+) {
+  --np-sheet-inset: auto 0 0 0;
+  --np-sheet-width: 100%;
+  --np-sheet-max-width: none;
+  --np-sheet-height: auto;
+  --np-sheet-border-width: 1px 0 0 0;
+  --np-sheet-from-x: 0px;
+  --np-sheet-from-y: var(--np-sheet-offset);
+}
+
+:is(.np-sheet-content, [data-np-sheet-content])[data-starting-style],
+:is(.np-sheet-content, [data-np-sheet-content])[data-ending-style] {
+  opacity: 0;
+  translate: var(--np-sheet-from-x) var(--np-sheet-from-y);
+}
+
+dialog:is(.np-sheet-content, [data-np-sheet-content]) {
+  transition:
+    opacity var(--np-sheet-duration) ease-in-out,
+    translate var(--np-sheet-duration) ease-in-out,
+    overlay var(--np-sheet-duration) ease-in-out allow-discrete,
+    display var(--np-sheet-duration) ease-in-out allow-discrete;
+}
+
+dialog:is(.np-sheet-content, [data-np-sheet-content]):not([open]) {
+  display: none;
+  opacity: 0;
+  translate: var(--np-sheet-from-x) var(--np-sheet-from-y);
+}
+
+@starting-style {
+  dialog:is(.np-sheet-content, [data-np-sheet-content])[open] {
+    opacity: 0;
+    translate: var(--np-sheet-from-x) var(--np-sheet-from-y);
+  }
+}
+
+html:has(dialog:is(.np-sheet-content, [data-np-sheet-content]):modal) {
+  overflow: hidden;
+  scrollbar-gutter: stable;
+}
+
+.np-sheet-overlay,
+[data-np-sheet-overlay] {
+  --np-sheet-overlay-bg: color-mix(
+    in oklab,
+    var(--np-foreground) 10%,
+    transparent
+  );
+  --np-sheet-overlay-blur: 4px;
+  --np-sheet-overlay-duration: 150ms;
+
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background-color: var(--np-sheet-overlay-bg);
+  backdrop-filter: blur(var(--np-sheet-overlay-blur));
+  opacity: 1;
+  transition: opacity var(--np-sheet-overlay-duration) ease-in-out;
+}
+
+:is(.np-sheet-overlay, [data-np-sheet-overlay])[data-starting-style],
+:is(.np-sheet-overlay, [data-np-sheet-overlay])[data-ending-style] {
+  opacity: 0;
+}
+
+dialog:is(.np-sheet-content, [data-np-sheet-content])::backdrop {
+  background-color: transparent;
+  backdrop-filter: blur(0);
+  transition:
+    background-color var(--np-sheet-overlay-duration) ease-in-out,
+    backdrop-filter var(--np-sheet-overlay-duration) ease-in-out,
+    overlay var(--np-sheet-overlay-duration) ease-in-out allow-discrete,
+    display var(--np-sheet-overlay-duration) ease-in-out allow-discrete;
+}
+
+dialog:is(.np-sheet-content, [data-np-sheet-content])[open]::backdrop {
+  background-color: var(--np-sheet-overlay-bg);
+  backdrop-filter: blur(var(--np-sheet-overlay-blur));
+}
+
+@starting-style {
+  dialog:is(.np-sheet-content, [data-np-sheet-content])[open]::backdrop {
+    background-color: transparent;
+    backdrop-filter: blur(0);
+  }
+}
+
+:is(.np-sheet-content, [data-np-sheet-content])
+  :is(.np-sheet-close, [data-np-sheet-close]) {
+  position: absolute;
+  inset-block-start: calc(var(--np-spacing) * 3);
+  inset-inline-end: calc(var(--np-spacing) * 3);
+}
+
+.np-sheet-header,
+[data-np-sheet-header] {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0.285rem;
+  padding: calc(var(--np-spacing) * 4);
+}
+
+.np-sheet-title,
+[data-np-sheet-title] {
+  margin: 0;
+  color: var(--np-foreground);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.np-sheet-description,
+[data-np-sheet-description] {
+  margin: 0;
+  color: var(--np-muted-foreground);
+  font-size: 0.875rem;
+}
+
+.np-sheet-footer,
+[data-np-sheet-footer] {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--np-spacing) * 2);
+  margin-block-start: auto;
+  padding: calc(var(--np-spacing) * 4);
+}
+
+:is(.dark, [data-theme="dark"])
+  :is(
+    .np-sheet-content,
+    [data-np-sheet-content],
+    .np-sheet-overlay,
+    [data-np-sheet-overlay]
+  ) {
+  --np-sheet-overlay-bg: color-mix(
+    in oklab,
+    var(--np-background) 10%,
+    transparent
+  );
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light, [data-theme="light"])
+    :is(
+      .np-sheet-content,
+      [data-np-sheet-content],
+      .np-sheet-overlay,
+      [data-np-sheet-overlay]
+    ) {
+    --np-sheet-overlay-bg: color-mix(
+      in oklab,
+      var(--np-background) 10%,
+      transparent
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.np-sheet-content, [data-np-sheet-content]),
+  dialog:is(.np-sheet-content, [data-np-sheet-content]),
+  :is(.np-sheet-overlay, [data-np-sheet-overlay]),
+  dialog:is(.np-sheet-content, [data-np-sheet-content])::backdrop {
+    transition: none;
+  }
+}
