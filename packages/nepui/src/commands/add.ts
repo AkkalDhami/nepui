@@ -7,13 +7,18 @@ import {
   ComponentNotFoundError,
   isCliError,
   RegistryError,
+  UserCancelledError,
   UsageError,
 } from "@/utils/errors.js"
 import { buildComponentUrl, fetchComponent, fetchIndex } from "@/registry/fech"
 import { GITHUB_URL } from "@/constants"
 import kleur from "kleur"
+import prompts from "prompts"
 import { rewriteComponentImports } from "@/utils/rewrite-imports"
 import type { ResolvedFile } from "@/installer/paths.js"
+import { readProjectConfig } from "@/utils/project-config.js"
+import { installProjectDependencies } from "@/utils/package-manager.js"
+import { initCommand } from "@/commands/init.js"
 
 export interface AddOptions {
   target?: string
@@ -26,12 +31,29 @@ export async function addCommand(
   rawComponentNames: string[],
   options: AddOptions
 ): Promise<void> {
-  const target = validateTarget(options.target ?? "html")
+  const projectDirectory = process.cwd()
+  let config = await readProjectConfig(projectDirectory)
+  if (!config) {
+    if (!(await confirmCreateConfig())) {
+      throw new UserCancelledError("Add cancelled.")
+    }
+
+    await initCommand({ target: options.target, directory: "." })
+    config = await readProjectConfig(projectDirectory)
+    if (!config) {
+      throw new RegistryError(
+        `Initialization completed without creating nepui.json:\n${projectDirectory}`
+      )
+    }
+  }
+
+  const target = validateTarget(options.target ?? config?.target ?? "html")
   const requestedNames = normalizeComponentNames(rawComponentNames)
 
   if (options.all && requestedNames.length > 0) {
     throw new UsageError("Use either component names or --all, not both.")
   }
+
   if (!options.all && requestedNames.length === 0) {
     throw new UsageError(
       "Provide one or more component names, or use --all.\n\n" +
@@ -89,11 +111,33 @@ export async function addCommand(
     results.flatMap((result, index) => {
       if (result.status !== "fulfilled") return []
       const files = rewriteComponentImports(result.value.files, target)
-      return resolveAllDestinations(files, target, componentNames[index])
+      return resolveAllDestinations(
+        files,
+        target,
+        componentNames[index],
+        projectDirectory,
+        config?.src ?? "."
+      )
     })
   )
 
   spinner.stop()
+
+  const fulfilledItems = results.flatMap((result) =>
+    result.status === "fulfilled" ? [result.value] : []
+  )
+  const dependencies = [
+    ...new Set(fulfilledItems.flatMap((item) => item.dependencies ?? [])),
+  ]
+  const devDependencies = [
+    ...new Set(fulfilledItems.flatMap((item) => item.devDependencies ?? [])),
+  ]
+
+  await installProjectDependencies(
+    projectDirectory,
+    dependencies,
+    devDependencies
+  )
 
   const result = await installFiles(resolved, options.force)
 
@@ -120,6 +164,24 @@ export async function addCommand(
       logger.info(`  - ${logger.path(entry.relativePath)}`)
     }
   }
+}
+
+async function confirmCreateConfig(): Promise<boolean> {
+  const response = await prompts(
+    {
+      type: "confirm",
+      name: "create",
+      message:
+        "You need to create a nepui.json file to add components. Proceed?",
+      initial: true,
+    },
+    {
+      onCancel: () => {
+        throw new UserCancelledError("Add cancelled.")
+      },
+    }
+  )
+  return response.create === true
 }
 
 function normalizeComponentNames(rawNames: string[]): string[] {

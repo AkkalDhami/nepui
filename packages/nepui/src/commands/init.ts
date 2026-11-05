@@ -1,4 +1,3 @@
-import { execa } from "execa"
 import fs from "fs-extra"
 import ora from "ora"
 import path from "node:path"
@@ -10,13 +9,17 @@ import { fetchTokens } from "@/registry/fech.js"
 import { VALID_TARGETS, type Target, type RegistryFile } from "@/types"
 import { InstallationError, UserCancelledError } from "@/utils/errors.js"
 import { validateTarget } from "@/utils/validation.js"
+import {
+  validateSourceDirectory,
+  type NepuiConfig,
+} from "@/utils/project-config.js"
+import { installProjectDependencies } from "@/utils/package-manager.js"
 
 const REACT_DEPENDENCIES = ["@base-ui/react", "class-variance-authority", "cn"]
 
-type PackageManager = "npm" | "pnpm" | "yarn" | "bun"
-
 export interface InitOptions {
   target?: string
+  src?: string
   directory?: string
   force?: boolean
   local?: boolean
@@ -26,8 +29,12 @@ export async function initCommand(options: InitOptions): Promise<void> {
   const target = options.target
     ? validateTarget(options.target)
     : await promptForTarget()
-  const directory = options.directory ?? (await promptForDirectory())
+  const directory = options.directory ?? "."
   const projectDirectory = path.resolve(process.cwd(), directory)
+  const src = validateSourceDirectory(
+    projectDirectory,
+    options.src ?? (await promptForSourceDirectory())
+  )
 
   const spinner = ora("Initializing nepui...").start()
 
@@ -41,12 +48,26 @@ export async function initCommand(options: InitOptions): Promise<void> {
 
     if (target === "react") {
       spinner.stop()
-      await installReactDependencies(projectDirectory)
+      await installProjectDependencies(projectDirectory, REACT_DEPENDENCIES)
       spinner.start("Writing design tokens...")
     }
 
     const targetPath =
       target === "html" ? "styles/tokens.css" : "components/nepui/tokens.css"
+    const config: NepuiConfig = { target, src }
+    const configFile: RegistryFile = {
+      path: "nepui.json",
+      content: JSON.stringify(
+        {
+          $schema: "https://nepui.vercel.app/schema.json",
+          ...config,
+        },
+        null,
+        2
+      ),
+      type: "registry:config",
+      target: "nepui.json",
+    }
     const tokenFile: RegistryFile = {
       path: "tokens.css",
       content,
@@ -55,22 +76,31 @@ export async function initCommand(options: InitOptions): Promise<void> {
     }
 
     spinner.stop()
-    const [resolved] = resolveAllDestinations(
-      [tokenFile],
-      target,
-      "tokens",
-      projectDirectory
-    )
-    const result = await installFiles([resolved], options.force)
+    const resolved = [
+      ...resolveAllDestinations(
+        [configFile],
+        target,
+        "tokens",
+        projectDirectory
+      ),
+      ...resolveAllDestinations(
+        [tokenFile],
+        target,
+        "tokens",
+        projectDirectory,
+        src
+      ),
+    ]
+    const result = await installFiles(resolved, options.force)
 
     logger.br()
     if (result.written.length > 0) {
       logger.success(
-        `Initialized ${target} tokens at ${logger.path(path.join(directory, targetPath))}.`
+        `Initialized ${target} in ${logger.path(path.join(directory, src))}.`
       )
     } else {
       logger.warn(
-        `Kept existing ${logger.path(path.join(directory, targetPath))}.`
+        `Kept existing files in ${logger.path(path.join(directory, src))}.`
       )
     }
   } catch (err) {
@@ -79,12 +109,12 @@ export async function initCommand(options: InitOptions): Promise<void> {
   }
 }
 
-async function promptForDirectory(): Promise<string> {
+async function promptForSourceDirectory(): Promise<string> {
   const response = await prompts(
     {
       type: "text",
-      name: "directory",
-      message: "Where should nepui be initialized?",
+      name: "src",
+      message: "Where should nepui component files be placed?",
       initial: ".",
     },
     {
@@ -94,10 +124,10 @@ async function promptForDirectory(): Promise<string> {
     }
   )
 
-  if (typeof response.directory !== "string" || !response.directory.trim()) {
+  if (typeof response.src !== "string" || !response.src.trim()) {
     throw new UserCancelledError("Initialization cancelled.")
   }
-  return response.directory.trim()
+  return response.src.trim()
 }
 
 async function promptForTarget(): Promise<Target> {
@@ -152,65 +182,4 @@ async function requirePackageJson(projectDirectory: string): Promise<void> {
       `The React project's package.json must contain a JSON object:\n${packageJsonPath}`
     )
   }
-}
-
-async function installReactDependencies(
-  projectDirectory: string
-): Promise<void> {
-  const packageManager = await detectPackageManager(projectDirectory)
-  const command = packageManager === "npm" ? "install" : "add"
-
-  logger.info(`Installing React dependencies with ${packageManager}:`)
-  REACT_DEPENDENCIES.forEach((dep) => logger.info(` - ${dep}`))
-  try {
-    await execa(packageManager, [command, ...REACT_DEPENDENCIES], {
-      stdio: "inherit",
-      cwd: projectDirectory,
-    })
-  } catch (cause) {
-    const detail = cause instanceof Error ? cause.message : String(cause)
-    throw new InstallationError(
-      `Failed to install React dependencies with ${packageManager}.\n\n${detail}`
-    )
-  }
-}
-
-async function detectPackageManager(
-  projectDirectory: string
-): Promise<PackageManager> {
-  const packageJsonPath = path.join(projectDirectory, "package.json")
-  if (await fs.pathExists(packageJsonPath)) {
-    const packageJson: unknown = JSON.parse(
-      await fs.readFile(packageJsonPath, "utf8")
-    )
-    if (
-      typeof packageJson === "object" &&
-      packageJson !== null &&
-      !Array.isArray(packageJson) &&
-      "packageManager" in packageJson &&
-      typeof packageJson.packageManager === "string"
-    ) {
-      const name = packageJson.packageManager.split("@")[0]
-      if (isPackageManager(name)) return name
-    }
-  }
-
-  const lockfiles: Array<[string, PackageManager]> = [
-    ["pnpm-lock.yaml", "pnpm"],
-    ["yarn.lock", "yarn"],
-    ["bun.lock", "bun"],
-    ["bun.lockb", "bun"],
-    ["package-lock.json", "npm"],
-  ]
-  for (const [filename, manager] of lockfiles) {
-    if (await fs.pathExists(path.join(projectDirectory, filename)))
-      return manager
-  }
-  return "npm"
-}
-
-function isPackageManager(value: string): value is PackageManager {
-  return (
-    value === "npm" || value === "pnpm" || value === "yarn" || value === "bun"
-  )
 }

@@ -31,6 +31,7 @@ export function createProgram(): Command {
     .argument("[directory]", "Project directory to initialize")
     .description("Initialize nepui design tokens for a target")
     .option("--target <target>", "Project target: html or react")
+    .option("--src <path>", "Source directory for nepui files")
     .option("--force", "Overwrite existing files")
     .option("--local", "Use the local registry (for development)")
     .action(async (directory: string | undefined, options: InitOptions) => {
@@ -41,7 +42,7 @@ export function createProgram(): Command {
     .command("add")
     .argument("[components...]", "Names of the components to add")
     .description("Add one or more nepui components")
-    .option("--target <target>", "Component target: html or react", "html")
+    .option("--target <target>", "Component target: html or react")
     .option("--all", "Add every available component for the target")
     .option("--force", "Overwrite existing files")
     .option("--local", "Add components from local environment(for development)")

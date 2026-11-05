@@ -85,6 +85,22 @@ export async function fetchComponent(
   return {
     ...item,
     files: [...item.files, ...dependencyFiles],
+    dependencies: [
+      ...new Set([
+        ...(item.dependencies ?? []),
+        ...dependencyItems.flatMap(
+          (dependency) => dependency.dependencies ?? []
+        ),
+      ]),
+    ],
+    devDependencies: [
+      ...new Set([
+        ...(item.devDependencies ?? []),
+        ...dependencyItems.flatMap(
+          (dependency) => dependency.devDependencies ?? []
+        ),
+      ]),
+    ],
   }
 }
 

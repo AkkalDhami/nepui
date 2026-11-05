@@ -67,6 +67,12 @@ export function validateRegistryItem(
     item.registryDependencies = data["registryDependencies"].filter((dep) =>
       isNonEmptyString(dep)
     )
+  if (Array.isArray(data["dependencies"])) {
+    item.dependencies = data["dependencies"].filter(isNonEmptyString)
+  }
+  if (Array.isArray(data["devDependencies"])) {
+    item.devDependencies = data["devDependencies"].filter(isNonEmptyString)
+  }
   if (isNonEmptyString(data["title"])) item.title = data["title"]
   if (isNonEmptyString(data["description"]))
     item.description = data["description"]

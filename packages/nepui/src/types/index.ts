@@ -20,6 +20,8 @@ export interface RegistryItem {
   description?: string
   files: RegistryFile[]
   registryDependencies?: string[]
+  dependencies?: string[]
+  devDependencies?: string[]
 }
 
 /** One entry inside a registry index (list) response. */
