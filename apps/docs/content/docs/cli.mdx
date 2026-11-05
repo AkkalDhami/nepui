@@ -9,9 +9,10 @@ Use the nepui CLI to initialize a project and add component source files directl
 npx nepui@latest init --target react
 npx nepui@latest init --target html
 
-npx nepui@latest add button --target react
-npx nepui@latest add button card spinner --target html
-npx nepui@latest add --all --target react
+npx nepui@latest init --target react --src .
+
+npx nepui@latest add button card spinner
+npx nepui@latest add --all
 ```
 
 No separate install step is required. Run the CLI on demand with `npx`, or pin a version in CI with `npx nepui@latest`.
@@ -19,16 +20,19 @@ No separate install step is required. Run the CLI on demand with `npx`, or pin a
 ## Initialize a project
 
 ```bash
-npx nepui@latest init [directory] --target <html|react>
+npx nepui@latest init [directory] [--target <html|react>] [--src <path>]
 ```
 
-`init` creates the base nepui token stylesheet for your project and sets up the correct folder structure for the selected target.
+`init` creates `nepui.json` in the selected project directory and writes the
+base token stylesheet under the configured source root. If `--target` or
+`--src` is omitted, the CLI prompts for it. The source root defaults to `.`.
 
 Examples:
 
 ```bash
 npx nepui@latest init --target react
 npx nepui@latest init --target html
+npx nepui@latest init --target react --src .
 ```
 
 ```bash
@@ -41,17 +45,30 @@ npx nepui@latest init --target html my-app
 npx nepui@latest init
 ```
 
-If you do not pass a directory, the CLI prompts you for the target and folder.
+Without options, the CLI prompts for a target and source root and uses the
+current directory. A positional directory selects a different project root.
+
+The generated configuration looks like this:
+
+```json
+{
+  "$schema": "https://nepui.vercel.app/schema.json",
+  "target": "react",
+  "src": "./src"
+}
+```
 
 For React projects, it writes the base token file to `components/nepui/tokens.css`.
 For HTML projects, it writes it to `styles/tokens.css`.
+Both paths are relative to the configured `src` directory. For example, with
+`"src": "./src"`, React tokens are written to `src/components/nepui/tokens.css`.
 
 React initialization also installs the required dependencies for the project when needed.
 
 ## Install components
 
 ```bash
-npx nepui@latest add <component> [<component>...] --target <html|react>
+npx nepui@latest add <component> [<component>...] [--target <html|react>]
 ```
 
 You can add:
@@ -63,14 +80,19 @@ You can add:
 Examples:
 
 ```bash
-npx nepui@latest add button --target react
-npx nepui@latest add button card spinner --target react
+npx nepui@latest add button card spinner
 npx nepui@latest add button card spinner --target html
-npx nepui@latest add --all --target html
-npx nepui@latest add --all --target react
+npx nepui@latest add --all
 ```
 
-The default target is `html`.
+`add` reads the `target` and `src` values from `nepui.json`. An explicit
+`--target` overrides the configured target. If `nepui.json` is missing, the
+CLI asks whether to create it. Choosing yes runs the initialization prompts
+for target and source root, creates the config and token stylesheet, then adds
+the requested components. Choosing no cancels the add.
+
+The CLI installs package `dependencies` and `devDependencies` declared by
+fetched component registry items using the project's detected package manager.
 
 If a destination file already exists, the CLI asks whether to overwrite it, skip it, or cancel. Nothing is silently replaced. An unknown component name or an invalid `--target` value fails immediately, and no files are written.
 
@@ -99,3 +121,6 @@ By default, the CLI lists components for the `html` target. Plain output is an a
 | --- | --- |
 | `-V, --version` | Print the installed CLI version |
 | `-h, --help` | Show help for `nepui` or any subcommand |
+| `init --target` | Select the project target |
+| `init --src` | Set the source root, relative to the project directory |
+| `add --target` | Override the target from `nepui.json` |
