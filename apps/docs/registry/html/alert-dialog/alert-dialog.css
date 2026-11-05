@@ -1,0 +1,321 @@
+/* nepui - Alert Dialog */
+
+.np-alert-dialog-overlay,
+[data-np-alert-dialog-overlay] {
+  --np-alert-dialog-overlay: color-mix(
+    in oklab,
+    var(--np-foreground) 10%,
+    transparent
+  );
+  --np-alert-dialog-duration: 100ms;
+
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  isolation: isolate;
+  background-color: var(--np-alert-dialog-overlay);
+  transition: opacity var(--np-alert-dialog-duration) ease;
+}
+
+:is(.np-alert-dialog-overlay, [data-np-alert-dialog-overlay]):is(
+  [data-starting-style],
+  [data-ending-style]
+) {
+  opacity: 0;
+}
+
+@supports (backdrop-filter: blur(4px)) {
+  .np-alert-dialog-overlay,
+  [data-np-alert-dialog-overlay],
+  dialog:is(.np-alert-dialog, [data-np-alert-dialog])::backdrop {
+    backdrop-filter: blur(4px);
+  }
+}
+
+.np-alert-dialog,
+[data-np-alert-dialog] {
+  --np-alert-dialog-max-width: 20rem;
+  --np-alert-dialog-padding: calc(var(--np-spacing) * 4);
+  --np-alert-dialog-gap: calc(var(--np-spacing) * 4);
+  --np-alert-dialog-radius: var(--np-radius-xl);
+  --np-alert-dialog-bg: var(--np-background);
+  --np-alert-dialog-color: var(--np-foreground);
+  --np-alert-dialog-ring: color-mix(
+    in oklab,
+    var(--np-foreground) 10%,
+    transparent
+  );
+  --np-alert-dialog-overlay: color-mix(
+    in oklab,
+    var(--np-foreground) 10%,
+    transparent
+  );
+  --np-alert-dialog-duration: 100ms;
+  --np-alert-dialog-text-align: center;
+  --np-alert-dialog-header-align: center;
+  --np-alert-dialog-media-rows: auto auto 1fr;
+  --np-alert-dialog-media-cols: none;
+  --np-alert-dialog-media-row: auto;
+  --np-alert-dialog-title-col: auto;
+  --np-alert-dialog-footer-display: flex;
+
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: min(var(--np-alert-dialog-max-width), calc(100vw - 2rem));
+  max-height: calc(100dvh - 2rem);
+  height: fit-content;
+  margin: auto;
+  padding: var(--np-alert-dialog-padding);
+  gap: var(--np-alert-dialog-gap);
+  border: 0;
+  border-radius: var(--np-alert-dialog-radius);
+  background-color: var(--np-alert-dialog-bg);
+  box-shadow: 0 0 0 1px var(--np-alert-dialog-ring);
+  color: var(--np-alert-dialog-color);
+  font-size: 0.875rem;
+  line-height: calc(1.25 / 0.875);
+  text-align: start;
+  overflow: auto;
+  outline: none;
+  transition:
+    opacity var(--np-alert-dialog-duration) ease,
+    transform var(--np-alert-dialog-duration) ease;
+}
+
+:is(.np-alert-dialog, [data-np-alert-dialog]):not(dialog),
+dialog:is(.np-alert-dialog, [data-np-alert-dialog])[open] {
+  display: grid;
+}
+
+:is(.np-alert-dialog, [data-np-alert-dialog]):is(
+  [data-starting-style],
+  [data-ending-style]
+) {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+dialog:is(.np-alert-dialog, [data-np-alert-dialog]) {
+  transition:
+    opacity var(--np-alert-dialog-duration) ease,
+    transform var(--np-alert-dialog-duration) ease,
+    overlay var(--np-alert-dialog-duration) ease allow-discrete,
+    display var(--np-alert-dialog-duration) ease allow-discrete;
+}
+
+dialog:is(.np-alert-dialog, [data-np-alert-dialog]):not([open]) {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+@starting-style {
+  dialog:is(.np-alert-dialog, [data-np-alert-dialog])[open] {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+dialog:is(.np-alert-dialog, [data-np-alert-dialog])::backdrop {
+  background-color: var(
+    --np-alert-dialog-overlay,
+    color-mix(in oklab, var(--np-foreground) 10%, transparent)
+  );
+  opacity: 0;
+  transition:
+    opacity var(--np-alert-dialog-duration, 100ms) ease,
+    overlay var(--np-alert-dialog-duration, 100ms) ease allow-discrete,
+    display var(--np-alert-dialog-duration, 100ms) ease allow-discrete;
+}
+
+dialog:is(.np-alert-dialog, [data-np-alert-dialog])[open]::backdrop {
+  opacity: 1;
+}
+
+@starting-style {
+  dialog:is(.np-alert-dialog, [data-np-alert-dialog])[open]::backdrop {
+    opacity: 0;
+  }
+}
+
+html:has(dialog:is(.np-alert-dialog, [data-np-alert-dialog]):modal) {
+  overflow: hidden;
+}
+
+.np-alert-dialog-sm,
+:is(.np-alert-dialog, [data-np-alert-dialog])[data-size="sm"] {
+  --np-alert-dialog-max-width: 20rem;
+  --np-alert-dialog-footer-display: grid;
+}
+
+@media (min-width: 40rem) {
+  :is(.np-alert-dialog, [data-np-alert-dialog]):not(
+    :is(.np-alert-dialog-sm, [data-size="sm"])
+  ) {
+    --np-alert-dialog-max-width: 24rem;
+    --np-alert-dialog-text-align: start;
+    --np-alert-dialog-header-align: start;
+    --np-alert-dialog-media-rows: auto 1fr;
+    --np-alert-dialog-media-cols: auto 1fr;
+    --np-alert-dialog-media-row: span 2;
+    --np-alert-dialog-title-col: 2;
+  }
+}
+
+.np-alert-dialog-header,
+[data-np-alert-dialog-header] {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  place-items: var(--np-alert-dialog-header-align, center);
+  gap: calc(var(--np-spacing) * 1.5);
+  text-align: var(--np-alert-dialog-text-align, center);
+}
+
+:is(.np-alert-dialog-header, [data-np-alert-dialog-header]):has(
+  > :is(.np-alert-dialog-media, [data-np-alert-dialog-media])
+) {
+  grid-template-rows: var(--np-alert-dialog-media-rows, auto auto 1fr);
+  grid-template-columns: var(--np-alert-dialog-media-cols, none);
+  column-gap: calc(var(--np-spacing) * 4);
+}
+
+.np-alert-dialog-media,
+[data-np-alert-dialog-media] {
+  display: inline-flex;
+  grid-row: var(--np-alert-dialog-media-row, auto);
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: calc(var(--np-spacing) * 10);
+  height: calc(var(--np-spacing) * 10);
+  margin-block-end: calc(var(--np-spacing) * 2);
+  border-radius: var(--np-radius-md);
+  background-color: var(--np-muted);
+}
+
+:is(.np-alert-dialog-media, [data-np-alert-dialog-media]) svg {
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+:is(.np-alert-dialog-media, [data-np-alert-dialog-media])
+  svg:not([class*="size-"]) {
+  width: calc(var(--np-spacing) * 6);
+  height: calc(var(--np-spacing) * 6);
+}
+
+.np-alert-dialog-title,
+[data-np-alert-dialog-title] {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.np-alert-dialog-description,
+[data-np-alert-dialog-description] {
+  margin: 0;
+  color: var(--np-muted-foreground);
+  font-size: 0.875rem;
+  text-wrap: balance;
+}
+
+:is(.np-alert-dialog-header, [data-np-alert-dialog-header]):has(
+    > :is(.np-alert-dialog-media, [data-np-alert-dialog-media])
+  )
+  > :is(
+    .np-alert-dialog-title,
+    [data-np-alert-dialog-title],
+    .np-alert-dialog-description,
+    [data-np-alert-dialog-description]
+  ) {
+  grid-column-start: var(--np-alert-dialog-title-col, auto);
+}
+
+@media (min-width: 48rem) {
+  .np-alert-dialog-description,
+  [data-np-alert-dialog-description] {
+    text-wrap: pretty;
+  }
+}
+
+:is(.np-alert-dialog-description, [data-np-alert-dialog-description]) a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+:is(.np-alert-dialog-description, [data-np-alert-dialog-description]) a:hover {
+  color: var(--np-foreground);
+}
+
+.np-alert-dialog-footer,
+[data-np-alert-dialog-footer] {
+  display: var(--np-alert-dialog-footer-display, flex);
+  flex-direction: column-reverse;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  box-sizing: border-box;
+  margin: 0;
+  margin-inline: calc(
+    var(--np-alert-dialog-padding, calc(var(--np-spacing) * 4)) * -1
+  );
+  margin-block-end: calc(
+    var(--np-alert-dialog-padding, calc(var(--np-spacing) * 4)) * -1
+  );
+  padding: var(--np-alert-dialog-padding, calc(var(--np-spacing) * 4));
+  gap: calc(var(--np-spacing) * 2);
+  border-top: 1px solid var(--np-border);
+  border-end-start-radius: var(--np-alert-dialog-radius, var(--np-radius-xl));
+  border-end-end-radius: var(--np-alert-dialog-radius, var(--np-radius-xl));
+  background-color: color-mix(in oklab, var(--np-muted) 50%, transparent);
+}
+
+@media (min-width: 40rem) {
+  .np-alert-dialog-footer,
+  [data-np-alert-dialog-footer] {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}
+
+:is(.dark, [data-theme="dark"])
+  :is(
+    .np-alert-dialog,
+    [data-np-alert-dialog],
+    .np-alert-dialog-overlay,
+    [data-np-alert-dialog-overlay]
+  ) {
+  --np-alert-dialog-overlay: color-mix(
+    in oklab,
+    var(--np-background) 60%,
+    transparent
+  );
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light, [data-theme="light"])
+    :is(
+      .np-alert-dialog,
+      [data-np-alert-dialog],
+      .np-alert-dialog-overlay,
+      [data-np-alert-dialog-overlay]
+    ) {
+    --np-alert-dialog-overlay: color-mix(
+      in oklab,
+      var(--np-background) 60%,
+      transparent
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .np-alert-dialog-overlay,
+  [data-np-alert-dialog-overlay],
+  .np-alert-dialog,
+  [data-np-alert-dialog],
+  dialog:is(.np-alert-dialog, [data-np-alert-dialog]),
+  dialog:is(.np-alert-dialog, [data-np-alert-dialog])::backdrop {
+    transition: none;
+  }
+}

@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Alert Dialog</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/alert-dialog.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem 4rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: var(--np-font-sans, system-ui, sans-serif);
+      }
+      main {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+        max-width: 40rem;
+        margin-inline: auto;
+      }
+      section > h2 {
+        margin: 0 0 0.25rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+      .hint {
+        margin: 0 0 0.75rem;
+        font-size: 0.8125rem;
+        color: var(--np-muted-foreground);
+      }
+    </style>
+    <script src="../javascripts/alert-dialog.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Class form</h2>
+        <p class="hint">
+          <code>dialog.np-alert-dialog</code> with
+          <code>role="alertdialog"</code>. The button uses
+          <code>commandfor</code> and <code>command="show-modal"</code>.
+        </p>
+        <button
+          class="np-button np-button-outline"
+          type="button"
+          commandfor="alert-dialog-demo-dialog"
+          command="show-modal"
+        >
+          Show Dialog
+        </button>
+        <dialog
+          id="alert-dialog-demo-dialog"
+          class="np-alert-dialog"
+          role="alertdialog"
+          aria-labelledby="alert-dialog-demo-dialog-title"
+          aria-describedby="alert-dialog-demo-dialog-description"
+        >
+          <div class="np-alert-dialog-header">
+            <h2
+              id="alert-dialog-demo-dialog-title"
+              class="np-alert-dialog-title"
+            >
+              Are you absolutely sure?
+            </h2>
+            <p
+              id="alert-dialog-demo-dialog-description"
+              class="np-alert-dialog-description"
+            >
+              This action cannot be undone. This will permanently delete your
+              account from our servers.
+            </p>
+          </div>
+          <div class="np-alert-dialog-footer">
+            <button
+              class="np-button np-button-outline"
+              type="button"
+              commandfor="alert-dialog-demo-dialog"
+              command="close"
+              value="cancel"
+              autofocus
+            >
+              Cancel
+            </button>
+            <button class="np-button" type="button">Continue</button>
+          </div>
+        </dialog>
+      </section>
+
+      <section>
+        <h2>Data-attribute dialog</h2>
+        <p class="hint"><code>data-np-alert-dialog</code> and its parts.</p>
+        <button
+          class="np-button np-button-outline"
+          type="button"
+          commandfor="idx-data"
+          command="show-modal"
+        >
+          Data-attribute dialog
+        </button>
+        <dialog
+          id="idx-data"
+          data-np-alert-dialog
+          role="alertdialog"
+          aria-labelledby="idx-data-title"
+          aria-describedby="idx-data-description"
+        >
+          <div data-np-alert-dialog-header>
+            <h2 id="idx-data-title" data-np-alert-dialog-title>
+              Data attributes
+            </h2>
+            <p id="idx-data-description" data-np-alert-dialog-description>
+              The same dialog with <code>data-np-alert-dialog-*</code>.
+            </p>
+          </div>
+          <div data-np-alert-dialog-footer>
+            <button
+              class="np-button np-button-outline"
+              type="button"
+              commandfor="idx-data"
+              command="close"
+              value="cancel"
+              autofocus
+            >
+              Cancel
+            </button>
+            <button class="np-button" type="button">Continue</button>
+          </div>
+        </dialog>
+      </section>
+
+      <section>
+        <h2>Small</h2>
+        <p class="hint">
+          <code>np-alert-dialog-sm</code> or <code>data-size="sm"</code>.
+        </p>
+        <button
+          class="np-button np-button-outline"
+          type="button"
+          commandfor="alert-dialog-small-dialog"
+          command="show-modal"
+        >
+          Show Dialog
+        </button>
+        <dialog
+          id="alert-dialog-small-dialog"
+          class="np-alert-dialog np-alert-dialog-sm"
+          role="alertdialog"
+          aria-labelledby="alert-dialog-small-dialog-title"
+          aria-describedby="alert-dialog-small-dialog-description"
+        >
+          <div class="np-alert-dialog-header">
+            <h2
+              id="alert-dialog-small-dialog-title"
+              class="np-alert-dialog-title"
+            >
+              Allow accessory to connect?
+            </h2>
+            <p
+              id="alert-dialog-small-dialog-description"
+              class="np-alert-dialog-description"
+            >
+              Do you want to allow the USB accessory to connect to this device?
+            </p>
+          </div>
+          <div class="np-alert-dialog-footer">
+            <button
+              class="np-button np-button-outline"
+              type="button"
+              commandfor="alert-dialog-small-dialog"
+              command="close"
+              value="cancel"
+              autofocus
+            >
+              Don't allow
+            </button>
+            <button class="np-button" type="button">Allow</button>
+          </div>
+        </dialog>
+      </section>
+
+      <section>
+        <h2>Media</h2>
+        <p class="hint">An icon in <code>np-alert-dialog-media</code>.</p>
+        <button
+          class="np-button np-button-outline"
+          type="button"
+          commandfor="alert-dialog-media-dialog"
+          command="show-modal"
+        >
+          Share Project
+        </button>
+        <dialog
+          id="alert-dialog-media-dialog"
+          class="np-alert-dialog"
+          role="alertdialog"
+          aria-labelledby="alert-dialog-media-dialog-title"
+          aria-describedby="alert-dialog-media-dialog-description"
+        >
+          <div class="np-alert-dialog-header">
+            <div class="np-alert-dialog-media">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M8 12h8" />
+                <path d="M12 8v8" />
+                <circle cx="12" cy="12" r="10" />
+              </svg>
+            </div>
+            <h2
+              id="alert-dialog-media-dialog-title"
+              class="np-alert-dialog-title"
+            >
+              Share this project?
+            </h2>
+            <p
+              id="alert-dialog-media-dialog-description"
+              class="np-alert-dialog-description"
+            >
+              Anyone with the link will be able to view and edit this project.
+            </p>
+          </div>
+          <div class="np-alert-dialog-footer">
+            <button
+              class="np-button np-button-outline"
+              type="button"
+              commandfor="alert-dialog-media-dialog"
+              command="close"
+              value="cancel"
+              autofocus
+            >
+              Cancel
+            </button>
+            <button class="np-button" type="button">Share</button>
+          </div>
+        </dialog>
+      </section>
+
+      <section>
+        <h2>Small with media</h2>
+        <p class="hint"></p>
+        <button
+          class="np-button np-button-outline"
+          type="button"
+          commandfor="alert-dialog-small-media-dialog"
+          command="show-modal"
+        >
+          Show Dialog
+        </button>
+        <dialog
+          id="alert-dialog-small-media-dialog"
+          class="np-alert-dialog np-alert-dialog-sm"
+          role="alertdialog"
+          aria-labelledby="alert-dialog-small-media-dialog-title"
+          aria-describedby="alert-dialog-small-media-dialog-description"
+        >
+          <div class="np-alert-dialog-header">
+            <div class="np-alert-dialog-media">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m7 7 10 10-5 5V2l5 5L7 17" />
+              </svg>
+            </div>
+            <h2
+              id="alert-dialog-small-media-dialog-title"
+              class="np-alert-dialog-title"
+            >
+              Allow accessory to connect?
+            </h2>
+            <p
+              id="alert-dialog-small-media-dialog-description"
+              class="np-alert-dialog-description"
+            >
+              Do you want to allow the USB accessory to connect to this device?
+            </p>
+          </div>
+          <div class="np-alert-dialog-footer">
+            <button
+              class="np-button np-button-outline"
+              type="button"
+              commandfor="alert-dialog-small-media-dialog"
+              command="close"
+              value="cancel"
+              autofocus
+            >
+              Don't allow
+            </button>
+            <button class="np-button" type="button">Allow</button>
+          </div>
+        </dialog>
+      </section>
+
+      <section>
+        <h2>Destructive</h2>
+        <p class="hint">Use the destructive Button for the action.</p>
+        <button
+          class="np-button np-button-outline"
+          type="button"
+          commandfor="alert-dialog-destructive-dialog"
+          command="show-modal"
+        >
+          Delete Chat
+        </button>
+        <dialog
+          id="alert-dialog-destructive-dialog"
+          class="np-alert-dialog np-alert-dialog-sm"
+          role="alertdialog"
+          aria-labelledby="alert-dialog-destructive-dialog-title"
+          aria-describedby="alert-dialog-destructive-dialog-description"
+        >
+          <div class="np-alert-dialog-header">
+            <div
+              class="np-alert-dialog-media"
+              style="color: var(--np-destructive)"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M3 6h18" />
+                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                <line x1="10" x2="10" y1="11" y2="17" />
+                <line x1="14" x2="14" y1="11" y2="17" />
+              </svg>
+            </div>
+            <h2
+              id="alert-dialog-destructive-dialog-title"
+              class="np-alert-dialog-title"
+            >
+              Delete chat?
+            </h2>
+            <p
+              id="alert-dialog-destructive-dialog-description"
+              class="np-alert-dialog-description"
+            >
+              This will permanently delete this chat conversation. Check
+              Settings to delete any memories saved during this chat.
+            </p>
+          </div>
+          <div class="np-alert-dialog-footer">
+            <button
+              class="np-button np-button-outline"
+              type="button"
+              commandfor="alert-dialog-destructive-dialog"
+              command="close"
+              value="cancel"
+              autofocus
+            >
+              Cancel
+            </button>
+            <button class="np-button np-button-destructive" type="button">
+              Delete
+            </button>
+          </div>
+        </dialog>
+      </section>
+    </main>
+  </body>
+</html>
