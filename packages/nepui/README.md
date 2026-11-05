@@ -14,16 +14,10 @@ npx nepui@latest init --target react --src .
 
 npx nepui@latest init                 # prompts for target and directory
 
-npx nepui@latest add button --target react
-npx nepui@latest add button --target html
+npx nepui@latest add button
 
-npx nepui@latest add button card spinner input textarea field avatar item --target react
-npx nepui@latest add button card spinner input textarea field avatar item --target html
-
-npx nepui@latest add --all --target html
-npx nepui@latest add --all --target react
-
-npx nepui@latest add button --target react
+npx nepui@latest add button card spinner input textarea field avatar item 
+npx nepui@latest add --all
 ```
 
 `init` downloads `tokens.css` to `components/nepui/tokens.css` for React or
