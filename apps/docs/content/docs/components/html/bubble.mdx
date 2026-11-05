@@ -1,0 +1,169 @@
+---
+title: Bubble
+description: Displays conversational content in a message bubble. Supports variants, alignment, grouping, reactions, and links or buttons.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://github.com/akkaldhami.png
+---
+
+<ComponentPreview target="html" name="bubble-demo" />
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add bubble"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="bubble"
+        title="styles/bubble.css"
+        fileTarget="styles/bubble.css"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+
+}
+/>
+
+---
+
+## Usage
+
+Link the stylesheet, after `tokens.css`:
+
+```html
+<link rel="stylesheet" href="./styles/bubble.css" />
+```
+
+```html
++ <div class="np-bubble">
+  <div class="np-bubble-content">
+-   I checked the registry output and removed the stale route.
+  </div>
+  <div class="np-bubble-reactions" role="img" aria-label="Reaction: thumbs up">
+    <span>👍</span>
+  </div>
+</div>
+```
+
+Or use the data attributes instead of classes:
+
+```html showLineNumbers
+<div data-np-bubble data-variant="secondary" data-align="end">
+  <div data-np-bubble-content>Hello</div>
+</div>
+```
+
+The bubble only draws the surface. Put avatars, names and timestamps in your own message wrapper. It sizes to its content, up to 80% of the row. Colours come from tokens, so dark mode needs no extra setup. The styles use `color-mix()` and `:has()`, which need a modern browser.
+
+---
+
+## Composition
+
+```text
+Bubble
+├── BubbleContent
+└── BubbleReactions
+
+BubbleGroup
+├── Bubble
+│   └── BubbleContent
+└── Bubble
+    └── BubbleContent
+```
+
+---
+
+## Variants
+
+| Variant     | Class                   | Data attribute               | Description                                            |
+| ----------- | ----------------------- | ---------------------------- | ------------------------------------------------------ |
+| default     | -                       | -                            | A strong primary bubble, usually for the current user. |
+| secondary   | `np-bubble-secondary`   | `data-variant="secondary"`   | The standard neutral bubble.                           |
+| muted       | `np-bubble-muted`       | `data-variant="muted"`       | A lower-emphasis bubble.                               |
+| tinted      | `np-bubble-tinted`      | `data-variant="tinted"`      | A subtle primary-tinted bubble.                        |
+| outline     | `np-bubble-outline`     | `data-variant="outline"`     | A bordered bubble.                                     |
+| ghost       | `np-bubble-ghost`       | `data-variant="ghost"`       | Unframed content, full width.                          |
+| destructive | `np-bubble-destructive` | `data-variant="destructive"` | For errors and failed actions.                         |
+
+<ComponentPreview target="html" name="bubble-variants" height="600px" />
+
+---
+
+## Alignment
+
+Add `np-bubble-end` (or `data-align="end"`) to put the bubble on the end side of the row. It uses logical properties, so it flips in RTL.
+
+<ComponentPreview target="html" name="bubble-alignment" />
+
+---
+
+## Bubble group
+
+Put the bubbles in a `np-bubble-group`. The corners where two bubbles meet get squarer, on the start side for start-aligned bubbles and on the end side for end-aligned ones. The bubbles must be direct children of the group.
+
+<ComponentPreview target="html" name="bubble-group" />
+
+---
+
+## Reactions
+
+Add `np-bubble-reactions-top` (or `data-side="top"`) to hang the row off the top edge, and `np-bubble-reactions-start` (or `data-align="start"`) to anchor it at the start side. Give the row `role="img"` and an `aria-label`, so a screen reader announces it once. Buttons inside the row work too.
+
+<ComponentPreview target="html" name="bubble-reactions" />
+
+---
+
+## Links and buttons
+
+Put the `np-bubble-content` class on a `<button>` or an `<a>`. It gets a hover state and a focus ring. Use `disabled` on a button to dim it.
+
+<ComponentPreview target="html" name="bubble-link" />
+
+---
+
+## Accessibility
+
+- Group reactions with `role="img"` and a descriptive `aria-label`.
+- Make an interactive bubble a real `<button>` or `<a>`, never a clickable `<div>`.
+- Do not rely on colour alone. Keep error context in the text of a `destructive` bubble.
+
+---
+
+## Reference
+
+Each part supports the `data-np-*` attribute or its class alias.
+
+| Part      | Data attribute             | Class alias           |
+| --------- | -------------------------- | --------------------- |
+| Bubble    | `data-np-bubble`           | `np-bubble`           |
+| Content   | `data-np-bubble-content`   | `np-bubble-content`   |
+| Group     | `data-np-bubble-group`     | `np-bubble-group`     |
+| Reactions | `data-np-bubble-reactions` | `np-bubble-reactions` |
+
+Use these classes or attributes to customize a bubble:
+
+| Option                     | Data attribute               | Class alias                 |
+| -------------------------- | ---------------------------- | --------------------------- |
+| Secondary variant          | `data-variant="secondary"`   | `np-bubble-secondary`       |
+| Muted variant              | `data-variant="muted"`       | `np-bubble-muted`           |
+| Tinted variant             | `data-variant="tinted"`      | `np-bubble-tinted`          |
+| Outline variant            | `data-variant="outline"`     | `np-bubble-outline`         |
+| Ghost variant              | `data-variant="ghost"`       | `np-bubble-ghost`           |
+| Destructive variant        | `data-variant="destructive"` | `np-bubble-destructive`     |
+| End alignment              | `data-align="end"`           | `np-bubble-end`             |
+| Reactions on top           | `data-side="top"`            | `np-bubble-reactions-top`   |
+| Reactions aligned to start | `data-align="start"`         | `np-bubble-reactions-start` |
+
+The default variant and start alignment need no modifier.

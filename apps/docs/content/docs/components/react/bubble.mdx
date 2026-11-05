@@ -1,0 +1,198 @@
+---
+title: Bubble
+description: Displays conversational content in a message bubble. Supports variants, alignment, grouping, reactions, and links or buttons.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://github.com/akkaldhami.png
+---
+
+<ComponentPreview
+  name="bubble-demo"
+  height="min-h-130"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/bubble.json"
+      nepui="npx nepui@latest add bubble --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react class-variance-authority cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="bubble"
+        title="components/nepui/bubble/bubble.css"
+        fileTarget="components/nepui/bubble/bubble.css"
+      />
+      <ComponentSource
+        target="react"
+        name="bubble"
+        title="components/nepui/bubble/bubble.tsx"
+        fileTarget="components/nepui/bubble/bubble.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="bubble"
+        title="components/nepui/bubble/index.ts"
+        fileTarget="components/nepui/bubble/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import {
+  Bubble,
+  BubbleContent,
+  BubbleGroup,
+  BubbleReactions,
+} from "@/components/nepui/bubble"
+```
+
+```tsx
+<Bubble>
+  <BubbleContent>
+    I checked the registry output and removed the stale route.
+  </BubbleContent>
+  <BubbleReactions>
+    <span>👍</span>
+  </BubbleReactions>
+</Bubble>
+```
+
+The bubble only draws the surface. Put avatars, names and timestamps in your own message wrapper. It sizes to its content, up to 80% of the row. Colours come from tokens, so dark mode needs no extra setup. The styles use `color-mix()` and `:has()`, which need a modern browser.
+
+---
+
+## Composition
+
+```text
+Bubble
+├── BubbleContent
+└── BubbleReactions
+
+BubbleGroup
+├── Bubble
+│   └── BubbleContent
+└── Bubble
+    └── BubbleContent
+```
+
+---
+
+## Variants
+
+| Variant | Description |
+| --- | --- |
+| `default` | A strong primary bubble, usually for the current user. |
+| `secondary` | The standard neutral bubble for conversation content. |
+| `muted` | A lower-emphasis bubble for quiet supporting content. |
+| `tinted` | A subtle primary-tinted bubble. |
+| `outline` | A bordered bubble for secondary or rich content. |
+| `ghost` | Unframed content, full width. |
+| `destructive` | For errors and failed actions. |
+
+<ComponentPreview
+  name="bubble-variants"
+  height="min-h-140"
+/>
+
+---
+
+## Alignment
+
+Use `align="end"` to put the bubble on the end side of the row. It uses logical properties, so it flips in RTL.
+
+<ComponentPreview
+  name="bubble-alignment"
+/>
+
+---
+
+## Bubble group
+
+Put the bubbles in a `BubbleGroup`. The corners where two bubbles meet get squarer, on the start side for start-aligned bubbles and on the end side for end-aligned ones. The bubbles must be direct children of the group.
+
+<ComponentPreview
+  name="bubble-group"
+/>
+
+---
+
+## Reactions
+
+Use `side` (`top` or `bottom`) and `align` (`start` or `end`) on `BubbleReactions`. Give the row `role="img"` and an `aria-label`, so a screen reader announces it once. Buttons inside the row work too.
+
+<ComponentPreview
+  name="bubble-reactions"
+/>
+
+---
+
+## Links and buttons
+
+Use the `render` prop on `BubbleContent` to render a `<button>` or an `<a>`. It gets a hover state and a focus ring.
+
+<ComponentPreview
+  name="bubble-link"
+/>
+
+---
+
+## Accessibility
+
+- Group reactions with `role="img"` and a descriptive `aria-label`.
+- Make an interactive bubble a real `<button>` or `<a>`, never a clickable `<div>`.
+- Do not rely on colour alone. Keep error context in the text of a `destructive` bubble.
+
+---
+
+## API Reference
+
+### Bubble
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `"default" \| "secondary" \| "muted" \| "tinted" \| "outline" \| "ghost" \| "destructive"` | `"default"` |
+| `align` | `"start" \| "end"` | `"start"` |
+| `className` | `string` | - |
+
+Renders a `<div>`. `bubbleVariants` is exported too.
+
+### BubbleContent
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `render` | `ReactElement \| (props, state) => ReactElement` | - |
+| `className` | `string` | - |
+
+Renders a `<div>`.
+
+### BubbleReactions
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `side` | `"top" \| "bottom"` | `"bottom"` |
+| `align` | `"start" \| "end"` | `"end"` |
+| `className` | `string` | - |
+
+### BubbleGroup
+
+Renders a `<div>` that stacks its bubbles.
