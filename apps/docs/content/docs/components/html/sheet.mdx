@@ -1,0 +1,214 @@
+---
+title: Sheet
+description: Extends the Dialog component to display content that complements the main content of the screen.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://github.com/akkaldhami.png
+---
+
+<ComponentPreview
+  target="html"
+  name="sheet-demo"
+  styles={["/button/button.css", "/input/input.css", "/label/label.css"]}
+/>
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add sheet"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+     <Step>Install the required nepui dependencies:</Step>
+      <PackageManagerTabs command="npx nepui@latest add button" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="sheet"
+        title="styles/sheet.css"
+        fileTarget="styles/sheet.css"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the stylesheet, after `tokens.css` and `button.css`:
+
+```html
+<link rel="stylesheet" href="./styles/button.css">
+<link rel="stylesheet" href="./styles/sheet.css">
+```
+
+The sheet is a native [`<dialog>`](https://developer.mozilla.org/docs/Web/HTML/Element/dialog) element, and it is the panel. The browser provides the top layer, the focus trap, Escape to close, and makes the page behind inert. The overlay is the dialog's `::backdrop`, so there is no overlay element.
+
+```html
+<button type="button" class="np-button np-button-outline"
+  commandfor="my-sheet" command="show-modal">Open</button>
+
+<dialog id="my-sheet" class="np-sheet-content" closedby="any"
+  aria-labelledby="my-sheet-title" aria-describedby="my-sheet-description">
+  <div class="np-sheet-header">
+    <h2 class="np-sheet-title" id="my-sheet-title">Are you absolutely sure?</h2>
+    <p class="np-sheet-description" id="my-sheet-description">This action cannot be undone.</p>
+  </div>
+  <div class="np-sheet-footer">
+    <button type="button" class="np-button" commandfor="my-sheet" command="close">Save changes</button>
+  </div>
+  <button type="button" class="np-button np-button-ghost np-button-icon-sm np-sheet-close"
+    commandfor="my-sheet" command="close" aria-label="Close">
+    <svg ... aria-hidden="true"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+  </button>
+</dialog>
+```
+
+Or use the data attributes instead of classes:
+
+```html
+<dialog id="my-sheet" data-np-sheet-content closedby="any" aria-labelledby="my-sheet-title">
+  <div data-np-sheet-header>
+    <h2 data-np-sheet-title id="my-sheet-title">Are you absolutely sure?</h2>
+    <p data-np-sheet-description>This action cannot be undone.</p>
+  </div>
+  <div data-np-sheet-footer>...</div>
+  <button type="button" class="np-button np-button-ghost np-button-icon-sm"
+    data-np-sheet-close commandfor="my-sheet" command="close" aria-label="Close">...</button>
+</dialog>
+```
+
+Give the sheet an accessible name with `aria-labelledby`, pointing at the title. Add `aria-describedby` for the description.
+
+Put the corner close button last in the sheet. When a modal dialog opens, the browser focuses the first focusable element, so the last position keeps focus on your content. Add `autofocus` to a specific control to choose where focus starts.
+
+Colours come from tokens, so dark mode needs no extra setup. The styles use `@starting-style`, `transition-behavior: allow-discrete`, `:modal`, `:has()` and `color-mix()`, which need a modern browser.
+
+---
+
+
+## Composition
+
+Use the following composition to build a `Sheet`:
+
+```text
+Sheet
+├── SheetTrigger
+└── SheetContent
+    ├── SheetHeader
+    │   ├── SheetTitle
+    │   └── SheetDescription
+    └── SheetFooter
+```
+
+---
+
+## Basic
+
+<ComponentPreview
+  target="html"
+  name="sheet-basic"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Side
+
+Add a side class, or `data-side`, to the sheet. The default is the right edge. The sides are physical (the screen edge), so they do not flip in RTL.
+
+| Class | Data attribute |
+| --- | --- |
+| `np-sheet-right` (default) | `data-side="right"` |
+| `np-sheet-left` | `data-side="left"` |
+| `np-sheet-top` | `data-side="top"` |
+| `np-sheet-bottom` | `data-side="bottom"` |
+
+```html
+<dialog id="my-sheet" class="np-sheet-content np-sheet-left" ...>
+```
+
+This example uses the [Input](/docs/components/html/input) and [Label](/docs/components/html/label) components. Link their stylesheets first:
+
+```html
+<link rel="stylesheet" href="./styles/input.css">
+<link rel="stylesheet" href="./styles/label.css">
+```
+
+<ComponentPreview
+  target="html"
+  name="sheet-side"
+  styles={["/button/button.css", "/input/input.css", "/label/label.css"]}
+/>
+---
+
+---
+
+## No close button
+
+Leave out the corner button. Escape and `closedby="any"` still close the sheet. Leave `closedby` off too when the user has to pick an action.
+
+<ComponentPreview
+  target="html"
+  name="sheet-no-close"
+  styles={["/button/button.css"]}
+/>
+---
+
+## Parts
+
+| Name | Data attribute | Class alias |
+| --- | --- | --- |
+| Content (the `<dialog>`) | `data-np-sheet-content` | `np-sheet-content` |
+| Header | `data-np-sheet-header` | `np-sheet-header` |
+| Footer | `data-np-sheet-footer` | `np-sheet-footer` |
+| Title | `data-np-sheet-title` | `np-sheet-title` |
+| Description | `data-np-sheet-description` | `np-sheet-description` |
+| Close | `data-np-sheet-close` | `np-sheet-close` |
+| Overlay | `data-np-sheet-overlay` | `np-sheet-overlay` |
+
+The overlay hook is for React, where the overlay is an element. In HTML the overlay is the `::backdrop` of the dialog, and the overlay variables are set on the `<dialog>`.
+
+## State
+
+| Name | Selector |
+| --- | --- |
+| Open | `[open]` |
+| Open as a modal | `:modal` |
+
+### Opening and closing
+
+No JavaScript is needed. Use the invoker attributes on a button:
+
+| Attribute | Value | Effect |
+| --- | --- | --- |
+| `commandfor` | the sheet's `id` | Which sheet the button controls. |
+| `command` | `show-modal` | Opens the sheet as a modal. |
+| `command` | `close` | Closes the sheet. |
+
+You can also close it with a `<form method="dialog">`, which closes the dialog when the form is submitted.
+
+Browsers without invoker commands need the JavaScript API. A one-line handler is enough:
+
+```html
+<button type="button" onclick="document.getElementById('my-sheet').showModal()">Open</button>
+<button type="button" onclick="this.closest('dialog').close()">Close</button>
+```
+
+### Light dismiss
+
+Add `closedby="any"` to close the sheet on Escape or a click on the overlay. This matches the React version. Without it, a modal dialog closes only with Escape, or with one of your own close buttons.
+
+### Page scroll
+
+The stylesheet stops the page behind an open sheet from scrolling, with a rule on `html:has(dialog…:modal)`. It keeps the scrollbar gutter, so the page does not shift.

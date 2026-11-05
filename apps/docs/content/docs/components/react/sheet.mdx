@@ -1,0 +1,235 @@
+---
+title: Sheet
+description: Extends the Dialog component to display content that complements the main content of the screen.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://github.com/akkaldhami.png
+---
+
+<ComponentPreview
+  name="sheet-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/sheet.json"
+      nepui="npx nepui@latest add sheet --target react"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react class-variance-authority cn" className="mt-6"/>
+
+      <Step>Install the required nepui dependencies:</Step>
+      <PackageManagerTabs command="npx nepui@latest add button" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="sheet"
+        title="components/nepui/sheet/sheet.css"
+        fileTarget="components/nepui/sheet/sheet.css"
+      />
+      <ComponentSource
+        target="react"
+        name="sheet"
+        title="components/nepui/sheet/sheet.tsx"
+        fileTarget="components/nepui/sheet/sheet.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="sheet"
+        title="components/nepui/sheet/index.ts"
+        fileTarget="components/nepui/sheet/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/nepui/sheet"
+```
+
+```tsx
+<Sheet>
+  <SheetTrigger>Open</SheetTrigger>
+  <SheetContent>
+    <SheetHeader>
+      <SheetTitle>Are you absolutely sure?</SheetTitle>
+      <SheetDescription>This action cannot be undone.</SheetDescription>
+    </SheetHeader>
+  </SheetContent>
+</Sheet>
+```
+
+`SheetTrigger` renders a `<button>`. Use the `render` prop to render a nepui [Button](/docs/components/react/button) instead:
+
+```tsx
+<SheetTrigger render={<Button variant="outline" />}>Open</SheetTrigger>
+```
+
+`SheetContent` renders the overlay, the panel and a close button in a portal. The title and description give the sheet its accessible name and description, so always include a `SheetTitle`.
+
+The sheet is rendered in a portal, so set your theme class on `<html>` or `<body>`, not on a nested wrapper. Colours come from tokens. The styles use `color-mix()`, `:has()` and the individual `translate` property, which need a modern browser.
+
+---
+
+## Composition
+
+Use the following composition to build a `Sheet`:
+
+```text
+Sheet
+├── SheetTrigger
+└── SheetContent
+    ├── SheetHeader
+    │   ├── SheetTitle
+    │   └── SheetDescription
+    └── SheetFooter
+```
+
+`SheetClose` closes the sheet from your own content, for example in the footer.
+
+---
+
+## Basic
+
+<ComponentPreview
+  name="sheet-basic"
+/>
+
+---
+
+## Side
+
+Use the `side` prop on `SheetContent` to set the edge of the screen where the sheet appears. Values are `top`, `right`, `bottom` and `left`. The default is `right`.
+
+The sides are physical: `right` is always the right edge of the screen, also in RTL.
+
+This example uses [Input](/docs/components/react/input) and [Label](/docs/components/react/label). Add them to your project first.
+
+<ComponentPreview
+  name="sheet-side"
+/>
+
+---
+
+## No close button
+
+Use `showCloseButton={false}` on `SheetContent` to hide the close button. Escape and a click outside still close the sheet. To stop those too, pass `disablePointerDismissal` to `Sheet`, and handle `onOpenChange` for the Escape key.
+
+<ComponentPreview
+  name="sheet-no-close"
+/>
+
+---
+
+## Controlled
+
+Pass `open` and `onOpenChange` to control the sheet yourself.
+
+```tsx
+const [open, setOpen] = useState(false)
+
+<Sheet open={open} onOpenChange={setOpen}>
+  ...
+  <SheetFooter>
+    <Button onClick={() => setOpen(false)}>Save changes</Button>
+  </SheetFooter>
+</Sheet>
+```
+
+---
+
+## API Reference
+
+### Sheet
+
+Wraps [Base UI Dialog.Root](https://base-ui.com/react/components/dialog#api-reference). Renders no element.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `open` | `boolean` | - |
+| `defaultOpen` | `boolean` | `false` |
+| `onOpenChange` | `(open: boolean, eventDetails) => void` | - |
+| `modal` | `boolean \| "trap-focus"` | `true` |
+| `disablePointerDismissal` | `boolean` | `false` |
+
+### SheetTrigger
+
+Renders a `<button>`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `render` | `ReactElement \| (props, state) => ReactElement` | - |
+| `nativeButton` | `boolean` | `true` |
+| `className` | `string \| (state) => string` | - |
+
+### SheetContent
+
+Renders the overlay and the popup in a portal. Accepts the props of Base UI `Dialog.Popup`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `side` | `"top" \| "right" \| "bottom" \| "left"` | `"right"` |
+| `showCloseButton` | `boolean` | `true` |
+| `initialFocus` | `boolean \| RefObject \| (interactionType) => HTMLElement \| boolean` | - |
+| `finalFocus` | `boolean \| RefObject \| (interactionType) => HTMLElement \| boolean` | - |
+| `className` | `string \| (state) => string` | - |
+
+`sheetContentVariants` is exported too, so you can reuse the side classes on your own element.
+
+### SheetHeader
+
+Renders a `<div>`. Accepts all native `div` props.
+
+### SheetFooter
+
+Renders a `<div>`. Accepts all native `div` props. It sits at the bottom of a tall sheet.
+
+### SheetTitle
+
+Renders an `<h2>`.
+
+### SheetDescription
+
+Renders a `<p>`.
+
+### SheetClose
+
+Renders a `<button>` that closes the sheet.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `render` | `ReactElement \| (props, state) => ReactElement` | - |
+| `nativeButton` | `boolean` | `true` |
+
+### SheetOverlay
+
+Renders the dimmed layer behind the sheet. `SheetContent` already renders one.
+
+### SheetPortal
+
+Renders its children at the end of `<body>`. Accepts `container` and `keepMounted`.
