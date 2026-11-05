@@ -1,0 +1,472 @@
+---
+title: Combobox
+description: Autocomplete input with a list of suggestions.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://github.com/akkaldhami.png
+---
+
+Link the stylesheets:
+
+```html
+<link rel="stylesheet" href="./styles/button.css" />
+<link rel="stylesheet" href="./styles/input.css" />
+<link rel="stylesheet" href="./styles/input-group.css" />
+```
+
+<ComponentPreview
+  target="html"
+  name="combobox-demo"
+  styles={["/button/button.css", "/input/input.css", "/input-group/input-group.css"]}
+  scripts={["/combobox/combobox.js"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add combobox"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the required nepui dependencies:</Step>
+      <PackageManagerTabs command="npx nepui@latest add input-group button input" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="combobox"
+        title="styles/combobox.css"
+        fileTarget="styles/combobox.css"
+      />
+      <ComponentSource
+        target="html"
+        name="combobox"
+        title="javascripts/combobox.js"
+        fileTarget="javascripts/combobox.js"
+      />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Load the Button and Input Group stylesheets first, then `combobox.css`, and the script.
+
+```html
+<link rel="stylesheet" href="./styles/button.css" />
+<link rel="stylesheet" href="./styles/input.css" />
+<link rel="stylesheet" href="./styles/input-group.css" />
+<link rel="stylesheet" href="./styles/combobox.css" />
+
+<script src="./javascripts/combobox.js" defer></script>
+```
+
+```html
+<div class="np-combobox" style="width: 100%; max-width: 16rem">
+  <div class="np-input-group">
+    <input
+      class="np-input-group-input"
+      placeholder="Select a framework"
+      aria-label="Framework"
+    />
+    <div class="np-input-group-addon np-input-group-addon-end">
+      <button
+        type="button"
+        class="np-button np-button-ghost np-button-icon-xs np-input-group-button np-combobox-trigger"
+        aria-label="Open options"
+      ></button>
+    </div>
+  </div>
+  <div class="np-combobox-content">
+    <div class="np-combobox-empty">No items found.</div>
+    <div class="np-combobox-list">
+      <div class="np-combobox-item">Next.js</div>
+      <div class="np-combobox-item">SvelteKit</div>
+      <div class="np-combobox-item">Nuxt.js</div>
+    </div>
+  </div>
+</div>
+```
+
+Or use the data attributes instead of the classes: `data-np-combobox`, `data-np-combobox-content`, `data-np-combobox-list`, `data-np-combobox-item`, and so on for every part.
+
+The input must have an accessible name, use `aria-label` or a `<label>`. The chevron, the clear icon and the check mark are drawn by the stylesheet, so the buttons and items contain only text.
+
+#### What the script adds
+
+You do not write the ARIA. For every combobox the script sets `role="combobox"`, `aria-expanded`, `aria-controls`, `aria-activedescendant`, `role="listbox"` and `role="option"` with ids, the check mark inside each item, and the `popover` attribute on the content. The content is a top-layer popover, so a parent with `overflow: hidden`, such as a Card, never clips it. The script positions it under the input and flips it above when there is no room.
+
+---
+
+
+## Composition
+
+### Simple
+
+A single-line input and a flat list (see <LINK href="#basic">Basic</LINK>).
+
+```text
+Combobox
+├── ComboboxInput
+└── ComboboxContent
+    ├── ComboboxEmpty
+    └── ComboboxList
+        ├── ComboboxItem
+        └── ComboboxItem
+```
+
+### With chips
+
+Multi-select with `multiple`, chips, and a chips input (see <LINK href="#multiple">Multiple</LINK>).
+
+```text
+Combobox
+├── ComboboxChips
+│   ├── ComboboxValue
+│   │   └── ComboboxChip
+│   └── ComboboxChipsInput
+└── ComboboxContent
+    ├── ComboboxEmpty
+    └── ComboboxList
+        ├── ComboboxItem
+        └── ComboboxItem
+```
+
+### With groups and collection
+
+Nested items per group using `ComboboxCollection` inside each `ComboboxGroup`, with a separator between groups (see <LINK href="#groups">Groups</LINK>).
+
+```text
+Combobox
+├── ComboboxInput
+└── ComboboxContent
+    ├── ComboboxEmpty
+    └── ComboboxList
+        ├── ComboboxGroup
+        │   ├── ComboboxLabel
+        │   └── ComboboxCollection
+        │       ├── ComboboxItem
+        │       └── ComboboxItem
+        ├── ComboboxSeparator
+        └── ComboboxGroup
+            ├── ComboboxLabel
+            └── ComboboxCollection
+                ├── ComboboxItem
+                └── ComboboxItem
+```
+
+---
+
+## Basic
+
+A simple combobox with a list of frameworks, as in the example at the top of this page. Type to filter, use the arrow keys to move, and press `Enter` to choose. The filter ignores case and accents.
+
+---
+
+## Multiple
+
+Add `np-combobox-multiple` (or `data-multiple`) and put the input inside an `np-combobox-chips` box. The script draws a chip for each selected item, with a remove button. `Backspace` in the empty input removes the last chip.
+
+Translate the remove buttons with `data-remove-label` on the combobox.
+
+Link the stylesheets:
+
+```html
+<link rel="stylesheet" href="./styles/button.css" />
+<link rel="stylesheet" href="./styles/input.css" />
+<link rel="stylesheet" href="./styles/input-group.css" />
+```
+
+<ComponentPreview
+  target="html"
+  name="combobox-multiple"
+  styles={["/button/button.css", "/input/input.css", "/input-group/input-group.css"]}
+  scripts={["/combobox/combobox.js"]}
+/>
+
+---
+
+## Clear button
+
+Add a `np-combobox-clear` button with `hidden` next to the trigger. The script shows it while there is something to clear, and it replaces the chevron.
+
+Link the stylesheets:
+
+```html
+<link rel="stylesheet" href="./styles/button.css" />
+<link rel="stylesheet" href="./styles/input.css" />
+<link rel="stylesheet" href="./styles/input-group.css" />
+```
+
+<ComponentPreview
+  target="html"
+  name="combobox-clear"
+  styles={["/button/button.css", "/input/input.css", "/input-group/input-group.css"]}
+  scripts={["/combobox/combobox.js"]}
+/>
+
+---
+
+## Groups
+
+Wrap items in `np-combobox-group` with an `np-combobox-label`, and use `np-combobox-separator` between groups. A group with no matching items is hidden while filtering, and so are the separators.
+
+Link the stylesheets:
+
+```html
+<link rel="stylesheet" href="./styles/button.css" />
+<link rel="stylesheet" href="./styles/input.css" />
+<link rel="stylesheet" href="./styles/input-group.css" />
+```
+
+<ComponentPreview
+  target="html"
+  name="combobox-groups"
+  styles={["/button/button.css", "/input/input.css", "/input-group/input-group.css"]}
+  scripts={["/combobox/combobox.js"]}
+/>
+
+---
+
+## Custom items
+
+Put any markup inside an item. The input shows the item's text, so for items with more than one piece of text set `data-label` to what should appear in the input, and `data-value` for the submitted value. Add `data-keywords` for extra words the filter should match.
+
+Link the stylesheets:
+
+```html
+<link rel="stylesheet" href="./styles/button.css" />
+<link rel="stylesheet" href="./styles/input.css" />
+<link rel="stylesheet" href="./styles/input-group.css" />
+```
+
+<ComponentPreview
+  target="html"
+  name="combobox-custom"
+  styles={["/button/button.css", "/input/input.css", "/input-group/input-group.css"]}
+  scripts={["/combobox/combobox.js"]}
+/>
+
+---
+
+## Invalid
+
+Set `aria-invalid="true"` on the input.
+
+Link the stylesheets:
+
+```html
+<link rel="stylesheet" href="./styles/button.css" />
+<link rel="stylesheet" href="./styles/input.css" />
+<link rel="stylesheet" href="./styles/input-group.css" />
+```
+
+<ComponentPreview
+  target="html"
+  name="combobox-invalid"
+  styles={["/button/button.css", "/input/input.css", "/input-group/input-group.css"]}
+  scripts={["/combobox/combobox.js"]}
+/>
+
+---
+
+## Disabled
+
+Set `data-disabled` on the combobox and the native `disabled` attribute on the input and the trigger. Individual items can be disabled with `aria-disabled="true"`.
+
+Link the stylesheets:
+
+```html
+<link rel="stylesheet" href="./styles/button.css" />
+<link rel="stylesheet" href="./styles/input.css" />
+<link rel="stylesheet" href="./styles/input-group.css" />
+```
+
+<ComponentPreview
+  target="html"
+  name="combobox-disabled"
+  styles={["/button/button.css", "/input/input.css", "/input-group/input-group.css"]}
+  scripts={["/combobox/combobox.js"]}
+/>
+
+---
+
+## Auto highlight
+
+Add `np-combobox-auto-highlight` (or `data-auto-highlight`) to highlight the first match while typing, so `Enter` picks it.
+
+Link the stylesheets:
+
+```html
+<link rel="stylesheet" href="./styles/button.css" />
+<link rel="stylesheet" href="./styles/input.css" />
+<link rel="stylesheet" href="./styles/input-group.css" />
+```
+
+<ComponentPreview
+  target="html"
+  name="combobox-auto-highlight"
+  styles={["/button/button.css", "/input/input.css", "/input-group/input-group.css"]}
+  scripts={["/combobox/combobox.js"]}
+/>
+
+---
+
+## Popup
+
+Put the input inside `np-combobox-content` and use a button as the trigger. Give the button an `np-combobox-value` inside, and the script writes the chosen item there. Set `data-placeholder` on the value for the text shown before a choice.
+
+Link the stylesheets:
+
+```html
+<link rel="stylesheet" href="./styles/button.css" />
+<link rel="stylesheet" href="./styles/input.css" />
+<link rel="stylesheet" href="./styles/input-group.css" />
+```
+
+<ComponentPreview
+  target="html"
+  name="combobox-popup"
+  styles={["/button/button.css", "/input/input.css", "/input-group/input-group.css"]}
+  scripts={["/combobox/combobox.js"]}
+/>
+
+---
+
+## Input group
+
+Add an addon inside the input group, before the input.
+
+Link the stylesheets:
+
+```html
+<link rel="stylesheet" href="./styles/button.css" />
+<link rel="stylesheet" href="./styles/input.css" />
+<link rel="stylesheet" href="./styles/input-group.css" />
+```
+
+<ComponentPreview
+  target="html"
+  name="combobox-input-group"
+  styles={["/button/button.css", "/input/input.css", "/input-group/input-group.css"]}
+  scripts={["/combobox/combobox.js"]}
+/>
+
+---
+
+## Form values
+
+Set `data-name` on the combobox. The script keeps one hidden `<input>` per selected value inside it, so the combobox submits with its form. Items submit their `data-value`, or their text when there is none.
+
+```html
+<div class="np-combobox np-combobox-multiple" data-name="framework">
+  ...
+</div>
+```
+
+---
+
+## Script Reference
+
+### Attributes
+
+On the combobox:
+
+| Attribute            | Description                                                       | Default    |
+| -------------------- | ----------------------------------------------------------------- | ---------- |
+| `data-name`          | Name of the hidden input(s) submitted with a form.                | -          |
+| `data-multiple`      | Allow more than one item. Also `np-combobox-multiple`.            | -          |
+| `data-auto-highlight` | Highlight the first match while typing. Also `np-combobox-auto-highlight`. | - |
+| `data-remove-label`  | Prefix of the chip remove button name.                            | `"Remove"` |
+| `data-disabled`      | Disable the whole combobox.                                       | -          |
+
+On an item:
+
+| Attribute        | Description                                           |
+| ---------------- | ----------------------------------------------------- |
+| `data-value`     | The submitted value. Defaults to the label.           |
+| `data-label`     | The text shown in the input. Defaults to the item text. |
+| `data-keywords`  | Extra words the filter matches.                       |
+| `aria-selected="true"` | Preselect the item.                             |
+| `aria-disabled="true"` | Disable the item. Also `data-disabled`.         |
+
+### Events
+
+Both events bubble from the combobox.
+
+```js
+document.addEventListener("np-combobox-change", (event) => {
+  const { value, items } = event.detail
+  // value: the selected value, or an array of values when multiple
+  // items: the selected item elements
+})
+
+document.addEventListener("np-combobox-open-change", (event) => {
+  console.log(event.detail.open)
+})
+```
+
+### API
+
+| Method                              | Description                                      |
+| ----------------------------------- | ------------------------------------------------ |
+| `window.npCombobox.init(root)`      | Set up the comboboxes inside `root` (default `document`). Call it for markup added after load. |
+| `window.npCombobox.getValue(root)`  | The current value, or an array when multiple.    |
+| `window.npCombobox.setValue(root, value)` | Select by value, no event is fired.        |
+
+### Keyboard
+
+| Key                  | Action                                                              |
+| -------------------- | ------------------------------------------------------------------- |
+| `ArrowDown` / `ArrowUp` | Open, then move the highlight. It loops through the input.       |
+| `Enter`              | Select the highlighted item.                                        |
+| `Escape`             | Close. With the input in the popup, focus returns to the trigger.   |
+| `Backspace`          | Remove the last chip when the input is empty (multiple).            |
+| `Tab`                | Close and move on.                                                  |
+
+Typing opens the popup and filters it. Emptying a single combobox clears its value, and closing it restores the text of the chosen item.
+
+---
+
+## Reference
+
+### Parts
+
+| Name           | Data attribute                       | Class alias                     |
+| -------------- | ------------------------------------ | ------------------------------- |
+| Combobox       | `data-np-combobox`                   | `np-combobox`                   |
+| Trigger        | `data-np-combobox-trigger`           | `np-combobox-trigger`           |
+| Clear          | `data-np-combobox-clear`             | `np-combobox-clear`             |
+| Value          | `data-np-combobox-value`             | `np-combobox-value`             |
+| Content        | `data-np-combobox-content`           | `np-combobox-content`           |
+| List           | `data-np-combobox-list`              | `np-combobox-list`              |
+| Item           | `data-np-combobox-item`              | `np-combobox-item`              |
+| Item indicator | `data-np-combobox-item-indicator`    | `np-combobox-item-indicator`    |
+| Group          | `data-np-combobox-group`             | `np-combobox-group`             |
+| Label          | `data-np-combobox-label`             | `np-combobox-label`             |
+| Separator      | `data-np-combobox-separator`         | `np-combobox-separator`         |
+| Empty          | `data-np-combobox-empty`             | `np-combobox-empty`             |
+| Chips          | `data-np-combobox-chips`             | `np-combobox-chips`             |
+| Chip           | `data-np-combobox-chip`              | `np-combobox-chip`              |
+| Chip remove    | `data-np-combobox-chip-remove`       | `np-combobox-chip-remove`       |
+| Chips input    | `data-np-combobox-chips-input`       | `np-combobox-chips-input`       |
+
+### States
+
+| State       | Selector                                                      |
+| ----------- | ------------------------------------------------------------- |
+| Highlighted | `[data-highlighted]` on an item                               |
+| Selected    | `[data-selected]` on an item                                  |
+| Disabled    | `[aria-disabled="true"]`, `[data-disabled]`                   |
+| No results  | `[data-empty]` on the content                                 |
+| Invalid     | `[aria-invalid="true"]`, `[data-invalid]` on the input        |
