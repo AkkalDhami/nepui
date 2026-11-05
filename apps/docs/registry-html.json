@@ -407,6 +407,30 @@
       ]
     },
     {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "title": "Alert Dialog",
+      "description": "A modal dialog that interrupts the user with important content and expects a response.",
+      "registryDependencies": ["https://nepui.vercel.app/r/html/button.json"],
+      "files": [
+        {
+          "path": "registry/html/alert-dialog/alert-dialog.html",
+          "type": "registry:ui",
+          "target": "html/alert-dialog.html"
+        },
+        {
+          "path": "registry/html/alert-dialog/alert-dialog.css",
+          "type": "registry:ui",
+          "target": "styles/alert-dialog.css"
+        },
+        {
+          "path": "registry/html/alert-dialog/alert-dialog.js",
+          "type": "registry:ui",
+          "target": "javascripts/alert-dialog.js"
+        }
+      ]
+    },
+    {
       "name": "tooltip",
       "type": "registry:ui",
       "title": "Tooltip",
@@ -511,7 +535,7 @@
       "type": "registry:ui",
       "title": "Dialog",
       "description": "A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.",
-      "registryDependencies": ["https://nepui.vercel.app/r/react/button.json"],
+      "registryDependencies": ["https://nepui.vercel.app/r/html/button.json"],
       "files": [
         {
           "path": "registry/html/dialog/dialog.html",
@@ -522,6 +546,95 @@
           "path": "registry/html/dialog/dialog.css",
           "type": "registry:ui",
           "target": "styles/dialog.css"
+        }
+      ]
+    },
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "title": "Combobox",
+      "description": "Autocomplete input with a list of suggestions.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/html/button.json",
+        "https://nepui.vercel.app/r/html/input-group.json",
+        "https://nepui.vercel.app/r/html/input.json"
+      ],
+      "files": [
+        {
+          "path": "registry/html/combobox/combobox.html",
+          "type": "registry:ui",
+          "target": "html/combobox.html"
+        },
+        {
+          "path": "registry/html/combobox/combobox.css",
+          "type": "registry:ui",
+          "target": "styles/combobox.css"
+        },
+        {
+          "path": "registry/html/combobox/combobox.js",
+          "type": "registry:ui",
+          "target": "javascripts/combobox.js"
+        }
+      ]
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "description": "A succinct message that is displayed temporarily.",
+      "registryDependencies": ["https://nepui.vercel.app/r/html/button.json"],
+      "files": [
+        {
+          "path": "registry/html/toast/toast.html",
+          "type": "registry:ui",
+          "target": "html/toast.html"
+        },
+        {
+          "path": "registry/html/toast/toast.css",
+          "type": "registry:ui",
+          "target": "styles/toast.css"
+        },
+        {
+          "path": "registry/html/toast/toast.js",
+          "type": "registry:ui",
+          "target": "javascripts/toast.js"
+        }
+      ]
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "description": "Extends the Dialog component to display content that complements the main content of the screen.",
+      "registryDependencies": ["https://nepui.vercel.app/r/html/button.json"],
+      "files": [
+        {
+          "path": "registry/html/sheet/sheet.html",
+          "type": "registry:ui",
+          "target": "html/sheet.html"
+        },
+        {
+          "path": "registry/html/sheet/sheet.css",
+          "type": "registry:ui",
+          "target": "styles/sheet.css"
+        }
+      ]
+    },
+    {
+      "name": "bubble",
+      "type": "registry:ui",
+      "title": "Bubble",
+      "description": "Displays conversational content in a message bubble. Supports variants, alignment, grouping, reactions, and collapsible content.",
+      "files": [
+        {
+          "path": "registry/html/bubble/bubble.html",
+          "type": "registry:ui",
+          "target": "html/bubble.html"
+        },
+        {
+          "path": "registry/html/bubble/bubble.css",
+          "type": "registry:ui",
+          "target": "styles/bubble.css"
         }
       ]
     },

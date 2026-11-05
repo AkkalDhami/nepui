@@ -1,0 +1,34 @@
+<button
+  type="button"
+  class="np-button np-button-outline"
+  commandfor="sheet-no-close"
+  command="show-modal"
+>
+  Open
+</button>
+
+<dialog
+  id="sheet-no-close"
+  class="np-sheet-content"
+  closedby="any"
+  aria-labelledby="sheet-no-close-title"
+  aria-describedby="sheet-no-close-description"
+>
+  <div class="np-sheet-header">
+    <h2 class="np-sheet-title" id="sheet-no-close-title">No close button</h2>
+    <p class="np-sheet-description" id="sheet-no-close-description">
+      This sheet has no close button in the corner. Press Escape, click outside,
+      or use the footer.
+    </p>
+  </div>
+  <div class="np-sheet-footer">
+    <button
+      type="button"
+      class="np-button np-button-outline"
+      commandfor="sheet-no-close"
+      command="close"
+    >
+      Close
+    </button>
+  </div>
+</dialog>

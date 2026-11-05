@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="./styles/button.css" />
+<link rel="stylesheet" href="./styles/input.css" />
+<link rel="stylesheet" href="./styles/input-group.css" />
+
+<div
+  class="np-combobox np-combobox-auto-highlight"
+  style="width: 100%; max-width: 16rem"
+>
+  <div class="np-input-group">
+    <input
+      class="np-input np-input-group-input"
+      placeholder="Select a framework"
+      aria-label="Framework"
+    />
+    <div class="np-input-group-addon np-input-group-addon-end">
+      <button
+        type="button"
+        class="np-button np-button-ghost np-button-icon-xs np-input-group-button np-combobox-trigger"
+        aria-label="Open options"
+      ></button>
+    </div>
+  </div>
+  <div class="np-combobox-content">
+    <div class="np-combobox-empty">No items found.</div>
+    <div class="np-combobox-list">
+      <div class="np-combobox-item">Next.js</div>
+      <div class="np-combobox-item">SvelteKit</div>
+      <div class="np-combobox-item">Nuxt.js</div>
+      <div class="np-combobox-item">Remix</div>
+      <div class="np-combobox-item">Astro</div>
+    </div>
+  </div>
+</div>

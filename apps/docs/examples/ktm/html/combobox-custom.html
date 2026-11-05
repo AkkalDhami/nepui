@@ -1,0 +1,55 @@
+<link rel="stylesheet" href="./styles/button.css" />
+<link rel="stylesheet" href="./styles/input.css" />
+<link rel="stylesheet" href="./styles/input-group.css" />
+
+<div class="np-combobox" style="width: 100%; max-width: 20rem">
+  <div class="np-input-group">
+    <input
+      class="np-input np-input-group-input"
+      placeholder="Select a country"
+      aria-label="Country"
+    />
+    <div class="np-input-group-addon np-input-group-addon-end">
+      <button
+        type="button"
+        class="np-button np-button-ghost np-button-icon-xs np-input-group-button np-combobox-trigger"
+        aria-label="Open options"
+      ></button>
+    </div>
+  </div>
+  <div class="np-combobox-content">
+    <div class="np-combobox-empty">No items found.</div>
+    <div class="np-combobox-list">
+      <div class="np-combobox-item" data-value="np" data-label="Nepal">
+        <span style="flex: 1">Nepal</span>
+        <span style="color: var(--np-muted-foreground); font-size: 0.75rem"
+          >Asia</span
+        >
+      </div>
+      <div class="np-combobox-item" data-value="jp" data-label="Japan">
+        <span style="flex: 1">Japan</span>
+        <span style="color: var(--np-muted-foreground); font-size: 0.75rem"
+          >Asia</span
+        >
+      </div>
+      <div class="np-combobox-item" data-value="fr" data-label="France">
+        <span style="flex: 1">France</span>
+        <span style="color: var(--np-muted-foreground); font-size: 0.75rem"
+          >Europe</span
+        >
+      </div>
+      <div class="np-combobox-item" data-value="br" data-label="Brazil">
+        <span style="flex: 1">Brazil</span>
+        <span style="color: var(--np-muted-foreground); font-size: 0.75rem"
+          >South America</span
+        >
+      </div>
+      <div class="np-combobox-item" data-value="ke" data-label="Kenya">
+        <span style="flex: 1">Kenya</span>
+        <span style="color: var(--np-muted-foreground); font-size: 0.75rem"
+          >Africa</span
+        >
+      </div>
+    </div>
+  </div>
+</div>

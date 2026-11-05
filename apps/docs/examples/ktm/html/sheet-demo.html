@@ -1,0 +1,70 @@
+<link rel="stylesheet" href="./styles/input.css" />
+<link rel="stylesheet" href="./styles/label.css" />
+
+<button
+  type="button"
+  class="np-button np-button-outline"
+  commandfor="sheet-form"
+  command="show-modal"
+>
+  Open
+</button>
+
+<dialog
+  id="sheet-form"
+  class="np-sheet-content"
+  closedby="any"
+  aria-labelledby="sheet-form-title"
+  aria-describedby="sheet-form-description"
+>
+  <div class="np-sheet-header">
+    <h2 class="np-sheet-title" id="sheet-form-title">Edit profile</h2>
+    <p class="np-sheet-description" id="sheet-form-description">
+      Make changes to your profile here. Click save when you are done.
+    </p>
+  </div>
+  <div style="display: grid; gap: 1rem; padding-inline: 1rem">
+    <div style="display: grid; gap: 0.5rem">
+      <label class="np-label" for="sheet-form-name">Name</label>
+      <input class="np-input" id="sheet-form-name" value="Jane Doe" />
+    </div>
+    <div style="display: grid; gap: 0.5rem">
+      <label class="np-label" for="sheet-form-username">Username</label>
+      <input class="np-input" id="sheet-form-username" value="@janedoe" />
+    </div>
+  </div>
+  <div class="np-sheet-footer">
+    <button type="button" class="np-button">Save changes</button>
+    <button
+      type="button"
+      class="np-button np-button-outline"
+      commandfor="sheet-form"
+      command="close"
+    >
+      Close
+    </button>
+  </div>
+  <button
+    type="button"
+    class="np-button np-button-ghost np-button-icon-sm np-sheet-close"
+    commandfor="sheet-form"
+    command="close"
+    aria-label="Close"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M18 6 6 18" />
+      <path d="m6 6 12 12" />
+    </svg>
+  </button>
+</dialog>

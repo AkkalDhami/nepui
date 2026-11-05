@@ -3,7 +3,7 @@
   "name": "dialog",
   "title": "Dialog",
   "description": "A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.",
-  "registryDependencies": ["https://nepui.vercel.app/r/react/button.json"],
+  "registryDependencies": ["https://nepui.vercel.app/r/html/button.json"],
   "files": [
     {
       "path": "registry/html/dialog/dialog.html",

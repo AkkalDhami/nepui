@@ -1,0 +1,42 @@
+<link rel="stylesheet" href="./styles/button.css" />
+<link rel="stylesheet" href="./styles/alert-dialog.css" />
+
+<button
+  class="np-button np-button-outline"
+  type="button"
+  commandfor="alert-dialog-small-dialog"
+  command="show-modal"
+>
+  Show Dialog
+</button>
+<dialog
+  id="alert-dialog-small-dialog"
+  class="np-alert-dialog np-alert-dialog-sm"
+  role="alertdialog"
+  aria-labelledby="alert-dialog-small-dialog-title"
+  aria-describedby="alert-dialog-small-dialog-description"
+>
+  <div class="np-alert-dialog-header">
+    <h2 id="alert-dialog-small-dialog-title" class="np-alert-dialog-title">
+      Allow accessory to connect?
+    </h2>
+    <p
+      id="alert-dialog-small-dialog-description"
+      class="np-alert-dialog-description"
+    >
+      Do you want to allow the USB accessory to connect to this device?
+    </p>
+  </div>
+  <div class="np-alert-dialog-footer">
+    <button
+      class="np-button np-button-outline"
+      type="button"
+      commandfor="alert-dialog-small-dialog"
+      command="close"
+      autofocus
+    >
+      Don't allow
+    </button>
+    <button class="np-button" type="button">Allow</button>
+  </div>
+</dialog>

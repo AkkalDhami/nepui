@@ -18,7 +18,7 @@
     },
     {
       "path": "registry/react/tooltip/index.ts",
-      "content": "export * from \"./tooltip\"",
+      "content": "export * from \"./tooltip\"\n",
       "type": "registry:ui",
       "target": "components/nepui/tooltip/index.ts"
     }

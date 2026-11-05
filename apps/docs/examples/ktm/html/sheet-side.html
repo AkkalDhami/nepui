@@ -1,0 +1,273 @@
+<link rel="stylesheet" href="./styles/input.css" />
+<link rel="stylesheet" href="./styles/label.css" />
+
+<div style="display: flex; flex-wrap: wrap; gap: 0.5rem">
+  <button
+    type="button"
+    class="np-button np-button-outline"
+    commandfor="sheet-side-top"
+    command="show-modal"
+  >
+    top
+  </button>
+  <button
+    type="button"
+    class="np-button np-button-outline"
+    commandfor="sheet-side-right"
+    command="show-modal"
+  >
+    right
+  </button>
+  <button
+    type="button"
+    class="np-button np-button-outline"
+    commandfor="sheet-side-bottom"
+    command="show-modal"
+  >
+    bottom
+  </button>
+  <button
+    type="button"
+    class="np-button np-button-outline"
+    commandfor="sheet-side-left"
+    command="show-modal"
+  >
+    left
+  </button>
+</div>
+
+<dialog
+  id="sheet-side-top"
+  class="np-sheet-content np-sheet-top"
+  closedby="any"
+  aria-labelledby="sheet-side-top-title"
+  aria-describedby="sheet-side-top-description"
+>
+  <div class="np-sheet-header">
+    <h2 class="np-sheet-title" id="sheet-side-top-title">Edit profile</h2>
+    <p class="np-sheet-description" id="sheet-side-top-description">
+      Make changes to your profile here. Click save when you are done.
+    </p>
+  </div>
+  <div style="display: grid; gap: 1rem; padding-inline: 1rem">
+    <div style="display: grid; gap: 0.5rem">
+      <label class="np-label" for="sheet-side-top-name">Name</label>
+      <input class="np-input" id="sheet-side-top-name" value="Lakka Imahd" />
+    </div>
+    <div style="display: grid; gap: 0.5rem">
+      <label class="np-label" for="sheet-side-top-username">Username</label>
+      <input class="np-input" id="sheet-side-top-username" value="@lakka" />
+    </div>
+  </div>
+  <div class="np-sheet-footer">
+    <button type="button" class="np-button">Save changes</button>
+    <button
+      type="button"
+      class="np-button np-button-outline"
+      commandfor="sheet-side-top"
+      command="close"
+    >
+      Close
+    </button>
+  </div>
+  <button
+    type="button"
+    class="np-button np-button-ghost np-button-icon-sm np-sheet-close"
+    commandfor="sheet-side-top"
+    command="close"
+    aria-label="Close"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M18 6 6 18" />
+      <path d="m6 6 12 12" />
+    </svg>
+  </button>
+</dialog>
+
+<dialog
+  id="sheet-side-right"
+  class="np-sheet-content np-sheet-right"
+  closedby="any"
+  aria-labelledby="sheet-side-right-title"
+  aria-describedby="sheet-side-right-description"
+>
+  <div class="np-sheet-header">
+    <h2 class="np-sheet-title" id="sheet-side-right-title">Edit profile</h2>
+    <p class="np-sheet-description" id="sheet-side-right-description">
+      Make changes to your profile here. Click save when you are done.
+    </p>
+  </div>
+  <div style="display: grid; gap: 1rem; padding-inline: 1rem">
+    <div style="display: grid; gap: 0.5rem">
+      <label class="np-label" for="sheet-side-right-name">Name</label>
+      <input class="np-input" id="sheet-side-right-name" value="Lakka Imahd" />
+    </div>
+    <div style="display: grid; gap: 0.5rem">
+      <label class="np-label" for="sheet-side-right-username">Username</label>
+      <input class="np-input" id="sheet-side-right-username" value="@lakka" />
+    </div>
+  </div>
+  <div class="np-sheet-footer">
+    <button type="button" class="np-button">Save changes</button>
+    <button
+      type="button"
+      class="np-button np-button-outline"
+      commandfor="sheet-side-right"
+      command="close"
+    >
+      Close
+    </button>
+  </div>
+  <button
+    type="button"
+    class="np-button np-button-ghost np-button-icon-sm np-sheet-close"
+    commandfor="sheet-side-right"
+    command="close"
+    aria-label="Close"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M18 6 6 18" />
+      <path d="m6 6 12 12" />
+    </svg>
+  </button>
+</dialog>
+
+<dialog
+  id="sheet-side-bottom"
+  class="np-sheet-content np-sheet-bottom"
+  closedby="any"
+  aria-labelledby="sheet-side-bottom-title"
+  aria-describedby="sheet-side-bottom-description"
+>
+  <div class="np-sheet-header">
+    <h2 class="np-sheet-title" id="sheet-side-bottom-title">Edit profile</h2>
+    <p class="np-sheet-description" id="sheet-side-bottom-description">
+      Make changes to your profile here. Click save when you are done.
+    </p>
+  </div>
+  <div style="display: grid; gap: 1rem; padding-inline: 1rem">
+    <div style="display: grid; gap: 0.5rem">
+      <label class="np-label" for="sheet-side-bottom-name">Name</label>
+      <input class="np-input" id="sheet-side-bottom-name" value="Lakka Imahd" />
+    </div>
+    <div style="display: grid; gap: 0.5rem">
+      <label class="np-label" for="sheet-side-bottom-username">Username</label>
+      <input class="np-input" id="sheet-side-bottom-username" value="@lakka" />
+    </div>
+  </div>
+  <div class="np-sheet-footer">
+    <button type="button" class="np-button">Save changes</button>
+    <button
+      type="button"
+      class="np-button np-button-outline"
+      commandfor="sheet-side-bottom"
+      command="close"
+    >
+      Close
+    </button>
+  </div>
+  <button
+    type="button"
+    class="np-button np-button-ghost np-button-icon-sm np-sheet-close"
+    commandfor="sheet-side-bottom"
+    command="close"
+    aria-label="Close"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M18 6 6 18" />
+      <path d="m6 6 12 12" />
+    </svg>
+  </button>
+</dialog>
+
+<dialog
+  id="sheet-side-left"
+  class="np-sheet-content np-sheet-left"
+  closedby="any"
+  aria-labelledby="sheet-side-left-title"
+  aria-describedby="sheet-side-left-description"
+>
+  <div class="np-sheet-header">
+    <h2 class="np-sheet-title" id="sheet-side-left-title">Edit profile</h2>
+    <p class="np-sheet-description" id="sheet-side-left-description">
+      Make changes to your profile here. Click save when you are done.
+    </p>
+  </div>
+  <div style="display: grid; gap: 1rem; padding-inline: 1rem">
+    <div style="display: grid; gap: 0.5rem">
+      <label class="np-label" for="sheet-side-left-name">Name</label>
+      <input class="np-input" id="sheet-side-left-name" value="Lakka Imahd" />
+    </div>
+    <div style="display: grid; gap: 0.5rem">
+      <label class="np-label" for="sheet-side-left-username">Username</label>
+      <input class="np-input" id="sheet-side-left-username" value="@lakka" />
+    </div>
+  </div>
+  <div class="np-sheet-footer">
+    <button type="button" class="np-button">Save changes</button>
+    <button
+      type="button"
+      class="np-button np-button-outline"
+      commandfor="sheet-side-left"
+      command="close"
+    >
+      Close
+    </button>
+  </div>
+  <button
+    type="button"
+    class="np-button np-button-ghost np-button-icon-sm np-sheet-close"
+    commandfor="sheet-side-left"
+    command="close"
+    aria-label="Close"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M18 6 6 18" />
+      <path d="m6 6 12 12" />
+    </svg>
+  </button>
+</dialog>
