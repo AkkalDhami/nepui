@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Combobox</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/input.css" />
+    <link rel="stylesheet" href="../styles/input-group.css" />
+    <link rel="stylesheet" href="../styles/combobox.css" />
+    <script src="../javascripts/combobox.js" defer></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem 12rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: system-ui, sans-serif;
+      }
+      main {
+        max-width: 44rem;
+        margin-inline: auto;
+      }
+      h2 {
+        margin: 2rem 0 0.25rem;
+        font-size: 1rem;
+      }
+      p.hint {
+        margin: 0 0 0.75rem;
+        color: var(--np-muted-foreground);
+        font-size: 0.875rem;
+      }
+      section {
+        padding-block-end: 1.25rem;
+        border-block-end: 1px solid var(--np-border);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Class form</h2>
+        <p class="hint">
+          <code>class="np-combobox"</code> with
+          <code>np-combobox-*</code> parts. Type to filter, use the arrow keys,
+          press Enter.
+        </p>
+        <div class="np-combobox" style="width: 100%; max-width: 16rem">
+          <div class="np-input-group">
+            <input
+              class="np-input np-input-group-input"
+              placeholder="Select a framework"
+              aria-label="Framework"
+            />
+            <div class="np-input-group-addon np-input-group-addon-end">
+              <button
+                type="button"
+                class="np-button np-button-ghost np-button-icon-xs np-input-group-button np-combobox-trigger"
+                aria-label="Open options"
+              ></button>
+            </div>
+          </div>
+          <div class="np-combobox-content">
+            <div class="np-combobox-empty">No items found.</div>
+            <div class="np-combobox-list">
+              <div class="np-combobox-item">Next.js</div>
+              <div class="np-combobox-item">SvelteKit</div>
+              <div class="np-combobox-item">Nuxt.js</div>
+              <div class="np-combobox-item">Remix</div>
+              <div class="np-combobox-item">Astro</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>Data-attribute form</h2>
+        <p class="hint">
+          <code>data-np-combobox</code> and <code>data-np-combobox-*</code>, no
+          classes on the combobox parts.
+        </p>
+        <div data-np-combobox style="width: 100%; max-width: 16rem">
+          <div class="np-input-group">
+            <input
+              class="np-input np-input-group-input"
+              placeholder="Select a framework"
+              aria-label="Framework"
+            />
+            <div class="np-input-group-addon np-input-group-addon-end">
+              <button
+                type="button"
+                class="np-button np-button-ghost np-button-icon-xs np-input-group-button"
+                data-np-combobox-trigger
+                aria-label="Open options"
+              ></button>
+            </div>
+          </div>
+          <div data-np-combobox-content>
+            <div data-np-combobox-empty>No items found.</div>
+            <div data-np-combobox-list>
+              <div data-np-combobox-item>Next.js</div>
+              <div data-np-combobox-item>SvelteKit</div>
+              <div data-np-combobox-item>Nuxt.js</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>Multiple</h2>
+        <p class="hint">
+          <code>np-combobox-multiple</code> turns the selection into chips.
+          Backspace removes the last chip.
+        </p>
+        <div
+          class="np-combobox np-combobox-multiple"
+          style="width: 100%; max-width: 20rem"
+        >
+          <div class="np-combobox-chips">
+            <input
+              class="np-combobox-chips-input"
+              placeholder="Add framework"
+              aria-label="Frameworks"
+            />
+          </div>
+          <div class="np-combobox-content">
+            <div class="np-combobox-empty">No items found.</div>
+            <div class="np-combobox-list">
+              <div class="np-combobox-item" aria-selected="true">Next.js</div>
+              <div class="np-combobox-item">SvelteKit</div>
+              <div class="np-combobox-item">Nuxt.js</div>
+              <div class="np-combobox-item">Remix</div>
+              <div class="np-combobox-item">Astro</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>Clear button</h2>
+        <p class="hint">
+          The clear button replaces the chevron while there is a value.
+        </p>
+        <div class="np-combobox" style="width: 100%; max-width: 16rem">
+          <div class="np-input-group">
+            <input
+              class="np-input np-input-group-input"
+              placeholder="Select a framework"
+              aria-label="Framework"
+            />
+            <div class="np-input-group-addon np-input-group-addon-end">
+              <button
+                type="button"
+                class="np-button np-button-ghost np-button-icon-xs np-input-group-button np-combobox-clear"
+                hidden
+              ></button>
+              <button
+                type="button"
+                class="np-button np-button-ghost np-button-icon-xs np-input-group-button np-combobox-trigger"
+                aria-label="Open options"
+              ></button>
+            </div>
+          </div>
+          <div class="np-combobox-content">
+            <div class="np-combobox-empty">No items found.</div>
+            <div class="np-combobox-list">
+              <div class="np-combobox-item" aria-selected="true">Next.js</div>
+              <div class="np-combobox-item">SvelteKit</div>
+              <div class="np-combobox-item">Nuxt.js</div>
+              <div class="np-combobox-item">Remix</div>
+              <div class="np-combobox-item">Astro</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>Groups</h2>
+        <div class="np-combobox" style="width: 100%; max-width: 16rem">
+          <div class="np-input-group">
+            <input
+              class="np-input np-input-group-input"
+              placeholder="Select produce"
+              aria-label="Produce"
+            />
+            <div class="np-input-group-addon np-input-group-addon-end">
+              <button
+                type="button"
+                class="np-button np-button-ghost np-button-icon-xs np-input-group-button np-combobox-trigger"
+                aria-label="Open options"
+              ></button>
+            </div>
+          </div>
+          <div class="np-combobox-content">
+            <div class="np-combobox-empty">No items found.</div>
+            <div class="np-combobox-list">
+              <div class="np-combobox-group">
+                <div class="np-combobox-label">Fruits</div>
+                <div class="np-combobox-item">Apple</div>
+                <div class="np-combobox-item">Banana</div>
+                <div class="np-combobox-item">Orange</div>
+              </div>
+              <div class="np-combobox-separator"></div>
+              <div class="np-combobox-group">
+                <div class="np-combobox-label">Vegetables</div>
+                <div class="np-combobox-item">Carrot</div>
+                <div class="np-combobox-item">Lettuce</div>
+                <div class="np-combobox-item">Spinach</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>Custom items</h2>
+        <p class="hint">
+          Use <code>data-label</code> for the text that goes in the input, and
+          <code>data-value</code> for the submitted value.
+        </p>
+        <div class="np-combobox" style="width: 100%; max-width: 20rem">
+          <div class="np-input-group">
+            <input
+              class="np-input np-input-group-input"
+              placeholder="Select a country"
+              aria-label="Country"
+            />
+            <div class="np-input-group-addon np-input-group-addon-end">
+              <button
+                type="button"
+                class="np-button np-button-ghost np-button-icon-xs np-input-group-button np-combobox-trigger"
+                aria-label="Open options"
+              ></button>
+            </div>
+          </div>
+          <div class="np-combobox-content">
+            <div class="np-combobox-empty">No items found.</div>
+            <div class="np-combobox-list">
+              <div class="np-combobox-item" data-value="np" data-label="Nepal">
+                <span style="flex: 1">Nepal</span>
+                <span
+                  style="color: var(--np-muted-foreground); font-size: 0.75rem"
+                  >Asia</span
+                >
+              </div>
+              <div class="np-combobox-item" data-value="jp" data-label="Japan">
+                <span style="flex: 1">Japan</span>
+                <span
+                  style="color: var(--np-muted-foreground); font-size: 0.75rem"
+                  >Asia</span
+                >
+              </div>
+              <div class="np-combobox-item" data-value="fr" data-label="France">
+                <span style="flex: 1">France</span>
+                <span
+                  style="color: var(--np-muted-foreground); font-size: 0.75rem"
+                  >Europe</span
+                >
+              </div>
+              <div class="np-combobox-item" data-value="br" data-label="Brazil">
+                <span style="flex: 1">Brazil</span>
+                <span
+                  style="color: var(--np-muted-foreground); font-size: 0.75rem"
+                  >South America</span
+                >
+              </div>
+              <div class="np-combobox-item" data-value="ke" data-label="Kenya">
+                <span style="flex: 1">Kenya</span>
+                <span
+                  style="color: var(--np-muted-foreground); font-size: 0.75rem"
+                  >Africa</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>Auto highlight</h2>
+        <p class="hint">
+          <code>np-combobox-auto-highlight</code> highlights the first match
+          while typing.
+        </p>
+        <div
+          class="np-combobox np-combobox-auto-highlight"
+          style="width: 100%; max-width: 16rem"
+        >
+          <div class="np-input-group">
+            <input
+              class="np-input np-input-group-input"
+              placeholder="Select a framework"
+              aria-label="Framework"
+            />
+            <div class="np-input-group-addon np-input-group-addon-end">
+              <button
+                type="button"
+                class="np-button np-button-ghost np-button-icon-xs np-input-group-button np-combobox-trigger"
+                aria-label="Open options"
+              ></button>
+            </div>
+          </div>
+          <div class="np-combobox-content">
+            <div class="np-combobox-empty">No items found.</div>
+            <div class="np-combobox-list">
+              <div class="np-combobox-item">Next.js</div>
+              <div class="np-combobox-item">SvelteKit</div>
+              <div class="np-combobox-item">Nuxt.js</div>
+              <div class="np-combobox-item">Remix</div>
+              <div class="np-combobox-item">Astro</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>Popup</h2>
+        <p class="hint">
+          The input lives inside the popup and a button is the trigger.
+        </p>
+        <div class="np-combobox">
+          <button
+            type="button"
+            class="np-button np-button-outline np-combobox-trigger"
+            style="
+              width: 16rem;
+              justify-content: space-between;
+              font-weight: 400;
+            "
+          >
+            <span class="np-combobox-value" data-placeholder="Select country"
+              >Select country</span
+            >
+          </button>
+          <div class="np-combobox-content">
+            <div class="np-input-group">
+              <input
+                class="np-input np-input-group-input"
+                placeholder="Search"
+                aria-label="Search countries"
+              />
+            </div>
+            <div class="np-combobox-empty">No items found.</div>
+            <div class="np-combobox-list">
+              <div class="np-combobox-item">Nepal</div>
+              <div class="np-combobox-item">India</div>
+              <div class="np-combobox-item">Japan</div>
+              <div class="np-combobox-item">France</div>
+              <div class="np-combobox-item">Brazil</div>
+              <div class="np-combobox-item">Kenya</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>Input group</h2>
+        <p class="hint">Add an addon inside the input group.</p>
+        <div class="np-combobox" style="width: 100%; max-width: 16rem">
+          <div class="np-input-group">
+            <div class="np-input-group-addon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+                <path d="M2 12h20" />
+              </svg>
+            </div>
+            <input
+              class="np-input np-input-group-input"
+              placeholder="Select a country"
+              aria-label="Country"
+            />
+            <div class="np-input-group-addon np-input-group-addon-end">
+              <button
+                type="button"
+                class="np-button np-button-ghost np-button-icon-xs np-input-group-button np-combobox-trigger"
+                aria-label="Open options"
+              ></button>
+            </div>
+          </div>
+          <div class="np-combobox-content">
+            <div class="np-combobox-empty">No items found.</div>
+            <div class="np-combobox-list">
+              <div class="np-combobox-item">Nepal</div>
+              <div class="np-combobox-item">India</div>
+              <div class="np-combobox-item">Japan</div>
+              <div class="np-combobox-item">France</div>
+              <div class="np-combobox-item">Brazil</div>
+              <div class="np-combobox-item">Kenya</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>Invalid</h2>
+        <p class="hint"><code>aria-invalid="true"</code> on the input.</p>
+        <div class="np-combobox" style="width: 100%; max-width: 16rem">
+          <div class="np-input-group">
+            <input
+              class="np-input np-input-group-input"
+              placeholder="Select a framework"
+              aria-label="Framework"
+              aria-invalid="true"
+            />
+            <div class="np-input-group-addon np-input-group-addon-end">
+              <button
+                type="button"
+                class="np-button np-button-ghost np-button-icon-xs np-input-group-button np-combobox-trigger"
+                aria-label="Open options"
+              ></button>
+            </div>
+          </div>
+          <div class="np-combobox-content">
+            <div class="np-combobox-empty">No items found.</div>
+            <div class="np-combobox-list">
+              <div class="np-combobox-item">Next.js</div>
+              <div class="np-combobox-item">SvelteKit</div>
+              <div class="np-combobox-item">Nuxt.js</div>
+              <div class="np-combobox-item">Remix</div>
+              <div class="np-combobox-item">Astro</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>Disabled</h2>
+        <p class="hint">
+          <code>data-disabled</code> on the combobox, <code>disabled</code> on
+          the input and the trigger.
+        </p>
+        <div
+          class="np-combobox"
+          data-disabled
+          style="width: 100%; max-width: 16rem"
+        >
+          <div class="np-input-group">
+            <input
+              class="np-input np-input-group-input"
+              placeholder="Select a framework"
+              aria-label="Framework"
+              disabled
+            />
+            <div class="np-input-group-addon np-input-group-addon-end">
+              <button
+                type="button"
+                class="np-button np-button-ghost np-button-icon-xs np-input-group-button np-combobox-trigger"
+                aria-label="Open options"
+                disabled
+              ></button>
+            </div>
+          </div>
+          <div class="np-combobox-content">
+            <div class="np-combobox-empty">No items found.</div>
+            <div class="np-combobox-list">
+              <div class="np-combobox-item">Next.js</div>
+              <div class="np-combobox-item">SvelteKit</div>
+              <div class="np-combobox-item">Nuxt.js</div>
+              <div class="np-combobox-item">Remix</div>
+              <div class="np-combobox-item">Astro</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>Form values</h2>
+        <p class="hint">
+          Set <code>data-name</code> and the selected values are submitted as
+          hidden inputs.
+        </p>
+        <form
+          onsubmit="
+            event.preventDefault()
+            this.querySelector('output').value = new URLSearchParams(
+              new FormData(this)
+            ).toString()
+          "
+        >
+          <div
+            class="np-combobox np-combobox-multiple"
+            data-name="framework"
+            style="width: 100%; max-width: 20rem"
+          >
+            <div class="np-combobox-chips">
+              <input
+                class="np-combobox-chips-input"
+                placeholder="Add framework"
+                aria-label="Frameworks"
+              />
+            </div>
+            <div class="np-combobox-content">
+              <div class="np-combobox-empty">No items found.</div>
+              <div class="np-combobox-list">
+                <div class="np-combobox-item">Next.js</div>
+                <div class="np-combobox-item">SvelteKit</div>
+                <div class="np-combobox-item">Remix</div>
+              </div>
+            </div>
+          </div>
+          <p style="margin: 0.75rem 0 0">
+            <button
+              type="submit"
+              class="np-button np-button-outline np-button-sm"
+            >
+              Submit
+            </button>
+            <output
+              style="
+                margin-inline-start: 0.5rem;
+                color: var(--np-muted-foreground);
+              "
+            ></output>
+          </p>
+        </form>
+      </section>
+      <section>
+        <h2>RTL</h2>
+        <p class="hint">The popup aligns to the end of the input.</p>
+        <div
+          class="np-combobox"
+          dir="rtl"
+          style="width: 100%; max-width: 16rem"
+        >
+          <div class="np-input-group">
+            <input
+              class="np-input np-input-group-input"
+              placeholder="اختر فاكهة"
+              aria-label="فاكهة"
+            />
+            <div class="np-input-group-addon np-input-group-addon-end">
+              <button
+                type="button"
+                class="np-button np-button-ghost np-button-icon-xs np-input-group-button np-combobox-trigger"
+                aria-label="Open options"
+              ></button>
+            </div>
+          </div>
+          <div class="np-combobox-content">
+            <div class="np-combobox-empty">لا توجد نتائج.</div>
+            <div class="np-combobox-list">
+              <div class="np-combobox-item">التفاح</div>
+              <div class="np-combobox-item">الموز</div>
+              <div class="np-combobox-item">البرتقال</div>
+              <div class="np-combobox-item">العنب</div>
+              <div class="np-combobox-item">المانجو</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section style="border-block-end: 0">
+        <h2>Dark</h2>
+        <p class="hint">
+          Use <strong>Toggle dark</strong> above. Colors come from tokens.
+        </p>
+        <div class="np-combobox" style="width: 100%; max-width: 16rem">
+          <div class="np-input-group">
+            <input
+              class="np-input np-input-group-input"
+              placeholder="Select a framework"
+              aria-label="Framework"
+            />
+            <div class="np-input-group-addon np-input-group-addon-end">
+              <button
+                type="button"
+                class="np-button np-button-ghost np-button-icon-xs np-input-group-button np-combobox-trigger"
+                aria-label="Open options"
+              ></button>
+            </div>
+          </div>
+          <div class="np-combobox-content">
+            <div class="np-combobox-empty">No items found.</div>
+            <div class="np-combobox-list">
+              <div class="np-combobox-item">Next.js</div>
+              <div class="np-combobox-item">SvelteKit</div>
+              <div class="np-combobox-item">Nuxt.js</div>
+              <div class="np-combobox-item">Remix</div>
+              <div class="np-combobox-item">Astro</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
