@@ -202,10 +202,12 @@ framework or a build step.
 From your project directory, create the base token stylesheet:
 
 ```bash
-npx nepui@latest init . --target html
+npx nepui@latest init my-app --target html
 ```
 
-This writes `styles/tokens.css`.
+This writes `nepui.json` in the project directory and `styles/tokens.css` under
+the configured source root. Use `--src ./src` to place generated files in a
+source subdirectory, or omit `--src` to choose it interactively.
 
 ### 2. Add a component
 
@@ -213,9 +215,12 @@ This writes `styles/tokens.css`.
 npx nepui@latest add button --target html
 ```
 
-The CLI adds the component markup under `html/` and its styles under
-`styles/`. For example, the button files are `html/button.html` and
-`styles/button.css`. Copy the markup into your page.
+The CLI reads the target and source root from `nepui.json`, then adds the
+component markup under `html/` and its styles under `styles/`, relative to that
+source root. For example, with `"src": "./src"`, the button files are
+`src/html/button.html` and `src/styles/button.css`. If `nepui.json` is missing,
+the CLI asks whether to create it. Choosing yes runs the initialization
+prompts before adding the requested component; choosing no cancels.
 
 ### 3. Include the styles
 
@@ -249,7 +254,10 @@ From the React project directory, run:
 npx nepui@latest init . --target react
 ```
 
-This writes `components/nepui/tokens.css` and installs `@base-ui/react`, `class-variance-authority`, and `cn` as dependencies. The `tokens.css` file contains the base design tokens for your project.
+This writes `nepui.json` in the project directory and
+`components/nepui/tokens.css` under the configured source root. It installs
+`@base-ui/react`, `class-variance-authority`, and `cn` as dependencies. Set the
+source root explicitly with `--src ./src`, or choose it in the prompt.
 
 ### 2. Add a component
 
@@ -257,8 +265,10 @@ This writes `components/nepui/tokens.css` and installs `@base-ui/react`, `class-
 npx nepui@latest add button --target react
 ```
 
-Component files are added under `components/nepui/`. Import and use the
-component:
+The CLI reads the target and source root from `nepui.json`. Component files are
+added under `components/nepui/`, relative to the source root. Fetched component
+`dependencies` and `devDependencies` are installed automatically. Import and
+use the component:
 
 ```tsx
 import { Button } from "@/components/nepui/button"
