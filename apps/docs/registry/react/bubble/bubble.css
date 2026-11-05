@@ -1,0 +1,224 @@
+/* nepui — Bubble */
+
+.np-bubble,
+[data-np-bubble] {
+  --np-primary: oklch(59.64% 0.16709 45.302);
+  --np-primary-foreground: #ffffff;
+
+  --np-bubble-bg: var(--np-primary);
+  --np-bubble-color: var(--np-primary-foreground);
+  --np-bubble-border-color: transparent;
+  --np-bubble-radius: var(--np-radius-xl);
+  --np-bubble-radius-join: var(--np-radius-sm);
+  --np-bubble-padding-block: calc(var(--np-spacing) * 2);
+  --np-bubble-padding-inline: calc(var(--np-spacing) * 3);
+  --np-bubble-font-size: 0.875rem;
+  --np-bubble-max-width: 80%;
+
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  max-width: var(--np-bubble-max-width);
+}
+
+:is(.np-bubble, [data-np-bubble]):has(
+  > :is(.np-bubble-reactions, [data-np-bubble-reactions]):not(
+      :is(.np-bubble-reactions-top, [data-side="top"])
+    )
+) {
+  margin-block-end: calc(var(--np-spacing) * 2.5);
+}
+
+:is(.np-bubble, [data-np-bubble]):has(
+  > :is(.np-bubble-reactions-top, [data-np-bubble-reactions][data-side="top"])
+) {
+  margin-block-start: calc(var(--np-spacing) * 2.5);
+}
+
+:is(.np-bubble-end, [data-align="end"]):is(.np-bubble, [data-np-bubble]) {
+  margin-inline-start: auto;
+}
+
+:is(.np-bubble-secondary, [data-variant="secondary"]):is(
+  .np-bubble,
+  [data-np-bubble]
+) {
+  --np-bubble-bg: var(--np-secondary);
+  --np-bubble-color: var(--np-secondary-foreground);
+}
+
+:is(.np-bubble-muted, [data-variant="muted"]):is(.np-bubble, [data-np-bubble]) {
+  --np-bubble-bg: color-mix(in oklab, var(--np-muted) 50%, transparent);
+  --np-bubble-color: var(--np-foreground);
+}
+
+:is(.np-bubble-tinted, [data-variant="tinted"]):is(
+  .np-bubble,
+  [data-np-bubble]
+) {
+  --np-bubble-bg: color-mix(in oklab, var(--np-primary) 20%, transparent);
+  --np-bubble-color: var(--np-foreground);
+}
+
+:is(.np-bubble-outline, [data-variant="outline"]):is(
+  .np-bubble,
+  [data-np-bubble]
+) {
+  --np-bubble-bg: transparent;
+  --np-bubble-color: var(--np-foreground);
+  --np-bubble-border-color: var(--np-border);
+}
+
+:is(.np-bubble-ghost, [data-variant="ghost"]):is(.np-bubble, [data-np-bubble]) {
+  --np-bubble-bg: transparent;
+  --np-bubble-color: var(--np-foreground);
+  --np-bubble-padding-inline: 0px;
+  --np-bubble-max-width: none;
+
+  width: 100%;
+}
+
+:is(.np-bubble-destructive, [data-variant="destructive"]):is(
+  .np-bubble,
+  [data-np-bubble]
+) {
+  --np-bubble-bg: color-mix(in oklab, var(--np-destructive) 10%, transparent);
+  --np-bubble-color: var(--np-destructive);
+}
+
+.np-bubble-content,
+[data-np-bubble-content] {
+  box-sizing: border-box;
+  margin: 0;
+  padding: var(--np-bubble-padding-block) var(--np-bubble-padding-inline);
+  border: 1px solid var(--np-bubble-border-color);
+  border-radius: var(--np-bubble-radius);
+  outline: none;
+  background-color: var(--np-bubble-bg);
+  color: var(--np-bubble-color);
+  font: inherit;
+  font-size: var(--np-bubble-font-size);
+  line-height: 1.375;
+  text-align: start;
+  text-decoration: none;
+  text-wrap: pretty;
+  overflow-wrap: anywhere;
+}
+
+:is(.np-bubble-content, [data-np-bubble-content]) a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+:is(button, a):is(.np-bubble-content, [data-np-bubble-content]) {
+  cursor: pointer;
+}
+
+:is(button, a):is(.np-bubble-content, [data-np-bubble-content]):hover {
+  background-image: linear-gradient(
+    color-mix(in oklab, currentColor 8%, transparent) 0 0
+  );
+}
+
+:is(.np-bubble-content, [data-np-bubble-content]):focus-visible {
+  border-color: var(--np-ring);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--np-ring), transparent 50%);
+}
+
+:is(.np-bubble-content, [data-np-bubble-content]):is(
+  :disabled,
+  [aria-disabled="true"],
+  [data-disabled]
+) {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.np-bubble-group,
+[data-np-bubble-group] {
+  --np-bubble-group-gap: calc(var(--np-spacing) * 0.5);
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--np-bubble-group-gap);
+}
+
+:is(.np-bubble-group, [data-np-bubble-group])
+  > :is(.np-bubble, [data-np-bubble]):not(
+    :is(.np-bubble-end, [data-align="end"])
+  ):not(:first-child)
+  > :is(.np-bubble-content, [data-np-bubble-content]) {
+  border-start-start-radius: var(--np-bubble-radius-join);
+}
+
+:is(.np-bubble-group, [data-np-bubble-group])
+  > :is(.np-bubble, [data-np-bubble]):not(
+    :is(.np-bubble-end, [data-align="end"])
+  ):not(:last-child)
+  > :is(.np-bubble-content, [data-np-bubble-content]) {
+  border-end-start-radius: var(--np-bubble-radius-join);
+}
+
+:is(.np-bubble-group, [data-np-bubble-group])
+  > :is(.np-bubble-end, [data-align="end"]):is(
+    .np-bubble,
+    [data-np-bubble]
+  ):not(:first-child)
+  > :is(.np-bubble-content, [data-np-bubble-content]) {
+  border-start-end-radius: var(--np-bubble-radius-join);
+}
+
+:is(.np-bubble-group, [data-np-bubble-group])
+  > :is(.np-bubble-end, [data-align="end"]):is(
+    .np-bubble,
+    [data-np-bubble]
+  ):not(:last-child)
+  > :is(.np-bubble-content, [data-np-bubble-content]) {
+  border-end-end-radius: var(--np-bubble-radius-join);
+}
+
+.np-bubble-reactions,
+[data-np-bubble-reactions] {
+  --np-bubble-reactions-bg: var(--np-muted);
+  --np-bubble-reactions-color: var(--np-foreground);
+  --np-bubble-reactions-ring-color: var(--np-background);
+  --np-bubble-reactions-height: 1.25rem;
+  --np-bubble-reactions-inset: calc(var(--np-spacing) * 2);
+
+  position: absolute;
+  inset-block-start: 100%;
+  inset-inline-end: var(--np-bubble-reactions-inset);
+  z-index: 1;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: calc(var(--np-spacing) * 0.5);
+  min-height: var(--np-bubble-reactions-height);
+  padding-inline: calc(var(--np-spacing) * 1.5);
+  padding-block: calc(var(--np-spacing) * 0.5);
+  border-radius: var(--np-radius-full);
+  background-color: var(--np-bubble-reactions-bg);
+  box-shadow: 0 0 0 3px var(--np-bubble-reactions-ring-color);
+  color: var(--np-bubble-reactions-color);
+  font-size: 0.75rem;
+  line-height: 1;
+  translate: 0 -50%;
+}
+
+:is(.np-bubble-reactions-top, [data-side="top"]):is(
+  .np-bubble-reactions,
+  [data-np-bubble-reactions]
+) {
+  inset-block: auto 100%;
+  translate: 0 50%;
+}
+
+:is(.np-bubble-reactions-start, [data-align="start"]):is(
+  .np-bubble-reactions,
+  [data-np-bubble-reactions]
+) {
+  inset-inline: var(--np-bubble-reactions-inset) auto;
+}

@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Bubble</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/bubble.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem 4rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: system-ui, sans-serif;
+      }
+      main {
+        display: grid;
+        gap: 2.5rem;
+        max-width: 44rem;
+        margin-inline: auto;
+      }
+      h2 {
+        margin: 0 0 0.75rem;
+        font-size: 1rem;
+      }
+      p {
+        margin: 0 0 0.75rem;
+        color: var(--np-muted-foreground);
+        font-size: 0.875rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Default</h2>
+        <p>
+          Class form: <code>np-bubble</code>, <code>np-bubble-content</code>,
+          <code>np-bubble-reactions</code>.
+        </p>
+        <div style="width: 100%; max-width: 28rem; display: grid; gap: 0.5rem">
+          <div class="np-bubble np-bubble-secondary">
+            <div class="np-bubble-content">
+              Did you check the registry output?
+            </div>
+          </div>
+          <div class="np-bubble np-bubble-end">
+            <div class="np-bubble-content">
+              I checked it and removed the stale route.
+            </div>
+            <div
+              class="np-bubble-reactions"
+              role="img"
+              aria-label="Reaction: thumbs up"
+            >
+              <span>👍</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Variants</h2>
+        <p>
+          Seven variants: default, secondary, muted, tinted, outline, ghost,
+          destructive.
+        </p>
+        <div style="width: 100%; max-width: 28rem; display: grid; gap: 0.5rem">
+          <div class="np-bubble">
+            <div class="np-bubble-content">This is a default bubble.</div>
+          </div>
+          <div class="np-bubble np-bubble-secondary">
+            <div class="np-bubble-content">This is a secondary bubble.</div>
+          </div>
+          <div class="np-bubble np-bubble-muted">
+            <div class="np-bubble-content">This is a muted bubble.</div>
+          </div>
+          <div class="np-bubble np-bubble-tinted">
+            <div class="np-bubble-content">This is a tinted bubble.</div>
+          </div>
+          <div class="np-bubble np-bubble-outline">
+            <div class="np-bubble-content">This is a outline bubble.</div>
+          </div>
+          <div class="np-bubble np-bubble-ghost">
+            <div class="np-bubble-content">This is a ghost bubble.</div>
+          </div>
+          <div class="np-bubble np-bubble-destructive">
+            <div class="np-bubble-content">This is a destructive bubble.</div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Alignment</h2>
+        <p><code>np-bubble-end</code> is logical, so it flips in RTL.</p>
+        <div style="width: 100%; max-width: 28rem; display: grid; gap: 0.5rem">
+          <div class="np-bubble np-bubble-secondary">
+            <div class="np-bubble-content">Aligned to the start.</div>
+          </div>
+          <div class="np-bubble np-bubble-end">
+            <div class="np-bubble-content">Aligned to the end.</div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Group</h2>
+        <p>
+          <code>np-bubble-group</code> joins the corners of consecutive bubbles.
+        </p>
+        <div style="width: 100%; max-width: 28rem; display: grid; gap: 1rem">
+          <div class="np-bubble-group">
+            <div class="np-bubble np-bubble-secondary">
+              <div class="np-bubble-content">
+                Hey, are you free for a quick call?
+              </div>
+            </div>
+            <div class="np-bubble np-bubble-secondary">
+              <div class="np-bubble-content">
+                I want to go over the release notes.
+              </div>
+            </div>
+            <div class="np-bubble np-bubble-secondary">
+              <div class="np-bubble-content">It should take five minutes.</div>
+            </div>
+          </div>
+          <div class="np-bubble-group">
+            <div class="np-bubble np-bubble-end">
+              <div class="np-bubble-content">Sure, give me a minute.</div>
+            </div>
+            <div class="np-bubble np-bubble-end">
+              <div class="np-bubble-content">Calling you now.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Reactions</h2>
+        <p>Bottom or top, start or end.</p>
+        <div style="width: 100%; max-width: 28rem; display: grid; gap: 1.25rem">
+          <div class="np-bubble np-bubble-secondary">
+            <div class="np-bubble-content">Bottom, end (the default).</div>
+            <div
+              class="np-bubble-reactions"
+              role="img"
+              aria-label="Reactions: thumbs up and fire"
+            >
+              <span>👍</span>
+              <span>🔥</span>
+            </div>
+          </div>
+          <div class="np-bubble np-bubble-secondary">
+            <div class="np-bubble-content">Bottom, start.</div>
+            <div
+              class="np-bubble-reactions np-bubble-reactions-start"
+              role="img"
+              aria-label="Reaction: heart"
+            >
+              <span>❤️</span>
+            </div>
+          </div>
+          <div class="np-bubble np-bubble-secondary np-bubble-end">
+            <div class="np-bubble-content">Top, end, with a count.</div>
+            <div
+              class="np-bubble-reactions np-bubble-reactions-top"
+              role="img"
+              aria-label="Reactions: thumbs up, fire, and 8 more"
+            >
+              <span>👍</span>
+              <span>🔥</span>
+              <span>+8</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Link and button</h2>
+        <p>
+          Use a <code>&lt;button&gt;</code> or <code>&lt;a&gt;</code> as the
+          content.
+        </p>
+        <div style="width: 100%; max-width: 28rem; display: grid; gap: 0.5rem">
+          <div class="np-bubble np-bubble-muted">
+            <button type="button" class="np-bubble-content">Click here</button>
+          </div>
+          <div class="np-bubble np-bubble-outline">
+            <a href="#" class="np-bubble-content">Open the release notes</a>
+          </div>
+          <div class="np-bubble np-bubble-muted np-bubble-end">
+            <button type="button" class="np-bubble-content" disabled>
+              Disabled
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Data-attribute form</h2>
+        <p>Same bubbles, no classes.</p>
+        <div data-np-bubble-group>
+          <div data-np-bubble data-variant="secondary">
+            <div data-np-bubble-content>First</div>
+          </div>
+          <div data-np-bubble data-variant="secondary">
+            <div data-np-bubble-content>Second</div>
+          </div>
+        </div>
+        <div
+          data-np-bubble
+          data-align="end"
+          style="margin-block-start: 1.25rem"
+        >
+          <div data-np-bubble-content>With reactions</div>
+          <div
+            data-np-bubble-reactions
+            data-side="top"
+            data-align="start"
+            role="img"
+            aria-label="Reaction: fire"
+          >
+            <span>🔥</span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
