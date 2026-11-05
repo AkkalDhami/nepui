@@ -1,0 +1,315 @@
+---
+title: Combobox
+description: Autocomplete input with a list of suggestions.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://github.com/akkaldhami.png
+---
+
+<ComponentPreview
+  name="combobox-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/combobox.json"
+      nepui="npx nepui@latest add combobox"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react cn" className="mt-6"/>
+
+      <Step>Install the required nepui dependencies:</Step>
+      <PackageManagerTabs command="npx nepui@latest add input-group button" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="combobox"
+        title="components/nepui/combobox/combobox.css"
+        fileTarget="components/nepui/combobox/combobox.css"
+      />
+      <ComponentSource
+        target="react"
+        name="combobox"
+        title="components/nepui/combobox/combobox.tsx"
+        fileTarget="components/nepui/combobox/combobox.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="combobox"
+        title="components/nepui/combobox/index.ts"
+        fileTarget="components/nepui/combobox/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import {
+  Combobox,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxList,
+} from "@/components/nepui/combobox"
+```
+
+```tsx
+const frameworks = ["Next.js", "SvelteKit", "Nuxt.js", "Remix", "Astro"]
+
+export function ExampleCombobox() {
+  return (
+    <Combobox items={frameworks}>
+      <ComboboxInput placeholder="Select a framework" aria-label="Framework" />
+      <ComboboxContent>
+        <ComboboxEmpty>No items found.</ComboboxEmpty>
+        <ComboboxList>
+          {(item) => (
+            <ComboboxItem key={item} value={item}>
+              {item}
+            </ComboboxItem>
+          )}
+        </ComboboxList>
+      </ComboboxContent>
+    </Combobox>
+  )
+}
+```
+
+The input must have an accessible name. Use a visible `<label>` or an `aria-label`.
+
+---
+
+## Composition
+
+### Simple
+
+A single-line input and a flat list (see <LINK href="#basic">Basic</LINK>).
+
+```text
+Combobox
+├── ComboboxInput
+└── ComboboxContent
+    ├── ComboboxEmpty
+    └── ComboboxList
+        ├── ComboboxItem
+        └── ComboboxItem
+```
+
+### With chips
+
+Multi-select with `multiple`, chips, and a chips input (see <LINK href="#multiple">Multiple</LINK>).
+
+```text
+Combobox
+├── ComboboxChips
+│   ├── ComboboxValue
+│   │   └── ComboboxChip
+│   └── ComboboxChipsInput
+└── ComboboxContent
+    ├── ComboboxEmpty
+    └── ComboboxList
+        ├── ComboboxItem
+        └── ComboboxItem
+```
+
+### With groups and collection
+
+Nested items per group using `ComboboxCollection` inside each `ComboboxGroup`, with a separator between groups (see <LINK href="#groups">Groups</LINK>).
+
+```text
+Combobox
+├── ComboboxInput
+└── ComboboxContent
+    ├── ComboboxEmpty
+    └── ComboboxList
+        ├── ComboboxGroup
+        │   ├── ComboboxLabel
+        │   └── ComboboxCollection
+        │       ├── ComboboxItem
+        │       └── ComboboxItem
+        ├── ComboboxSeparator
+        └── ComboboxGroup
+            ├── ComboboxLabel
+            └── ComboboxCollection
+                ├── ComboboxItem
+                └── ComboboxItem
+```
+
+---
+
+## Basic
+
+A simple combobox with a list of frameworks, as in the example at the top of this page. Type to filter, use the arrow keys to move, and press `Enter` to choose.
+
+---
+
+## Multiple
+
+Use `multiple` with `ComboboxChips` for multi-select. Pass the ref from `useComboboxAnchor` to both `ComboboxChips` and `ComboboxContent`, so the popup is as wide as the chips box.
+
+Give each chip's remove button a name with `removeLabel`, and translate it.
+
+<ComponentPreview
+  name="combobox-multiple"
+/>
+
+---
+
+## Clear button
+
+Use the `showClear` prop on `ComboboxInput` to show a clear button. It replaces the chevron while there is a value.
+
+<ComponentPreview
+  name="combobox-clear"
+/>
+
+---
+
+## Groups
+
+Use `ComboboxGroup` and `ComboboxSeparator` to group items. Each group takes its own `items`, and `ComboboxCollection` renders them.
+
+<ComponentPreview
+  name="combobox-groups"
+/>
+
+---
+
+## Custom items
+
+You can render any content inside `ComboboxItem`. When the items are objects, give them the shape `{ value, label }` and the label is used for the input and for filtering. For any other shape, use `itemToStringLabel` to show them and `itemToStringValue` for form submission.
+
+<ComponentPreview
+  name="combobox-custom"
+/>
+
+---
+
+## Invalid
+
+Use the `aria-invalid` prop on `ComboboxInput` to make the combobox invalid.
+
+<ComponentPreview
+  name="combobox-invalid"
+/>
+
+---
+
+## Disabled
+
+Use the `disabled` prop on both `Combobox` and `ComboboxInput` to disable the combobox.
+
+<ComponentPreview
+  name="combobox-disabled"
+/>
+
+---
+
+## Auto highlight
+
+Use the `autoHighlight` prop to automatically highlight the first item while filtering.
+
+<ComponentPreview
+  name="combobox-auto-highlight"
+/>
+
+---
+
+## Popup
+
+You can trigger the combobox from a button or any other component by using the `render` prop on `ComboboxTrigger`. Move the `ComboboxInput` inside the `ComboboxContent`. This example uses the [Button](/docs/components/react/button) component.
+
+<ComponentPreview
+  name="combobox-popup"
+/>
+
+---
+
+## Input group
+
+You can add an addon to the combobox by using the `InputGroupAddon` component inside `ComboboxInput`.
+
+<ComponentPreview
+  name="combobox-input-group"
+/>
+
+---
+
+## API Reference
+
+Built on the [Base UI Combobox](https://base-ui.com/react/components/combobox#api-reference). All Base UI props are supported, the tables list the ones you will use most.
+
+### Combobox
+
+Groups all parts of the combobox. It renders no element.
+
+| Prop                 | Type                                         | Default |
+| -------------------- | -------------------------------------------- | ------- |
+| `items`              | `any[] \| Group[]`                           | -       |
+| `multiple`           | `boolean`                                    | `false` |
+| `value`              | `Value \| Value[] \| null`                   | -       |
+| `defaultValue`       | `Value \| Value[] \| null`                   | -       |
+| `onValueChange`      | `(value, eventDetails) => void`              | -       |
+| `inputValue`         | `string`                                     | -       |
+| `onInputValueChange` | `(value: string, eventDetails) => void`      | -       |
+| `autoHighlight`      | `boolean`                                    | `false` |
+| `disabled`           | `boolean`                                    | `false` |
+| `itemToStringLabel`  | `(item) => string`                           | -       |
+| `itemToStringValue`  | `(item) => string`                           | -       |
+| `filter`             | `((item, query) => boolean) \| null`         | -       |
+
+### ComboboxInput
+
+The text input, inside an Input Group. Other props go to the input. Children are rendered inside the group.
+
+| Prop          | Type      | Default |
+| ------------- | --------- | ------- |
+| `showTrigger` | `boolean` | `true`  |
+| `showClear`   | `boolean` | `false` |
+| `disabled`    | `boolean` | `false` |
+| `className`   | `string`  | -       |
+
+### ComboboxContent
+
+The popup. Portaled and positioned by Base UI.
+
+| Prop          | Type                                      | Default    |
+| ------------- | ----------------------------------------- | ---------- |
+| `side`        | `"top" \| "bottom" \| "left" \| "right"`  | `"bottom"` |
+| `sideOffset`  | `number`                                  | `6`        |
+| `align`       | `"start" \| "center" \| "end"`            | `"start"`  |
+| `alignOffset` | `number`                                  | `0`        |
+| `anchor`      | `RefObject<HTMLElement>`                  | -          |
+| `className`   | `string \| (state) => string`             | -          |
+
+### ComboboxItem
+
+| Prop        | Type                          | Default |
+| ----------- | ----------------------------- | ------- |
+| `value`     | `any`                         | -       |
+| `disabled`  | `boolean`                     | `false` |
+| `className` | `string \| (state) => string` | -       |
+
+### ComboboxChip
+
+| Prop          | Type      | Default    |
+| ------------- | --------- | ---------- |
+| `showRemove`  | `boolean` | `true`     |
+| `removeLabel` | `string`  | `"Remove"` |
