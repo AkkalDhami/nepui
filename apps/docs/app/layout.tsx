@@ -15,6 +15,7 @@ import { RootProvider } from "fumadocs-ui/provider/next"
 import { NuqsAdapter } from "nuqs/adapters/next/app"
 import "./styles/globals.css"
 import { Toaster } from "@/components/ui/toast"
+import { Toaster as NepuiToaster } from "@/registry/react/toast"
 import { TooltipProvider } from "@/components/ui/tooltip"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
@@ -44,6 +45,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
       className={cn(
         "antialiased",
@@ -66,6 +68,7 @@ export default function RootLayout({
         <Analytics />
         <ThemeProvider>
           <Toaster />
+          <NepuiToaster />
           <RootProvider search={{ enabled: false }}>
             <NuqsAdapter>
               <TooltipProvider>{children}</TooltipProvider>

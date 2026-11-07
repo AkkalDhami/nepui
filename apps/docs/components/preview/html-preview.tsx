@@ -40,19 +40,22 @@ export async function HtmlPreview({
     })
   )
 
-  const jsContents = await Promise.all(
-    (scripts ?? []).map(async (p) => {
-      const fullPath = path.join(REGISTRY_ROOT, p)
+  const previewScripts = await Promise.all(
+    (scripts ?? []).map(async (script) => {
+      if (/^https?:\/\//i.test(script)) {
+        return { src: script }
+      }
+
+      const fullPath = path.join(REGISTRY_ROOT, script)
       try {
-        return await fs.readFile(fullPath, "utf8")
+        return { code: await fs.readFile(fullPath, "utf8") }
       } catch {
-        return ""
+        return { code: "" }
       }
     })
   )
 
   const css = cssContents.join("\n\n")
-  const js = jsContents.join("\n\n")
 
   return (
     <HtmlPreviewFrame
@@ -61,7 +64,8 @@ export async function HtmlPreview({
       height={height}
       tokens={tokens ?? null}
       className={cn("rounded-xl border", className)}
-      js={js || null}
+      js={null}
+      scripts={previewScripts}
       scriptType={scriptType}
     />
   )
