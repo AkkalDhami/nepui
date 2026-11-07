@@ -56,6 +56,7 @@ export async function ComponentPreview({
       "alert-dialog",
       "context-menu",
       "hover-card",
+      "code-block",
     ]
 
     const componentName = groupedComponents.includes(
