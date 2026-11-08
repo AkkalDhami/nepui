@@ -10,10 +10,11 @@ button:not(:disabled),
   --np-button-radius: var(--np-radius-md);
   --np-button-font-size: 0.875rem;
   --np-button-font-weight: 500;
-  --np-button-gap: 0.375rem;
-  --np-button-height: 2rem;
-  --np-button-padding-x: 0.625rem;
-  --np-button-icon-size: 1rem;
+  --np-button-gap: calc(var(--np-spacing) * 2);
+  --np-button-height: calc(var(--np-spacing) * 9);
+  --np-button-padding-x: calc(var(--np-spacing) * 3);
+  --np-button-padding-y: calc(var(--np-spacing) * 1.5);
+  --np-button-icon-size: calc(var(--np-spacing) * 4);
 
   --np-button-bg: var(--np-primary);
   --np-button-color: var(--np-primary-foreground);
@@ -32,7 +33,7 @@ button:not(:disabled),
 
   gap: var(--np-button-gap);
   height: var(--np-button-height);
-  padding: 0 var(--np-button-padding-x);
+  padding: var(--np-button-padding-y) var(--np-button-padding-x);
 
   border: 1px solid var(--np-button-border);
   border-radius: var(--np-button-radius);
@@ -181,30 +182,33 @@ button:not(:disabled),
 
 .np-button-xs,
 :is(.np-button, [data-np-button])[data-size="xs"] {
-  --np-button-height: 1.5rem;
-  --np-button-padding-x: 0.5rem;
+  --np-button-height: calc(var(--np-spacing) * 7);
+  --np-button-padding-x: calc(var(--np-spacing) * 2);
+  --np-button-padding-y: var(--np-spacing);
   --np-button-font-size: 0.75rem;
-  --np-button-gap: 0.25rem;
-  --np-button-icon-size: 0.75rem;
+  --np-button-gap: calc(var(--np-spacing) * 1.5);
+  --np-button-icon-size: calc(var(--np-spacing) * 3);
   --np-button-radius: min(var(--np-radius-md), 10px);
 }
 
 .np-button-sm,
 :is(.np-button, [data-np-button])[data-size="sm"] {
-  --np-button-height: 1.75rem;
-  --np-button-padding-x: 0.625rem;
+  --np-button-height: calc(var(--np-spacing) * 8);
+  --np-button-padding-x: calc(var(--np-spacing) * 2.5);
+  --np-button-padding-y: var(--np-spacing);
   --np-button-font-size: 0.8rem;
-  --np-button-gap: 0.25rem;
-  --np-button-icon-size: 0.875rem;
+  --np-button-gap: calc(var(--np-spacing) * 1.5);
+  --np-button-icon-size: calc(var(--np-spacing) * 3.5);
   --np-button-radius: min(var(--np-radius-md), 12px);
 }
 
 .np-button-lg,
 :is(.np-button, [data-np-button])[data-size="lg"] {
-  --np-button-height: 2.25rem;
-  --np-button-padding-x: 0.625rem;
+  --np-button-height: calc(var(--np-spacing) * 10);
+  --np-button-padding-x: calc(var(--np-spacing) * 4);
+  --np-button-padding-y: calc(var(--np-spacing) * 1.5);
   --np-button-font-size: 0.9375rem;
-  --np-button-gap: 0.375rem;
+  --np-button-gap: calc(var(--np-spacing) * 2);
 }
 
 .np-button-icon,
@@ -221,25 +225,27 @@ button:not(:disabled),
 
 .np-button-icon,
 :is(.np-button, [data-np-button])[data-size="icon"] {
-  --np-button-height: 2rem;
+  --np-button-height: calc(var(--np-spacing) * 9);
 }
 
 .np-button-icon-xs,
 :is(.np-button, [data-np-button])[data-size="icon-xs"] {
-  --np-button-height: 1.5rem;
-  --np-button-icon-size: 0.75rem;
+  --np-button-height: calc(var(--np-spacing) * 7);
+  --np-button-icon-size: calc(var(--np-spacing) * 3);
   --np-button-radius: min(var(--np-radius-md), 10px);
 }
 
 .np-button-icon-sm,
 :is(.np-button, [data-np-button])[data-size="icon-sm"] {
-  --np-button-height: 1.75rem;
+  --np-button-height: calc(var(--np-spacing) * 8);
+  --np-button-icon-size: calc(var(--np-spacing) * 3.5);
   --np-button-radius: min(var(--np-radius-md), 12px);
 }
 
 .np-button-icon-lg,
 :is(.np-button, [data-np-button])[data-size="icon-lg"] {
-  --np-button-height: 2.25rem;
+  --np-button-height: calc(var(--np-spacing) * 10);
+  --np-button-icon-size: calc(var(--np-spacing) * 4.5);
 }
 
 /* Inside a button group, small sizes use the full radius */

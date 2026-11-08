@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Calendar</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/label.css" />
+    <link rel="stylesheet" href="../styles/input.css" />
+    <link rel="stylesheet" href="../styles/calendar.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem 4rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: var(--np-font-sans, system-ui, sans-serif);
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+        max-width: 44rem;
+        margin-inline: auto;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 1.5rem;
+      }
+
+      section > h2 {
+        margin: 0 0 0.25rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+
+      .hint {
+        margin: 0 0 0.75rem;
+        font-size: 0.8125rem;
+        color: var(--np-muted-foreground);
+      }
+    </style>
+    <script type="module" src="../javascripts/calendar.js"></script>
+  </head>
+
+  <body>
+    <main>
+      <section>
+        <h2>Single</h2>
+        <p class="hint">
+          <code>data-np-calendar</code> on an empty element. Arrow keys move,
+          PageUp and PageDown change month, Shift for years.
+        </p>
+        <div
+          class="np-calendar np-calendar-bordered"
+          data-np-calendar
+          data-mode="single"
+          data-value="2026-11-04"
+        ></div>
+      </section>
+
+      <section>
+        <h2>Multiple</h2>
+        <p class="hint">
+          <code>data-mode="multiple"</code>, data-attribute form, no classes.
+        </p>
+        <div
+          data-np-calendar
+          data-mode="multiple"
+          data-value="2026-11-04,2026-11-12,2026-11-18"
+        ></div>
+      </section>
+
+      <section>
+        <h2>Range</h2>
+        <p class="hint">
+          <code>data-mode="range"</code> with <code>data-months="2"</code>.
+        </p>
+        <div
+          class="np-calendar np-calendar-bordered"
+          data-np-calendar
+          data-mode="range"
+          data-months="2"
+          data-month="2026-01"
+          data-value="2026-01-12/2026-01-24"
+        ></div>
+      </section>
+
+      <section>
+        <h2>Month and year selector</h2>
+        <p class="hint"><code>data-caption-layout="dropdown"</code>.</p>
+        <div
+          class="np-calendar np-calendar-bordered"
+          data-np-calendar
+          data-mode="single"
+          data-value="2026-11-04"
+          data-caption-layout="dropdown"
+          data-start-year="1926"
+          data-end-year="2036"
+        ></div>
+      </section>
+
+      <section>
+        <h2>Presets</h2>
+        <p class="hint">
+          Buttons with <code>data-np-calendar-set</code> and
+          <code>data-target</code>.
+        </p>
+        <div
+          style="
+            width: fit-content;
+            border: 1px solid var(--np-border);
+            border-radius: var(--np-radius-lg);
+          "
+        >
+          <div
+            id="calendar-presets-picker"
+            class="np-calendar"
+            data-np-calendar
+            data-mode="single"
+            data-value="2026-11-04"
+          ></div>
+          <div
+            style="
+              display: flex;
+              flex-wrap: wrap;
+              gap: 0.5rem;
+              padding: 0.75rem;
+              border-top: 1px solid var(--np-border);
+            "
+          >
+            <button
+              class="np-button np-button-outline np-button-sm"
+              type="button"
+              data-np-calendar-set="+0"
+              data-target="#calendar-presets-picker"
+            >
+              Today
+            </button>
+            <button
+              class="np-button np-button-outline np-button-sm"
+              type="button"
+              data-np-calendar-set="+1"
+              data-target="#calendar-presets-picker"
+            >
+              Tomorrow
+            </button>
+            <button
+              class="np-button np-button-outline np-button-sm"
+              type="button"
+              data-np-calendar-set="+3"
+              data-target="#calendar-presets-picker"
+            >
+              In 3 days
+            </button>
+            <button
+              class="np-button np-button-outline np-button-sm"
+              type="button"
+              data-np-calendar-set="+7"
+              data-target="#calendar-presets-picker"
+            >
+              In a week
+            </button>
+            <button
+              class="np-button np-button-outline np-button-sm"
+              type="button"
+              data-np-calendar-set="+14"
+              data-target="#calendar-presets-picker"
+            >
+              In 2 weeks
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Booked dates</h2>
+        <p class="hint">
+          <code>data-disabled-dates</code> and <code>data-booked-dates</code>.
+        </p>
+        <div
+          class="np-calendar np-calendar-bordered"
+          data-np-calendar
+          data-mode="single"
+          data-month="2026-01"
+          data-value="2026-01-08"
+          data-disabled-dates="2026-01-12/2026-01-26"
+          data-booked-dates="2026-01-12/2026-01-26"
+        ></div>
+      </section>
+
+      <section>
+        <h2>Cell size and notes</h2>
+        <p class="hint">
+          <code>--np-calendar-cell-size</code> and <code>data-day-note-*</code>.
+        </p>
+        <div
+          class="np-calendar np-calendar-bordered"
+          data-np-calendar
+          data-mode="single"
+          data-month="2026-12"
+          data-value="2026-12-08"
+          data-day-note-weekday="$100"
+          data-day-note-weekend="$120"
+          style="--np-calendar-cell-size: 2.75rem"
+        ></div>
+      </section>
+
+      <section>
+        <h2>Week numbers</h2>
+        <p class="hint"><code>data-show-week-number</code>.</p>
+        <div
+          class="np-calendar np-calendar-bordered"
+          data-np-calendar
+          data-mode="single"
+          data-month="2026-01"
+          data-value="2026-01-14"
+          data-show-week-number
+        ></div>
+      </section>
+
+      <section>
+        <h2>Date and time</h2>
+        <p class="hint">The calendar next to other fields.</p>
+        <div
+          style="
+            width: fit-content;
+            border: 1px solid var(--np-border);
+            border-radius: var(--np-radius-lg);
+          "
+        >
+          <div
+            class="np-calendar"
+            data-np-calendar
+            data-mode="single"
+            data-value="2026-11-04"
+          ></div>
+          <div
+            style="
+              display: flex;
+              gap: 0.75rem;
+              padding: 0.75rem;
+              border-top: 1px solid var(--np-border);
+            "
+          >
+            <div
+              style="
+                display: flex;
+                flex: 1;
+                flex-direction: column;
+                gap: 0.5rem;
+              "
+            >
+              <label class="np-label" for="time-from">Start Time</label>
+              <input
+                class="np-input"
+                id="time-from"
+                type="time"
+                step="1"
+                value="10:30:00"
+              />
+            </div>
+            <div
+              style="
+                display: flex;
+                flex: 1;
+                flex-direction: column;
+                gap: 0.5rem;
+              "
+            >
+              <label class="np-label" for="time-to">End Time</label>
+              <input
+                class="np-input"
+                id="time-to"
+                type="time"
+                step="1"
+                value="12:30:00"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>In a form</h2>
+        <p class="hint">
+          <code>data-name</code> adds a hidden input with the ISO date.
+        </p>
+        <form
+          onsubmit="
+            event.preventDefault()
+            this.querySelector('output').value =
+              new FormData(this).get('date') || '(none)'
+          "
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            align-items: flex-start;
+          "
+        >
+          <div
+            class="np-calendar np-calendar-bordered"
+            data-np-calendar
+            data-name="date"
+          ></div>
+          <div style="display: flex; align-items: center; gap: 0.75rem">
+            <button class="np-button np-button-sm" type="submit">Submit</button>
+            <span style="font-size: 0.875rem; color: var(--np-muted-foreground)"
+              >Value: <output>-</output></span
+            >
+          </div>
+        </form>
+      </section>
+
+      <section>
+        <h2>Event</h2>
+        <p class="hint">
+          A <code>np-calendar-change</code> event fires on every change.
+        </p>
+        <div
+          class="np-calendar np-calendar-bordered"
+          id="idx-event"
+          data-np-calendar
+          data-mode="range"
+        ></div>
+        <p id="idx-event-out" class="hint" style="margin-top: 0.5rem">
+          Pick a range.
+        </p>
+      </section>
+    </main>
+    <script type="module">
+      document.addEventListener("np-calendar-change", (event) => {
+        console.log({ event })
+        if (event.target.id !== "idx-event") return
+        const v = event.detail.value
+        document.getElementById("idx-event-out").textContent = v
+          ? "From " + v.from + " to " + (v.to || "…")
+          : "Pick a range."
+      })
+    </script>
+  </body>
+</html>
