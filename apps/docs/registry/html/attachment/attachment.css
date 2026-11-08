@@ -1,0 +1,405 @@
+/* nepui — Attachment */
+
+.np-attachment,
+[data-np-attachment] {
+  --np-attachment-padding: calc(var(--np-spacing) * 2);
+  --np-attachment-gap: calc(var(--np-spacing) * 3);
+  --np-attachment-radius: var(--np-radius-xl);
+  --np-attachment-font-size: 0.875rem;
+  --np-attachment-media-size: 2.5rem;
+  --np-attachment-icon-size: 1.25rem;
+  --np-attachment-bg: var(--np-background);
+  --np-attachment-color: var(--np-foreground);
+  --np-attachment-border-color: var(--np-border);
+  --np-attachment-media-bg: var(--np-muted);
+  --np-attachment-media-color: var(--np-muted-foreground);
+  --np-attachment-description-color: var(--np-muted-foreground);
+  --np-attachment-progress: 0%;
+
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--np-attachment-gap);
+  min-width: 0;
+  padding: var(--np-attachment-padding);
+  border: 1px solid var(--np-attachment-border-color);
+  border-radius: var(--np-attachment-radius);
+  background-color: var(--np-attachment-bg);
+  color: var(--np-attachment-color);
+  font-size: var(--np-attachment-font-size);
+  line-height: 1.25;
+  text-align: start;
+}
+
+:is(.np-attachment, [data-np-attachment]):has(
+  > :is(.np-attachment-trigger, [data-np-attachment-trigger]):hover
+) {
+  background-color: color-mix(
+    in oklab,
+    var(--np-muted) 50%,
+    var(--np-attachment-bg)
+  );
+}
+
+:is(.np-attachment, [data-np-attachment]):has(
+  > :is(.np-attachment-trigger, [data-np-attachment-trigger]):focus-visible
+) {
+  border-color: var(--np-ring);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--np-ring), transparent 50%);
+}
+
+:is(.np-attachment-sm, [data-size="sm"]):is(
+  .np-attachment,
+  [data-np-attachment]
+) {
+  --np-attachment-padding: calc(var(--np-spacing) * 1.5);
+  --np-attachment-gap: calc(var(--np-spacing) * 2);
+  --np-attachment-radius: var(--np-radius-lg);
+  --np-attachment-media-size: 2rem;
+  --np-attachment-icon-size: 1rem;
+}
+
+:is(.np-attachment-xs, [data-size="xs"]):is(
+  .np-attachment,
+  [data-np-attachment]
+) {
+  --np-attachment-padding: calc(var(--np-spacing) * 1);
+  --np-attachment-gap: calc(var(--np-spacing) * 2);
+  --np-attachment-radius: var(--np-radius-md);
+  --np-attachment-font-size: 0.75rem;
+  --np-attachment-media-size: 1.5rem;
+  --np-attachment-icon-size: 0.875rem;
+}
+
+:is(.np-attachment-vertical, [data-orientation="vertical"]):is(
+  .np-attachment,
+  [data-np-attachment]
+) {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+:is(.np-attachment-idle, [data-state="idle"]):is(
+  .np-attachment,
+  [data-np-attachment]
+) {
+  --np-attachment-border-color: color-mix(
+    in oklab,
+    var(--np-muted-foreground) 50%,
+    transparent
+  );
+
+  border-style: dashed;
+}
+
+:is(.np-attachment-error, [data-state="error"]):is(
+  .np-attachment,
+  [data-np-attachment]
+) {
+  --np-attachment-bg: color-mix(
+    in oklab,
+    var(--np-destructive) 5%,
+    var(--np-background)
+  );
+  --np-attachment-border-color: color-mix(
+    in oklab,
+    var(--np-destructive) 40%,
+    transparent
+  );
+  --np-attachment-media-bg: color-mix(
+    in oklab,
+    var(--np-destructive) 10%,
+    transparent
+  );
+  --np-attachment-media-color: var(--np-destructive);
+  --np-attachment-description-color: var(--np-destructive);
+}
+
+:is(.np-attachment-uploading, [data-state="uploading"]):is(
+    .np-attachment,
+    [data-np-attachment]
+  )::after {
+  content: "";
+  position: absolute;
+  inset-inline: calc(var(--np-spacing) * 3);
+  inset-block-end: calc(var(--np-spacing) * 1);
+  height: 2px;
+  border-radius: 9999px;
+  background:
+    linear-gradient(var(--np-primary), var(--np-primary)) 0 0 /
+      var(--np-attachment-progress) 100% no-repeat,
+    var(--np-muted);
+  pointer-events: none;
+}
+
+:is(.np-attachment-uploading, [data-state="uploading"]):is(
+    .np-attachment,
+    [data-np-attachment]
+  ):dir(rtl)::after {
+  background-position:
+    100% 0,
+    0 0;
+}
+
+:is(.np-attachment-uploading, [data-state="uploading"]):is(
+  .np-attachment,
+  [data-np-attachment]
+) {
+  padding-block-end: calc(var(--np-attachment-padding) + var(--np-spacing) * 1);
+}
+
+.np-attachment-media,
+[data-np-attachment-media] {
+  box-sizing: border-box;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--np-attachment-media-size);
+  height: var(--np-attachment-media-size);
+  overflow: hidden;
+  border-radius: var(--np-radius-md);
+  background-color: var(--np-attachment-media-bg);
+  color: var(--np-attachment-media-color);
+}
+
+:is(.np-attachment-media, [data-np-attachment-media]) svg {
+  flex: none;
+  width: var(--np-attachment-icon-size);
+  height: var(--np-attachment-icon-size);
+}
+
+:is(.np-attachment-media-image, [data-variant="image"]):is(
+  .np-attachment-media,
+  [data-np-attachment-media]
+) {
+  background-color: var(--np-muted);
+}
+
+:is(.np-attachment-media, [data-np-attachment-media]) img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+:is(.np-attachment-vertical, [data-orientation="vertical"]):is(
+    .np-attachment,
+    [data-np-attachment]
+  )
+  > :is(.np-attachment-media-image, [data-variant="image"]):is(
+    .np-attachment-media,
+    [data-np-attachment-media]
+  ) {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+}
+
+:is(.np-attachment-vertical, [data-orientation="vertical"]):is(
+    .np-attachment,
+    [data-np-attachment]
+  )
+  > :is(.np-attachment-media, [data-np-attachment-media]):not(
+    :is(.np-attachment-media-image, [data-variant="image"])
+  ) {
+  align-self: flex-start;
+}
+
+.np-attachment-content,
+[data-np-attachment-content] {
+  box-sizing: border-box;
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+  gap: calc(var(--np-spacing) * 0.5);
+  min-width: 0;
+}
+
+.np-attachment-title,
+[data-np-attachment-title] {
+  overflow: hidden;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.np-attachment-description,
+[data-np-attachment-description] {
+  overflow: hidden;
+  color: var(--np-attachment-description-color);
+  font-size: 0.75rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+:is(
+    .np-attachment-uploading,
+    .np-attachment-processing,
+    [data-state="uploading"],
+    [data-state="processing"]
+  ):is(.np-attachment, [data-np-attachment])
+  :is(.np-attachment-title, [data-np-attachment-title]) {
+  background-image: linear-gradient(
+    110deg,
+    var(--np-muted-foreground) 35%,
+    var(--np-foreground) 50%,
+    var(--np-muted-foreground) 65%
+  );
+  background-size: 250% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: np-attachment-shimmer 2s linear infinite;
+}
+
+@keyframes np-attachment-shimmer {
+  from {
+    background-position: 100% 0;
+  }
+
+  to {
+    background-position: 0 0;
+  }
+}
+
+.np-attachment-actions,
+[data-np-attachment-actions] {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: calc(var(--np-spacing) * 1);
+  margin-inline-start: auto;
+}
+
+:is(.np-attachment-vertical, [data-orientation="vertical"]):is(
+    .np-attachment,
+    [data-np-attachment]
+  )
+  > :is(.np-attachment-actions, [data-np-attachment-actions]) {
+  position: absolute;
+  inset-block-start: calc(var(--np-spacing) * 3);
+  inset-inline-end: calc(var(--np-spacing) * 3);
+  margin-inline-start: 0;
+}
+
+:is(.np-attachment-action, [data-np-attachment-action]) {
+  position: relative;
+  z-index: 1;
+}
+
+.np-attachment-trigger,
+[data-np-attachment-trigger] {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  box-sizing: border-box;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: inherit;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+@property --np-attachment-fade-start {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --np-attachment-fade-end {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+.np-attachment-group,
+[data-np-attachment-group] {
+  --np-attachment-group-gap: calc(var(--np-spacing) * 2);
+  --np-attachment-group-item-width: 16rem;
+
+  box-sizing: border-box;
+  display: flex;
+  gap: var(--np-attachment-group-gap);
+  margin: -0.25rem;
+  padding: 0.25rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+
+:is(.np-attachment-group, [data-np-attachment-group])::-webkit-scrollbar {
+  display: none;
+}
+
+:is(.np-attachment-group, [data-np-attachment-group])
+  > :is(.np-attachment, [data-np-attachment]) {
+  flex: 0 0 min(var(--np-attachment-group-item-width), 85%);
+  scroll-snap-align: start;
+}
+
+@supports (animation-timeline: scroll()) {
+  :is(.np-attachment-group, [data-np-attachment-group]) {
+    animation: np-attachment-fade linear both;
+    animation-timeline: scroll(self inline);
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 var(--np-attachment-fade-start),
+      #000 calc(100% - var(--np-attachment-fade-end)),
+      transparent 100%
+    );
+  }
+
+  :is(.np-attachment-group, [data-np-attachment-group]):dir(rtl) {
+    mask-image: linear-gradient(
+      to left,
+      transparent 0,
+      #000 var(--np-attachment-fade-start),
+      #000 calc(100% - var(--np-attachment-fade-end)),
+      transparent 100%
+    );
+  }
+}
+
+@keyframes np-attachment-fade {
+  0% {
+    --np-attachment-fade-start: 0px;
+    --np-attachment-fade-end: 2rem;
+  }
+
+  5% {
+    --np-attachment-fade-start: 2rem;
+  }
+
+  95% {
+    --np-attachment-fade-end: 2rem;
+  }
+
+  100% {
+    --np-attachment-fade-start: 2rem;
+    --np-attachment-fade-end: 0px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(
+      .np-attachment-uploading,
+      .np-attachment-processing,
+      [data-state="uploading"],
+      [data-state="processing"]
+    ):is(.np-attachment, [data-np-attachment])
+    :is(.np-attachment-title, [data-np-attachment-title]) {
+    background-image: none;
+    color: var(--np-foreground);
+    animation: none;
+  }
+}
