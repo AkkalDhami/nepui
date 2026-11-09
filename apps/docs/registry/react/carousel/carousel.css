@@ -1,0 +1,235 @@
+/* nepui — Carousel */
+
+:is(.np-carousel, [data-slot="carousel"]) {
+  --np-carousel-gap: 1rem;
+  --np-carousel-item-basis: 100%;
+  --np-carousel-height: auto;
+  --np-carousel-button-size: 2rem;
+  --np-carousel-button-offset: 3rem;
+  --np-carousel-dot-size: 0.5rem;
+  --np-carousel-dot-gap: 0.5rem;
+  --np-carousel-dots-offset: 1rem;
+
+  position: relative;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+:is(.np-carousel, [data-slot="carousel"])
+  :is(.np-carousel-viewport, [data-slot="carousel-viewport"]) {
+  box-sizing: border-box;
+  overflow: hidden;
+  outline: none;
+}
+
+:is(.np-carousel, [data-slot="carousel"])
+  :is(.np-carousel-content, [data-slot="carousel-content"]) {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin-inline-start: calc(var(--np-carousel-gap) * -1);
+}
+
+:is(.np-carousel, [data-slot="carousel"])
+  :is(.np-carousel-item, [data-slot="carousel-item"]) {
+  box-sizing: border-box;
+  flex: 0 0 var(--np-carousel-item-basis);
+  min-width: 0;
+  min-height: 0;
+  padding-inline-start: var(--np-carousel-gap);
+}
+
+:is(.np-carousel-vertical, [data-orientation="vertical"]):is(
+    .np-carousel,
+    [data-slot="carousel"]
+  )
+  :is(.np-carousel-viewport, [data-slot="carousel-viewport"]) {
+  height: var(--np-carousel-height);
+}
+
+:is(.np-carousel-vertical, [data-orientation="vertical"]):is(
+    .np-carousel,
+    [data-slot="carousel"]
+  )
+  :is(.np-carousel-content, [data-slot="carousel-content"]) {
+  flex-direction: column;
+  height: calc(100% + var(--np-carousel-gap));
+  margin-inline-start: 0;
+  margin-block-start: calc(var(--np-carousel-gap) * -1);
+}
+
+:is(.np-carousel-vertical, [data-orientation="vertical"]):is(
+    .np-carousel,
+    [data-slot="carousel"]
+  )
+  :is(.np-carousel-item, [data-slot="carousel-item"]) {
+  padding-inline-start: 0;
+  padding-block-start: var(--np-carousel-gap);
+}
+
+:is(.np-carousel, [data-slot="carousel"])
+  :is(
+    .np-carousel-previous,
+    [data-slot="carousel-previous"],
+    .np-carousel-next,
+    [data-slot="carousel-next"]
+  ) {
+  position: absolute;
+  z-index: 1;
+  box-sizing: border-box;
+  width: var(--np-carousel-button-size);
+  height: var(--np-carousel-button-size);
+  margin: auto;
+  padding: 0;
+  border-radius: 9999px;
+  inset-block: 0;
+}
+
+:is(.np-carousel, [data-slot="carousel"])
+  :is(.np-carousel-previous, [data-slot="carousel-previous"]) {
+  inset-inline-start: calc(var(--np-carousel-button-offset) * -1);
+  inset-inline-end: auto;
+}
+
+:is(.np-carousel, [data-slot="carousel"])
+  :is(.np-carousel-next, [data-slot="carousel-next"]) {
+  inset-inline-end: calc(var(--np-carousel-button-offset) * -1);
+  inset-inline-start: auto;
+}
+
+:is(.np-carousel, [data-slot="carousel"])
+  :is(
+    .np-carousel-previous,
+    [data-slot="carousel-previous"],
+    .np-carousel-next,
+    [data-slot="carousel-next"]
+  ):dir(rtl) {
+  rotate: 180deg;
+}
+
+:is(.np-carousel-vertical, [data-orientation="vertical"]):is(
+    .np-carousel,
+    [data-slot="carousel"]
+  )
+  :is(
+    .np-carousel-previous,
+    [data-slot="carousel-previous"],
+    .np-carousel-next,
+    [data-slot="carousel-next"]
+  ) {
+  inset-block: auto;
+  inset-inline: 0;
+  rotate: 90deg;
+}
+
+:is(.np-carousel-vertical, [data-orientation="vertical"]):is(
+    .np-carousel,
+    [data-slot="carousel"]
+  )
+  :is(.np-carousel-previous, [data-slot="carousel-previous"]) {
+  inset-block-start: calc(var(--np-carousel-button-offset) * -1);
+}
+
+:is(.np-carousel-vertical, [data-orientation="vertical"]):is(
+    .np-carousel,
+    [data-slot="carousel"]
+  )
+  :is(.np-carousel-next, [data-slot="carousel-next"]) {
+  inset-block-end: calc(var(--np-carousel-button-offset) * -1);
+}
+
+:is(.np-carousel, [data-slot="carousel"])
+  :is(.np-carousel-dots, [data-slot="carousel-dots"]) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--np-carousel-dot-gap);
+  margin-block-start: var(--np-carousel-dots-offset);
+}
+
+:is(.np-carousel, [data-slot="carousel"])
+  :is(.np-carousel-dot, [data-slot="carousel-dot"]) {
+  box-sizing: border-box;
+  flex: none;
+  width: var(--np-carousel-dot-size);
+  height: var(--np-carousel-dot-size);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 9999px;
+  background: var(--np-border);
+  cursor: pointer;
+  transition:
+    background-color 150ms,
+    width 150ms;
+}
+
+:is(.np-carousel, [data-slot="carousel"])
+  :is(.np-carousel-dot, [data-slot="carousel-dot"]):hover {
+  background: var(--np-muted-foreground);
+}
+
+:is(.np-carousel, [data-slot="carousel"])
+  :is(.np-carousel-dot, [data-slot="carousel-dot"]):is(
+    [aria-current="true"],
+    [data-active]
+  ) {
+  width: calc(var(--np-carousel-dot-size) * 2.5);
+  background: var(--np-primary);
+}
+
+:is(.np-carousel, [data-slot="carousel"])
+  :is(.np-carousel-dot, [data-slot="carousel-dot"]):focus-visible {
+  outline: 2px solid var(--np-ring);
+  outline-offset: 2px;
+}
+
+:is(.np-carousel-vertical, [data-orientation="vertical"]):is(
+    .np-carousel,
+    [data-slot="carousel"]
+  )
+  :is(.np-carousel-dots, [data-slot="carousel-dots"]) {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-end: calc(
+    var(--np-carousel-dots-offset) * -1 - var(--np-carousel-dot-size)
+  );
+  flex-direction: column;
+  flex-wrap: nowrap;
+  margin: 0;
+}
+
+:is(.np-carousel-vertical, [data-orientation="vertical"]):is(
+    .np-carousel,
+    [data-slot="carousel"]
+  )
+  :is(.np-carousel-dot, [data-slot="carousel-dot"]):is(
+    [aria-current="true"],
+    [data-active]
+  ) {
+  width: var(--np-carousel-dot-size);
+  height: calc(var(--np-carousel-dot-size) * 2.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.np-carousel, [data-slot="carousel"])
+    :is(.np-carousel-dot, [data-slot="carousel-dot"]) {
+    transition: none;
+  }
+}
+
+:is(.np-carousel, [data-slot="carousel"]):has(
+    > :is(.np-carousel-dots, [data-slot="carousel-dots"])
+  ):not(:is(.np-carousel-vertical, [data-orientation="vertical"]))
+  > :is(
+    .np-carousel-previous,
+    [data-slot="carousel-previous"],
+    .np-carousel-next,
+    [data-slot="carousel-next"]
+  ) {
+  inset-block-end: calc(
+    var(--np-carousel-dots-offset) + var(--np-carousel-dot-size)
+  );
+}
