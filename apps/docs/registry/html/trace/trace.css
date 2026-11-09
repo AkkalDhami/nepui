@@ -1,0 +1,308 @@
+/* nepui — Trace */
+
+.np-trace,
+[data-np-trace] {
+  --np-trace-gap: calc(var(--np-spacing) * 1);
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--np-trace-gap);
+  min-width: 0;
+}
+
+.np-trace-line,
+[data-np-trace-line] {
+  --np-trace-line-gap: calc(var(--np-spacing) * 2);
+  --np-trace-icon-size: 1rem;
+  --np-trace-font-size: 0.875rem;
+  --np-trace-color: var(--np-muted-foreground);
+  --np-trace-hover-color: var(--np-foreground);
+
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--np-trace-line-gap);
+  min-width: 0;
+  color: var(--np-trace-color);
+  font-size: var(--np-trace-font-size);
+  line-height: 1.25rem;
+}
+
+:is(.np-trace-error, [data-status="error"]):is(
+  .np-trace-line,
+  [data-np-trace-line]
+) {
+  --np-trace-color: var(--np-destructive);
+  --np-trace-hover-color: var(--np-destructive);
+}
+
+:is(.np-trace-pending, [data-status="pending"]):is(
+  .np-trace-line,
+  [data-np-trace-line]
+) {
+  --np-trace-color: color-mix(
+    in oklab,
+    var(--np-muted-foreground) 60%,
+    transparent
+  );
+}
+
+.np-trace-icon,
+[data-np-trace-icon] {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--np-trace-icon-size, 1rem);
+  height: var(--np-trace-icon-size, 1rem);
+  pointer-events: none;
+}
+
+:is(.np-trace-icon, [data-np-trace-icon]) svg {
+  width: 100%;
+  height: 100%;
+  flex: none;
+}
+
+.np-trace-title,
+[data-np-trace-title] {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.np-trace-description,
+[data-np-trace-description] {
+  min-width: 0;
+  color: color-mix(in oklab, var(--np-trace-color) 70%, transparent);
+  overflow-wrap: anywhere;
+}
+
+:is(.np-trace-running, [data-status="running"]):is(
+    .np-trace-line,
+    [data-np-trace-line]
+  )
+  :is(.np-trace-title, [data-np-trace-title]) {
+  background-image: linear-gradient(
+    110deg,
+    var(--np-muted-foreground) 35%,
+    var(--np-foreground) 50%,
+    var(--np-muted-foreground) 65%
+  );
+  background-size: 250% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: np-trace-shimmer 2s linear infinite;
+}
+
+@keyframes np-trace-shimmer {
+  from {
+    background-position: 100% 0;
+  }
+
+  to {
+    background-position: 0 0;
+  }
+}
+
+.np-trace-link,
+[data-np-trace-link],
+.np-trace-collapsible-trigger,
+[data-np-trace-collapsible-trigger] {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--np-spacing);
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--np-radius-sm);
+  outline: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+:is(
+    .np-trace-link,
+    [data-np-trace-link],
+    .np-trace-collapsible-trigger,
+    [data-np-trace-collapsible-trigger]
+  )
+  > :is(.np-trace-line, [data-np-trace-line]) {
+  flex: 1 1 auto;
+}
+
+:is(
+    .np-trace-link,
+    [data-np-trace-link],
+    .np-trace-collapsible-trigger,
+    [data-np-trace-collapsible-trigger]
+  ):hover
+  > :is(.np-trace-line, [data-np-trace-line]) {
+  color: var(--np-trace-hover-color);
+}
+
+:is(
+  .np-trace-link,
+  [data-np-trace-link],
+  .np-trace-collapsible-trigger,
+  [data-np-trace-collapsible-trigger]
+):focus-visible {
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--np-ring), transparent 50%);
+}
+
+:is(
+  .np-trace-link,
+  [data-np-trace-link],
+  .np-trace-collapsible-trigger,
+  [data-np-trace-collapsible-trigger]
+):is(:disabled, [aria-disabled="true"], [data-disabled]) {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.np-trace-collapsible,
+[data-np-trace-collapsible] {
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+summary:is(.np-trace-collapsible-trigger, [data-np-trace-collapsible-trigger]) {
+  list-style: none;
+}
+
+summary:is(
+    .np-trace-collapsible-trigger,
+    [data-np-trace-collapsible-trigger]
+  )::-webkit-details-marker {
+  display: none;
+}
+
+:is(.np-trace-collapsible-trigger, [data-np-trace-collapsible-trigger])::after {
+  content: "";
+  flex: none;
+  width: 0.375rem;
+  height: 0.375rem;
+  margin-inline: 0.25rem;
+  margin-block-end: 0.125rem;
+  border-inline-end: 1.5px solid var(--np-muted-foreground);
+  border-block-end: 1.5px solid var(--np-muted-foreground);
+  rotate: 45deg;
+  transition: rotate var(--np-trace-duration, 150ms) ease;
+}
+
+:is(.np-trace-collapsible-trigger, [data-np-trace-collapsible-trigger]):is(
+    [aria-expanded="true"],
+    [data-panel-open]
+  )::after,
+:is(.np-trace-collapsible, [data-np-trace-collapsible])[open]
+  > :is(
+    .np-trace-collapsible-trigger,
+    [data-np-trace-collapsible-trigger]
+  )::after {
+  margin-block-end: -0.125rem;
+  rotate: 225deg;
+}
+
+.np-trace-collapsible-content,
+[data-np-trace-collapsible-content] {
+  --np-trace-indent: calc(1rem + var(--np-spacing) * 2);
+  --np-trace-duration: 150ms;
+
+  box-sizing: border-box;
+  min-width: 0;
+  padding-block: calc(var(--np-spacing) * 1) calc(var(--np-spacing) * 2);
+  padding-inline-start: var(--np-trace-indent);
+  color: var(--np-muted-foreground);
+  font-size: 0.875rem;
+  line-height: 1.375;
+  overflow-wrap: anywhere;
+}
+
+.np-trace-collapsible-content[data-open],
+.np-trace-collapsible-content[data-closed],
+[data-np-trace-collapsible-content][data-open],
+[data-np-trace-collapsible-content][data-closed] {
+  height: var(--collapsible-panel-height);
+  overflow: hidden;
+  transition: height var(--np-trace-duration) ease;
+}
+
+:is(
+  .np-trace-collapsible-content,
+  [data-np-trace-collapsible-content]
+)[data-starting-style],
+:is(
+  .np-trace-collapsible-content,
+  [data-np-trace-collapsible-content]
+)[data-ending-style] {
+  height: 0;
+}
+
+details:is(.np-trace-collapsible, [data-np-trace-collapsible]) {
+  interpolate-size: allow-keywords;
+}
+
+details:is(
+    .np-trace-collapsible,
+    [data-np-trace-collapsible]
+  )::details-content {
+  block-size: 0;
+  overflow: hidden;
+  transition:
+    block-size 150ms ease,
+    content-visibility 150ms ease allow-discrete;
+}
+
+details:is(
+    .np-trace-collapsible,
+    [data-np-trace-collapsible]
+  )[open]::details-content {
+  block-size: auto;
+}
+
+.np-trace-sr-only,
+[data-np-trace-sr-only] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.np-trace-running, [data-status="running"]):is(
+      .np-trace-line,
+      [data-np-trace-line]
+    )
+    :is(.np-trace-title, [data-np-trace-title]) {
+    background-image: none;
+    color: var(--np-foreground);
+    animation: none;
+  }
+
+  :is(
+    .np-trace-collapsible-trigger,
+    [data-np-trace-collapsible-trigger]
+  )::after,
+  :is(.np-trace-collapsible-content, [data-np-trace-collapsible-content]),
+  details:is(
+      .np-trace-collapsible,
+      [data-np-trace-collapsible]
+    )::details-content {
+    transition: none;
+  }
+}
