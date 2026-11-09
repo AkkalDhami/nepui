@@ -1,0 +1,269 @@
+/* nepui — Carousel */
+
+.np-carousel,
+[data-np-carousel] {
+  --np-carousel-gap: 1rem;
+  --np-carousel-item-basis: 100%;
+  --np-carousel-height: auto;
+  --np-carousel-button-size: 2rem;
+  --np-carousel-button-offset: 3rem;
+  --np-carousel-dot-size: 0.5rem;
+  --np-carousel-dot-gap: 0.5rem;
+  --np-carousel-dots-offset: 1rem;
+
+  position: relative;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.np-carousel-viewport,
+[data-np-carousel-viewport] {
+  box-sizing: border-box;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  outline: none;
+}
+
+:is(.np-carousel-viewport, [data-np-carousel-viewport])::-webkit-scrollbar {
+  display: none;
+}
+
+:is(.np-carousel-viewport, [data-np-carousel-viewport]):focus-visible {
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--np-ring), transparent 50%);
+}
+
+:is(.np-carousel-vertical, [data-orientation="vertical"]):is(
+    .np-carousel,
+    [data-np-carousel]
+  )
+  :is(.np-carousel-viewport, [data-np-carousel-viewport]) {
+  height: var(--np-carousel-height);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-x: auto;
+  overscroll-behavior-y: contain;
+  scroll-snap-type: y mandatory;
+}
+
+:is(.np-carousel-viewport, [data-np-carousel-viewport]):is(
+  .np-carousel-embla,
+  [data-embla]
+) {
+  overflow: hidden;
+  scroll-snap-type: none;
+}
+
+.np-carousel-content,
+[data-np-carousel-content] {
+  box-sizing: border-box;
+  display: flex;
+  margin-inline-start: calc(var(--np-carousel-gap) * -1);
+}
+
+:is(.np-carousel-vertical, [data-orientation="vertical"]):is(
+    .np-carousel,
+    [data-np-carousel]
+  )
+  :is(.np-carousel-content, [data-np-carousel-content]) {
+  flex-direction: column;
+  height: calc(100% + var(--np-carousel-gap));
+  margin-inline-start: 0;
+  margin-block-start: calc(var(--np-carousel-gap) * -1);
+}
+
+.np-carousel-item,
+[data-np-carousel-item] {
+  box-sizing: border-box;
+  flex: 0 0 var(--np-carousel-item-basis);
+  min-width: 0;
+  min-height: 0;
+  padding-inline-start: var(--np-carousel-gap);
+  /* The slide box starts one gap before its content; snap on the content. */
+  scroll-margin-inline-start: calc(var(--np-carousel-gap) * -1);
+  scroll-snap-align: start;
+}
+
+:is(.np-carousel-vertical, [data-orientation="vertical"]):is(
+    .np-carousel,
+    [data-np-carousel]
+  )
+  :is(.np-carousel-item, [data-np-carousel-item]) {
+  padding-inline-start: 0;
+  padding-block-start: var(--np-carousel-gap);
+  scroll-margin-inline-start: 0;
+  scroll-margin-block-start: calc(var(--np-carousel-gap) * -1);
+}
+
+/* Put the nepui Button classes on the same element:
+   <button class="np-button np-button-outline np-button-icon-sm np-carousel-previous"> */
+:is(.np-carousel, [data-np-carousel])
+  :is(
+    .np-carousel-previous,
+    [data-np-carousel-previous],
+    .np-carousel-next,
+    [data-np-carousel-next]
+  ) {
+  position: absolute;
+  z-index: 1;
+  box-sizing: border-box;
+  width: var(--np-carousel-button-size);
+  height: var(--np-carousel-button-size);
+  margin: auto;
+  padding: 0;
+  border-radius: 9999px;
+  /* Centred on the other axis, without `translate`, so RTL needs nothing. */
+  inset-block: 0;
+}
+
+:is(.np-carousel, [data-np-carousel])
+  :is(.np-carousel-previous, [data-np-carousel-previous]) {
+  inset-inline-start: calc(var(--np-carousel-button-offset) * -1);
+  inset-inline-end: auto;
+}
+
+:is(.np-carousel, [data-np-carousel])
+  :is(.np-carousel-next, [data-np-carousel-next]) {
+  inset-inline-end: calc(var(--np-carousel-button-offset) * -1);
+  inset-inline-start: auto;
+}
+
+:is(.np-carousel, [data-np-carousel])
+  :is(
+    .np-carousel-previous,
+    [data-np-carousel-previous],
+    .np-carousel-next,
+    [data-np-carousel-next]
+  ):dir(rtl) {
+  rotate: 180deg;
+}
+
+/* Vertical: above and below, centred across. */
+:is(.np-carousel-vertical, [data-orientation="vertical"]):is(
+    .np-carousel,
+    [data-np-carousel]
+  )
+  :is(
+    .np-carousel-previous,
+    [data-np-carousel-previous],
+    .np-carousel-next,
+    [data-np-carousel-next]
+  ) {
+  inset-block: auto;
+  inset-inline: 0;
+  rotate: 90deg;
+}
+
+:is(.np-carousel-vertical, [data-orientation="vertical"]):is(
+    .np-carousel,
+    [data-np-carousel]
+  )
+  :is(.np-carousel-previous, [data-np-carousel-previous]) {
+  inset-block-start: calc(var(--np-carousel-button-offset) * -1);
+}
+
+:is(.np-carousel-vertical, [data-orientation="vertical"]):is(
+    .np-carousel,
+    [data-np-carousel]
+  )
+  :is(.np-carousel-next, [data-np-carousel-next]) {
+  inset-block-end: calc(var(--np-carousel-button-offset) * -1);
+}
+
+:is(.np-carousel, [data-np-carousel])
+  :is(.np-carousel-dots, [data-np-carousel-dots]) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--np-carousel-dot-gap);
+  margin-block-start: var(--np-carousel-dots-offset);
+}
+
+:is(.np-carousel, [data-np-carousel])
+  :is(.np-carousel-dot, [data-np-carousel-dot]) {
+  box-sizing: border-box;
+  flex: none;
+  width: var(--np-carousel-dot-size);
+  height: var(--np-carousel-dot-size);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 9999px;
+  background: var(--np-border);
+  cursor: pointer;
+  transition:
+    background-color 150ms,
+    width 150ms;
+}
+
+:is(.np-carousel, [data-np-carousel])
+  :is(.np-carousel-dot, [data-np-carousel-dot]):hover {
+  background: var(--np-muted-foreground);
+}
+
+:is(.np-carousel, [data-np-carousel])
+  :is(.np-carousel-dot, [data-np-carousel-dot]):is(
+    [aria-current="true"],
+    [data-active]
+  ) {
+  width: calc(var(--np-carousel-dot-size) * 2.5);
+  background: var(--np-primary);
+}
+
+:is(.np-carousel, [data-np-carousel])
+  :is(.np-carousel-dot, [data-np-carousel-dot]):focus-visible {
+  outline: 2px solid var(--np-ring);
+  outline-offset: 2px;
+}
+
+:is(.np-carousel-vertical, [data-orientation="vertical"]):is(
+    .np-carousel,
+    [data-np-carousel]
+  )
+  :is(.np-carousel-dots, [data-np-carousel-dots]) {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-end: calc(
+    var(--np-carousel-dots-offset) * -1 - var(--np-carousel-dot-size)
+  );
+  flex-direction: column;
+  flex-wrap: nowrap;
+  margin: 0;
+}
+
+:is(.np-carousel-vertical, [data-orientation="vertical"]):is(
+    .np-carousel,
+    [data-np-carousel]
+  )
+  :is(.np-carousel-dot, [data-np-carousel-dot]):is(
+    [aria-current="true"],
+    [data-active]
+  ) {
+  width: var(--np-carousel-dot-size);
+  height: calc(var(--np-carousel-dot-size) * 2.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.np-carousel, [data-np-carousel])
+    :is(.np-carousel-dot, [data-np-carousel-dot]) {
+    transition: none;
+  }
+}
+
+:is(.np-carousel, [data-np-carousel]):has(
+    > :is(.np-carousel-dots, [data-np-carousel-dots])
+  ):not(:is(.np-carousel-vertical, [data-orientation="vertical"]))
+  > :is(
+    .np-carousel-previous,
+    [data-np-carousel-previous],
+    .np-carousel-next,
+    [data-np-carousel-next]
+  ) {
+  inset-block-end: calc(
+    var(--np-carousel-dots-offset) + var(--np-carousel-dot-size)
+  );
+}
