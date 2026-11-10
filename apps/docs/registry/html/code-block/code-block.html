@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Code Block</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/code-block.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem 4rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: system-ui, sans-serif;
+      }
+      main {
+        display: grid;
+        gap: 3rem;
+        max-width: 44rem;
+        margin-inline: auto;
+      }
+      h2 {
+        margin: 0 0 0.75rem;
+        font-size: 1rem;
+      }
+      p {
+        margin: 0 0 0.75rem;
+        color: var(--np-muted-foreground);
+        font-size: 0.875rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Default</h2>
+        <p>A title, a copy button and the code. Click copy.</p>
+        <div class="np-code-block" style="width: 100%; max-width: 32rem">
+          <div class="np-code-block-header">
+            <div class="np-code-block-title">Terminal</div>
+            <div class="np-code-block-actions">
+              <button
+                type="button"
+                class="np-button np-button-ghost np-button-icon-xs np-code-block-copy"
+                aria-label="Copy"
+              >
+                <svg
+                  data-icon="copy"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                  <path
+                    d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+                  /></svg
+                ><svg
+                  data-icon="check"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <pre
+            class="np-code-block-content"
+            tabindex="0"
+          ><code>$ npm install nepui
+added 12 packages in 2s
+
+4 packages are looking for funding
+  run `npm fund` for details</code></pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>Header title as a link</h2>
+        <p>Wrap the title in an anchor to link to a file.</p>
+        <div class="np-code-block" style="width: 100%; max-width: 32rem">
+          <div class="np-code-block-header">
+            <div class="np-code-block-title"><a href="#">src/greet.js</a></div>
+            <div class="np-code-block-actions">
+              <button
+                type="button"
+                class="np-button np-button-ghost np-button-icon-xs np-code-block-copy"
+                aria-label="Copy"
+              >
+                <svg
+                  data-icon="copy"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                  <path
+                    d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+                  /></svg
+                ><svg
+                  data-icon="check"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <pre
+            class="np-code-block-content"
+            tabindex="0"
+            dir="ltr"
+          ><code class="language-js">function greet(name) {
+  const message = `Hello, ${name}!`
+  console.log(message)
+  return message
+}</code></pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>Actions</h2>
+        <p>A wrap toggle next to the copy button.</p>
+        <div class="np-code-block" style="width: 100%; max-width: 32rem">
+          <div class="np-code-block-header">
+            <div class="np-code-block-title">src/greet.js</div>
+            <div class="np-code-block-actions">
+              <button
+                type="button"
+                class="np-button np-button-ghost np-button-icon-xs"
+                data-np-code-block-wrap-toggle
+                aria-label="Toggle line wrap"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M3 6h18" />
+                  <path d="M3 12h15a3 3 0 1 1 0 6h-4" />
+                  <path d="m16 16-2 2 2 2" />
+                  <path d="M3 18h7" />
+                </svg></button
+              ><button
+                type="button"
+                class="np-button np-button-ghost np-button-icon-xs np-code-block-copy"
+                aria-label="Copy"
+              >
+                <svg
+                  data-icon="copy"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                  <path
+                    d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+                  /></svg
+                ><svg
+                  data-icon="check"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <pre
+            class="np-code-block-content"
+            tabindex="0"
+            dir="ltr"
+          ><code class="language-js">const sentence = "A very long line of code that does not fit in the box, so it either scrolls sideways or wraps onto the next line."</code></pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>Floating actions</h2>
+        <p>
+          No header: the actions show on hover or focus, and always on touch
+          screens.
+        </p>
+        <div class="np-code-block" style="width: 100%; max-width: 32rem">
+          <div class="np-code-block-actions">
+            <button
+              type="button"
+              class="np-button np-button-ghost np-button-icon-xs np-code-block-copy"
+              aria-label="Copy"
+            >
+              <svg
+                data-icon="copy"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                <path
+                  d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+                /></svg
+              ><svg
+                data-icon="check"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </button>
+          </div>
+          <pre
+            class="np-code-block-content"
+            tabindex="0"
+            dir="ltr"
+          ><code class="language-js">function greet(name) {
+  const message = `Hello, ${name}!`
+  console.log(message)
+  return message
+}</code></pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>Line numbers</h2>
+        <p><code>data-line-numbers</code> on the <code>&lt;pre&gt;</code>.</p>
+        <div class="np-code-block" style="width: 100%; max-width: 32rem">
+          <pre
+            class="np-code-block-content"
+            tabindex="0"
+            dir="ltr"
+            data-line-numbers
+          ><code class="language-js">function greet(name) {
+  const message = `Hello, ${name}!`
+  console.log(message)
+  return message
+}</code></pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>Start line</h2>
+        <p><code>data-start-line="10"</code>.</p>
+        <div class="np-code-block" style="width: 100%; max-width: 32rem">
+          <pre
+            class="np-code-block-content"
+            tabindex="0"
+            dir="ltr"
+            data-line-numbers
+            data-start-line="10"
+          ><code class="language-js">function greet(name) {
+  const message = `Hello, ${name}!`
+  console.log(message)
+  return message
+}</code></pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>Wrap</h2>
+        <p><code>data-wrap</code> wraps long lines instead of scrolling.</p>
+        <div class="np-code-block" style="width: 100%; max-width: 32rem">
+          <pre
+            class="np-code-block-content"
+            tabindex="0"
+            dir="ltr"
+            data-wrap
+          ><code class="language-js">const sentence = "A very long line of code that does not fit in the box, so it either scrolls sideways or wraps onto the next line."</code></pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>Highlighted lines</h2>
+        <p><code>data-highlight="2-3"</code>.</p>
+        <div class="np-code-block" style="width: 100%; max-width: 32rem">
+          <pre
+            class="np-code-block-content"
+            tabindex="0"
+            dir="ltr"
+            data-line-numbers
+            data-highlight="2-3"
+          ><code class="language-js">function greet(name) {
+  const message = `Hello, ${name}!`
+  console.log(message)
+  return message
+}</code></pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>Diff</h2>
+        <p>
+          <code>data-added</code> and <code>data-removed</code> add a marker, so
+          colour is not the only cue.
+        </p>
+        <div class="np-code-block" style="width: 100%; max-width: 32rem">
+          <pre
+            class="np-code-block-content"
+            tabindex="0"
+            dir="ltr"
+            data-removed="2"
+            data-added="3"
+          ><code class="language-js">function greet(name) {
+  return "Hello"
+  return `Hello, ${name}!`
+}</code></pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>Height</h2>
+        <p>
+          <code>--np-code-block-max-height</code> caps the height. The block
+          scrolls and takes focus.
+        </p>
+        <div class="np-code-block" style="width: 100%; max-width: 32rem">
+          <pre
+            class="np-code-block-content"
+            tabindex="0"
+            dir="ltr"
+            data-line-numbers
+            style="--np-code-block-max-height: 12rem"
+          ><code>line 1: processing step 1 of 24
+line 2: processing step 2 of 24
+line 3: processing step 3 of 24
+line 4: processing step 4 of 24
+line 5: processing step 5 of 24
+line 6: processing step 6 of 24
+line 7: processing step 7 of 24
+line 8: processing step 8 of 24
+line 9: processing step 9 of 24
+line 10: processing step 10 of 24
+line 11: processing step 11 of 24
+line 12: processing step 12 of 24
+line 13: processing step 13 of 24
+line 14: processing step 14 of 24
+line 15: processing step 15 of 24
+line 16: processing step 16 of 24
+line 17: processing step 17 of 24
+line 18: processing step 18 of 24
+line 19: processing step 19 of 24
+line 20: processing step 20 of 24
+line 21: processing step 21 of 24
+line 22: processing step 22 of 24
+line 23: processing step 23 of 24
+line 24: processing step 24 of 24</code></pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>Size</h2>
+        <p><code>np-code-block-sm</code> for tool output.</p>
+        <div
+          class="np-code-block np-code-block-sm"
+          style="width: 100%; max-width: 32rem"
+        >
+          <pre
+            class="np-code-block-content"
+            tabindex="0"
+            dir="ltr"
+          ><code>$ npm install nepui
+added 12 packages in 2s
+
+4 packages are looking for funding
+  run `npm fund` for details</code></pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>Destructive</h2>
+        <p><code>np-code-block-destructive</code> for errors.</p>
+        <div
+          class="np-code-block np-code-block-destructive"
+          style="width: 100%; max-width: 32rem"
+        >
+          <pre
+            class="np-code-block-content"
+            tabindex="0"
+            dir="ltr"
+          ><code>Error: Cannot find module './config'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1225:15)
+    at require (node:internal/modules/helpers:179:18)</code></pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>Syntax highlighting</h2>
+        <p>
+          Prism does the highlighting. The colours come from code-block.css.
+        </p>
+        <div class="np-code-block" style="width: 100%; max-width: 32rem">
+          <div class="np-code-block-header">
+            <div class="np-code-block-title">package.json</div>
+            <div class="np-code-block-actions">
+              <button
+                type="button"
+                class="np-button np-button-ghost np-button-icon-xs np-code-block-copy"
+                aria-label="Copy"
+              >
+                <svg
+                  data-icon="copy"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                  <path
+                    d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+                  /></svg
+                ><svg
+                  data-icon="check"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <pre
+            class="np-code-block-content"
+            tabindex="0"
+            dir="ltr"
+            data-line-numbers
+          ><code class="language-json">{
+  "name": "nepui",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": { "build": "tsc" }
+}</code></pre>
+        </div>
+
+        <div
+          class="np-code-block"
+          style="width: 100%; max-width: 32rem; margin-top: 14px"
+        >
+          <div class="np-code-block-header">
+            <div class="np-code-block-title">main.py</div>
+            <div class="np-code-block-actions">
+              <button
+                type="button"
+                class="np-button np-button-ghost np-button-icon-xs np-code-block-copy"
+                aria-label="Copy"
+              >
+                <svg
+                  data-icon="copy"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                  <path
+                    d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+                  /></svg
+                ><svg
+                  data-icon="check"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <pre
+            class="np-code-block-content"
+            tabindex="0"
+            dir="ltr"
+            data-line-numbers
+          ><code class="language-python">import time
+
+def cache(func):
+    cache_value = {}
+    print(cache_value)
+
+    def wrapper(*args):
+        if args in cache_value:
+            return cache_value[args]
+
+        result = func(*args)
+        cache_value[args] = result
+        return result
+
+    return wrapper
+
+@cache
+def long_running_func(a, b):
+    time.sleep(4)
+    return a + b
+
+print(long_running_func(2, 3))
+print(long_running_func(2, 3))
+print(long_running_func(4, 3))
+</code></pre>
+        </div>
+      </section>
+    </main>
+    <!-- Prism does the highlighting. The autoloader fetches languages on demand. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="./code-block.js"></script>
+  </body>
+</html>
