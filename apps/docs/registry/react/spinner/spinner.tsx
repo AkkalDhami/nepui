@@ -18,12 +18,15 @@ const THICKNESSES = [
 const SPEEDS = ["slow", "normal", "fast", "faster"] as const
 
 export type SpinnerSize = (typeof SIZES)[number]
+export type SpinnerVariant =
+  "default" | "success" | "info" | "error" | "warning"
 export type SpinnerThickness = (typeof THICKNESSES)[number]
 export type SpinnerSpeed = (typeof SPEEDS)[number]
 export type SpinnerDirection =
   "clockwise" | "counter-clockwise" | "counterclockwise"
 
 export interface SpinnerProps extends HTMLAttributes<HTMLSpanElement> {
+  variant?: SpinnerVariant
   /** Preset or any CSS length, e.g. "40px" */
   size?: SpinnerSize | (string & {})
   /** Preset or any CSS length, e.g. "3px" */
@@ -53,6 +56,7 @@ const isPreset = <T extends readonly string[]>(
 ): value is T[number] => (list as readonly string[]).includes(value)
 
 export function Spinner({
+  variant = "default",
   size,
   thickness,
   speed,
@@ -90,6 +94,7 @@ export function Spinner({
       role="status"
       aria-label={label}
       className={cn(`np-spinner`, className)}
+      data-variant={variant}
       data-direction={direction}
       style={customStyle}
       {...dataAttrs}
