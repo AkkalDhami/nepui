@@ -1,0 +1,843 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Context Menu</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/context-menu.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem 8rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: system-ui, sans-serif;
+      }
+      main {
+        display: grid;
+        gap: 2rem;
+        max-width: 32rem;
+        margin-inline: auto;
+      }
+      h2 {
+        margin: 0 0 0.75rem;
+        font-size: 0.875rem;
+        color: var(--np-muted-foreground);
+        font-weight: 500;
+      }
+    </style>
+
+    <script src="../javascripts/context-menu.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Basic</h2>
+        <div
+          class="np-context-menu-trigger"
+          aria-controls="cm-basic"
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 18.75rem;
+            height: 9.375rem;
+            border: 1px dashed var(--np-border);
+            border-radius: var(--np-radius-xl);
+            font-size: 0.875rem;
+          "
+        >
+          Right click here
+        </div>
+        <div class="np-context-menu-content" id="cm-basic" role="menu" hidden>
+          <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+            Profile
+          </div>
+          <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+            Billing
+          </div>
+          <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+            Team
+          </div>
+          <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+            Subscription
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Submenu</h2>
+        <div
+          class="np-context-menu-trigger"
+          aria-controls="cm-submenu"
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 18.75rem;
+            height: 9.375rem;
+            border: 1px dashed var(--np-border);
+            border-radius: var(--np-radius-xl);
+            font-size: 0.875rem;
+          "
+        >
+          Right click here
+        </div>
+        <div class="np-context-menu-content" id="cm-submenu" role="menu" hidden>
+          <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+            Copy
+          </div>
+          <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+            Cut
+          </div>
+          <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+            Paste
+          </div>
+          <div class="np-context-menu-sub">
+            <div
+              class="np-context-menu-sub-trigger"
+              role="menuitem"
+              aria-haspopup="menu"
+              aria-expanded="false"
+              tabindex="-1"
+            >
+              More Tools<svg
+                class="np-context-menu-sub-indicator"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </div>
+            <div class="np-context-menu-sub-content" role="menu" hidden>
+              <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+                Save Page...
+              </div>
+              <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+                Create Shortcut...
+              </div>
+              <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+                Name Window...
+              </div>
+              <div class="np-context-menu-separator" role="separator"></div>
+              <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+                Developer Tools
+              </div>
+            </div>
+          </div>
+          <div class="np-context-menu-separator" role="separator"></div>
+          <div
+            class="np-context-menu-item np-context-menu-destructive"
+            role="menuitem"
+            tabindex="-1"
+          >
+            Delete
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Shortcuts and a disabled item</h2>
+        <div
+          class="np-context-menu-trigger"
+          aria-controls="cm-shortcuts"
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 18.75rem;
+            height: 9.375rem;
+            border: 1px dashed var(--np-border);
+            border-radius: var(--np-radius-xl);
+            font-size: 0.875rem;
+          "
+        >
+          Right click here
+        </div>
+        <div
+          class="np-context-menu-content"
+          id="cm-shortcuts"
+          role="menu"
+          hidden
+        >
+          <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+            Back<span class="np-context-menu-shortcut">⌘[</span>
+          </div>
+          <div
+            class="np-context-menu-item"
+            role="menuitem"
+            tabindex="-1"
+            aria-disabled="true"
+          >
+            Forward<span class="np-context-menu-shortcut">⌘]</span>
+          </div>
+          <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+            Reload<span class="np-context-menu-shortcut">⌘R</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Groups</h2>
+        <div
+          class="np-context-menu-trigger"
+          aria-controls="cm-groups"
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 18.75rem;
+            height: 9.375rem;
+            border: 1px dashed var(--np-border);
+            border-radius: var(--np-radius-xl);
+            font-size: 0.875rem;
+          "
+        >
+          Right click here
+        </div>
+        <div class="np-context-menu-content" id="cm-groups" role="menu" hidden>
+          <div role="group" aria-labelledby="cm-groups-file">
+            <div class="np-context-menu-label" id="cm-groups-file">File</div>
+            <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+              New File<span class="np-context-menu-shortcut">⌘N</span>
+            </div>
+            <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+              Open File<span class="np-context-menu-shortcut">⌘O</span>
+            </div>
+          </div>
+          <div class="np-context-menu-separator" role="separator"></div>
+          <div role="group" aria-labelledby="cm-groups-edit">
+            <div class="np-context-menu-label" id="cm-groups-edit">Edit</div>
+            <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+              Undo<span class="np-context-menu-shortcut">⌘Z</span>
+            </div>
+            <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+              Redo<span class="np-context-menu-shortcut">⇧⌘Z</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Icons</h2>
+        <div
+          class="np-context-menu-trigger"
+          aria-controls="cm-icons"
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 18.75rem;
+            height: 9.375rem;
+            border: 1px dashed var(--np-border);
+            border-radius: var(--np-radius-xl);
+            font-size: 0.875rem;
+          "
+        >
+          Right click here
+        </div>
+        <div class="np-context-menu-content" id="cm-icons" role="menu" hidden>
+          <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+              <path
+                d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+              /></svg
+            >Copy
+          </div>
+          <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="6" cy="6" r="3" />
+              <path d="M8.12 8.12 12 12" />
+              <path d="M20 4 8.12 15.88" />
+              <circle cx="6" cy="18" r="3" />
+              <path d="M14.8 14.8 20 20" /></svg
+            >Cut
+          </div>
+          <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <rect width="8" height="4" x="8" y="2" rx="1" />
+              <path
+                d="M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 1.793-1.113"
+              />
+              <path d="M16 4h2a2 2 0 0 1 2 2v1.344" />
+              <path d="M11 14h10" />
+              <path d="m17 18 4-4-4-4" /></svg
+            >Paste
+          </div>
+          <div class="np-context-menu-separator" role="separator"></div>
+          <div
+            class="np-context-menu-item np-context-menu-destructive"
+            role="menuitem"
+            tabindex="-1"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M3 6h18" />
+              <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+              <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" /></svg
+            >Delete
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Checkboxes</h2>
+        <div
+          class="np-context-menu-trigger"
+          aria-controls="cm-checkboxes"
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 18.75rem;
+            height: 9.375rem;
+            border: 1px dashed var(--np-border);
+            border-radius: var(--np-radius-xl);
+            font-size: 0.875rem;
+          "
+        >
+          Right click here
+        </div>
+        <div
+          class="np-context-menu-content"
+          id="cm-checkboxes"
+          role="menu"
+          hidden
+        >
+          <div role="group" aria-labelledby="cm-checkboxes-label">
+            <div class="np-context-menu-label" id="cm-checkboxes-label">
+              Appearance
+            </div>
+            <div
+              class="np-context-menu-checkbox-item"
+              role="menuitemcheckbox"
+              aria-checked="true"
+              tabindex="-1"
+            >
+              <span class="np-context-menu-item-indicator"
+                ><svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M20 6 9 17l-5-5" /></svg></span
+              >Show Bookmarks
+            </div>
+            <div
+              class="np-context-menu-checkbox-item"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              tabindex="-1"
+            >
+              <span class="np-context-menu-item-indicator"
+                ><svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M20 6 9 17l-5-5" /></svg></span
+              >Show Full URLs
+            </div>
+            <div
+              class="np-context-menu-checkbox-item"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              tabindex="-1"
+            >
+              <span class="np-context-menu-item-indicator"
+                ><svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M20 6 9 17l-5-5" /></svg></span
+              >Show Status Bar
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Radio group</h2>
+        <div
+          class="np-context-menu-trigger"
+          aria-controls="cm-radio"
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 18.75rem;
+            height: 9.375rem;
+            border: 1px dashed var(--np-border);
+            border-radius: var(--np-radius-xl);
+            font-size: 0.875rem;
+          "
+        >
+          Right click here
+        </div>
+        <div class="np-context-menu-content" id="cm-radio" role="menu" hidden>
+          <div role="group" aria-labelledby="cm-radio-label">
+            <div class="np-context-menu-label" id="cm-radio-label">People</div>
+            <div role="group">
+              <div
+                class="np-context-menu-radio-item"
+                role="menuitemradio"
+                aria-checked="true"
+                tabindex="-1"
+              >
+                <span class="np-context-menu-item-indicator"
+                  ><svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M20 6 9 17l-5-5" /></svg></span
+                >Pedro Duarte
+              </div>
+              <div
+                class="np-context-menu-radio-item"
+                role="menuitemradio"
+                aria-checked="false"
+                tabindex="-1"
+              >
+                <span class="np-context-menu-item-indicator"
+                  ><svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M20 6 9 17l-5-5" /></svg></span
+                >Colm Tuite
+              </div>
+              <div
+                class="np-context-menu-radio-item"
+                role="menuitemradio"
+                aria-checked="false"
+                tabindex="-1"
+              >
+                <span class="np-context-menu-item-indicator"
+                  ><svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M20 6 9 17l-5-5" /></svg></span
+                >Marc Meyer
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Destructive</h2>
+        <div
+          class="np-context-menu-trigger"
+          aria-controls="cm-destructive"
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 18.75rem;
+            height: 9.375rem;
+            border: 1px dashed var(--np-border);
+            border-radius: var(--np-radius-xl);
+            font-size: 0.875rem;
+          "
+        >
+          Right click here
+        </div>
+        <div
+          class="np-context-menu-content"
+          id="cm-destructive"
+          role="menu"
+          hidden
+        >
+          <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path
+                d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"
+              />
+              <path d="m15 5 4 4" /></svg
+            >Edit
+          </div>
+          <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
+              <polyline points="16 6 12 2 8 6" />
+              <line x1="12" x2="12" y1="2" y2="15" /></svg
+            >Share
+          </div>
+          <div class="np-context-menu-separator" role="separator"></div>
+          <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <rect width="20" height="5" x="2" y="3" rx="1" />
+              <path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8" />
+              <path d="M10 12h4" /></svg
+            >Archive
+          </div>
+          <div
+            class="np-context-menu-item np-context-menu-destructive"
+            role="menuitem"
+            tabindex="-1"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M3 6h18" />
+              <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+              <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" /></svg
+            >Delete
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Sides (data-side)</h2>
+        <div
+          style="
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+          "
+        >
+          <div
+            class="np-context-menu-trigger"
+            aria-controls="cm-sides-top"
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 9rem;
+              height: 5rem;
+              border: 1px dashed var(--np-border);
+              border-radius: var(--np-radius-xl);
+              font-size: 0.875rem;
+            "
+          >
+            Right click (top)
+          </div>
+          <div
+            class="np-context-menu-content"
+            id="cm-sides-top"
+            role="menu"
+            data-side="top"
+            hidden
+          >
+            <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+              Profile
+            </div>
+            <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+              Billing
+            </div>
+            <div class="np-context-menu-sub">
+              <div
+                class="np-context-menu-sub-trigger"
+                role="menuitem"
+                aria-haspopup="menu"
+                aria-expanded="false"
+                tabindex="-1"
+              >
+                More<svg
+                  class="np-context-menu-sub-indicator"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </div>
+              <div class="np-context-menu-sub-content" role="menu" hidden>
+                <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+                  Team
+                </div>
+                <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+                  Subscription
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="np-context-menu-trigger"
+            aria-controls="cm-sides-right"
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 9rem;
+              height: 5rem;
+              border: 1px dashed var(--np-border);
+              border-radius: var(--np-radius-xl);
+              font-size: 0.875rem;
+            "
+          >
+            Right click (right)
+          </div>
+          <div
+            class="np-context-menu-content"
+            id="cm-sides-right"
+            role="menu"
+            hidden
+          >
+            <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+              Profile
+            </div>
+            <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+              Billing
+            </div>
+            <div class="np-context-menu-sub">
+              <div
+                class="np-context-menu-sub-trigger"
+                role="menuitem"
+                aria-haspopup="menu"
+                aria-expanded="false"
+                tabindex="-1"
+              >
+                More<svg
+                  class="np-context-menu-sub-indicator"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </div>
+              <div class="np-context-menu-sub-content" role="menu" hidden>
+                <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+                  Team
+                </div>
+                <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+                  Subscription
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="np-context-menu-trigger"
+            aria-controls="cm-sides-bottom"
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 9rem;
+              height: 5rem;
+              border: 1px dashed var(--np-border);
+              border-radius: var(--np-radius-xl);
+              font-size: 0.875rem;
+            "
+          >
+            Right click (bottom)
+          </div>
+          <div
+            class="np-context-menu-content"
+            id="cm-sides-bottom"
+            role="menu"
+            hidden
+          >
+            <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+              Profile
+            </div>
+            <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+              Billing
+            </div>
+            <div class="np-context-menu-sub">
+              <div
+                class="np-context-menu-sub-trigger"
+                role="menuitem"
+                aria-haspopup="menu"
+                aria-expanded="false"
+                tabindex="-1"
+              >
+                More<svg
+                  class="np-context-menu-sub-indicator"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </div>
+              <div class="np-context-menu-sub-content" role="menu" hidden>
+                <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+                  Team
+                </div>
+                <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+                  Subscription
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="np-context-menu-trigger"
+            aria-controls="cm-sides-left"
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 9rem;
+              height: 5rem;
+              border: 1px dashed var(--np-border);
+              border-radius: var(--np-radius-xl);
+              font-size: 0.875rem;
+            "
+          >
+            Right click (left)
+          </div>
+          <div
+            class="np-context-menu-content"
+            id="cm-sides-left"
+            role="menu"
+            data-side="left"
+            hidden
+          >
+            <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+              Profile
+            </div>
+            <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+              Billing
+            </div>
+            <div class="np-context-menu-sub">
+              <div
+                class="np-context-menu-sub-trigger"
+                role="menuitem"
+                aria-haspopup="menu"
+                aria-expanded="false"
+                tabindex="-1"
+              >
+                More<svg
+                  class="np-context-menu-sub-indicator"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </div>
+              <div class="np-context-menu-sub-content" role="menu" hidden>
+                <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+                  Team
+                </div>
+                <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+                  Subscription
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
