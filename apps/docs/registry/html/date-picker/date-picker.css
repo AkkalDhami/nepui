@@ -1,0 +1,50 @@
+/* nepui - Date Picker */
+
+.np-date-picker,
+[data-np-date-picker] {
+  --np-date-picker-width: calc(var(--np-spacing) * 70);
+
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+
+:is(.np-date-picker, [data-np-date-picker])[data-editable] {
+  display: block;
+  width: var(--np-date-picker-width);
+}
+
+:is(.np-date-picker-trigger, [data-np-date-picker-trigger]):is(
+  .np-date-picker-trigger,
+  [data-np-date-picker-trigger]
+) {
+  justify-content: flex-start;
+  width: var(--np-date-picker-width);
+  max-width: 100%;
+  font-weight: 400;
+  text-align: start;
+}
+
+:is(.np-date-picker-trigger, [data-np-date-picker-trigger])[data-empty="true"] {
+  color: var(--np-muted-foreground);
+}
+
+:is(.np-date-picker-trigger, [data-np-date-picker-trigger]) > span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+:is(.np-popover, [data-np-popover]):is(
+  .np-date-picker-content,
+  [data-np-date-picker-content]
+) {
+  --np-popover-width: auto;
+  --np-popover-padding: 0px;
+}
+
+:is(.np-date-picker-content, [data-np-date-picker-content])
+  :is(.np-calendar, [data-np-calendar]) {
+  --np-calendar-bg: transparent;
+}
