@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Drawer</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/button/button.css" />
+    <link rel="stylesheet" href="../styles/drawer.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem 4rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: system-ui, sans-serif;
+      }
+      main {
+        display: grid;
+        gap: 2.5rem;
+        max-width: 44rem;
+        margin-inline: auto;
+      }
+      main > section > h2 {
+        margin: 0 0 0.75rem;
+        font-size: 1rem;
+      }
+      main > section > p {
+        margin: 0 0 0.75rem;
+        color: var(--np-muted-foreground);
+        font-size: 0.875rem;
+      }
+    </style>
+
+    <script src="../javascripts/drawer.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Default</h2>
+        <p>Slides up from the bottom. Drag it down to close.</p>
+        <button
+          type="button"
+          class="np-button np-button-outline"
+          commandfor="drawer-demo"
+          command="show-modal"
+        >
+          Open Drawer
+        </button>
+
+        <dialog
+          id="drawer-demo"
+          class="np-drawer-content"
+          closedby="any"
+          aria-labelledby="drawer-demo-title"
+          aria-describedby="drawer-demo-description"
+        >
+          <div class="np-drawer-header">
+            <h2 class="np-drawer-title" id="drawer-demo-title">
+              Are you absolutely sure?
+            </h2>
+            <p class="np-drawer-description" id="drawer-demo-description">
+              This action cannot be undone. This will permanently delete your
+              account and remove your data from our servers.
+            </p>
+          </div>
+          <div class="np-drawer-footer">
+            <button
+              type="button"
+              class="np-button"
+              commandfor="drawer-demo"
+              command="close"
+            >
+              Submit
+            </button>
+            <button
+              type="button"
+              class="np-button np-button-outline"
+              commandfor="drawer-demo"
+              command="close"
+            >
+              Cancel
+            </button>
+          </div>
+        </dialog>
+      </section>
+
+      <section>
+        <h2>Position</h2>
+        <p><code>np-drawer-top|right|bottom|left</code>.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem">
+          <button
+            type="button"
+            class="np-button np-button-outline"
+            commandfor="drawer-top"
+            command="show-modal"
+          >
+            top
+          </button>
+          <button
+            type="button"
+            class="np-button np-button-outline"
+            commandfor="drawer-right"
+            command="show-modal"
+          >
+            right
+          </button>
+          <button
+            type="button"
+            class="np-button np-button-outline"
+            commandfor="drawer-bottom"
+            command="show-modal"
+          >
+            bottom
+          </button>
+          <button
+            type="button"
+            class="np-button np-button-outline"
+            commandfor="drawer-left"
+            command="show-modal"
+          >
+            left
+          </button>
+        </div>
+
+        <dialog
+          id="drawer-top"
+          class="np-drawer-content np-drawer-top"
+          closedby="any"
+          aria-labelledby="drawer-top-title"
+          aria-describedby="drawer-top-description"
+        >
+          <div class="np-drawer-header">
+            <h2 class="np-drawer-title" id="drawer-top-title">Move Goal</h2>
+            <p class="np-drawer-description" id="drawer-top-description">
+              Set your daily activity goal.
+            </p>
+          </div>
+          <div class="np-drawer-footer">
+            <button
+              type="button"
+              class="np-button"
+              commandfor="drawer-top"
+              command="close"
+            >
+              Submit
+            </button>
+            <button
+              type="button"
+              class="np-button np-button-outline"
+              commandfor="drawer-top"
+              command="close"
+            >
+              Cancel
+            </button>
+          </div>
+        </dialog>
+
+        <dialog
+          id="drawer-right"
+          class="np-drawer-content np-drawer-right"
+          closedby="any"
+          aria-labelledby="drawer-right-title"
+          aria-describedby="drawer-right-description"
+        >
+          <div class="np-drawer-header">
+            <h2 class="np-drawer-title" id="drawer-right-title">Move Goal</h2>
+            <p class="np-drawer-description" id="drawer-right-description">
+              Set your daily activity goal.
+            </p>
+          </div>
+          <div class="np-drawer-footer">
+            <button
+              type="button"
+              class="np-button"
+              commandfor="drawer-right"
+              command="close"
+            >
+              Submit
+            </button>
+            <button
+              type="button"
+              class="np-button np-button-outline"
+              commandfor="drawer-right"
+              command="close"
+            >
+              Cancel
+            </button>
+          </div>
+        </dialog>
+
+        <dialog
+          id="drawer-bottom"
+          class="np-drawer-content np-drawer-bottom"
+          closedby="any"
+          aria-labelledby="drawer-bottom-title"
+          aria-describedby="drawer-bottom-description"
+        >
+          <div class="np-drawer-header">
+            <h2 class="np-drawer-title" id="drawer-bottom-title">Move Goal</h2>
+            <p class="np-drawer-description" id="drawer-bottom-description">
+              Set your daily activity goal.
+            </p>
+          </div>
+          <div class="np-drawer-footer">
+            <button
+              type="button"
+              class="np-button"
+              commandfor="drawer-bottom"
+              command="close"
+            >
+              Submit
+            </button>
+            <button
+              type="button"
+              class="np-button np-button-outline"
+              commandfor="drawer-bottom"
+              command="close"
+            >
+              Cancel
+            </button>
+          </div>
+        </dialog>
+
+        <dialog
+          id="drawer-left"
+          class="np-drawer-content np-drawer-left"
+          closedby="any"
+          aria-labelledby="drawer-left-title"
+          aria-describedby="drawer-left-description"
+        >
+          <div class="np-drawer-header">
+            <h2 class="np-drawer-title" id="drawer-left-title">Move Goal</h2>
+            <p class="np-drawer-description" id="drawer-left-description">
+              Set your daily activity goal.
+            </p>
+          </div>
+          <div class="np-drawer-footer">
+            <button
+              type="button"
+              class="np-button"
+              commandfor="drawer-left"
+              command="close"
+            >
+              Submit
+            </button>
+            <button
+              type="button"
+              class="np-button np-button-outline"
+              commandfor="drawer-left"
+              command="close"
+            >
+              Cancel
+            </button>
+          </div>
+        </dialog>
+      </section>
+
+      <section>
+        <h2>Swipe handle</h2>
+        <p><code>np-drawer-handle</code> as the first child.</p>
+        <button
+          type="button"
+          class="np-button np-button-outline"
+          commandfor="drawer-handle"
+          command="show-modal"
+        >
+          Open Drawer
+        </button>
+
+        <dialog
+          id="drawer-handle"
+          class="np-drawer-content"
+          closedby="any"
+          aria-labelledby="drawer-handle-title"
+          aria-describedby="drawer-handle-description"
+        >
+          <div class="np-drawer-handle" aria-hidden="true"></div>
+          <div class="np-drawer-header">
+            <h2 class="np-drawer-title" id="drawer-handle-title">Swipe me</h2>
+            <p class="np-drawer-description" id="drawer-handle-description">
+              Drag the bar, or the whole drawer, down to close it.
+            </p>
+          </div>
+          <div class="np-drawer-footer">
+            <button
+              type="button"
+              class="np-button"
+              commandfor="drawer-handle"
+              command="close"
+            >
+              Submit
+            </button>
+            <button
+              type="button"
+              class="np-button np-button-outline"
+              commandfor="drawer-handle"
+              command="close"
+            >
+              Cancel
+            </button>
+          </div>
+        </dialog>
+      </section>
+
+      <section>
+        <h2>Nested</h2>
+        <p>
+          A <code>&lt;dialog&gt;</code> inside a <code>&lt;dialog&gt;</code>;
+          the parent steps back.
+        </p>
+        <button
+          type="button"
+          class="np-button np-button-outline"
+          commandfor="drawer-nested"
+          command="show-modal"
+        >
+          Open Drawer
+        </button>
+
+        <dialog
+          id="drawer-nested"
+          class="np-drawer-content"
+          closedby="any"
+          aria-labelledby="drawer-nested-title"
+          aria-describedby="drawer-nested-description"
+        >
+          <div class="np-drawer-header">
+            <h2 class="np-drawer-title" id="drawer-nested-title">
+              Parent drawer
+            </h2>
+            <p class="np-drawer-description" id="drawer-nested-description">
+              Open another drawer from inside this one.
+            </p>
+          </div>
+          <div class="np-drawer-footer">
+            <button
+              type="button"
+              class="np-button"
+              commandfor="drawer-nested-child"
+              command="show-modal"
+            >
+              Open nested drawer
+            </button>
+            <button
+              type="button"
+              class="np-button np-button-outline"
+              commandfor="drawer-nested"
+              command="close"
+            >
+              Close
+            </button>
+          </div>
+
+          <dialog
+            id="drawer-nested-child"
+            class="np-drawer-content"
+            closedby="any"
+            aria-labelledby="drawer-nested-child-title"
+            aria-describedby="drawer-nested-child-description"
+          >
+            <div class="np-drawer-header">
+              <h2 class="np-drawer-title" id="drawer-nested-child-title">
+                Nested drawer
+              </h2>
+              <p
+                class="np-drawer-description"
+                id="drawer-nested-child-description"
+              >
+                This one sits on top of the first.
+              </p>
+            </div>
+            <div class="np-drawer-footer">
+              <button
+                type="button"
+                class="np-button"
+                commandfor="drawer-nested-child"
+                command="close"
+              >
+                Submit
+              </button>
+              <button
+                type="button"
+                class="np-button np-button-outline"
+                commandfor="drawer-nested-child"
+                command="close"
+              >
+                Cancel
+              </button>
+            </div>
+          </dialog>
+        </dialog>
+      </section>
+
+      <section>
+        <h2>Scrollable</h2>
+        <p>Only the middle scrolls.</p>
+        <button
+          type="button"
+          class="np-button np-button-outline"
+          commandfor="drawer-scrollable"
+          command="show-modal"
+        >
+          Open Drawer
+        </button>
+
+        <dialog
+          id="drawer-scrollable"
+          class="np-drawer-content"
+          style="--np-drawer-height: 60dvh"
+          closedby="any"
+          aria-labelledby="drawer-scrollable-title"
+          aria-describedby="drawer-scrollable-description"
+        >
+          <div class="np-drawer-header">
+            <h2 class="np-drawer-title" id="drawer-scrollable-title">
+              Terms of service
+            </h2>
+            <p class="np-drawer-description" id="drawer-scrollable-description">
+              Read to the end.
+            </p>
+          </div>
+          <div
+            role="region"
+            aria-label="Terms"
+            tabindex="0"
+            style="
+              flex: 1 1 0;
+              min-height: 0;
+              overflow-y: auto;
+              padding-inline: 1rem;
+            "
+          >
+            <p style="margin: 0 0 0.75rem">
+              Paragraph 1. Scroll this area; the header and the footer stay in
+              view.
+            </p>
+            <p style="margin: 0 0 0.75rem">
+              Paragraph 2. Scroll this area; the header and the footer stay in
+              view.
+            </p>
+            <p style="margin: 0 0 0.75rem">
+              Paragraph 3. Scroll this area; the header and the footer stay in
+              view.
+            </p>
+            <p style="margin: 0 0 0.75rem">
+              Paragraph 4. Scroll this area; the header and the footer stay in
+              view.
+            </p>
+            <p style="margin: 0 0 0.75rem">
+              Paragraph 5. Scroll this area; the header and the footer stay in
+              view.
+            </p>
+            <p style="margin: 0 0 0.75rem">
+              Paragraph 6. Scroll this area; the header and the footer stay in
+              view.
+            </p>
+            <p style="margin: 0 0 0.75rem">
+              Paragraph 7. Scroll this area; the header and the footer stay in
+              view.
+            </p>
+            <p style="margin: 0 0 0.75rem">
+              Paragraph 8. Scroll this area; the header and the footer stay in
+              view.
+            </p>
+            <p style="margin: 0 0 0.75rem">
+              Paragraph 9. Scroll this area; the header and the footer stay in
+              view.
+            </p>
+            <p style="margin: 0 0 0.75rem">
+              Paragraph 10. Scroll this area; the header and the footer stay in
+              view.
+            </p>
+            <p style="margin: 0 0 0.75rem">
+              Paragraph 11. Scroll this area; the header and the footer stay in
+              view.
+            </p>
+            <p style="margin: 0 0 0.75rem">
+              Paragraph 12. Scroll this area; the header and the footer stay in
+              view.
+            </p>
+          </div>
+          <div class="np-drawer-footer">
+            <button
+              type="button"
+              class="np-button"
+              commandfor="drawer-scrollable"
+              command="close"
+            >
+              Submit
+            </button>
+            <button
+              type="button"
+              class="np-button np-button-outline"
+              commandfor="drawer-scrollable"
+              command="close"
+            >
+              Cancel
+            </button>
+          </div>
+        </dialog>
+      </section>
+
+      <section>
+        <h2>Data-attribute form</h2>
+        <button
+          type="button"
+          class="np-button np-button-outline"
+          commandfor="d-drawer"
+          command="show-modal"
+        >
+          Open Drawer
+        </button>
+        <dialog
+          id="d-drawer"
+          data-np-drawer-content
+          data-side="left"
+          closedby="any"
+          aria-labelledby="d-drawer-t"
+        >
+          <div data-np-drawer-header>
+            <h2 data-np-drawer-title id="d-drawer-t">Data attributes</h2>
+            <p data-np-drawer-description>No classes.</p>
+          </div>
+          <div data-np-drawer-footer>
+            <button
+              type="button"
+              class="np-button"
+              commandfor="d-drawer"
+              command="close"
+            >
+              Close
+            </button>
+          </div>
+        </dialog>
+      </section>
+
+      <div style="height: 60rem" aria-hidden="true"></div>
+    </main>
+  </body>
+</html>

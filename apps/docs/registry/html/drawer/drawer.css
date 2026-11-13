@@ -1,0 +1,404 @@
+/* nepui — Drawer */
+
+.np-drawer-content,
+[data-np-drawer-content] {
+  --np-drawer-width: 100%;
+  --np-drawer-max-width: none;
+  --np-drawer-height: auto;
+  --np-drawer-max-height: calc(100dvh - 6rem);
+  --np-drawer-bg: var(--np-background);
+  --np-drawer-color: var(--np-foreground);
+  --np-drawer-border-color: var(--np-border);
+  --np-drawer-shadow: var(--np-shadow-lg);
+  --np-drawer-radius: var(--np-radius-xl);
+  --np-drawer-font-size: 0.875rem;
+  --np-drawer-duration: 300ms;
+  --np-drawer-easing: cubic-bezier(0.32, 0.72, 0, 1);
+  --np-drawer-overlay-bg: color-mix(
+    in oklab,
+    var(--np-foreground) 10%,
+    transparent
+  );
+  --np-drawer-overlay-blur: 4px;
+  --np-drawer-overlay-duration: 200ms;
+  /* Reset on every drawer, so a nested one does not inherit the step back. */
+  --np-drawer-nested-scale: 1;
+
+  /* Bottom (the default). The other sides redefine these five. */
+  --np-drawer-inset: auto 0 0 0;
+  --np-drawer-border-width: 1px 0 0 0;
+  --np-drawer-border-radius: var(--np-drawer-radius) var(--np-drawer-radius) 0 0;
+  --np-drawer-from-x: 0px;
+  --np-drawer-from-y: 100%;
+
+  position: fixed;
+  inset: var(--np-drawer-inset);
+  z-index: 50;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: var(--np-drawer-width);
+  max-width: var(--np-drawer-max-width);
+  height: var(--np-drawer-height);
+  max-height: var(--np-drawer-max-height);
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  border-style: solid;
+  border-width: var(--np-drawer-border-width);
+  border-color: var(--np-drawer-border-color);
+  border-radius: var(--np-drawer-border-radius);
+  outline: none;
+  background-color: var(--np-drawer-bg);
+  box-shadow: var(--np-drawer-shadow);
+  color: var(--np-drawer-color);
+  font-size: var(--np-drawer-font-size);
+  /* The swipe moves the panel. Both flavours write into these variables. */
+  translate: calc(
+      var(--np-drawer-swipe-x, 0px) + var(--drawer-swipe-movement-x, 0px)
+    )
+    calc(
+      var(--np-drawer-swipe-y, 0px) + var(--drawer-swipe-movement-y, 0px) +
+        var(--drawer-snap-point-offset, 0px)
+    );
+  scale: var(--np-drawer-nested-scale);
+  transition:
+    translate var(--np-drawer-duration) var(--np-drawer-easing),
+    scale var(--np-drawer-duration) var(--np-drawer-easing);
+  touch-action: pan-y;
+  overscroll-behavior: contain;
+}
+
+:is(.np-drawer-top, [data-side="top"]):is(
+  .np-drawer-content,
+  [data-np-drawer-content]
+) {
+  --np-drawer-inset: 0 0 auto 0;
+  --np-drawer-border-width: 0 0 1px 0;
+  --np-drawer-border-radius: 0 0 var(--np-drawer-radius) var(--np-drawer-radius);
+  --np-drawer-from-y: -100%;
+}
+
+:is(.np-drawer-left, [data-side="left"]):is(
+  .np-drawer-content,
+  [data-np-drawer-content]
+) {
+  --np-drawer-inset: 0 auto 0 0;
+  --np-drawer-width: 75%;
+  --np-drawer-max-width: 24rem;
+  --np-drawer-max-height: none;
+  --np-drawer-border-width: 0 1px 0 0;
+  --np-drawer-border-radius: 0 var(--np-drawer-radius) var(--np-drawer-radius) 0;
+  --np-drawer-from-x: -100%;
+  --np-drawer-from-y: 0px;
+
+  touch-action: pan-x;
+}
+
+:is(.np-drawer-right, [data-side="right"]):is(
+  .np-drawer-content,
+  [data-np-drawer-content]
+) {
+  --np-drawer-inset: 0 0 0 auto;
+  --np-drawer-width: 75%;
+  --np-drawer-max-width: 24rem;
+  --np-drawer-max-height: none;
+  --np-drawer-border-width: 0 0 0 1px;
+  --np-drawer-border-radius: var(--np-drawer-radius) 0 0 var(--np-drawer-radius);
+  --np-drawer-from-x: 100%;
+  --np-drawer-from-y: 0px;
+
+  touch-action: pan-x;
+}
+
+:is(.np-drawer-content, [data-np-drawer-content])[data-swiping] {
+  transition: none;
+  user-select: none;
+}
+
+:is(.np-drawer-content, [data-np-drawer-content])[data-starting-style],
+:is(.np-drawer-content, [data-np-drawer-content])[data-ending-style] {
+  translate: var(--np-drawer-from-x) var(--np-drawer-from-y);
+}
+
+:is(.np-drawer-content, [data-np-drawer-content])[data-nested-drawer-open] {
+  --np-drawer-nested-scale: calc(1 - var(--nested-drawers, 1) * 0.05);
+
+  transform-origin: 50% 100%;
+}
+
+:is(.np-drawer-top, [data-side="top"])[data-nested-drawer-open]:is(
+    .np-drawer-content,
+    [data-np-drawer-content]
+  ) {
+  transform-origin: 50% 0;
+}
+
+:is(.np-drawer-left, [data-side="left"])[data-nested-drawer-open]:is(
+    .np-drawer-content,
+    [data-np-drawer-content]
+  ) {
+  transform-origin: 0 50%;
+}
+
+:is(.np-drawer-right, [data-side="right"])[data-nested-drawer-open]:is(
+    .np-drawer-content,
+    [data-np-drawer-content]
+  ) {
+  transform-origin: 100% 50%;
+}
+
+.np-drawer-inner,
+[data-np-drawer-inner] {
+  display: contents;
+}
+
+dialog:is(.np-drawer-content, [data-np-drawer-content]) {
+  transition:
+    translate var(--np-drawer-duration) var(--np-drawer-easing),
+    scale var(--np-drawer-duration) var(--np-drawer-easing),
+    overlay var(--np-drawer-duration) var(--np-drawer-easing) allow-discrete,
+    display var(--np-drawer-duration) var(--np-drawer-easing) allow-discrete;
+}
+
+dialog:is(.np-drawer-content, [data-np-drawer-content])[data-swiping] {
+  transition: none;
+}
+
+dialog:is(.np-drawer-content, [data-np-drawer-content]):not([open]) {
+  display: none;
+  translate: var(--np-drawer-from-x) var(--np-drawer-from-y);
+}
+
+@starting-style {
+  dialog:is(.np-drawer-content, [data-np-drawer-content])[open] {
+    translate: var(--np-drawer-from-x) var(--np-drawer-from-y);
+  }
+}
+
+dialog:is(.np-drawer-content, [data-np-drawer-content]):has(
+    dialog:is(.np-drawer-content, [data-np-drawer-content])[open]
+  ) {
+  --np-drawer-nested-scale: 0.95;
+
+  transform-origin: 50% 100%;
+}
+
+html:has(dialog:is(.np-drawer-content, [data-np-drawer-content]):modal) {
+  overflow: hidden;
+  scrollbar-gutter: stable;
+}
+
+.np-drawer-viewport,
+[data-np-drawer-viewport] {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+}
+
+.np-drawer-overlay,
+[data-np-drawer-overlay] {
+  --np-drawer-overlay-bg: color-mix(
+    in oklab,
+    var(--np-foreground) 10%,
+    transparent
+  );
+  --np-drawer-overlay-blur: 4px;
+  --np-drawer-overlay-duration: 200ms;
+
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background-color: var(--np-drawer-overlay-bg);
+  backdrop-filter: blur(var(--np-drawer-overlay-blur));
+  opacity: calc(1 - var(--drawer-swipe-progress, 0));
+  transition: opacity var(--np-drawer-overlay-duration) ease-in-out;
+}
+
+:is(.np-drawer-overlay, [data-np-drawer-overlay])[data-starting-style],
+:is(.np-drawer-overlay, [data-np-drawer-overlay])[data-ending-style] {
+  opacity: 0;
+}
+
+dialog:is(.np-drawer-content, [data-np-drawer-content])::backdrop {
+  background-color: transparent;
+  backdrop-filter: blur(0);
+  transition:
+    background-color var(--np-drawer-overlay-duration) ease-in-out,
+    backdrop-filter var(--np-drawer-overlay-duration) ease-in-out,
+    overlay var(--np-drawer-overlay-duration) ease-in-out allow-discrete,
+    display var(--np-drawer-overlay-duration) ease-in-out allow-discrete;
+}
+
+dialog:is(.np-drawer-content, [data-np-drawer-content])[open]::backdrop {
+  background-color: var(--np-drawer-overlay-bg);
+  backdrop-filter: blur(var(--np-drawer-overlay-blur));
+}
+
+@starting-style {
+  dialog:is(.np-drawer-content, [data-np-drawer-content])[open]::backdrop {
+    background-color: transparent;
+    backdrop-filter: blur(0);
+  }
+}
+
+.np-drawer-handle,
+[data-np-drawer-handle] {
+  flex: none;
+  box-sizing: border-box;
+  width: 6.25rem;
+  height: 0.385rem;
+  margin-block: calc(var(--np-spacing) * 4) 0;
+  margin-inline: auto;
+  border-radius: 9999px;
+  background-color: var(--np-muted);
+  cursor: grab;
+  user-select: none;
+}
+
+:is(.np-drawer-content, [data-np-drawer-content])[data-swiping]
+  :is(.np-drawer-handle, [data-np-drawer-handle]) {
+  cursor: grabbing;
+}
+
+:is(.np-drawer-top, [data-side="top"])
+  :is(.np-drawer-handle, [data-np-drawer-handle]) {
+  order: 99;
+  margin-block: 0 calc(var(--np-spacing) * 4);
+}
+
+:is(.np-drawer-left, [data-side="left"], .np-drawer-right, [data-side="right"])
+  :is(.np-drawer-handle, [data-np-drawer-handle]) {
+  position: absolute;
+  inset-block: 0;
+  width: 0.25rem;
+  height: 6.25rem;
+  margin: auto 0;
+}
+
+:is(.np-drawer-left, [data-side="left"])
+  :is(.np-drawer-handle, [data-np-drawer-handle]) {
+  right: 0.5rem;
+  left: auto;
+}
+
+:is(.np-drawer-right, [data-side="right"])
+  :is(.np-drawer-handle, [data-np-drawer-handle]) {
+  right: auto;
+  left: 0.5rem;
+}
+
+.np-drawer-header,
+[data-np-drawer-header] {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  padding: calc(var(--np-spacing) * 4);
+}
+
+.np-drawer-title,
+[data-np-drawer-title] {
+  margin: 0;
+  color: var(--np-foreground);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.np-drawer-description,
+[data-np-drawer-description] {
+  margin: 0;
+  color: var(--np-muted-foreground);
+  font-size: 0.875rem;
+}
+
+.np-drawer-footer,
+[data-np-drawer-footer] {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--np-spacing) * 2);
+  margin-block-start: auto;
+  padding: calc(var(--np-spacing) * 4);
+}
+
+.np-drawer-panel,
+[data-np-drawer-panel] {
+  box-sizing: border-box;
+  padding: calc(var(--np-spacing) * 6);
+}
+
+:is(.np-drawer-content, [data-np-drawer-content]):has(
+    :is(.np-drawer-header, [data-np-drawer-header])
+  )
+  :is(.np-drawer-panel, [data-np-drawer-panel]) {
+  padding-block-start: var(--np-spacing);
+}
+
+:is(.np-drawer-content, [data-np-drawer-content]):has(
+    :is(.np-drawer-footer, [data-np-drawer-footer])
+  )
+  :is(.np-drawer-panel, [data-np-drawer-panel]) {
+  padding-block-end: var(--np-spacing);
+}
+
+:is(.np-drawer-panel, [data-np-drawer-panel])[data-allow-selection="false"] {
+  cursor: default;
+}
+
+:is(.np-drawer-panel, [data-np-drawer-panel])[data-np-scrollable] {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  touch-action: auto;
+}
+
+.np-drawer-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  touch-action: auto;
+}
+
+.np-drawer-scroll > [data-slot="scroll-area-viewport"] {
+  padding-block-end: 0;
+}
+
+:is(.dark, [data-theme="dark"])
+  :is(
+    .np-drawer-content,
+    [data-np-drawer-content],
+    .np-drawer-overlay,
+    [data-np-drawer-overlay]
+  ) {
+  --np-drawer-overlay-bg: color-mix(
+    in oklab,
+    var(--np-background) 10%,
+    transparent
+  );
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light, [data-theme="light"])
+    :is(
+      .np-drawer-content,
+      [data-np-drawer-content],
+      .np-drawer-overlay,
+      [data-np-drawer-overlay]
+    ) {
+    --np-drawer-overlay-bg: color-mix(
+      in oklab,
+      var(--np-background) 10%,
+      transparent
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.np-drawer-content, [data-np-drawer-content]),
+  dialog:is(.np-drawer-content, [data-np-drawer-content]),
+  :is(.np-drawer-overlay, [data-np-drawer-overlay]),
+  dialog:is(.np-drawer-content, [data-np-drawer-content])::backdrop {
+    transition: none;
+  }
+}
