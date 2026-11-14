@@ -1,0 +1,63 @@
+/* nepui — Icon Swap */
+
+.np-icon-swap,
+[data-np-icon-swap] {
+  --np-icon-swap-duration: 300ms;
+  --np-icon-swap-easing: cubic-bezier(0.2, 0, 0, 1);
+  --np-icon-swap-scale: 0.25;
+  --np-icon-swap-blur: 4px;
+
+  box-sizing: border-box;
+  display: inline-grid;
+  flex-shrink: 0;
+  place-items: center;
+  vertical-align: middle;
+}
+
+.np-icon-swap-item,
+[data-np-icon-swap-item] {
+  box-sizing: border-box;
+  display: inline-flex;
+  grid-area: 1 / 1;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  scale: var(--np-icon-swap-scale);
+  filter: blur(var(--np-icon-swap-blur));
+  pointer-events: none;
+  transition:
+    opacity var(--np-icon-swap-duration) var(--np-icon-swap-easing),
+    scale var(--np-icon-swap-duration) var(--np-icon-swap-easing),
+    filter var(--np-icon-swap-duration) var(--np-icon-swap-easing);
+}
+
+:is(.np-icon-swap-item, [data-np-icon-swap-item]):is(
+  .np-icon-swap-active,
+  [data-active]
+) {
+  opacity: 1;
+  scale: 1;
+  filter: blur(0);
+  pointer-events: auto;
+}
+
+:is(.np-icon-swap-item, [data-np-icon-swap-item])[data-state="enter"] {
+  animation: np-icon-swap-in var(--np-icon-swap-duration)
+    var(--np-icon-swap-easing) backwards;
+}
+
+@keyframes np-icon-swap-in {
+  from {
+    opacity: 0;
+    scale: var(--np-icon-swap-scale);
+    filter: blur(var(--np-icon-swap-blur));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .np-icon-swap,
+  [data-np-icon-swap] {
+    --np-icon-swap-scale: 1;
+    --np-icon-swap-blur: 0px;
+  }
+}
