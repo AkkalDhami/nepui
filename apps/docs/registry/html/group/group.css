@@ -1,0 +1,172 @@
+/* nepui — Group */
+
+.np-group,
+[data-np-group] {
+  --np-group-gap: calc(var(--np-spacing) * 2);
+  --np-group-separator-color: var(--np-input);
+  --np-group-separator-size: 1px;
+
+  box-sizing: border-box;
+  display: flex;
+  width: fit-content;
+}
+
+:is(.np-group-vertical, [data-orientation="vertical"]):is(
+  .np-group,
+  [data-np-group]
+) {
+  flex-direction: column;
+}
+
+:is(.np-group, [data-np-group]):has(> :is(.np-group, [data-np-group])) {
+  gap: var(--np-group-gap);
+}
+
+:is(.np-group, [data-np-group]) > :is(:focus-visible, :has(:focus-visible)) {
+  z-index: 1;
+}
+
+:is(.np-group, [data-np-group]):not(
+    :is(.np-group-vertical, [data-orientation="vertical"])
+  )
+  > :not(
+    .np-group,
+    [data-np-group],
+    .np-group-separator,
+    [data-np-group-separator]
+  ):not(:first-child) {
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+  border-inline-start-width: 0;
+}
+
+:is(.np-group, [data-np-group]):not(
+    :is(.np-group-vertical, [data-orientation="vertical"])
+  )
+  > :not(
+    .np-group,
+    [data-np-group],
+    .np-group-separator,
+    [data-np-group-separator]
+  ):not(:last-child) {
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
+}
+
+:is(.np-group, [data-np-group]):not(
+    :is(.np-group-vertical, [data-orientation="vertical"])
+  )
+  > :not(
+    .np-group,
+    [data-np-group],
+    .np-group-separator,
+    [data-np-group-separator]
+  ):has(+ :is(.np-group-separator, [data-np-group-separator])) {
+  border-inline-end-width: 0;
+}
+
+:is(.np-group-vertical, [data-orientation="vertical"]):is(
+    .np-group,
+    [data-np-group]
+  )
+  > :not(
+    .np-group,
+    [data-np-group],
+    .np-group-separator,
+    [data-np-group-separator]
+  ):not(:first-child) {
+  border-start-start-radius: 0;
+  border-start-end-radius: 0;
+  border-block-start-width: 0;
+}
+
+:is(.np-group-vertical, [data-orientation="vertical"]):is(
+    .np-group,
+    [data-np-group]
+  )
+  > :not(
+    .np-group,
+    [data-np-group],
+    .np-group-separator,
+    [data-np-group-separator]
+  ):not(:last-child) {
+  border-end-start-radius: 0;
+  border-end-end-radius: 0;
+}
+
+:is(.np-group-vertical, [data-orientation="vertical"]):is(
+    .np-group,
+    [data-np-group]
+  )
+  > :not(
+    .np-group,
+    [data-np-group],
+    .np-group-separator,
+    [data-np-group-separator]
+  ):has(+ :is(.np-group-separator, [data-np-group-separator])) {
+  border-block-end-width: 0;
+}
+
+.np-group-text,
+[data-np-group-text] {
+  --np-group-text-bg: var(--np-muted);
+  --np-group-text-color: var(--np-muted-foreground);
+  --np-group-text-border-color: var(--np-input);
+  --np-group-text-radius: var(--np-radius-lg);
+  --np-group-text-height: 2rem;
+
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--np-spacing) * 2);
+  min-height: var(--np-group-text-height);
+  padding-inline: calc(var(--np-spacing) * 3 - 1px);
+  border: 1px solid var(--np-group-text-border-color);
+  border-radius: var(--np-group-text-radius);
+  background-color: var(--np-group-text-bg);
+  color: var(--np-group-text-color);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  white-space: nowrap;
+}
+
+:is(.np-group-text, [data-np-group-text]) svg {
+  flex: none;
+  width: 1rem;
+  height: 1rem;
+  pointer-events: none;
+}
+
+.np-group-separator,
+[data-np-group-separator] {
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+  flex: none;
+  align-self: stretch;
+  width: var(--np-group-separator-size);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: var(--np-group-separator-color);
+  pointer-events: none;
+}
+
+:is(.np-group-separator-horizontal, [data-orientation="horizontal"]):is(
+  .np-group-separator,
+  [data-np-group-separator]
+) {
+  width: auto;
+  height: var(--np-group-separator-size);
+}
+
+:is(.np-group, [data-np-group])
+  > :is(:focus-visible, :has(:focus-visible))
+  + :is(.np-group-separator, [data-np-group-separator]),
+:is(.np-group, [data-np-group])
+  > :is(.np-group-separator, [data-np-group-separator]):has(
+    + :focus-visible,
+    + * :focus-visible
+  ) {
+  background-color: var(--np-ring);
+}

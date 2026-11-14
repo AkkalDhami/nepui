@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Group</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/input.css" />
+    <link rel="stylesheet" href="../styles/group.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem 4rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: system-ui, sans-serif;
+      }
+      main {
+        display: grid;
+        gap: 2.5rem;
+        max-width: 44rem;
+        margin-inline: auto;
+      }
+      h2 {
+        margin: 0 0 0.75rem;
+        font-size: 1rem;
+      }
+      p {
+        margin: 0 0 0.75rem;
+        color: var(--np-muted-foreground);
+        font-size: 0.875rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Default</h2>
+        <p>Joined buttons with separators.</p>
+        <div class="np-group" role="group" aria-label="File actions">
+          <button type="button" class="np-button np-button-outline">
+            Files
+          </button>
+          <div
+            class="np-group-separator"
+            role="separator"
+            aria-orientation="vertical"
+          ></div>
+          <button type="button" class="np-button np-button-outline">
+            Media
+          </button>
+          <div
+            class="np-group-separator"
+            role="separator"
+            aria-orientation="vertical"
+          ></div>
+          <button
+            type="button"
+            class="np-button np-button-outline np-button-icon"
+            aria-label="More"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <section>
+        <h2>With input</h2>
+        <p>An input and a button.</p>
+        <div class="np-group" role="group" aria-label="Share link">
+          <input
+            class="np-input"
+            type="text"
+            value="https://nepui.dev/docs"
+            readonly
+            aria-label="Link"
+          />
+          <button
+            type="button"
+            class="np-button np-button-outline np-button-icon"
+            aria-label="Copy link"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+              <path
+                d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+              />
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Small</h2>
+        <p>Controls keep their own size.</p>
+        <div class="np-group" role="group" aria-label="File actions">
+          <button
+            type="button"
+            class="np-button np-button-outline np-button-sm"
+          >
+            Files
+          </button>
+          <div
+            class="np-group-separator"
+            role="separator"
+            aria-orientation="vertical"
+          ></div>
+          <button
+            type="button"
+            class="np-button np-button-outline np-button-sm"
+          >
+            Media
+          </button>
+          <div
+            class="np-group-separator"
+            role="separator"
+            aria-orientation="vertical"
+          ></div>
+          <button
+            type="button"
+            class="np-button np-button-outline np-button-icon-sm"
+            aria-label="More"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Large</h2>
+        <div class="np-group" role="group" aria-label="File actions">
+          <button
+            type="button"
+            class="np-button np-button-outline np-button-lg"
+          >
+            Files
+          </button>
+          <div
+            class="np-group-separator"
+            role="separator"
+            aria-orientation="vertical"
+          ></div>
+          <button
+            type="button"
+            class="np-button np-button-outline np-button-lg"
+          >
+            Media
+          </button>
+          <div
+            class="np-group-separator"
+            role="separator"
+            aria-orientation="vertical"
+          ></div>
+          <button
+            type="button"
+            class="np-button np-button-outline np-button-icon-lg"
+            aria-label="More"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <section>
+        <h2>With a disabled button</h2>
+        <div class="np-group" role="group" aria-label="File actions">
+          <button type="button" class="np-button np-button-outline">
+            Files
+          </button>
+          <div
+            class="np-group-separator"
+            role="separator"
+            aria-orientation="vertical"
+          ></div>
+          <button type="button" class="np-button np-button-outline" disabled>
+            Media
+          </button>
+          <div
+            class="np-group-separator"
+            role="separator"
+            aria-orientation="vertical"
+          ></div>
+          <button
+            type="button"
+            class="np-button np-button-outline np-button-icon"
+            aria-label="More"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <section>
+        <h2>With default buttons</h2>
+        <p>Set <code>--np-group-separator-color</code> for filled buttons.</p>
+        <div
+          class="np-group"
+          role="group"
+          aria-label="File actions"
+          style="
+            --np-group-separator-color: color-mix(
+              in oklab,
+              var(--np-primary-foreground) 30%,
+              transparent
+            );
+          "
+        >
+          <button type="button" class="np-button">Files</button>
+          <div
+            class="np-group-separator"
+            role="separator"
+            aria-orientation="vertical"
+          ></div>
+          <button type="button" class="np-button">Media</button>
+          <div
+            class="np-group-separator"
+            role="separator"
+            aria-orientation="vertical"
+          ></div>
+          <button
+            type="button"
+            class="np-button np-button-icon"
+            aria-label="More"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <section>
+        <h2>With start text</h2>
+        <p><code>np-group-text</code> as a label.</p>
+        <div class="np-group" role="group" aria-label="Website">
+          <div class="np-group-text">https://</div>
+          <input
+            class="np-input"
+            type="text"
+            placeholder="example.com"
+            aria-label="Domain"
+          />
+        </div>
+      </section>
+
+      <section>
+        <h2>With end text</h2>
+        <div class="np-group" role="group" aria-label="Website">
+          <input
+            class="np-input"
+            type="text"
+            placeholder="example"
+            aria-label="Domain"
+          />
+          <div class="np-group-text">.com</div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Vertical</h2>
+        <p><code>np-group-vertical</code>, with a horizontal separator.</p>
+        <div class="np-group np-group-vertical" role="group" aria-label="Zoom">
+          <button
+            type="button"
+            class="np-button np-button-outline np-button-icon"
+            aria-label="Zoom in"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14" />
+              <path d="M12 5v14" />
+            </svg>
+          </button>
+          <div
+            class="np-group-separator np-group-separator-horizontal"
+            role="separator"
+            aria-orientation="horizontal"
+          ></div>
+          <button
+            type="button"
+            class="np-button np-button-outline np-button-icon"
+            aria-label="Zoom out"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14" />
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Nested groups</h2>
+        <p>Groups inside a group sit apart.</p>
+        <div class="np-group" role="group" aria-label="Pagination">
+          <div class="np-group" role="group" aria-label="Pages">
+            <button
+              type="button"
+              class="np-button np-button-outline np-button-icon"
+            >
+              1
+            </button>
+            <button
+              type="button"
+              class="np-button np-button-outline np-button-icon"
+              aria-current="page"
+            >
+              2
+            </button>
+            <button
+              type="button"
+              class="np-button np-button-outline np-button-icon"
+            >
+              3
+            </button>
+            <button
+              type="button"
+              class="np-button np-button-outline np-button-icon"
+            >
+              4
+            </button>
+            <button
+              type="button"
+              class="np-button np-button-outline np-button-icon"
+            >
+              5
+            </button>
+          </div>
+          <div class="np-group" role="group" aria-label="Previous and next">
+            <button type="button" class="np-button np-button-outline">
+              Previous
+            </button>
+            <button type="button" class="np-button np-button-outline">
+              Next
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
