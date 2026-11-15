@@ -3,6 +3,12 @@
   "name": "card",
   "title": "Card",
   "description": "Displays a card with header, content, and footer.",
+  "registryDependencies": [
+    "https://nepui.vercel.app/r/html/button.json",
+    "https://nepui.vercel.app/r/html/label.json",
+    "https://nepui.vercel.app/r/html/input.json",
+    "https://nepui.vercel.app/r/html/badge.json"
+  ],
   "files": [
     {
       "path": "registry/html/card/card.html",
