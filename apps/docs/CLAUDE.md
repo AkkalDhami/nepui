@@ -90,8 +90,8 @@ Tokens used across the library:
 - **Opacity** uses `color-mix`: `bg-primary/10` → `color-mix(in oklch, var(--np-primary) 10%, transparent)`. Use `oklch` for hue-preserving mixes, `oklab` for neutral ones. Be consistent inside one file.
 - Do not invent new global tokens. If a component needs a knob, make a component variable (`--np-<name>-<prop>`).
 
-
 **`tokens.css`**
+
 ```css
 /**
  * nepui — design tokens
@@ -519,7 +519,7 @@ description: A badge displays a short piece of information, such as a status, a 
 contributor:
   - name: Akkal Dhami
     url: https://www.akkal.com.np
-    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+    avatar: https://github.com/akkaldhami.png
 ---
 ```
 

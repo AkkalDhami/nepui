@@ -1,0 +1,43 @@
+<div
+  style="
+    width: fit-content;
+    border: 1px solid var(--np-border);
+    border-radius: var(--np-radius-lg);
+  "
+>
+  <div
+    class="np-calendar"
+    data-np-calendar
+    data-mode="single"
+    data-value="2026-11-04"
+  ></div>
+  <div
+    style="
+      display: flex;
+      gap: 0.75rem;
+      padding: 0.75rem;
+      border-top: 1px solid var(--np-border);
+    "
+  >
+    <div style="display: flex; flex: 1; flex-direction: column; gap: 0.5rem">
+      <label class="np-label" for="time-from">Start Time</label>
+      <input
+        class="np-input"
+        id="time-from"
+        type="time"
+        step="1"
+        value="10:30:00"
+      />
+    </div>
+    <div style="display: flex; flex: 1; flex-direction: column; gap: 0.5rem">
+      <label class="np-label" for="time-to">End Time</label>
+      <input
+        class="np-input"
+        id="time-to"
+        type="time"
+        step="1"
+        value="12:30:00"
+      />
+    </div>
+  </div>
+</div>

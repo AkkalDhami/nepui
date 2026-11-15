@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="./styles/button.css" />
+
+<button
+  type="button"
+  class="np-button np-button-outline"
+  commandfor="drawer-handle"
+  command="show-modal"
+>
+  Open Drawer
+</button>
+
+<dialog
+  id="drawer-handle"
+  class="np-drawer-content"
+  closedby="any"
+  aria-labelledby="drawer-handle-title"
+  aria-describedby="drawer-handle-description"
+>
+  <div class="np-drawer-handle" aria-hidden="true"></div>
+  <div class="np-drawer-header">
+    <h2 class="np-drawer-title" id="drawer-handle-title">Swipe me</h2>
+    <p class="np-drawer-description" id="drawer-handle-description">
+      Drag the bar, or the whole drawer, down to close it.
+    </p>
+  </div>
+  <div class="np-drawer-footer">
+    <button
+      type="button"
+      class="np-button"
+      commandfor="drawer-handle"
+      command="close"
+    >
+      Submit
+    </button>
+    <button
+      type="button"
+      class="np-button np-button-outline"
+      commandfor="drawer-handle"
+      command="close"
+    >
+      Cancel
+    </button>
+  </div>
+</dialog>

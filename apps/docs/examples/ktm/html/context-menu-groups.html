@@ -1,0 +1,37 @@
+<div
+  class="np-context-menu-trigger"
+  aria-controls="cm-groups"
+  style="
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18.75rem;
+    height: 9.375rem;
+    border: 1px dashed var(--np-border);
+    border-radius: var(--np-radius-xl);
+    font-size: 0.875rem;
+  "
+>
+  Right click here
+</div>
+<div class="np-context-menu-content" id="cm-groups" role="menu" hidden>
+  <div role="group" aria-labelledby="cm-groups-file">
+    <div class="np-context-menu-label" id="cm-groups-file">File</div>
+    <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+      New File<span class="np-context-menu-shortcut">⌘N</span>
+    </div>
+    <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+      Open File<span class="np-context-menu-shortcut">⌘O</span>
+    </div>
+  </div>
+  <div class="np-context-menu-separator" role="separator"></div>
+  <div role="group" aria-labelledby="cm-groups-edit">
+    <div class="np-context-menu-label" id="cm-groups-edit">Edit</div>
+    <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+      Undo<span class="np-context-menu-shortcut">⌘Z</span>
+    </div>
+    <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+      Redo<span class="np-context-menu-shortcut">⇧⌘Z</span>
+    </div>
+  </div>
+</div>

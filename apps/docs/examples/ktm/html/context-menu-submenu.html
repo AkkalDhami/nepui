@@ -1,0 +1,66 @@
+<div
+  class="np-context-menu-trigger"
+  aria-controls="cm-submenu"
+  style="
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18.75rem;
+    height: 9.375rem;
+    border: 1px dashed var(--np-border);
+    border-radius: var(--np-radius-xl);
+    font-size: 0.875rem;
+  "
+>
+  Right click here
+</div>
+<div class="np-context-menu-content" id="cm-submenu" role="menu" hidden>
+  <div class="np-context-menu-item" role="menuitem" tabindex="-1">Copy</div>
+  <div class="np-context-menu-item" role="menuitem" tabindex="-1">Cut</div>
+  <div class="np-context-menu-item" role="menuitem" tabindex="-1">Paste</div>
+  <div class="np-context-menu-sub">
+    <div
+      class="np-context-menu-sub-trigger"
+      role="menuitem"
+      aria-haspopup="menu"
+      aria-expanded="false"
+      tabindex="-1"
+    >
+      More Tools<svg
+        class="np-context-menu-sub-indicator"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="m9 18 6-6-6-6" />
+      </svg>
+    </div>
+    <div class="np-context-menu-sub-content" role="menu" hidden>
+      <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+        Save Page...
+      </div>
+      <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+        Create Shortcut...
+      </div>
+      <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+        Name Window...
+      </div>
+      <div class="np-context-menu-separator" role="separator"></div>
+      <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+        Developer Tools
+      </div>
+    </div>
+  </div>
+  <div class="np-context-menu-separator" role="separator"></div>
+  <div
+    class="np-context-menu-item np-context-menu-destructive"
+    role="menuitem"
+    tabindex="-1"
+  >
+    Delete
+  </div>
+</div>

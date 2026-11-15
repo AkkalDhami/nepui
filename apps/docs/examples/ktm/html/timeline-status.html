@@ -1,0 +1,85 @@
+<div
+  style="
+    display: grid;
+    gap: 1rem;
+    justify-items: start;
+    width: 100%;
+    max-width: 24rem;
+  "
+>
+  <div
+    class="np-timeline"
+    id="timeline-status"
+    aria-label="Order progress"
+    data-value="2"
+  >
+    <div class="np-timeline-item" data-value="placed" data-step="1">
+      <span class="np-timeline-marker"
+        ><svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M20 6 9 17l-5-5" /></svg
+      ></span>
+      <span class="np-timeline-connector"></span>
+      <div class="np-timeline-title">Order placed</div>
+      <div class="np-timeline-description">We have your order.</div>
+    </div>
+    <div class="np-timeline-item" data-value="packed" data-step="2">
+      <span class="np-timeline-marker"
+        ><svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M20 6 9 17l-5-5" /></svg
+      ></span>
+      <span class="np-timeline-connector"></span>
+      <div class="np-timeline-title">Packed</div>
+      <div class="np-timeline-description">Your items are boxed.</div>
+    </div>
+    <div class="np-timeline-item" data-value="shipped" data-step="3">
+      <span class="np-timeline-marker"></span>
+      <span class="np-timeline-connector"></span>
+      <div class="np-timeline-title">Shipped, in progress</div>
+      <div class="np-timeline-description">On the way to your address.</div>
+    </div>
+    <div class="np-timeline-item" data-value="delivered" data-step="4">
+      <span class="np-timeline-marker"></span>
+      <span class="np-timeline-connector"></span>
+      <div class="np-timeline-title">Delivered</div>
+      <div class="np-timeline-description">Expected on Friday.</div>
+    </div>
+  </div>
+  <button
+    type="button"
+    class="np-button np-button-outline np-button-sm"
+    id="timeline-status-focus"
+  >
+    Focus the current step
+  </button>
+</div>
+<script>
+  document
+    .getElementById("timeline-status-focus")
+    .addEventListener("click", function () {
+      NepuiTimeline.get(document.getElementById("timeline-status")).focus(
+        "shipped"
+      )
+    })
+</script>

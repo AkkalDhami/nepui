@@ -1,0 +1,96 @@
+<div
+  style="
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+  "
+>
+  <div>
+    <p
+      style="
+        margin: 0 0 0.5rem;
+        font-family: var(--np-font-mono, monospace);
+        font-size: 0.75rem;
+        color: var(--np-muted-foreground);
+      "
+    >
+      unordered
+    </p>
+    <ul class="np-list" aria-label="Unordered nesting">
+      <li>
+        Frontend
+        <ul class="np-list">
+          <li>
+            Components
+            <ul class="np-list">
+              <li>Button</li>
+              <li>Input</li>
+            </ul>
+          </li>
+          <li>Styles</li>
+        </ul>
+      </li>
+      <li>Backend</li>
+    </ul>
+  </div>
+  <div>
+    <p
+      style="
+        margin: 0 0 0.5rem;
+        font-family: var(--np-font-mono, monospace);
+        font-size: 0.75rem;
+        color: var(--np-muted-foreground);
+      "
+    >
+      ordered
+    </p>
+    <ol class="np-list" aria-label="Ordered nesting">
+      <li>
+        Frontend
+        <ol class="np-list">
+          <li>
+            Components
+            <ol class="np-list">
+              <li>Button</li>
+              <li>Input</li>
+            </ol>
+          </li>
+          <li>Styles</li>
+        </ol>
+      </li>
+      <li>Backend</li>
+    </ol>
+  </div>
+  <div>
+    <p
+      style="
+        margin: 0 0 0.5rem;
+        font-family: var(--np-font-mono, monospace);
+        font-size: 0.75rem;
+        color: var(--np-muted-foreground);
+      "
+    >
+      outline + guides
+    </p>
+    <ol
+      class="np-list np-list-outline np-list-guides"
+      aria-label="Outline numbering"
+    >
+      <li>
+        Frontend
+        <ol class="np-list">
+          <li>
+            Components
+            <ol class="np-list">
+              <li>Button</li>
+              <li>Input</li>
+            </ol>
+          </li>
+          <li>Styles</li>
+        </ol>
+      </li>
+      <li>Backend</li>
+    </ol>
+  </div>
+</div>

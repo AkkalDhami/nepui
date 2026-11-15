@@ -10,8 +10,13 @@ export default function ButtonIcon() {
         display: "flex",
         alignItems: "center",
         gap: "1rem",
+        flexWrap: "wrap",
       }}
     >
+      <Button size="icon-xs" variant="outline">
+        <ArrowUpIcon />
+      </Button>
+
       <Button size="icon-sm" variant="outline">
         <ArrowUpIcon />
       </Button>

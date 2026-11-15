@@ -18,7 +18,7 @@ import type { MDXComponents } from "mdx/types"
 import { ReactPreviewTabs } from "@/components/preview/react-preview-tabs"
 import { ComponentSource } from "@/components/docs/component-source"
 import { ColorPalette } from "@/components/docs/color-palette"
-import { Kbd } from "@/components/ui/kbd"
+import { Kbd } from "@/registry/react/kbd"
 import { Callout } from "@/components/docs/callout"
 import Link from "next/link"
 

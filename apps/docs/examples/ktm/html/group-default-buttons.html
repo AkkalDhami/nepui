@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="./styles/button.css" />
+
+<div
+  class="np-group"
+  role="group"
+  aria-label="File actions"
+  style="
+    --np-group-separator-color: color-mix(
+      in oklab,
+      var(--np-primary-foreground) 30%,
+      transparent
+    );
+  "
+>
+  <button type="button" class="np-button">Files</button>
+  <div
+    class="np-group-separator"
+    role="separator"
+    aria-orientation="vertical"
+  ></div>
+  <button type="button" class="np-button">Media</button>
+  <div
+    class="np-group-separator"
+    role="separator"
+    aria-orientation="vertical"
+  ></div>
+  <button type="button" class="np-button np-button-icon" aria-label="More">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="m6 9 6 6 6-6" />
+    </svg>
+  </button>
+</div>

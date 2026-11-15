@@ -13,6 +13,9 @@ export default function TextareaField() {
       <FieldLabel htmlFor="textarea-message">Message</FieldLabel>
       <FieldDescription>Enter your message below.</FieldDescription>
       <Textarea id="textarea-message" placeholder="Type your message here." />
+      <FieldDescription>
+        Your message will be sent to our support team.
+      </FieldDescription>
     </Field>
   )
 }
