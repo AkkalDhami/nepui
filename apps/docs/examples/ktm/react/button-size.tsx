@@ -10,6 +10,7 @@ export default function ButtonSize() {
         display: "flex",
         alignItems: "center",
         gap: "16px",
+        flexWrap: "wrap",
       }}
     >
       <div

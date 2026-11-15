@@ -1,0 +1,168 @@
+<link rel="stylesheet" href="./styles/button.css" />
+
+<div style="display: flex; flex-wrap: wrap; gap: 0.5rem">
+  <button
+    type="button"
+    class="np-button np-button-outline"
+    commandfor="drawer-top"
+    command="show-modal"
+  >
+    Top
+  </button>
+  <button
+    type="button"
+    class="np-button np-button-outline"
+    commandfor="drawer-right"
+    command="show-modal"
+  >
+    Right
+  </button>
+  <button
+    type="button"
+    class="np-button np-button-outline"
+    commandfor="drawer-bottom"
+    command="show-modal"
+  >
+    Bottom
+  </button>
+  <button
+    type="button"
+    class="np-button np-button-outline"
+    commandfor="drawer-left"
+    command="show-modal"
+  >
+    Left
+  </button>
+</div>
+
+<dialog
+  id="drawer-top"
+  class="np-drawer-content np-drawer-top"
+  closedby="any"
+  aria-labelledby="drawer-top-title"
+  aria-describedby="drawer-top-description"
+>
+  <div class="np-drawer-header">
+    <h2 class="np-drawer-title" id="drawer-top-title">Move Goal</h2>
+    <p class="np-drawer-description" id="drawer-top-description">
+      Set your daily activity goal.
+    </p>
+  </div>
+  <div class="np-drawer-footer">
+    <button
+      type="button"
+      class="np-button"
+      commandfor="drawer-top"
+      command="close"
+    >
+      Submit
+    </button>
+    <button
+      type="button"
+      class="np-button np-button-outline"
+      commandfor="drawer-top"
+      command="close"
+    >
+      Cancel
+    </button>
+  </div>
+</dialog>
+
+<dialog
+  id="drawer-right"
+  class="np-drawer-content np-drawer-right"
+  closedby="any"
+  aria-labelledby="drawer-right-title"
+  aria-describedby="drawer-right-description"
+>
+  <div class="np-drawer-header">
+    <h2 class="np-drawer-title" id="drawer-right-title">Move Goal</h2>
+    <p class="np-drawer-description" id="drawer-right-description">
+      Set your daily activity goal.
+    </p>
+  </div>
+  <div class="np-drawer-footer">
+    <button
+      type="button"
+      class="np-button"
+      commandfor="drawer-right"
+      command="close"
+    >
+      Submit
+    </button>
+    <button
+      type="button"
+      class="np-button np-button-outline"
+      commandfor="drawer-right"
+      command="close"
+    >
+      Cancel
+    </button>
+  </div>
+</dialog>
+
+<dialog
+  id="drawer-bottom"
+  class="np-drawer-content np-drawer-bottom"
+  closedby="any"
+  aria-labelledby="drawer-bottom-title"
+  aria-describedby="drawer-bottom-description"
+>
+  <div class="np-drawer-header">
+    <h2 class="np-drawer-title" id="drawer-bottom-title">Move Goal</h2>
+    <p class="np-drawer-description" id="drawer-bottom-description">
+      Set your daily activity goal.
+    </p>
+  </div>
+  <div class="np-drawer-footer">
+    <button
+      type="button"
+      class="np-button"
+      commandfor="drawer-bottom"
+      command="close"
+    >
+      Submit
+    </button>
+    <button
+      type="button"
+      class="np-button np-button-outline"
+      commandfor="drawer-bottom"
+      command="close"
+    >
+      Cancel
+    </button>
+  </div>
+</dialog>
+
+<dialog
+  id="drawer-left"
+  class="np-drawer-content np-drawer-left"
+  closedby="any"
+  aria-labelledby="drawer-left-title"
+  aria-describedby="drawer-left-description"
+>
+  <div class="np-drawer-header">
+    <h2 class="np-drawer-title" id="drawer-left-title">Move Goal</h2>
+    <p class="np-drawer-description" id="drawer-left-description">
+      Set your daily activity goal.
+    </p>
+  </div>
+  <div class="np-drawer-footer">
+    <button
+      type="button"
+      class="np-button"
+      commandfor="drawer-left"
+      command="close"
+    >
+      Submit
+    </button>
+    <button
+      type="button"
+      class="np-button np-button-outline"
+      commandfor="drawer-left"
+      command="close"
+    >
+      Cancel
+    </button>
+  </div>
+</dialog>

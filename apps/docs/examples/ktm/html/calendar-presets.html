@@ -1,0 +1,65 @@
+<div
+  style="
+    width: fit-content;
+    border: 1px solid var(--np-border);
+    border-radius: var(--np-radius-lg);
+  "
+>
+  <div
+    id="calendar-presets-picker"
+    class="np-calendar"
+    data-np-calendar
+    data-mode="single"
+    data-value="2026-11-04"
+  ></div>
+  <div
+    style="
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 0.75rem;
+      border-top: 1px solid var(--np-border);
+    "
+  >
+    <button
+      class="np-button np-button-outline np-button-sm"
+      type="button"
+      data-np-calendar-set="+0"
+      data-target="#calendar-presets-picker"
+    >
+      Today
+    </button>
+    <button
+      class="np-button np-button-outline np-button-sm"
+      type="button"
+      data-np-calendar-set="+1"
+      data-target="#calendar-presets-picker"
+    >
+      Tomorrow
+    </button>
+    <button
+      class="np-button np-button-outline np-button-sm"
+      type="button"
+      data-np-calendar-set="+3"
+      data-target="#calendar-presets-picker"
+    >
+      In 3 days
+    </button>
+    <button
+      class="np-button np-button-outline np-button-sm"
+      type="button"
+      data-np-calendar-set="+7"
+      data-target="#calendar-presets-picker"
+    >
+      In a week
+    </button>
+    <button
+      class="np-button np-button-outline np-button-sm"
+      type="button"
+      data-np-calendar-set="+14"
+      data-target="#calendar-presets-picker"
+    >
+      In 2 weeks
+    </button>
+  </div>
+</div>

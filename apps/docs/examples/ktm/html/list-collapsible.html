@@ -1,0 +1,57 @@
+<div style="display: grid; gap: 0.75rem; width: 100%; max-width: 20rem">
+  <div style="display: flex; gap: 0.5rem">
+    <button
+      type="button"
+      class="np-button np-button-outline np-button-sm"
+      onclick="
+        NepuiList.get(
+          document.getElementById('list-collapsible-demo')
+        ).expandAll()
+      "
+    >
+      Expand all
+    </button>
+    <button
+      type="button"
+      class="np-button np-button-outline np-button-sm"
+      onclick="
+        NepuiList.get(
+          document.getElementById('list-collapsible-demo')
+        ).collapseAll()
+      "
+    >
+      Collapse all
+    </button>
+  </div>
+  <ul
+    id="list-collapsible-demo"
+    class="np-list np-list-plain np-list-guides"
+    data-collapsible
+    data-navigation
+    aria-label="Project files"
+  >
+    <li>
+      src
+      <ul class="np-list">
+        <li>components</li>
+        <li>styles</li>
+        <li>index.ts</li>
+      </ul>
+    </li>
+    <li data-collapsed>
+      docs
+      <ul class="np-list">
+        <li>getting-started.mdx</li>
+        <li>theming.mdx</li>
+      </ul>
+    </li>
+    <li data-collapsed>
+      tests
+      <ul class="np-list">
+        <li>list.test.ts</li>
+        <li>button.test.ts</li>
+      </ul>
+    </li>
+    <li>package.json</li>
+  </ul>
+</div>

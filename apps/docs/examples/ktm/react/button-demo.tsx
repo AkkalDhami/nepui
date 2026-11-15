@@ -10,6 +10,7 @@ export default function ButtonDemo() {
         display: "flex",
         alignItems: "center",
         gap: "1rem",
+        flexWrap: "wrap",
       }}
     >
       <Button>Default</Button>

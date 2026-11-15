@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="./styles/button.css" />
+
+<form
+  id="color-picker-form"
+  style="display: grid; gap: 0.75rem; justify-items: start"
+>
+  <div
+    class="np-color-picker"
+    aria-label="Brand color"
+    data-name="brand"
+    data-default-value="#8b5cf6"
+  >
+    <div class="np-color-picker-area"></div>
+    <div class="np-color-picker-slider"></div>
+    <div class="np-color-picker-row">
+      <div class="np-color-picker-swatch"></div>
+      <input class="np-color-picker-input" />
+    </div>
+  </div>
+  <div style="display: flex; gap: 0.5rem">
+    <button type="submit" class="np-button np-button-sm">Save</button>
+    <button type="reset" class="np-button np-button-outline np-button-sm">
+      Reset
+    </button>
+  </div>
+</form>
+<script>
+  document
+    .getElementById("color-picker-form")
+    .addEventListener("submit", function (event) {
+      event.preventDefault()
+      alert("brand = " + new FormData(event.currentTarget).get("brand"))
+    })
+</script>

@@ -1,0 +1,53 @@
+<link rel="stylesheet" href="./styles/button.css" />
+
+<div style="display: grid; gap: 0.75rem; justify-items: start">
+  <div
+    class="np-color-picker"
+    id="color-picker-controlled"
+    aria-label="Color"
+    data-default-value="#0ea5e9"
+  >
+    <div class="np-color-picker-area"></div>
+    <div class="np-color-picker-slider"></div>
+    <div class="np-color-picker-row">
+      <div class="np-color-picker-swatch"></div>
+      <input class="np-color-picker-input" />
+    </div>
+  </div>
+  <button
+    type="button"
+    class="np-button np-button-outline np-button-sm"
+    id="color-picker-controlled-set"
+  >
+    Set rebeccapurple
+  </button>
+  <p
+    id="color-picker-controlled-log"
+    aria-live="polite"
+    style="margin: 0; color: var(--np-muted-foreground); font-size: 0.875rem"
+  >
+    Live: #0ea5e9 · Committed: #0ea5e9
+  </p>
+</div>
+<script>
+  var picker = document.getElementById("color-picker-controlled")
+  var log = document.getElementById("color-picker-controlled-log")
+  var live = "#0ea5e9"
+  var committed = "#0ea5e9"
+  function show() {
+    log.textContent = "Live: " + live + " · Committed: " + committed
+  }
+  picker.addEventListener("np-color-picker-change", function (event) {
+    live = event.detail.value
+    show()
+  })
+  picker.addEventListener("np-color-picker-commit", function (event) {
+    committed = event.detail.value
+    show()
+  })
+  document
+    .getElementById("color-picker-controlled-set")
+    .addEventListener("click", function () {
+      NepuiColorPicker.get(picker).setValue("#663399")
+    })
+</script>

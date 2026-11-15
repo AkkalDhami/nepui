@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="./styles/select.css" />
+<link rel="stylesheet" href="./styles/button.css" />
+
+<div
+  class="np-color-picker"
+  id="color-picker-demo"
+  aria-label="Brand color"
+  data-default-value="#0ea5e9"
+>
+  <div class="np-select-wrapper" style="width: 100%">
+    <select
+      id="color-picker-demo-format"
+      style="width: 100%"
+      aria-label="Format"
+      class="np-select"
+    >
+      <option value="hex">HEX</option>
+      <option value="rgb">RGB</option>
+      <option value="hsl">HSL</option>
+      <option value="oklch">OKLCH</option>
+    </select>
+  </div>
+  <div class="np-color-picker-area"></div>
+  <div class="np-color-picker-row">
+    <div class="np-color-picker-slider" data-channel="hue"></div>
+    <button class="np-color-picker-eye-dropper"></button>
+  </div>
+  <div class="np-color-picker-slider" data-channel="alpha"></div>
+  <div class="np-color-picker-row">
+    <div class="np-color-picker-swatch"></div>
+    <input class="np-color-picker-input" />
+  </div>
+  <div class="np-color-picker-swatches" aria-label="Preset colors">
+    <button class="np-color-picker-swatch-item" data-value="#ef4444"></button>
+    <button class="np-color-picker-swatch-item" data-value="#f97316"></button>
+    <button class="np-color-picker-swatch-item" data-value="#eab308"></button>
+    <button class="np-color-picker-swatch-item" data-value="#22c55e"></button>
+    <button class="np-color-picker-swatch-item" data-value="#06b6d4"></button>
+    <button class="np-color-picker-swatch-item" data-value="#3b82f6"></button>
+    <button class="np-color-picker-swatch-item" data-value="#8b5cf6"></button>
+    <button class="np-color-picker-swatch-item" data-value="#ec4899"></button>
+  </div>
+</div>
+<script>
+  document
+    .getElementById("color-picker-demo-format")
+    .addEventListener("change", function (event) {
+      NepuiColorPicker.get(
+        document.getElementById("color-picker-demo")
+      ).setFormat(event.target.value)
+    })
+</script>

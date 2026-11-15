@@ -1,0 +1,37 @@
+<form
+  id="rating-form"
+  style="display: grid; gap: 0.75rem; justify-items: start"
+>
+  <span id="rating-form-label" style="font-size: 0.875rem; font-weight: 500"
+    >How was your experience?</span
+  >
+  <div
+    class="np-rating"
+    aria-labelledby="rating-form-label"
+    data-name="rating"
+    data-step="0.5"
+    data-required
+  ></div>
+  <div style="display: flex; gap: 0.5rem">
+    <button type="submit" class="np-button np-button-sm">Submit</button>
+    <button type="reset" class="np-button np-button-outline np-button-sm">
+      Reset
+    </button>
+  </div>
+  <p
+    id="rating-form-result"
+    role="status"
+    style="margin: 0; color: var(--np-muted-foreground); font-size: 0.875rem"
+  ></p>
+</form>
+<script>
+  var form = document.getElementById("rating-form")
+  var result = document.getElementById("rating-form-result")
+  form.addEventListener("submit", function (event) {
+    event.preventDefault()
+    result.textContent = "rating = " + new FormData(form).get("rating")
+  })
+  form.addEventListener("reset", function () {
+    result.textContent = ""
+  })
+</script>

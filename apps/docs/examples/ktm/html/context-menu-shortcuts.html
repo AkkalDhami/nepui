@@ -1,0 +1,32 @@
+<div
+  class="np-context-menu-trigger"
+  aria-controls="cm-shortcuts"
+  style="
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18.75rem;
+    height: 9.375rem;
+    border: 1px dashed var(--np-border);
+    border-radius: var(--np-radius-xl);
+    font-size: 0.875rem;
+  "
+>
+  Right click here
+</div>
+<div class="np-context-menu-content" id="cm-shortcuts" role="menu" hidden>
+  <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+    Back<span class="np-context-menu-shortcut">⌘[</span>
+  </div>
+  <div
+    class="np-context-menu-item"
+    role="menuitem"
+    tabindex="-1"
+    aria-disabled="true"
+  >
+    Forward<span class="np-context-menu-shortcut">⌘]</span>
+  </div>
+  <div class="np-context-menu-item" role="menuitem" tabindex="-1">
+    Reload<span class="np-context-menu-shortcut">⌘R</span>
+  </div>
+</div>

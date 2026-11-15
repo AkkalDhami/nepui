@@ -1,0 +1,58 @@
+<div style="display: grid; gap: 0.75rem; justify-items: start">
+  <div
+    class="np-rating"
+    id="rating-controlled"
+    aria-label="Rating"
+    data-value="3"
+    data-step="0.5"
+  ></div>
+  <div style="display: flex; gap: 0.5rem">
+    <button
+      type="button"
+      class="np-button np-button-outline np-button-sm"
+      id="rating-controlled-clear"
+    >
+      Clear rating
+    </button>
+    <button
+      type="button"
+      class="np-button np-button-outline np-button-sm"
+      id="rating-controlled-focus"
+    >
+      Focus
+    </button>
+  </div>
+  <ul
+    id="rating-controlled-log"
+    aria-live="polite"
+    style="
+      margin: 0;
+      padding-inline-start: 1rem;
+      color: var(--np-muted-foreground);
+      font-size: 0.875rem;
+    "
+  ></ul>
+</div>
+<script>
+  var rating = document.getElementById("rating-controlled")
+  var log = document.getElementById("rating-controlled-log")
+  rating.addEventListener("np-rating-change", function (event) {
+    var item = document.createElement("li")
+    item.textContent =
+      event.detail.reason +
+      ": " +
+      (event.detail.value === null ? "none" : event.detail.value)
+    log.prepend(item)
+    while (log.children.length > 4) log.lastElementChild.remove()
+  })
+  document
+    .getElementById("rating-controlled-clear")
+    .addEventListener("click", function () {
+      NepuiRating.get(rating).setValue(null)
+    })
+  document
+    .getElementById("rating-controlled-focus")
+    .addEventListener("click", function () {
+      NepuiRating.get(rating).focus()
+    })
+</script>

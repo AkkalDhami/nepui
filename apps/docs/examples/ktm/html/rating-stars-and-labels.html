@@ -1,0 +1,25 @@
+<div style="display: grid; gap: 0.5rem; justify-items: start">
+  <div
+    class="np-rating np-rating-sm"
+    id="rating-score"
+    aria-label="Score"
+    data-max="10"
+    data-value="7"
+    data-loop
+    data-label="{value} out of {max}"
+  ></div>
+  <span
+    id="rating-score-text"
+    style="color: var(--np-muted-foreground); font-size: 0.875rem"
+    >7 / 10</span
+  >
+</div>
+<script>
+  document
+    .getElementById("rating-score")
+    .addEventListener("np-rating-change", function (event) {
+      var value = event.detail.value
+      document.getElementById("rating-score-text").textContent =
+        value === null ? "No score" : value + " / 10"
+    })
+</script>
