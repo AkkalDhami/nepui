@@ -3,6 +3,7 @@
   "name": "alert",
   "title": "Alert",
   "description": "Displays a callout for user attention.",
+  "registryDependencies": ["https://nepui.vercel.app/r/html/button.json"],
   "files": [
     {
       "path": "registry/html/alert/alert.html",

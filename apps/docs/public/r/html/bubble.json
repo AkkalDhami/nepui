@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "bubble",
   "title": "Bubble",
-  "description": "Displays conversational content in a message bubble. Supports variants, alignment, grouping, reactions, and collapsible content.",
+  "description": "Displays conversational content in a message bubble. Supports variants, alignment, grouping, htmlions, and collapsible content.",
   "files": [
     {
       "path": "registry/html/bubble/bubble.html",

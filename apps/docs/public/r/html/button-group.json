@@ -5,7 +5,8 @@
   "description": "A container that groups related buttons together with consistent styling.",
   "registryDependencies": [
     "https://nepui.vercel.app/r/html/button.json",
-    "https://nepui.vercel.app/r/html/separator.json"
+    "https://nepui.vercel.app/r/html/separator.json",
+    "https://nepui.vercel.app/r/html/input.json"
   ],
   "files": [
     {

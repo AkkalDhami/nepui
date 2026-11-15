@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "message",
+  "title": "Message",
+  "description": "Displays a message in a conversation, with optional avatar, header, footer, and alignment.",
+  "registryDependencies": [
+    "https://nepui.vercel.app/r/react/button.json",
+    "https://nepui.vercel.app/r/react/avatar.json",
+    "https://nepui.vercel.app/r/react/bubble.json",
+    "https://nepui.vercel.app/r/react/attachment.json",
+    "https://nepui.vercel.app/r/react/marker.json",
+    "https://nepui.vercel.app/r/react/spinner.json"
+  ],
+  "files": [
+    {
+      "path": "registry/react/message/message.tsx",
+      "content": "\"use client\"\n\nimport type { ComponentProps } from \"react\"\nimport { cn } from \"cn\"\n\n// NOTE: Update these paths if needed\nimport \"../tokens.css\"\nimport \"./message.css\"\n\ntype MessageProps = ComponentProps<\"div\"> & {\n  align?: \"start\" | \"end\"\n}\n\nfunction Message({ className, align = \"start\", ...props }: MessageProps) {\n  return (\n    <div\n      data-slot=\"message\"\n      data-align={align}\n      className={cn(\n        \"np-message\",\n        align === \"end\" && \"np-message-end\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction MessageGroup({ className, ...props }: ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"message-group\"\n      className={cn(\"np-message-group\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction MessageAvatar({ className, ...props }: ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"message-avatar\"\n      className={cn(\"np-message-avatar\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction MessageContent({ className, ...props }: ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"message-content\"\n      className={cn(\"np-message-content\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction MessageHeader({ className, ...props }: ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"message-header\"\n      className={cn(\"np-message-header\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction MessageFooter({ className, ...props }: ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"message-footer\"\n      className={cn(\"np-message-footer\", className)}\n      {...props}\n    />\n  )\n}\n\nexport {\n  Message,\n  MessageAvatar,\n  MessageContent,\n  MessageFooter,\n  MessageGroup,\n  MessageHeader,\n}\n",
+      "type": "registry:ui",
+      "target": "components/nepui/message/message.tsx"
+    },
+    {
+      "path": "registry/react/message/message.css",
+      "content": "/* nepui — Message */\n\n.np-message,\n[data-np-message] {\n  --np-message-gap: calc(var(--np-spacing) * 2);\n  --np-message-content-gap: var(--np-spacing);\n  --np-message-avatar-size: calc(var(--np-spacing) * 8);\n  --np-message-footer-height: calc(var(--np-spacing) * 6);\n  --np-message-meta-size: 0.75rem;\n  --np-message-meta-color: var(--np-muted-foreground);\n  --np-message-meta-inset: var(--np-spacing);\n\n  box-sizing: border-box;\n  display: flex;\n  align-items: flex-end;\n  gap: var(--np-message-gap);\n  width: 100%;\n  min-width: 0;\n}\n\n.np-message-end,\n:is(.np-message, [data-np-message])[data-align=\"end\"] {\n  flex-direction: row-reverse;\n}\n\n.np-message-group,\n[data-np-message-group] {\n  --np-message-group-gap: var(--np-spacing);\n\n  box-sizing: border-box;\n  display: flex;\n  flex-direction: column;\n  gap: var(--np-message-group-gap);\n  width: 100%;\n  min-width: 0;\n}\n\n.np-message-avatar,\n[data-np-message-avatar] {\n  display: flex;\n  flex-shrink: 0;\n  align-self: flex-end;\n  width: var(--np-message-avatar-size);\n}\n\n:is(.np-message, [data-np-message]):has(\n    > :is(.np-message-content, [data-np-message-content])\n      > :is(.np-message-footer, [data-np-message-footer])\n  )\n  > :is(.np-message-avatar, [data-np-message-avatar]) {\n  margin-block-end: calc(\n    var(--np-message-footer-height) + var(--np-message-content-gap)\n  );\n}\n\n.np-message-content,\n[data-np-message-content] {\n  box-sizing: border-box;\n  display: flex;\n  flex: 1 1 0%;\n  flex-direction: column;\n  align-items: flex-start;\n  gap: var(--np-message-content-gap);\n  min-width: 0;\n}\n\n:is(.np-message, [data-np-message]):is(.np-message-end, [data-align=\"end\"])\n  > :is(.np-message-content, [data-np-message-content]) {\n  align-items: flex-end;\n}\n\n:is(.np-message, [data-np-message])\n  :is(.np-message-content, [data-np-message-content])\n  > :is(.np-bubble, [data-np-bubble]) {\n  align-self: flex-start;\n}\n\n:is(.np-message, [data-np-message]):is(.np-message-end, [data-align=\"end\"])\n  :is(.np-message-content, [data-np-message-content])\n  > :is(.np-bubble, [data-np-bubble]) {\n  align-self: flex-end;\n}\n\n.np-message-header,\n[data-np-message-header] {\n  box-sizing: border-box;\n  align-self: flex-start;\n  padding-inline: var(--np-message-meta-inset);\n  color: var(--np-message-meta-color);\n  font-size: var(--np-message-meta-size);\n  font-weight: 500;\n  line-height: calc(1 / 0.75);\n}\n\n.np-message-footer,\n[data-np-message-footer] {\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  gap: var(--np-spacing);\n  height: var(--np-message-footer-height);\n  padding-inline: var(--np-message-meta-inset);\n  color: var(--np-message-meta-color);\n  font-size: var(--np-message-meta-size);\n  line-height: calc(1 / 0.75);\n}\n",
+      "type": "registry:ui",
+      "target": "components/nepui/message/message.css"
+    },
+    {
+      "path": "registry/react/message/index.ts",
+      "content": "export * from \"./message\"\n",
+      "type": "registry:ui",
+      "target": "components/nepui/message/index.ts"
+    }
+  ],
+  "type": "registry:ui"
+}

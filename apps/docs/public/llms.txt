@@ -54,6 +54,31 @@
 * [Toggle Group](https://nepui.vercel.app/docs/components/html/toggle-group): A set of two-state buttons that can be toggled on or off.
 * [Scroll Area](https://nepui.vercel.app/docs/components/html/scroll-area): Augments native scroll functionality for custom, cross-browser styling.
 * [Input Group](https://nepui.vercel.app/docs/components/html/input-group): Add addons, buttons, and helper content to inputs.
+* [Alert Dialog](https://nepui.vercel.app/docs/components/html/alert-dialog): A modal dialog that interrupts the user with important content and expects a response.
+* [Attachment](https://nepui.vercel.app/docs/components/html/attachment): Displays a file or image attachment with media, metadata, upload state, and actions.
+* [Bubble](https://nepui.vercel.app/docs/components/html/bubble): Displays conversational content in a message bubble. Supports variants, alignment, grouping, htmlions, and collapsible content.
+* [Calendar](https://nepui.vercel.app/docs/components/html/calendar): A calendar component that allows users to select a date or a range of dates.
+* [Carousel](https://nepui.vercel.app/docs/components/html/carousel): A carousel with motion and swipe.
+* [Code Block](https://nepui.vercel.app/docs/components/html/code-block): Displays code, terminal output and diffs with an optional header, line numbers and a copy button.
+* [Combobox](https://nepui.vercel.app/docs/components/html/combobox): Autocomplete input with a list of suggestions.
+* [Command](https://nepui.vercel.app/docs/components/html/command): Command menu for search and quick actions.
+* [Context Menu](https://nepui.vercel.app/docs/components/html/context-menu): Displays a menu to the user, such as a set of actions or functions, triggered by a right click or a long press.
+* [Date Picker](https://nepui.vercel.app/docs/components/html/date-picker): A date picker component with range and presets.
+* [Dialog](https://nepui.vercel.app/docs/components/html/dialog): A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.
+* [Drawer](https://nepui.vercel.app/docs/components/html/drawer): A drawer component that slides in from the edge of the screen, with swipe to dismiss.
+* [Group](https://nepui.vercel.app/docs/components/html/group): A container that visually groups a series of controls.
+* [Hover Card](https://nepui.vercel.app/docs/components/html/hover-card): For sighted users to preview content available behind a link.
+* [Icon Swap](https://nepui.vercel.app/docs/components/html/icon-swap): Animate icon swaps with scale, blur, and fade transitions.
+* [List](https://nepui.vercel.app/docs/components/html/list): A list of items built on ul and ol, with every marker type, nesting, keyboard navigation, collapsible branches and selection.
+* [Message](https://nepui.vercel.app/docs/components/html/message): Displays a message in a conversation, with optional avatar, header, footer, and alignment.
+* [Pagination](https://nepui.vercel.app/docs/components/html/pagination): Pagination with page navigation, next and previous links.
+* [Rating](https://nepui.vercel.app/docs/components/html/rating): Pick a score from a row of stars, whole or half, with a preview as the pointer moves.
+* [Resizable](https://nepui.vercel.app/docs/components/html/resizable): Accessible resizable panel groups and layouts with keyboard support.
+* [Sheet](https://nepui.vercel.app/docs/components/html/sheet): Extends the Dialog component to display content that complements the main content of the screen.
+* [Timeline](https://nepui.vercel.app/docs/components/html/timeline): Shows events in order, such as an activity feed, a changelog or an order's progress.
+* [Toast](https://nepui.vercel.app/docs/components/html/toast): A succinct message that is displayed temporarily.
+* [Trace](https://nepui.vercel.app/docs/components/html/trace): The building block for reasoning, tool calls, sources and more.
+* [Color Picker](https://nepui.vercel.app/docs/components/html/color-picker): Pick a color from an area and sliders, type it in any format, or choose a preset, in HSV, HSL, sRGB or OKLCH.
 
 ### React
 
@@ -98,6 +123,31 @@
 * [Typeset](https://nepui.vercel.app/docs/components/react/typeset): A styling system for HTML and rendered markdown, from blog posts to streaming chat. One CSS file you own.
 * [Toggle Group](https://nepui.vercel.app/docs/components/react/toggle-group): A set of two-state buttons that can be toggled on or off.
 * [Input Group](https://nepui.vercel.app/docs/components/react/input-group): Add addons, buttons, and helper content to inputs.
+* [Alert Dialog](https://nepui.vercel.app/docs/components/react/alert-dialog): A modal dialog that interrupts the user with important content and expects a response.
+* [Attachment](https://nepui.vercel.app/docs/components/react/attachment): Displays a file or image attachment with media, metadata, upload state, and actions.
+* [Bubble](https://nepui.vercel.app/docs/components/react/bubble): Displays conversational content in a message bubble. Supports variants, alignment, grouping, reactions, and collapsible content.
+* [Calendar](https://nepui.vercel.app/docs/components/react/calendar): A calendar component that allows users to select a date or a range of dates.
+* [Carousel](https://nepui.vercel.app/docs/components/react/carousel): A carousel with motion and swipe.
+* [Code Block](https://nepui.vercel.app/docs/components/react/code-block): Displays code, terminal output and diffs with an optional header, line numbers and a copy button.
+* [Combobox](https://nepui.vercel.app/docs/components/react/combobox): Autocomplete input with a list of suggestions.
+* [Command](https://nepui.vercel.app/docs/components/react/command): Command menu for search and quick actions.
+* [Context Menu](https://nepui.vercel.app/docs/components/react/context-menu): Displays a menu to the user, such as a set of actions or functions, triggered by a right click or a long press.
+* [Date Picker](https://nepui.vercel.app/docs/components/react/date-picker): A date picker component with range and presets.
+* [Dialog](https://nepui.vercel.app/docs/components/react/dialog): A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.
+* [Drawer](https://nepui.vercel.app/docs/components/react/drawer): A drawer component that slides in from the edge of the screen, with swipe to dismiss.
+* [Group](https://nepui.vercel.app/docs/components/react/group): A container that visually groups a series of controls.
+* [Hover Card](https://nepui.vercel.app/docs/components/react/hover-card): For sighted users to preview content available behind a link.
+* [Icon Swap](https://nepui.vercel.app/docs/components/react/icon-swap): Animate icon swaps with scale, blur, and fade transitions.
+* [List](https://nepui.vercel.app/docs/components/react/list): A list of items built on ul and ol, with every marker type, nesting, keyboard navigation, collapsible branches and selection.
+* [Message](https://nepui.vercel.app/docs/components/react/message): Displays a message in a conversation, with optional avatar, header, footer, and alignment.
+* [Pagination](https://nepui.vercel.app/docs/components/react/pagination): Pagination with page navigation, next and previous links.
+* [Rating](https://nepui.vercel.app/docs/components/react/rating): Pick a score from a row of stars, whole or half, with a preview as the pointer moves.
+* [Resizable](https://nepui.vercel.app/docs/components/react/resizable): Accessible resizable panel groups and layouts with keyboard support.
+* [Sheet](https://nepui.vercel.app/docs/components/react/sheet): Extends the Dialog component to display content that complements the main content of the screen.
+* [Timeline](https://nepui.vercel.app/docs/components/react/timeline): Shows events in order, such as an activity feed, a changelog or an order's progress.
+* [Toast](https://nepui.vercel.app/docs/components/react/toast): A succinct message that is displayed temporarily.
+* [Trace](https://nepui.vercel.app/docs/components/react/trace): The building block for reasoning, tool calls, sources and more.
+* [Color Picker](https://nepui.vercel.app/docs/components/react/color-picker): Pick a color from an area and sliders, type it in any format, or choose a preset, in HSV, HSL, sRGB or OKLCH.
 
 ## Supported Targets
 

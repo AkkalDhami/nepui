@@ -3,6 +3,11 @@
   "name": "collapsible",
   "title": "Collapsible",
   "description": "An interactive component which expands/collapses a panel.",
+  "registryDependencies": [
+    "https://nepui.vercel.app/r/html/button.json",
+    "https://nepui.vercel.app/r/html/label.json",
+    "https://nepui.vercel.app/r/html/input.json"
+  ],
   "files": [
     {
       "path": "registry/html/collapsible/collapsible.html",
