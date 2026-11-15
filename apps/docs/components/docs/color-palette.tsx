@@ -19,8 +19,9 @@ import {
   type Shade,
   type SpecialName,
 } from "@/lib/colors/palette"
-import { toast } from "@/components/ui/toast"
+import { toast } from "@/registry/react/toast"
 import { CheckIcon, CopyIcon } from "@phosphor-icons/react"
+import { IconSwap, IconSwapItem } from "@/registry/react/icon-swap"
 
 const FORMAT_OPTIONS: { id: FormatId; label: string }[] = [
   { id: "hex", label: "HEX" },
@@ -207,16 +208,24 @@ export function ColorPalette() {
                         "font-semibold text-foreground"
                     )}
                   >
-                    {done ? (
-                      <CheckIcon
-                        size={14}
-                        className="text-green-500"
-                        strokeWidth={2}
-                        aria-hidden="true"
-                      />
-                    ) : (
-                      <CopyIcon size={14} strokeWidth={2} aria-hidden="true" />
-                    )}
+                    <IconSwap>
+                      <IconSwapItem>
+                        {done ? (
+                          <CheckIcon
+                            size={14}
+                            className="text-green-500"
+                            strokeWidth={2}
+                            aria-hidden="true"
+                          />
+                        ) : (
+                          <CopyIcon
+                            size={14}
+                            strokeWidth={2}
+                            aria-hidden="true"
+                          />
+                        )}
+                      </IconSwapItem>
+                    </IconSwap>
                   </span>
                 </button>
               )
