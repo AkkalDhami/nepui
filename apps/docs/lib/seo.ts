@@ -8,11 +8,15 @@ export const siteConfig = {
   tagline:
     "Beautiful UI components for HTML, CSS, and React — no Tailwind required.",
   description:
-    "A lightweight UI library for HTML, CSS, and React. Beautiful, accessible components without Tailwind.",
+    "nepui is a component library written in plain CSS. Every component comes in a React flavour built on Base UI and an HTML flavour with no framework.",
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? DEFAULT_SITE_URL).replace(
     /\/$/,
     ""
   ),
+  themeColor: {
+    light: "#ffffff",
+    dark: "#0a0a0a",
+  },
   locale: "en_US",
   github: "https://github.com/akkaldhami/nepui",
   author: {
