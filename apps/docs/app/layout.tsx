@@ -1,4 +1,4 @@
-import { Metadata } from "next"
+import { Metadata, Viewport } from "next"
 import { Fira_Code, Geist_Mono, Inter, JetBrains_Mono } from "next/font/google"
 import "./styles/globals.css"
 import { ThemeProvider } from "@/components/providers/theme-provider"
@@ -8,6 +8,7 @@ import {
   createWebSiteJsonLd,
   rootMetadata,
   createSoftwareApplicationJsonLd,
+  siteConfig,
 } from "@/lib/seo"
 import { cn } from "@/lib/utils"
 import { Analytics } from "@vercel/analytics/next"
@@ -36,6 +37,19 @@ const jetBrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = { ...rootMetadata }
+export const viewport: Viewport = {
+  themeColor: [
+    {
+      media: "(prefers-color-scheme: light)",
+      color: siteConfig.themeColor.light,
+    },
+    {
+      media: "(prefers-color-scheme: dark)",
+      color: siteConfig.themeColor.dark,
+    },
+  ],
+  colorScheme: "light dark",
+}
 
 export default function RootLayout({
   children,
