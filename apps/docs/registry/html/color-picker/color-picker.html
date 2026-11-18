@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Color Picker</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/select.css" />
+    <link rel="stylesheet" href="../styles/color-picker.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem 4rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: system-ui, sans-serif;
+      }
+      main {
+        display: grid;
+        gap: 2.5rem;
+        max-width: 44rem;
+        margin-inline: auto;
+      }
+      h2 {
+        margin: 0 0 0.75rem;
+        font-size: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Default</h2>
+        <div
+          class="np-color-picker"
+          id="color-picker-demo"
+          aria-label="Brand color"
+          data-default-value="#0ea5e9"
+        >
+          <select
+            id="color-picker-demo-format"
+            aria-label="Format"
+            class="np-select"
+          >
+            <option value="hex">HEX</option>
+            <option value="rgb">RGB</option>
+            <option value="hsl">HSL</option>
+            <option value="oklch">OKLCH</option>
+          </select>
+          <div class="np-color-picker-area"></div>
+          <div class="np-color-picker-row">
+            <div class="np-color-picker-slider" data-channel="hue"></div>
+            <button class="np-color-picker-eye-dropper"></button>
+          </div>
+          <div class="np-color-picker-slider" data-channel="alpha"></div>
+          <div class="np-color-picker-row">
+            <div class="np-color-picker-swatch"></div>
+            <input class="np-color-picker-input" />
+          </div>
+          <div class="np-color-picker-swatches" aria-label="Preset colors">
+            <button
+              class="np-color-picker-swatch-item"
+              data-value="#ef4444"
+            ></button>
+            <button
+              class="np-color-picker-swatch-item"
+              data-value="#f97316"
+            ></button>
+            <button
+              class="np-color-picker-swatch-item"
+              data-value="#eab308"
+            ></button>
+            <button
+              class="np-color-picker-swatch-item"
+              data-value="#22c55e"
+            ></button>
+            <button
+              class="np-color-picker-swatch-item"
+              data-value="#06b6d4"
+            ></button>
+            <button
+              class="np-color-picker-swatch-item"
+              data-value="#3b82f6"
+            ></button>
+            <button
+              class="np-color-picker-swatch-item"
+              data-value="#8b5cf6"
+            ></button>
+            <button
+              class="np-color-picker-swatch-item"
+              data-value="#ec4899"
+            ></button>
+          </div>
+        </div>
+        <script>
+          document
+            .getElementById("color-picker-demo-format")
+            .addEventListener("change", function (event) {
+              NepuiColorPicker.get(
+                document.getElementById("color-picker-demo")
+              ).setFormat(event.target.value)
+            })
+        </script>
+      </section>
+
+      <section>
+        <h2>Spaces and channels</h2>
+        <div
+          style="
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: flex-start;
+          "
+        >
+          <div
+            class="np-color-picker"
+            aria-label="HSL color"
+            data-space="hsl"
+            data-default-value="hsl(262 80% 55%)"
+            style="width: 14rem"
+          >
+            <div class="np-color-picker-area"></div>
+            <div class="np-color-picker-slider" data-channel="hue"></div>
+            <div class="np-color-picker-row">
+              <div class="np-color-picker-swatch"></div>
+              <input class="np-color-picker-input" />
+            </div>
+          </div>
+
+          <div
+            class="np-color-picker"
+            aria-label="Hue and lightness"
+            data-space="hsl"
+            data-default-value="hsl(150 70% 45%)"
+            style="width: 14rem"
+          >
+            <div
+              class="np-color-picker-area"
+              data-x="hue"
+              data-y="lightness"
+            ></div>
+            <div class="np-color-picker-slider" data-channel="saturation"></div>
+            <div class="np-color-picker-row">
+              <div class="np-color-picker-swatch"></div>
+              <input class="np-color-picker-input" />
+            </div>
+          </div>
+
+          <div
+            class="np-color-picker"
+            aria-label="Vertical saturation"
+            data-space="hsl"
+            data-default-value="hsl(30 90% 55%)"
+            style="width: auto"
+          >
+            <div style="display: flex; gap: 0.75rem">
+              <div class="np-color-picker-area" style="width: 10rem"></div>
+              <div
+                class="np-color-picker-slider"
+                data-channel="saturation"
+                data-orientation="vertical"
+              ></div>
+            </div>
+            <div class="np-color-picker-slider" data-channel="hue"></div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>OKLCH</h2>
+        <div
+          class="np-color-picker"
+          aria-label="OKLCH color"
+          data-space="oklch"
+          data-default-value="oklch(0.65 0.2 250)"
+        >
+          <div class="np-color-picker-area"></div>
+          <div class="np-color-picker-slider" data-channel="hue"></div>
+          <div class="np-color-picker-slider" data-channel="alpha"></div>
+          <div class="np-color-picker-row">
+            <div class="np-color-picker-swatch"></div>
+            <input class="np-color-picker-input" />
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Presets and channel inputs</h2>
+        <div
+          class="np-color-picker"
+          aria-label="Color"
+          data-space="srgb"
+          data-default-value="rgb(59 130 246)"
+        >
+          <div class="np-color-picker-area"></div>
+          <div class="np-color-picker-slider"></div>
+          <div class="np-color-picker-row">
+            <div class="np-color-picker-swatch"></div>
+            <input class="np-color-picker-channel-input" data-channel="red" />
+            <input class="np-color-picker-channel-input" data-channel="green" />
+            <input class="np-color-picker-channel-input" data-channel="blue" />
+          </div>
+          <div class="np-color-picker-swatches" aria-label="Preset colors">
+            <button
+              class="np-color-picker-swatch-item"
+              data-value="#ef4444"
+            ></button>
+            <button
+              class="np-color-picker-swatch-item"
+              data-value="#f97316"
+            ></button>
+            <button
+              class="np-color-picker-swatch-item"
+              data-value="#eab308"
+            ></button>
+            <button
+              class="np-color-picker-swatch-item"
+              data-value="#22c55e"
+            ></button>
+            <button
+              class="np-color-picker-swatch-item"
+              data-value="#06b6d4"
+            ></button>
+            <button
+              class="np-color-picker-swatch-item"
+              data-value="#3b82f6"
+            ></button>
+            <button
+              class="np-color-picker-swatch-item"
+              data-value="#8b5cf6"
+            ></button>
+            <button
+              class="np-color-picker-swatch-item"
+              data-value="#ec4899"
+            ></button>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Popover</h2>
+        <div
+          class="np-color-picker"
+          aria-label="Accent color"
+          data-default-value="#ec4899"
+          style="width: auto"
+        >
+          <button
+            type="button"
+            class="np-button np-button-outline"
+            popovertarget="color-picker-popover-panel"
+            style="anchor-name: --color-picker-trigger; align-self: flex-start"
+          >
+            <span
+              class="np-color-picker-swatch"
+              style="width: 1rem; height: 1rem; border-radius: 9999px"
+            ></span>
+            Accent color
+          </button>
+          <div
+            id="color-picker-popover-panel"
+            popover
+            style="
+              position-anchor: --color-picker-trigger;
+              inset: auto;
+              top: anchor(bottom);
+              left: anchor(left);
+              margin: 0.5rem 0 0;
+              width: 16rem;
+              padding: 0.75rem;
+              gap: 0.75rem;
+              border: 1px solid var(--np-border);
+              border-radius: var(--np-radius-lg);
+              background: var(--np-popover);
+              color: var(--np-foreground);
+              box-shadow: var(--np-shadow-md);
+            "
+          >
+            <div class="np-color-picker-area"></div>
+            <div class="np-color-picker-slider"></div>
+            <input class="np-color-picker-input" />
+          </div>
+        </div>
+        <style>
+          #color-picker-popover-panel:popover-open {
+            display: grid;
+          }
+        </style>
+      </section>
+
+      <section>
+        <h2>Disabled and read-only</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 2rem">
+          <div
+            class="np-color-picker"
+            aria-label="Disabled color"
+            data-disabled
+            data-default-value="#22c55e"
+          >
+            <div class="np-color-picker-area"></div>
+            <div class="np-color-picker-slider"></div>
+            <div class="np-color-picker-row">
+              <div class="np-color-picker-swatch"></div>
+              <input class="np-color-picker-input" />
+            </div>
+          </div>
+
+          <div
+            class="np-color-picker"
+            aria-label="Read-only color"
+            data-readonly
+            data-default-value="#f97316"
+          >
+            <div class="np-color-picker-area"></div>
+            <div class="np-color-picker-slider"></div>
+            <div class="np-color-picker-row">
+              <div class="np-color-picker-swatch"></div>
+              <input class="np-color-picker-input" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Controlled</h2>
+        <div style="display: grid; gap: 0.75rem; justify-items: start">
+          <div
+            class="np-color-picker"
+            id="color-picker-controlled"
+            aria-label="Color"
+            data-default-value="#0ea5e9"
+          >
+            <div class="np-color-picker-area"></div>
+            <div class="np-color-picker-slider"></div>
+            <div class="np-color-picker-row">
+              <div class="np-color-picker-swatch"></div>
+              <input class="np-color-picker-input" />
+            </div>
+          </div>
+          <button
+            type="button"
+            class="np-button np-button-outline np-button-sm"
+            id="color-picker-controlled-set"
+          >
+            Set rebeccapurple
+          </button>
+          <p
+            id="color-picker-controlled-log"
+            aria-live="polite"
+            style="
+              margin: 0;
+              color: var(--np-muted-foreground);
+              font-size: 0.875rem;
+            "
+          >
+            Live: #0ea5e9 · Committed: #0ea5e9
+          </p>
+        </div>
+        <script>
+          var picker = document.getElementById("color-picker-controlled")
+          var log = document.getElementById("color-picker-controlled-log")
+          var live = "#0ea5e9"
+          var committed = "#0ea5e9"
+          function show() {
+            log.textContent = "Live: " + live + " · Committed: " + committed
+          }
+          picker.addEventListener("np-color-picker-change", function (event) {
+            live = event.detail.value
+            show()
+          })
+          picker.addEventListener("np-color-picker-commit", function (event) {
+            committed = event.detail.value
+            show()
+          })
+          document
+            .getElementById("color-picker-controlled-set")
+            .addEventListener("click", function () {
+              NepuiColorPicker.get(picker).setValue("#663399")
+            })
+        </script>
+      </section>
+
+      <section>
+        <h2>Form</h2>
+        <form
+          id="color-picker-form"
+          style="display: grid; gap: 0.75rem; justify-items: start"
+        >
+          <div
+            class="np-color-picker"
+            aria-label="Brand color"
+            data-name="brand"
+            data-default-value="#8b5cf6"
+          >
+            <div class="np-color-picker-area"></div>
+            <div class="np-color-picker-slider"></div>
+            <div class="np-color-picker-row">
+              <div class="np-color-picker-swatch"></div>
+              <input class="np-color-picker-input" />
+            </div>
+          </div>
+          <div style="display: flex; gap: 0.5rem">
+            <button type="submit" class="np-button np-button-sm">Save</button>
+            <button
+              type="reset"
+              class="np-button np-button-outline np-button-sm"
+            >
+              Reset
+            </button>
+          </div>
+        </form>
+        <script>
+          document
+            .getElementById("color-picker-form")
+            .addEventListener("submit", function (event) {
+              event.preventDefault()
+              alert("brand = " + new FormData(event.currentTarget).get("brand"))
+            })
+        </script>
+      </section>
+    </main>
+    <script src="./color-picker.js"></script>
+  </body>
+</html>
