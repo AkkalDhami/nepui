@@ -11,7 +11,7 @@ button:not(:disabled),
   --np-button-font-size: 0.875rem;
   --np-button-font-weight: 500;
   --np-button-gap: calc(var(--np-spacing) * 2);
-  --np-button-height: calc(var(--np-spacing) * 9);
+  --np-button-height: calc(var(--np-spacing) * 8);
   --np-button-padding-x: calc(var(--np-spacing) * 3);
   --np-button-padding-y: calc(var(--np-spacing) * 1.5);
   --np-button-icon-size: calc(var(--np-spacing) * 4);
@@ -182,7 +182,7 @@ button:not(:disabled),
 
 .np-button-xs,
 :is(.np-button, [data-np-button])[data-size="xs"] {
-  --np-button-height: calc(var(--np-spacing) * 7);
+  --np-button-height: calc(var(--np-spacing) * 6);
   --np-button-padding-x: calc(var(--np-spacing) * 2);
   --np-button-padding-y: var(--np-spacing);
   --np-button-font-size: 0.75rem;
@@ -193,7 +193,7 @@ button:not(:disabled),
 
 .np-button-sm,
 :is(.np-button, [data-np-button])[data-size="sm"] {
-  --np-button-height: calc(var(--np-spacing) * 8);
+  --np-button-height: calc(var(--np-spacing) * 7);
   --np-button-padding-x: calc(var(--np-spacing) * 2.5);
   --np-button-padding-y: var(--np-spacing);
   --np-button-font-size: 0.8rem;
@@ -204,7 +204,7 @@ button:not(:disabled),
 
 .np-button-lg,
 :is(.np-button, [data-np-button])[data-size="lg"] {
-  --np-button-height: calc(var(--np-spacing) * 10);
+  --np-button-height: calc(var(--np-spacing) * 9);
   --np-button-padding-x: calc(var(--np-spacing) * 4);
   --np-button-padding-y: calc(var(--np-spacing) * 1.5);
   --np-button-font-size: 0.9375rem;
@@ -225,26 +225,26 @@ button:not(:disabled),
 
 .np-button-icon,
 :is(.np-button, [data-np-button])[data-size="icon"] {
-  --np-button-height: calc(var(--np-spacing) * 9);
+  --np-button-height: calc(var(--np-spacing) * 8);
 }
 
 .np-button-icon-xs,
 :is(.np-button, [data-np-button])[data-size="icon-xs"] {
-  --np-button-height: calc(var(--np-spacing) * 7);
+  --np-button-height: calc(var(--np-spacing) * 6);
   --np-button-icon-size: calc(var(--np-spacing) * 3);
   --np-button-radius: min(var(--np-radius-md), 10px);
 }
 
 .np-button-icon-sm,
 :is(.np-button, [data-np-button])[data-size="icon-sm"] {
-  --np-button-height: calc(var(--np-spacing) * 8);
+  --np-button-height: calc(var(--np-spacing) * 7);
   --np-button-icon-size: calc(var(--np-spacing) * 3.5);
   --np-button-radius: min(var(--np-radius-md), 12px);
 }
 
 .np-button-icon-lg,
 :is(.np-button, [data-np-button])[data-size="icon-lg"] {
-  --np-button-height: calc(var(--np-spacing) * 10);
+  --np-button-height: calc(var(--np-spacing) * 9);
   --np-button-icon-size: calc(var(--np-spacing) * 4.5);
 }
 
