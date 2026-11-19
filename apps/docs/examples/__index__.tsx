@@ -28,6 +28,11 @@ import KtmReactAttachmentImage from "./ktm/react/attachment-image"
 import KtmReactAttachmentSizes from "./ktm/react/attachment-sizes"
 import KtmReactAttachmentStates from "./ktm/react/attachment-states"
 import KtmReactAttachmentTrigger from "./ktm/react/attachment-trigger"
+import KtmReactAuroraCover from "./ktm/react/aurora-cover"
+import KtmReactAuroraDemo from "./ktm/react/aurora-demo"
+import KtmReactAuroraGradients from "./ktm/react/aurora-gradients"
+import KtmReactAuroraIntensity from "./ktm/react/aurora-intensity"
+import KtmReactAuroraMasks from "./ktm/react/aurora-masks"
 import KtmReactAvatarBadgeIcon from "./ktm/react/avatar-badge-icon"
 import KtmReactAvatarBadge from "./ktm/react/avatar-badge"
 import KtmReactAvatarDemo from "./ktm/react/avatar-demo"
@@ -192,6 +197,28 @@ import KtmReactFieldGroup from "./ktm/react/field-group"
 import KtmReactFieldInput from "./ktm/react/field-input"
 import KtmReactFieldResponsive from "./ktm/react/field-responsive"
 import KtmReactFieldTextarea from "./ktm/react/field-textarea"
+import KtmReactFileInputAcceptedTypes from "./ktm/react/file-input-accepted-types"
+import KtmReactFileInputAttachments from "./ktm/react/file-input-attachments"
+import KtmReactFileInputCamera from "./ktm/react/file-input-camera"
+import KtmReactFileInputControlled from "./ktm/react/file-input-controlled"
+import KtmReactFileInputController from "./ktm/react/file-input-controller"
+import KtmReactFileInputDemo from "./ktm/react/file-input-demo"
+import KtmReactFileInputDisabled from "./ktm/react/file-input-disabled"
+import KtmReactFileInputField from "./ktm/react/file-input-field"
+import KtmReactFileInputFolder from "./ktm/react/file-input-folder"
+import KtmReactFileInputForm from "./ktm/react/file-input-form"
+import KtmReactFileInputInvalid from "./ktm/react/file-input-invalid"
+import KtmReactFileInputLimits from "./ktm/react/file-input-limits"
+import KtmReactFileInputOneFile from "./ktm/react/file-input-one-file"
+import KtmReactFileInputPageWide from "./ktm/react/file-input-page-wide"
+import KtmReactFileInputPreviews from "./ktm/react/file-input-previews"
+import KtmReactFileInputUploadButton from "./ktm/react/file-input-upload-button"
+import KtmReactFileInputValidation from "./ktm/react/file-input-validation"
+import KtmReactGradientTextDemo from "./ktm/react/gradient-text-demo"
+import KtmReactGradientTextGradients from "./ktm/react/gradient-text-gradients"
+import KtmReactGradientTextInline from "./ktm/react/gradient-text-inline"
+import KtmReactGradientTextNeon from "./ktm/react/gradient-text-neon"
+import KtmReactGradientTextSpeeds from "./ktm/react/gradient-text-speeds"
 import KtmReactGroupDefaultButtons from "./ktm/react/group-default-buttons"
 import KtmReactGroupDemo from "./ktm/react/group-demo"
 import KtmReactGroupDisabled from "./ktm/react/group-disabled"
@@ -267,6 +294,11 @@ import KtmReactMenuIcons from "./ktm/react/menu-icons"
 import KtmReactMenuRadio from "./ktm/react/menu-radio"
 import KtmReactMenuShortcuts from "./ktm/react/menu-shortcuts"
 import KtmReactMenuSubmenu from "./ktm/react/menu-submenu"
+import KtmReactMenubarCheckbox from "./ktm/react/menubar-checkbox"
+import KtmReactMenubarDemo from "./ktm/react/menubar-demo"
+import KtmReactMenubarIcons from "./ktm/react/menubar-icons"
+import KtmReactMenubarRadio from "./ktm/react/menubar-radio"
+import KtmReactMenubarSubmenu from "./ktm/react/menubar-submenu"
 import KtmReactMessageActions from "./ktm/react/message-actions"
 import KtmReactMessageAttachment from "./ktm/react/message-attachment"
 import KtmReactMessageAvatar from "./ktm/react/message-avatar"
@@ -281,6 +313,15 @@ import KtmReactMeterRange from "./ktm/react/meter-range"
 import KtmReactMeterSizes from "./ktm/react/meter-sizes"
 import KtmReactMeterVariants from "./ktm/react/meter-variants"
 import KtmReactModeToggle from "./ktm/react/mode-toggle"
+import KtmReactNumberInputDemo from "./ktm/react/number-input-demo"
+import KtmReactNumberInputFormat from "./ktm/react/number-input-format"
+import KtmReactNumberInputLabel from "./ktm/react/number-input-label"
+import KtmReactNumberInputLayout from "./ktm/react/number-input-layout"
+import KtmReactNumberInputRange from "./ktm/react/number-input-range"
+import KtmReactNumberInputScrub from "./ktm/react/number-input-scrub"
+import KtmReactNumberInputSizes from "./ktm/react/number-input-sizes"
+import KtmReactNumberInputStates from "./ktm/react/number-input-states"
+import KtmReactNumberInputStep from "./ktm/react/number-input-step"
 import KtmReactOtpFieldAlphanumeric from "./ktm/react/otp-field-alphanumeric"
 import KtmReactOtpFieldDemo from "./ktm/react/otp-field-demo"
 import KtmReactOtpFieldDisabled from "./ktm/react/otp-field-disabled"
@@ -291,6 +332,21 @@ import KtmReactOtpFieldSize from "./ktm/react/otp-field-size"
 import KtmReactPaginationDemo from "./ktm/react/pagination-demo"
 import KtmReactPaginationIconsOnly from "./ktm/react/pagination-icons-only"
 import KtmReactPaginationSimple from "./ktm/react/pagination-simple"
+import KtmReactPasswordInputActions from "./ktm/react/password-input-actions"
+import KtmReactPasswordInputAddon from "./ktm/react/password-input-addon"
+import KtmReactPasswordInputCapsLock from "./ktm/react/password-input-caps-lock"
+import KtmReactPasswordInputControlled from "./ktm/react/password-input-controlled"
+import KtmReactPasswordInputController from "./ktm/react/password-input-controller"
+import KtmReactPasswordInputDefaultVisible from "./ktm/react/password-input-default-visible"
+import KtmReactPasswordInputDemo from "./ktm/react/password-input-demo"
+import KtmReactPasswordInputDisabled from "./ktm/react/password-input-disabled"
+import KtmReactPasswordInputForm from "./ktm/react/password-input-form"
+import KtmReactPasswordInputInvalid from "./ktm/react/password-input-invalid"
+import KtmReactPasswordInputReadOnly from "./ktm/react/password-input-read-only"
+import KtmReactPasswordInputRequirements from "./ktm/react/password-input-requirements"
+import KtmReactPasswordInputSignup from "./ktm/react/password-input-signup"
+import KtmReactPasswordInputSizes from "./ktm/react/password-input-sizes"
+import KtmReactPasswordInputStrength from "./ktm/react/password-input-strength"
 import KtmReactPopoverAlign from "./ktm/react/popover-align"
 import KtmReactPopoverClose from "./ktm/react/popover-close"
 import KtmReactPopoverDemo from "./ktm/react/popover-demo"
@@ -457,6 +513,11 @@ export const ExamplesIndex: Record<
       "attachment-sizes": KtmReactAttachmentSizes,
       "attachment-states": KtmReactAttachmentStates,
       "attachment-trigger": KtmReactAttachmentTrigger,
+      "aurora-cover": KtmReactAuroraCover,
+      "aurora-demo": KtmReactAuroraDemo,
+      "aurora-gradients": KtmReactAuroraGradients,
+      "aurora-intensity": KtmReactAuroraIntensity,
+      "aurora-masks": KtmReactAuroraMasks,
       "avatar-badge-icon": KtmReactAvatarBadgeIcon,
       "avatar-badge": KtmReactAvatarBadge,
       "avatar-demo": KtmReactAvatarDemo,
@@ -621,6 +682,28 @@ export const ExamplesIndex: Record<
       "field-input": KtmReactFieldInput,
       "field-responsive": KtmReactFieldResponsive,
       "field-textarea": KtmReactFieldTextarea,
+      "file-input-accepted-types": KtmReactFileInputAcceptedTypes,
+      "file-input-attachments": KtmReactFileInputAttachments,
+      "file-input-camera": KtmReactFileInputCamera,
+      "file-input-controlled": KtmReactFileInputControlled,
+      "file-input-controller": KtmReactFileInputController,
+      "file-input-demo": KtmReactFileInputDemo,
+      "file-input-disabled": KtmReactFileInputDisabled,
+      "file-input-field": KtmReactFileInputField,
+      "file-input-folder": KtmReactFileInputFolder,
+      "file-input-form": KtmReactFileInputForm,
+      "file-input-invalid": KtmReactFileInputInvalid,
+      "file-input-limits": KtmReactFileInputLimits,
+      "file-input-one-file": KtmReactFileInputOneFile,
+      "file-input-page-wide": KtmReactFileInputPageWide,
+      "file-input-previews": KtmReactFileInputPreviews,
+      "file-input-upload-button": KtmReactFileInputUploadButton,
+      "file-input-validation": KtmReactFileInputValidation,
+      "gradient-text-demo": KtmReactGradientTextDemo,
+      "gradient-text-gradients": KtmReactGradientTextGradients,
+      "gradient-text-inline": KtmReactGradientTextInline,
+      "gradient-text-neon": KtmReactGradientTextNeon,
+      "gradient-text-speeds": KtmReactGradientTextSpeeds,
       "group-default-buttons": KtmReactGroupDefaultButtons,
       "group-demo": KtmReactGroupDemo,
       "group-disabled": KtmReactGroupDisabled,
@@ -696,6 +779,11 @@ export const ExamplesIndex: Record<
       "menu-radio": KtmReactMenuRadio,
       "menu-shortcuts": KtmReactMenuShortcuts,
       "menu-submenu": KtmReactMenuSubmenu,
+      "menubar-checkbox": KtmReactMenubarCheckbox,
+      "menubar-demo": KtmReactMenubarDemo,
+      "menubar-icons": KtmReactMenubarIcons,
+      "menubar-radio": KtmReactMenubarRadio,
+      "menubar-submenu": KtmReactMenubarSubmenu,
       "message-actions": KtmReactMessageActions,
       "message-attachment": KtmReactMessageAttachment,
       "message-avatar": KtmReactMessageAvatar,
@@ -710,6 +798,15 @@ export const ExamplesIndex: Record<
       "meter-sizes": KtmReactMeterSizes,
       "meter-variants": KtmReactMeterVariants,
       "mode-toggle": KtmReactModeToggle,
+      "number-input-demo": KtmReactNumberInputDemo,
+      "number-input-format": KtmReactNumberInputFormat,
+      "number-input-label": KtmReactNumberInputLabel,
+      "number-input-layout": KtmReactNumberInputLayout,
+      "number-input-range": KtmReactNumberInputRange,
+      "number-input-scrub": KtmReactNumberInputScrub,
+      "number-input-sizes": KtmReactNumberInputSizes,
+      "number-input-states": KtmReactNumberInputStates,
+      "number-input-step": KtmReactNumberInputStep,
       "otp-field-alphanumeric": KtmReactOtpFieldAlphanumeric,
       "otp-field-demo": KtmReactOtpFieldDemo,
       "otp-field-disabled": KtmReactOtpFieldDisabled,
@@ -720,6 +817,21 @@ export const ExamplesIndex: Record<
       "pagination-demo": KtmReactPaginationDemo,
       "pagination-icons-only": KtmReactPaginationIconsOnly,
       "pagination-simple": KtmReactPaginationSimple,
+      "password-input-actions": KtmReactPasswordInputActions,
+      "password-input-addon": KtmReactPasswordInputAddon,
+      "password-input-caps-lock": KtmReactPasswordInputCapsLock,
+      "password-input-controlled": KtmReactPasswordInputControlled,
+      "password-input-controller": KtmReactPasswordInputController,
+      "password-input-default-visible": KtmReactPasswordInputDefaultVisible,
+      "password-input-demo": KtmReactPasswordInputDemo,
+      "password-input-disabled": KtmReactPasswordInputDisabled,
+      "password-input-form": KtmReactPasswordInputForm,
+      "password-input-invalid": KtmReactPasswordInputInvalid,
+      "password-input-read-only": KtmReactPasswordInputReadOnly,
+      "password-input-requirements": KtmReactPasswordInputRequirements,
+      "password-input-signup": KtmReactPasswordInputSignup,
+      "password-input-sizes": KtmReactPasswordInputSizes,
+      "password-input-strength": KtmReactPasswordInputStrength,
       "popover-align": KtmReactPopoverAlign,
       "popover-close": KtmReactPopoverClose,
       "popover-demo": KtmReactPopoverDemo,
@@ -881,6 +993,11 @@ export const ExamplesIndex: Record<
       "attachment-sizes": "ktm/html/attachment-sizes.html",
       "attachment-states": "ktm/html/attachment-states.html",
       "attachment-trigger": "ktm/html/attachment-trigger.html",
+      "aurora-cover": "ktm/html/aurora-cover.html",
+      "aurora-demo": "ktm/html/aurora-demo.html",
+      "aurora-gradients": "ktm/html/aurora-gradients.html",
+      "aurora-intensity": "ktm/html/aurora-intensity.html",
+      "aurora-masks": "ktm/html/aurora-masks.html",
       "avatar-badge-icon": "ktm/html/avatar-badge-icon.html",
       "avatar-badge": "ktm/html/avatar-badge.html",
       "avatar-demo": "ktm/html/avatar-demo.html",
@@ -1039,6 +1156,19 @@ export const ExamplesIndex: Record<
       "field-input": "ktm/html/field-input.html",
       "field-responsive": "ktm/html/field-responsive.html",
       "field-textarea": "ktm/html/field-textarea.html",
+      "file-input-accepted-types": "ktm/html/file-input-accepted-types.html",
+      "file-input-demo": "ktm/html/file-input-demo.html",
+      "file-input-disabled": "ktm/html/file-input-disabled.html",
+      "file-input-invalid": "ktm/html/file-input-invalid.html",
+      "file-input-limits": "ktm/html/file-input-limits.html",
+      "file-input-one-file": "ktm/html/file-input-one-file.html",
+      "file-input-page-wide": "ktm/html/file-input-page-wide.html",
+      "file-input-previews": "ktm/html/file-input-previews.html",
+      "gradient-text-demo": "ktm/html/gradient-text-demo.html",
+      "gradient-text-gradients": "ktm/html/gradient-text-gradients.html",
+      "gradient-text-inline": "ktm/html/gradient-text-inline.html",
+      "gradient-text-neon": "ktm/html/gradient-text-neon.html",
+      "gradient-text-speeds": "ktm/html/gradient-text-speeds.html",
       "group-default-buttons": "ktm/html/group-default-buttons.html",
       "group-demo": "ktm/html/group-demo.html",
       "group-disabled": "ktm/html/group-disabled.html",
@@ -1115,6 +1245,11 @@ export const ExamplesIndex: Record<
       "menu-radio": "ktm/html/menu-radio.html",
       "menu-shortcuts": "ktm/html/menu-shortcuts.html",
       "menu-submenu": "ktm/html/menu-submenu.html",
+      "menubar-checkbox": "ktm/html/menubar-checkbox.html",
+      "menubar-demo": "ktm/html/menubar-demo.html",
+      "menubar-icons": "ktm/html/menubar-icons.html",
+      "menubar-radio": "ktm/html/menubar-radio.html",
+      "menubar-submenu": "ktm/html/menubar-submenu.html",
       "message-actions": "ktm/html/message-actions.html",
       "message-attachment": "ktm/html/message-attachment.html",
       "message-avatar": "ktm/html/message-avatar.html",
@@ -1128,6 +1263,16 @@ export const ExamplesIndex: Record<
       "meter-range": "ktm/html/meter-range.html",
       "meter-sizes": "ktm/html/meter-sizes.html",
       "meter-variants": "ktm/html/meter-variants.html",
+      "number-input-demo": "ktm/html/number-input-demo.html",
+      "number-input-disabled": "ktm/html/number-input-disabled.html",
+      "number-input-invalid": "ktm/html/number-input-invalid.html",
+      "number-input-label": "ktm/html/number-input-label.html",
+      "number-input-layout": "ktm/html/number-input-layout.html",
+      "number-input-range": "ktm/html/number-input-range.html",
+      "number-input-scrub": "ktm/html/number-input-scrub.html",
+      "number-input-sizes": "ktm/html/number-input-sizes.html",
+      "number-input-states": "ktm/html/number-input-states.html",
+      "number-input-step": "ktm/html/number-input-step.html",
       "otp-field-alphanumeric": "ktm/html/otp-field-alphanumeric.html",
       "otp-field-demo": "ktm/html/otp-field-demo.html",
       "otp-field-disabled": "ktm/html/otp-field-disabled.html",
@@ -1138,6 +1283,19 @@ export const ExamplesIndex: Record<
       "pagination-demo": "ktm/html/pagination-demo.html",
       "pagination-icons-only": "ktm/html/pagination-icons-only.html",
       "pagination-simple": "ktm/html/pagination-simple.html",
+      "password-input-actions": "ktm/html/password-input-actions.html",
+      "password-input-addon": "ktm/html/password-input-addon.html",
+      "password-input-caps-lock": "ktm/html/password-input-caps-lock.html",
+      "password-input-default-visible":
+        "ktm/html/password-input-default-visible.html",
+      "password-input-demo": "ktm/html/password-input-demo.html",
+      "password-input-disabled": "ktm/html/password-input-disabled.html",
+      "password-input-invalid": "ktm/html/password-input-invalid.html",
+      "password-input-read-only": "ktm/html/password-input-read-only.html",
+      "password-input-requirements":
+        "ktm/html/password-input-requirements.html",
+      "password-input-sizes": "ktm/html/password-input-sizes.html",
+      "password-input-strength": "ktm/html/password-input-strength.html",
       "popover-align": "ktm/html/popover-align.html",
       "popover-close": "ktm/html/popover-close.html",
       "popover-demo": "ktm/html/popover-demo.html",

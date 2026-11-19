@@ -1,0 +1,111 @@
+<link rel="stylesheet" href="./styles/tokens.css" />
+<link rel="stylesheet" href="./styles/button.css" />
+<link rel="stylesheet" href="./styles/file-input.css" />
+<script src="./javascripts/file-input.js" defer></script>
+
+<div style="width: 100%; max-width: 28rem">
+  <div class="np-file-input">
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      "
+    >
+      <p
+        style="
+          margin: 0;
+          font-size: 0.875rem;
+          color: var(--np-muted-foreground);
+        "
+      >
+        Drop files anywhere on this page.
+      </p>
+      <button
+        class="np-button np-button-outline np-file-input-trigger"
+        type="button"
+        onclick="
+          this.closest('.np-file-input')
+            .querySelector('input[type=file]')
+            .click()
+        "
+      >
+        Upload files
+      </button>
+    </div>
+    <div
+      class="np-file-input-dropzone np-file-input-dropzone-overlay"
+      data-target="document"
+    >
+      <span class="np-file-input-dropzone-icon"
+        ><svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <path d="m17 8-5-5-5 5" />
+          <path d="M12 3v12" /></svg
+      ></span>
+      <p class="np-file-input-dropzone-title">Drop to attach</p>
+    </div>
+    <input
+      class="np-file-input-native"
+      id="file-input-page-wide"
+      type="file"
+      multiple
+      tabindex="-1"
+      aria-hidden="true"
+    />
+    <ul class="np-file-input-list" aria-label="Attachments">
+      <template>
+        <li class="np-file-input-item" tabindex="-1">
+          <span class="np-file-input-item-preview" data-file-preview
+            ><svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path
+                d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+              />
+              <path d="M14 2v4a2 2 0 0 0 2 2h4" /></svg
+          ></span>
+          <div class="np-file-input-item-details">
+            <span class="np-file-input-item-name" data-file-name></span>
+            <span class="np-file-input-item-size" data-file-size></span>
+          </div>
+          <button
+            class="np-button np-button-ghost np-button-icon-xs np-file-input-item-remove"
+            type="button"
+            data-file-remove
+            aria-label="Remove file"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
+          </button>
+        </li>
+      </template>
+    </ul>
+    <div class="np-file-input-live" role="status" aria-live="polite"></div>
+  </div>
+</div>
