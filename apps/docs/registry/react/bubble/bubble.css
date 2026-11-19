@@ -2,9 +2,6 @@
 
 .np-bubble,
 [data-np-bubble] {
-  --np-primary: oklch(59.64% 0.16709 45.302);
-  --np-primary-foreground: #ffffff;
-
   --np-bubble-bg: var(--np-primary);
   --np-bubble-color: var(--np-primary-foreground);
   --np-bubble-border-color: transparent;
