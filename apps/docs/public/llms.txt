@@ -79,6 +79,9 @@
 * [Toast](https://nepui.vercel.app/docs/components/html/toast): A succinct message that is displayed temporarily.
 * [Trace](https://nepui.vercel.app/docs/components/html/trace): The building block for reasoning, tool calls, sources and more.
 * [Color Picker](https://nepui.vercel.app/docs/components/html/color-picker): Pick a color from an area and sliders, type it in any format, or choose a preset, in HSV, HSL, sRGB or OKLCH.
+* [Number Input](https://nepui.vercel.app/docs/components/html/number-input): A numeric input with increment and decrement buttons, and a scrub area.
+* [Password Input](https://nepui.vercel.app/docs/components/html/password-input): A password field with a show and hide toggle, caps lock warning, strength meter and requirements checklist.
+* [Menubar](https://nepui.vercel.app/docs/components/html/menubar): A visually persistent menu common in desktop applications that provides quick access to a consistent set of commands.
 
 ### React
 
@@ -148,6 +151,31 @@
 * [Toast](https://nepui.vercel.app/docs/components/react/toast): A succinct message that is displayed temporarily.
 * [Trace](https://nepui.vercel.app/docs/components/react/trace): The building block for reasoning, tool calls, sources and more.
 * [Color Picker](https://nepui.vercel.app/docs/components/react/color-picker): Pick a color from an area and sliders, type it in any format, or choose a preset, in HSV, HSL, sRGB or OKLCH.
+* [Number Input](https://nepui.vercel.app/docs/components/react/number-input): A numeric input with increment and decrement buttons, and a scrub area.
+* [Password Input](https://nepui.vercel.app/docs/components/react/password-input): A password field with a show and hide toggle, caps lock warning, strength meter and requirements checklist.
+* [Menubar](https://nepui.vercel.app/docs/components/react/menubar): A visually persistent menu common in desktop applications that provides quick access to a consistent set of commands.
+
+## Text Effects
+
+### HTML
+
+* [Gradient Text](https://nepui.vercel.app/docs/text-effects/html/gradient-text): Text filled with a gradient that flows, with named gradients and a neon glow, in plain CSS.
+
+### React
+
+* [Gradient Text](https://nepui.vercel.app/docs/text-effects/react/gradient-text): Text filled with a gradient that flows, with named gradients and a neon glow, in plain CSS.
+
+
+## Backgrounds
+
+### HTML
+
+* [Aurora](https://nepui.vercel.app/docs/backgrounds/html/aurora): A slow, soft, animated glow behind your hero or any section, with named gradients, in plain CSS.
+
+### React
+
+* [Aurora](https://nepui.vercel.app/docs/backgrounds/react/aurora): A slow, soft, animated glow behind your hero or any section, with named gradients, in plain CSS.
+
 
 ## Supported Targets
 
@@ -156,23 +184,11 @@
 
 ## Installation
 
-### HTML
-
-HTML components can be copied directly from their documentation or fetched from the HTML registry.
-
 ```bash
-npx nepui add button --target html
-npx nepui add spinner --target html
+npx nepui add button
+npx nepui add spinner card 
 ```
 
-### React
-
-React components can be added using the nepui CLI.
-
-```bash
-npx nepui add button --target react
-npx nepui add spinner --target react
-```
 
 ## Registry
 
@@ -192,7 +208,7 @@ Use the nepui CLI to initialize a project, add component source files, and list 
 ### Initialize a project
 
 ```bash
-npx nepui@latest init [directory] --target <html|react>
+npx nepui@latest init --target <html|react> --src ./src
 ```
 
 Initialization creates the base token stylesheet and target-specific folder structure. React projects also install required dependencies when needed. If no directory is provided, the CLI prompts for the target and folder.
