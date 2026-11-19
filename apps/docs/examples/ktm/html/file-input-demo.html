@@ -1,0 +1,303 @@
+<link rel="stylesheet" href="./styles/tokens.css" />
+<link rel="stylesheet" href="./styles/button.css" />
+<link rel="stylesheet" href="./styles/file-input.css" />
+<link rel="stylesheet" href="./styles/field.css" />
+<link rel="stylesheet" href="./styles/attachment.css" />
+<link rel="stylesheet" href="./styles/toast.css" />
+
+<div style="width: 100%; max-width: 28rem">
+  <div class="np-field" role="group" data-file-input-field>
+    <div class="np-field-label" id="file-input-demo-label">Files</div>
+    <div
+      class="np-file-input"
+      data-max-size="10000000"
+      data-file-input-upload
+      role="group"
+      aria-labelledby="file-input-demo-label"
+      aria-describedby="file-input-demo-description"
+    >
+      <div class="np-file-input-dropzone">
+        <span class="np-file-input-dropzone-icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <path d="m17 8-5-5-5 5" />
+            <path d="M12 3v12" />
+          </svg>
+        </span>
+        <p class="np-file-input-dropzone-title">Drag and drop files here</p>
+        <p class="np-file-input-dropzone-description">
+          Or browse for files. Up to 10 MB each.
+        </p>
+        <button
+          class="np-button np-button-outline np-file-input-trigger"
+          type="button"
+          data-file-input-trigger
+          aria-describedby="file-input-demo-description"
+        >
+          Browse files
+        </button>
+      </div>
+      <input
+        class="np-file-input-native"
+        id="file-input-demo-native"
+        type="file"
+        tabindex="-1"
+        aria-hidden="true"
+        multiple
+      />
+      <ul class="np-file-input-list" aria-label="Selected files">
+        <template>
+          <li
+            class="np-file-input-item"
+            tabindex="-1"
+            style="padding: 0; border: 0; background: transparent"
+          >
+            <div
+              class="np-attachment np-attachment-idle"
+              data-file-attachment
+              data-state="idle"
+              style="width: 100%"
+            >
+              <div class="np-attachment-media">
+                <span class="np-file-input-item-preview" data-file-preview>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                    />
+                    <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                  </svg>
+                </span>
+              </div>
+              <div class="np-attachment-content">
+                <div
+                  class="np-attachment-title np-file-input-item-name"
+                  data-file-name
+                ></div>
+                <div
+                  class="np-attachment-description np-file-input-item-size"
+                  data-file-size
+                ></div>
+              </div>
+              <div class="np-attachment-actions">
+                <button
+                  class="np-button np-button-ghost np-button-icon-xs np-attachment-action np-file-input-item-remove"
+                  type="button"
+                  data-file-remove
+                  aria-label="Remove file"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M18 6 6 18" />
+                    <path d="m6 6 12 12" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </li>
+        </template>
+      </ul>
+      <ul class="np-file-input-rejections" hidden></ul>
+      <div class="np-file-input-live" role="status" aria-live="polite"></div>
+    </div>
+    <p class="np-field-description" id="file-input-demo-description">
+      Select files to see their upload status and progress.
+    </p>
+    <div
+      class="np-field-error"
+      id="file-input-demo-error"
+      role="alert"
+      hidden
+    ></div>
+    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem">
+      <button class="np-button" type="button" data-upload disabled>
+        Upload files
+      </button>
+      <button
+        class="np-button np-button-outline"
+        type="button"
+        data-upload-error
+        disabled
+      >
+        Simulate upload error
+      </button>
+    </div>
+  </div>
+</div>
+<script>
+  ;(function () {
+    var field = document.querySelector("[data-file-input-field]")
+    var root = field.querySelector("[data-file-input-upload]")
+    var input = root.querySelector(".np-file-input-native")
+    var trigger = root.querySelector("[data-file-input-trigger]")
+    var uploadButton = field.querySelector("[data-upload]")
+    var errorButton = field.querySelector("[data-upload-error]")
+    var errorMessage = field.querySelector("#file-input-demo-error")
+    var files = []
+    var uploading = false
+
+    function syncButtons() {
+      uploadButton.disabled = uploading || files.length === 0
+      errorButton.disabled = uploading || files.length === 0
+    }
+
+    function setBusy(value) {
+      uploading = value
+      input.disabled = value
+      trigger.disabled = value
+      root.setAttribute("aria-busy", String(value))
+      syncButtons()
+    }
+
+    function clearError() {
+      field.removeAttribute("data-invalid")
+      root.removeAttribute("data-invalid")
+      trigger.removeAttribute("aria-invalid")
+      trigger.setAttribute("aria-describedby", "file-input-demo-description")
+      errorMessage.hidden = true
+      errorMessage.textContent = ""
+    }
+
+    function showError(message) {
+      field.setAttribute("data-invalid", "")
+      root.setAttribute("data-invalid", "")
+      trigger.setAttribute("aria-invalid", "true")
+      trigger.setAttribute(
+        "aria-describedby",
+        "file-input-demo-description file-input-demo-error"
+      )
+      errorMessage.textContent = message
+      errorMessage.hidden = false
+    }
+
+    function setAttachmentState(state, progress) {
+      root.querySelectorAll("[data-file-attachment]").forEach(function (item) {
+        item.classList.remove(
+          "np-attachment-idle",
+          "np-attachment-uploading",
+          "np-attachment-error"
+        )
+        item.dataset.state = state
+        if (state !== "done") item.classList.add("np-attachment-" + state)
+
+        if (state === "uploading") {
+          item.style.setProperty("--np-attachment-progress", progress + "%")
+        } else {
+          item.style.removeProperty("--np-attachment-progress")
+        }
+
+        var description = item.querySelector(".np-attachment-description")
+        if (state === "uploading") {
+          description.textContent = "Uploading " + progress + "%"
+        } else if (state === "error") {
+          description.textContent = "Upload failed"
+        } else if (state === "done") {
+          description.textContent = "Uploaded successfully"
+        }
+      })
+    }
+
+    function upload(simulateError) {
+      if (uploading || !files.length) return
+
+      clearError()
+      setBusy(true)
+      setAttachmentState("uploading", 10)
+
+      var selectedFiles = files.slice()
+      var task = new Promise(function (resolve, reject) {
+        setTimeout(function () {
+          setAttachmentState("uploading", 65)
+          setTimeout(function () {
+            if (simulateError) {
+              reject(
+                new Error(
+                  "The upload failed. Try again or choose different files."
+                )
+              )
+            } else {
+              resolve(selectedFiles.length)
+            }
+          }, 700)
+        }, 500)
+      })
+
+      window.npToast
+        .promise(task, {
+          loading:
+            "Uploading " +
+            selectedFiles.length +
+            " file" +
+            (selectedFiles.length === 1 ? "" : "s") +
+            "...",
+          success: function (count) {
+            return (
+              count +
+              " " +
+              (count === 1 ? "file" : "files") +
+              " uploaded successfully."
+            )
+          },
+          error: "Upload failed. Please try again.",
+        })
+        .then(
+          function () {
+            setAttachmentState("done")
+          },
+          function (error) {
+            setAttachmentState("error")
+            showError(
+              error instanceof Error
+                ? error.message
+                : "The upload failed. Please try again."
+            )
+          }
+        )
+        .finally(function () {
+          setBusy(false)
+        })
+    }
+
+    root.addEventListener("np-file-input:change", function (event) {
+      files = event.detail.files
+      clearError()
+      syncButtons()
+    })
+    trigger.addEventListener("click", function () {
+      if (!uploading) input.click()
+    })
+    uploadButton.addEventListener("click", function () {
+      upload(false)
+    })
+    errorButton.addEventListener("click", function () {
+      upload(true)
+    })
+
+    syncButtons()
+  })()
+</script>
+
+<script src="./javascripts/file-input.js" defer></script>
+<script type="module" src="./javascripts/toast.js"></script>
