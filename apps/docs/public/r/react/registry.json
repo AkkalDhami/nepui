@@ -1411,6 +1411,126 @@
       ]
     },
     {
+      "name": "password-input",
+      "type": "registry:ui",
+      "title": "Password Input",
+      "description": "A password field with a show and hide toggle, caps lock warning, strength meter and requirements checklist.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/react/input-group.json"
+      ],
+      "files": [
+        {
+          "path": "registry/react/password-input/password-input.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/password-input/password-input.tsx"
+        },
+        {
+          "path": "registry/react/password-input/password-input.css",
+          "type": "registry:ui",
+          "target": "components/nepui/password-input/password-input.css"
+        },
+        {
+          "path": "registry/react/password-input/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/password-input/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "menubar",
+      "type": "registry:ui",
+      "title": "Menubar",
+      "description": "A visually persistent menu common in desktop applications that provides quick access to a consistent set of commands.",
+      "files": [
+        {
+          "path": "registry/react/menubar/menubar.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/menubar/menubar.tsx"
+        },
+        {
+          "path": "registry/react/menubar/menubar.css",
+          "type": "registry:ui",
+          "target": "components/nepui/menubar/menubar.css"
+        },
+        {
+          "path": "registry/react/menubar/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/menubar/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "gradient-text",
+      "type": "registry:ui",
+      "title": "Gradient Text",
+      "description": "Text filled with a gradient that flows, in plain CSS with no motion library.",
+      "files": [
+        {
+          "path": "registry/react/gradient-text/gradient-text.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/gradient-text/gradient-text.tsx"
+        },
+        {
+          "path": "registry/react/gradient-text/gradient-text.css",
+          "type": "registry:ui",
+          "target": "components/nepui/gradient-text/gradient-text.css"
+        },
+        {
+          "path": "registry/react/gradient-text/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/gradient-text/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "number-input",
+      "type": "registry:ui",
+      "title": "Number Input",
+      "description": "A numeric input with increment and decrement buttons, and a scrub area.",
+      "registryDependencies": ["https://nepui.vercel.app/r/react/label.json"],
+      "files": [
+        {
+          "path": "registry/react/number-input/number-input.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/number-input/number-input.tsx"
+        },
+        {
+          "path": "registry/react/number-input/number-input.css",
+          "type": "registry:ui",
+          "target": "components/nepui/number-input/number-input.css"
+        },
+        {
+          "path": "registry/react/number-input/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/number-input/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "file-input",
+      "type": "registry:ui",
+      "title": "File Input",
+      "description": "Choose, drop or paste files, check them against your rules, and submit them with a form.",
+      "registryDependencies": ["https://nepui.vercel.app/r/react/button.json"],
+      "files": [
+        {
+          "path": "registry/react/file-input/file-input.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/file-input/file-input.tsx"
+        },
+        {
+          "path": "registry/react/file-input/file-input.css",
+          "type": "registry:ui",
+          "target": "components/nepui/file-input/file-input.css"
+        },
+        {
+          "path": "registry/react/file-input/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/file-input/index.ts"
+        }
+      ]
+    },
+    {
       "name": "icon-swap",
       "type": "registry:ui",
       "title": "Icon Swap",
@@ -1430,6 +1550,52 @@
           "path": "registry/react/icon-swap/index.ts",
           "type": "registry:ui",
           "target": "components/nepui/icon-swap/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "aurora",
+      "type": "registry:ui",
+      "title": "Aurora",
+      "description": "A slow, soft, animated glow behind your hero or any section, with named gradients, in plain CSS.",
+      "files": [
+        {
+          "path": "registry/react/aurora/aurora.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/aurora/aurora.tsx"
+        },
+        {
+          "path": "registry/react/aurora/aurora.css",
+          "type": "registry:ui",
+          "target": "components/nepui/aurora/aurora.css"
+        },
+        {
+          "path": "registry/react/aurora/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/aurora/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "gradient-text",
+      "type": "registry:ui",
+      "title": "Gradient Text",
+      "description": "Text filled with a gradient that flows, with named gradients and a neon glow, in plain CSS.",
+      "files": [
+        {
+          "path": "registry/react/gradient-text/gradient-text.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/gradient-text/gradient-text.tsx"
+        },
+        {
+          "path": "registry/react/gradient-text/gradient-text.css",
+          "type": "registry:ui",
+          "target": "components/nepui/gradient-text/gradient-text.css"
+        },
+        {
+          "path": "registry/react/gradient-text/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/gradient-text/index.ts"
         }
       ]
     },

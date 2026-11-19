@@ -248,6 +248,45 @@
       ]
     },
     {
+      "name": "gradient-text",
+      "type": "registry:ui",
+      "title": "Gradient Text",
+      "description": "Text filled with a gradient that flows, with named gradients and a neon glow, in plain CSS.",
+      "files": [
+        {
+          "path": "registry/html/gradient-text/gradient-text.html",
+          "type": "registry:ui",
+          "target": "html/gradient-text.html"
+        },
+        {
+          "path": "registry/html/gradient-text/gradient-text.css",
+          "type": "registry:ui",
+          "target": "styles/gradient-text.css"
+        }
+      ]
+    },
+    {
+      "name": "aurora",
+      "type": "registry:ui",
+      "title": "Aurora",
+      "description": "A slow, soft, animated glow behind your hero or any section, with named gradients, in plain CSS.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/html/gradient-text.json"
+      ],
+      "files": [
+        {
+          "path": "registry/html/aurora/aurora.html",
+          "type": "registry:ui",
+          "target": "html/aurora.html"
+        },
+        {
+          "path": "registry/html/aurora/aurora.css",
+          "type": "registry:ui",
+          "target": "styles/aurora.css"
+        }
+      ]
+    },
+    {
       "name": "separator",
       "type": "registry:ui",
       "title": "Separator",
@@ -878,6 +917,33 @@
       ]
     },
     {
+      "name": "file-input",
+      "type": "registry:ui",
+      "title": "File Input",
+      "description": "Choose, drop or paste files, check them against your rules, and submit them with a form.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/html/button.json",
+        "https://nepui.vercel.app/r/field/button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/html/file-input/file-input.html",
+          "type": "registry:ui",
+          "target": "html/file-input.html"
+        },
+        {
+          "path": "registry/html/file-input/file-input.css",
+          "type": "registry:ui",
+          "target": "styles/file-input.css"
+        },
+        {
+          "path": "registry/html/file-input/file-input.js",
+          "type": "registry:ui",
+          "target": "javascripts/file-input.js"
+        }
+      ]
+    },
+    {
       "name": "menu",
       "type": "registry:ui",
       "title": "Menu",
@@ -1098,6 +1164,107 @@
           "path": "registry/html/color-picker/color-picker.js",
           "type": "registry:ui",
           "target": "javascripts/color-picker.js"
+        }
+      ]
+    },
+    {
+      "name": "password-input",
+      "type": "registry:ui",
+      "title": "Password Input",
+      "description": "A password field with a show and hide toggle, caps lock warning, strength meter and requirements checklist.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/html/button.json",
+        "https://nepui.vercel.app/r/html/field.json"
+      ],
+      "files": [
+        {
+          "path": "registry/html/password-input/password-input.html",
+          "type": "registry:ui",
+          "target": "html/password-input.html"
+        },
+        {
+          "path": "registry/html/password-input/password-input.css",
+          "type": "registry:ui",
+          "target": "styles/password-input.css"
+        },
+        {
+          "path": "registry/html/password-input/password-input.js",
+          "type": "registry:ui",
+          "target": "javascripts/password-input.js"
+        }
+      ]
+    },
+    {
+      "name": "menubar",
+      "type": "registry:ui",
+      "title": "Menubar",
+      "description": "A visually persistent menu common in desktop applications that provides quick access to a consistent set of commands.",
+      "files": [
+        {
+          "path": "registry/html/menubar/menubar.html",
+          "type": "registry:ui",
+          "target": "html/menubar.html"
+        },
+        {
+          "path": "registry/html/menubar/menubar.css",
+          "type": "registry:ui",
+          "target": "styles/menubar.css"
+        },
+        {
+          "path": "registry/html/menubar/menubar.js",
+          "type": "registry:ui",
+          "target": "javascripts/menubar.js"
+        }
+      ]
+    },
+    {
+      "name": "color-picker",
+      "type": "registry:ui",
+      "title": "Color Picker",
+      "description": "Pick a color from an area and sliders, type it in any format, or choose a preset, in HSV, HSL, sRGB or OKLCH.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/html/button.json",
+        "https://nepui.vercel.app/r/html/select.json"
+      ],
+      "files": [
+        {
+          "path": "registry/html/color-picker/color-picker.html",
+          "type": "registry:ui",
+          "target": "html/color-picker.html"
+        },
+        {
+          "path": "registry/html/color-picker/color-picker.css",
+          "type": "registry:ui",
+          "target": "styles/color-picker.css"
+        },
+        {
+          "path": "registry/html/color-picker/color-picker.js",
+          "type": "registry:ui",
+          "target": "javascripts/color-picker.js"
+        }
+      ]
+    },
+    {
+      "name": "number-input",
+      "type": "registry:ui",
+      "title": "Number Input",
+      "description": "A numeric input with increment and decrement buttons, and a scrub area.",
+      "registryDependencies": ["https://nepui.vercel.app/r/html/label.json"],
+      "files": [
+        {
+          "path": "registry/html/number-input/number-input.html",
+          "type": "registry:ui",
+          "target": "html/number-input.html"
+        },
+        {
+          "path": "registry/html/number-input/number-input.css",
+          "type": "registry:ui",
+          "target": "styles/number-input.css"
+        },
+        {
+          "path": "registry/html/number-input/number-input.js",
+          "type": "registry:ui",
+          "target": "javascripts/number-input.js"
         }
       ]
     },
