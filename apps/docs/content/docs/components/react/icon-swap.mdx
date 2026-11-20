@@ -1,0 +1,144 @@
+---
+title: Icon Swap
+description: Animate icon swaps with scale, blur, and fade transitions.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="icon-swap-demo"
+/>
+
+---
+
+## Use cases
+
+- Copy buttons that switch to a check on success.
+- Toggle buttons such as play and pause.
+- Icons that follow the selected tab or option.
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/icon-swap.json"
+      nepui="npx nepui@latest add icon-swap"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="icon-swap"
+        title="components/nepui/icon-swap/icon-swap.css"
+        fileTarget="components/nepui/icon-swap/icon-swap.css"
+      />
+      <ComponentSource
+        target="react"
+        name="icon-swap"
+        title="components/nepui/icon-swap/icon-swap.tsx"
+        fileTarget="components/nepui/icon-swap/icon-swap.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="icon-swap"
+        title="components/nepui/icon-swap/index.ts"
+        fileTarget="components/nepui/icon-swap/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+It has no animation library dependency. The motion is done with CSS transitions.
+
+---
+
+## Usage
+
+```tsx
+import { IconSwap, IconSwapItem } from "@/components/nepui/icon-swap"
+```
+
+```tsx
+<IconSwap>
+  <IconSwapItem key={isCopied ? "check" : "copy"}>
+    {isCopied ? <CheckIcon /> : <CopyIcon />}
+  </IconSwapItem>
+</IconSwap>
+```
+
+Change the `key` on `IconSwapItem` whenever the icon should swap. The old icon stays mounted until its fade-out ends, so both animate at the same time. The icon on first render does not animate.
+
+Put the swap inside a button and give the button an accessible name. The icons are decorative, and the leaving icon is hidden from assistive technology with `aria-hidden`.
+
+---
+
+## Composition
+
+Use the following composition to build an `IconSwap`:
+
+```text
+IconSwap
+└── IconSwapItem
+    └── {icon}
+```
+
+---
+
+## Copy button
+
+Switch to a check after copying.
+
+<ComponentPreview
+  name="icon-swap-copy"
+/>
+
+---
+
+## Play and pause
+
+A toggle button. Pair it with `aria-pressed`.
+
+<ComponentPreview
+  name="icon-swap-toggle"
+/>
+
+---
+
+## API Reference
+
+### IconSwap
+
+The container. Accepts all `span` props.
+
+| Prop        | Type                                | Default |
+| ----------- | ----------------------------------- | ------- |
+| `children`  | `ReactElement<IconSwapItemProps>`   | -       |
+| `className` | `string`                            | -       |
+
+### IconSwapItem
+
+One icon. Accepts all `span` props. Its `key` decides when the swap happens.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `key`       | `string` | -       |
+| `className` | `string` | -       |
+
+---
+
+## Credits
+
+- The behavior follows [Icon Swap](https://chanhdai.com/components/icon-swap) by Chánh Đại, which uses `motion`. This version is plain CSS.
+- Blur as a way to hide the seam between two icons comes from [Emil Kowalski](https://emilkowal.ski/ui/7-practical-animation-tips#7.-use-blur-when-nothing-else-works).
