@@ -1,0 +1,229 @@
+---
+title: Calendar
+description: A calendar that lets users select a date, several dates or a range. Plain CSS with a small JavaScript renderer.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="calendar-demo"
+  target="html"
+  styles={["/button/button.css"]}
+  scripts={["/calendar/calendar.js"]}
+  scriptType="module"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add calendar"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the required nepui dependencies:</Step>
+      <PackageManagerTabs
+        command="npx nepui@latest add button"
+        className="mt-4"
+      />
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="calendar"
+        title="styles/calendar.css"
+        fileTarget="styles/calendar.css"
+      />
+      <ComponentSource
+        target="html"
+        name="calendar"
+        title="javascripts/calendar.js"
+        fileTarget="javascripts/calendar.js"
+      />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the tokens, the Button styles and the stylesheet, and load the script once on the page:
+
+```html
+<link rel="stylesheet" href="./styles/tokens.css">
+<link rel="stylesheet" href="./styles/button.css">
+<link rel="stylesheet" href="./styles/calendar.css">
+<script type="module" src="./javascripts/calendar.js"></script>
+```
+
+Add an empty element. The script fills it in, including elements you add later:
+
+```html
+<div class="np-calendar np-calendar-bordered" data-np-calendar data-value="2026-11-04"></div>
+```
+
+The calendar is keyboard accessible: the arrow keys move between days, `Home` and `End` jump to the start and end of the week, `PageUp` and `PageDown` change the month, and with `Shift` they change the year. Enter or Space selects.
+
+---
+
+## Range
+
+With `data-mode="range"`, the first click sets the start, the second sets the end, and a click on a third date starts a new range.
+
+<ComponentPreview
+  name="calendar-range"
+  target="html"
+  styles={["/button/button.css"]}
+  scripts={["/calendar/calendar.js"]}
+  scriptType="module"
+/>
+
+---
+
+## Month and year selector
+
+<ComponentPreview
+  name="calendar-dropdown"
+  target="html"
+  styles={["/button/button.css"]}
+  scripts={["/calendar/calendar.js"]}
+  scriptType="module"
+/>
+
+---
+
+## Presets
+
+A button with `data-np-calendar-set` and `data-target` sets the date of another calendar. The value is an ISO date, or `+3` for three days from today.
+
+<ComponentPreview
+  name="calendar-presets"
+  target="html"
+  styles={["/button/button.css"]}
+  scripts={["/calendar/calendar.js"]}
+  scriptType="module"
+/>
+
+---
+
+## Date and time picker
+
+This example needs the Label and Input stylesheets.
+
+<ComponentPreview
+  name="calendar-time"
+  target="html"
+  styles={["/button/button.css", "/label/label.css", "/input/input.css"]}
+  scripts={["/calendar/calendar.js"]}
+  scriptType="module"
+/>
+
+---
+
+## Booked dates
+
+<ComponentPreview
+  name="calendar-booked"
+  target="html"
+  styles={["/button/button.css"]}
+  scripts={["/calendar/calendar.js"]}
+  scriptType="module"
+/>
+
+---
+
+## Custom cell size
+
+Set `--np-calendar-cell-size` on the element. `data-day-note-weekday` and `data-day-note-weekend` put text under the date, or set `element.npCalendar.dayNote` to a function that returns it for a date.
+
+<ComponentPreview
+  name="calendar-cell-size"
+  target="html"
+  styles={["/button/button.css"]}
+  scripts={["/calendar/calendar.js"]}
+  scriptType="module"
+/>
+
+---
+
+## Week numbers
+
+<ComponentPreview
+  name="calendar-week-numbers"
+  target="html"
+  styles={["/button/button.css"]}
+  scripts={["/calendar/calendar.js"]}
+  scriptType="module"
+/>
+
+---
+
+## Reference
+
+### Component
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Calendar | `data-np-calendar` | `np-calendar` |
+| Bordered | `data-bordered` | `np-calendar-bordered` |
+
+The script also uses `np-calendar-months`, `-month`, `-nav`, `-nav-button`, `-month-caption`, `-caption-label`, `-dropdowns`, `-month-grid`, `-weekdays`, `-weekday`, `-week`, `-day`, `-day-button`, `-range-start`, `-range-middle`, `-range-end`, `-today`, `-outside`, `-disabled`, `-hidden` and `-booked`. Each has a `data-np-calendar-*` form in the stylesheet if you build the markup yourself.
+
+### Options
+
+Set these attributes on the element.
+
+| Attribute | Values | Default |
+| --------- | ------ | ------- |
+| `data-mode` | `single`, `multiple`, `range` | `single` |
+| `data-value` | an ISO date, a comma-separated list of them, or `from/to` for a range | none |
+| `data-month` | the month to show, `YYYY-MM` | the selected date, or today |
+| `data-months` | number of months shown side by side | `1` |
+| `data-caption-layout` | `label`, `dropdown`, `dropdown-months`, `dropdown-years` | `label` |
+| `data-start-year` / `data-end-year` | years the dropdown offers | 100 years back, 10 ahead |
+| `data-show-outside-days` | `false` hides the days of neighbouring months | shown |
+| `data-show-week-number` | present to show ISO week numbers | off |
+| `data-fixed-weeks` | present to always show six weeks | off |
+| `data-week-starts-on` | `0` (Sunday) to `6` | `0` |
+| `data-locale` | a BCP 47 tag such as `ar-EG` | the page language |
+| `data-min` / `data-max` | ISO dates that limit the selection and navigation | none |
+| `data-disabled-dates` | comma-separated ISO dates or `from/to` ranges | none |
+| `data-disabled-weekdays` | comma-separated weekday numbers, `0,6` for weekends | none |
+| `data-booked-dates` | like `data-disabled-dates`, marks days with a line-through | none |
+| `data-required` | present to stop a click from clearing a single date | off |
+| `data-name` | adds a hidden input with this name for forms | none |
+| `data-day-note-weekday` / `data-day-note-weekend` | small text shown under each day | none |
+
+The text of the arrows and dropdowns can be changed with `data-label-previous`, `data-label-next`, `data-label-month` and `data-label-year`. Calendars use the Gregorian system with the month and weekday names of the locale.
+
+
+### Script
+
+The element fires a `np-calendar-change` event on every change. The value is an ISO string for single mode, an array for multiple, and `{ from, to }` for range:
+
+```js
+document.addEventListener("np-calendar-change", (event) => {
+  console.log(event.detail.mode, event.detail.value)
+})
+```
+
+Each calendar element gets a small API:
+
+```js
+const calendar = document.querySelector("#picker")
+
+calendar.npCalendar.getValue()
+calendar.npCalendar.setValue("2026-11-20")
+calendar.npCalendar.goToMonth("2026-12")
+```
+
+The script exports `initCalendars(root)` if you add calendars to a part of the page that it does not watch.
