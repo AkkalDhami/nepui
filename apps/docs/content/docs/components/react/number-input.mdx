@@ -1,0 +1,244 @@
+---
+title: Number Input
+description: A numeric input with increment and decrement buttons, a scrub area, locale formatting and min, max and step handling.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://github.com/akkaldhami.png
+---
+
+<ComponentPreview
+  name="number-input-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/number-input.json"
+      nepui="npx nepui@latest add number-input"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react class-variance-authority cn" className="mt-6"/>
+
+      <Step>Install the required nepui dependencies:</Step>
+      <PackageManagerTabs command="npx nepui@latest add label" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="number-input"
+        title="components/nepui/number-input/number-input.css"
+        fileTarget="components/nepui/number-input/number-input.css"
+      />
+      <ComponentSource
+        target="react"
+        name="number-input"
+        title="components/nepui/number-input/number-input.tsx"
+        fileTarget="components/nepui/number-input/number-input.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="number-input"
+        title="components/nepui/number-input/index.ts"
+        fileTarget="components/nepui/number-input/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import {
+  NumberInput,
+  NumberInputDecrement,
+  NumberInputGroup,
+  NumberInputIncrement,
+  NumberInputInput,
+  NumberInputScrubArea,
+} from "@/components/nepui/number-input"
+```
+
+```tsx
+<NumberInput defaultValue={0}>
+  <NumberInputScrubArea label="Quantity" />
+  <NumberInputGroup>
+    <NumberInputDecrement />
+    <NumberInputInput />
+    <NumberInputIncrement />
+  </NumberInputGroup>
+</NumberInput>
+```
+
+---
+
+## Composition
+
+```text
+NumberInput
+├── NumberInputScrubArea (optional)
+└── NumberInputGroup
+    ├── NumberInputDecrement
+    ├── NumberInputInput
+    └── NumberInputIncrement
+```
+
+`NumberInput` wraps the Base UI `NumberField.Root`, so every Base UI root prop works here: `value`, `onValueChange`, `min`, `max`, `step`, `format`, `locale` and the rest. See the [Base UI reference](https://base-ui.com/react/components/number-field#api-reference).
+
+---
+
+## Sizes
+
+Use `size` to change the height, radius and font size of the whole control.
+
+<ComponentPreview
+  name="number-input-sizes"
+/>
+
+---
+
+## Scrub area
+
+Put a `NumberInputScrubArea` above the group. Its `label` is tied to the input, and dragging the label changes the value. Use `direction="vertical"` to scrub up and down.
+
+<ComponentPreview
+  name="number-input-scrub"
+/>
+
+---
+
+## Range
+
+`min` and `max` clamp the value. The buttons disable themselves at either end.
+
+<ComponentPreview
+  name="number-input-range"
+/>
+
+---
+
+## Step
+
+`step` sets the amount for buttons, arrow keys and scrubbing. Hold `Shift` for `largeStep` (default 10) and `Alt` for `smallStep` (default 0.1).
+
+<ComponentPreview
+  name="number-input-step"
+/>
+
+---
+
+## Formatting
+
+`format` takes any `Intl.NumberFormat` options. The input shows the formatted text while the value stays a plain number.
+
+<ComponentPreview
+  name="number-input-format"
+/>
+
+---
+
+## Layout
+
+`layout="stacked"` puts the buttons in one column at the end of the input, with chevron icons.
+
+<ComponentPreview
+  name="number-input-layout"
+/>
+
+---
+
+## Label
+
+Pass `id` to `NumberInput` and the same value to a [Label](/docs/components/react/label) as `htmlFor`. You can also name the input with `aria-label` on `NumberInputInput`, or use the scrub area `label`.
+
+<ComponentPreview
+  name="number-input-label"
+/>
+
+---
+
+## States
+
+`disabled`, `readOnly` and `required` come from Base UI. For an invalid look, set `aria-invalid="true"` on `NumberInputInput`, or wrap the input in a Base UI `Field.Root` and it reports its own `data-invalid`.
+
+<ComponentPreview
+  name="number-input-states"
+/>
+
+---
+
+## Keyboard
+
+| Key | Action |
+| --- | --- |
+| `ArrowUp` / `ArrowDown` | Increase or decrease by `step` |
+| `Shift` + `ArrowUp` / `ArrowDown` | Change by `largeStep` |
+| `Alt` + `ArrowUp` / `ArrowDown` | Change by `smallStep` |
+| `Home` / `End` | Jump to `min` or `max` |
+
+Set `allowWheelScrub` to step with the mouse wheel while the input is focused. The increment and decrement buttons stay out of the tab order, so the input is the only tab stop.
+
+---
+
+## API Reference
+
+### NumberInput
+
+Accepts every [Base UI NumberField.Root](https://base-ui.com/react/components/number-field#root) prop, plus:
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `size` | `"default" \| "xs" \| "sm" \| "lg"` | `"default"` |
+| `layout` | `"split" \| "stacked"` | `"split"` |
+| `id` | `string` | generated |
+| `className` | `string \| (state) => string` | - |
+
+### NumberInputGroup
+
+Draws the border, radius and focus ring around the buttons and the input.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string \| (state) => string` | - |
+
+### NumberInputInput
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string \| (state) => string` | - |
+
+### NumberInputIncrement
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `children` | `ReactNode` | plus icon, or chevron up when stacked |
+| `className` | `string \| (state) => string` | - |
+
+### NumberInputDecrement
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `children` | `ReactNode` | minus icon, or chevron down when stacked |
+| `className` | `string \| (state) => string` | - |
+
+### NumberInputScrubArea
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `label` | `ReactNode` | - |
+| `cursor` | `boolean` | `true` |
+| `direction` | `"horizontal" \| "vertical"` | `"horizontal"` |
+| `pixelSensitivity` | `number` | `2` |
+| `teleportDistance` | `number` | - |
+| `className` | `string \| (state) => string` | - |
