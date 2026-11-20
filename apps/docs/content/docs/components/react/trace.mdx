@@ -1,0 +1,231 @@
+---
+title: Trace
+description: The building block for reasoning, tool calls, sources and more.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://github.com/akkaldhami.png
+---
+
+<ComponentPreview
+  name="trace-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/trace.json"
+      nepui="npx nepui@latest add trace"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react class-variance-authority cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="trace"
+        title="components/nepui/trace/trace.css"
+        fileTarget="components/nepui/trace/trace.css"
+      />
+      <ComponentSource
+        target="react"
+        name="trace"
+        title="components/nepui/trace/trace.tsx"
+        fileTarget="components/nepui/trace/trace.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="trace"
+        title="components/nepui/trace/index.ts"
+        fileTarget="components/nepui/trace/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import {
+  Trace,
+  TraceCollapsible,
+  TraceCollapsibleContent,
+  TraceCollapsibleTrigger,
+  TraceDescription,
+  TraceIcon,
+  TraceLine,
+  TraceTitle,
+} from "@/components/nepui/trace"
+```
+
+```tsx
+<Trace>
+  <TraceLine>
+    <TraceIcon><SearchIcon /></TraceIcon>
+    <TraceTitle>Searched for minimumReleaseAge</TraceTitle>
+  </TraceLine>
+</Trace>
+```
+
+Use `Trace` for agent steps: tool calls, subagents and file edits. The icons are decorative, so the title has to say everything. Write full sentences. Colours come from tokens, so dark mode needs no extra setup. Icons are your own: use inline SVG or any icon library.
+
+---
+
+## Composition
+
+```text
+Trace
+└── TraceLine
+    ├── TraceIcon
+    ├── TraceTitle
+    ├── TraceDescription
+    └── TraceIcon
+```
+
+The first `TraceIcon` names the action and the last one is an indicator, such as an arrow on a link.
+
+```text
+Trace
+└── TraceCollapsible
+    ├── TraceCollapsibleTrigger
+    │   └── TraceLine
+    └── TraceCollapsibleContent
+```
+
+---
+
+## Status
+
+Use `status` on `TraceLine`.
+
+| Status | Use for |
+| --- | --- |
+| none | Finished work |
+| `"error"` | Failed work |
+| `"running"` | In progress. The title shimmers. |
+| `"pending"` | Not started, such as a plan step |
+
+Put the status in the title as well, because colour and motion alone do not convey it. Write present tense for `running`.
+
+<ComponentPreview
+  name="trace-status"
+/>
+
+---
+
+## Description
+
+`TraceDescription` is secondary text after the title. It does not truncate, so a long one wraps.
+
+<ComponentPreview
+  name="trace-description"
+/>
+
+---
+
+## Collapsible
+
+Wrap a `TraceLine` in `TraceCollapsibleTrigger` and put the detail in `TraceCollapsibleContent`. The trigger is a button with `aria-expanded` and adds a chevron after the line. Rows start closed. Use `defaultOpen` to start open, or `open` with `onOpenChange` to control it.
+
+```tsx
+const [open, setOpen] = React.useState<boolean>()
+
+<TraceCollapsible open={open ?? running} onOpenChange={setOpen}>
+  ...
+</TraceCollapsible>
+```
+
+<ComponentPreview
+  name="trace-collapsible"
+/>
+
+---
+
+## Link
+
+Wrap a `TraceLine` in an `<a>` or a `<button>` with the `np-trace-link` class. For a link that opens in a new tab, add screen reader text with `np-trace-sr-only`. The same wrapper works as the trigger of a [Dialog](/docs/components/react/dialog) or a [Sheet](/docs/components/react/sheet): use `render={<button className="np-trace-link" />}` on the trigger.
+
+<ComponentPreview
+  name="trace-link"
+/>
+
+---
+
+## Group
+
+Put a nested `Trace` inside `TraceCollapsibleContent` to group several lines under one. Pass `keepMounted` to the content to keep the open state of nested rows while it is closed.
+
+<ComponentPreview
+  name="trace-group"
+/>
+
+---
+
+## Accessibility
+
+- A bare line is a `span`: it is read as text and is not a tab stop.
+- Inside a collapsible trigger it becomes a button that announces whether it is expanded.
+- Inside a link, or a dialog or sheet trigger, it takes that element's keyboard and focus behaviour.
+- Icons are hidden from assistive technology, so the title is the accessible name.
+- Add `np-trace-sr-only` text "(opens in a new tab)" to links that open a new tab.
+- The title shimmer stops for users who prefer reduced motion.
+
+---
+
+## API Reference
+
+### Trace
+
+Renders a `<div>`. Accepts native `div` props.
+
+### TraceLine
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `status` | `"running" \| "error" \| "pending"` | - |
+| `className` | `string` | - |
+
+Renders a `<span>`. `traceLineVariants` is exported too.
+
+### TraceIcon
+
+Renders a decorative `<span>`, hidden from assistive technology.
+
+### TraceTitle
+
+Renders a `<span>`. A single line that truncates, and shimmers while running.
+
+### TraceDescription
+
+Renders a `<span>`. Secondary text that does not truncate.
+
+### TraceCollapsible
+
+Wraps [Base UI Collapsible.Root](https://base-ui.com/react/components/collapsible).
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `open` | `boolean` | - |
+| `defaultOpen` | `boolean` | `false` |
+| `onOpenChange` | `(open: boolean) => void` | - |
+
+### TraceCollapsibleTrigger
+
+Renders a `<button>` with a chevron after the line.
+
+### TraceCollapsibleContent
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `keepMounted` | `boolean` | `false` |
