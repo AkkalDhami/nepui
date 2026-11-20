@@ -1,0 +1,227 @@
+---
+title: Calendar
+description: A calendar component that allows users to select a date or a range of dates.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="calendar-demo"
+  height="min-h-120"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/calendar.json"
+      nepui="npx nepui@latest add calendar"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <ReactCodeBlockCommand
+        shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/button.json"
+        nepui="npx nepui@latest add button"
+      />
+
+      <Step>Install the required nepui dependencies:</Step>
+      <PackageManagerTabs command="npx nepui@latest add button" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="calendar"
+        title="components/nepui/calendar/calendar.css"
+        fileTarget="components/nepui/calendar/calendar.css"
+      />
+      <ComponentSource
+        target="react"
+        name="calendar"
+        title="components/nepui/calendar/calendar.tsx"
+        fileTarget="components/nepui/calendar/calendar.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="calendar"
+        title="components/nepui/calendar/index.ts"
+        fileTarget="components/nepui/calendar/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import { Calendar } from "@/components/nepui/calendar"
+```
+
+```tsx
+const [date, setDate] = React.useState<Date | undefined>(new Date())
+
+return (
+  <Calendar mode="single" selected={date} onSelect={setDate} bordered />
+)
+```
+
+See the [React DayPicker documentation](https://daypicker.dev) for more information.
+
+---
+
+## About
+
+The Calendar component is built on top of [React DayPicker](https://daypicker.dev).
+
+---
+
+## Basic
+
+<ComponentPreview
+  name="calendar-demo"
+/>
+
+---
+
+## Range calendar
+
+Use the `mode="range"` prop to enable range selection.
+
+<ComponentPreview
+  name="calendar-range"
+  height="min-h-150"
+/>
+
+---
+
+## Month and year selector
+
+Use `captionLayout="dropdown"` to show month and year dropdowns. Give `startMonth` and `endMonth` to set the years that are offered.
+
+<ComponentPreview
+  name="calendar-dropdown"
+  height="min-h-120"
+/>
+
+---
+
+## Presets
+
+Control `month` and `onMonthChange` along with the selection so a preset can move the calendar to the date it picks.
+
+<ComponentPreview
+  name="calendar-presets"
+  height="min-h-120"
+/>
+
+---
+
+## Date and time picker
+
+The calendar can sit next to other fields. This example uses the [Input](/docs/components/react/input) and [Label](/docs/components/react/label) components.
+
+<ComponentPreview
+  name="calendar-time"
+  height="min-h-150"
+/>
+
+---
+
+## Booked dates
+
+Pass a matcher to `disabled`, and use `modifiers` with `modifiersClassNames` to style the booked days. The `np-calendar-booked` class strikes them through.
+
+<ComponentPreview
+  name="calendar-booked"
+  height="min-h-120"
+/>
+
+---
+
+## Custom cell size
+
+Set `--np-calendar-cell-size` to change the size of the days. Pass a `DayButton` component to put extra content in a cell, as this price example does.
+
+<ComponentPreview
+  name="calendar-cell-size"
+  height="min-h-120"
+/>
+
+```tsx
+<Calendar
+  mode="single"
+  selected={date}
+  onSelect={setDate}
+  bordered
+  style={{ "--np-calendar-cell-size": "2.75rem" } as React.CSSProperties}
+/>
+```
+
+---
+
+## Week numbers
+
+Use `showWeekNumber` to show week numbers.
+
+<ComponentPreview
+  name="calendar-week-numbers"
+  height="min-h-120"
+/>
+
+---
+
+## Persian, Hijri and Jalali calendars
+
+To use the Persian calendar, edit `calendar.tsx` and import `DayPicker` from `react-day-picker/persian` instead of `react-day-picker`.
+
+---
+
+## Time zones
+
+Pass a `timeZone` prop so dates are shown and selected in the visitor's time zone. Detect it in an effect to avoid a hydration mismatch.
+
+```tsx
+const [timeZone, setTimeZone] = React.useState<string | undefined>()
+
+React.useEffect(() => {
+  setTimeZone(Intl.DateTimeFormat().resolvedOptions().timeZone)
+}, [])
+
+<Calendar mode="single" selected={date} onSelect={setDate} timeZone={timeZone} />
+```
+
+---
+
+## API Reference
+
+See the [React DayPicker documentation](https://daypicker.dev) for the full list of props.
+
+### Calendar
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `mode` | `"single" \| "multiple" \| "range"` | - |
+| `selected` | `Date \| Date[] \| DateRange` | - |
+| `onSelect` | `(selected) => void` | - |
+| `numberOfMonths` | `number` | `1` |
+| `captionLayout` | `"label" \| "dropdown" \| "dropdown-months" \| "dropdown-years"` | `"label"` |
+| `showOutsideDays` | `boolean` | `true` |
+| `showWeekNumber` | `boolean` | `false` |
+| `locale` | `Locale` | - |
+| `dir` | `"ltr" \| "rtl"` | - |
+| `bordered` | `boolean` | `false` |
+| `className` | `string` | - |
+
+### CalendarDayButton
+
+The button that renders a day. Use it inside a custom `DayButton` component to add content to a cell.

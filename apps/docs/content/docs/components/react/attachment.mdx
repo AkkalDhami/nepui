@@ -1,0 +1,230 @@
+---
+title: Attachment
+description: Displays a file or image attachment with media, metadata, upload state, and actions.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://github.com/akkaldhami.png
+---
+
+<ComponentPreview
+  name="attachment-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/attachment.json"
+      nepui="npx nepui@latest add attachment"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react class-variance-authority cn" className="mt-6"/>
+
+      <Step>Install the required nepui dependencies:</Step>
+      <PackageManagerTabs command="npx nepui@latest add button" className="mt-6"/>
+
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="attachment"
+        title="components/nepui/attachment/attachment.css"
+        fileTarget="components/nepui/attachment/attachment.css"
+      />
+      <ComponentSource
+        target="react"
+        name="attachment"
+        title="components/nepui/attachment/attachment.tsx"
+        fileTarget="components/nepui/attachment/attachment.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="attachment"
+        title="components/nepui/attachment/index.ts"
+        fileTarget="components/nepui/attachment/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import {
+  Attachment,
+  AttachmentAction,
+  AttachmentActions,
+  AttachmentContent,
+  AttachmentDescription,
+  AttachmentMedia,
+  AttachmentTitle,
+} from "@/components/nepui/attachment"
+```
+
+```tsx
+<Attachment>
+  <AttachmentMedia>
+    <FileIcon />
+  </AttachmentMedia>
+  <AttachmentContent>
+    <AttachmentTitle>release-notes.pdf</AttachmentTitle>
+    <AttachmentDescription>PDF · 1.2 MB</AttachmentDescription>
+  </AttachmentContent>
+  <AttachmentActions>
+    <AttachmentAction aria-label="Remove release-notes.pdf">
+      <XIcon />
+    </AttachmentAction>
+  </AttachmentActions>
+</Attachment>
+```
+
+Icons are your own: use inline SVG or any icon library. Colours come from tokens, so dark mode needs no extra setup. The styles use `color-mix()` and `:has()`, which need a modern browser.
+
+---
+
+## Composition
+
+```text
+Attachment
+├── AttachmentMedia
+├── AttachmentContent
+│   ├── AttachmentTitle
+│   └── AttachmentDescription
+├── AttachmentActions
+│   └── AttachmentAction
+└── AttachmentTrigger
+
+AttachmentGroup
+├── Attachment
+└── Attachment
+```
+
+---
+
+## Image
+
+Use `variant="image"` on `AttachmentMedia` and put an `<img>` inside. Use `orientation="vertical"` on `Attachment` to stack the media above the content. Give the image an `alt` when it carries meaning.
+
+<ComponentPreview
+  name="attachment-image"
+/>
+
+---
+
+## States
+
+Use `state` on `Attachment`.
+
+| State | Use for |
+| --- | --- |
+| `"idle"` | Ready to upload. Dashed border. |
+| `"uploading"` | Uploading. The title shimmers and a bar shows `progress`. |
+| `"processing"` | Processing. The title shimmers. |
+| `"error"` | Failed. Destructive colours. Say why in the description. |
+| `"done"` | Done. The default. |
+
+Pass `progress` (0 to 100) to fill the upload bar.
+
+<ComponentPreview
+  name="attachment-states"
+/>
+
+---
+
+## Sizes
+
+Use `size` on `Attachment`: `default`, `sm` or `xs`. Use `orientation="vertical"` for the vertical layout.
+
+<ComponentPreview
+  name="attachment-sizes"
+/>
+
+---
+
+## Group
+
+Wrap the attachments in `AttachmentGroup`. It scrolls sideways, snaps, and fades at the edges that have more to scroll. Keyboard users reach off-screen items by tabbing, so give a group of non-interactive items `tabIndex={0}`, `role="group"` and an `aria-label`.
+
+<ComponentPreview
+  name="attachment-group"
+/>
+
+---
+
+## Trigger
+
+Put an `AttachmentTrigger` last in the `Attachment`. It covers the whole card, and the actions stay above it and keep working. It renders a `<button>`; use `render` to render a link or a `DialogTrigger`. Give it an `aria-label`, since it has no text.
+
+<ComponentPreview
+  name="attachment-trigger"
+/>
+
+---
+
+## API Reference
+
+### Attachment
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `state` | `"idle" \| "uploading" \| "processing" \| "error" \| "done"` | `"done"` |
+| `size` | `"default" \| "sm" \| "xs"` | `"default"` |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
+| `progress` | `number` (0 to 100) | - |
+| `className` | `string` | - |
+
+Renders a `<div>`. `attachmentVariants` is exported too.
+
+### AttachmentMedia
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `"icon" \| "image"` | `"icon"` |
+
+### AttachmentContent
+
+Renders a `<div>` that holds the title and the description.
+
+### AttachmentTitle
+
+Renders a `<div>`. Truncates, and shimmers while uploading or processing.
+
+### AttachmentDescription
+
+Renders a `<div>`. For metadata such as type, size or status.
+
+### AttachmentActions
+
+Renders a `<div>` aligned to the end.
+
+### AttachmentAction
+
+Renders a nepui [Button](/docs/components/react/button) and accepts its props.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `Button["variant"]` | `"ghost"` |
+| `size` | `Button["size"]` | `"icon-xs"` |
+
+### AttachmentTrigger
+
+Renders a `<button>` that covers the card.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `render` | `ReactElement \| (props, state) => ReactElement` | - |
+
+### AttachmentGroup
+
+Renders a `<div>` that scrolls sideways and snaps.

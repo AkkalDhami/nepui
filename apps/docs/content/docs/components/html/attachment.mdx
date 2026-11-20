@@ -1,0 +1,209 @@
+---
+title: Attachment
+description: Displays a file or image attachment with media, metadata, upload state, and actions.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  target="html"
+  name="attachment-demo"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add attachment"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the required nepui dependencies:</Step>
+      <PackageManagerTabs command="npx nepui@latest add button" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="attachment"
+        title="styles/attachment.css"
+        fileTarget="styles/attachment.css"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the stylesheets, after `tokens.css` and `button.css`:
+
+```html
+<link rel="stylesheet" href="./styles/button.css">
+<link rel="stylesheet" href="./styles/attachment.css">
+```
+
+```html
+<div class="np-attachment">
+  <div class="np-attachment-media"><svg ...></svg></div>
+  <div class="np-attachment-content">
+    <div class="np-attachment-title">release-notes.pdf</div>
+    <div class="np-attachment-description">PDF · 1.2 MB</div>
+  </div>
+  <div class="np-attachment-actions">
+    <button type="button" class="np-button np-button-ghost np-button-icon-xs np-attachment-action"
+      aria-label="Remove release-notes.pdf"><svg ...></svg></button>
+  </div>
+</div>
+```
+
+Or use the data attributes instead of classes: `data-np-attachment`, `data-np-attachment-media`, `data-np-attachment-content`, `data-np-attachment-title`, `data-np-attachment-description`, `data-np-attachment-actions`, `data-np-attachment-trigger`, `data-np-attachment-group`.
+
+Colours come from tokens, so dark mode needs no extra setup. The styles use `color-mix()` and `:has()`, which need a modern browser.
+
+---
+
+## Composition
+
+```text
+Attachment
+├── AttachmentMedia
+├── AttachmentContent
+│   ├── AttachmentTitle
+│   └── AttachmentDescription
+├── AttachmentActions
+│   └── AttachmentAction
+└── AttachmentTrigger
+
+AttachmentGroup
+├── Attachment
+└── Attachment
+```
+
+---
+
+## Image
+
+Add `np-attachment-media-image` (or `data-variant="image"`) to the media and put an `<img>` inside. Add `np-attachment-vertical` to stack the media above the content. Give the image an `alt` when it carries meaning.
+
+Link the stylesheet:
+
+```html
+<link rel="stylesheet" href="./styles/button.css">
+```
+
+<ComponentPreview
+  target="html"
+  name="attachment-image"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## States
+
+Add a state class, or `data-state`, to the root.
+
+Link the stylesheet:
+
+```html
+<link rel="stylesheet" href="./styles/button.css">
+```
+
+<ComponentPreview
+  target="html"
+  name="attachment-states"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Sizes
+
+`np-attachment-sm` and `np-attachment-xs` (or `data-size`) make the card smaller. Add `np-attachment-vertical` (or `data-orientation="vertical"`) for the vertical layout.
+
+Link the stylesheet:
+
+```html
+<link rel="stylesheet" href="./styles/button.css">
+```
+
+<ComponentPreview
+  target="html"
+  name="attachment-sizes"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Group
+
+Put the attachments in a `np-attachment-group`. It scrolls sideways, snaps, and fades at the edges that have more to scroll. Keyboard users reach off-screen items by tabbing, so give a group of non-interactive items `tabindex="0"`, `role="group"` and an `aria-label`.
+
+Link the stylesheet:
+
+```html
+<link rel="stylesheet" href="./styles/button.css">
+```
+
+<ComponentPreview
+  target="html"
+  name="attachment-group"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Trigger
+
+Put a `np-attachment-trigger` last in the card. It is a link or a button that covers the whole card, and the actions stay above it and keep working. Give it an `aria-label`, since it has no text. A `<button>` trigger can open a dialog with the invoker attributes.
+
+Link the stylesheet:
+
+```html
+<link rel="stylesheet" href="./styles/button.css">
+```
+
+<ComponentPreview
+  target="html"
+  name="attachment-trigger"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Reference 
+
+### Classes
+
+| Class | Data attribute | Use for |
+| --- | --- | --- |
+| `np-attachment` | `data-np-attachment` | The attachment card. |
+| `np-attachment-media` | `data-np-attachment-media` | The media of the attachment. |
+| `np-attachment-content` | `data-np-attachment-content` | The content of the attachment. |
+| `np-attachment-title` | `data-np-attachment-title` | The title of the attachment. |
+| `np-attachment-description` | `data-np-attachment-description` | The description of the attachment. |
+| `np-attachment-actions` | `data-np-attachment-actions` | The actions of the attachment. |
+| `np-attachment-trigger` | `data-np-attachment-trigger` | The trigger of the attachment. |
+| `np-attachment-group` | `data-np-attachment-group` | The group of attachments. |
+| `np-attachment-vertical` | `data-orientation="vertical"` | The vertical layout. |
+
+### States
+
+| Class | Data attribute | Use for |
+| --- | --- | --- |
+| `np-attachment-idle` | `data-state="idle"` | Ready to upload. Dashed border. |
+| `np-attachment-uploading` | `data-state="uploading"` | Uploading. The title shimmers and a bar shows `--np-attachment-progress`. |
+| `np-attachment-processing` | `data-state="processing"` | Processing. The title shimmers. |
+| `np-attachment-error` | `data-state="error"` | Failed. Destructive colours. Say why in the description. |
+| - | - | Done |
