@@ -1,0 +1,407 @@
+---
+title: File Input
+description: Choose, drop or paste files, check them against your rules, and submit them with a form.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://github.com/akkaldhami.png
+---
+
+<ComponentPreview name="file-input-demo" />
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/file-input.json"
+      nepui="npx nepui@latest add file-input"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install cn" className="mt-6"/>
+
+      <Step>Install the required nepui dependencies:</Step>
+      <PackageManagerTabs command="npx nepui@latest add button" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="file-input"
+        title="components/nepui/file-input/file-input.css"
+        fileTarget="components/nepui/file-input/file-input.css"
+      />
+      <ComponentSource
+        target="react"
+        name="file-input"
+        title="components/nepui/file-input/file-input.tsx"
+        fileTarget="components/nepui/file-input/file-input.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="file-input"
+        title="components/nepui/file-input/index.ts"
+        fileTarget="components/nepui/file-input/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+
+}
+/>
+
+---
+
+## Usage
+
+A file input holds the files someone chooses, drops or pastes, checks them against your rules, and submits them with a form. Uploading them to a server is up to your app.
+
+```tsx
+import {
+  FileInput,
+  FileInputDropzone,
+  FileInputDropzoneDescription,
+  FileInputDropzoneIcon,
+  FileInputDropzoneTitle,
+  FileInputItem,
+  FileInputItemDetails,
+  FileInputItemName,
+  FileInputItemPreview,
+  FileInputItemRemove,
+  FileInputItemSize,
+  FileInputList,
+  FileInputTrigger,
+} from "@/components/nepui/file-input"
+```
+
+```tsx
+<FileInput name="attachments" multiple>
+  <FileInputDropzone>
+    <FileInputDropzoneIcon />
+    <FileInputDropzoneTitle>Drag and drop files here</FileInputDropzoneTitle>
+    <FileInputDropzoneDescription>Or paste them from your clipboard.</FileInputDropzoneDescription>
+    <FileInputTrigger>Browse files</FileInputTrigger>
+  </FileInputDropzone>
+  <FileInputList aria-label="Files">
+    <FileInputItem>
+      <FileInputItemPreview />
+      <FileInputItemDetails>
+        <FileInputItemName />
+        <FileInputItemSize />
+      </FileInputItemDetails>
+      <FileInputItemRemove />
+    </FileInputItem>
+  </FileInputList>
+</FileInput>
+```
+
+---
+
+## Composition
+
+```text
+FileInput
+├── FileInputTrigger
+├── FileInputDropzone
+│   ├── FileInputDropzoneIcon
+│   ├── FileInputDropzoneTitle
+│   └── FileInputDropzoneDescription
+├── FileInputRejections
+└── FileInputList
+    └── FileInputItem
+        ├── FileInputItemPreview
+        ├── FileInputItemDetails
+        │   ├── FileInputItemName
+        │   └── FileInputItemSize
+        └── FileInputItemRemove
+```
+
+The trigger opens the system file picker. The drop zone takes files that are dropped on it, or pasted while focus is inside it. Keep a trigger beside it for people using a keyboard. The list renders its item once for each file, and an item's state has its `file` and `index`. A remove button removes its item's file.
+
+`FileInput` renders a hidden native `<input type="file">`. It carries `accept`, `multiple`, `capture`, `required` and `name`, and it holds the same files as the value, so a form can submit and validate them.
+
+---
+
+## Upload button
+
+A trigger is enough when you only need the system file picker. Read the chosen file from the root's state to show its name beside the button.
+
+<ComponentPreview name="file-input-upload-button" />
+
+## Upload feedback
+
+The preview at the top composes File Input with [Attachment](/docs/components/react/attachment) for each file, [Field](/docs/components/react/field) for its label and error, and `toast.promise` for loading, success and failure feedback. The failure button intentionally simulates a rejected upload; replace the delay with your upload request. These are optional composition choices, not File Input dependencies. Install the components you use with `npx nepui@latest add attachment field toast`.
+
+---
+
+## Accepted types
+
+`accept` takes MIME types, wildcards and extensions, such as `image/*` and `.pdf`, in a comma-separated string or an array. It checks files from the picker, drops and pastes. An extension matches the filename, even when the operating system reports an unexpected MIME type.
+
+A rejected file never joins the value. `onReject` receives each one with its `reasons`, and `FileInputRejections` lists them for you. While files are dragged over a drop zone, `data-drag-reject` shows when their types will not be accepted.
+
+<ComponentPreview name="file-input-accepted-types" />
+
+---
+
+## Limits
+
+Use `maxFiles` to limit the total count, and `minSize` or `maxSize` for bytes per file. When too many files arrive, the first ones that pass the other checks are accepted until the list is full, and the rest are rejected with `too-many-files`. `maxFiles` counts the files already in the list.
+
+<ComponentPreview name="file-input-limits" />
+
+---
+
+## One file
+
+Without `multiple`, a new file replaces the current one. A rejected file leaves the current value unchanged. With `multiple`, accepted files join the list.
+
+<ComponentPreview name="file-input-one-file" />
+
+---
+
+## Validation
+
+Add `validate` for checks of your own. Return a reason string to reject a file, or `null` to accept it. It runs after the built-in type and size checks, and its reason reaches `onReject` like theirs. Always validate uploads on your server too.
+
+<ComponentPreview name="file-input-validation" />
+
+---
+
+## File list
+
+The list has one Tab stop. Arrow keys, Home and End move between files. Delete or Backspace removes the focused file and moves focus to the next one. Remove buttons are named for their file and stay out of the Tab order.
+
+`FileInputItemPreview` shows a thumbnail for images and a file icon for everything else. It creates an object URL and revokes it when the item goes away. Change the thumbnail size with `--np-file-input-preview-size`.
+
+<ComponentPreview name="file-input-previews" />
+
+---
+
+## Attachments
+
+Put a textarea inside a drop zone to attach files to a message. `pasteTarget` takes file pastes from the textarea too, and text pastes keep their normal behavior. It can also be an element, a CSS selector, or `"document"`. Use `data-variant="inline"` on the drop zone for a composer look. The example uses [Attachment](/docs/components/react/attachment) to render each selected file.
+
+<ComponentPreview name="file-input-attachments" />
+
+---
+
+## Page-wide drop
+
+Set `target="document"` to take files dropped anywhere on the page. The zone shows `data-dragging` while a file is over the window, so with `data-variant="overlay"` it becomes a full-page overlay. A drop on another zone stays with that zone.
+
+<ComponentPreview name="file-input-page-wide" />
+
+While a drop zone is mounted, dropping a file outside every zone does not navigate away from the page. Drops onto native file inputs, ordinary text drops, and drags that started inside the page keep their behavior.
+
+---
+
+## Folders
+
+`directory` picks a whole folder and turns on `multiple`. Dropped folders are read recursively, up to 1,000 files, and system files such as `.DS_Store` are skipped. `relativePath(file)` returns the path inside the folder.
+
+<ComponentPreview name="file-input-folder" />
+
+---
+
+## Camera
+
+Use `capture="environment"` to request the rear camera, or `"user"` for the front camera. The picker you get depends on the device and browser. A desktop browser opens a file picker.
+
+<ComponentPreview name="file-input-camera" />
+
+---
+
+## Controlled
+
+Pass `value` and update it in `onValueChange`. `details` has the `reason` and the `added`, `removed` and `rejected` files. Call `details.cancel()` to keep the current value. `onReject` reports rejected files even when none were accepted.
+
+<ComponentPreview name="file-input-controlled" />
+
+---
+
+## Opening from anywhere
+
+Create a controller with `createFileInputController()` and pass it to `FileInput`. Use it to open the picker, add or remove files, clear the value, or read the files. Open the picker from a user action, such as a button press, so the browser allows it. A `FileInputTrigger` outside the file input connects through the same `controller` prop.
+
+<ComponentPreview name="file-input-controller" />
+
+---
+
+## Announcements
+
+The component announces accepted, removed and rejected files through a polite live region. Use `announcement` to change the message, or return `null` to skip it.
+
+```tsx
+<FileInput
+  multiple
+  announcement={({ added, removed }) =>
+    added.length
+      ? `Added ${added.map((file) => file.name).join(", ")}.`
+      : removed.length
+        ? `Removed ${removed.map((file) => file.name).join(", ")}.`
+        : null
+  }
+>
+```
+
+---
+
+## Forms
+
+With `name`, the files submit through the native input. A form reset returns to `defaultValue`. `form` connects the file input to a form elsewhere on the page. Rejected files never submit, and `disabled` leaves the value out of the submission as well as stopping picks, drops and pastes. With no files, a native file input submits one empty file.
+
+<ComponentPreview name="file-input-form" />
+
+---
+
+## Fields
+
+Wrap the file input in a [Field](/docs/components/react/field). Give the trigger an `id` so the label can name it, and a press on the label opens the picker. `required` stops the form from submitting with no file, with the browser's own message.
+
+<ComponentPreview name="file-input-field" />
+
+---
+
+## Disabled
+
+<ComponentPreview name="file-input-disabled" />
+
+---
+
+## Invalid
+
+Set `invalid` on `FileInput`. It sets `data-invalid` on the root and the drop zone, and `aria-invalid` on the trigger. A `data-invalid` on the parent `Field` also turns the drop zone border red.
+
+<ComponentPreview name="file-input-invalid" />
+
+---
+
+## Accessibility
+
+Keep a trigger available alongside a drop zone for people using a keyboard or screen reader. The drop zone is not a control: the trigger inside it is the Tab stop.
+
+- Accepted, removed and rejected counts are announced through a polite live region.
+- The list is one Tab stop. Arrow keys, Home and End move between items, and Delete or Backspace removes the focused one.
+- A remove button is named after its file (`Remove report.pdf`) and stays out of the Tab order.
+- The native input is hidden from the accessibility tree and the Tab order.
+- `FileInputRejections` has `role="alert"`.
+- Pressing a `Field` label opens the picker, because the label points at the trigger.
+
+---
+
+## API Reference
+
+### FileInput
+
+| Prop            | Type                                                       | Default |
+| --------------- | ---------------------------------------------------------- | ------- |
+| `accept`        | `string \| readonly string[]`                              | -       |
+| `maxFiles`      | `number`                                                   | -       |
+| `maxSize`       | `number`                                                   | -       |
+| `minSize`       | `number`                                                   | -       |
+| `validate`      | `(file: File) => string \| null \| undefined \| void`      | -       |
+| `value`         | `File[]`                                                   | -       |
+| `defaultValue`  | `File[]`                                                   | `[]`    |
+| `onValueChange` | `(value: File[], details: FileInputChangeDetails) => void` | -       |
+| `onReject`      | `(rejected: FileRejection[], details) => void`             | -       |
+| `multiple`      | `boolean`                                                  | `false` |
+| `directory`     | `boolean`                                                  | `false` |
+| `capture`       | `"environment" \| "user" \| boolean`                       | -       |
+| `name`          | `string`                                                   | -       |
+| `form`          | `string`                                                   | -       |
+| `required`      | `boolean`                                                  | `false` |
+| `disabled`      | `boolean`                                                  | `false` |
+| `invalid`       | `boolean`                                                  | `false` |
+| `announcement`  | `(change: FileInputChange) => string \| null \| undefined` | -       |
+| `controller`    | `FileInputController`                                      | -       |
+| `className`     | `string \| (state) => string`                              | -       |
+| `children`      | `ReactNode \| (state) => ReactNode`                        | -       |
+
+`FileInputChangeDetails` has `reason`, `event`, `added`, `removed`, `rejected`, `cancel()` and `isCanceled`. A `FileRejection` is `{ file, reasons }`.
+
+### FileInputTrigger
+
+Renders the nepui [Button](/docs/components/react/button), so `variant` and `size` work here. The default `variant` is `"outline"`.
+
+| Prop         | Type                                | Default |
+| ------------ | ----------------------------------- | ------- |
+| `controller` | `FileInputController`               | -       |
+| `children`   | `ReactNode \| (state) => ReactNode` | -       |
+
+### FileInputDropzone
+
+| Prop          | Type                                                         | Default  |
+| ------------- | ------------------------------------------------------------ | -------- |
+| `target`      | `"self" \| "document"`                                       | `"self"` |
+| `pasteTarget` | `"document" \| string \| Element \| (() => Element \| null)` | -        |
+| `className`   | `string \| (state) => string`                                | -        |
+| `children`    | `ReactNode \| (state) => ReactNode`                          | -        |
+
+`FileInputDropzoneIcon`, `FileInputDropzoneTitle` and `FileInputDropzoneDescription` are plain presentational parts.
+
+### FileInputList
+
+Renders its single child (a `FileInputItem`) once for each file.
+
+### FileInputItem
+
+| Prop        | Type                                | Default         |
+| ----------- | ----------------------------------- | --------------- |
+| `file`      | `File`                              | the list's file |
+| `className` | `string \| (state) => string`       | -               |
+| `children`  | `ReactNode \| (state) => ReactNode` | -               |
+
+`FileInputItemPreview`, `FileInputItemDetails`, `FileInputItemName` and `FileInputItemSize` read the file from the item. `FileInputItemRemove` renders the nepui Button and removes it.
+
+### FileInputRejections
+
+| Prop       | Type                                       | Default                    |
+| ---------- | ------------------------------------------ | -------------------------- |
+| `children` | `(rejected: FileRejection[]) => ReactNode` | one line per rejected file |
+
+### State
+
+| Where               | Property                                           | Type                        |
+| ------------------- | -------------------------------------------------- | --------------------------- |
+| Root, trigger, list | `value`                                            | `readonly File[]`           |
+| Root, trigger, list | `disabled`, `required`, `dragging`, `invalid`      | `boolean`                   |
+| Drop zone           | `dragging`, `dragAccept`, `dragReject`, `disabled` | `boolean`                   |
+| Item                | `file`, `index`, `disabled`                        | `File`, `number`, `boolean` |
+
+### Reasons
+
+| Reason         | When                                                                |
+| -------------- | ------------------------------------------------------------------- |
+| `picker`       | Files were chosen in the system file picker.                        |
+| `drop`         | Files were dropped on a drop zone.                                  |
+| `paste`        | Files were pasted, like a screenshot.                               |
+| `remove-press` | A remove button was pressed, or Delete or Backspace removed a file. |
+| `reset`        | A form reset.                                                       |
+| `imperative`   | A controller call.                                                  |
+
+Rejected files carry one or more of `file-type`, `file-too-large`, `file-too-small` and `too-many-files`, or a reason from your `validate`.
+
+### Controller
+
+| Method                       | Description                                                                                                       |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `getValue()`                 | The files it holds.                                                                                               |
+| `setValue(files, options?)`  | Replaces the files, without checking them.                                                                        |
+| `addFiles(files, options?)`  | Runs files through the checks and adds the accepted ones, like a drop. Returns `false` when disabled or canceled. |
+| `removeFile(file, options?)` | Removes one file.                                                                                                 |
+| `clear(options?)`            | Removes every file.                                                                                               |
+| `open()`                     | Opens the file picker. Returns `false` when disabled.                                                             |
+| `focus()`                    | Moves focus to the trigger.                                                                                       |
+| `isDragging()`               | Whether files are being dragged over a drop zone.                                                                 |
+
+### Helpers
+
+| Function                | Description                                                        |
+| ----------------------- | ------------------------------------------------------------------ |
+| `formatFileSize(bytes)` | `"12 B"`, `"1.5 KB"`, `"4.8 MB"`.                                  |
+| `relativePath(file)`    | The path of a file inside a picked or dropped folder, or its name. |

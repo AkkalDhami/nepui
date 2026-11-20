@@ -1,0 +1,353 @@
+---
+title: File Input
+description: Choose, drop or paste files, check them against your rules, and submit them with a form.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://github.com/akkaldhami.png
+---
+
+<ComponentPreview
+  target="html"
+  name="file-input-demo"
+  styles={[
+    "/button/button.css",
+    "/field/field.css",
+    "/attachment/attachment.css",
+    "/toast/toast.css",
+  ]}
+  scripts={["/file-input/file-input.js", "/toast/toast.js"]}
+  scriptType="module"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add file-input"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the required nepui dependencies:</Step>
+      <PackageManagerTabs command="npx nepui@latest add button" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="file-input"
+        title="styles/file-input.css"
+        fileTarget="styles/file-input.css"
+      />
+      <ComponentSource
+        target="html"
+        name="file-input"
+        title="javascripts/file-input.js"
+        fileTarget="javascripts/file-input.js"
+      />
+      <ComponentSource
+        target="html"
+        name="file-input"
+        title="html/file-input.html"
+        fileTarget="html/file-input.html"
+      />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+
+}
+/>
+
+---
+
+## Usage
+
+The HTML previews load the assets they need through each `ComponentPreview`. For a standalone page with the full composition shown above, link the base File Input assets plus Field, Attachment, and Toast:
+
+```html
+<link rel="stylesheet" href="./styles/tokens.css" />
+<link rel="stylesheet" href="./styles/button.css" />
+<link rel="stylesheet" href="./styles/file-input.css" />
+<link rel="stylesheet" href="./styles/field.css" />
+<link rel="stylesheet" href="./styles/attachment.css" />
+<link rel="stylesheet" href="./styles/toast.css" />
+
+<script src="./javascripts/file-input.js" defer></script>
+<script type="module" src="./javascripts/toast.js"></script>
+```
+
+The other file-input previews only need `button.css` and `file-input.js`; the invalid-field preview also loads `field.css`. `tokens.css` and `file-input.css` are common to every demo.
+
+The markup is a native `<input type="file">` (hidden), a trigger button that clicks it, and a drop zone.
+
+```html
+<div class="np-file-input">
+  <div class="np-file-input-dropzone">
+    <span class="np-file-input-dropzone-icon"><!-- upload icon --></span>
+    <p class="np-file-input-dropzone-title">Drag and drop files here</p>
+    <p class="np-file-input-dropzone-description">
+      Or paste them from your clipboard.
+    </p>
+    <button
+      class="np-button np-button-outline np-file-input-trigger"
+      type="button"
+      onclick="this.closest('.np-file-input').querySelector('input[type=file]').click()"
+    >
+      Browse files
+    </button>
+  </div>
+  <input
+    class="np-file-input-native"
+    type="file"
+    name="attachments"
+    multiple
+    tabindex="-1"
+    aria-hidden="true"
+  />
+
+  <ul class="np-file-input-list" aria-label="Files">
+    <template>
+      <li class="np-file-input-item" tabindex="-1">
+        <span class="np-file-input-item-preview" data-file-preview
+          ><!-- file icon --></span
+        >
+        <div class="np-file-input-item-details">
+          <span class="np-file-input-item-name" data-file-name></span>
+          <span class="np-file-input-item-size" data-file-size></span>
+        </div>
+        <button
+          class="np-button np-button-ghost np-button-icon-xs np-file-input-item-remove"
+          type="button"
+          data-file-remove
+        >
+          <!-- x icon -->
+        </button>
+      </li>
+    </template>
+  </ul>
+  <ul class="np-file-input-rejections" hidden></ul>
+  <div class="np-file-input-live" role="status" aria-live="polite"></div>
+</div>
+```
+
+Or with data attributes instead of classes:
+
+```html
+<div data-np-file-input>
+  <div data-np-file-input-dropzone>…</div>
+  <input data-np-file-input-native type="file" … />
+  <ul data-np-file-input-list>
+    …
+  </ul>
+</div>
+```
+
+## Composition
+
+The preview composes these HTML class aliases. Each `.np-file-input-item` template contains an `.np-attachment`; the demo listens for `np-file-input:change` and uses `window.npToast.promise()` for loading, success, and simulated failure feedback.
+
+```text
+.np-field
+├── .np-field-label
+├── .np-file-input
+│   ├── .np-file-input-dropzone
+│   ├── .np-file-input-native
+│   └── .np-file-input-list
+│       └── <template> .np-file-input-item
+│           └── .np-attachment
+│               ├── .np-attachment-media > .np-file-input-item-preview
+│               ├── .np-attachment-content
+│               │   ├── .np-attachment-title.np-file-input-item-name
+│               │   └── .np-attachment-description.np-file-input-item-size
+│               └── .np-attachment-actions > .np-file-input-item-remove
+├── .np-field-description
+├── .np-field-error
+└── .np-button upload actions -> window.npToast.promise(...)
+```
+
+These are optional compositions; File Input itself only depends on Button. For this example, also load `field.css`, `attachment.css`, `toast.css` and `toast.js`. Replace the simulated delay with your upload request.
+
+#### Without the script
+
+The picker and a normal form submission work with no script at all: the chosen files are submitted with the form, but nothing on the page shows them. The script adds everything else:
+
+- drag and drop, with `data-dragging`, `data-drag-accept` and `data-drag-reject`
+- paste
+- the file list, built from the `<template>`
+- accepted types, limits and the rejection messages
+- keyboard navigation and removal in the list
+- the live region announcements
+- form reset
+
+Pick `accept`, `multiple` and `webkitdirectory` on the native input. Set the limits on the root with `data-max-files`, `data-max-size` and `data-min-size` (bytes).
+
+> **Note:** The script does not run custom `validate` functions or offer a controller. Use the [React version](/docs/components/react/file-input) for those. The script initialises roots that are added to the page later too.
+
+---
+
+## Accepted types
+
+<ComponentPreview
+  target="html"
+  name="file-input-accepted-types"
+  styles={["/button/button.css"]}
+  scripts={["/file-input/file-input.js"]}
+/>
+
+Put `accept` on the native input: MIME types, wildcards and extensions, separated by commas.
+
+---
+
+## Limits
+
+<ComponentPreview
+  target="html"
+  name="file-input-limits"
+  styles={["/button/button.css"]}
+  scripts={["/file-input/file-input.js"]}
+/>
+
+```html
+<div class="np-file-input" data-max-files="3" data-max-size="2000000"></div>
+```
+
+---
+
+## One file
+
+Without `multiple` on the native input, a new file replaces the current one.
+
+<ComponentPreview
+  target="html"
+  name="file-input-one-file"
+  styles={["/button/button.css"]}
+  scripts={["/file-input/file-input.js"]}
+/>
+
+---
+
+## Previews
+
+An image shows as a thumbnail in `[data-file-preview]`. Any other file keeps the icon from the template. Change the size with `--np-file-input-preview-size`.
+
+<ComponentPreview
+  target="html"
+  name="file-input-previews"
+  styles={["/button/button.css"]}
+  scripts={["/file-input/file-input.js"]}
+/>
+
+---
+
+## Page-wide drop
+
+Add `data-target="document"` to the drop zone, and the `np-file-input-dropzone-overlay` class (or `data-variant="overlay"`) to make it a full-page overlay. For extra paste sources, add `data-paste-target="document"` or a CSS selector.
+
+<ComponentPreview
+  target="html"
+  name="file-input-page-wide"
+  styles={["/button/button.css"]}
+  scripts={["/file-input/file-input.js"]}
+/>
+
+---
+
+## Disabled
+
+Set `disabled` on the native input and on the trigger.
+
+<ComponentPreview
+  target="html"
+  name="file-input-disabled"
+  styles={["/button/button.css"]}
+  scripts={["/file-input/file-input.js"]}
+/>
+
+---
+
+## Invalid
+
+Set `data-invalid` on the root or the parent field, and `aria-invalid="true"` on the trigger.
+
+<ComponentPreview
+  target="html"
+  name="file-input-invalid"
+  styles={["/button/button.css", "/field/field.css"]}
+  scripts={["/file-input/file-input.js"]}
+/>
+
+---
+
+## Reference
+
+### Parts
+
+| Name                  | Data attribute                    | Class alias                          |
+| --------------------- | --------------------------------- | ------------------------------------ |
+| Root                  | `data-np-file-input`              | `np-file-input`                      |
+| Trigger               | `data-np-file-input-trigger`      | `np-file-input-trigger`              |
+| Drop zone             | `data-np-file-input-dropzone`     | `np-file-input-dropzone`             |
+| Drop zone icon        | -                                 | `np-file-input-dropzone-icon`        |
+| Drop zone title       | -                                 | `np-file-input-dropzone-title`       |
+| Drop zone description | -                                 | `np-file-input-dropzone-description` |
+| List                  | `data-np-file-input-list`         | `np-file-input-list`                 |
+| Item                  | `data-np-file-input-item`         | `np-file-input-item`                 |
+| Item preview          | `data-np-file-input-item-preview` | `np-file-input-item-preview`         |
+| Item details          | `data-np-file-input-item-details` | `np-file-input-item-details`         |
+| Item name             | `data-np-file-input-item-name`    | `np-file-input-item-name`            |
+| Item size             | `data-np-file-input-item-size`    | `np-file-input-item-size`            |
+| Item remove           | `data-np-file-input-item-remove`  | `np-file-input-item-remove`          |
+| Rejections            | `data-np-file-input-rejections`   | `np-file-input-rejections`           |
+| Native input          | `data-np-file-input-native`       | `np-file-input-native`               |
+| Live region           | `data-np-file-input-live`         | `np-file-input-live`                 |
+
+### Drop zone variants
+
+| Name    | Data attribute           | Class alias                      |
+| ------- | ------------------------ | -------------------------------- |
+| Default | -                        | `np-file-input-dropzone`         |
+| Overlay | `data-variant="overlay"` | `np-file-input-dropzone-overlay` |
+| Inline  | `data-variant="inline"`  | `np-file-input-dropzone-inline`  |
+
+### Template hooks
+
+Inside the `<template>`, the script fills these:
+
+| Attribute           | What it gets                                       |
+| ------------------- | -------------------------------------------------- |
+| `data-file-name`    | The file name, or the path inside a folder.        |
+| `data-file-size`    | The size, such as `1.5 KB`.                        |
+| `data-file-preview` | A thumbnail for images.                            |
+| `data-file-remove`  | A click handler, and `aria-label="Remove <name>"`. |
+
+### Events
+
+The script fires these on the root. They bubble.
+
+| Event                  | `detail`                                      |
+| ---------------------- | --------------------------------------------- |
+| `np-file-input:change` | `{ files, added, removed, rejected, reason }` |
+| `np-file-input:reject` | `{ rejected, reason }`                        |
+
+```js
+document
+  .querySelector(".np-file-input")
+  .addEventListener("np-file-input:change", (event) => {
+    console.log(event.detail.files)
+  })
+```
+
+A root also has a small API: `root._npFileInput.getFiles()`, `.addFiles(list)`, `.clear()` and `.open()`.
+
+### States
+
+| State         | Selector                                                 |
+| ------------- | -------------------------------------------------------- |
+| Dragging      | `[data-dragging]` on the root and the drop zone          |
+| Drag accepted | `[data-drag-accept]` on the drop zone                    |
+| Drag rejected | `[data-drag-reject]` on the drop zone                    |
+| Disabled      | `:disabled` on the native input, `[data-disabled]`       |
+| Invalid       | `[data-invalid]` on the root, the drop zone or the field |
