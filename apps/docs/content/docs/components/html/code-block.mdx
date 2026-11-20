@@ -1,0 +1,354 @@
+---
+title: Code Block
+description: Displays code, terminal output, logs and diffs, with a header, line numbers, highlighted lines and copy.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  target="html"
+  name="code-block-demo"
+  styles={["/button/button.css"]}
+  scripts={[
+    "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js",
+    "/code-block/code-block.js",
+  ]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add code-block"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the required nepui dependencies:</Step>
+      <PackageManagerTabs command="npx nepui@latest add button" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="code-block"
+        title="styles/code-block.css"
+        fileTarget="styles/code-block.css"
+      />
+      <ComponentSource
+        target="html"
+        name="code-block"
+        title="javascripts/code-block.js"
+        fileTarget="javascripts/code-block.js"
+      />
+
+      <Step>Add <LINK href="https://prismjs.com" target="_blank">Prism</LINK> if you want syntax highlighting. It is optional. Load `prism.js` before `code-block.js`.</Step>
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the stylesheets, then the scripts. Prism, if you use it, goes first:
+
+```html
+<link rel="stylesheet" href="./styles/button.css">
+<link rel="stylesheet" href="./styles/code-block.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+<script src="./javascripts/code-block.js" defer></script>
+```
+
+```html
+<div class="np-code-block">
+  <div class="np-code-block-header">
+    <div class="np-code-block-title">Terminal</div>
+    <div class="np-code-block-actions">
+      <button type="button" class="np-button np-button-ghost np-button-icon-xs np-code-block-copy" aria-label="Copy">
+        <svg data-icon="copy" ...></svg>
+        <svg data-icon="check" ...></svg>
+      </button>
+    </div>
+  </div>
+  <pre class="np-code-block-content" tabindex="0"><code class="language-bash">npm install nepui</code></pre>
+</div>
+```
+
+Or use the data attributes instead of classes: `data-np-code-block`, `data-np-code-block-header`, `data-np-code-block-title`, `data-np-code-block-actions`, `data-np-code-block-content`, `data-np-code-block-line`, `data-np-code-block-footer`, `data-np-code-block-copy`.
+
+Write `<` as `&lt;` inside the `<code>`. The `<pre>` is focusable (`tabindex="0"`) so the keyboard can scroll it, and it is always left to right. Give the code a language with a `language-*` class on the `<code>`, or `data-language` on the `<pre>`. Colours come from tokens, so dark mode needs no extra setup. The syntax colours use `light-dark()`, which follows the `color-scheme` that `tokens.css` sets. The styles need a modern browser (`light-dark()`, `color-mix()`, `:has()`).
+
+---
+
+## Composition
+
+```text
+CodeBlock
+├── CodeBlockHeader
+│   ├── CodeBlockTitle
+│   └── CodeBlockActions
+│       └── CodeBlockCopyButton
+├── CodeBlockActions (floating, when there is no header)
+├── CodeBlockContent
+│   └── CodeBlockLine
+└── CodeBlockFooter
+```
+
+---
+
+## Header
+
+The title can be an anchor, to link to a file.
+
+<ComponentPreview
+  target="html"
+  name="code-block-header"
+  styles={["/button/button.css"]}
+  scripts={[
+    "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js",
+    "/code-block/code-block.js",
+  ]}
+/>
+
+---
+
+## Actions
+
+Any button can go in the actions. The wrap toggle needs `data-np-code-block-wrap-toggle`; the script sets `aria-pressed`.
+
+<ComponentPreview
+  target="html"
+  name="code-block-actions"
+  styles={["/button/button.css"]}
+  scripts={[
+    "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js",
+    "/code-block/code-block.js",
+  ]}
+/>
+
+---
+
+## Floating actions
+
+Put `np-code-block-actions` directly in the block, with no header. It shows on hover and on focus, and always on touch screens.
+
+<ComponentPreview
+  target="html"
+  name="code-block-floating-actions"
+  styles={["/button/button.css"]}
+  scripts={[
+    "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js",
+    "/code-block/code-block.js",
+  ]}
+/>
+
+---
+
+## Line numbers
+
+Add `data-line-numbers` to the `<pre>`. The numbers are drawn by CSS, so they are not selected or copied.
+
+<ComponentPreview
+  target="html"
+  name="code-block-line-numbers"
+  styles={["/button/button.css"]}
+  scripts={[
+    "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js",
+    "/code-block/code-block.js",
+  ]}
+/>
+
+---
+
+## Start line
+
+Add `data-start-line` to start from a given number.
+
+<ComponentPreview
+  target="html"
+  name="code-block-start-line"
+  styles={["/button/button.css"]}
+  scripts={[
+    "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js",
+    "/code-block/code-block.js",
+  ]}
+/>
+
+---
+
+## Wrap
+
+Add `data-wrap` to wrap long lines instead of scrolling.
+
+<ComponentPreview
+  target="html"
+  name="code-block-wrap"
+  styles={["/button/button.css"]}
+  scripts={[
+    "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js",
+    "/code-block/code-block.js",
+  ]}
+/>
+
+---
+
+## Highlighted lines
+
+Add `data-highlight="2-3"` to the `<pre>`. It takes numbers and ranges: `"1,3-5"`. Written by hand, a line is `<span class="np-code-block-line" data-variant="highlighted">`.
+
+<ComponentPreview
+  target="html"
+  name="code-block-highlighted"
+  styles={["/button/button.css"]}
+  scripts={[
+    "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js",
+    "/code-block/code-block.js",
+  ]}
+/>
+
+---
+
+## Diff
+
+Add `data-added` and `data-removed`. The lines get a tint and a `+` or `−` marker, so the colour is not the only cue. The markers are not copied.
+
+<ComponentPreview
+  target="html"
+  name="code-block-diff"
+  styles={["/button/button.css"]}
+  scripts={[
+    "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js",
+    "/code-block/code-block.js",
+  ]}
+/>
+
+---
+
+## Height
+
+Set `--np-code-block-max-height` on the `<pre>`, or on the block. The code scrolls, and takes focus so the keyboard can scroll it.
+
+<ComponentPreview
+  target="html"
+  name="code-block-height"
+  styles={["/button/button.css"]}
+  scripts={[
+    "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js",
+    "/code-block/code-block.js",
+  ]}
+/>
+
+---
+
+## Size
+
+Add `np-code-block-sm` for tool output.
+
+<ComponentPreview
+  target="html"
+  name="code-block-size"
+  styles={["/button/button.css"]}
+  scripts={[
+    "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js",
+    "/code-block/code-block.js",
+  ]}
+/>
+
+---
+
+## Destructive
+
+Add `np-code-block-destructive` for errors.
+
+<ComponentPreview
+  target="html"
+  name="code-block-destructive"
+  styles={["/button/button.css"]}
+  scripts={[
+    "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js",
+    "/code-block/code-block.js",
+  ]}
+/>
+
+---
+
+## Syntax highlighting
+
+Add [Prism](https://prismjs.com) and give the `<code>` a `language-*` class. `code-block.js` highlights it, and splits it into lines, so line numbers and diff lines still work. Prism's own theme CSS is not needed: `code-block.css` colours its tokens.
+
+With the autoloader plugin, languages are fetched when needed. Without it, load the language files you use, after `prism.js` and before `code-block.js`.
+
+<ComponentPreview
+  target="html"
+  name="code-block-syntax"
+  styles={["/button/button.css"]}
+  scripts={[
+    "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js",
+    "/code-block/code-block.js",
+  ]}
+/>
+
+---
+
+## Reference
+
+### Script
+
+`code-block.js` has no dependencies and starts itself. It:
+
+- splits each `<code>` into `np-code-block-line` elements, and highlights it with Prism if Prism is loaded,
+- reads `data-line-numbers`, `data-start-line`, `data-highlight`, `data-added` and `data-removed`,
+- copies the code when a `np-code-block-copy` button is clicked, and sets `data-copied` for two seconds,
+- toggles `data-wrap` when a `data-np-code-block-wrap-toggle` button is clicked.
+
+A `data-value` on the copy button copies that text instead. The copied text is the code only: line numbers and diff markers are not in it. For a block added later, call `NepuiCodeBlock.init(block)`.
+
+Without the script, the CSS still styles the blocks and you can write the lines yourself.
+
+### Parts
+
+| Name | Data attribute | Class alias |
+| --- | --- | --- |
+| Root | `data-np-code-block` | `np-code-block` |
+| Header | `data-np-code-block-header` | `np-code-block-header` |
+| Title | `data-np-code-block-title` | `np-code-block-title` |
+| Actions | `data-np-code-block-actions` | `np-code-block-actions` |
+| Content (`<pre>`) | `data-np-code-block-content` | `np-code-block-content` |
+| Line | `data-np-code-block-line` | `np-code-block-line` |
+| Footer | `data-np-code-block-footer` | `np-code-block-footer` |
+| Copy button | `data-np-code-block-copy` | `np-code-block-copy` |
+
+### Options
+
+| Where | Option | Class alias | Data attribute |
+| --- | --- | --- | --- |
+| Root | Destructive | `np-code-block-destructive` | `data-variant="destructive"` |
+| Root | Small | `np-code-block-sm` | `data-size="sm"` |
+| Content | Wrap | `np-code-block-wrap` | `data-wrap` |
+| Content | Line numbers | `np-code-block-numbers` | `data-line-numbers` |
+| Line | Highlighted | `np-code-block-line-highlighted` | `data-variant="highlighted"` |
+| Line | Added | `np-code-block-line-added` | `data-variant="added"` |
+| Line | Removed | `np-code-block-line-removed` | `data-variant="removed"` |

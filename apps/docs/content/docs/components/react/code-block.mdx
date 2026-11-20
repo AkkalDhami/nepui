@@ -1,0 +1,371 @@
+---
+title: Code Block
+description: Displays code, terminal output, logs and diffs, with a header, line numbers, highlighted lines and copy.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="code-block-demo"
+  height="min-h-130"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/code-block.json"
+      nepui="npx nepui@latest add code-block"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install shiki class-variance-authority cn" className="mt-6"/>
+
+      <Step>Install the required nepui dependencies:</Step>
+      <PackageManagerTabs command="npx nepui@latest add button" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="code-block"
+        title="components/nepui/code-block/code-block.css"
+        fileTarget="components/nepui/code-block/code-block.css"
+      />
+      <ComponentSource
+        target="react"
+        name="code-block"
+        title="components/nepui/code-block/code-block.tsx"
+        fileTarget="components/nepui/code-block/code-block.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="code-block"
+        title="lib/highlighter.tsx"
+        fileTarget="lib/highlighter.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="code-block"
+        title="hooks/use-highlighted-code.ts"
+        fileTarget="hooks/use-highlighted-code.ts"
+      />
+      <ComponentSource
+        target="react"
+        name="code-block"
+        title="components/nepui/code-block/index.ts"
+        fileTarget="components/nepui/code-block/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+Syntax highlighting is optional. `code-block.tsx` does not import Shiki, so if you never highlight, you can leave out `highlighter.tsx` and `use-highlighted-code.ts` and skip the `shiki` dependency. The language list lives in `highlighter.tsx`.
+
+---
+
+## Usage
+
+```tsx
+import {
+  CodeBlock,
+  CodeBlockActions,
+  CodeBlockContent,
+  CodeBlockCopyButton,
+  CodeBlockFooter,
+  CodeBlockHeader,
+  CodeBlockLine,
+  CodeBlockTitle,
+} from "@/components/nepui/code-block"
+```
+
+```tsx
+<CodeBlock>
+  <CodeBlockHeader>
+    <CodeBlockTitle>Terminal</CodeBlockTitle>
+    <CodeBlockActions>
+      <CodeBlockCopyButton value={output} />
+    </CodeBlockActions>
+  </CodeBlockHeader>
+  <CodeBlockContent>{output}</CodeBlockContent>
+</CodeBlock>
+```
+
+`CodeBlockContent` takes a string or a list of `CodeBlockLine`. Use lines when you need diff lines, highlighted lines or highlighted tokens. The block works in a Trace, Tabs, a Dialog or a message, since it is a plain `div` that fills its parent.
+
+---
+
+## Composition
+
+```text
+CodeBlock
+├── CodeBlockHeader
+│   ├── CodeBlockTitle
+│   └── CodeBlockActions
+│       └── CodeBlockCopyButton
+├── CodeBlockActions (floating, when there is no header)
+├── CodeBlockContent
+│   └── CodeBlockLine
+└── CodeBlockFooter
+```
+
+---
+
+## Header
+
+The title can be an anchor, to link to a file.
+
+<ComponentPreview
+  name="code-block-header"
+/>
+
+---
+
+## Actions
+
+Any `Button` can go in the actions. This one toggles `wrap` with state and `aria-pressed`.
+
+<ComponentPreview
+  name="code-block-actions"
+/>
+
+---
+
+## Floating actions
+
+Put `CodeBlockActions` directly in `CodeBlock`, with no header. It shows on hover and on focus, and always on touch screens.
+
+<ComponentPreview
+  name="code-block-floating-actions"
+/>
+
+---
+
+## Line numbers
+
+Add `lineNumbers` to `CodeBlockContent`. The numbers are drawn by CSS, so they are not selected or copied.
+
+<ComponentPreview
+  name="code-block-line-numbers"
+/>
+
+---
+
+## Start line
+
+Use `startLine` to number from a given line.
+
+<ComponentPreview
+  name="code-block-start-line"
+/>
+
+---
+
+## Wrap
+
+Add `wrap` to wrap long lines instead of scrolling.
+
+<ComponentPreview
+  name="code-block-wrap"
+/>
+
+---
+
+## Highlighted lines
+
+Use `variant="highlighted"` on `CodeBlockLine`.
+
+<ComponentPreview
+  name="code-block-highlighted"
+/>
+
+---
+
+## Diff
+
+Use `variant="added"` and `variant="removed"`. The lines get a tint and a `+` or `−` marker, so the colour is not the only cue. The markers are not copied.
+
+<ComponentPreview
+  name="code-block-diff"
+/>
+
+---
+
+## Height
+
+Set `--np-code-block-max-height`. The code scrolls, and takes focus so the keyboard can scroll it.
+
+<ComponentPreview
+  name="code-block-height"
+/>
+
+---
+
+## Size
+
+Use `size="sm"` for tool output and for a Trace.
+
+<ComponentPreview
+  name="code-block-size"
+/>
+
+---
+
+## Destructive
+
+Use `variant="destructive"` for errors.
+
+<ComponentPreview
+  name="code-block-destructive"
+/>
+
+---
+
+## Syntax highlighting
+
+`useHighlightedCode(code, language)` returns one node per line, for `CodeBlockLine`. It returns plain lines until the first pass is done, and for a language that is not supported.
+
+Supported by default: `ansi`, `bash`, `css`, `diff`, `html`, `javascript`, `json`, `jsx`, `markdown`, `python`, `sql`, `tsx`, `typescript` and `yaml`, plus aliases such as `js`, `ts`, `sh`, `py`, `md` and `yml`. Use `"ansi"` for terminal colours. To add a language, edit `LANGUAGES` in `highlighter.tsx`.
+
+<ComponentPreview
+  name="code-block-syntax"
+  height="min-h-130"
+/>
+
+---
+
+## Server rendering
+
+`highlightCode` works in a Server Component. It resolves to `null` for a language that is not supported.
+
+```tsx showLineNumbers
+import { CodeBlock, CodeBlockContent, CodeBlockLine } from "@/components/nepui/code-block"
+import { highlightCode } from "@/lib/highlighter"
+
+export async function ServerCode({ code }: { code: string }) {
+  const lines = (await highlightCode(code, "tsx")) ?? code.split("\n")
+
+  return (
+    <CodeBlock>
+      <CodeBlockContent lineNumbers>
+        {lines.map((line, index) => (
+          <CodeBlockLine key={index}>{line}</CodeBlockLine>
+        ))}
+      </CodeBlockContent>
+    </CodeBlock>
+  )
+}
+```
+
+---
+
+## Show more
+
+Cap the height while it is collapsed and put a button in `CodeBlockFooter`.
+
+```tsx showLineNumbers
+const [open, setOpen] = React.useState(false)
+
+<CodeBlock>
+  <CodeBlockContent
+    id="long-code"
+    style={open ? undefined : ({ "--np-code-block-max-height": "8rem" } as React.CSSProperties)}
+  >
+    {code}
+  </CodeBlockContent>
+  <CodeBlockFooter>
+    <Button
+      variant="ghost"
+      size="xs"
+      aria-expanded={open}
+      aria-controls="long-code"
+      onClick={() => setOpen((value) => !value)}
+    >
+      {open ? "Show less" : "Show more"}
+    </Button>
+  </CodeBlockFooter>
+</CodeBlock>
+```
+
+---
+
+## API Reference
+
+### CodeBlock
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `"default" \| "destructive"` | `"default"` |
+| `size` | `"default" \| "sm"` | `"default"` |
+| `className` | `string` | - |
+
+### CodeBlockHeader / CodeBlockTitle / CodeBlockFooter
+
+Render a `div`. A long title is cut off with an ellipsis.
+
+### CodeBlockActions
+
+Renders a `div`. It floats over the corner when it is a direct child of `CodeBlock`.
+
+### CodeBlockCopyButton
+
+Accepts the props of `Button`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` (required) | - |
+| `className` | `string` | - |
+
+The button is labelled "Copy", and a live region says "Copied".
+
+### CodeBlockContent
+
+Renders a `pre` with a `code` inside. It is always `dir="ltr"`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `children` | `string \| ReactNode` (a list of `CodeBlockLine`) | - |
+| `wrap` | `boolean` | `false` |
+| `lineNumbers` | `boolean` | `false` |
+| `startLine` | `number` | `1` |
+| `tabIndex` | `number` | `0` |
+| `className` | `string` | - |
+
+### CodeBlockLine
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `"default" \| "added" \| "removed" \| "highlighted"` | `"default"` |
+| `className` | `string` | - |
+
+### useHighlightedCode
+
+```ts
+function useHighlightedCode(code: string, language: string): ReactNode[]
+```
+
+Returns one node per line. `code` ignores one trailing newline. `language` is a language, an alias, or `"ansi"`.
+
+### highlightCode
+
+```ts
+function highlightCode(code: string, language: string): Promise<ReactNode[] | null>
+```
+
+---
+
+## Accessibility
+
+- The content is a `pre` with a `code` element, always `dir="ltr"`.
+- The content is focusable by default (`tabIndex={0}`), so the keyboard can scroll it.
+- Floating actions show on focus as well as on hover.
+- Line numbers are drawn by CSS, so screen readers do not read them.
+- Diff markers go with the tints, so a change does not rely on colour alone.
