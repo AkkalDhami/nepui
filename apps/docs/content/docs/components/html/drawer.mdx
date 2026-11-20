@@ -1,0 +1,241 @@
+---
+title: Drawer
+description: A drawer component that slides in from the edge of the screen, with swipe to dismiss.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  target="html"
+  name="drawer-demo"
+  styles={["/button/button.css"]}
+  scripts={["/drawer/drawer.js"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add drawer"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the required nepui dependencies:</Step>
+      <PackageManagerTabs
+        command="npx nepui@latest add button scroll-area"
+        className="mt-4"
+      />
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="drawer"
+        title="styles/drawer.css"
+        fileTarget="styles/drawer.css"
+      />
+      <ComponentSource
+        target="html"
+        name="drawer"
+        title="javascripts/drawer.js"
+        fileTarget="javascripts/drawer.js"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the stylesheets, after `tokens.css` and `button.css`, and the optional script:
+
+```html 
+<link rel="stylesheet" href="./styles/button.css">
+<link rel="stylesheet" href="./styles/drawer.css">
+<link rel="stylesheet" href="./styles/scroll-area.css" />
+
+<script src="./javascripts/drawer.js" defer></script>
+```
+
+The drawer is a native [`<dialog>`](https://developer.mozilla.org/docs/Web/HTML/Element/dialog) element, and it is the panel. The browser provides the top layer, the focus trap, Escape to close, and makes the page behind inert. The overlay is the dialog's `::backdrop`, so there is no overlay element.
+
+```html
+<button type="button" class="np-button np-button-outline"
+  commandfor="my-drawer" command="show-modal">Open Drawer</button>
+
+<dialog id="my-drawer" class="np-drawer-content" closedby="any"
+  aria-labelledby="my-drawer-title" aria-describedby="my-drawer-description">
+  <div class="np-drawer-header">
+    <h2 class="np-drawer-title" id="my-drawer-title">Are you absolutely sure?</h2>
+    <p class="np-drawer-description" id="my-drawer-description">This action cannot be undone.</p>
+  </div>
+   <div class="np-drawer-panel np-scroll-fade" data-np-scrollable role="region" aria-label="Terms" tabindex="0">
+    <p style="margin: 0 0 0.75rem">Paragraph 1. Scroll this area; the header and the footer stay in view.</p>
+  </div>
+  <div class="np-drawer-footer">
+    <button type="button" class="np-button" commandfor="my-drawer" command="close">Submit</button>
+    <button type="button" class="np-button np-button-outline" commandfor="my-drawer" command="close">Cancel</button>
+  </div>
+</dialog>
+```
+
+Or use the data attributes instead of classes: `data-np-drawer-content`, `data-np-drawer-header`, `data-np-drawer-title`, `data-np-drawer-description`, `data-np-drawer-footer`, `data-np-drawer-handle`.
+
+Give the drawer an accessible name with `aria-labelledby`, pointing at the title. Add `aria-describedby` for the description. Colours come from tokens, so dark mode needs no extra setup. The styles use `@starting-style`, `transition-behavior: allow-discrete`, `:modal`, `:has()` and `color-mix()`, which need a modern browser.
+
+---
+
+## Composition
+
+```text
+Drawer
+├── DrawerTrigger
+└── DrawerContent
+    ├── DrawerHeader
+    │   ├── DrawerTitle
+    │   └── DrawerDescription
+    ├── DrawerPanel
+    └── DrawerFooter
+```
+
+---
+
+## Position
+
+Add a side class, or `data-side`, to the `<dialog>`. The default is the bottom edge. The sides are physical (the screen edge), so they do not flip in RTL. The swipe goes toward the edge.
+
+| Class | Data attribute | Swipe to close |
+| --- | --- | --- |
+| `np-drawer-bottom` (default) | `data-side="bottom"` | Down |
+| `np-drawer-top` | `data-side="top"` | Up |
+| `np-drawer-left` | `data-side="left"` | Left |
+| `np-drawer-right` | `data-side="right"` | Right |
+
+<ComponentPreview
+  target="html"
+  name="drawer-position"
+  styles={["/button/button.css"]}
+  scripts={["/drawer/drawer.js"]}
+/>
+
+---
+
+## Swipe handle
+
+Put a `np-drawer-handle` element first in the drawer. It is decoration only (`aria-hidden`); the whole drawer can be dragged. On a top drawer the bar moves to the bottom, and on a left or right drawer it turns upright on the inner edge.
+
+<ComponentPreview
+  target="html"
+  name="drawer-handle"
+  styles={["/button/button.css"]}
+  scripts={["/drawer/drawer.js"]}
+/>
+
+---
+
+## Nested
+
+Put a `<dialog>` inside another `<dialog>` and open it with its own invoker button. The browser stacks them, and the parent steps back while the child is open. Escape closes the top one first.
+
+<ComponentPreview
+  target="html"
+  name="drawer-nested"
+  styles={["/button/button.css"]}
+  scripts={["/drawer/drawer.js"]}
+/>
+
+---
+
+## Scrollable
+
+Add `np-drawer-panel` for the body of the drawer. It has the padding. Add `data-scrollable` and it scrolls, while the header and the footer stay in view. Give the drawer a height with `--np-drawer-height`. Give the panel `tabindex="0"`, a `role="region"` and an `aria-label`, so keyboard users can scroll it.
+
+With `drawer.js`, a drag that starts in the panel selects text and does not move the drawer. Add `data-allow-selection="false"` to the panel to let the drag start there too.
+
+<ComponentPreview
+  target="html"
+  name="drawer-scrollable"
+  styles={["/scroll-area/scroll-area.css", "/button/button.css"]}
+  scripts={["/drawer/drawer.js"]}
+/>
+
+---
+
+## Opening and closing
+
+No JavaScript is needed. Use the invoker attributes on a button:
+
+| Attribute | Value | Effect |
+| --- | --- | --- |
+| `commandfor` | the drawer's `id` | Which drawer the button controls. |
+| `command` | `show-modal` | Opens the drawer as a modal. |
+| `command` | `close` | Closes the drawer. |
+
+Browsers without invoker commands need the JavaScript API:
+
+```html
+<button type="button" onclick="document.getElementById('my-drawer').showModal()">Open</button>
+<button type="button" onclick="this.closest('dialog').close()">Close</button>
+```
+
+`closedby="any"` closes the drawer on Escape or a click on the overlay, like the React version. Leave it off when the user has to pick an action.
+
+---
+
+## Swipe to dismiss
+
+`drawer.js` is optional and has no dependencies. It starts itself, and adds a drag to every drawer on the page:
+
+- Drag toward the edge. Past a third of the drawer, or a quick flick, it closes. Otherwise it springs back.
+- A drag that starts on a button, a link or a field does nothing, and neither does one that starts in content that can still scroll that way.
+- It sets `data-swiping` while dragging, and `--np-drawer-swipe-x` or `--np-drawer-swipe-y` on the drawer.
+
+For a drawer added later, call `NepuiDrawer.init(dialog)`.
+
+---
+
+## Not in HTML
+
+Snap points, and a non-modal drawer, need state that CSS cannot hold. A non-modal drawer can be opened with `dialog.show()` instead of `showModal()`; it then has no overlay and does not make the page inert. For snap points use the React version.
+
+---
+
+## Page scroll
+
+The stylesheet stops the page behind an open drawer from scrolling, with a rule on `html:has(dialog…:modal)`. It keeps the scrollbar gutter, so the page does not shift.
+
+---
+
+## Reference
+
+### Parts
+
+| Name | Data attribute | Class alias |
+| --- | --- | --- |
+| Content (the `<dialog>`) | `data-np-drawer-content` | `np-drawer-content` |
+| Header | `data-np-drawer-header` | `np-drawer-header` |
+| Footer | `data-np-drawer-footer` | `np-drawer-footer` |
+| Title | `data-np-drawer-title` | `np-drawer-title` |
+| Description | `data-np-drawer-description` | `np-drawer-description` |
+| Panel | `data-np-drawer-panel` | `np-drawer-panel` |
+| Handle | `data-np-drawer-handle` | `np-drawer-handle` |
+| Overlay | `data-np-drawer-overlay` | `np-drawer-overlay` |
+
+The overlay hook is for React, where the overlay is an element. In HTML the overlay is the `::backdrop` of the dialog, and the overlay variables are set on the `<dialog>`.
+
+### State
+
+| Name | Selector |
+| --- | --- |
+| Open | `[open]` |
+| Open as a modal | `:modal` |
+| Being dragged | `[data-swiping]` (set by `drawer.js`) |

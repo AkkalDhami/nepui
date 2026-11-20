@@ -1,0 +1,297 @@
+---
+title: Drawer
+description: A drawer component that slides in from the edge of the screen, with swipe to dismiss.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="drawer-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/drawer.json"
+      nepui="npx nepui@latest add drawer"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react cn" className="mt-6"/>
+
+      <Step>Install the required nepui dependencies:</Step>
+      <ReactCodeBlockCommand
+        shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/button.json https://nepui.vercel.app/r/react/scroll-area.json"
+        nepui="npx nepui@latest add button scroll-area"
+      />
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="drawer"
+        title="components/nepui/drawer/drawer.css"
+        fileTarget="components/nepui/drawer/drawer.css"
+      />
+      <ComponentSource
+        target="react"
+        name="drawer"
+        title="components/nepui/drawer/drawer.tsx"
+        fileTarget="components/nepui/drawer/drawer.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="drawer"
+        title="components/nepui/drawer/index.ts"
+        fileTarget="components/nepui/drawer/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+On iOS Safari, add this to your global CSS so the page behind a drawer behaves:
+
+```css
+body {
+  position: relative;
+}
+```
+
+---
+
+## Usage
+
+```tsx
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerPanel,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/nepui/drawer"
+```
+
+```tsx
+<Drawer>
+  <DrawerTrigger>Open</DrawerTrigger>
+  <DrawerContent>
+    <DrawerHeader>
+      <DrawerTitle>Are you absolutely sure?</DrawerTitle>
+      <DrawerDescription>This action cannot be undone.</DrawerDescription>
+    </DrawerHeader>
+    <DrawerPanel>
+      Content
+    </DrawerPanel>
+    <DrawerFooter>
+      <Button>Submit</Button>
+      <DrawerClose render={<Button variant="outline" />}>Cancel</DrawerClose>
+    </DrawerFooter>
+  </DrawerContent>
+</Drawer>
+```
+
+`DrawerTrigger` renders a `<button>`. Use the `render` prop to render a nepui [Button](/docs/components/react/button) instead. `DrawerContent` renders the portal, the overlay, the viewport and the panel. The title and description give the drawer its accessible name and description, so always include a `DrawerTitle`.
+
+The drawer is rendered in a portal, so set your theme class on `<html>` or `<body>`, not on a nested wrapper. Colours come from tokens. The styles use `color-mix()`, `:has()` and the individual `translate` and `scale` properties, which need a modern browser. The drawer is built on [Base UI Drawer](https://base-ui.com/react/components/drawer).
+
+---
+
+## Composition
+
+```text
+Drawer
+├── DrawerTrigger
+└── DrawerContent
+    ├── DrawerHeader
+    │   ├── DrawerTitle
+    │   └── DrawerDescription
+    ├── DrawerPanel
+    └── DrawerFooter
+```
+
+---
+
+## Position
+
+Use `swipeDirection` on `Drawer`. It is the direction you swipe to dismiss, and so the edge the drawer sits on. The default is `down`, the bottom edge.
+
+| `swipeDirection` | Edge |
+| --- | --- |
+| `down` (default) | Bottom |
+| `up` | Top |
+| `left` | Left |
+| `right` | Right |
+
+The sides are physical (the screen edge), so they do not flip in RTL.
+
+<ComponentPreview
+  name="drawer-position"
+/>
+
+---
+
+## Swipe handle
+
+Use `showSwipeHandle` on `Drawer` to show a small bar at the edge of the drawer. It is decoration only; the whole drawer can be dragged. `DrawerSwipeHandle` is exported if you want to place it yourself.
+
+<ComponentPreview
+  name="drawer-handle"
+/>
+
+---
+
+## Nested
+
+Put a `Drawer` inside a `DrawerContent`. The parent steps back while the child is open.
+
+<ComponentPreview
+  name="drawer-nested"
+/>
+
+---
+
+## Scrollable
+
+Use `DrawerPanel` for the body of the drawer. It has the padding, and scrolls with your [ScrollArea](/docs/components/react/scroll-area) while the header and the footer stay in view. Give the drawer a height with `--np-drawer-height`. Pass `scrollable={false}` to turn the scrolling off, and `scrollFade={false}` to turn the fade off.
+
+Text in the panel can be selected without moving the drawer, because the panel is Base UI's `Drawer.Content`. Pass `allowSelection={false}` to let the drag start in the panel too.
+
+<ComponentPreview
+  name="drawer-scrollable"
+/>
+
+---
+
+## Controlled
+
+Pass `open` and `onOpenChange` to control the drawer yourself.
+
+```tsx
+const [open, setOpen] = React.useState(false)
+
+<Drawer open={open} onOpenChange={setOpen}>
+  ...
+</Drawer>
+```
+
+---
+
+## Non modal
+
+By default the drawer is modal: focus is trapped, the page does not scroll and is inert. Pass `modal={false}` to `Drawer` to leave the page usable, or `modal="trap-focus"` to trap focus only. Add `disablePointerDismissal` to stop a click outside from closing it.
+
+```tsx
+<Drawer modal={false} disablePointerDismissal>
+  ...
+</Drawer>
+```
+
+---
+
+## Snap points
+
+Use `snapPoints` to let the drawer rest at several heights. Numbers from 0 to 1 are fractions of the viewport, numbers above 1 are pixels, and strings take `px` or `rem`. Use `snapPoint` and `onSnapPointChange` to control it, and `snapToSequentialPoints` to stop a fast swipe from skipping a point.
+
+```tsx
+const [snap, setSnap] = React.useState<number | string | null>(0.5)
+
+<Drawer snapPoints={[0.5, 1]} snapPoint={snap} onSnapPointChange={setSnap}>
+  <DrawerTrigger>Open</DrawerTrigger>
+  <DrawerContent>...</DrawerContent>
+</Drawer>
+```
+
+---
+
+## Responsive
+
+Render a [Dialog](/docs/components/react/dialog) on desktop and a drawer on a small screen, with a media query hook of your own:
+
+```tsx
+const isDesktop = useMediaQuery("(min-width: 768px)")
+
+return isDesktop ? <Dialog>...</Dialog> : <Drawer>...</Drawer>
+```
+
+---
+
+## API Reference
+
+### Drawer
+
+Wraps [Base UI Drawer.Root](https://base-ui.com/react/components/drawer#api-reference). Renders no element.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `swipeDirection` | `"up" \| "down" \| "left" \| "right"` | `"down"` |
+| `showSwipeHandle` | `boolean` | `false` |
+| `open` | `boolean` | - |
+| `defaultOpen` | `boolean` | `false` |
+| `onOpenChange` | `(open: boolean, eventDetails) => void` | - |
+| `modal` | `boolean \| "trap-focus"` | `true` |
+| `disablePointerDismissal` | `boolean` | `false` |
+| `snapPoints` | `(number \| string)[]` | - |
+| `snapPoint` | `number \| string \| null` | - |
+| `onSnapPointChange` | `(snapPoint, eventDetails) => void` | - |
+| `snapToSequentialPoints` | `boolean` | `false` |
+| `onOpenChangeComplete` | `(open: boolean) => void` | - |
+
+### DrawerTrigger / DrawerClose
+
+Render a `<button>`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `render` | `ReactElement \| (props, state) => ReactElement` | - |
+| `nativeButton` | `boolean` | `true` |
+
+### DrawerContent
+
+Renders the overlay, the viewport and the popup in a portal. Accepts the props of Base UI `Drawer.Popup`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `initialFocus` | `boolean \| RefObject \| (interactionType) => HTMLElement \| boolean` | - |
+| `finalFocus` | `boolean \| RefObject \| (interactionType) => HTMLElement \| boolean` | - |
+| `className` | `string \| (state) => string` | - |
+
+### DrawerHeader / DrawerFooter
+
+Render a `<div>`. The footer sits at the bottom of a tall drawer.
+
+### DrawerTitle / DrawerDescription
+
+Render an `<h2>` and a `<p>`.
+
+### DrawerPanel
+
+Renders a `div` inside a `ScrollArea`. Accepts `render`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `scrollable` | `boolean` | `true` |
+| `scrollFade` | `boolean` | `true` |
+| `allowSelection` | `boolean` | `true` |
+| `render` | `ReactElement \| (props, state) => ReactElement` | - |
+| `className` | `string` | - |
+
+### DrawerSwipeHandle
+
+Renders a decorative `<div>`.
+
+### DrawerOverlay / DrawerPortal
+
+`DrawerContent` already renders them. `DrawerPortal` accepts `container` and `keepMounted`.
