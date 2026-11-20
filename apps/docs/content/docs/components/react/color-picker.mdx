@@ -1,0 +1,291 @@
+---
+title: Color Picker
+description: Pick a color from an area and sliders, type it in any format, or choose a preset, in HSV, HSL, sRGB or OKLCH.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="color-picker-demo"
+  height="min-h-120"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/color-picker.json"
+      nepui="npx nepui@latest add color-picker"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="color-picker"
+        title="components/nepui/color-picker/color-picker.css"
+        fileTarget="components/nepui/color-picker/color-picker.css"
+      />
+      <ComponentSource
+        target="react"
+        name="color-picker"
+        title="components/nepui/color-picker/color.ts"
+        fileTarget="components/nepui/color-picker/color.ts"
+      />
+      <ComponentSource
+        target="react"
+        name="color-picker"
+        title="components/nepui/color-picker/color-picker.tsx"
+        fileTarget="components/nepui/color-picker/color-picker.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="color-picker"
+        title="components/nepui/color-picker/index.ts"
+        fileTarget="components/nepui/color-picker/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import {
+  ColorPicker,
+  ColorPickerArea,
+  ColorPickerInput,
+  ColorPickerSlider,
+  ColorPickerSwatch,
+} from "@/components/nepui/color-picker"
+```
+
+```tsx
+<ColorPicker defaultValue="#0ea5e9" aria-label="Brand color">
+  <ColorPickerArea />
+  <ColorPickerSlider />
+  <ColorPickerSwatch />
+  <ColorPickerInput />
+</ColorPicker>
+```
+
+The picker is a group. Give it an accessible name with `aria-label`. Every part is optional, so build only the controls you need. The value is a CSS color string, written in the format you pick.
+
+---
+
+## Composition
+
+```text
+ColorPicker
+├── ColorPickerArea
+│   ├── ColorPickerAreaCanvas
+│   └── ColorPickerAreaThumb
+├── ColorPickerSlider
+│   └── ColorPickerSliderThumb
+├── ColorPickerSwatch
+├── ColorPickerInput
+├── ColorPickerChannelInput
+├── ColorPickerEyeDropper
+└── ColorPickerSwatches
+    └── ColorPickerSwatchItem
+```
+
+`ColorPickerArea` and `ColorPickerSlider` render their canvas and thumb when they have no children. Add the children yourself to change their order or to render a custom thumb. `np-color-picker-row` is a small helper class that lays controls out in a row.
+
+---
+
+## Spaces and channels
+
+`space` picks the color model that drives the area, the sliders and the channel inputs. Each space has a default area and slider.
+
+| `space` | Area (across / up) | Slider | Value written as |
+| --- | --- | --- | --- |
+| `hsv` | saturation / brightness | hue | hex |
+| `hsl` | saturation / lightness | hue | `hsl(...)` |
+| `srgb` | red / green | blue | `rgb(...)` |
+| `oklch` | chroma / lightness | hue | `oklch(...)` |
+
+Every space also has an `alpha` channel. Pick other channels with `x` and `y` on the area and `channel` on a slider. Set `orientation="vertical"` for a vertical slider. Hue is kept when the color becomes gray, so the thumb does not jump.
+
+<ComponentPreview
+  name="color-picker-spaces"
+  height="min-h-120"
+/>
+
+---
+
+## OKLCH and gamut
+
+OKLCH reaches colors outside sRGB. Set `gamut` to `"srgb"` (the default), `"p3"` or `false`. While a drag is past the edge of the gamut the picker sets `data-out-of-gamut`, and the value is the closest color that fits. The thumb moves there when the drag ends. The area canvas leaves unreachable colors transparent.
+
+<ComponentPreview
+  name="color-picker-oklch"
+/>
+
+---
+
+## Presets and channel inputs
+
+`ColorPickerSwatches` is a listbox of `ColorPickerSwatchItem` presets. It is one tab stop, and the arrow keys move between presets. `ColorPickerChannelInput` edits one channel in its own units.
+
+<ComponentPreview
+  name="color-picker-presets"
+/>
+
+---
+
+## Popover
+
+Put the controls in any popup. The context reaches them through the portal.
+
+<ComponentPreview
+  name="color-picker-popover"
+/>
+
+---
+
+## Disabled and read-only
+
+A disabled picker cannot be focused or changed, and it is not submitted. A read-only picker stays focusable and is still submitted.
+
+<ComponentPreview
+  name="color-picker-disabled"
+/>
+
+---
+
+## Controlled
+
+Hold the value with `value` and `onValueChange`. `onValueCommit` fires once when an interaction ends, so it suits saving. A controller sets or reads the value from outside.
+
+<ComponentPreview
+  name="color-picker-controlled"
+/>
+
+---
+
+## Form
+
+Give the picker a `name` to submit its value. A form reset returns it to `defaultValue`.
+
+<ComponentPreview
+  name="color-picker-form"
+/>
+
+---
+
+## Keyboard
+
+| Key | Behavior |
+| --- | --- |
+| Arrow keys | Move one step. On the area, Left and Right change `x`, Up and Down change `y`. |
+| Shift + Arrow | Move ten steps. |
+| Page Up, Page Down | Move a tenth of the range. On the area they change `y`. |
+| Home, End | Go to the ends. On the area they change `x`. |
+| Enter | Commits the input, or picks the focused preset. |
+| Escape | Restores the text of an input. |
+
+Each key press commits. The area thumb and slider thumbs follow the slider pattern, and the area thumb announces both channels. Presets follow the listbox pattern and are named by color, such as "vivid red". The names are English, and you can replace them with `aria-label`.
+
+---
+
+## API Reference
+
+### ColorPicker
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | |
+| `defaultValue` | `string` | `"#000000"` |
+| `onValueChange` | `(value: string, details: ColorPickerChangeDetails) => void` | |
+| `onValueCommit` | `(value: string, details: ColorPickerCommitDetails) => void` | |
+| `space` | `"hsv" \| "hsl" \| "srgb" \| "oklch"` | `"hsv"` |
+| `format` | `"hex" \| "rgb" \| "hsl" \| "oklch"` | The format of the space |
+| `gamut` | `"srgb" \| "p3" \| false` | `"srgb"` |
+| `disabled`, `readOnly`, `required` | `boolean` | `false` |
+| `name`, `form` | `string` | |
+| `controller` | `ColorPickerController` | |
+| `debug` | `boolean` | `false` |
+| `render` | `ReactElement \| (props, state) => ReactElement` | |
+
+`required` only adds `data-required`. `className` and `children` accept a function of the part state on every part.
+
+### Parts
+
+| Part | Props |
+| --- | --- |
+| `ColorPickerArea` | `x`, `y`: the channels across and up. |
+| `ColorPickerAreaCanvas` | Paints the area for spaces without a plain gradient. |
+| `ColorPickerAreaThumb` | `aria-label` |
+| `ColorPickerSlider` | `channel`, `orientation` (`"horizontal"` by default). |
+| `ColorPickerSliderThumb` | `aria-label` |
+| `ColorPickerSwatch` | Shows the current color. |
+| `ColorPickerInput` | Edits the value as text. |
+| `ColorPickerChannelInput` | `channel`: one channel in human units. |
+| `ColorPickerEyeDropper` | Picks a color from the screen where the browser allows it. |
+| `ColorPickerSwatches` | A listbox of presets. |
+| `ColorPickerSwatchItem` | `value`: the color it picks. |
+
+The channels are `hue`, `saturation`, `brightness`, `lightness`, `chroma`, `red`, `green`, `blue` and `alpha`. Alpha and the lightness of OKLCH are written from 0 to 100.
+
+### State
+
+Every part gets this state in `render`, `className` and `children`.
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `value` | `string` | The value in the picker format. |
+| `color` | `string` | The color as a CSS string. |
+| `space` | `ColorSpace` | The color space. |
+| `disabled`, `readOnly`, `required` | `boolean` | The state of the picker. |
+| `outOfGamut` | `boolean` | A drag is past the edge of the gamut. |
+| `channel`, `channelValue`, `orientation` | | Sliders and channel inputs only. |
+| `selected` | `boolean` | Preset items only. |
+
+### Controller
+
+Create one with `createColorPickerController()` and pass it as `controller`.
+
+| Method | Description |
+| --- | --- |
+| `getValue()` | Returns the value. |
+| `setValue(value, details?)` | Sets the value as a user would and commits. Returns `false` if the text cannot be read or the change is canceled. |
+| `focus()` | Moves focus to the first control. |
+
+### Events
+
+`onValueChange` is called with `details.color`, `details.reason` and `details.cancel()`. `onValueCommit` is called once when an interaction ends.
+
+| Reason | When |
+| --- | --- |
+| `track-press` | The area or a slider was pressed. |
+| `drag` | A thumb was dragged. |
+| `step-key` | A key moved a thumb or a channel input. |
+| `input-commit` | An input was committed. |
+| `item-press` | A preset was chosen. |
+| `eye-dropper-pick` | The eyedropper picked a color. |
+| `reset` | A form reset. |
+| `imperative` | A controller call changed the value. |
+
+### Color helpers
+
+`parseColor(text)`, `formatColor(color, format, gamut)` and `clampToGamut(color, gamut)` are exported from the same entry.
+
+---
+
+## Credits
+
+- [Color Picker](https://ui-sdk.dev/docs/react/components/color-picker) from UI SDK.
