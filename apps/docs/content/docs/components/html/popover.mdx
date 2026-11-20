@@ -4,7 +4,7 @@ description: Displays rich content in a portal, triggered by a button.
 contributor:
   - name: Akkal Dhami
     url: https://www.akkal.com.np
-    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+    avatar: https://github.com/akkaldhami.png
 ---
 
 <ComponentPreview
@@ -82,6 +82,20 @@ Or use the data attributes instead of the classes:
     <p data-np-popover-description>Set the dimensions for the layer.</p>
   </div>
 </div>
+```
+
+---
+
+## Composition
+
+The trigger targets the popover by its `id`; it is not nested inside the panel.
+
+```text
+button[popovertarget="dimensions"]
+np-popover[popover]#dimensions
+└── np-popover-header
+    ├── np-popover-title
+    └── np-popover-description
 ```
 
 ---

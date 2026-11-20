@@ -4,13 +4,13 @@ description: A window overlaid on the primary window or another dialog, renderin
 contributor:
   - name: Akkal Dhami
     url: https://www.akkal.com.np
-    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+    avatar: https://github.com/akkaldhami.png
 ---
 
 <ComponentPreview
   target="html"
   name="dialog-demo"
-  styles={["/button/button.css"]}
+  styles={["/button/button.css", "/input/input.css", "/label/label.css"]}
 />
 
 ---
@@ -26,7 +26,8 @@ contributor:
   }
   manual={
     <Steps>
-      <Step>Add the <LINK href="/docs/components/html/button">Button</LINK> stylesheet to your project. The close button and the footer buttons use it.</Step>
+      <Step>Install the required nepui dependencies:</Step>
+      <PackageManagerTabs command="npx nepui@latest add button" className="mt-6"/>
 
       <Step>Copy and paste the following code into your project.</Step>
       <ComponentSource
@@ -113,21 +114,18 @@ Dialog
 
 ---
 
-## Form
+## Destructive Action
 
-Fields go between the header and the footer. The footer fills the full width of the box, so it only looks right when the box padding is the default one, or when you change `--np-dialog-padding` instead of the padding.
-
-This example uses the [Input](/docs/components/html/input) and [Label](/docs/components/html/label) components. Link their stylesheets first:
+Link the stylesheets:
 
 ```html
-<link rel="stylesheet" href="./styles/input.css">
-<link rel="stylesheet" href="./styles/label.css">
+<link rel="stylesheet" href="./styles/button.css">
 ```
 
 <ComponentPreview
   target="html"
-  name="dialog-form"
-  styles={["/button/button.css", "/input/input.css", "/label/label.css"]}
+  name="dialog-basic"
+  styles={["/button/button.css"]}
 />
 
 ---

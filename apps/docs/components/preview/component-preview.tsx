@@ -59,6 +59,10 @@ export async function ComponentPreview({
       "code-block",
       "icon-swap",
       "color-picker",
+      "password-input",
+      "number-input",
+      "file-input",
+      "gradient-text",
     ]
 
     const componentName = groupedComponents.includes(

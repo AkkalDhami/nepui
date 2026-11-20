@@ -4,7 +4,7 @@ description: A popup that displays information related to an element when the el
 contributor:
   - name: Akkal Dhami
     url: https://www.akkal.com.np
-    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+    avatar: https://github.com/akkaldhami.png
 ---
 
 <ComponentPreview
@@ -81,6 +81,17 @@ The tooltip opens on hover and on keyboard focus (`:focus-visible`), and can be 
 - The content must be inside the wrapper, and the wrapper should be a `span` when it sits inside a paragraph or a label.
 
 Colours come from tokens, so dark mode needs no extra setup. The tooltip swaps the foreground and background tokens. It uses `:has()`, `:dir()` and `color-mix()`, which need a modern browser.
+
+---
+
+## Composition
+
+```text
+np-tooltip
+├── trigger (button or link)
+└── np-tooltip-content[role="tooltip"]
+    └── np-tooltip-arrow (optional)
+```
 
 ---
 

@@ -4,7 +4,7 @@ description: A segmented input for one-time passwords and verification codes.
 contributor:
   - name: Akkal Dhami
     url: https://www.akkal.com.np
-    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+    avatar: https://github.com/akkaldhami.png
 ---
 
 <ComponentPreview
@@ -74,6 +74,19 @@ Put one native input in each slot:
 Or use the data attributes instead of classes: `data-np-otp-field`, `data-np-otp-field-input` and `data-np-otp-field-separator`.
 
 The first slot uses the visible label, and every other slot needs its own `aria-label`. Use `autocomplete="one-time-code"` on the first slot so phones can fill the code.
+
+---
+
+## Composition
+
+```text
+label
+np-otp-field[role="group"]
+├── np-otp-field-input
+├── np-otp-field-input
+├── np-otp-field-separator (optional)
+└── np-otp-field-input
+```
 
 Link the stylesheet:
 

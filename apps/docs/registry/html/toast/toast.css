@@ -18,12 +18,33 @@
   outline: none;
 }
 
+:is(.np-toast-viewport, [data-np-toast-viewport])[data-side="top-left"],
+:is(.np-toast-viewport, [data-np-toast-viewport])[data-side="bottom-left"] {
+  right: auto;
+  left: 1rem;
+  width: min(24rem, calc(100vw - 2rem));
+  margin: 0;
+}
+
+:is(.np-toast-viewport, [data-np-toast-viewport])[data-side="top-right"],
+:is(.np-toast-viewport, [data-np-toast-viewport])[data-side="bottom-right"] {
+  right: 1rem;
+  left: auto;
+  width: min(24rem, calc(100vw - 2rem));
+  margin: 0;
+}
+
+:is(.np-toast-viewport, [data-np-toast-viewport])[data-side^="bottom"] {
+  top: auto;
+  bottom: 1rem;
+}
+
 .np-toast,
 [data-np-toast] {
   --np-toast-gap: 0.75rem;
   --np-toast-peek: 0.75rem;
   --np-toast-scale-step: 0.1;
-  --np-toast-radius: var(--np-radius-full);
+  --np-toast-radius: var(--np-radius-lg);
   --np-toast-bg: var(--np-popover);
   --np-toast-color: var(--np-popover-foreground);
   --np-toast-border: var(--np-border);
@@ -37,6 +58,11 @@
   --np-toast-offset-y: calc(
     var(--toast-offset-y) + calc(var(--toast-index) * var(--np-toast-gap)) +
       var(--toast-swipe-movement-y)
+  );
+  --np-toast-collapsed-offset-y: calc(
+    var(--toast-swipe-movement-y) +
+      (var(--toast-index) * var(--np-toast-peek)) +
+      (var(--np-toast-shrink) * var(--np-toast-current-height))
   );
   --np-toast-scale: calc(
     max(0, 1 - (var(--toast-index) * var(--np-toast-scale-step)))
@@ -59,14 +85,7 @@
   line-height: calc(1.25 / 0.875);
   transform-origin: top;
   transform: translateX(var(--toast-swipe-movement-x))
-    translateY(
-      calc(
-        var(--toast-swipe-movement-y) +
-          (var(--toast-index) * var(--np-toast-peek)) +
-          (var(--np-toast-shrink) * var(--np-toast-current-height))
-      )
-    )
-    scale(var(--np-toast-scale));
+    translateY(var(--np-toast-collapsed-offset-y)) scale(var(--np-toast-scale));
   transition:
     transform var(--np-toast-duration) var(--np-toast-easing),
     opacity var(--np-toast-duration),
@@ -78,6 +97,35 @@
   outline: none;
 }
 
+:is(.np-toast-viewport, [data-np-toast-viewport])[data-side^="bottom"]
+  > :is(.np-toast, [data-np-toast]) {
+  top: auto;
+  bottom: 0;
+  transform-origin: bottom;
+  --np-toast-offset-y: calc(
+    0px - var(--toast-offset-y) - (var(--toast-index) * var(--np-toast-gap)) +
+      var(--toast-swipe-movement-y)
+  );
+  --np-toast-collapsed-offset-y: calc(
+    var(--toast-swipe-movement-y) -
+      (var(--toast-index) * var(--np-toast-peek)) -
+      (var(--np-toast-shrink) * var(--np-toast-current-height))
+  );
+}
+
+:is(.np-toast-viewport, [data-np-toast-viewport])[data-side$="-left"]
+  > :is(.np-toast, [data-np-toast]) {
+  right: auto;
+  left: 0;
+}
+
+:is(.np-toast-viewport, [data-np-toast-viewport])[data-side^="bottom"]
+  > :is(.np-toast, [data-np-toast])[data-expanded] {
+  height: var(--toast-height);
+  transform: translateX(var(--toast-swipe-movement-x))
+    translateY(var(--np-toast-offset-y));
+}
+
 :is(.np-toast, [data-np-toast])::after {
   content: "";
   position: absolute;
@@ -85,6 +133,12 @@
   left: 0;
   width: 100%;
   height: calc(var(--np-toast-gap) + 1px);
+}
+
+:is(.np-toast-viewport, [data-np-toast-viewport])[data-side^="bottom"]
+  > :is(.np-toast, [data-np-toast])::after {
+  top: auto;
+  bottom: 100%;
 }
 
 :is(.np-toast, [data-np-toast])[data-type="success"] {
@@ -128,10 +182,22 @@
   transform: translateY(-150%);
 }
 
+:is(.np-toast-viewport, [data-np-toast-viewport])[data-side^="bottom"]
+  > :is(.np-toast, [data-np-toast])[data-starting-style] {
+  transform: translateY(150%);
+}
+
 :is(.np-toast, [data-np-toast])[data-ending-style]:not([data-limited]):not(
     [data-swipe-direction]
   ) {
   transform: translateY(-150%);
+}
+
+:is(.np-toast-viewport, [data-np-toast-viewport])[data-side^="bottom"]
+  > :is(.np-toast, [data-np-toast])[data-ending-style]:not([data-limited]):not(
+    [data-swipe-direction]
+  ) {
+  transform: translateY(150%);
 }
 
 :is(
@@ -214,6 +280,10 @@
   opacity: 1;
 }
 
+:is(.np-toast-content, [data-np-toast-content])[data-has-description] {
+  align-items: flex-start;
+}
+
 .np-toast-icon,
 [data-np-toast-icon] {
   display: inline-flex;
@@ -236,6 +306,7 @@
   display: flex;
   flex: 1 1 0%;
   flex-direction: column;
+  justify-content: center;
   min-width: 0;
 }
 

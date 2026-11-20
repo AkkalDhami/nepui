@@ -101,13 +101,13 @@ const lines: string[] = []
 
 lines.push(
   "/*",
-  " * nepui colors.css - Color palette and utility classes.",
+  " * nepui `colors.css` - Color palette and utility classes.",
   " *",
   ` * Edit the source palette in ${relative(process.cwd(), inputPath)}, then run:`,
   " * > pnpm --filter docs colors:generate",
   " * The utility classes after the palette are generated.",
   " ! ⚠️ Do not edit this generated file directly.",
-  " */",
+  "*/",
   "",
   "/* Color palette */",
   ":root {"

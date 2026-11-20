@@ -5,7 +5,7 @@ import { usePathname, useRouter } from "next/navigation"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Route } from "next"
 import { getCurrentTarget } from "@/lib/page-tree"
-import { LanguageIcons } from "../icons"
+import { LanguageIcons } from "@/components/icons"
 import { TargetType, useConfig } from "@/hooks/use-config"
 
 const frameworks = [
@@ -40,11 +40,11 @@ export function FrameworkTabs() {
     react: LanguageIcons.tsx,
   }
 
-  const Icon = Icons[current as keyof typeof Icons]
+  const Icon = Icons[current]
 
   return (
     <Tabs
-      defaultValue={current}
+      value={current}
       onValueChange={handleFrameworkChange}
       className={"min-w-0 gap-0"}
     >

@@ -4,7 +4,7 @@ description: Displays a menu to the user, such as a set of actions or functions,
 contributor:
   - name: Akkal Dhami
     url: https://www.akkal.com.np
-    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+    avatar: https://github.com/akkaldhami.png
 ---
 
 <ComponentPreview
@@ -72,6 +72,21 @@ The HTML menu uses the browser's native [Popover API](https://developer.mozilla.
 ```
 
 Every part also works with a `data-np-*` attribute instead of the class, for example `data-np-menu-content` and `data-np-menu-item`.
+
+---
+
+## Composition
+
+```text
+np-menu
+├── button[popovertarget]
+└── np-menu-content[popover]
+    ├── np-menu-group
+    │   ├── np-menu-label
+    │   └── np-menu-item
+    ├── np-menu-separator
+    └── np-menu-item
+```
 
 ---
 

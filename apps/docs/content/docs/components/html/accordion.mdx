@@ -4,7 +4,7 @@ description: A vertically stacked set of interactive headings that each reveal a
 contributor:
   - name: Akkal Dhami
     url: https://www.akkal.com.np
-    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+    avatar: https://github.com/akkaldhami.png
 ---
 
 <ComponentPreview
@@ -74,6 +74,17 @@ Or use the data attributes instead of the classes:
 ```
 
 The chevron is drawn by the stylesheet, so a trigger contains only its text. Add `open` to a `<details>` to open it by default.
+
+---
+
+## Composition
+
+```text
+np-accordion
+└── np-accordion-item (details)
+    ├── np-accordion-trigger (summary)
+    └── np-accordion-content
+```
 
 ---
 

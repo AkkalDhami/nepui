@@ -4,13 +4,13 @@ description: Combine labels, controls, and help text to compose accessible form 
 contributor:
   - name: Akkal Dhami
     url: https://www.akkal.com.np
-    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+    avatar: https://github.com/akkaldhami.png
 ---
 
 <ComponentPreview
   name="field-demo"
   target="html"
-  height="670px"
+  height="680px"
   styles={[
     "/label/label.css",
     "/separator/separator.css",
@@ -34,6 +34,9 @@ contributor:
   }
   manual={
     <Steps>
+      <Step>Install the required nepui dependencies:</Step>
+      <PackageManagerTabs command="npx nepui@latest add label separator" className="mt-6"/>
+
       <Step>Copy and paste the following code into your project.</Step>
       <ComponentSource
         target="html"
@@ -41,21 +44,6 @@ contributor:
         title="styles/field.css"
         fileTarget="styles/field.css"
       />
-
-      <ComponentSource
-        target="html"
-        name="label"
-        title="styles/label.css"
-        fileTarget="styles/label.css"
-      />
-
-      <ComponentSource
-        target="html"
-        name="separator"
-        title="styles/separator.css"
-        fileTarget="styles/separator.css"
-      />
-
       <Step>Update the import paths to match your project setup.</Step>
     </Steps>
   }

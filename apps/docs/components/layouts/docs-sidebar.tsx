@@ -209,10 +209,16 @@ export function SearchButton() {
   )
 }
 
-function SidebarContent({ tree }: { tree: PageTree.Root }) {
+function SidebarContent({
+  tree,
+  className,
+}: {
+  tree: PageTree.Root
+  className?: string
+}) {
   return (
     <LayoutGroup id={useId()}>
-      <nav className="flex-1 space-y-4">
+      <nav className={cn("flex-1 space-y-4", className)}>
         <SidebarItems tree={tree} />
       </nav>
     </LayoutGroup>
@@ -260,11 +266,14 @@ export function DocsMobileNav({ tree }: { tree: PageTree.Root }) {
         <ListIcon className="size-5" />
       </Button>
       <Sheet open={open} onOpenChange={setOpen}>
-        <SheetContent side="left" className="w-72 gap-0 pt-10 pl-4">
+        <SheetContent side="left" className="w-76 gap-0 pt-14 pb-12 pl-6">
           <SheetHeader className="sr-only">
             <SheetTitle>Navigation</SheetTitle>
           </SheetHeader>
-          <SidebarContent tree={tree} />
+          <SidebarContent
+            tree={tree}
+            className="min-h-0 scroll-fade-y scrollbar-none overflow-y-auto overscroll-contain"
+          />
         </SheetContent>
       </Sheet>
     </>

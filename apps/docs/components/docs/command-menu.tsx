@@ -97,6 +97,10 @@ function pickUrl(urls: string[], pathname: string) {
   return best
 }
 
+function isComponentPage(url: string) {
+  return /^\/docs\/(?:components|backgrounds|text-effects)\//.test(url)
+}
+
 async function copyText(text: string) {
   try {
     await navigator.clipboard.writeText(text)
@@ -261,7 +265,7 @@ export function CommandMenu({
         >
           {pages.map((item) => {
             const url = pickUrl(item.urls, pathname)
-            const isComponent = url.includes("/components/")
+            const isComponent = isComponentPage(url)
 
             return (
               <CommandMenuItem

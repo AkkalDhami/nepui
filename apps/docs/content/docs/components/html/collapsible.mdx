@@ -4,7 +4,7 @@ description: An interactive component which expands and collapses a panel.
 contributor:
   - name: Akkal Dhami
     url: https://www.akkal.com.np
-    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+    avatar: https://github.com/akkaldhami.png
 ---
 
 <ComponentPreview
@@ -69,6 +69,17 @@ Or use the data attributes instead of the classes:
 ```
 
 Add `open` to start expanded. The browser handles the keyboard, `aria-expanded` and find-in-page for you, so no JavaScript is needed.
+
+---
+
+## Composition
+
+```text
+np-collapsible (details)
+├── np-collapsible-trigger (summary)
+│   └── np-collapsible-icon (optional)
+└── np-collapsible-content
+```
 
 ---
 

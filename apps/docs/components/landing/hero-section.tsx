@@ -1,68 +1,69 @@
 "use client"
 
-import { motion, useReducedMotion } from "motion/react"
 import { Button } from "@/registry/react/button"
 import Link from "next/link"
-
-const ease = [0.22, 1, 0.36, 1] as const
+import { Badge } from "@/registry/react/badge"
+import { Route } from "next"
+import { Highlight } from "@/components/ui/highlight"
+import { ArrowRightIcon } from "@phosphor-icons/react"
 
 export function HeroSection() {
-  const reduce = useReducedMotion()
-  const item = {
-    hidden: { opacity: 0, y: reduce ? 0 : 14 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease } },
-  }
-
   return (
-    <section className="relative mx-auto px-4 py-12">
-      <motion.div
-        initial="hidden"
-        animate="show"
-        variants={{
-          show: { transition: { staggerChildren: reduce ? 0 : 0.09 } },
-        }}
-        className="relative flex flex-col items-center text-center"
-      >
-        <motion.p
-          variants={item}
-          className="mb-5 font-medium text-muted-foreground"
+    <section className="relative mx-auto space-y-8 px-4 py-14">
+      <div className="mx-auto flex max-w-4xl flex-col items-center gap-7 text-center">
+        <Link href="/docs/components" className="no-underline">
+          <Badge variant="secondary" appearance="light">
+            70+ accessible components
+            <ArrowRightIcon />
+          </Badge>
+        </Link>
+
+        <h1
+          id="hero-centered-title"
+          className="m-0 text-5xl leading-[1.02] font-medium tracking-tight text-balance sm:text-7xl"
         >
-          A CSS-first design system
-        </motion.p>
-        <motion.h1
-          variants={item}
-          className="mb-5 text-[clamp(2.6rem,7vw,5rem)] leading-[1.02] font-medium tracking-[-0.035em] text-balance"
-        >
-          Build interfaces
-          <br />
-          that feel intentional.
-        </motion.h1>
-        <motion.p
-          variants={item}
-          className="mb-8 max-w-[56ch] text-lg text-muted-foreground"
-        >
-          nepui is a CSS-first design system. Accessible components for HTML and
-          React, styled with plain CSS you can read, own, and override.
-        </motion.p>
-        <motion.div
-          variants={item}
-          className="flex flex-wrap justify-center gap-3"
-        >
+          Build interfaces that feel{" "}
+          <Highlight
+            delay={0.2}
+            variant="solid"
+            //  color="var(--np-blue-500)"
+          >
+            intentional
+          </Highlight>
+        </h1>
+
+        <p className="m-0 max-w-2xl text-lg leading-8 text-pretty text-(--np-muted-foreground)">
+          nepui is a{" "}
+          <Highlight
+            variant="outline"
+            handle="round"
+            delay={0.7}
+            color="var(--np-orange-500)"
+            className="text-foreground"
+          >
+            CSS-first design system
+          </Highlight>{" "}
+          . Use each component as a class in plain HTML or as a React component
+          on Base UI. Accessible by default, no Tailwind inside, nothing to
+          compile.
+        </p>
+
+        <div className="flex flex-wrap justify-center gap-3">
           <Button
             nativeButton={false}
             size="lg"
             className="np-button-rounded"
             render={<Link href="/docs/components">Explore components</Link>}
-          ></Button>
+          />
           <Button
+            nativeButton={false}
             size="lg"
             variant="secondary"
-            nativeButton={false}
             className="np-button-rounded"
-            render={<Link href="/docs/">Get started</Link>}
-          ></Button>
-        </motion.div>
-      </motion.div>
+            render={<Link href={"/docs" as Route}>Get started</Link>}
+          />
+        </div>
+      </div>
     </section>
   )
 }

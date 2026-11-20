@@ -4,7 +4,7 @@ description: Displays a card with header, content, and footer.
 contributor:
   - name: Akkal Dhami
     url: https://www.akkal.com.np
-    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+    avatar: https://github.com/akkaldhami.png
 ---
 
 <ComponentPreview
@@ -84,6 +84,20 @@ Or use the data attributes instead of the classes:
 ```
 
 Parts are plain elements, so use whatever fits: a `<section>` or `<article>` for the card, an `<h3>` for the title, a `<p>` for the description. Every part is optional. A card with a footer has no bottom padding, so the footer sits flush with the edge.
+
+---
+
+## Composition
+
+```text
+np-card
+├── np-card-header
+│   ├── np-card-title
+│   ├── np-card-description
+│   └── np-card-action
+├── np-card-content
+└── np-card-footer
+```
 
 ---
 

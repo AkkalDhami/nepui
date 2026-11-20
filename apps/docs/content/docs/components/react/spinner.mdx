@@ -4,7 +4,7 @@ description: An indicator that can be used to show a loading state.
 contributor:
  -  name: Akkal Dhami
     url: https://www.akkal.com.np
-    avatar: https://avatars.githubusercontent.com/u/170957638?v=4 
+    avatar: https://github.com/akkaldhami.png 
 ---
 
 <ComponentPreview
@@ -19,7 +19,7 @@ contributor:
   cli={
     <ReactCodeBlockCommand
       shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/spinner.json"
-      nepui="npx nepui@latest add spinner --target react"
+      nepui="npx nepui@latest add spinner"
     />
   }
   manual={
@@ -71,6 +71,27 @@ import { Spinner } from "@/components/nepui/spinner"
 <Spinner size="xl" speed="faster" thickness="thick" />
 <Spinner size="5rem" speed="200ms" thickness="0.5rem" />
 ```
+
+---
+
+## Variant
+
+Use the `variant` prop to apply a semantic color to the spinner.
+
+<ComponentPreview
+  name="spinner-variant"
+/>
+
+Available variants are `default`, `success`, `info`, `error`, and `warning`.
+The `color` and `mutedColor` props override the variant colors when provided.
+
+| Variant | Prop |
+| ------- | ---- |
+| Default | `variant="default"` |
+| Success | `variant="success"` |
+| Info | `variant="info"` |
+| Error | `variant="error"` |
+| Warning | `variant="warning"` |
 
 ---
 
@@ -176,6 +197,7 @@ The `color` prop accepts any valid CSS color value, including named colors, hexa
 
 | Prop         | Type                                                                   | Default       |
 | ------------ | ---------------------------------------------------------------------- | ------------- |
+| `variant`    | `"default" \| "success" \| "info" \| "error" \| "warning"`             | `"default"`   |
 | `size`       | `"xs" \| "sm" \| "md" \| "lg" \| "xl" \| string`                       | —             |
 | `thickness`  | `"thin" \| "normal" \| "medium" \| "thick" \| "extra-thick" \| string` | —             |
 | `speed`      | `"slow" \| "normal" \| "fast" \| "faster" \| string`                   | —             |

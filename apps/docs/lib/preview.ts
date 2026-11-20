@@ -40,6 +40,7 @@ export function getPreviewCss(type: "docs" | "playground") {
   return `
 * {
   scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
 }
 
 
@@ -51,9 +52,9 @@ ${type === "docs" ? DOCS_THEME_MODE_CSS : PLAYGROUND_THEME_MODE_CSS}
   margin: 0;
   padding: 0;
 }
-
-html,
-body {
+  
+  html,
+  body {
   margin: 0;
   padding: 0;
   min-height: 100%;

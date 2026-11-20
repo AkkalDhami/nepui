@@ -4,7 +4,7 @@ description: For sighted users to preview content available behind a link.
 contributor:
   - name: Akkal Dhami
     url: https://www.akkal.com.np
-    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+    avatar: https://github.com/akkaldhami.png
 ---
 
 <ComponentPreview
@@ -60,6 +60,16 @@ Put the trigger and the card in one `np-hover-card` wrapper. The card opens when
 Or use the data attributes instead of classes: `data-np-hover-card`, `data-np-hover-card-trigger` and `data-np-hover-card-content`.
 
 Use a `div` wrapper for block content, or a `span` wrapper with a `span` card when the trigger sits inside a paragraph. The examples on this page also use the [Button](/docs/components/html/button), [Avatar](/docs/components/html/avatar), [Badge](/docs/components/html/badge) and [Separator](/docs/components/html/separator) styles, so link their stylesheets before `hover-card.css`.
+
+---
+
+## Composition
+
+```text
+np-hover-card
+├── np-hover-card-trigger
+└── np-hover-card-content
+```
 
 ---
 

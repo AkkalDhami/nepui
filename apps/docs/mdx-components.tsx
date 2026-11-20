@@ -21,6 +21,7 @@ import { ColorPalette } from "@/components/docs/color-palette"
 import { Kbd } from "@/registry/react/kbd"
 import { Callout } from "@/components/docs/callout"
 import Link from "next/link"
+import type { PageTreeFolder } from "@/lib/page-tree"
 
 function getNodeText(node: React.ReactNode): string {
   if (typeof node === "string" || typeof node === "number") {
@@ -75,27 +76,26 @@ function HeadingAnchor({
   )
 }
 
-function getComponentsFolder() {
-  const componentsFolder = source.pageTree.children.find(
-    (page) => page.$id === "components"
+function getComponentFolders(): PageTreeFolder[] {
+  const componentFolderIds = ["components", "backgrounds", "text-effects"]
+
+  return source.pageTree.children.filter(
+    (page): page is PageTreeFolder =>
+      page.type === "folder" &&
+      typeof page.$id === "string" &&
+      componentFolderIds.includes(page.$id)
   )
-
-  if (componentsFolder?.type !== "folder") {
-    return null
-  }
-
-  return componentsFolder
 }
 
 function ComponentsListWrapper({ variant }: { variant?: "all" | "new" }) {
-  const componentsFolder = getComponentsFolder()
+  const componentsFolders = getComponentFolders()
 
-  if (!componentsFolder) {
+  if (!componentsFolders.length) {
     return null
   }
 
   return (
-    <ComponentsList componentsFolder={componentsFolder} variant={variant} />
+    <ComponentsList componentsFolders={componentsFolders} variant={variant} />
   )
 }
 

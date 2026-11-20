@@ -4,7 +4,7 @@ description: A popup that displays information related to an element when the el
 contributor:
   - name: Akkal Dhami
     url: https://www.akkal.com.np
-    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+    avatar: https://github.com/akkaldhami.png
 ---
 
 <ComponentPreview
@@ -19,7 +19,7 @@ contributor:
   cli={
     <ReactCodeBlockCommand
       shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/tooltip.json"
-      nepui="npx nepui@latest add tooltip --target react"
+      nepui="npx nepui@latest add tooltip"
     />
   }
   manual={
@@ -58,7 +58,7 @@ contributor:
 
 Wrap your app in `TooltipProvider`, usually in the root layout.
 
-```tsx showLineNumbers title="app/layout.tsx"
+```tsx showLineNumbers title="app/layout.tsx" {1, 7}
 import { TooltipProvider } from "@/components/nepui/tooltip"
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

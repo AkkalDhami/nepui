@@ -4,7 +4,7 @@ description: Displays an indicator showing the completion progress of a task, ty
 contributor:
   - name: Akkal Dhami
     url: https://www.akkal.com.np
-    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+    avatar: https://github.com/akkaldhami.png
 ---
 
 <ComponentPreview
@@ -64,6 +64,19 @@ You can also use the `data-np-progress` attribute instead of the class.
 ```
 
 The native `max` defaults to `1`, so `value="33"` without `max="100"` shows a full bar.
+
+---
+
+## Composition
+
+For a labeled progress bar, wrap the label, value, and native progress element in `np-progress-root`:
+
+```text
+np-progress-root
+├── np-progress-label
+├── np-progress-value
+└── progress.np-progress
+```
 
 ---
 

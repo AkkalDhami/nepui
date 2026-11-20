@@ -3,13 +3,22 @@ const config = {
   timeout: 5000,
   swipeThreshold: 40,
   swipeDirection: ["up", "left", "right"],
+  side: "top-center",
 }
+const TOAST_SIDES = new Set([
+  "top-left",
+  "top-center",
+  "top-right",
+  "bottom-left",
+  "bottom-center",
+  "bottom-right",
+])
 
 const SVG_OPEN =
   '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
 
 const ICONS = {
-  success: `${SVG_OPEN}<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>`,
+  success: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M17 3.34a10 10 0 1 1-14.995 8.984L2 12l.005-.324A10 10 0 0 1 17 3.34m-1.293 5.953a1 1 0 0 0-1.32-.083l-.094.083L11 12.585l-1.293-1.292l-.094-.083a1 1 0 0 0-1.403 1.403l.083.094l2 2l.094.083a1 1 0 0 0 1.226 0l.094-.083l4-4l.083-.094a1 1 0 0 0-.083-1.32"/></svg>`,
   info: `${SVG_OPEN}<circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>`,
   warning: `${SVG_OPEN}<circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>`,
   error: `${SVG_OPEN}<circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>`,
@@ -34,15 +43,30 @@ function isPaused() {
 function ensureViewport() {
   if (viewport && viewport.isConnected) return viewport
 
-  viewport = document.createElement("div")
-  viewport.className = "np-toast-viewport"
+  viewport = document.querySelector(
+    "[data-np-toast-viewport], .np-toast-viewport"
+  )
+  if (!viewport) {
+    viewport = document.createElement("div")
+    viewport.className = "np-toast-viewport"
+    document.body.append(viewport)
+  }
+
+  if (viewport.dataset.side !== undefined) {
+    if (!TOAST_SIDES.has(viewport.dataset.side)) {
+      throw new TypeError(
+        `Invalid toast side "${viewport.dataset.side}". Expected one of: ${[...TOAST_SIDES].join(", ")}.`
+      )
+    }
+    config.side = viewport.dataset.side
+  }
+  viewport.dataset.side = config.side
   viewport.setAttribute("role", "region")
   viewport.setAttribute("aria-label", "Notifications")
   viewport.tabIndex = -1
   if (typeof viewport.showPopover === "function") {
     viewport.setAttribute("popover", "manual")
   }
-  document.body.append(viewport)
   if (viewport.hasAttribute("popover")) viewport.showPopover()
 
   viewport.addEventListener("pointerenter", (event) => {
@@ -143,6 +167,7 @@ function render(item) {
   const { title, description, type, actionProps } = item.options
   const nodes = []
 
+  item.content.toggleAttribute("data-has-description", Boolean(description))
   item.el.setAttribute("role", type === "error" ? "alert" : "status")
   if (type) item.el.setAttribute("data-type", type)
   else item.el.removeAttribute("data-type")
@@ -184,7 +209,7 @@ function render(item) {
   }
 
   const closeButton = button(
-    "np-button np-button-ghost np-button-icon-sm np-toast-close np-button-rounded"
+    "np-button np-button-ghost np-button-icon-sm np-toast-close"
   )
   closeButton.setAttribute("aria-label", "Close toast")
   closeButton.innerHTML = `<span class="np-toast-close-icon">${ICONS.close}</span>`
@@ -369,7 +394,13 @@ export function promise(task, messages = {}) {
 }
 
 export function configure(options = {}) {
+  if (options.side !== undefined && !TOAST_SIDES.has(options.side)) {
+    throw new TypeError(
+      `Invalid toast side "${options.side}". Expected one of: ${[...TOAST_SIDES].join(", ")}.`
+    )
+  }
   Object.assign(config, options)
+  if (viewport) viewport.dataset.side = config.side
   layout()
 }
 
@@ -398,6 +429,7 @@ document.addEventListener("click", (event) => {
   if (!trigger) return
 
   const data = trigger.dataset
+  if (data.side !== undefined) configure({ side: data.side })
   const options = {
     title: data.toastTitle,
     description: data.toastDescription,
