@@ -67,6 +67,19 @@ The native `max` defaults to `1`, so `value="33"` without `max="100"` shows a fu
 
 ---
 
+## Composition
+
+For a labeled progress bar, wrap the label, value, and native progress element in `np-progress-root`:
+
+```text
+np-progress-root
+├── np-progress-label
+├── np-progress-value
+└── progress.np-progress
+```
+
+---
+
 ## Label
 
 Wrap a `<label>`, an `<output>` and the `<progress>` in `np-progress-root`. Connect the label and the output to the bar with `for` and `id`.

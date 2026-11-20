@@ -31,19 +31,24 @@ contributor:
       <Step>Install the required nepui dependencies:</Step>
       <PackageManagerTabs command="npx nepui@latest add button" className="mt-6"/>
 
-      <Step>Copy and paste the following stylesheet into your project.</Step>
+      <Step>Copy and paste the following code into your project.</Step>
       <ComponentSource
         target="html"
         name="toast"
         title="styles/toast.css"
         fileTarget="styles/toast.css"
       />
-      <Step>Copy and paste the following script into your project.</Step>
       <ComponentSource
         target="html"
         name="toast"
         title="javascripts/toast.js"
         fileTarget="javascripts/toast.js"
+      />
+      <ComponentSource
+        target="html"
+        name="toast"
+        title="html/toast.html"
+        fileTarget="html/toast.html"
       />
       <Step>Update the import paths to match your project setup.</Step>
     </Steps>
@@ -88,7 +93,41 @@ toast.add({
 
 The script also sets `window.npToast`, so an inline handler such as `onclick="npToast.add({ title: 'Saved' })"` works without importing it.
 
-Toasts stack at the top center of the screen. Hover or focus the stack to spread it out, which also pauses the timers. Swipe a toast up, left or right, or press Escape on a focused one, to dismiss it.
+Toasts stack at the top center of the screen by default. Hover or focus the stack to spread it out, which also pauses the timers. Swipe a toast up, left or right, or press Escape on a focused one, to dismiss it.
+
+---
+
+## Position
+
+Set the `data-side` attribute on the viewport for a fixed position. The script reuses a viewport declared in your HTML:
+
+```html
+<div class="np-toast-viewport" data-np-toast-viewport data-side="top-right"></div>
+```
+
+You can also set `data-side` on a toast trigger to choose its position when clicked. Bottom positions stack upward.
+
+```html
+<button data-np-toast-trigger data-side="bottom-left" data-toast-title="Saved">
+  Show toast
+</button>
+```
+
+For JavaScript-created toasts, use `toast.configure()`:
+
+```js
+toast.configure({ side: "top-right" })
+```
+
+Available positions are `top-left`, `top-center`, `top-right`, `bottom-left`, `bottom-center`, and `bottom-right`.
+
+<ComponentPreview
+  name="toast-position"
+  target="html"
+  styles={["/button/button.css"]}
+  scripts={["/toast/toast.js"]}
+  scriptType="module"
+/>
 
 ---
 
@@ -163,7 +202,7 @@ toast.promise(fetch("/api/events", { method: "POST" }), {
 | `toast.update(id, options)` | Changes a toast that is showing. |
 | `toast.close(id)` | Closes a toast. Without an id it closes all of them. |
 | `toast.promise(promise, messages)` | Shows a loading toast and turns it into a success or error toast. |
-| `toast.configure(options)` | Sets `limit`, `timeout`, `swipeThreshold` and `swipeDirection`. |
+| `toast.configure(options)` | Sets `limit`, `timeout`, `swipeThreshold`, `swipeDirection` and `side`. |
 
 Options for `toast.add`:
 

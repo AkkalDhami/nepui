@@ -113,7 +113,7 @@ export function HtmlPreviewFrame({
       srcDoc={document}
       style={{ height }}
       className={cn(
-        "flex w-full items-center justify-center rounded-b-lg border-0 bg-background transition-[height]",
+        "flex w-full items-center justify-center rounded-b-lg border-0 bg-background pb-7 transition-[height]",
         className
       )}
     />

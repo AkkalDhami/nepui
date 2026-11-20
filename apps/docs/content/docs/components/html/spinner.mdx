@@ -64,6 +64,32 @@ Then, add the `data-np-spinner` attribute or the class alias `np-spinner` to a `
 
 ---
 
+## Variant
+
+Use the `data-variant` attribute or class alias to apply a semantic color to the spinner.
+
+<ComponentPreview
+  name="spinner-variant"
+  target="html"
+/>
+
+```html title="spinner.html"
+<span class="np-spinner" data-variant="success" aria-label="Loading"></span>
+<span class="np-spinner np-spinner-info" aria-label="Loading"></span>
+```
+
+| Variant | Data attribute | Class alias |
+| ------- | -------------- | ----------- |
+| Default | `data-variant="default"` | `np-spinner` |
+| Success | `data-variant="success"` | `np-spinner-success` |
+| Info | `data-variant="info"` | `np-spinner-info` |
+| Error | `data-variant="error"` | `np-spinner-error` |
+| Warning | `data-variant="warning"` | `np-spinner-warning` |
+
+The `--np-spinner-color` and `--np-spinner-muted-color` custom properties can override the variant colors.
+
+---
+
 ## Size
 
 Use the `data-size` attribute or the class alias to control the spinner size.
@@ -75,7 +101,7 @@ Use the `data-size` attribute or the class alias to control the spinner size.
 
 Use the `--np-spinner-size` custom property to control the spinner size.
 
-```html title="spinner.html" showLineNumbers
+```html title="spinner.html"
 <span class="np-spinner" style="--np-spinner-size: 5rem"></span>
 ```
 
@@ -100,7 +126,7 @@ Use the `data-speed` attribute to control the spinner's animation speed.
 
 Use the `--np-spinner-speed` custom property to control the spinner's animation speed.
 
-```html title="spinner.html" showLineNumbers
+```html title="spinner.html"
 <span class="np-spinner" style="--np-spinner-speed: 350ms"></span>
 ```
 
@@ -124,7 +150,7 @@ Use the `data-thickness` attribute or the class alias to control the spinner's b
 
 Use the `--np-spinner-thickness` custom property to control the spinner's border thickness.
 
-```html title="spinner.html" showLineNumbers
+```html title="spinner.html"
 <span class="np-spinner" style="--np-spinner-thickness: 20px"></span>
 ```
 

@@ -86,6 +86,20 @@ Or use the data attributes instead of the classes:
 
 ---
 
+## Composition
+
+The trigger targets the popover by its `id`; it is not nested inside the panel.
+
+```text
+button[popovertarget="dimensions"]
+np-popover[popover]#dimensions
+└── np-popover-header
+    ├── np-popover-title
+    └── np-popover-description
+```
+
+---
+
 ## How it works
 
 The browser's native [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) does the hard parts: it shows the panel in the top layer, closes it on Escape or an outside click, and returns focus to the button. The script only adds placement: it positions the panel next to the button that opened it, flips it to the other side when there is no room, keeps it inside the viewport, and follows scrolling and resizing. It also moves focus to the first field or button inside when it opens.

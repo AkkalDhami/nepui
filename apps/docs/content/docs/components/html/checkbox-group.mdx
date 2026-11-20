@@ -32,18 +32,6 @@ contributor:
       <Step>Copy and paste the following code into your project.</Step>
       <ComponentSource
         target="html"
-        name="label"
-        title="styles/label.css"
-        fileTarget="styles/label.css"
-      />
-      <ComponentSource
-        target="html"
-        name="checkbox"
-        title="styles/checkbox.css"
-        fileTarget="styles/checkbox.css"
-      />
-      <ComponentSource
-        target="html"
         name="checkbox-group"
         title="styles/checkbox-group.css"
         fileTarget="styles/checkbox-group.css"
@@ -82,6 +70,18 @@ Or use the data attribute instead of the class:
 <div data-np-checkbox-group role="group" aria-label="Select frameworks">
   <!-- labeled checkboxes -->
 </div>
+```
+
+---
+
+## Composition
+
+```text
+np-checkbox-group[role="group"]
+├── label.np-label
+│   └── input.np-checkbox[type="checkbox"]
+└── label.np-label
+    └── input.np-checkbox[type="checkbox"]
 ```
 
 ---

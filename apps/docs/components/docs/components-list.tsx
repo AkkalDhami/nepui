@@ -40,17 +40,19 @@ function ComponentLink({
 }
 
 export function ComponentsList({
-  componentsFolder,
+  componentsFolders,
   variant = "all",
 }: {
-  componentsFolder: PageTreeFolder
+  componentsFolders: PageTreeFolder[]
   variant?: "all" | "new"
 }) {
   const { target } = useConfig()
 
-  const list = getPagesFromFolder(componentsFolder, target).filter(
-    (component) => variant === "all" || PAGES_NEW.includes(component.url)
-  )
+  const list = componentsFolders
+    .flatMap((folder) => getPagesFromFolder(folder, target))
+    .filter(
+      (component) => variant === "all" || PAGES_NEW.includes(component.url)
+    )
 
   if (!list.length) {
     return null

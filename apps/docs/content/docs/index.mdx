@@ -202,7 +202,7 @@ framework or a build step.
 From your project directory, create the base token stylesheet:
 
 ```bash
-npx nepui@latest init my-app --target html
+npx nepui@latest init my-app --target html --src ./src
 ```
 
 This writes `nepui.json` in the project directory and `styles/tokens.css` under
@@ -212,7 +212,7 @@ source subdirectory, or omit `--src` to choose it interactively.
 ### 2. Add a component
 
 ```bash
-npx nepui@latest add button --target html
+npx nepui@latest add button 
 ```
 
 The CLI reads the target and source root from `nepui.json`, then adds the
@@ -242,6 +242,8 @@ React app; for example:
 
 ```bash
 npm create vite@latest my-app -- --template react-ts
+```
+```bash
 cd my-app
 npm install
 ```
@@ -251,7 +253,7 @@ npm install
 From the React project directory, run:
 
 ```bash
-npx nepui@latest init . --target react
+npx nepui@latest init --src ./src --target react
 ```
 
 This writes `nepui.json` in the project directory and
@@ -262,7 +264,7 @@ source root explicitly with `--src ./src`, or choose it in the prompt.
 ### 2. Add a component
 
 ```bash
-npx nepui@latest add button --target react
+npx nepui@latest add button
 ```
 
 The CLI reads the target and source root from `nepui.json`. Component files are
@@ -286,7 +288,7 @@ match your setup.
 Import the tokens from your app's global CSS file:
 
 ```css title="globals.css"
-@import "../components/nepui/tokens.css";
+@import "@/components/nepui/tokens.css";
 ```
 
 Adjust the relative paths to match where your global stylesheet is located.
@@ -299,7 +301,7 @@ layout (App Router) or `_app.tsx` (Pages Router).
 
 For example, with the App Router:
 
-```tsx
+```tsx title="app/layout.tsx" showLineNumbers
 import "./globals.css"
 
 export default function RootLayout({
@@ -322,13 +324,15 @@ standard Next.js Client Component rules.
 Add multiple named components in one command:
 
 ```bash
-npx nepui@latest add button card spinner --target react
+npx nepui@latest add button card spinner
 ```
 
 To see available components for a target:
 
 ```bash
 npx nepui@latest list --target html
+```
+```bash
 npx nepui@latest list --target react
 ```
 

@@ -75,6 +75,21 @@ Every part also works with a `data-np-*` attribute instead of the class, for exa
 
 ---
 
+## Composition
+
+```text
+np-menu
+├── button[popovertarget]
+└── np-menu-content[popover]
+    ├── np-menu-group
+    │   ├── np-menu-label
+    │   └── np-menu-item
+    ├── np-menu-separator
+    └── np-menu-item
+```
+
+---
+
 ## Anchoring
 
 The wrapper (`np-menu`) carries one `--np-menu-anchor` name. It links the trigger and the popup, so you need a **unique dashed name for each menu** on the page.

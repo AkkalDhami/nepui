@@ -75,6 +75,19 @@ Or use the data attributes instead of classes: `data-np-otp-field`, `data-np-otp
 
 The first slot uses the visible label, and every other slot needs its own `aria-label`. Use `autocomplete="one-time-code"` on the first slot so phones can fill the code.
 
+---
+
+## Composition
+
+```text
+label
+np-otp-field[role="group"]
+├── np-otp-field-input
+├── np-otp-field-input
+├── np-otp-field-separator (optional)
+└── np-otp-field-input
+```
+
 Link the stylesheet:
 
 ```html

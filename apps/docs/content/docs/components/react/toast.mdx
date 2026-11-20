@@ -19,7 +19,7 @@ contributor:
   cli={
     <ReactCodeBlockCommand
       shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/toast.json"
-      nepui="npx nepui@latest add toast --target react"
+      nepui="npx nepui@latest add toast"
     />
   }
   manual={
@@ -102,7 +102,23 @@ toast.add({
 })
 ```
 
-Toasts stack at the top center of the screen. Hover or focus the stack to spread it out, which also pauses the timers. Swipe a toast up, left or right to dismiss it.
+Toasts stack at the top center of the screen by default. Hover or focus the stack to spread it out, which also pauses the timers. Swipe a toast up, left or right to dismiss it.
+
+---
+
+## Position
+
+Set the `side` prop on `Toaster` to choose where toasts appear. Bottom positions stack upward.
+
+<ComponentPreview
+  name="toast-position"
+/>
+
+```tsx
+<Toaster side="top-right" />
+```
+
+Available positions are `top-left`, `top-center`, `top-right`, `bottom-left`, `bottom-center`, and `bottom-right`.
 
 ---
 
@@ -148,26 +164,6 @@ Use `toast.promise` to update one toast as an asynchronous task moves through lo
 
 ---
 
-## Styling
-
-Set these variables on the toast (for example with `className` on `Toast`, or in your own CSS).
-
-| Variable | Default | Description |
-| -------- | ------- | ----------- |
-| `--np-toast-gap` | `0.75rem` | Space between toasts when the stack is expanded. |
-| `--np-toast-peek` | `0.75rem` | How much each stacked toast peeks out below the one in front. |
-| `--np-toast-scale-step` | `0.1` | How much smaller each stacked toast gets. |
-| `--np-toast-radius` | `var(--np-radius-full)` | Corner radius. Use `var(--np-radius-lg)` for a card. |
-| `--np-toast-bg` | `var(--np-popover)` | Background color. |
-| `--np-toast-color` | `var(--np-popover-foreground)` | Text color. |
-| `--np-toast-border` | `var(--np-border)` | Border color. |
-| `--np-toast-shadow` | `var(--np-shadow-lg)` | Drop shadow. |
-| `--np-toast-duration` | `500ms` | Length of the move and stack animation. |
-| `--np-toast-icon-size` | `1.25rem` | Status icon size. |
-| `--np-toast-info-color` | `var(--np-info, oklch(0.546 0.245 262.881))` | Icon color of the info type. |
-
----
-
 ## API Reference
 
 This component wraps the [Base UI Toast](https://base-ui.com/react/components/toast). See its documentation for manager options, stacking, swipe dismissal and the primitive API. The animation that the source of this component did with a motion library is plain CSS here, so there is no extra dependency.
@@ -190,6 +186,7 @@ Provides the manager and renders every toast. It accepts all Base UI `Toast.Prov
 | Prop | Type | Default |
 | ---- | ---- | ------- |
 | `toastManager` | `ToastManager` | `toast` |
+| `side` | `"top-left" \| "top-center" \| "top-right" \| "bottom-left" \| "bottom-center" \| "bottom-right"` | `"top-center"` |
 | `limit` | `number` | `3` |
 | `timeout` | `number` | `5000` |
 

@@ -50,6 +50,7 @@ Link the tokens and the stylesheet:
 ```html
 <link rel="stylesheet" href="./styles/tokens.css">
 <link rel="stylesheet" href="./styles/item.css">
+<link rel="stylesheet" href="./styles/separator.css">
 ```
 
 Add the classes:
@@ -82,6 +83,19 @@ Or use the data attributes instead of the classes:
 ```
 
 Item needs no JavaScript. Interactivity comes from the native element you choose: use an `a` for navigation or a `button` for an action.
+
+---
+
+## Composition
+
+```text
+np-item
+├── np-item-media
+├── np-item-content
+│   ├── np-item-title
+│   └── np-item-description
+└── np-item-actions
+```
 
 ---
 

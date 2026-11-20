@@ -27,7 +27,10 @@ import { InfoIcon } from "@phosphor-icons/react/ssr"
   manual={
     <Steps>
       <Step>Install the following dependencies:</Step>
-      <PackageManagerTabs command="npm install class-variance-authority cn" className="mt-6"/>
+      <PackageManagerTabs command="npm install class-variance-authority cn" className="mt-6" />
+      
+      <Step>Install the required nepui dependencies:</Step>
+      <PackageManagerTabs command="npx nepui@latest add button input textarea" className="mt-6"/>
 
       <Step>Install the required nepui dependencies:</Step>
       <PackageManagerTabs command="npx nepui@latest add input button textarea" className="mt-6"/>

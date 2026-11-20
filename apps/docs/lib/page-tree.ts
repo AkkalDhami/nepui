@@ -22,20 +22,20 @@ export function getPagesFromFolder(
   folder: PageTreeFolder,
   target: string
 ): PageTreePage[] {
-  if (folder.$id === "components" || folder.name === "Components") {
-    for (const child of folder.children) {
-      if (child.type === "folder") {
-        const isReact = child.$id === "react" || child.name === "React"
-        const isHtml = child.$id === "html" || child.name === "Html"
+  for (const child of folder.children) {
+    if (child.type === "folder") {
+      const isReact = child.$id === "react" || child.name === "React"
+      const isHtml = child.$id === "html" || child.name === "Html"
 
-        if ((target === "react" && isReact) || (target === "html" && isHtml)) {
-          return child.children.filter(
-            (c): c is PageTreePage => c.type === "page"
-          )
-        }
+      if ((target === "react" && isReact) || (target === "html" && isHtml)) {
+        return child.children.filter(
+          (page): page is PageTreePage => page.type === "page"
+        )
       }
     }
+  }
 
+  if (folder.$id === "components" || folder.name === "Components") {
     return getAllPagesFromFolder(folder).filter(
       (page) => !page.url.endsWith("/components")
     )
@@ -46,7 +46,9 @@ export function getPagesFromFolder(
   )
 }
 
-export function getCurrentTarget(pathname: string): string {
-  const targetMatch = pathname.match(/\/docs\/components\/(react|html)\//)
-  return targetMatch ? targetMatch[1] : "react" //
+export function getCurrentTarget(pathname: string): "html" | "react" {
+  const targetMatch = pathname.match(
+    /\/docs\/(?:components|backgrounds|text-effects)\/(html|react)(?:\/|$)/
+  )
+  return targetMatch?.[1] === "html" ? "html" : "react"
 }

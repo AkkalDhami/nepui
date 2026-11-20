@@ -10,7 +10,7 @@ contributor:
 <ComponentPreview
   target="html"
   name="dialog-demo"
-  styles={["/button/button.css"]}
+  styles={["/button/button.css", "/input/input.css", "/label/label.css"]}
 />
 
 ---
@@ -114,21 +114,18 @@ Dialog
 
 ---
 
-## Form
+## Destructive Action
 
-Fields go between the header and the footer. The footer fills the full width of the box, so it only looks right when the box padding is the default one, or when you change `--np-dialog-padding` instead of the padding.
-
-This example uses the [Input](/docs/components/html/input) and [Label](/docs/components/html/label) components. Link their stylesheets first:
+Link the stylesheets:
 
 ```html
-<link rel="stylesheet" href="./styles/input.css">
-<link rel="stylesheet" href="./styles/label.css">
+<link rel="stylesheet" href="./styles/button.css">
 ```
 
 <ComponentPreview
   target="html"
-  name="dialog-form"
-  styles={["/button/button.css", "/input/input.css", "/label/label.css"]}
+  name="dialog-basic"
+  styles={["/button/button.css"]}
 />
 
 ---

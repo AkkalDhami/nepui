@@ -82,6 +82,8 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
   const MDX = doc.body
 
   const isComponentPage = params.slug?.[0] === "components"
+  const isBgEffectPage =
+    params.slug?.[0] === "backgrounds" || params.slug?.[0] === "text-effects"
   const breadcrumbs = getDocsBreadcrumbs(page.url, page.data.title)
 
   const isChangelog = params.slug?.[0] === "changelog"
@@ -160,7 +162,7 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
             )}
           </div>
 
-          {isComponentPage &&
+          {(isComponentPage || isBgEffectPage) &&
             params?.slug?.length &&
             params?.slug?.length > 1 && (
               <div className="mb-8">
