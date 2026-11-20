@@ -1,0 +1,194 @@
+---
+title: Message
+description: Displays a message in a conversation, with optional avatar, header, footer, and alignment.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  target="html"
+  name="message-demo"
+  styles={["/marker/marker.css", "/avatar/avatar.css", "/bubble/bubble.css"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add message"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the required nepui dependencies:</Step>
+      <PackageManagerTabs command="npx nepui@latest add avatar bubble" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="message"
+        title="styles/message.css"
+        fileTarget="styles/message.css"
+      />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Message is pure CSS and needs no script.
+
+```html
+<link rel="stylesheet" href="./styles/avatar.css" />
+<link rel="stylesheet" href="./styles/bubble.css" />
+<link rel="stylesheet" href="./styles/message.css" />
+```
+
+```html
+<div class="np-message">
+  <div class="np-message-avatar">
+    <span class="np-avatar">
+      <span class="np-avatar-fallback">CN</span>
+    </span>
+  </div>
+  <div class="np-message-content">
+    <div class="np-bubble">
+      <div class="np-bubble-content">How can I help you today?</div>
+    </div>
+  </div>
+</div>
+```
+
+Or use the data attributes instead of the classes: `data-np-message`, `data-np-message-group`, `data-np-message-avatar`, `data-np-message-content`, `data-np-message-header`, `data-np-message-footer`, and `data-align="end"` for the end side.
+
+`np-message` owns the row layout: the avatar, the alignment, the header and the footer. Render the visible message surface inside it with a Bubble.
+
+---
+
+## Composition
+
+```text
+np-message-group (optional)
+└── np-message
+    ├── np-message-avatar
+    └── np-message-content
+        ├── np-message-header (optional)
+        ├── np-bubble
+        │   └── np-bubble-content
+        └── np-message-footer (optional)
+```
+
+---
+
+## Avatar
+
+Add `np-message-end` (or `data-align="end"`) to put the avatar and the message on the end side, as for the current user. The avatar sits on the bottom edge of the message. A Bubble inside follows the side of the message, so you do not align it yourself.
+
+<ComponentPreview
+  target="html"
+  name="message-avatar"
+  styles={["/avatar/avatar.css", "/bubble/bubble.css"]}
+/>
+
+---
+
+## Group
+
+Wrap consecutive messages from the same sender in `np-message-group`. Leave `np-message-avatar` empty on the earlier messages. It keeps the space of an avatar, so the bubbles line up with the avatar on the last one.
+
+<ComponentPreview
+  target="html"
+  name="message-group"
+  styles={["/avatar/avatar.css", "/bubble/bubble.css"]}
+/>
+
+---
+
+## Header and Footer
+
+Use `np-message-header` for a sender name and `np-message-footer` for metadata such as a delivery or read status. The header stays at the start. The footer follows the side of the message. When a message has a footer, the avatar rises to stay level with the bubble instead of the footer.
+
+<ComponentPreview
+  target="html"
+  name="message-header-footer"
+  styles={["/avatar/avatar.css", "/bubble/bubble.css"]}
+/>
+
+The avatar offset uses the footer height. If you change one, change both with `--np-message-footer-height`.
+
+---
+
+## Actions
+
+Place message-level actions in `np-message-footer`, such as copy, retry or feedback buttons. Icon-only actions need an `aria-label`. This example uses the [Button](/docs/components/html/button) stylesheet.
+
+<ComponentPreview
+  target="html"
+  name="message-actions"
+  styles={["/avatar/avatar.css", "/bubble/bubble.css", "/button/button.css"]}
+/>
+
+---
+
+## Attachment
+
+Put an [Attachment](/docs/components/html/attachment) next to the bubble, inside `np-message-content`. It follows the side of the message.
+
+<ComponentPreview
+  target="html"
+  name="message-attachment"
+  styles={["/avatar/avatar.css", "/bubble/bubble.css", "/attachment/attachment.css"]}
+/>
+
+---
+
+## Status
+
+For an in-progress message, use a [Marker](/docs/components/html/marker) with `role="status"` so assistive technology announces the update as it appears. This example also uses the [Spinner](/docs/components/html/spinner) stylesheet.
+
+<ComponentPreview
+  target="html"
+  name="message-status"
+  styles={["/avatar/avatar.css", "/marker/marker.css", "/spinner/spinner.css"]}
+/>
+
+---
+
+## Accessibility
+
+`np-message` is a presentational layout wrapper. Accessibility comes from the content you place inside it.
+
+- Give every icon-only action in the footer an `aria-label`.
+- Use `role="status"` on a Marker for in-progress messages.
+- Keep the semantics of the conversation on the container around the messages, for example a labelled `role="log"` region.
+
+---
+
+## Reference
+
+### Parts
+
+| Name    | Data attribute            | Class alias          |
+| ------- | ------------------------- | -------------------- |
+| Message | `data-np-message`         | `np-message`         |
+| Group   | `data-np-message-group`   | `np-message-group`   |
+| Avatar  | `data-np-message-avatar`  | `np-message-avatar`  |
+| Content | `data-np-message-content` | `np-message-content` |
+| Header  | `data-np-message-header`  | `np-message-header`  |
+| Footer  | `data-np-message-footer`  | `np-message-footer`  |
+
+### Alignment
+
+| Name  | Data attribute    | Class alias      |
+| ----- | ----------------- | ---------------- |
+| Start | -                 | `np-message`     |
+| End   | `data-align="end"` | `np-message-end` |

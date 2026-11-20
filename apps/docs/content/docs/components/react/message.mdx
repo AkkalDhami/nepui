@@ -1,0 +1,259 @@
+---
+title: Message
+description: Displays a message in a conversation, with optional avatar, header, footer, and alignment.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="message-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/message.json"
+      nepui="npx nepui@latest add message"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install cn" className="mt-6"/>
+
+      <Step>Install the required nepui dependencies:</Step>
+      <PackageManagerTabs command="npx nepui@latest add avatar bubble" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="message"
+        title="components/nepui/message/message.css"
+        fileTarget="components/nepui/message/message.css"
+      />
+      <ComponentSource
+        target="react"
+        name="message"
+        title="components/nepui/message/message.tsx"
+        fileTarget="components/nepui/message/message.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="message"
+        title="components/nepui/message/index.ts"
+        fileTarget="components/nepui/message/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/nepui/avatar"
+import { Bubble, BubbleContent } from "@/components/nepui/bubble"
+import {
+  Message,
+  MessageAvatar,
+  MessageContent,
+} from "@/components/nepui/message"
+```
+
+```tsx
+<Message>
+  <MessageAvatar>
+    <Avatar>
+      <AvatarImage src="https://github.com/akkaldhami.png" alt="@akkaldhami" />
+      <AvatarFallback>AD</AvatarFallback>
+    </Avatar>
+  </MessageAvatar>
+  <MessageContent>
+    <Bubble>
+      <BubbleContent>How can I help you today?</BubbleContent>
+    </Bubble>
+  </MessageContent>
+</Message>
+```
+
+`Message` owns the row layout: the avatar, the alignment, the header and the footer. Render the visible message surface inside it with [Bubble](/docs/components/react/bubble).
+
+---
+
+## Composition
+
+Use the following composition to build a message:
+
+```text
+Message
+├── MessageAvatar
+└── MessageContent
+    ├── MessageHeader
+    ├── Bubble
+    └── MessageFooter
+```
+
+Use `MessageGroup` to stack consecutive messages from the same sender:
+
+```text
+MessageGroup
+├── Message
+└── Message
+```
+
+---
+
+## Avatar
+
+Use `MessageAvatar` to render an avatar next to the message. Set `align="end"` on the message to put the avatar and the message on the end side, as for the current user. The avatar sits on the bottom edge of the message.
+
+<ComponentPreview
+  name="message-avatar"
+/>
+
+| align   | Description                                         |
+| ------- | --------------------------------------------------- |
+| `start` | Align the message to the start of the conversation. |
+| `end`   | Align the message to the end of the conversation.   |
+
+Put the alignment on the `Message`, not on the `Bubble` inside it. The bubble follows the message.
+
+---
+
+## Group
+
+Use `MessageGroup` to stack consecutive messages from the same sender. Render an empty `MessageAvatar` on the earlier messages to keep them aligned with the avatar on the last one.
+
+<ComponentPreview
+  name="message-group"
+/>
+
+---
+
+## Header and Footer
+
+Use `MessageHeader` for a sender name and `MessageFooter` for metadata such as a delivery or read status. The header stays at the start. The footer follows the side of the message. When a message has a footer, the avatar rises to stay level with the bubble instead of the footer.
+
+<ComponentPreview
+  name="message-header-footer"
+/>
+
+The avatar offset uses the footer height, so if you change one, change both with `--np-message-footer-height`.
+
+---
+
+## Actions
+
+Place message-level actions in `MessageFooter`, such as copy, retry or feedback buttons. The actions stay on the side of the message.
+
+<ComponentPreview
+  name="message-actions"
+/>
+
+---
+
+## Attachment
+
+Put an [Attachment](/docs/components/react/attachment) next to the bubble, inside `MessageContent`. It follows the side of the message.
+
+<ComponentPreview
+  name="message-attachment"
+/>
+
+---
+
+## Status
+
+For an in-progress message, use a [Marker](/docs/components/react/marker) with `role="status"` so assistive technology announces the update as it appears.
+
+<ComponentPreview
+  name="message-status"
+/>
+
+---
+
+## Accessibility
+
+`Message` is a presentational layout wrapper. Accessibility comes from the content you place inside it.
+
+### Label icon-only actions
+
+Action buttons in `MessageFooter` are usually icon-only, so give each one an `aria-label`.
+
+```tsx
+<MessageFooter>
+  <Button variant="ghost" size="icon-xs" aria-label="Copy">
+    <CopyIcon />
+  </Button>
+</MessageFooter>
+```
+
+### Status updates
+
+For in-progress messages, use a `Marker` with `role="status"`, as in the [Status](#status) example.
+
+### Conversation semantics
+
+Keep the semantics of the conversation on the container around the messages, for example a labelled `role="log"` region.
+
+---
+
+## API Reference
+
+### Message
+
+The message row wrapper.
+
+| Prop        | Type              | Default   |
+| ----------- | ----------------- | --------- |
+| `align`     | `"start" \| "end"` | `"start"` |
+| `className` | `string`          | -         |
+
+### MessageGroup
+
+Groups consecutive messages from the same sender.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` | -       |
+
+### MessageAvatar
+
+The avatar slot, anchored to the bottom of the message. Left empty, it keeps the space of an avatar.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` | -       |
+
+### MessageContent
+
+Wraps the header, the message surface and the footer.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` | -       |
+
+### MessageHeader
+
+Content above the message, such as a sender name. Stays at the start whatever the `align`.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` | -       |
+
+### MessageFooter
+
+Content below the message, such as a status or actions. Follows the side of the message.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` | -       |
