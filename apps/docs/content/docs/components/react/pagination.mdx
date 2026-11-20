@@ -1,0 +1,229 @@
+---
+title: Pagination
+description: Pagination with page navigation, next and previous links.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="pagination-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/pagination.json"
+      nepui="npx nepui@latest add pagination"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react cn" className="mt-6"/>
+
+      <Step>Install the required nepui dependencies:</Step>
+      <PackageManagerTabs command="npx nepui@latest add button" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="pagination"
+        title="components/nepui/pagination/pagination.css"
+        fileTarget="components/nepui/pagination/pagination.css"
+      />
+      <ComponentSource
+        target="react"
+        name="pagination"
+        title="components/nepui/pagination/pagination.tsx"
+        fileTarget="components/nepui/pagination/pagination.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="pagination"
+        title="components/nepui/pagination/index.ts"
+        fileTarget="components/nepui/pagination/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/nepui/pagination"
+```
+
+```tsx
+<Pagination>
+  <PaginationContent>
+    <PaginationItem>
+      <PaginationPrevious href="#" />
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#">1</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#" isActive>
+        2
+      </PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#">3</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationEllipsis />
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationNext href="#" />
+    </PaginationItem>
+  </PaginationContent>
+</Pagination>
+```
+
+---
+
+## Composition
+
+Use the following composition to build a `Pagination`:
+
+```text
+Pagination
+└── PaginationContent
+    ├── PaginationItem
+    │   └── PaginationPrevious
+    ├── PaginationItem
+    │   └── PaginationLink
+    ├── PaginationItem
+    │   └── PaginationEllipsis
+    └── PaginationItem
+        └── PaginationNext
+```
+
+---
+
+## Simple
+
+A simple pagination with only page numbers.
+
+<ComponentPreview
+  name="pagination-simple"
+/>
+
+---
+
+## Icons Only
+
+Use just the previous and next buttons without page numbers. This is useful for data tables.
+
+<ComponentPreview
+  name="pagination-icons-only"
+/>
+
+---
+
+## Disabled
+
+Add `aria-disabled` to `PaginationLink`.
+
+```tsx
+<PaginationLink aria-disabled href="#">
+  1
+</PaginationLink>
+```
+
+---
+
+## Router links
+
+By default `PaginationLink` renders an `<a>`. To use your framework's link (for example Next.js `Link`), pass it through the `render` prop. No changes to the source are needed.
+
+```tsx
+import Link from "next/link"
+
+<PaginationLink render={<Link href="/posts?page=2" />} isActive>
+  2
+</PaginationLink>
+```
+
+---
+
+## API Reference
+
+### Pagination
+
+The root `<nav>` landmark. Accepts all `nav` props.
+
+| Prop        | Type     | Default        |
+| ----------- | -------- | -------------- |
+| `className` | `string` | -              |
+
+### PaginationContent
+
+The `<ul>` that lays out the items. Accepts all `ul` props.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` | -       |
+
+### PaginationItem
+
+A `<li>`. Accepts all `li` props.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` | -       |
+
+### PaginationLink
+
+A page link rendered as a Button-styled `<a>`. Accepts all `a` props.
+
+| Prop        | Type                                                                                      | Default |
+| ----------- | ----------------------------------------------------------------------------------------- | ------- |
+| `isActive`  | `boolean`                                                                                 | `false` |
+| `size`      | `"default" \| "xs" \| "sm" \| "lg" \| "icon" \| "icon-xs" \| "icon-sm" \| "icon-lg"`      | `"icon"` |
+| `render`    | `ReactElement \| (props, state) => ReactElement`                                          | -       |
+| `className` | `string`                                                                                  | -       |
+
+### PaginationPrevious
+
+A link to the previous page. Accepts all `PaginationLink` props.
+
+| Prop        | Type     | Default      |
+| ----------- | -------- | ------------ |
+| `text`      | `string` | `"Previous"` |
+| `className` | `string` | -            |
+
+### PaginationNext
+
+A link to the next page. Accepts all `PaginationLink` props.
+
+| Prop        | Type     | Default  |
+| ----------- | -------- | -------- |
+| `text`      | `string` | `"Next"` |
+| `className` | `string` | -        |
+
+### PaginationEllipsis
+
+A placeholder for skipped pages. Accepts all `span` props.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` | -       |

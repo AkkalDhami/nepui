@@ -1,0 +1,174 @@
+---
+title: Pagination
+description: Pagination with page navigation, next and previous links.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="pagination-demo"
+  target="html"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add pagination"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the required nepui dependencies:</Step>
+      <PackageManagerTabs command="npx nepui@latest add button" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="pagination"
+        title="styles/pagination.css"
+        fileTarget="styles/pagination.css"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Load the stylesheets. Pagination goes after Button.
+
+```html
+<link rel="stylesheet" href="./styles/button.css">
+<link rel="stylesheet" href="./styles/pagination.css">
+```
+
+Use the `np-pagination` class. Each link is a Button (`np-button np-button-ghost`) plus a Pagination class. The current page uses `np-button-outline` and `aria-current="page"`.
+
+```html
+<nav class="np-pagination" aria-label="pagination">
+  <ul class="np-pagination-content">
+    <li class="np-pagination-item">
+      <a class="np-button np-button-ghost np-pagination-previous" href="#" aria-label="Go to previous page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
+        <span class="np-pagination-text">Previous</span>
+      </a>
+    </li>
+    <li class="np-pagination-item">
+      <a class="np-button np-button-ghost np-button-icon np-pagination-link" href="#">1</a>
+    </li>
+    <li class="np-pagination-item">
+      <a class="np-button np-button-outline np-button-icon np-pagination-link" href="#" aria-current="page">2</a>
+    </li>
+    <li class="np-pagination-item">
+      <span class="np-pagination-ellipsis">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="1" /><circle cx="19" cy="12" r="1" /><circle cx="5" cy="12" r="1" /></svg>
+        <span class="np-pagination-sr-only">More pages</span>
+      </span>
+    </li>
+    <li class="np-pagination-item">
+      <a class="np-button np-button-ghost np-pagination-next" href="#" aria-label="Go to next page">
+        <span class="np-pagination-text">Next</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+      </a>
+    </li>
+  </ul>
+</nav>
+```
+
+Or use the data attributes instead of classes:
+
+```html
+<nav data-np-pagination aria-label="pagination">
+  <ul data-np-pagination-content>
+    <li data-np-pagination-item>
+      <a data-np-button data-variant="outline" data-size="icon" data-np-pagination-link href="#" aria-current="page">1</a>
+    </li>
+  </ul>
+</nav>
+```
+
+---
+
+## Composition
+
+```text
+nav.np-pagination
+└── ul.np-pagination-content
+    └── li.np-pagination-item
+        └── pagination link, previous link, next link, or ellipsis
+```
+
+---
+
+## Simple
+
+A simple pagination with only page numbers.
+
+<ComponentPreview
+  name="pagination-simple"
+  target="html"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Icons Only
+
+Use just the previous and next buttons without page numbers. This is useful for data tables.
+
+<ComponentPreview
+  name="pagination-icons-only"
+  target="html"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Disabled
+
+Disable a link the same way as a Button: `aria-disabled="true"` (add `tabindex="-1"` so it leaves the tab order).
+
+```html
+<a class="np-button np-button-ghost np-pagination-previous" href="#" aria-disabled="true" tabindex="-1" aria-label="Go to previous page">
+  …
+</a>
+```
+
+---
+
+## Reference
+
+### Parts
+
+| Name       | Data attribute            | Class alias               |
+| ---------- | ------------------------- | ------------------------- |
+| Root       | `data-np-pagination`          | `np-pagination`          |
+| Content    | `data-np-pagination-content`  | `np-pagination-content`  |
+| Item       | `data-np-pagination-item`     | `np-pagination-item`     |
+| Link       | `data-np-pagination-link`     | `np-pagination-link`     |
+| Previous   | `data-np-pagination-previous` | `np-pagination-previous` |
+| Next       | `data-np-pagination-next`     | `np-pagination-next`     |
+| Text       | `data-np-pagination-text`     | `np-pagination-text`     |
+| Ellipsis   | `data-np-pagination-ellipsis` | `np-pagination-ellipsis` |
+| Screen-reader text | `data-np-pagination-sr-only` | `np-pagination-sr-only` |
+
+### Link looks
+
+Links reuse the [Button](/docs/components/html/button) classes.
+
+| Name         | Data attribute                                | Class alias                            |
+| ------------ | --------------------------------------------- | -------------------------------------- |
+| Page link    | `data-variant="ghost"` `data-size="icon"`     | `np-button-ghost np-button-icon`       |
+| Current page | `data-variant="outline"` `data-size="icon"`   | `np-button-outline np-button-icon` + `aria-current="page"` |
+| Previous / Next | `data-variant="ghost"`                     | `np-button-ghost`                      |
