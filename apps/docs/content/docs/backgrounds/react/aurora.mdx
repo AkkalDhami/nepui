@@ -1,0 +1,141 @@
+---
+title: Aurora
+description: A slow, soft, animated glow behind your hero or any section, with named gradients, in plain CSS.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="aurora-demo"
+  height="min-h-130"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/aurora.json"
+      nepui="npx nepui@latest add aurora"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="aurora"
+        title="components/nepui/aurora/aurora.css"
+        fileTarget="components/nepui/aurora/aurora.css"
+      />
+      <ComponentSource
+        target="react"
+        name="aurora"
+        title="components/nepui/aurora/aurora.tsx"
+        fileTarget="components/nepui/aurora/aurora.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="aurora"
+        title="components/nepui/aurora/index.ts"
+        fileTarget="components/nepui/aurora/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx 
+import { Aurora } from "@/components/nepui/aurora"
+```
+
+```tsx 
+<Aurora gradient="ocean">
+  <h1>Interfaces that feel alive</h1>
+</Aurora>
+```
+
+Use `render` to put the effect on another element, such as a `section`.
+
+The glow sits behind the content, so children need no extra styling. The box clips the glow, so give it a size, such as padding or a height. The glow blends with `--np-background`, so it works in light and dark.
+
+---
+
+## Gradients
+
+Set `gradient` to a name. The names are `aurora`, `sunrise`, `sunset`, `ocean`, `forest`, `fire`, `candy`, `lavender`, `mint`, `peach`, `midnight`, `gold`, `rainbow`, `cyber`, `plasma`, `mono`. Without one, the glow uses `aurora`. The names match the ones in Gradient Text.
+
+<ComponentPreview
+  name="aurora-gradients"
+/>
+
+---
+
+## Cover
+
+Set `mask="none"` and `intensity="strong"` to fill a whole section.
+
+<ComponentPreview
+  name="aurora-cover"
+  height="min-h-130"
+/>
+
+---
+
+## Mask
+
+Set `mask` to `center`, `top`, `bottom` or `none`. The default, `corner`, shows the glow from the top corner.
+
+<ComponentPreview
+  name="aurora-masks"
+/>
+
+---
+
+## Intensity, speed and stillness
+
+Use `intensity` (`subtle` or `strong`), `speed` (`slow` or `fast`) and `animated={false}`.
+
+<ComponentPreview
+  name="aurora-intensity"
+/>
+
+---
+
+## Your own gradient
+
+Add a rule to your own stylesheet that sets the five stops for a name of your choice, then use that name.
+
+```css
+[data-gradient="brand"] {
+  --np-aurora-color-1: oklch(0.7 0.2 20);
+  --np-aurora-color-2: oklch(0.75 0.18 50);
+  --np-aurora-color-3: oklch(0.8 0.16 90);
+  --np-aurora-color-4: oklch(0.75 0.18 50);
+  --np-aurora-color-5: oklch(0.7 0.2 20);
+}
+```
+
+---
+
+## API Reference
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `gradient` | `"aurora" \| "sunrise" \| "sunset" \| "ocean" \| "forest" \| "fire" \| "candy" \| "lavender" \| "mint" \| "peach" \| "midnight" \| "gold" \| "rainbow" \| "cyber" \| "plasma" \| "mono"` | `"aurora"` |
+| `mask` | `"corner" \| "center" \| "top" \| "bottom" \| "none"` | `"corner"` |
+| `intensity` | `"subtle" \| "default" \| "strong"` | `"default"` |
+| `speed` | `"slow" \| "default" \| "fast"` | `"default"` |
+| `animated` | `boolean` | `true` |

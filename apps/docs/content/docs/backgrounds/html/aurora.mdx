@@ -1,0 +1,141 @@
+---
+title: Aurora
+description: A slow, soft, animated glow behind your hero or any section, with named gradients, in plain CSS.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  target="html"
+  name="aurora-demo"
+  styles={["/gradient-text/gradient-text.css", "/button/button.css"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add aurora"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="aurora"
+        title="styles/aurora.css"
+        fileTarget="styles/aurora.css"
+      />
+      <ComponentSource
+        target="html"
+        name="aurora"
+        title="html/aurora.html"
+        fileTarget="html/aurora.html"
+      />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the stylesheet, after `tokens.css`. There is no script.
+
+```html 
+<link rel="stylesheet" href="./styles/aurora.css">
+```
+
+```html 
+<section class="np-aurora" data-gradient="ocean">
+  <h1>Interfaces that feel alive</h1>
+</section>
+```
+
+The glow sits behind the content, so children need no extra styling. The box clips the glow, so give it a size, such as padding or a height. The glow blends with `--np-background`, so it works in light and dark.
+
+---
+
+## Gradients
+
+Set `data-gradient` to a name. The names are `aurora`, `sunrise`, `sunset`, `ocean`, `forest`, `fire`, `candy`, `lavender`, `mint`, `peach`, `midnight`, `gold`, `rainbow`, `cyber`, `plasma`, `mono`. Without one, the glow uses `aurora`. The names match the ones in Gradient Text.
+
+<ComponentPreview
+  target="html"
+  name="aurora-gradients"
+/>
+
+---
+
+## Cover
+
+Set `data-mask="none"` and `data-intensity="strong"` to fill a whole section.
+
+<ComponentPreview
+  target="html"
+  name="aurora-cover"
+  height="500px"
+  styles={["/gradient-text/gradient-text.css", "/button/button.css"]}
+/>
+
+---
+
+## Mask
+
+Set `data-mask` to `center`, `top`, `bottom` or `none`. The default shows the glow from the top corner.
+
+<ComponentPreview
+  target="html"
+  name="aurora-masks"
+/>
+
+---
+
+## Intensity, speed and stillness
+
+Use `data-intensity` (`subtle` or `strong`), `data-speed` (`slow` or `fast`) and `data-animate="false"`.
+
+<ComponentPreview
+  target="html"
+  name="aurora-intensity"
+/>
+
+---
+
+## Your own gradient
+
+Add a rule to your own stylesheet that sets the five stops for a name of your choice, then use that name.
+
+```css
+[data-gradient="brand"] {
+  --np-aurora-color-1: oklch(0.7 0.2 20);
+  --np-aurora-color-2: oklch(0.75 0.18 50);
+  --np-aurora-color-3: oklch(0.8 0.16 90);
+  --np-aurora-color-4: oklch(0.75 0.18 50);
+  --np-aurora-color-5: oklch(0.7 0.2 20);
+}
+```
+
+---
+
+## Reference
+
+| Class | Attribute | Description |
+| --- | --- | --- |
+| `np-aurora` | `data-np-aurora` | The box that holds the content and the glow. |
+
+| Attribute | Values | Default |
+| --- | --- | --- |
+| `data-gradient` | `"aurora" \| "sunrise" \| "sunset" \| "ocean" \| "forest" \| "fire" \| "candy" \| "lavender" \| "mint" \| "peach" \| "midnight" \| "gold" \| "rainbow" \| "cyber" \| "plasma" \| "mono"`| `aurora` |
+| `data-mask` | `"corner" \| "center" \| "top" \| "bottom" \| "none"` | `"corner"` |
+| `data-intensity` | `"subtle" \| "strong"` | `0.6` opacity |
+| `data-speed` | `"slow" \| "fast"` | A `60s` loop |
+| `data-animate` | `false` | Animated |
