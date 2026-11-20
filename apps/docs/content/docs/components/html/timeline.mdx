@@ -1,0 +1,227 @@
+---
+title: Timeline
+description: Shows events in order, such as an activity feed, a changelog or an order's progress.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  target="html"
+  name="timeline-demo"
+  styles={["/button/button.css"]}
+  scripts={["/timeline/timeline.js"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add timeline"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="timeline"
+        title="styles/timeline.css"
+        fileTarget="styles/timeline.css"
+      />
+      <ComponentSource
+        target="html"
+        name="timeline"
+        title="javascripts/timeline.js"
+        fileTarget="javascripts/timeline.js"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the stylesheet, after `tokens.css`, and the script at the end of the page. The script is optional, and the timeline looks the same without it:
+
+```html
+<link rel="stylesheet" href="./styles/timeline.css">
+
+<script src="./javascripts/timeline.js" defer></script>
+```
+
+```html
+<div class="np-timeline" aria-label="Activity">
+  <div class="np-timeline-item">
+    <span class="np-timeline-marker"></span>
+    <span class="np-timeline-connector"></span>
+    <div class="np-timeline-title">Deployed to production</div>
+    <time class="np-timeline-time" datetime="2026-11-14T10:42">10:42</time>
+    <div class="np-timeline-description">Version 2.4.0 is live.</div>
+  </div>
+</div>
+```
+
+Or use the data attributes instead of classes: `data-np-timeline`, `data-np-timeline-item`, `data-np-timeline-marker`, `data-np-timeline-connector`, `data-np-timeline-title`, `data-np-timeline-time` and `data-np-timeline-description`.
+
+The items must be direct children of the timeline. Every part inside an item is optional.
+
+The script adds the list and listitem roles, names each event from its title and describes it from its time and description, marks the current event with `aria-current="step"`, and gives the list one tab stop with the keys below. Status shown only by the marker is not visible to screen readers, so also say it in the title or the description, such as "Shipped, in progress".
+
+---
+
+## Composition
+
+```text
+np-timeline
+└── np-timeline-item
+    ├── np-timeline-marker
+    ├── np-timeline-connector
+    ├── np-timeline-title
+    ├── np-timeline-time
+    └── np-timeline-description
+```
+
+---
+
+## Horizontal
+
+Add `np-timeline-horizontal` and `data-orientation="horizontal"`. Left and Right move between events.
+
+<ComponentPreview
+  target="html"
+  name="timeline-horizontal"
+  styles={["/button/button.css"]}
+  scripts={["/timeline/timeline.js"]}
+/>
+
+---
+
+## Status
+
+Give the timeline a `data-value`, the number of finished steps, and every item a `data-step`. Items up to `value` are complete, the next one is current, and the rest are upcoming. Use `data-status` on an item to set it yourself. The current item gets `aria-current="step"`, and it takes the tab stop first.
+
+<ComponentPreview
+  target="html"
+  name="timeline-status"
+  styles={["/button/button.css"]}
+  scripts={["/timeline/timeline.js"]}
+/>
+
+---
+
+## Details
+
+Put anything inside an event, such as a native `<details>`.
+
+<ComponentPreview
+  target="html"
+  name="timeline-details"
+  styles={["/button/button.css", "/collapsible/collapsible.css", "/list/list.css"]}
+  scripts={["/timeline/timeline.js"]}
+/>
+
+---
+
+## Feed
+
+Add `data-feed` for a list that loads more events. The events become articles with their position, and Page Down and Page Up move between them. Set `data-busy` while it loads.
+
+<ComponentPreview
+  target="html"
+  name="timeline-feed"
+  styles={["/button/button.css"]}
+  scripts={["/timeline/timeline.js"]}
+/>
+
+---
+
+## Headings
+
+Use any element for a part, for example an `h3` for the title.
+
+<ComponentPreview
+  target="html"
+  name="timeline-custom-render"
+  styles={["/button/button.css"]}
+  scripts={["/timeline/timeline.js"]}
+/>
+
+---
+
+## Icons
+
+Put an icon in the marker.
+
+<ComponentPreview
+  target="html"
+  name="timeline-icons"
+  styles={["/button/button.css"]}
+  scripts={["/timeline/timeline.js"]}
+/>
+
+---
+
+## Compact
+
+Make the marker smaller with `--np-timeline-marker-size`, and colour it with `style`.
+
+<ComponentPreview
+  target="html"
+  name="timeline-compact"
+  styles={["/button/button.css"]}
+  scripts={["/timeline/timeline.js"]}
+/>
+
+---
+
+## Keyboard
+
+| Key | Behavior |
+| --- | --- |
+| Tab | Enters the timeline on the current event, or the last one you focused, or the first. |
+| Arrow Down, Arrow Up | Move between events (vertical). |
+| Arrow Right, Arrow Left | Move between events (horizontal). They swap in RTL. |
+| Home, End | Go to the first or the last event. |
+| Page Down, Page Up | Next or previous article (feed only). |
+
+Arrow keys act only on the event itself, so controls inside an event keep them. They stop at the ends unless `data-loop` is set.
+
+---
+
+## Reference
+
+### Options
+
+| Where | Attribute | Description |
+| --- | --- | --- |
+| Timeline | `data-orientation="horizontal"` | Lays the events in a row. `np-timeline-horizontal` does the same. |
+| Timeline | `data-value` | The number of finished steps. |
+| Timeline | `data-feed` | Makes the list a feed. |
+| Timeline | `data-busy` | Sets `aria-busy` while a feed loads. |
+| Timeline | `data-loop` | Wraps the arrow keys from the last event to the first. |
+| Item | `data-step` | The position of the event. Used with the timeline's `data-value`. |
+| Item | `data-status` | `complete`, `current` or `upcoming`. Overrides the status taken from `data-step`. |
+| Item | `data-value` | Names the event for `NepuiTimeline.get(element).focus(value)`. |
+
+The script sets `data-complete`, `data-current` and `data-upcoming` on the item and on its marker and connector, and the CSS variables `--np-timeline-count` and `--np-timeline-index`. It also watches the timeline, so events you add later are wired, and changes to `data-value` and `data-busy` are picked up.
+
+### Script
+
+```html
+<script src="./javascripts/timeline.js" defer></script>
+```
+
+| API | Description |
+| --- | --- |
+| `NepuiTimeline.init(element)` | Wires one timeline. Use it for a timeline added after the page loaded. |
+| `NepuiTimeline.initAll(scope?)` | Wires every timeline in the scope, or on the page. |
+| `NepuiTimeline.get(element)` | Returns `{ focus, refresh }`. `focus(value?)` moves focus to the event with that `data-value`, or to the one that holds the tab stop. |

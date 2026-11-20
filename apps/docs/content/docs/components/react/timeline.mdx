@@ -1,0 +1,229 @@
+---
+title: Timeline
+description: Shows events in order, such as an activity feed, a changelog or an order's progress.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="timeline-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/timeline.json"
+      nepui="npx nepui@latest add timeline"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install class-variance-authority cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="timeline"
+        title="components/nepui/timeline/timeline.css"
+        fileTarget="components/nepui/timeline/timeline.css"
+      />
+      <ComponentSource
+        target="react"
+        name="timeline"
+        title="components/nepui/timeline/timeline.tsx"
+        fileTarget="components/nepui/timeline/timeline.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="timeline"
+        title="components/nepui/timeline/index.ts"
+        fileTarget="components/nepui/timeline/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx 
+import {
+  Timeline,
+  TimelineConnector,
+  TimelineDescription,
+  TimelineItem,
+  TimelineMarker,
+  TimelineTime,
+  TimelineTitle,
+} from "@/components/nepui/timeline"
+```
+
+```tsx 
+<Timeline aria-label="Activity">
+  <TimelineItem>
+    <TimelineMarker />
+    <TimelineConnector />
+    <TimelineTitle>Deployed to production</TimelineTitle>
+    <TimelineTime dateTime="2026-11-14T10:42">10:42</TimelineTime>
+    <TimelineDescription>Version 2.4.0 is live.</TimelineDescription>
+  </TimelineItem>
+</Timeline>
+```
+
+`Timeline` is a list with one tab stop. Arrow keys move between events, and Tab moves into the links and buttons inside an event. Give the list a name with `aria-label`. Pass `dateTime` to `TimelineTime`, so the date is machine-readable while the text stays friendly.
+
+Each event is named by its title and described by its time and description. Status shown only by the marker is not visible to screen readers, so also say it in the title or the description, such as "Shipped, in progress".
+
+`TimelineItem` must be a direct child of `Timeline`. Every part inside an item is optional. `TimelineMarker` and `TimelineConnector` are decorative and hidden from assistive technology.
+
+---
+
+## Composition
+
+```text
+Timeline
+└── TimelineItem
+    ├── TimelineMarker
+    ├── TimelineConnector
+    ├── TimelineTitle
+    ├── TimelineTime
+    └── TimelineDescription
+```
+
+---
+
+## Horizontal
+
+Set `orientation="horizontal"`. Left and Right move between events.
+
+<ComponentPreview
+  name="timeline-horizontal"
+/>
+
+---
+
+## Status
+
+Give the timeline a `value`, the number of finished steps, and every item a `step`. Items up to `value` are complete, the next one is current, and the rest are upcoming. Use `status` on an item to set it yourself. The current item gets `aria-current="step"`, and it takes the tab stop first.
+
+<ComponentPreview
+  name="timeline-status"
+/>
+
+---
+
+## Details
+
+Put anything inside an event, such as a collapsible.
+
+<ComponentPreview
+  name="timeline-details"
+/>
+
+---
+
+## Feed
+
+Set `feed` for a list that loads more events. The events become articles with their position, and Page Down and Page Up move between them. Set `busy` while it loads.
+
+<ComponentPreview
+  name="timeline-feed"
+/>
+
+---
+
+## Headings
+
+Use `render` to change the element of any part, for example to make the title a heading.
+
+<ComponentPreview
+  name="timeline-custom-render"
+/>
+
+---
+
+## Icons
+
+Put an icon in `TimelineMarker`.
+
+<ComponentPreview
+  name="timeline-icons"
+/>
+
+---
+
+## Compact
+
+Make the marker smaller with `--np-timeline-marker-size`, and colour it with `style`.
+
+<ComponentPreview
+  name="timeline-compact"
+/>
+
+---
+
+## Controller
+
+Create one controller for each timeline with `createTimelineController()` and pass it as `controller`. `focus(value?)` moves focus to the event with that `value`, or to the one that holds the tab stop.
+
+---
+
+## Keyboard
+
+| Key | Behavior |
+| --- | --- |
+| Tab | Enters the timeline on the current event, or the last one you focused, or the first. |
+| Arrow Down, Arrow Up | Move between events (vertical). |
+| Arrow Right, Arrow Left | Move between events (horizontal). They swap in RTL. |
+| Home, End | Go to the first or the last event. |
+| Page Down, Page Up | Next or previous article (feed only). |
+
+Arrow keys act only on the event itself, so controls inside an event keep them. They stop at the ends unless `loop` is set.
+
+---
+
+## API Reference
+
+### Timeline
+
+Renders a `div` with `role="list"`, or `role="feed"` with `feed`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `orientation` | `"vertical" \| "horizontal"` | `"vertical"` |
+| `value` | `number` | |
+| `loop` | `boolean` | `false` |
+| `feed` | `boolean` | `false` |
+| `busy` | `boolean` | `false` |
+| `controller` | `TimelineController` | |
+| `render` | `ReactElement` | |
+
+### TimelineItem
+
+Renders a `div` with `role="listitem"`, or `role="article"` in a feed.
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `value` | `string` | Names the event for `controller.focus()`. Generated if omitted. |
+| `step` | `number` | The position of the event. Used with the timeline's `value`. |
+| `status` | `"complete" \| "current" \| "upcoming"` | Overrides the status taken from `step`. |
+| `render` | `ReactElement` | Replaces the element. |
+
+`TimelineMarker`, `TimelineConnector`, `TimelineTitle`, `TimelineTime` and `TimelineDescription` take the props of their element and `render`.
+
+---
+
+## Credits
+
+- [Timeline](https://reui.io/docs/components/base/timeline) from ReUI.
+- [Timeline](https://ui-sdk.dev/docs/react/components/timeline) from UI SDK.
