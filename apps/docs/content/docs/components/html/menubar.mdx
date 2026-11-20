@@ -1,0 +1,267 @@
+---
+title: Menubar
+description: A visually persistent menu common in desktop applications that provides quick access to a consistent set of commands.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="menubar-demo"
+  target="html"
+  scripts={["/menubar/menubar.js"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add menubar"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="menubar"
+        title="styles/menubar.css"
+        fileTarget="styles/menubar.css"
+      />
+      <ComponentSource
+        target="html"
+        name="menubar"
+        title="javascripts/menubar.js"
+        fileTarget="javascripts/menubar.js"
+      />
+      <ComponentSource
+        target="html"
+        name="menubar"
+        title="html/menubar.html"
+        fileTarget="html/menubar.html"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Opening menus, hover switching, arrow-key navigation and submenus cannot be done with CSS alone, so the HTML version ships a small script (no dependencies). Without it the menus stay closed.
+
+```html
+<link rel="stylesheet" href="./styles/menubar.css">
+
+<script src="./javascripts/menubar.js" defer></script>
+```
+
+Structure: a bar, one `np-menubar-menu` per menu, and inside it a trigger button and the content (closed with the `hidden` attribute). The script fills in missing ids, `aria-controls` and `aria-labelledby`.
+
+```html
+<div class="np-menubar" role="menubar" aria-label="Application menu">
+  <div class="np-menubar-menu">
+    <button class="np-menubar-trigger" type="button" aria-haspopup="menu" aria-expanded="false">File</button>
+    <div class="np-menubar-content" role="menu" hidden>
+      <div role="group">
+        <div class="np-menubar-item" role="menuitem" tabindex="-1">
+          New Tab <span class="np-menubar-shortcut">⌘T</span>
+        </div>
+        <div class="np-menubar-item" role="menuitem" tabindex="-1">New Window</div>
+      </div>
+      <div class="np-menubar-separator" role="separator"></div>
+      <div role="group">
+        <div class="np-menubar-item" role="menuitem" tabindex="-1">Share</div>
+        <div class="np-menubar-item" role="menuitem" tabindex="-1">Print</div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+Or use the data attributes instead of classes:
+
+```html
+<div data-np-menubar role="menubar">
+  <div data-np-menubar-menu>
+    <button data-np-menubar-trigger type="button">File</button>
+    <div data-np-menubar-content hidden>
+      <div data-np-menubar-item>New Tab <span data-np-menubar-shortcut>⌘T</span></div>
+      <div data-np-menubar-item data-variant="destructive">Delete</div>
+    </div>
+  </div>
+</div>
+```
+
+Menus open below their trigger without collision handling. Leave room below the bar, or open the bar near the top of the page.
+
+Listen for activated items with the `np-menubar-select` event. It bubbles and `event.detail.item` is the item.
+
+```js
+document.querySelector(".np-menubar").addEventListener("np-menubar-select", (event) => {
+  console.log(event.detail.item.textContent.trim())
+})
+```
+
+For menus added later, call `NepuiMenubar.init(container)`.
+
+---
+
+## Composition
+
+Use the following composition to build a `Menubar`:
+
+```text
+np-menubar
+├── np-menubar-menu
+│   ├── np-menubar-trigger
+│   └── np-menubar-content
+│       ├── np-menubar-group
+│       │   ├── np-menubar-label
+│       │   ├── np-menubar-item
+│       │   └── np-menubar-item
+│       ├── np-menubar-separator
+│       ├── np-menubar-group
+│       │   ├── np-menubar-label
+│       │   ├── np-menubar-checkbox-item
+│       │   └── np-menubar-checkbox-item
+│       ├── np-menubar-separator
+│       ├── np-menubar-group
+│       │   ├── np-menubar-label
+│       │   └── np-menubar-radio-group
+│       │       ├── np-menubar-radio-item
+│       │       └── np-menubar-radio-item
+│       └── np-menubar-sub
+│           ├── np-menubar-sub-trigger
+│           └── np-menubar-sub-content
+│               └── np-menubar-group
+│                   ├── np-menubar-label
+│                   ├── np-menubar-item
+│                   └── np-menubar-item
+└── np-menubar-menu
+    ├── np-menubar-trigger
+    └── np-menubar-content
+        └── np-menubar-group
+            ├── np-menubar-label
+            ├── np-menubar-item
+            └── np-menubar-item
+```
+
+---
+
+## Checkbox
+
+Use `np-menubar-checkbox-item` with `aria-checked` and an `np-menubar-item-indicator` that holds the check icon. The script toggles `aria-checked` and `data-checked`, and keeps the menu open.
+
+<ComponentPreview
+  name="menubar-checkbox"
+  target="html"
+  scripts={["/menubar/menubar.js"]}
+/>
+
+---
+
+## Radio
+
+Use `np-menubar-radio-item` inside a `role="group"` element. Selecting one clears the others in the group.
+
+<ComponentPreview
+  name="menubar-radio"
+  target="html"
+  scripts={["/menubar/menubar.js"]}
+/>
+
+---
+
+## Submenu
+
+Wrap a submenu trigger and its content in `np-menubar-sub`. The content carries both `np-menubar-content` and `np-menubar-sub-content`, and the trigger ends with a chevron icon.
+
+<ComponentPreview
+  name="menubar-submenu"
+  target="html"
+  scripts={["/menubar/menubar.js"]}
+/>
+
+---
+
+## With Icons
+
+Put an inline SVG before the label. It is sized to `1rem` unless it has a `size-*` class. Add `np-menubar-destructive` for dangerous actions.
+
+<ComponentPreview
+  name="menubar-icons"
+  target="html"
+  scripts={["/menubar/menubar.js"]}
+/>
+
+---
+
+## Disabled
+
+Add `aria-disabled="true"` (or `data-disabled`) to an item. Add `disabled` to a trigger. Disabled items are dimmed, ignore the pointer and are skipped by keyboard navigation.
+
+```html
+<div class="np-menubar-item" role="menuitem" tabindex="-1" aria-disabled="true">Print</div>
+```
+
+---
+
+## Keyboard
+
+| Key                                | Action                                                          |
+| ---------------------------------- | --------------------------------------------------------------- |
+| `ArrowLeft` / `ArrowRight`         | Move between triggers. In an open menu, open the next or previous menu. Swapped in RTL. |
+| `ArrowDown` / `ArrowUp`            | On a trigger, open the menu on its first or last item. In a menu, move between items. |
+| `Home` / `End`                     | First or last trigger, or first or last item.                   |
+| `Enter` / `Space`                  | Open a menu, open a submenu, or activate an item.               |
+| `ArrowRight` on a sub trigger      | Open the submenu. `ArrowLeft` closes it (swapped in RTL).       |
+| Letter                             | Jump to the next item that starts with it.                      |
+| `Escape`                           | Close everything and focus the trigger.                         |
+| `Tab`                              | Close the menu.                                                 |
+
+---
+
+## Reference
+
+### Parts
+
+| Name              | Data attribute                    | Class alias                  |
+| ----------------- | --------------------------------- | ---------------------------- |
+| Bar               | `data-np-menubar`                 | `np-menubar`                 |
+| Menu wrapper      | `data-np-menubar-menu`            | `np-menubar-menu`            |
+| Trigger           | `data-np-menubar-trigger`         | `np-menubar-trigger`         |
+| Content           | `data-np-menubar-content`         | `np-menubar-content`         |
+| Item              | `data-np-menubar-item`            | `np-menubar-item`            |
+| Checkbox item     | `data-np-menubar-checkbox-item`   | `np-menubar-checkbox-item`   |
+| Radio item        | `data-np-menubar-radio-item`      | `np-menubar-radio-item`      |
+| Item indicator    | `data-np-menubar-item-indicator`  | `np-menubar-item-indicator`  |
+| Label             | `data-np-menubar-label`           | `np-menubar-label`           |
+| Separator         | `data-np-menubar-separator`       | `np-menubar-separator`       |
+| Shortcut          | `data-np-menubar-shortcut`        | `np-menubar-shortcut`        |
+| Submenu wrapper   | `data-np-menubar-sub`             | `np-menubar-sub`             |
+| Sub trigger       | `data-np-menubar-sub-trigger`     | `np-menubar-sub-trigger`     |
+| Sub content       | `data-np-menubar-sub-content`     | `np-menubar-sub-content`     |
+
+### Variants
+
+| Name        | Data attribute               | Class alias            | On                               |
+| ----------- | ---------------------------- | ---------------------- | -------------------------------- |
+| Destructive | `data-variant="destructive"` | `np-menubar-destructive` | Item                           |
+| Inset       | `data-inset`                 | `np-menubar-inset`     | Item, checkbox, radio, sub trigger, label |
+
+### States
+
+| State       | Selector                                  |
+| ----------- | ----------------------------------------- |
+| Open        | `aria-expanded="true"` or `data-popup-open` |
+| Highlighted | `:focus` or `data-highlighted`            |
+| Checked     | `aria-checked="true"` or `data-checked`   |
+| Disabled    | `aria-disabled="true"` or `data-disabled` |

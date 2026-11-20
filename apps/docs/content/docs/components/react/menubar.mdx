@@ -1,0 +1,272 @@
+---
+title: Menubar
+description: A visually persistent menu common in desktop applications that provides quick access to a consistent set of commands.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="menubar-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/menubar.json"
+      nepui="npx nepui@latest add menubar"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react class-variance-authority cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="menubar"
+        title="components/nepui/menubar/menubar.css"
+        fileTarget="components/nepui/menubar/menubar.css"
+      />
+      <ComponentSource
+        target="react"
+        name="menubar"
+        title="components/nepui/menubar/menubar.tsx"
+        fileTarget="components/nepui/menubar/menubar.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="menubar"
+        title="components/nepui/menubar/index.ts"
+        fileTarget="components/nepui/menubar/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import {
+  Menubar,
+  MenubarContent,
+  MenubarGroup,
+  MenubarItem,
+  MenubarMenu,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarTrigger,
+} from "@/components/nepui/menubar"
+```
+
+```tsx
+<Menubar>
+  <MenubarMenu>
+    <MenubarTrigger>File</MenubarTrigger>
+    <MenubarContent>
+      <MenubarGroup>
+        <MenubarItem>
+          New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>New Window</MenubarItem>
+      </MenubarGroup>
+      <MenubarSeparator />
+      <MenubarGroup>
+        <MenubarItem>Share</MenubarItem>
+        <MenubarItem>Print</MenubarItem>
+      </MenubarGroup>
+    </MenubarContent>
+  </MenubarMenu>
+</Menubar>
+```
+
+---
+
+## Composition
+
+Use the following composition to build a `Menubar`:
+
+```text
+Menubar
+├── MenubarMenu
+│   ├── MenubarTrigger
+│   └── MenubarContent
+│       ├── MenubarGroup
+│       │   ├── MenubarLabel
+│       │   ├── MenubarItem
+│       │   └── MenubarItem
+│       ├── MenubarSeparator
+│       ├── MenubarGroup
+│       │   ├── MenubarLabel
+│       │   ├── MenubarCheckboxItem
+│       │   └── MenubarCheckboxItem
+│       ├── MenubarSeparator
+│       ├── MenubarGroup
+│       │   ├── MenubarLabel
+│       │   └── MenubarRadioGroup
+│       │       ├── MenubarRadioItem
+│       │       └── MenubarRadioItem
+│       └── MenubarSub
+│           ├── MenubarSubTrigger
+│           └── MenubarSubContent
+│               └── MenubarGroup
+│                   ├── MenubarLabel
+│                   ├── MenubarItem
+│                   └── MenubarItem
+└── MenubarMenu
+    ├── MenubarTrigger
+    └── MenubarContent
+        └── MenubarGroup
+            ├── MenubarLabel
+            ├── MenubarItem
+            └── MenubarItem
+```
+
+`MenubarLabel` renders a Base UI `GroupLabel`, so it must be inside a `MenubarGroup`.
+
+---
+
+## Checkbox
+
+Use `MenubarCheckboxItem` for toggleable options. It stays open when clicked.
+
+<ComponentPreview
+  name="menubar-checkbox"
+/>
+
+---
+
+## Radio
+
+Use `MenubarRadioGroup` and `MenubarRadioItem` for single-select options.
+
+<ComponentPreview
+  name="menubar-radio"
+/>
+
+---
+
+## Submenu
+
+Use `MenubarSub`, `MenubarSubTrigger` and `MenubarSubContent` for nested menus.
+
+<ComponentPreview
+  name="menubar-submenu"
+/>
+
+---
+
+## With Icons
+
+Put an icon before the label. Icons are sized to `1rem`. Use `variant="destructive"` for dangerous actions.
+
+<ComponentPreview
+  name="menubar-icons"
+/>
+
+---
+
+## Inset
+
+Add `inset` to an item, label or sub trigger so its text lines up with items that have a check mark or an icon.
+
+```tsx
+<MenubarItem inset>Reload</MenubarItem>
+```
+
+---
+
+## API Reference
+
+See the [Base UI Menubar](https://base-ui.com/react/components/menubar#api-reference) and [Base UI Menu](https://base-ui.com/react/components/menu#api-reference) documentation for every prop. The props below are the ones nepui adds or sets.
+
+### Menubar
+
+Wraps Base UI `Menubar`.
+
+| Prop          | Type                           | Default        |
+| ------------- | ------------------------------ | -------------- |
+| `modal`       | `boolean`                      | `true`         |
+| `disabled`    | `boolean`                      | `false`        |
+| `loopFocus`   | `boolean`                      | `true`         |
+| `orientation` | `"horizontal" \| "vertical"`   | `"horizontal"` |
+| `className`   | `string \| (state) => string`  | -              |
+
+### MenubarMenu
+
+Wraps Base UI `Menu.Root`. It renders no element.
+
+| Prop           | Type                       | Default |
+| -------------- | -------------------------- | ------- |
+| `open`         | `boolean`                  | -       |
+| `defaultOpen`  | `boolean`                  | `false` |
+| `onOpenChange` | `(open: boolean) => void`  | -       |
+
+### MenubarContent
+
+Composes the portal, positioner and popup.
+
+| Prop          | Type                                   | Default    |
+| ------------- | -------------------------------------- | ---------- |
+| `side`        | `"top" \| "bottom" \| "left" \| "right" \| "inline-start" \| "inline-end"` | `"bottom"` |
+| `align`       | `"start" \| "center" \| "end"`         | `"start"`  |
+| `sideOffset`  | `number`                               | `8`        |
+| `alignOffset` | `number`                               | `-4`       |
+| `className`   | `string \| (state) => string`          | -          |
+
+### MenubarItem
+
+| Prop        | Type                           | Default     |
+| ----------- | ------------------------------ | ----------- |
+| `variant`   | `"default" \| "destructive"`   | `"default"` |
+| `inset`     | `boolean`                      | `false`     |
+| `disabled`  | `boolean`                      | `false`     |
+| `closeOnClick` | `boolean`                   | `true`      |
+| `className` | `string \| (state) => string`  | -           |
+
+### MenubarCheckboxItem
+
+| Prop              | Type                          | Default |
+| ----------------- | ----------------------------- | ------- |
+| `checked`         | `boolean`                     | -       |
+| `defaultChecked`  | `boolean`                     | `false` |
+| `onCheckedChange` | `(checked: boolean) => void`  | -       |
+| `inset`           | `boolean`                     | `false` |
+| `className`       | `string \| (state) => string` | -       |
+
+### MenubarRadioGroup
+
+| Prop            | Type                       | Default |
+| --------------- | -------------------------- | ------- |
+| `value`         | `string`                   | -       |
+| `defaultValue`  | `string`                   | -       |
+| `onValueChange` | `(value: string) => void`  | -       |
+
+### MenubarRadioItem
+
+| Prop        | Type                          | Default |
+| ----------- | ----------------------------- | ------- |
+| `value`     | `string`                      | -       |
+| `inset`     | `boolean`                     | `false` |
+| `className` | `string \| (state) => string` | -       |
+
+### MenubarLabel, MenubarSubTrigger
+
+| Prop        | Type                          | Default |
+| ----------- | ----------------------------- | ------- |
+| `inset`     | `boolean`                     | `false` |
+| `className` | `string \| (state) => string` | -       |
+
+### MenubarSubContent
+
+Accepts the `MenubarContent` props. Defaults differ: `side="inline-end"`, `sideOffset={0}`, `alignOffset={-3}`.
