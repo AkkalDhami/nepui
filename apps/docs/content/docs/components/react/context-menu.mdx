@@ -1,0 +1,247 @@
+---
+title: Context Menu
+description: Displays a menu to the user, such as a set of actions or functions, triggered by a right click or a long press.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="context-menu-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/context-menu.json"
+      nepui="npx nepui@latest add context-menu"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react class-variance-authority cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="context-menu"
+        title="components/nepui/context-menu/context-menu.css"
+        fileTarget="components/nepui/context-menu/context-menu.css"
+      />
+      <ComponentSource
+        target="react"
+        name="context-menu"
+        title="components/nepui/context-menu/context-menu.tsx"
+        fileTarget="components/nepui/context-menu/context-menu.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="context-menu"
+        title="components/nepui/context-menu/index.ts"
+        fileTarget="components/nepui/context-menu/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuTrigger,
+} from "@/components/nepui/context-menu"
+```
+
+```tsx
+<ContextMenu>
+  <ContextMenuTrigger>Right click here</ContextMenuTrigger>
+  <ContextMenuContent>
+    <ContextMenuItem>Profile</ContextMenuItem>
+    <ContextMenuItem>Billing</ContextMenuItem>
+    <ContextMenuItem>Team</ContextMenuItem>
+    <ContextMenuItem>Subscription</ContextMenuItem>
+  </ContextMenuContent>
+</ContextMenu>
+```
+
+---
+
+## Composition
+
+Use the following composition to build a context menu:
+
+```text
+ContextMenu
+├── ContextMenuTrigger
+└── ContextMenuContent
+    ├── ContextMenuLabel
+    ├── ContextMenuItem
+    ├── ContextMenuGroup
+    │   └── ContextMenuItem
+    ├── ContextMenuCheckboxItem
+    ├── ContextMenuRadioGroup
+    │   └── ContextMenuRadioItem
+    ├── ContextMenuSub
+    │   ├── ContextMenuSubTrigger
+    │   └── ContextMenuSubContent
+    ├── ContextMenuSeparator
+    └── ContextMenuShortcut
+```
+
+---
+
+## Submenu
+
+Use `ContextMenuSub`, `ContextMenuSubTrigger` and `ContextMenuSubContent` to nest a menu.
+
+<ComponentPreview
+  name="context-menu-submenu"
+/>
+
+---
+
+## Shortcuts
+
+Add a `ContextMenuShortcut` to show a keyboard hint at the end of an item. Add `disabled` to an item to disable it.
+
+<ComponentPreview
+  name="context-menu-shortcuts"
+/>
+
+---
+
+## Groups
+
+Use `ContextMenuGroup` with a `ContextMenuLabel` to group items, and `ContextMenuSeparator` between groups.
+
+<ComponentPreview
+  name="context-menu-groups"
+/>
+
+---
+
+## Icons
+
+Put an icon before the text of an item. Icons are sized by the component CSS.
+
+<ComponentPreview
+  name="context-menu-icons"
+/>
+
+---
+
+## Checkboxes
+
+Use `ContextMenuCheckboxItem` for items that toggle. Choosing one does not close the menu.
+
+<ComponentPreview
+  name="context-menu-checkboxes"
+/>
+
+---
+
+## Radio Group
+
+Use `ContextMenuRadioGroup` and `ContextMenuRadioItem` for an exclusive choice.
+
+<ComponentPreview
+  name="context-menu-radio"
+/>
+
+---
+
+## Destructive
+
+Use `variant="destructive"` on an item that deletes or removes something.
+
+<ComponentPreview
+  name="context-menu-destructive"
+/>
+
+---
+
+## Sides
+
+Use `side` on `ContextMenuContent` to place the menu on another side of the pointer: `top`, `right`, `bottom`, `left`, `inline-start` or `inline-end`. The default is `right`.
+
+<ComponentPreview
+  name="context-menu-sides"
+/>
+
+---
+
+## API Reference
+
+### ContextMenu and ContextMenuTrigger
+
+The root has no element of its own. The trigger is the area that opens the menu on right click or long press. Both accept the props of the Base UI [Context Menu](https://base-ui.com/react/components/context-menu).
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `className` (trigger) | `string \| (state) => string` | - |
+
+### ContextMenuContent
+
+The menu. It is rendered in a portal and placed at the pointer.
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `side` | `"top" \| "right" \| "bottom" \| "left" \| "inline-start" \| "inline-end"` | `"right"` |
+| `sideOffset` | `number` | `0` |
+| `align` | `"start" \| "center" \| "end"` | `"start"` |
+| `alignOffset` | `number` | `4` |
+| `className` | `string \| (state) => string` | - |
+
+### ContextMenuItem
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `variant` | `"default" \| "destructive"` | `"default"` |
+| `inset` | `boolean` | `false` |
+| `disabled` | `boolean` | `false` |
+| `onClick` | `(event) => void` | - |
+| `className` | `string \| (state) => string` | - |
+
+### ContextMenuCheckboxItem
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `checked` | `boolean` | - |
+| `defaultChecked` | `boolean` | `false` |
+| `onCheckedChange` | `(checked, eventDetails) => void` | - |
+| `inset` | `boolean` | `false` |
+| `disabled` | `boolean` | `false` |
+
+### ContextMenuRadioGroup and ContextMenuRadioItem
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `value` (group) | `string` | - |
+| `defaultValue` (group) | `string` | - |
+| `onValueChange` (group) | `(value, eventDetails) => void` | - |
+| `value` (item) | `string` | - |
+| `inset` (item) | `boolean` | `false` |
+
+### ContextMenuSub, ContextMenuSubTrigger and ContextMenuSubContent
+
+`ContextMenuSubTrigger` takes `inset`. `ContextMenuSubContent` takes the same props as `ContextMenuContent`, and opens to the `right` by default.
+
+### ContextMenuLabel, ContextMenuSeparator, ContextMenuGroup and ContextMenuShortcut
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `inset` (label) | `boolean` | `false` |
+| `className` | `string` | - |
