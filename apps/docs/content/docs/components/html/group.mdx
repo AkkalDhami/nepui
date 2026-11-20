@@ -1,0 +1,215 @@
+---
+title: Group
+description: A container that visually groups a series of controls.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  target="html"
+  name="group-demo"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add group"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="group"
+        title="styles/group.css"
+        fileTarget="styles/group.css"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the stylesheet, after `tokens.css`:
+
+```html
+<link rel="stylesheet" href="./styles/group.css">
+```
+
+```html
+<div class="np-group" role="group" aria-label="File actions">
+  <button type="button" class="np-button np-button-outline">Files</button>
+  <div class="np-group-separator" role="separator" aria-orientation="vertical"></div>
+  <button type="button" class="np-button np-button-outline">Media</button>
+</div>
+```
+
+Or use the data attributes instead of classes: `data-np-group`, `data-np-group-text`, `data-np-group-separator`.
+
+The direct children of the group are the controls. Their inner corners and the border between them are removed. A control should draw its own border and radius, as the nepui button, input and select do. A control followed by a separator drops its end border, so the divider is not doubled. Without a separator, the neighbours share one border.
+
+Give the group a name with `aria-label` or `aria-labelledby`. Use a group for controls that do something. For controls that toggle, use a toggle group. Colours come from tokens, so dark mode needs no extra setup. The styles use `:has()` and `color-mix()`, which need a modern browser.
+
+---
+
+## Composition
+
+```text
+Group
+├── Button / Input / Select ...
+├── GroupSeparator
+├── GroupText
+└── Group (nested)
+```
+
+---
+
+## Input
+
+Put an input and a button together.
+
+<ComponentPreview
+  target="html"
+  name="group-input"
+  styles={["/button/button.css", "/input/input.css"]}
+/>
+
+---
+
+## Size
+
+Controls keep their own size. Group the small buttons, `np-button-sm` and `np-button-icon-sm`.
+
+<ComponentPreview
+  target="html"
+  name="group-small"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Large
+
+Group the large buttons, `np-button-lg` and `np-button-icon-lg`.
+
+<ComponentPreview
+  target="html"
+  name="group-large"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Disabled
+
+A disabled control stays in the group.
+
+<ComponentPreview
+  target="html"
+  name="group-disabled"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Default buttons
+
+Filled buttons need a separator that shows on them. Set `--np-group-separator-color` on the group.
+
+<ComponentPreview
+  target="html"
+  name="group-default-buttons"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Text at the start
+
+`np-group-text` is a label or an addon. Use it before a control.
+
+<ComponentPreview
+  target="html"
+  name="group-text-start"
+  styles={["/input/input.css"]}
+/>
+
+---
+
+## Text at the end
+
+<ComponentPreview
+  target="html"
+  name="group-text-end"
+  styles={["/input/input.css"]}
+/>
+
+---
+
+## Vertical
+
+Add `np-group-vertical` to stack the controls. Give the separator `np-group-separator-horizontal`, so its line runs across.
+
+<ComponentPreview
+  target="html"
+  name="group-vertical"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Nested groups
+
+Put groups in a group, and they sit apart. Each one joins its own controls.
+
+<ComponentPreview
+  target="html"
+  name="group-nested"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Accessibility
+
+- The group has `role="group"`. Name it with `aria-label` or `aria-labelledby`.
+- Tab moves between the controls, in order.
+- The separator is decoration. It takes no focus.
+
+---
+
+## Reference
+### Parts
+
+| Name | Data attribute | Class alias |
+| --- | --- | --- |
+| Root | `data-np-group` | `np-group` |
+| Text | `data-np-group-text` | `np-group-text` |
+| Separator | `data-np-group-separator` | `np-group-separator` |
+
+### Options
+
+| Where | Option | Class alias | Data attribute |
+| --- | --- | --- | --- |
+| Root | Vertical | `np-group-vertical` | `data-orientation="vertical"` |
+| Separator | Horizontal line | `np-group-separator-horizontal` | `data-orientation="horizontal"` |
+
+### State
+
+| Name | Effect |
+| --- | --- |
+| A control has focus | It rises above its neighbours, so its ring is whole. |
+| A separator is next to a focused control | It takes the ring colour. |

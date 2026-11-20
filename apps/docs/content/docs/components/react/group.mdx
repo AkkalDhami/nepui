@@ -1,0 +1,218 @@
+---
+title: Group
+description: A container that visually groups a series of controls.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="group-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/group.json"
+      nepui="npx nepui@latest add group"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react class-variance-authority cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="group"
+        title="components/nepui/group/group.css"
+        fileTarget="components/nepui/group/group.css"
+      />
+      <ComponentSource
+        target="react"
+        name="group"
+        title="components/nepui/group/group.tsx"
+        fileTarget="components/nepui/group/group.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="group"
+        title="components/nepui/group/index.ts"
+        fileTarget="components/nepui/group/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import {
+  Group,
+  GroupSeparator,
+  GroupText,
+} from "@/components/nepui/group"
+```
+
+```tsx
+<Group aria-label="File actions">
+  <Button variant="outline">Files</Button>
+  <GroupSeparator />
+  <Button variant="outline">Media</Button>
+</Group>
+```
+
+The children of the group are the controls. Their inner corners and the border between them are removed. A control should draw its own border and radius, as the nepui `Button`, `Input` and `Select` do. A control followed by a `GroupSeparator` drops its end border, so the divider is not doubled. Without a separator, the neighbours share one border.
+
+Give the group a name with `aria-label` or `aria-labelledby`. Use a group for controls that do something. For controls that toggle, use a toggle group. Colours come from tokens, so dark mode needs no extra setup. The styles use `:has()` and `color-mix()`, which need a modern browser.
+
+`ButtonGroup`, `ButtonGroupText` and `ButtonGroupSeparator` are exported as aliases.
+
+---
+
+## Composition
+
+```text
+Group
+├── Button / Input / Select ...
+├── GroupSeparator
+├── GroupText
+└── Group (nested)
+```
+
+---
+
+## Input
+
+Put an `Input` and a `Button` together.
+
+<ComponentPreview
+  name="group-input"
+/>
+
+---
+
+## Size
+
+Controls keep their own size. Group `size="sm"` buttons and an `icon-sm` button.
+
+<ComponentPreview
+  name="group-small"
+/>
+
+---
+
+## Large
+
+Group `size="lg"` buttons and an `icon-lg` button.
+
+<ComponentPreview
+  name="group-large"
+/>
+
+---
+
+## Disabled
+
+A disabled control stays in the group.
+
+<ComponentPreview
+  name="group-disabled"
+/>
+
+---
+
+## Default buttons
+
+Filled buttons need a separator that shows on them. Set `--np-group-separator-color` on the group.
+
+<ComponentPreview
+  name="group-default-buttons"
+/>
+
+---
+
+## Text at the start
+
+`GroupText` is a label or an addon. Use it before a control.
+
+<ComponentPreview
+  name="group-text-start"
+/>
+
+---
+
+## Text at the end
+
+<ComponentPreview
+  name="group-text-end"
+/>
+
+---
+
+## Vertical
+
+Use `orientation="vertical"` to stack the controls, and `orientation="horizontal"` on the separator, so its line runs across.
+
+<ComponentPreview
+  name="group-vertical"
+/>
+
+---
+
+## Nested groups
+
+Put groups in a group, and they sit apart. Each one joins its own controls.
+
+<ComponentPreview
+  name="group-nested"
+/>
+
+---
+
+## Accessibility
+
+- The group has `role="group"`. Name it with `aria-label` or `aria-labelledby`.
+- Tab moves between the controls, in order.
+- The separator is decoration. It takes no focus.
+
+---
+
+## API Reference
+
+### Group
+
+Renders a `div` with `role="group"`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
+| `className` | `string` | - |
+
+### GroupSeparator
+
+Renders a `div` with `role="separator"`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `orientation` | `"horizontal" \| "vertical"` (the direction of the line) | `"vertical"` |
+| `className` | `string` | - |
+
+### GroupText
+
+Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `render` | `ReactElement \| (props, state) => ReactElement` | - |
+| `className` | `string` | - |
