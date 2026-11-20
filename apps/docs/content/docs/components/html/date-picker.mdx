@@ -1,0 +1,225 @@
+---
+title: Date Picker
+description: A button that opens a calendar. Plain CSS with a small script that joins the Popover and the Calendar.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="date-picker-demo"
+  target="html"
+  styles={["/popover/popover.css", "/calendar/calendar.css", "/button/button.css", "/label/label.css"]}
+  scripts={["/popover/popover.js", "/calendar/calendar.js", "/date-picker/date-picker.js"]}
+  scriptType="module"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add date-picker"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>
+        Add the [Popover](/docs/components/html/popover) and [Calendar](/docs/components/html/calendar) stylesheets and scripts, and the [Button](/docs/components/html/button) stylesheet.
+      </Step>
+      <Step>Copy and paste the following stylesheet into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="date-picker"
+        title="styles/date-picker.css"
+        fileTarget="styles/date-picker.css"
+      />
+      <Step>Copy and paste the following script into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="date-picker"
+        title="scripts/date-picker.js"
+        fileTarget="scripts/date-picker.js"
+      />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the stylesheets and load the three scripts once on the page:
+
+```html
+<link rel="stylesheet" href="./styles/tokens.css">
+<link rel="stylesheet" href="./styles/button.css">
+<link rel="stylesheet" href="./styles/popover.css">
+<link rel="stylesheet" href="./styles/calendar.css">
+<link rel="stylesheet" href="./styles/date-picker.css">
+
+<script type="module" src="./scripts/popover.js"></script>
+<script type="module" src="./scripts/calendar.js"></script>
+<script type="module" src="./scripts/date-picker.js"></script>
+```
+
+Add an empty element. The script builds a trigger button, a popover and a calendar inside it:
+
+```html
+<label class="np-label" for="date">Date</label>
+<div data-np-date-picker data-id="date"></div>
+```
+
+`data-id` becomes the id of the trigger so the label points at it.
+
+---
+
+## How it works
+
+The picker is the Popover and the Calendar put together, so everything about their behavior applies: Escape and an outside click close it, it flips when there is no room, and the arrow keys move between days. After a date is picked the panel closes, and the trigger shows the date formatted with `Intl.DateTimeFormat`.
+
+---
+
+## Composition
+
+The script builds these parts inside the empty `data-np-date-picker` element:
+
+```text
+np-date-picker
+├── np-date-picker-trigger
+└── np-popover np-date-picker-content
+    └── np-calendar
+```
+
+---
+
+## Options
+
+Set these on the element. Every [Calendar option](/docs/components/html/calendar#options) passes through, such as `data-min`, `data-max`, `data-disabled-dates`, `data-caption-layout`, `data-start-year`, `data-end-year`, `data-show-week-number` and `data-week-starts-on`.
+
+| Attribute | Values | Default |
+| --------- | ------ | ------- |
+| `data-mode` | `single`, `range` | `single` |
+| `data-value` | an ISO date, or `from/to` for a range | none |
+| `data-placeholder` | text shown while nothing is picked | `Pick a date` |
+| `data-format` | `full`, `long`, `medium`, `short` | `long` (`medium` for a range) |
+| `data-locale` | a BCP 47 tag such as `ar-EG` | the page language |
+| `data-align` | `start`, `center`, `end` | `start` |
+| `data-id` | id for the trigger or the text field | none |
+| `data-name` | adds a hidden input for forms | none |
+| `data-editable` | present to add a text field | off |
+| `data-close-on-select` | present to close a range picker once both dates are set | off |
+| `data-disabled` | present to disable the trigger | off |
+
+---
+
+## Range picker
+
+The panel of a range picker shows two months and stays open until you close it.
+
+<ComponentPreview
+  name="date-picker-range"
+  target="html"
+  styles={["/popover/popover.css", "/calendar/calendar.css", "/button/button.css", "/label/label.css"]}
+  scripts={["/popover/popover.js", "/calendar/calendar.js", "/date-picker/date-picker.js"]}
+/>
+
+---
+
+## Date of birth
+
+<ComponentPreview
+  name="date-picker-dob"
+  target="html"
+  styles={["/popover/popover.css", "/calendar/calendar.css", "/button/button.css", "/label/label.css"]}
+  scripts={["/popover/popover.js", "/calendar/calendar.js", "/date-picker/date-picker.js"]}
+/>
+
+---
+
+## Input
+
+With `data-editable` the picker is a text field with a calendar button. Typing a date and leaving the field updates the calendar, and the arrow down key opens it. This example needs the Input Group stylesheet.
+
+<ComponentPreview
+  name="date-picker-input"
+  target="html"
+  styles={["/popover/popover.css", "/calendar/calendar.css", "/button/button.css", "/label/label.css", "/input/input.css", "/input-group/input-group.css"]}
+  scripts={["/popover/popover.js", "/calendar/calendar.js", "/date-picker/date-picker.js"]}
+/>
+
+---
+
+## Time picker
+
+<ComponentPreview
+  name="date-picker-time"
+  target="html"
+  styles={["/popover/popover.css", "/calendar/calendar.css", "/button/button.css", "/label/label.css", "/input/input.css", "/input-group/input-group.css"]}
+  scripts={["/popover/popover.js", "/calendar/calendar.js", "/date-picker/date-picker.js"]}
+/>
+
+---
+
+## RTL
+
+<ComponentPreview
+  name="date-picker-rtl"
+  target="html"
+  styles={["/popover/popover.css", "/calendar/calendar.css", "/button/button.css", "/label/label.css"]}
+  scripts={["/popover/popover.js", "/calendar/calendar.js", "/date-picker/date-picker.js"]}
+/>
+
+---
+
+## Events and JavaScript
+
+The element fires a `nepui:datepickerchange` event on every change. The value is an ISO string, or `{ from, to }` for a range:
+
+```js
+document.addEventListener("nepui:datepickerchange", (event) => {
+  console.log(event.detail.mode, event.detail.value)
+})
+```
+
+Each element gets a small API:
+
+```js
+const picker = document.querySelector("#birthday")
+
+picker.npDatePicker.getValue()
+picker.npDatePicker.setValue("2026-11-20")
+picker.npDatePicker.open()
+picker.npDatePicker.close()
+```
+
+---
+
+## Reference
+
+### Component
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Date picker | `data-np-date-picker` | `np-date-picker` |
+| Trigger | `data-np-date-picker-trigger` | `np-date-picker-trigger` |
+| Panel | `data-np-date-picker-content` | `np-date-picker-content` |
+
+### Variables
+
+| Variable | Default | Description |
+| -------- | ------- | ----------- |
+| `--np-date-picker-width` | `calc(var(--np-spacing) * 70)` | Width of the trigger. |
+
+The panel is a [Popover](/docs/components/html/popover) and the calendar is a [Calendar](/docs/components/html/calendar), so their variables apply too, such as `--np-calendar-cell-size`.
+
+---
+
+## Browser support
+
+The picker uses the native Popover API through the Popover script, so the support is the same as for the Popover. The date text comes from `Intl.DateTimeFormat`.

@@ -1,0 +1,170 @@
+---
+title: Date Picker
+description: A date picker component with range and presets.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="date-picker-demo"
+/>
+
+---
+
+## Installation
+
+The Date Picker is built from the Popover, the Calendar and the Button. It adds two small components, `DatePicker` and `DateRangePicker`, so you do not have to wire them together each time.
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/date-picker.json"
+      nepui="npx nepui@latest add date-picker"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install react-day-picker cn" className="mt-6"/>
+
+      <Step>Install the required nepui dependencies:</Step>
+      <PackageManagerTabs command="npx nepui@latest add button calendar popover" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="date-picker"
+        title="components/nepui/date-picker/date-picker.css"
+        fileTarget="components/nepui/date-picker/date-picker.css"
+      />
+      <ComponentSource
+        target="react"
+        name="date-picker"
+        title="components/nepui/date-picker/date-picker.tsx"
+        fileTarget="components/nepui/date-picker/date-picker.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="date-picker"
+        title="components/nepui/date-picker/index.ts"
+        fileTarget="components/nepui/date-picker/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import { DatePicker } from "@/components/nepui/date-picker"
+```
+
+```tsx
+<DatePicker />
+```
+
+Use `value` and `onValueChange` to control it, or `defaultValue` to start with a date. The panel closes after a date is picked, and the date is formatted with `Intl.DateTimeFormat`, so pass `locale` and `formatOptions` to change it.
+
+```tsx
+const [date, setDate] = React.useState<Date | undefined>()
+
+<DatePicker value={date} onValueChange={setDate} />
+```
+
+See the [React DayPicker](https://react-day-picker.js.org) documentation for the calendar options you can pass through `calendarProps`.
+
+---
+
+## Composition
+
+`DatePicker` is a composition of the Popover and the Calendar. You can build your own the same way:
+
+```text
+Popover
+├── PopoverTrigger
+└── PopoverContent
+    └── Calendar
+```
+
+Give the content the `np-date-picker-content` class so the panel fits the calendar. The trigger uses the `np-date-picker-trigger` class and `data-empty` to dim the placeholder.
+
+---
+
+## Basic
+
+A basic date picker component.
+
+<ComponentPreview
+  name="date-picker-demo"
+/>
+
+---
+
+## Range picker
+
+`DateRangePicker` selects a range of dates. The panel stays open until you click outside it or press Escape.
+
+<ComponentPreview
+  name="date-picker-range"
+/>
+
+---
+
+## Date of birth
+
+Pass `captionLayout: "dropdown"` in `calendarProps` for month and year dropdowns.
+
+<ComponentPreview
+  name="date-picker-dob"
+/>
+
+---
+
+## Input
+
+A date picker with a text field for typing a date. It is composed by hand from the Popover, the Calendar and the [Input Group](/docs/components/react/input-group). Arrow down opens the calendar.
+
+<ComponentPreview
+  name="date-picker-input"
+/>
+
+---
+
+## Time picker
+
+A date picker next to a time input. This example uses the [Input](/docs/components/react/input) and [Label](/docs/components/react/label) components.
+
+<ComponentPreview
+  name="date-picker-time"
+/>
+
+---
+
+## API Reference
+
+### DatePicker
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `value` | `Date \| undefined` | - |
+| `defaultValue` | `Date` | - |
+| `onValueChange` | `(date: Date \| undefined) => void` | - |
+| `placeholder` | `string` | `"Pick a date"` |
+| `locale` | `string` | browser default |
+| `formatOptions` | `Intl.DateTimeFormatOptions` | `{ dateStyle: "long" }` |
+| `align` | `"start" \| "center" \| "end"` | `"start"` |
+| `calendarProps` | calendar options | - |
+| `disabled` | `boolean` | `false` |
+| `id` | `string` | - |
+| `name` | `string` | - |
+| `className` | `string` | - |
+
+### DateRangePicker
+
+The same props, with a `DateRange` (`{ from, to }`) as the value, `"Pick a date range"` as the placeholder and `{ dateStyle: "medium" }` as the format. It shows two months.
