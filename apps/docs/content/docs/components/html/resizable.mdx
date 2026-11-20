@@ -1,0 +1,182 @@
+---
+title: Resizable
+description: Accessible resizable panel groups and layouts with keyboard support.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  target="html"
+  name="resizable-demo"
+  scripts={["/resizable/resizable.js"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add resizable"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="resizable"
+        title="styles/resizable.css"
+        fileTarget="styles/resizable.css"
+      />
+      <ComponentSource
+        target="html"
+        name="resizable"
+        title="javascripts/resizable.js"
+        fileTarget="javascripts/resizable.js"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the stylesheet, after `tokens.css`, and the optional script:
+
+```html 
+<link rel="stylesheet" href="./styles/resizable.css">
+
+<script src="./scripts/resizable.js" defer></script>
+```
+
+```html 
+<div class="np-resizable" style="height: 12.5rem">
+  <div class="np-resizable-panel" data-default-size="50">One</div>
+  <div class="np-resizable-handle" role="separator" tabindex="0" aria-label="Resize">
+    <div class="np-resizable-grip"></div>
+  </div>
+  <div class="np-resizable-panel" data-default-size="50">Two</div>
+</div>
+```
+
+Or use the data attributes instead of classes: `data-np-resizable`, `data-np-resizable-panel`, `data-np-resizable-handle`, `data-np-resizable-grip`.
+
+The group is a flex container that fills its parent, so give the group (or its parent) a height. `data-default-size` is the starting share of the group, so `25` and `75` make a quarter and three quarters (`"25%"` works too). The numbers need not add up to 100. A panel without it gets a share of 1, so panels without it share equally. Colours come from tokens, so dark mode needs no extra setup.
+
+The sizes come from `data-default-size`, and the layout works with no JavaScript in browsers that support typed `attr()` (Chrome 133 and later). In the others, `resizable.js` applies the sizes when the page loads. It also adds the drag and the keyboard.
+
+---
+
+## Composition
+
+```text
+ResizablePanelGroup
+├── ResizablePanel
+├── ResizableHandle
+└── ResizablePanel
+```
+
+---
+
+## Vertical
+
+Add `np-resizable-vertical`, or `data-orientation="vertical"`, to the group to stack the panels. The handle then moves up and down, and the arrow keys are Up and Down.
+
+<ComponentPreview
+  target="html"
+  name="resizable-vertical"
+  scripts={["/resizable/resizable.js"]}
+/>
+
+---
+
+## Handle
+
+Put a `np-resizable-grip` inside a handle for a visible grip.
+
+<ComponentPreview
+  target="html"
+  name="resizable-handle"
+  scripts={["/resizable/resizable.js"]}
+/>
+
+---
+
+## Limits
+
+Set `data-min-size` and `data-max-size` (a percent of the group) on a panel, next to `data-default-size`. The default is 0 to 100, so a panel can collapse to nothing. The sidebar here stays between 15% and 40%, and the content keeps at least 60%.
+
+<ComponentPreview
+  target="html"
+  name="resizable-limits"
+  scripts={["/resizable/resizable.js"]}
+/>
+
+---
+
+## Reference
+
+### Keyboard
+
+Focus a handle (Tab) and use:
+
+| Key | Effect |
+| --- | --- |
+| Arrow Left / Right | Move the handle (Up / Down in a vertical group). |
+| Home / End | Move it as far as the two panels allow. |
+
+`data-step` on a handle sets the percent moved per key press (default `10`). A handle with `data-disabled` or `aria-disabled="true"` cannot be moved.
+
+---
+
+### Script
+
+`resizable.js` has no dependencies and starts itself. It:
+
+- adds `role="separator"`, `tabindex="0"` and the `aria-value*` attributes to each handle, unless you wrote them,
+- sets up groups that are added after the page loaded,
+- sets `data-dragging` on the handle and `data-resizing` on the group while dragging,
+- keeps the sizes adding up to 100, and
+- fires `np-resizable-change` on the group, with `detail.sizes` in percent.
+
+```js
+group.addEventListener("np-resizable-change", (event) => {
+  console.log(event.detail.sizes) // [25, 75]
+})
+```
+
+For a group added later, call `NepuiResizable.init(group)`.
+
+---
+
+### Not in HTML
+
+There are no collapsible panels, no saved layouts and no panel sizes in pixels. Use the React version for those.
+
+---
+
+### Parts
+
+| Name | Data attribute | Class alias |
+| --- | --- | --- |
+| Group | `data-np-resizable` | `np-resizable` |
+| Panel | `data-np-resizable-panel` | `np-resizable-panel` |
+| Handle | `data-np-resizable-handle` | `np-resizable-handle` |
+| Grip | `data-np-resizable-grip` | `np-resizable-grip` |
+
+### State
+
+| Name | Selector |
+| --- | --- |
+| Handle focused | `:focus-visible` |
+| Handle being dragged | `[data-dragging]` (set by `resizable.js`) |
+| Group being resized | `[data-resizing]` (set by `resizable.js`) |
+| Handle disabled | `[data-disabled]`, `[aria-disabled="true"]` |

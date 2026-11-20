@@ -1,0 +1,159 @@
+---
+title: Resizable
+description: Accessible resizable panel groups and layouts with keyboard support.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="resizable-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/resizable.json"
+      nepui="npx nepui@latest add resizable"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install react-resizable-panels cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="resizable"
+        title="components/nepui/resizable/resizable.css"
+        fileTarget="components/nepui/resizable/resizable.css"
+      />
+      <ComponentSource
+        target="react"
+        name="resizable"
+        title="components/nepui/resizable/resizable.tsx"
+        fileTarget="components/nepui/resizable/resizable.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="resizable"
+        title="components/nepui/resizable/index.ts"
+        fileTarget="components/nepui/resizable/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/nepui/resizable"
+```
+
+```tsx
+<ResizablePanelGroup orientation="horizontal">
+  <ResizablePanel defaultSize="50%">One</ResizablePanel>
+  <ResizableHandle />
+  <ResizablePanel defaultSize="50%">Two</ResizablePanel>
+</ResizablePanelGroup>
+```
+
+The group fills its parent, so give the group (or its parent) a height. Sizes are strings with a unit, such as `"50%"` or `"200px"`. A number is read as pixels. This is [react-resizable-panels](https://github.com/bvaughn/react-resizable-panels).
+
+---
+
+## Composition
+
+```text
+ResizablePanelGroup
+├── ResizablePanel
+├── ResizableHandle
+└── ResizablePanel
+```
+
+---
+
+## Vertical
+
+Use `orientation="vertical"` to stack the panels.
+
+<ComponentPreview
+  name="resizable-vertical"
+/>
+
+---
+
+## Handle
+
+Use `withHandle` on `ResizableHandle` to show a visible grip.
+
+<ComponentPreview
+  name="resizable-handle"
+/>
+
+---
+
+## Limits
+ 
+Use `minSize` and `maxSize` on a panel. They take the same units as `defaultSize`. The sidebar here stays between 15% and 40%, and the content keeps at least 60%. The default is 0 to 100%, so a panel can collapse to nothing.
+ 
+<ComponentPreview
+  name="resizable-limits"
+/>
+ 
+---
+
+## API Reference
+
+The props come from [react-resizable-panels](https://github.com/bvaughn/react-resizable-panels). The most used:
+
+### ResizablePanelGroup
+
+Renders the `Group`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
+| `defaultLayout` | `{ [panelId: string]: number }` | - |
+| `onLayoutChange` | `(layout) => void` | - |
+| `onLayoutChanged` | `(layout) => void` (after the drag ends) | - |
+| `groupRef` | `Ref<GroupImperativeHandle>` | - |
+| `disabled` | `boolean` | `false` |
+
+### ResizablePanel
+
+Renders the `Panel`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `id` | `string` (needed for `defaultLayout`) | - |
+| `defaultSize` | `number \| string` | - |
+| `minSize` | `number \| string` | `0` |
+| `maxSize` | `number \| string` | `100%` |
+| `collapsible` | `boolean` | `false` |
+| `collapsedSize` | `number \| string` | `0` |
+| `panelRef` | `Ref<PanelImperativeHandle>` | - |
+| `onResize` | `(size) => void` | - |
+
+### ResizableHandle
+
+Renders the `Separator`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `withHandle` | `boolean` | `false` |
+| `disabled` | `boolean` | `false` |
