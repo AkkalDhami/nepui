@@ -1,0 +1,299 @@
+---
+title: Number Input
+description: A numeric input with increment and decrement buttons, a scrub area and min, max and step handling.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://github.com/akkaldhami.png
+---
+
+<ComponentPreview
+  target="html"
+  name="number-input-demo"
+  scripts={["/number-input/number-input.js"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add number-input"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the required nepui dependencies:</Step>
+      <PackageManagerTabs command="npx nepui@latest add label" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="number-input"
+        title="styles/number-input.css"
+        fileTarget="styles/number-input.css"
+      />
+      <ComponentSource
+        target="html"
+        name="number-input"
+        title="javascripts/number-input.js"
+        fileTarget="javascripts/number-input.js"
+      />
+      <ComponentSource
+        target="html"
+        name="number-input"
+        title="html/number-input.html"
+        fileTarget="html/number-input.html"
+      />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+The input is a native `<input type="number">`, so typing, validation and the arrow keys work without JavaScript. `number-input.js` adds what the browser does not: working buttons with hold-to-repeat, clamping on blur, `Shift` and `Alt` steps, `Home` and `End`, and the scrub area.
+
+---
+
+## Usage
+
+```html
+<link rel="stylesheet" href="./styles/number-input.css" />
+
+<script src="./javascripts/number-input.js"></script>
+```
+
+```html
+<div class="np-number-input">
+  <div class="np-number-input-group">
+    <button type="button" class="np-number-input-decrement" aria-label="Decrease" tabindex="-1">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /></svg>
+    </button>
+    <input class="np-number-input-input" type="number" value="0" aria-label="Quantity" />
+    <button type="button" class="np-number-input-increment" aria-label="Increase" tabindex="-1">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5v14" /></svg>
+    </button>
+  </div>
+</div>
+```
+
+Or with data attributes:
+
+```html
+<div data-np-number-input>
+  <div data-np-number-input-group>
+    <button type="button" data-np-number-input-decrement aria-label="Decrease" tabindex="-1">…</button>
+    <input data-np-number-input-input type="number" value="0" aria-label="Quantity" />
+    <button type="button" data-np-number-input-increment aria-label="Increase" tabindex="-1">…</button>
+  </div>
+</div>
+```
+
+| Part | Class | Data attribute |
+| --- | --- | --- |
+| Root | `np-number-input` | `data-np-number-input` |
+| Group | `np-number-input-group` | `data-np-number-input-group` |
+| Input | `np-number-input-input` | `data-np-number-input-input` |
+| Increment | `np-number-input-increment` | `data-np-number-input-increment` |
+| Decrement | `np-number-input-decrement` | `data-np-number-input-decrement` |
+| Scrub area | `np-number-input-scrub-area` | `data-np-number-input-scrub-area` |
+| Scrub cursor | `np-number-input-cursor` | `data-np-number-input-cursor` |
+
+---
+
+## Composition
+
+The root contains an optional scrub area and a group with the input and stepper buttons.
+
+```text
+.np-number-input
+├── .np-number-input-scrub-area   (optional)
+└── .np-number-input-group
+    ├── .np-number-input-decrement
+    ├── .np-number-input-input
+    └── .np-number-input-increment
+```
+
+---
+
+## Sizes
+
+<ComponentPreview
+  target="html"
+  name="number-input-sizes"
+  scripts={["/number-input/number-input.js"]}
+/>
+
+| Name | Data attribute | Class alias |
+| --- | --- | --- |
+| Extra small | `data-size="xs"` | `np-number-input-xs` |
+| Small | `data-size="sm"` | `np-number-input-sm` |
+| Default | - | `np-number-input` |
+| Large | `data-size="lg"` | `np-number-input-lg` |
+
+---
+
+## Scrub area
+
+Add a scrub area with the label inside it. Dragging the label changes the value. Set `data-direction="vertical"` on the scrub area to scrub up and down. The HTML version does not hide the pointer or wrap it around the screen edge like the React one.
+
+<ComponentPreview
+  target="html"
+  name="number-input-scrub"
+  styles={["/label/label.css"]}
+  scripts={["/number-input/number-input.js"]}
+/>
+
+```html
+<div class="np-number-input">
+  <span class="np-number-input-scrub-area">
+    <label class="np-label" for="quantity">Quantity</label>
+  </span>
+  …
+</div>
+```
+
+---
+
+## Range
+
+Use the native `min` and `max` attributes. The buttons disable themselves at either end.
+
+<ComponentPreview
+  target="html"
+  name="number-input-range"
+  scripts={["/number-input/number-input.js"]}
+/>
+
+---
+
+## Step
+
+Use the native `step` attribute. Hold `Shift` for `data-large-step` (default 10) and `Alt` for `data-small-step` (default 0.1) on the root.
+
+<ComponentPreview
+  target="html"
+  name="number-input-step"
+  styles={["/label/label.css"]}
+  scripts={["/number-input/number-input.js"]}
+/>
+
+Number formatting through `Intl.NumberFormat`, such as currency or percent, is only in the React version. The HTML version shows the browser's own number input text.
+
+---
+
+## Layout
+
+| Name | Data attribute | Class alias |
+| --- | --- | --- |
+| Split (default) | - | `np-number-input` |
+| Stacked | `data-layout="stacked"` | `np-number-input-stacked` |
+
+<ComponentPreview
+  target="html"
+  name="number-input-layout"
+  scripts={["/number-input/number-input.js"]}
+/>
+
+Use chevron icons in the buttons when stacked.
+
+---
+
+## Label
+
+<ComponentPreview
+  target="html"
+  name="number-input-label"
+  styles={["/label/label.css"]}
+  scripts={["/number-input/number-input.js"]}
+/>
+
+---
+
+
+## States
+
+Use `disabled` and `readonly` on the input, and `disabled` on the buttons. Add `data-disabled` to the root if you want the whole control faded when only the input is disabled. For an invalid look, set `aria-invalid="true"` on the input.
+
+<ComponentPreview
+  target="html"
+  name="number-input-states"
+  scripts={["/number-input/number-input.js"]}
+/>
+
+---
+
+## Keyboard
+
+| Key | Action 
+| --- | --- |
+| `ArrowUp` / `ArrowDown` | Increase or decrease by `step` |
+| `Shift` + `ArrowUp` / `ArrowDown` | Change by `data-large-step` |
+| `Alt` + `ArrowUp` / `ArrowDown` | Change by `data-small-step` |
+| `PageUp` / `PageDown` | Change by `data-large-step` |
+| `Home` / `End` | Jump to `min` or `max` |
+
+---
+
+## JavaScript API
+
+```js
+const field = NepuiNumberInput.get(document.querySelector("#quantity-field"))
+
+field.increment()
+field.decrement(5)
+field.setValue(20)
+field.value
+```
+
+The script dispatches native `input` and `change` events on the input whenever it changes the value, so your own listeners work as usual. `NepuiNumberInput.init()` runs on page load. Call `NepuiNumberInput.init(container)` after you insert number inputs later.
+
+---
+
+## Accessibility
+
+- The input is a native number input, so it is announced as a spin button.
+- Give it a name with `aria-label` or a `label` tied through `for` and `id`.
+- The buttons carry `aria-label` text and `tabindex="-1"`. Keyboard users step with the arrow keys on the input.
+- Disabled buttons use the native `disabled` attribute at the range ends.
+- The focus ring uses `:focus-visible` and the group shows it around the whole control.
+- Button transitions are removed under `prefers-reduced-motion`.
+
+---
+
+
+## Reference
+
+### Parts
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Root | `data-np-number-input` | `np-number-input` |
+| Group | `data-np-number-input-group` | `np-number-input-group` |
+| Input | `data-np-number-input-input` | `np-number-input-input` |
+| Decrement | `data-np-number-input-decrement` | `np-number-input-decrement` |
+| Increment | `data-np-number-input-increment` | `np-number-input-increment` |
+
+### States
+
+| State | Selector |
+| ----- | -------- |
+| Disabled | `:disabled`, `[aria-disabled="true"]`, `[data-disabled]` |
+| Invalid | `[aria-invalid="true"]` on the input, `[data-invalid]` on the root or group |
+
+### Behaviour attributes
+
+Read by `number-input.js`. Put them on the root unless noted.
+
+| Attribute | Default | Description |
+| --- | --- | --- |
+| `min`, `max`, `step` (on the input) | `-∞`, `∞`, `1` | Native range and step. |
+| `data-small-step` | `0.1` | Step while `Alt` is held. |
+| `data-large-step` | `10` | Step while `Shift` is held, and for `PageUp` and `PageDown`. |
+| `data-allow-wheel-scrub` | off | Step with the mouse wheel while the input is focused. |
+| `data-pixel-sensitivity` | `2` | Pixels of drag per step in the scrub area. |
+| `data-direction` (on the scrub area) | `horizontal` | `horizontal` or `vertical`. |
+
+The script sets `data-scrubbing` on the root while dragging and `data-filled` when the input has a value.
