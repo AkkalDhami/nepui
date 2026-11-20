@@ -1,0 +1,248 @@
+---
+title: Color Picker
+description: Pick a color from an area and sliders, type it in any format, or choose a preset, in HSV, HSL, sRGB or OKLCH.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  target="html"
+  name="color-picker-demo"
+  styles={["/button/button.css", "/select/select.css"]}
+  scripts={["/color-picker/color-picker.js"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add color-picker"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="color-picker"
+        title="styles/color-picker.css"
+        fileTarget="styles/color-picker.css"
+      />
+      <ComponentSource
+        target="html"
+        name="color-picker"
+        title="html/color-picker.html"
+        fileTarget="html/color-picker.html"
+      />
+      <ComponentSource
+        target="html"
+        name="color-picker"
+        title="javascripts/color-picker.js"
+        fileTarget="javascripts/color-picker.js"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the stylesheet, after `tokens.css`, and the script at the end of the page:
+
+```html
+<link rel="stylesheet" href="./styles/color-picker.css">
+
+<script src="./javascripts/color-picker.js" defer></script>
+```
+
+```html
+<div class="np-color-picker" aria-label="Brand color" data-default-value="#0ea5e9">
+  <div class="np-color-picker-area"></div>
+  <div class="np-color-picker-slider" data-channel="hue"></div>
+  <div class="np-color-picker-swatch"></div>
+  <input class="np-color-picker-input" />
+</div>
+```
+
+The script wires every picker on load. It creates the thumbs, the hidden form input and, where the area needs one, the canvas. Every part is optional.
+
+---
+
+## Spaces and channels
+
+Set `data-space` on the picker to `hsv`, `hsl`, `srgb` or `oklch`. Pick other channels with `data-x` and `data-y` on the area and `data-channel` on a slider.
+
+| `data-space` | Area (across / up) | Slider | Value written as |
+| --- | --- | --- | --- |
+| `hsv` | saturation / brightness | hue | hex |
+| `hsl` | saturation / lightness | hue | `hsl(...)` |
+| `srgb` | red / green | blue | `rgb(...)` |
+| `oklch` | chroma / lightness | hue | `oklch(...)` |
+
+<ComponentPreview
+  target="html"
+  name="color-picker-spaces"
+  scripts={["/color-picker/color-picker.js"]}
+  height="520px"
+/>
+
+---
+
+## OKLCH and gamut
+
+`data-gamut` is `srgb` (the default), `p3` or `false`. While a drag is past the edge of the gamut the picker has `data-out-of-gamut`, and the value is the closest color that fits. The thumb moves there when the drag ends.
+
+<ComponentPreview
+  target="html"
+  name="color-picker-oklch"
+  scripts={["/color-picker/color-picker.js"]}
+/>
+
+---
+
+## Presets and channel inputs
+
+Add `.np-color-picker-swatches` with a `.np-color-picker-swatch-item` for each preset, and give each a `data-value`. Add an `.np-color-picker-channel-input` with `data-channel` to edit one channel.
+
+<ComponentPreview
+  target="html"
+  name="color-picker-presets"
+  scripts={["/color-picker/color-picker.js"]}
+/>
+
+---
+
+## Popover
+
+Use the native `popover` attribute. Anchor positioning needs Chrome 125 or Safari 26.
+
+<ComponentPreview
+  target="html"
+  name="color-picker-popover"
+  styles={["/button/button.css"]}
+  scripts={["/color-picker/color-picker.js"]}
+/>
+
+---
+
+## Disabled and read-only
+
+<ComponentPreview
+  target="html"
+  name="color-picker-disabled"
+  scripts={["/color-picker/color-picker.js"]}
+/>
+
+---
+
+## Controlled
+
+Listen for `np-color-picker-change` and `np-color-picker-commit`. Read or set the value through the script API.
+
+<ComponentPreview
+  target="html"
+  name="color-picker-controlled"
+  styles={["/button/button.css"]}
+  scripts={["/color-picker/color-picker.js"]}
+/>
+
+---
+
+## Form
+
+Set `data-name` to submit the value. A form reset returns the picker to `data-default-value`.
+
+<ComponentPreview
+  target="html"
+  name="color-picker-form"
+  styles={["/button/button.css"]}
+  scripts={["/color-picker/color-picker.js"]}
+/>
+
+---
+
+
+## Keyboard
+
+| Key | Behavior |
+| --- | --- |
+| Arrow keys | Move one step. On the area, Left and Right change the x channel, Up and Down change the y channel. |
+| Shift + Arrow | Move ten steps. |
+| Page Up, Page Down | Move a tenth of the range. On the area they change the y channel. |
+| Home, End | Go to the ends. On the area they change the x channel. |
+| Enter | Commits the input, or picks the focused preset. |
+| Escape | Restores the text of an input. |
+
+---
+
+## Reference
+
+### Options
+
+| Attribute | Description | Default |
+| --- | --- | --- |
+| `data-default-value` | The initial color. Any CSS color the picker can read. | `#000000` |
+| `data-space` | `hsv`, `hsl`, `srgb` or `oklch`. | `hsv` |
+| `data-format` | `hex`, `rgb`, `hsl` or `oklch`. | The format of the space |
+| `data-gamut` | `srgb`, `p3` or `false`. | `srgb` |
+| `data-disabled` | Cannot be focused or changed, and is not submitted. | |
+| `data-readonly` | Stays focusable and is submitted, but cannot be changed. | |
+| `data-required` | Only marks the picker with `data-required`. | |
+| `data-name` | The form field name. Without it, nothing is submitted. | |
+| `data-form` | The id of the form the picker belongs to. | |
+| `data-x`, `data-y` | On an area: the channels across and up. | The area of the space |
+| `data-channel` | On a slider or channel input: the channel to edit. | The slider of the space |
+| `data-orientation` | On a slider: `horizontal` or `vertical`. | `horizontal` |
+| `data-value` | On a preset: the color it picks. | |
+
+### Parts
+
+| Class | Attribute | Element |
+| --- | --- | --- |
+| `np-color-picker` | `data-np-color-picker` | Root |
+| `np-color-picker-area` | `data-np-color-picker-area` | The two-channel area. |
+| `np-color-picker-area-thumb` | `data-np-color-picker-area-thumb` | The area thumb. The script creates it. |
+| `np-color-picker-area-canvas` | `data-np-color-picker-area-canvas` | The canvas for areas without a plain gradient. The script creates it. |
+| `np-color-picker-slider` | `data-np-color-picker-slider` | A one-channel slider. |
+| `np-color-picker-slider-thumb` | `data-np-color-picker-slider-thumb` | The slider thumb. The script creates it. |
+| `np-color-picker-swatch` | `data-np-color-picker-swatch` | Shows the current color. |
+| `np-color-picker-input` | `data-np-color-picker-input` | The value as text. |
+| `np-color-picker-channel-input` | `data-np-color-picker-channel-input` | One channel in human units. |
+| `np-color-picker-eye-dropper` | `data-np-color-picker-eye-dropper` | The eyedropper button. |
+| `np-color-picker-swatches` | `data-np-color-picker-swatches` | The preset listbox. |
+| `np-color-picker-swatch-item` | `data-np-color-picker-swatch-item` | One preset. |
+| `np-color-picker-row` | `data-np-color-picker-row` | A row of controls. |
+
+The script sets `data-disabled`, `data-readonly`, `data-out-of-gamut`, `data-orientation`, `data-channel` and `data-selected` on the parts, and `data-unsupported` on the eyedropper when the browser cannot pick from the screen.
+
+### Script
+
+```html
+<script src="./javascripts/color-picker.js" defer></script>
+```
+
+| API | Description |
+| --- | --- |
+| `NepuiColorPicker.init(element)` | Wires one picker. Use it for a picker added after the page loaded. |
+| `NepuiColorPicker.initAll(scope?)` | Wires every picker in the scope, or on the page. |
+| `NepuiColorPicker.get(element)` | Returns `{ getValue, setValue, setFormat, focus, destroy }` for a wired picker. `setValue(value, details?)` returns `false` if the text cannot be read or the change is canceled. |
+| `NepuiColorPicker.parseColor(text)`, `NepuiColorPicker.formatColor(color, format)` | The color helpers. |
+| `np-color-picker-change` | Cancelable event on the picker. `event.detail` is `{ value, color, reason, event }`. Call `preventDefault()` to stop the change. |
+| `np-color-picker-commit` | Fires once when an interaction ends. `event.detail` is `{ value, color, reason, event }`. |
+
+The reasons are `track-press`, `drag`, `step-key`, `input-commit`, `item-press`, `eye-dropper-pick`, `reset` and `imperative`.
+
+```js
+picker.addEventListener("np-color-picker-commit", (event) => {
+  console.log(event.detail.reason, event.detail.value)
+})
+```
