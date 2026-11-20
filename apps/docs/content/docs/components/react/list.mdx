@@ -1,0 +1,238 @@
+---
+title: List
+description: A list of items built on ul and ol, with every marker type, nesting, keyboard navigation, collapsible branches and selection.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://github.com/akkaldhami.png
+---
+
+<ComponentPreview
+  name="list-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/list.json"
+      nepui="npx nepui@latest add list"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install class-variance-authority cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="list"
+        title="components/nepui/list/list.css"
+        fileTarget="components/nepui/list/list.css"
+      />
+      <ComponentSource
+        target="react"
+        name="list"
+        title="components/nepui/list/list.tsx"
+        fileTarget="components/nepui/list/list.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="list"
+        title="components/nepui/list/index.ts"
+        fileTarget="components/nepui/list/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import { List, ListItem } from "@/components/nepui/list"
+```
+
+```tsx
+<List aria-label="Launch checklist">
+  <ListItem>Write the release notes</ListItem>
+  <ListItem>Tag the version in Git</ListItem>
+  <ListItem>Publish the package</ListItem>
+</List>
+```
+
+---
+
+## Composition
+
+Nest a `List` inside a `ListItem` to build a branch. The text before the nested list becomes the item label, which is what keyboard focus, the focus ring and the toggle use.
+
+```text
+List
+└── ListItem
+    ├── label text
+    └── List
+        └── ListItem
+```
+
+---
+
+## Markers
+
+Set `marker` to change the marker. Leave it unset to let nested lists cycle by depth: disc, circle, square for unordered lists and decimal, lower-alpha, lower-roman for ordered ones.
+
+<ComponentPreview
+  name="list-markers"
+/>
+
+Any CSS string works as a custom marker through the `--np-list-marker` variable:
+
+```tsx
+<List style={{ "--np-list-marker": "'★  '" } as CSSProperties}>
+```
+
+---
+
+## Ordered
+
+Use the `ordered` prop to render an `ol`. Native `start` and `reversed` are supported.
+
+<ComponentPreview
+  name="list-ordered"
+/>
+
+---
+
+## Nested
+
+Nested lists get their own marker by depth and keep the indentation. Use `marker="outline"` for legal-style numbering (1., 1.1., 1.1.1.) and `guides` to draw a guide line beside each nested list.
+
+<ComponentPreview
+  name="list-nested"
+/>
+
+---
+
+## Variants
+
+`plain` removes markers and indentation, `divided` adds separators between items, and `bordered` wraps the list in a bordered surface. Nested lists keep the same item spacing and separators.
+
+<ComponentPreview
+  name="list-variants"
+/>
+
+---
+
+## Sizes
+
+<ComponentPreview
+  name="list-sizes"
+/>
+
+---
+
+## Horizontal
+
+`orientation="horizontal"` lays items out in a row. Arrow keys follow the reading direction, including RTL.
+
+<ComponentPreview
+  name="list-horizontal"
+/>
+
+---
+
+## Collapsible
+
+Add `collapsible` to the root list to show a toggle on every item that has a nested list. Control a branch with `expanded` and `onExpandedChange`, or start it closed with `defaultExpanded={false}`. Items without children are indented so every label lines up.
+
+<ComponentPreview
+  name="list-collapsible"
+/>
+
+---
+
+## Keyboard navigation
+
+Set `navigation` on the root list. The list becomes a single tab stop and the arrow keys move focus between items. Disabled items and items inside collapsed branches are skipped.
+
+| Key | Action |
+| --- | --- |
+| `ArrowDown` / `ArrowUp` | Move to the next or previous visible item |
+| `ArrowRight` | Expand a collapsed branch, or move to its first child |
+| `ArrowLeft` | Collapse an expanded branch, or move to the parent |
+| `Home` / `End` | Move to the first or last visible item |
+| `Enter` / `Space` | Toggle a branch, or select the item when selection is on |
+| `*` | Expand every branch at the current level |
+| Letters | Jump to the next item that starts with the typed text |
+| `Shift` + `ArrowDown` / `ArrowUp` | Extend the selection (`selectionMode="multiple"`) |
+| `Ctrl` / `Cmd` + `A` | Select every visible item (`selectionMode="multiple"`) |
+
+Pass `loop` to wrap around at either end. In horizontal lists `ArrowLeft` and `ArrowRight` replace `ArrowUp` and `ArrowDown`.
+
+---
+
+## Selection
+
+`selectionMode="single"` or `"multiple"` turns the list into a listbox. Every selectable item needs a `value`. Selection is for flat lists: a nested `List` inside a selectable list is not supported.
+
+<ComponentPreview
+  name="list-selection"
+/>
+
+---
+
+## Accessibility
+
+- Plain lists keep native `ul`, `ol` and `li` semantics. Give a list an `aria-label` when it is not introduced by a heading.
+- With `navigation`, items use a roving `tabindex`, so the list is one tab stop.
+- Each toggle is a real `button` with `aria-expanded`, `aria-controls` and a name taken from the item text. It is removed from the tab order when `navigation` is on, and arrow keys do the same job.
+- With `selectionMode`, the root gets `role="listbox"` and items get `role="option"` and `aria-selected`.
+- Focus rings use `:focus-visible`, and forced-colors mode gets an outline.
+- Toggle motion is removed under `prefers-reduced-motion`.
+- Collapsed branches use `display: none`, so they leave the accessibility tree.
+
+---
+
+## API Reference
+
+### List
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `ordered` | `boolean` | `false` |
+| `variant` | `"default" \| "plain" \| "divided" \| "bordered"` | `"default"` |
+| `size` | `"default" \| "sm" \| "lg"` | `"default"` |
+| `marker` | `"auto" \| "disc" \| "circle" \| "square" \| "decimal" \| "decimal-leading-zero" \| "lower-alpha" \| "upper-alpha" \| "lower-roman" \| "upper-roman" \| "lower-greek" \| "outline" \| "dash" \| "check" \| "arrow" \| "none"` | `"auto"` |
+| `orientation` | `"vertical" \| "horizontal"` | `"vertical"` |
+| `guides` | `boolean` | `false` |
+| `inside` | `boolean` | `false` |
+| `start` | `number` | - |
+| `reversed` | `boolean` | `false` |
+| `navigation` | `boolean` | `false` |
+| `loop` | `boolean` | `false` |
+| `collapsible` | `boolean` | `false` |
+| `selectionMode` | `"none" \| "single" \| "multiple"` | `"none"` |
+| `value` | `string[]` | - |
+| `defaultValue` | `string[]` | `[]` |
+| `onValueChange` | `(value: string[]) => void` | - |
+| `className` | `string` | - |
+
+`navigation`, `loop`, `collapsible`, `selectionMode` and the value props only apply to the root list. A `List` rendered inside a `ListItem` inherits them.
+
+### ListItem
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | - |
+| `disabled` | `boolean` | `false` |
+| `expanded` | `boolean` | - |
+| `defaultExpanded` | `boolean` | `true` |
+| `onExpandedChange` | `(expanded: boolean) => void` | - |
+| `className` | `string` | - |
