@@ -1,0 +1,137 @@
+---
+title: Icon Swap
+description: Animate icon swaps with scale, blur, and fade transitions.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="icon-swap-demo"
+  target="html"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Use cases
+
+- Copy buttons that switch to a check on success.
+- Toggle buttons such as play and pause.
+- Icons that follow the selected tab or option.
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add icon-swap"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="icon-swap"
+        title="styles/icon-swap.css"
+        fileTarget="styles/icon-swap.css"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+It is CSS only. No script is needed to ship it. You decide what triggers the swap.
+
+---
+
+## Usage
+
+```html
+<link rel="stylesheet" href="./styles/icon-swap.css">
+```
+
+Put every icon in the stack. Mark the shown one with `data-active`. To swap, move `data-active` to another item and the CSS animates both: the old icon scales down, blurs and fades while the new one comes in.
+
+```html
+<button class="np-button np-button-outline np-button-icon-sm" type="button" aria-label="Copy" id="copy">
+  <span class="np-icon-swap">
+    <span class="np-icon-swap-item" data-active><!-- copy icon svg --></span>
+    <span class="np-icon-swap-item"><!-- check icon svg --></span>
+  </span>
+</button>
+```
+
+```js
+const items = document.querySelectorAll("#copy .np-icon-swap-item")
+items[0].toggleAttribute("data-active")
+items[1].toggleAttribute("data-active")
+```
+
+Or use the data attributes instead of classes:
+
+```html
+<span data-np-icon-swap>
+  <span data-np-icon-swap-item data-active>…</span>
+  <span data-np-icon-swap-item>…</span>
+</span>
+```
+
+Use icons with `aria-hidden="true"` and give the button an accessible name. If the meaning changes (for example Copy to Copied), update `aria-label` too, or use `aria-pressed` for toggles.
+
+Because every icon stays in the DOM, this works with any way of changing an attribute: plain JavaScript, htmx, Alpine, or a framework.
+
+---
+
+## Composition
+
+```text
+np-icon-swap
+├── np-icon-swap-item (active icon)
+└── np-icon-swap-item
+```
+
+---
+
+## Copy button
+
+<ComponentPreview
+  name="icon-swap-copy"
+  target="html"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Play and pause
+
+<ComponentPreview
+  name="icon-swap-toggle"
+  target="html"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Reference
+
+### Parts
+
+| Name  | Data attribute              | Class alias           |
+| ----- | --------------------------- | --------------------- |
+| Stack | `data-np-icon-swap`         | `np-icon-swap`        |
+| Item  | `data-np-icon-swap-item`    | `np-icon-swap-item`   |
+
+### States
+
+| Name                | Data attribute | Class alias            |
+| ------------------- | -------------- | ---------------------- |
+| Active (shown) item | `data-active`  | `np-icon-swap-active`  |
+
+With `prefers-reduced-motion: reduce`, scale and blur are turned off and only the fade remains.
