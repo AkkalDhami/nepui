@@ -1,7 +1,7 @@
 /*
- * nepui colors.css - Color palette and utility classes.
+ * nepui `colors.css` - Color palette and utility classes.
  *
- * Edit the source palette in ..\..\registry\styles\palette.css, then run:
+ * Edit the source palette in registry\styles\palette.css, then run:
  * > pnpm --filter docs colors:generate
  * The utility classes after the palette are generated.
  ! ⚠️ Do not edit this generated file directly.

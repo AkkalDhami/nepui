@@ -1,0 +1,52 @@
+<div
+  style="
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+  "
+>
+  <div>
+    <p
+      style="
+        margin: 0 0 0.5rem;
+        font-family: var(--np-font-mono, monospace);
+        font-size: 0.75rem;
+        color: var(--np-muted-foreground);
+      "
+    >
+      single
+    </p>
+    <ul
+      class="np-list np-list-plain"
+      data-selection="single"
+      aria-label="Language"
+    >
+      <li data-value="np" data-selected>Nepali</li>
+      <li data-value="en">English</li>
+      <li data-value="ne-bh">Bhojpuri</li>
+      <li data-value="mai" aria-disabled="true">Maithili</li>
+    </ul>
+  </div>
+  <div>
+    <p
+      style="
+        margin: 0 0 0.5rem;
+        font-family: var(--np-font-mono, monospace);
+        font-size: 0.75rem;
+        color: var(--np-muted-foreground);
+      "
+    >
+      multiple
+    </p>
+    <ul
+      class="np-list np-list-bordered"
+      data-selection="multiple"
+      aria-label="Notification channels"
+    >
+      <li data-value="email" data-selected>Email</li>
+      <li data-value="sms">SMS</li>
+      <li data-value="push" data-selected>Push</li>
+    </ul>
+  </div>
+</div>

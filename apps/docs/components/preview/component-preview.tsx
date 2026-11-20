@@ -56,6 +56,9 @@ export async function ComponentPreview({
       "alert-dialog",
       "context-menu",
       "hover-card",
+      "code-block",
+      "icon-swap",
+      "color-picker",
     ]
 
     const componentName = groupedComponents.includes(

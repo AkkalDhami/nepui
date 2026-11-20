@@ -1,0 +1,85 @@
+<link rel="stylesheet" href="./styles/button.css" />
+
+<button
+  type="button"
+  class="np-button np-button-outline"
+  data-command-open="command-scrollable"
+>
+  Open Menu
+</button>
+<dialog
+  class="np-command-dialog"
+  id="command-scrollable"
+  aria-label="Command Palette"
+  data-shortcut="j"
+>
+  <div class="np-command">
+    <div class="np-command-input-wrapper">
+      <input
+        class="np-command-input"
+        placeholder="Type a command or search..."
+        aria-label="Search commands"
+      />
+    </div>
+    <div class="np-command-list">
+      <div class="np-command-empty">No results found.</div>
+      <div class="np-command-group">
+        <div class="np-command-group-heading">Navigation</div>
+        <div class="np-command-item">
+          Home
+          <span class="np-command-shortcut">⌘H</span>
+        </div>
+        <div class="np-command-item">
+          Inbox
+          <span class="np-command-shortcut">⌘I</span>
+        </div>
+        <div class="np-command-item">
+          Documents
+          <span class="np-command-shortcut">⌘D</span>
+        </div>
+        <div class="np-command-item">
+          Calendar
+          <span class="np-command-shortcut">⌘C</span>
+        </div>
+        <div class="np-command-item">
+          Reports
+          <span class="np-command-shortcut">⌘R</span>
+        </div>
+      </div>
+      <div class="np-command-separator"></div>
+      <div class="np-command-group">
+        <div class="np-command-group-heading">Actions</div>
+        <div class="np-command-item">New file</div>
+        <div class="np-command-item">New folder</div>
+        <div class="np-command-item">Upload files</div>
+        <div class="np-command-item">Share</div>
+        <div class="np-command-item">Export as PDF</div>
+        <div class="np-command-item">Duplicate</div>
+      </div>
+      <div class="np-command-separator"></div>
+      <div class="np-command-group">
+        <div class="np-command-group-heading">Settings</div>
+        <div class="np-command-item">
+          Profile
+          <span class="np-command-shortcut">⌘P</span>
+        </div>
+        <div class="np-command-item">
+          Billing
+          <span class="np-command-shortcut">⌘B</span>
+        </div>
+        <div class="np-command-item">
+          Notifications
+          <span class="np-command-shortcut">⌘N</span>
+        </div>
+        <div class="np-command-item">
+          Appearance
+          <span class="np-command-shortcut">⌘A</span>
+        </div>
+        <div class="np-command-item">
+          Keyboard shortcuts
+          <span class="np-command-shortcut">⌘K</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</dialog>

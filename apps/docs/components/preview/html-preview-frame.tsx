@@ -9,6 +9,7 @@ interface HtmlPreviewFrameProps {
   html: string
   css: string
   js: string | null
+  scripts?: ({ src: string } | { code: string })[]
   scriptType?: "module" | "text/javascript"
   tokens: string | null
   className?: string
@@ -35,8 +36,24 @@ function buildPreviewDocument(
   css: string,
   js?: string | null,
   tokens?: string | null,
-  scriptType: "module" | "text/javascript" = "text/javascript"
+  scriptType: "module" | "text/javascript" = "text/javascript",
+  scripts: ({ src: string } | { code: string })[] = []
 ) {
+  const scriptTags = scripts
+    .map((script) => {
+      if ("src" in script) {
+        const src = script.src
+          .replaceAll("&", "&amp;")
+          .replaceAll('"', "&quot;")
+        return `<script type="${scriptType}" src="${src}"></script>`
+      }
+
+      return script.code
+        ? `<script type="${scriptType}">${script.code}</script>`
+        : ""
+    })
+    .join("\n")
+
   return `<!doctype html>
 <html>
   <head>
@@ -56,6 +73,7 @@ function buildPreviewDocument(
     ${html}
     <script>${RESIZE_SCRIPT}</script>
     ${js ? `<script type="${scriptType}">${js}</script>` : ""}
+    ${scriptTags}
   </body>
 </html>`
 }
@@ -64,6 +82,7 @@ export function HtmlPreviewFrame({
   html,
   css,
   js,
+  scripts,
   scriptType,
   tokens,
   height = "460px",
@@ -72,8 +91,8 @@ export function HtmlPreviewFrame({
   const iframeRef = useRef<HTMLIFrameElement>(null)
 
   const document = useMemo(
-    () => buildPreviewDocument(html, css, js, tokens, scriptType),
-    [html, css, js, tokens, scriptType]
+    () => buildPreviewDocument(html, css, js, tokens, scriptType, scripts),
+    [html, css, js, tokens, scriptType, scripts]
   )
 
   useEffect(() => {

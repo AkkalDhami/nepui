@@ -1,0 +1,843 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Attachment</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/attachment.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem 4rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: system-ui, sans-serif;
+      }
+      main {
+        display: grid;
+        gap: 2.5rem;
+        max-width: 44rem;
+        margin-inline: auto;
+      }
+      h2 {
+        margin: 0 0 0.75rem;
+        font-size: 1rem;
+      }
+      section > p {
+        margin: 0 0 0.75rem;
+        color: var(--np-muted-foreground);
+        font-size: 0.875rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Default</h2>
+        <p>Media, title, description and an action.</p>
+        <div style="width: 100%; max-width: 24rem; display: grid; gap: 0.75rem">
+          <div class="np-attachment">
+            <div class="np-attachment-media">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                />
+                <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+              </svg>
+            </div>
+            <div class="np-attachment-content">
+              <div class="np-attachment-title">release-notes.pdf</div>
+              <div class="np-attachment-description">PDF · 1.2 MB</div>
+            </div>
+            <div class="np-attachment-actions">
+              <button
+                type="button"
+                class="np-button np-button-ghost np-button-icon-xs np-attachment-action"
+                aria-label="Remove release-notes.pdf"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M18 6 6 18" />
+                  <path d="m6 6 12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Image</h2>
+        <p>
+          <code>np-attachment-media-image</code> with an
+          <code>&lt;img&gt;</code>; <code>np-attachment-vertical</code> stacks
+          it.
+        </p>
+        <div style="width: 100%; max-width: 24rem; display: grid; gap: 0.75rem">
+          <div class="np-attachment">
+            <div class="np-attachment-media np-attachment-media-image">
+              <img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2394a3b8'/%3E%3Cstop offset='1' stop-color='%23334155'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='4' height='3' fill='url(%23g)'/%3E%3C/svg%3E"
+                alt=""
+              />
+            </div>
+            <div class="np-attachment-content">
+              <div class="np-attachment-title">mountains.jpg</div>
+              <div class="np-attachment-description">JPG · 2.4 MB</div>
+            </div>
+            <div class="np-attachment-actions">
+              <button
+                type="button"
+                class="np-button np-button-ghost np-button-icon-xs np-attachment-action"
+                aria-label="Remove mountains.jpg"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M18 6 6 18" />
+                  <path d="m6 6 12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="np-attachment np-attachment-vertical">
+            <div class="np-attachment-media np-attachment-media-image">
+              <img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2394a3b8'/%3E%3Cstop offset='1' stop-color='%23334155'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='4' height='3' fill='url(%23g)'/%3E%3C/svg%3E"
+                alt=""
+              />
+            </div>
+            <div class="np-attachment-content">
+              <div class="np-attachment-title">mountains.jpg</div>
+              <div class="np-attachment-description">JPG · 2.4 MB</div>
+            </div>
+            <div class="np-attachment-actions">
+              <button
+                type="button"
+                class="np-button np-button-ghost np-button-icon-xs np-attachment-action"
+                aria-label="Remove mountains.jpg"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M18 6 6 18" />
+                  <path d="m6 6 12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>States</h2>
+        <p>
+          idle, uploading (with <code>--np-attachment-progress</code>),
+          processing, error, done.
+        </p>
+        <div style="width: 100%; max-width: 24rem; display: grid; gap: 0.75rem">
+          <div class="np-attachment np-attachment-idle">
+            <div class="np-attachment-media">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="17 8 12 3 7 8" />
+                <line x1="12" x2="12" y1="3" y2="15" />
+              </svg>
+            </div>
+            <div class="np-attachment-content">
+              <div class="np-attachment-title">invoice.pdf</div>
+              <div class="np-attachment-description">Ready to upload</div>
+            </div>
+          </div>
+          <div
+            class="np-attachment np-attachment-uploading"
+            style="--np-attachment-progress: 60%"
+          >
+            <div class="np-attachment-media">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                />
+                <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+              </svg>
+            </div>
+            <div class="np-attachment-content">
+              <div class="np-attachment-title">invoice.pdf</div>
+              <div class="np-attachment-description">Uploading… 60%</div>
+            </div>
+            <div class="np-attachment-actions">
+              <button
+                type="button"
+                class="np-button np-button-ghost np-button-icon-xs np-attachment-action"
+                aria-label="Cancel upload of invoice.pdf"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M18 6 6 18" />
+                  <path d="m6 6 12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="np-attachment np-attachment-processing">
+            <div class="np-attachment-media">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                />
+                <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+              </svg>
+            </div>
+            <div class="np-attachment-content">
+              <div class="np-attachment-title">invoice.pdf</div>
+              <div class="np-attachment-description">Processing…</div>
+            </div>
+          </div>
+          <div class="np-attachment np-attachment-error">
+            <div class="np-attachment-media">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" x2="12" y1="8" y2="12" />
+                <line x1="12" x2="12.01" y1="16" y2="16" />
+              </svg>
+            </div>
+            <div class="np-attachment-content">
+              <div class="np-attachment-title">invoice.pdf</div>
+              <div class="np-attachment-description">
+                Upload failed: the file is too large
+              </div>
+            </div>
+            <div class="np-attachment-actions">
+              <button
+                type="button"
+                class="np-button np-button-ghost np-button-icon-xs np-attachment-action"
+                aria-label="Retry upload of invoice.pdf"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"
+                  />
+                  <path d="M21 3v5h-5" />
+                  <path
+                    d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"
+                  />
+                  <path d="M8 16H3v5" />
+                </svg></button
+              ><button
+                type="button"
+                class="np-button np-button-ghost np-button-icon-xs np-attachment-action"
+                aria-label="Remove invoice.pdf"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M18 6 6 18" />
+                  <path d="m6 6 12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="np-attachment">
+            <div class="np-attachment-media">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                />
+                <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+              </svg>
+            </div>
+            <div class="np-attachment-content">
+              <div class="np-attachment-title">invoice.pdf</div>
+              <div class="np-attachment-description">PDF · 1.2 MB</div>
+            </div>
+            <div class="np-attachment-actions">
+              <button
+                type="button"
+                class="np-button np-button-ghost np-button-icon-xs np-attachment-action"
+                aria-label="Remove invoice.pdf"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M18 6 6 18" />
+                  <path d="m6 6 12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Sizes</h2>
+        <p>
+          default, <code>np-attachment-sm</code>, <code>np-attachment-xs</code>.
+        </p>
+        <div style="width: 100%; max-width: 24rem; display: grid; gap: 0.75rem">
+          <div class="np-attachment">
+            <div class="np-attachment-media">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                />
+                <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+              </svg>
+            </div>
+            <div class="np-attachment-content">
+              <div class="np-attachment-title">release-notes.pdf</div>
+              <div class="np-attachment-description">PDF · 1.2 MB</div>
+            </div>
+            <div class="np-attachment-actions">
+              <button
+                type="button"
+                class="np-button np-button-ghost np-button-icon-xs np-attachment-action"
+                aria-label="Remove"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M18 6 6 18" />
+                  <path d="m6 6 12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="np-attachment np-attachment-sm">
+            <div class="np-attachment-media">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                />
+                <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+              </svg>
+            </div>
+            <div class="np-attachment-content">
+              <div class="np-attachment-title">release-notes.pdf</div>
+              <div class="np-attachment-description">PDF · 1.2 MB</div>
+            </div>
+            <div class="np-attachment-actions">
+              <button
+                type="button"
+                class="np-button np-button-ghost np-button-icon-xs np-attachment-action"
+                aria-label="Remove"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M18 6 6 18" />
+                  <path d="m6 6 12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="np-attachment np-attachment-xs">
+            <div class="np-attachment-media">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                />
+                <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+              </svg>
+            </div>
+            <div class="np-attachment-content">
+              <div class="np-attachment-title">release-notes.pdf</div>
+              <div class="np-attachment-description">PDF · 1.2 MB</div>
+            </div>
+            <div class="np-attachment-actions">
+              <button
+                type="button"
+                class="np-button np-button-ghost np-button-icon-xs np-attachment-action"
+                aria-label="Remove"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M18 6 6 18" />
+                  <path d="m6 6 12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Group</h2>
+        <p>A scrolling, snapping row with an edge fade.</p>
+        <div class="np-attachment-group" style="width: 100%; max-width: 28rem">
+          <div class="np-attachment">
+            <div class="np-attachment-media">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                />
+                <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+              </svg>
+            </div>
+            <div class="np-attachment-content">
+              <div class="np-attachment-title">release-notes.pdf</div>
+              <div class="np-attachment-description">PDF · 1.2 MB</div>
+            </div>
+            <div class="np-attachment-actions">
+              <button
+                type="button"
+                class="np-button np-button-ghost np-button-icon-xs np-attachment-action"
+                aria-label="Remove release-notes.pdf"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M18 6 6 18" />
+                  <path d="m6 6 12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="np-attachment">
+            <div class="np-attachment-media">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                />
+                <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+              </svg>
+            </div>
+            <div class="np-attachment-content">
+              <div class="np-attachment-title">budget.xlsx</div>
+              <div class="np-attachment-description">XLSX · 340 KB</div>
+            </div>
+            <div class="np-attachment-actions">
+              <button
+                type="button"
+                class="np-button np-button-ghost np-button-icon-xs np-attachment-action"
+                aria-label="Remove budget.xlsx"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M18 6 6 18" />
+                  <path d="m6 6 12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="np-attachment">
+            <div class="np-attachment-media">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                />
+                <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+              </svg>
+            </div>
+            <div class="np-attachment-content">
+              <div class="np-attachment-title">design-spec.docx</div>
+              <div class="np-attachment-description">DOCX · 820 KB</div>
+            </div>
+            <div class="np-attachment-actions">
+              <button
+                type="button"
+                class="np-button np-button-ghost np-button-icon-xs np-attachment-action"
+                aria-label="Remove design-spec.docx"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M18 6 6 18" />
+                  <path d="m6 6 12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="np-attachment">
+            <div class="np-attachment-media">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                />
+                <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+              </svg>
+            </div>
+            <div class="np-attachment-content">
+              <div class="np-attachment-title">logo.svg</div>
+              <div class="np-attachment-description">SVG · 12 KB</div>
+            </div>
+            <div class="np-attachment-actions">
+              <button
+                type="button"
+                class="np-button np-button-ghost np-button-icon-xs np-attachment-action"
+                aria-label="Remove logo.svg"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M18 6 6 18" />
+                  <path d="m6 6 12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Trigger</h2>
+        <p>A full-card link. The action stays clickable.</p>
+        <div style="width: 100%; max-width: 24rem; display: grid; gap: 0.75rem">
+          <div class="np-attachment">
+            <div class="np-attachment-media">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                />
+                <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+              </svg>
+            </div>
+            <div class="np-attachment-content">
+              <div class="np-attachment-title">release-notes.pdf</div>
+              <div class="np-attachment-description">PDF · 1.2 MB</div>
+            </div>
+            <div class="np-attachment-actions">
+              <button
+                type="button"
+                class="np-button np-button-ghost np-button-icon-xs np-attachment-action"
+                aria-label="Download release-notes.pdf"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" x2="12" y1="15" y2="3" />
+                </svg>
+              </button>
+            </div>
+            <a
+              href="#"
+              class="np-attachment-trigger"
+              aria-label="Open release-notes.pdf"
+            ></a>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Data-attribute form</h2>
+        <div data-np-attachment data-state="error" style="max-width: 24rem">
+          <div data-np-attachment-media>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" x2="12" y1="8" y2="12" />
+              <line x1="12" x2="12.01" y1="16" y2="16" />
+            </svg>
+          </div>
+          <div data-np-attachment-content>
+            <div data-np-attachment-title>invoice.pdf</div>
+            <div data-np-attachment-description>Upload failed</div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

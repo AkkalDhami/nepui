@@ -37,6 +37,53 @@
   animation: np-spinner-spin var(--np-spinner-speed) linear infinite;
 }
 
+/* Variants */
+
+:is(.np-spinner, [data-np-spinner])[data-variant="default"],
+.np-spinner-default {
+  --np-spinner-color: var(--np-primary);
+}
+
+:is(.np-spinner, [data-np-spinner])[data-variant="success"],
+.np-spinner-success {
+  --np-spinner-color: var(--np-success);
+  --np-spinner-muted-color: color-mix(
+    in oklch,
+    var(--np-success) 20%,
+    transparent
+  );
+}
+
+:is(.np-spinner, [data-np-spinner])[data-variant="info"],
+.np-spinner-info {
+  --np-spinner-color: var(--np-info, oklch(0.546 0.245 262.881));
+  --np-spinner-muted-color: color-mix(
+    in oklch,
+    var(--np-spinner-color) 20%,
+    transparent
+  );
+}
+
+:is(.np-spinner, [data-np-spinner])[data-variant="error"],
+.np-spinner-error {
+  --np-spinner-color: var(--np-destructive);
+  --np-spinner-muted-color: color-mix(
+    in oklch,
+    var(--np-destructive) 20%,
+    transparent
+  );
+}
+
+:is(.np-spinner, [data-np-spinner])[data-variant="warning"],
+.np-spinner-warning {
+  --np-spinner-color: var(--np-warning);
+  --np-spinner-muted-color: color-mix(
+    in oklch,
+    var(--np-warning) 20%,
+    transparent
+  );
+}
+
 /* Size */
 
 [data-size="xs"],

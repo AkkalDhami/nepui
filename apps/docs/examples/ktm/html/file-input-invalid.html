@@ -1,0 +1,60 @@
+<link rel="stylesheet" href="./styles/tokens.css" />
+<link rel="stylesheet" href="./styles/button.css" />
+<link rel="stylesheet" href="./styles/file-input.css" />
+<link rel="stylesheet" href="./styles/field.css" />
+<script src="./javascripts/file-input.js" defer></script>
+
+<div style="width: 100%; max-width: 28rem">
+  <div class="np-field" data-invalid>
+    <label class="np-field-label" for="file-input-invalid"
+      >Signed contract</label
+    >
+    <div class="np-file-input" data-invalid>
+      <div class="np-file-input-dropzone">
+        <span class="np-file-input-dropzone-icon"
+          ><svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <path d="m17 8-5-5-5 5" />
+            <path d="M12 3v12" /></svg
+        ></span>
+        <p class="np-file-input-dropzone-title">Drop the signed PDF here</p>
+        <p class="np-file-input-dropzone-description">
+          Only PDF files are accepted.
+        </p>
+        <button
+          class="np-button np-button-outline np-file-input-trigger"
+          id="file-input-invalid"
+          type="button"
+          aria-invalid="true"
+          aria-describedby="file-input-invalid-message"
+          onclick="
+            this.closest('.np-file-input')
+              .querySelector('input[type=file]')
+              .click()
+          "
+        >
+          Choose a PDF
+        </button>
+      </div>
+      <input
+        class="np-file-input-native"
+        type="file"
+        accept=".pdf"
+        required
+        tabindex="-1"
+        aria-hidden="true"
+      />
+    </div>
+    <p class="np-field-error" id="file-input-invalid-message" role="alert">
+      Add the signed contract to continue.
+    </p>
+  </div>
+</div>

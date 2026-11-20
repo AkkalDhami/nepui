@@ -1,0 +1,29 @@
+import { Button } from "@/registry/react/button"
+import { Group, GroupSeparator } from "@/registry/react/group"
+
+export default function GroupDemoDemo() {
+  return (
+    <Group aria-label="File actions">
+      <Button variant="outline">Files</Button>
+      <GroupSeparator />
+      <Button variant="outline">Media</Button>
+      <GroupSeparator />
+      <Button variant="outline" size="icon" aria-label="More">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={2}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </Button>
+    </Group>
+  )
+}

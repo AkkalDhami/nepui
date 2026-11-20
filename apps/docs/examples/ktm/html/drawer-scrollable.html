@@ -1,0 +1,91 @@
+<link rel="stylesheet" href="./styles/button.css" />
+<link rel="stylesheet" href="./styles/scroll-area.css" />
+
+<button
+  type="button"
+  class="np-button np-button-outline"
+  commandfor="drawer-scrollable"
+  command="show-modal"
+>
+  Open Drawer
+</button>
+
+<dialog
+  id="drawer-scrollable"
+  class="np-drawer-content"
+  style="--np-drawer-height: 60dvh"
+  closedby="any"
+  aria-labelledby="drawer-scrollable-title"
+  aria-describedby="drawer-scrollable-description"
+>
+  <div class="np-drawer-header">
+    <h2 class="np-drawer-title" id="drawer-scrollable-title">
+      Terms of service
+    </h2>
+    <p class="np-drawer-description" id="drawer-scrollable-description">
+      Read to the end.
+    </p>
+  </div>
+  <div
+    class="np-drawer-panel np-scroll-fade"
+    data-np-scrollable
+    role="region"
+    aria-label="Terms"
+    tabindex="0"
+  >
+    <p style="margin: 0 0 0.75rem">
+      Paragraph 1. Scroll this area; the header and the footer stay in view.
+    </p>
+    <p style="margin: 0 0 0.75rem">
+      Paragraph 2. Scroll this area; the header and the footer stay in view.
+    </p>
+    <p style="margin: 0 0 0.75rem">
+      Paragraph 3. Scroll this area; the header and the footer stay in view.
+    </p>
+    <p style="margin: 0 0 0.75rem">
+      Paragraph 4. Scroll this area; the header and the footer stay in view.
+    </p>
+    <p style="margin: 0 0 0.75rem">
+      Paragraph 5. Scroll this area; the header and the footer stay in view.
+    </p>
+    <p style="margin: 0 0 0.75rem">
+      Paragraph 6. Scroll this area; the header and the footer stay in view.
+    </p>
+    <p style="margin: 0 0 0.75rem">
+      Paragraph 7. Scroll this area; the header and the footer stay in view.
+    </p>
+    <p style="margin: 0 0 0.75rem">
+      Paragraph 8. Scroll this area; the header and the footer stay in view.
+    </p>
+    <p style="margin: 0 0 0.75rem">
+      Paragraph 9. Scroll this area; the header and the footer stay in view.
+    </p>
+    <p style="margin: 0 0 0.75rem">
+      Paragraph 10. Scroll this area; the header and the footer stay in view.
+    </p>
+    <p style="margin: 0 0 0.75rem">
+      Paragraph 11. Scroll this area; the header and the footer stay in view.
+    </p>
+    <p style="margin: 0 0 0.75rem">
+      Paragraph 12. Scroll this area; the header and the footer stay in view.
+    </p>
+  </div>
+  <div class="np-drawer-footer">
+    <button
+      type="button"
+      class="np-button"
+      commandfor="drawer-scrollable"
+      command="close"
+    >
+      Submit
+    </button>
+    <button
+      type="button"
+      class="np-button np-button-outline"
+      commandfor="drawer-scrollable"
+      command="close"
+    >
+      Cancel
+    </button>
+  </div>
+</dialog>

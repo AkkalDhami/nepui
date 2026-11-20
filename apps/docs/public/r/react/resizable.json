@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "resizable",
+  "title": "Resizable",
+  "description": "Accessible resizable panel groups and layouts with keyboard support.",
+  "dependencies": ["react-resizable-panels"],
+  "files": [
+    {
+      "path": "registry/react/resizable/resizable.tsx",
+      "content": "\"use client\"\n\nimport {\n  Group,\n  Panel,\n  Separator,\n  type GroupProps,\n  type PanelProps,\n  type SeparatorProps,\n} from \"react-resizable-panels\"\nimport { cn } from \"cn\"\n\n// NOTE: Update these paths if needed\nimport \"../tokens.css\"\nimport \"./resizable.css\"\n\nfunction ResizablePanelGroup({\n  className,\n  orientation = \"horizontal\",\n  ...props\n}: GroupProps) {\n  return (\n    <Group\n      data-slot=\"resizable-panel-group\"\n      data-orientation={orientation}\n      orientation={orientation}\n      className={cn(\"np-resizable\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction ResizablePanel({ className, ...props }: PanelProps) {\n  return (\n    <Panel\n      data-slot=\"resizable-panel\"\n      className={cn(\"np-resizable-panel\", className)}\n      {...props}\n    />\n  )\n}\n\ntype ResizableHandleProps = SeparatorProps & {\n  withHandle?: boolean\n}\n\nfunction ResizableHandle({\n  withHandle = false,\n  className,\n  ...props\n}: ResizableHandleProps) {\n  return (\n    <Separator\n      data-slot=\"resizable-handle\"\n      className={cn(\"np-resizable-handle\", className)}\n      {...props}\n    >\n      {withHandle ? <div className=\"np-resizable-grip\" /> : null}\n    </Separator>\n  )\n}\n\nexport { ResizableHandle, ResizablePanel, ResizablePanelGroup }\n",
+      "type": "registry:ui",
+      "target": "components/nepui/resizable/resizable.tsx"
+    },
+    {
+      "path": "registry/react/resizable/resizable.css",
+      "content": "/* nepui — Resizable */\n\n.np-resizable,\n[data-np-resizable] {\n  --np-resizable-handle-size: 1px;\n  --np-resizable-handle-hit-size: 0.25rem;\n  --np-resizable-handle-color: var(--np-border);\n  --np-resizable-grip-length: 1.5rem;\n  --np-resizable-grip-thickness: 0.25rem;\n\n  box-sizing: border-box;\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n}\n\n:is(.np-resizable-vertical, [data-orientation=\"vertical\"]):is(\n  .np-resizable,\n  [data-np-resizable]\n) {\n  flex-direction: column;\n}\n\n:is(.np-resizable, [data-np-resizable])[data-resizing] {\n  user-select: none;\n}\n\n.np-resizable-panel,\n[data-np-resizable-panel] {\n  box-sizing: border-box;\n  flex: var(--np-resizable-size, 1) 1 0;\n  min-width: 0;\n  min-height: 0;\n  overflow: auto;\n}\n\n.np-resizable-handle,\n[data-np-resizable-handle] {\n  position: relative;\n  box-sizing: border-box;\n  display: flex;\n  flex: none;\n  align-items: center;\n  justify-content: center;\n  width: var(--np-resizable-handle-size);\n  background-color: var(--np-resizable-handle-color);\n  outline: none;\n  cursor: col-resize;\n  touch-action: none;\n}\n\n:is(.np-resizable-handle, [data-np-resizable-handle])::after {\n  content: \"\";\n  position: absolute;\n  inset-block: 0;\n  inset-inline-start: calc(50% - var(--np-resizable-handle-hit-size) / 2);\n  width: var(--np-resizable-handle-hit-size);\n}\n\n:is(.np-resizable-vertical, [data-orientation=\"vertical\"]):is(\n    .np-resizable,\n    [data-np-resizable]\n  )\n  > :is(.np-resizable-handle, [data-np-resizable-handle]) {\n  width: auto;\n  height: var(--np-resizable-handle-size);\n  cursor: row-resize;\n}\n\n:is(.np-resizable-vertical, [data-orientation=\"vertical\"]):is(\n    .np-resizable,\n    [data-np-resizable]\n  )\n  > :is(.np-resizable-handle, [data-np-resizable-handle])::after {\n  inset-block: calc(50% - var(--np-resizable-handle-hit-size) / 2) auto;\n  inset-inline: 0;\n  width: auto;\n  height: var(--np-resizable-handle-hit-size);\n}\n\n:is(.np-resizable-handle, [data-np-resizable-handle]):is(\n  :focus-visible,\n  [data-dragging],\n  [data-separator=\"active\"]\n) {\n  background-color: var(--np-ring);\n}\n\n:is(.np-resizable-handle, [data-np-resizable-handle]):focus-visible {\n  box-shadow: 0 0 0 3px color-mix(in oklch, var(--np-ring), transparent 50%);\n}\n\n:is(.np-resizable-handle, [data-np-resizable-handle]):is(\n  [aria-disabled=\"true\"],\n  [data-disabled]\n) {\n  opacity: 0.5;\n  pointer-events: none;\n}\n\n.np-resizable-grip,\n[data-np-resizable-grip] {\n  z-index: 10;\n  flex: none;\n  width: var(--np-resizable-grip-thickness);\n  height: var(--np-resizable-grip-length);\n  border-radius: var(--np-radius-lg);\n  background-color: var(--np-border);\n}\n\n:is(.np-resizable-vertical, [data-orientation=\"vertical\"]):is(\n    .np-resizable,\n    [data-np-resizable]\n  )\n  > :is(.np-resizable-handle, [data-np-resizable-handle])\n  > :is(.np-resizable-grip, [data-np-resizable-grip]) {\n  width: var(--np-resizable-grip-length);\n  height: var(--np-resizable-grip-thickness);\n}\n",
+      "type": "registry:ui",
+      "target": "components/nepui/resizable/resizable.css"
+    },
+    {
+      "path": "registry/react/resizable/index.ts",
+      "content": "export * from \"./resizable\"\n",
+      "type": "registry:ui",
+      "target": "components/nepui/resizable/index.ts"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -2,9 +2,9 @@
 
 .np-input,
 [data-np-input] {
-  --np-input-height: 2rem;
-  --np-input-padding-x: 0.625rem;
-  --np-input-font-size: 0.875rem;
+  --np-input-height: calc(var(--np-spacing) * 8);
+  --np-input-padding-x: calc(var(--np-spacing) * 2.5);
+  --np-input-font-size: 1rem;
   --np-input-radius: var(--np-radius-md);
   --np-input-border: var(--np-input, var(--np-border));
   --np-input-bg: transparent;
@@ -26,7 +26,7 @@
   min-width: 0;
   height: var(--np-input-height);
   margin: 0;
-  padding: 0.25rem var(--np-input-padding-x);
+  padding: var(--np-spacing) var(--np-input-padding-x);
 
   border: 1px solid var(--np-input-border);
   border-radius: var(--np-input-radius);
@@ -34,7 +34,7 @@
   color: inherit;
 
   font: inherit;
-  font-size: 1rem;
+  font-size: var(--np-input-font-size);
 
   outline: none;
   transition:
@@ -89,6 +89,31 @@
   box-shadow: 0 0 0 3px var(--np-input-invalid-ring);
 }
 
+/* Sizes */
+
+.np-input-xs,
+:is(.np-input, [data-np-input])[data-size="xs"] {
+  --np-input-height: calc(var(--np-spacing) * 6);
+  --np-input-padding-x: calc(var(--np-spacing) * 2);
+  --np-input-font-size: 0.625rem;
+  --np-input-radius: min(var(--np-radius-md), 10px);
+}
+
+.np-input-sm,
+:is(.np-input, [data-np-input])[data-size="sm"] {
+  --np-input-height: calc(var(--np-spacing) * 7);
+  --np-input-padding-x: calc(var(--np-spacing) * 2);
+  --np-input-font-size: 0.8rem;
+  --np-input-radius: min(var(--np-radius-md), 12px);
+}
+
+.np-input-lg,
+:is(.np-input, [data-np-input])[data-size="lg"] {
+  --np-input-height: calc(var(--np-spacing) * 9);
+  --np-input-padding-x: calc(var(--np-spacing) * 3);
+  --np-input-font-size: 1rem;
+}
+
 /* Dark mode */
 
 :is(.dark, [data-theme="dark"]) :is(.np-input, [data-np-input]) {
@@ -125,29 +150,4 @@
       transparent
     );
   }
-}
-
-/* Sizes */
-
-.np-input-xs,
-:is(.np-input, [data-np-input])[data-size="xs"] {
-  --np-input-height: 1.5rem;
-  --np-input-padding-x: 0.5rem;
-  --np-input-font-size: 0.75rem;
-  --np-input-radius: min(var(--np-radius-md), 10px);
-}
-
-.np-input-sm,
-:is(.np-input, [data-np-input])[data-size="sm"] {
-  --np-input-height: 1.75rem;
-  --np-input-padding-x: 0.625rem;
-  --np-input-font-size: 0.8rem;
-  --np-input-radius: min(var(--np-radius-md), 12px);
-}
-
-.np-input-lg,
-:is(.np-input, [data-np-input])[data-size="lg"] {
-  --np-input-height: 2.25rem;
-  --np-input-padding-x: 0.75rem;
-  --np-input-font-size: 0.9375rem;
 }

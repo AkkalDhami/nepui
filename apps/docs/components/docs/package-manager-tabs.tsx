@@ -7,9 +7,9 @@ import { useConfig } from "@/hooks/use-config"
 import { PackageManager } from "@/types"
 import { getPackageManagerIcon } from "@/components/icons"
 import { CopyButton } from "@/components/docs/copy-button"
-import { IconSwap, IconSwapItem } from "@/components/ui/icon-swap"
+import { IconSwap, IconSwapItem } from "@/registry/react/icon-swap"
 
-const pkgManagers = ["npm", "pnpm", "bun", "yarn"]
+const pkgManagers = ["pnpm", "npm", "bun", "yarn"]
 
 export default function PackageManagerTabs({
   command = "",

@@ -1,0 +1,78 @@
+<link rel="stylesheet" href="./styles/button.css" />
+
+<button
+  type="button"
+  class="np-button np-button-outline"
+  commandfor="drawer-nested"
+  command="show-modal"
+>
+  Open Drawer
+</button>
+
+<dialog
+  id="drawer-nested"
+  class="np-drawer-content"
+  closedby="any"
+  aria-labelledby="drawer-nested-title"
+  aria-describedby="drawer-nested-description"
+>
+  <div class="np-drawer-header">
+    <h2 class="np-drawer-title" id="drawer-nested-title">Parent drawer</h2>
+    <p class="np-drawer-description" id="drawer-nested-description">
+      Open another drawer from inside this one.
+    </p>
+  </div>
+  <div class="np-drawer-footer">
+    <button
+      type="button"
+      class="np-button"
+      commandfor="drawer-nested-child"
+      command="show-modal"
+    >
+      Open nested drawer
+    </button>
+    <button
+      type="button"
+      class="np-button np-button-outline"
+      commandfor="drawer-nested"
+      command="close"
+    >
+      Close
+    </button>
+  </div>
+
+  <dialog
+    id="drawer-nested-child"
+    class="np-drawer-content"
+    closedby="any"
+    aria-labelledby="drawer-nested-child-title"
+    aria-describedby="drawer-nested-child-description"
+  >
+    <div class="np-drawer-header">
+      <h2 class="np-drawer-title" id="drawer-nested-child-title">
+        Nested drawer
+      </h2>
+      <p class="np-drawer-description" id="drawer-nested-child-description">
+        This one sits on top of the first.
+      </p>
+    </div>
+    <div class="np-drawer-footer">
+      <button
+        type="button"
+        class="np-button"
+        commandfor="drawer-nested-child"
+        command="close"
+      >
+        Submit
+      </button>
+      <button
+        type="button"
+        class="np-button np-button-outline"
+        commandfor="drawer-nested-child"
+        command="close"
+      >
+        Cancel
+      </button>
+    </div>
+  </dialog>
+</dialog>

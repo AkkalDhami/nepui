@@ -127,7 +127,7 @@
     )
   )
   > input {
-  padding-left: calc(var(--np-spacing, 0.25rem) * 1.875);
+  padding-left: calc(var(--np-spacing, 0.25rem) * 1.5);
 }
 
 :is(.np-input-group, [data-np-input-group])
@@ -160,6 +160,11 @@
 }
 
 :is(.np-input-group, [data-np-input-group])
+  :is(.np-input-group-input, [data-np-input-group-input]) {
+  height: 100%;
+}
+
+:is(.np-input-group, [data-np-input-group])
   :is(.np-input-group-textarea, [data-np-input-group-textarea]) {
   resize: none;
   padding-block: calc(var(--np-spacing, 0.25rem) * 2);
@@ -174,7 +179,7 @@
   justify-content: center;
   gap: calc(var(--np-spacing, 0.25rem) * 2);
   height: auto;
-  padding-block: calc(var(--np-spacing, 0.25rem) * 1.5);
+  padding-block: 0;
   padding-inline: calc(var(--np-spacing, 0.25rem) * 2) 0;
   order: -9999;
 
@@ -203,7 +208,7 @@
   );
 }
 
-/* inline-start */
+/* inline-start (the default): pull a button / key closer to the edge */
 :is(.np-input-group-addon, [data-np-input-group-addon]):not(
     .np-input-group-addon-end,
     .np-input-group-addon-block-start,
@@ -212,7 +217,7 @@
     [data-align="block-start"],
     [data-align="block-end"]
   ):has(> button) {
-  margin-inline-start: -0.2rem;
+  margin-inline-start: -0.4rem;
 }
 
 :is(.np-input-group-addon, [data-np-input-group-addon]):not(
@@ -244,7 +249,7 @@
     [data-np-input-group-addon]
   )[data-align="inline-end"]
 ):has(> button) {
-  margin-inline-end: -0.2rem;
+  margin-right: -0.325rem;
 }
 
 :is(
@@ -254,7 +259,7 @@
     [data-np-input-group-addon]
   )[data-align="inline-end"]
 ):has(> kbd) {
-  margin-inline-end: -0.15rem;
+  margin-right: -0.15rem;
 }
 
 /* block-start */

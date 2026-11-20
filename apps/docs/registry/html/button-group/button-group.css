@@ -30,12 +30,15 @@
   flex: 1;
 }
 
+/* Match controls by slot/tag so Base UI focus guards don't affect the group edges. */
 /* Horizontal */
 :is(.np-button-group, [data-np-button-group]):not(
     .np-button-group-vertical,
     [data-orientation="vertical"]
   )
-  > :not(:last-child) {
+  > :is([data-slot], button, input, select, textarea, [role="button"]):has(
+    ~ :is([data-slot], button, input, select, textarea, [role="button"])
+  ) {
   border-start-end-radius: 0;
   border-end-end-radius: 0;
 }
@@ -44,7 +47,8 @@
     .np-button-group-vertical,
     [data-orientation="vertical"]
   )
-  > :not(:first-child) {
+  > :is([data-slot], button, input, select, textarea, [role="button"])
+  ~ :is([data-slot], button, input, select, textarea, [role="button"]) {
   border-start-start-radius: 0;
   border-end-start-radius: 0;
   border-inline-start-width: 0;
@@ -55,7 +59,9 @@
     .np-button-group-vertical,
     [data-orientation="vertical"]
   )
-  > :not(:last-child) {
+  > :is([data-slot], button, input, select, textarea, [role="button"]):has(
+    ~ :is([data-slot], button, input, select, textarea, [role="button"])
+  ) {
   border-end-start-radius: 0;
   border-end-end-radius: 0;
 }
@@ -64,7 +70,8 @@
     .np-button-group-vertical,
     [data-orientation="vertical"]
   )
-  > :not(:first-child) {
+  > :is([data-slot], button, input, select, textarea, [role="button"])
+  ~ :is([data-slot], button, input, select, textarea, [role="button"]) {
   border-start-start-radius: 0;
   border-start-end-radius: 0;
   border-block-start-width: 0;

@@ -12,7 +12,41 @@ import {
   FieldSet,
 } from "@/registry/react/field"
 import { Input } from "@/registry/react/input"
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/registry/react/select"
 import { Textarea } from "@/registry/react/textarea"
+
+const months = [
+  { label: "MM", value: null },
+  { label: "01", value: "01" },
+  { label: "02", value: "02" },
+  { label: "03", value: "03" },
+  { label: "04", value: "04" },
+  { label: "05", value: "05" },
+  { label: "06", value: "06" },
+  { label: "07", value: "07" },
+  { label: "08", value: "08" },
+  { label: "09", value: "09" },
+  { label: "10", value: "10" },
+  { label: "11", value: "11" },
+  { label: "12", value: "12" },
+]
+
+const years = [
+  { label: "YYYY", value: null },
+  { label: "2024", value: "2024" },
+  { label: "2025", value: "2025" },
+  { label: "2026", value: "2026" },
+  { label: "2027", value: "2027" },
+  { label: "2028", value: "2028" },
+  { label: "2029", value: "2029" },
+]
 
 export default function FieldDemo() {
   return (
@@ -49,11 +83,37 @@ export default function FieldDemo() {
               >
                 <Field>
                   <FieldLabel htmlFor="exp-month">Month</FieldLabel>
-                  <Input id="exp-month" placeholder="MM" />
+                  <Select items={months}>
+                    <SelectTrigger id="exp-month">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        {months.map((item) => (
+                          <SelectItem key={item.value} value={item.value}>
+                            {item.label}
+                          </SelectItem>
+                        ))}
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
                 </Field>
                 <Field>
                   <FieldLabel htmlFor="exp-year">Year</FieldLabel>
-                  <Input id="exp-year" placeholder="YYYY" />
+                  <Select items={years}>
+                    <SelectTrigger id="exp-year">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        {years.map((item) => (
+                          <SelectItem key={item.value} value={item.value}>
+                            {item.label}
+                          </SelectItem>
+                        ))}
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
                 </Field>
                 <Field>
                   <FieldLabel htmlFor="cvv">CVV</FieldLabel>

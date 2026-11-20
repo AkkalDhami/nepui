@@ -19,13 +19,6 @@ export default function TextareaWithLabel() {
         name="message"
         placeholder="Type your message here."
       />
-      <p
-        style={{
-          fontSize: "0.875rem",
-        }}
-      >
-        Your message will be sent to our support team.
-      </p>
     </div>
   )
 }

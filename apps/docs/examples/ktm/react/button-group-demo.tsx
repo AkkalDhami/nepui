@@ -2,7 +2,14 @@
 
 import { Button } from "@/registry/react/button"
 import { ButtonGroup } from "@/registry/react/button-group"
-import { ArrowLeftIcon, ArrowRightIcon } from "@phosphor-icons/react"
+import {
+  Menu,
+  MenuContent,
+  MenuItem,
+  MenuSeparator,
+  MenuTrigger,
+} from "@/registry/react/menu"
+import { ArrowLeftIcon, CaretUpIcon } from "@phosphor-icons/react"
 
 export default function ButtonGroupDemo() {
   return (
@@ -16,13 +23,25 @@ export default function ButtonGroupDemo() {
       <ButtonGroup>
         <Button variant="outline">Archive</Button>
         <Button variant="outline">Report</Button>
-        <Button variant="outline">Snooze</Button>
       </ButtonGroup>
 
       <ButtonGroup>
-        <Button variant="outline" size="icon" aria-label="Go Back">
-          <ArrowRightIcon />
-        </Button>
+        <Button variant="outline">Snooze</Button>
+        <Menu>
+          <MenuTrigger
+            render={
+              <Button variant="outline" size="icon" aria-label="More options">
+                <CaretUpIcon />
+              </Button>
+            }
+          />
+          <MenuContent align="end">
+            <MenuItem>Mark as read</MenuItem>
+            <MenuItem>Archive</MenuItem>
+            <MenuSeparator />
+            <MenuItem variant="destructive">Delete</MenuItem>
+          </MenuContent>
+        </Menu>
       </ButtonGroup>
     </ButtonGroup>
   )

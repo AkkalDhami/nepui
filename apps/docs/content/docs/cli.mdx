@@ -7,11 +7,17 @@ Use the nepui CLI to initialize a project and add component source files directl
 
 ```bash
 npx nepui@latest init --target react
+```
+```bash
 npx nepui@latest init --target html
-
+```
+```bash
 npx nepui@latest init --target react --src .
-
+```
+```bash
 npx nepui@latest add button card spinner
+```
+```bash
 npx nepui@latest add --all
 ```
 
@@ -31,13 +37,21 @@ Examples:
 
 ```bash
 npx nepui@latest init --target react
+```
+```bash
 npx nepui@latest init --target html
+```
+```bash 
 npx nepui@latest init --target react --src .
 ```
 
 ```bash
 npx nepui@latest init --target react .
+```
+```bash
 npx nepui@latest init --target react my-app
+```
+```bash
 npx nepui@latest init --target html my-app
 ```
 
@@ -81,7 +95,11 @@ Examples:
 
 ```bash
 npx nepui@latest add button card spinner
+```
+```bash
 npx nepui@latest add button card spinner --target html
+```
+```bash
 npx nepui@latest add --all
 ```
 
@@ -108,8 +126,14 @@ Aliases:
 
 ```bash
 npx nepui ls
+```
+```bash
 npx nepui ls --target react
+```
+```bash
 npx nepui ls --json
+```
+```bash
 npx nepui ls --json --target react
 ```
 
@@ -124,3 +148,5 @@ By default, the CLI lists components for the `html` target. Plain output is an a
 | `init --target` | Select the project target |
 | `init --src` | Set the source root, relative to the project directory |
 | `add --target` | Override the target from `nepui.json` |
+| `list --target` | Select the target for listing components |
+| `list --json` | Print the JSON object to stdout |

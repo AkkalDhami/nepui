@@ -229,18 +229,6 @@ Use `role="menuitemradio"` with `aria-checked`, and clear the other items of the
 
 ---
 
-## RTL
-
-Wrap the menu in an element with `dir="rtl"`. The popup aligns to the start edge of the trigger, and the chevron of a submenu is flipped.
-
-<ComponentPreview
-  name="menu-rtl"
-  target="html"
-  styles={["/button/button.css"]}
-/>
-
----
-
 ## Keyboard navigation
 
 The native popover gives you `Escape`, outside click and focus return. Arrow-key navigation is not built in. Add this small script if you want it, or use the [React version](/docs/components/react/menu), which is built on Base UI and handles it fully, including typeahead and submenus.
@@ -281,35 +269,3 @@ The native popover gives you `Escape`, outside click and focus return. Arrow-key
   })
 </script>
 ```
-
----
-
-## Customization
-
-Override these CSS variables inline, on the menu, or on any parent.
-
-| Variable                | Default                                                  | Description                        |
-| ----------------------- | -------------------------------------------------------- | ---------------------------------- |
-| `--np-menu-anchor`      | —                                                        | Dashed name linking trigger and popup |
-| `--np-menu-offset`      | `0.25rem`                                                | Gap between trigger and popup      |
-| `--np-menu-bg`          | `var(--np-popover, var(--np-background))`                | Background of the menu             |
-| `--np-menu-color`       | `var(--np-popover-foreground, var(--np-foreground))`     | Text color of the menu             |
-| `--np-menu-radius`      | `var(--np-radius-md)`                                    | Corner radius of the menu          |
-| `--np-menu-min-width`   | `8rem`                                                   | Minimum width                      |
-| `--np-menu-item-radius` | `0.375rem`                                               | Corner radius of an item           |
-| `--np-menu-hover-bg`    | `var(--np-accent, var(--np-muted))`                      | Background of the highlighted item |
-| `--np-menu-hover-color` | `var(--np-accent-foreground, var(--np-foreground))`      | Text color of the highlighted item |
-
----
-
-## Accessibility
-
-- Give the popup `role="menu"` and a name with `aria-label` or `aria-labelledby`. Give each item `role="menuitem"`, `menuitemcheckbox` or `menuitemradio`.
-- Use real `<button>` elements for items, so they are focusable and activate with `Enter` and `Space`.
-- Mark a submenu trigger with `aria-haspopup="menu"`.
-- Put `role="separator"` on separators, and `role="group"` on groups.
-- Add the keyboard script above, or use the React version, if your menu needs arrow-key navigation.
-
-## Browser support
-
-The menu needs the Popover API and CSS anchor positioning. Both are available in current versions of Chrome, Edge, Safari and Firefox. In an older browser the popup opens next to the trigger, and still opens, closes and works with the keyboard.

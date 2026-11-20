@@ -1,0 +1,465 @@
+/* nepui — Code Block */
+
+.np-code-block,
+[data-np-code-block] {
+  --np-code-block-bg: color-mix(in oklab, var(--np-muted) 50%, transparent);
+  --np-code-block-color: var(--np-foreground);
+  --np-code-block-border-color: var(--np-border);
+  --np-code-block-radius: var(--np-radius-lg);
+  --np-code-block-font-size: 1rem;
+  --np-code-block-line-height: 1.6;
+  --np-code-block-padding-inline: 1rem;
+  --np-code-block-padding-block: 0.75rem;
+  --np-code-block-max-height: none;
+  --np-code-block-number-color: var(--np-muted-foreground);
+  --np-code-block-scrollbar-thumb: color-mix(
+    in oklab,
+    var(--np-muted-foreground) 45%,
+    transparent
+  );
+  --np-code-block-scrollbar-thumb-hover: color-mix(
+    in oklab,
+    var(--np-muted-foreground) 70%,
+    transparent
+  );
+  --np-code-block-highlight-bg: color-mix(
+    in oklab,
+    var(--np-foreground) 8%,
+    transparent
+  );
+  --np-code-block-added-bg: color-mix(
+    in oklab,
+    var(--np-success) 15%,
+    transparent
+  );
+  --np-code-block-removed-bg: color-mix(
+    in oklab,
+    var(--np-destructive) 15%,
+    transparent
+  );
+
+  /* Syntax colours (GitHub's palette). Light first, then dark. */
+  --np-code-block-syntax-comment: light-dark(#6e7781, #8b949e);
+  --np-code-block-syntax-keyword: light-dark(#cf222e, #ff7b72);
+  --np-code-block-syntax-function: light-dark(#8250df, #d2a8ff);
+  --np-code-block-syntax-constant: light-dark(#0550ae, #79c0ff);
+  --np-code-block-syntax-string: light-dark(#0a3069, #a5d6ff);
+  --np-code-block-syntax-variable: light-dark(#953800, #ffa657);
+  --np-code-block-syntax-tag: light-dark(#116329, #7ee787);
+
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--np-code-block-border-color);
+  border-radius: var(--np-code-block-radius);
+  background-color: var(--np-code-block-bg);
+  color: var(--np-code-block-color);
+  font-size: var(--np-code-block-font-size);
+}
+
+:is(.np-code-block-sm, [data-size="sm"]):is(
+  .np-code-block,
+  [data-np-code-block]
+) {
+  --np-code-block-font-size: 0.75rem;
+  --np-code-block-padding-inline: 0.75rem;
+  --np-code-block-padding-block: 0.5rem;
+}
+
+:is(.np-code-block-destructive, [data-variant="destructive"]):is(
+  .np-code-block,
+  [data-np-code-block]
+) {
+  --np-code-block-bg: color-mix(
+    in oklab,
+    var(--np-destructive) 8%,
+    transparent
+  );
+  --np-code-block-color: var(--np-destructive);
+  --np-code-block-border-color: color-mix(
+    in oklab,
+    var(--np-destructive) 30%,
+    transparent
+  );
+  --np-code-block-number-color: color-mix(
+    in oklab,
+    var(--np-destructive) 60%,
+    transparent
+  );
+}
+
+/* Follows the page direction. Only the code is forced left to right. */
+.np-code-block-header,
+[data-np-code-block-header] {
+  box-sizing: border-box;
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--np-spacing) * 2);
+  min-height: 2.25rem;
+  padding-block: calc(var(--np-spacing) * 1);
+  padding-inline: var(--np-code-block-padding-inline)
+    calc(var(--np-spacing) * 1.5);
+  border-block-end: 1px solid var(--np-code-block-border-color);
+}
+
+.np-code-block-title,
+[data-np-code-block-title] {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--np-muted-foreground);
+  font-size: 0.875rem;
+  font-family: monospace;
+  line-height: 1rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: calc(var(--np-spacing) * 2);
+}
+
+:is(.np-code-block-title, [data-np-code-block-title]) a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:is(.np-code-block-title, [data-np-code-block-title])
+  a:is(:hover, :focus-visible) {
+  color: var(--np-foreground);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.np-code-block-actions,
+[data-np-code-block-actions] {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: calc(var(--np-spacing) * 0.5);
+  margin-inline-start: auto;
+}
+
+/* No header: the actions float over the corner of the code. */
+:is(.np-code-block, [data-np-code-block])
+  > :is(.np-code-block-actions, [data-np-code-block-actions]) {
+  position: absolute;
+  inset-block-start: calc(var(--np-spacing) * 1.5);
+  inset-inline-end: calc(var(--np-spacing) * 1.5);
+  z-index: 1;
+  padding: calc(var(--np-spacing) * 0.5);
+  border-radius: var(--np-radius-lg);
+  background-color: color-mix(in oklab, var(--np-background) 85%, transparent);
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+
+:is(.np-code-block, [data-np-code-block]):is(:hover, :focus-within)
+  > :is(.np-code-block-actions, [data-np-code-block-actions]) {
+  opacity: 1;
+}
+
+/* Touch screens have no hover, so they always show. */
+@media (hover: none) {
+  :is(.np-code-block, [data-np-code-block])
+    > :is(.np-code-block-actions, [data-np-code-block-actions]) {
+    opacity: 1;
+  }
+}
+
+/* The copy button shows a copy icon, then a check once copied. */
+:is(.np-code-block-copy, [data-np-code-block-copy]):not([data-copied])
+  [data-icon="check"],
+:is(.np-code-block-copy, [data-np-code-block-copy])[data-copied]
+  [data-icon="copy"] {
+  display: none;
+}
+
+.np-code-block-content,
+[data-np-code-block-content] {
+  box-sizing: border-box;
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 0;
+  max-height: var(--np-code-block-max-height);
+  margin: 0;
+  padding-block: var(--np-code-block-padding-block);
+  padding-inline: 0;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--np-code-block-scrollbar-thumb) transparent;
+  outline: none;
+  color: inherit;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    monospace;
+  font-size: var(--np-code-block-font-size);
+  line-height: var(--np-code-block-line-height);
+  tab-size: 2;
+  text-align: start;
+  white-space: pre;
+}
+
+:is(.np-code-block-content, [data-np-code-block-content])::-webkit-scrollbar {
+  width: 0.625rem;
+  height: 0.625rem;
+}
+
+:is(
+  .np-code-block-content,
+  [data-np-code-block-content]
+)::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+:is(
+  .np-code-block-content,
+  [data-np-code-block-content]
+)::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 9999px;
+  background-color: var(--np-code-block-scrollbar-thumb);
+  background-clip: padding-box;
+}
+
+:is(
+    .np-code-block-content,
+    [data-np-code-block-content]
+  )::-webkit-scrollbar-thumb:hover {
+  background-color: var(--np-code-block-scrollbar-thumb-hover);
+}
+
+/* It scrolls, so it takes focus. The ring is inside, because the root clips. */
+:is(.np-code-block-content, [data-np-code-block-content]):focus-visible {
+  box-shadow: inset 0 0 0 3px
+    color-mix(in oklch, var(--np-ring), transparent 50%);
+}
+
+/* The <code> is as wide as its longest line, so line tints reach the end
+   when you scroll sideways. */
+:is(.np-code-block-content, [data-np-code-block-content]) > code {
+  display: block;
+  box-sizing: border-box;
+  width: max-content;
+  min-width: 100%;
+  padding-inline: var(--np-code-block-padding-inline);
+  background: none;
+  color: inherit;
+  font: inherit;
+}
+
+/* Wrap: long lines break, so no sideways scroll. */
+:is(.np-code-block-wrap, [data-wrap]):is(
+  .np-code-block-content,
+  [data-np-code-block-content]
+) {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+:is(.np-code-block-wrap, [data-wrap]):is(
+    .np-code-block-content,
+    [data-np-code-block-content]
+  )
+  > code {
+  width: auto;
+}
+
+/* The line reaches over the padding of <code>, so its tint is full width. */
+.np-code-block-line,
+[data-np-code-block-line] {
+  position: relative;
+  display: block;
+  min-height: calc(var(--np-code-block-line-height) * 1em);
+  margin-inline: calc(var(--np-code-block-padding-inline) * -1);
+  padding-inline: var(--np-code-block-padding-inline);
+}
+
+:is(.np-code-block-line-highlighted, [data-variant="highlighted"]):is(
+  .np-code-block-line,
+  [data-np-code-block-line]
+) {
+  background-color: var(--np-code-block-highlight-bg);
+}
+
+:is(.np-code-block-line-added, [data-variant="added"]):is(
+  .np-code-block-line,
+  [data-np-code-block-line]
+) {
+  background-color: var(--np-code-block-added-bg);
+}
+
+:is(.np-code-block-line-removed, [data-variant="removed"]):is(
+  .np-code-block-line,
+  [data-np-code-block-line]
+) {
+  background-color: var(--np-code-block-removed-bg);
+}
+
+/* The diff marker. A pseudo-element, so it is not copied and the colour is
+   not the only sign of a change. */
+:is(
+    .np-code-block-line-added,
+    .np-code-block-line-removed,
+    [data-variant="added"],
+    [data-variant="removed"]
+  ):is(.np-code-block-line, [data-np-code-block-line])::after {
+  content: "+";
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: calc(var(--np-code-block-padding-inline) * 0.3);
+  color: var(--np-success);
+  user-select: none;
+}
+
+:is(.np-code-block-line-removed, [data-variant="removed"]):is(
+    .np-code-block-line,
+    [data-np-code-block-line]
+  )::after {
+  content: "\2212";
+  color: var(--np-destructive);
+}
+
+:is(.np-code-block-numbers, [data-line-numbers]):is(
+  .np-code-block-content,
+  [data-np-code-block-content]
+) {
+  counter-reset: np-code-block-line calc(var(--np-code-block-start, 1) - 1);
+}
+
+:is(.np-code-block-numbers, [data-line-numbers]):is(
+    .np-code-block-content,
+    [data-np-code-block-content]
+  )
+  :is(.np-code-block-line, [data-np-code-block-line]) {
+  /* Room for the number, so wrapped lines hang under the code. */
+  padding-inline-start: calc(
+    var(--np-code-block-padding-inline) + var(--np-code-block-gutter, 2ch) +
+      1rem
+  );
+  counter-increment: np-code-block-line;
+}
+
+:is(.np-code-block-numbers, [data-line-numbers]):is(
+    .np-code-block-content,
+    [data-np-code-block-content]
+  )
+  :is(.np-code-block-line, [data-np-code-block-line])::before {
+  content: counter(np-code-block-line);
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: var(--np-code-block-padding-inline);
+  width: var(--np-code-block-gutter, 2ch);
+  color: var(--np-code-block-number-color);
+  text-align: end;
+  user-select: none;
+}
+
+.np-code-block-footer,
+[data-np-code-block-footer] {
+  box-sizing: border-box;
+  display: flex;
+  flex: none;
+  align-items: center;
+  padding: calc(var(--np-spacing) * 1.5) var(--np-code-block-padding-inline);
+  border-block-start: 1px solid var(--np-code-block-border-color);
+}
+
+/* React: Shiki gives each token a light and a dark colour as variables. */
+.np-code-block-token,
+[data-np-code-block-token] {
+  color: light-dark(
+    var(--shiki-light, currentColor),
+    var(--shiki-dark, currentColor)
+  );
+}
+
+/* HTML: Prism's token classes, mapped to the same palette. */
+:is(.np-code-block, [data-np-code-block]) .token.comment,
+:is(.np-code-block, [data-np-code-block]) .token.prolog,
+:is(.np-code-block, [data-np-code-block]) .token.doctype,
+:is(.np-code-block, [data-np-code-block]) .token.cdata {
+  color: var(--np-code-block-syntax-comment);
+}
+
+:is(.np-code-block, [data-np-code-block]) .token.keyword,
+:is(.np-code-block, [data-np-code-block]) .token.atrule,
+:is(.np-code-block, [data-np-code-block]) .token.attr-value {
+  color: var(--np-code-block-syntax-keyword);
+}
+
+:is(.np-code-block, [data-np-code-block]) .token.function,
+:is(.np-code-block, [data-np-code-block]) .token.class-name {
+  color: var(--np-code-block-syntax-function);
+}
+
+:is(.np-code-block, [data-np-code-block]) .token.property,
+:is(.np-code-block, [data-np-code-block]) .token.constant,
+:is(.np-code-block, [data-np-code-block]) .token.symbol,
+:is(.np-code-block, [data-np-code-block]) .token.boolean,
+:is(.np-code-block, [data-np-code-block]) .token.number,
+:is(.np-code-block, [data-np-code-block]) .token.operator,
+:is(.np-code-block, [data-np-code-block]) .token.entity,
+:is(.np-code-block, [data-np-code-block]) .token.url {
+  color: var(--np-code-block-syntax-constant);
+}
+
+:is(.np-code-block, [data-np-code-block]) .token.string,
+:is(.np-code-block, [data-np-code-block]) .token.char,
+:is(.np-code-block, [data-np-code-block]) .token.attr-name,
+:is(.np-code-block, [data-np-code-block]) .token.selector,
+:is(.np-code-block, [data-np-code-block]) .token.builtin {
+  color: var(--np-code-block-syntax-string);
+}
+
+:is(.np-code-block, [data-np-code-block]) .token.variable,
+:is(.np-code-block, [data-np-code-block]) .token.regex,
+:is(.np-code-block, [data-np-code-block]) .token.important {
+  color: var(--np-code-block-syntax-variable);
+}
+
+:is(.np-code-block, [data-np-code-block]) .token.tag {
+  color: var(--np-code-block-syntax-tag);
+}
+
+:is(.np-code-block, [data-np-code-block]) .token.inserted {
+  color: var(--np-success);
+}
+
+:is(.np-code-block, [data-np-code-block]) .token.deleted {
+  color: var(--np-destructive);
+}
+
+:is(.np-code-block, [data-np-code-block]) .token.bold,
+:is(.np-code-block, [data-np-code-block]) .token.important {
+  font-weight: 600;
+}
+
+:is(.np-code-block, [data-np-code-block]) .token.italic {
+  font-style: italic;
+}
+
+.np-code-block-sr-only,
+[data-np-code-block-sr-only] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.np-code-block, [data-np-code-block])
+    > :is(.np-code-block-actions, [data-np-code-block-actions]) {
+    transition: none;
+  }
+}

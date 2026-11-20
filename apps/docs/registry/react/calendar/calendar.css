@@ -1,0 +1,385 @@
+/* nepui - Calendar */
+
+.np-calendar,
+[data-np-calendar] {
+  --np-calendar-cell-size: calc(var(--np-spacing) * 8);
+  --np-calendar-cell-radius: var(--np-radius-md);
+  --np-calendar-bg: var(--np-background);
+  --np-calendar-padding: calc(var(--np-calendar-cell-size) / 2);
+
+  position: relative;
+  box-sizing: border-box;
+  width: fit-content;
+  padding: var(--np-calendar-padding);
+  background-color: var(--np-calendar-bg);
+  color: var(--np-foreground);
+  font-size: 0.875rem;
+  line-height: calc(1.25 / 0.875);
+}
+
+.np-calendar-bordered,
+:is(.np-calendar, [data-np-calendar])[data-bordered] {
+  border: 1px solid var(--np-border);
+  border-radius: var(--np-radius-lg);
+}
+
+:is(.np-calendar-months, [data-np-calendar-months]) {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 48rem) {
+  :is(.np-calendar-months, [data-np-calendar-months]) {
+    flex-direction: row;
+  }
+}
+
+:is(.np-calendar-month, [data-np-calendar-month]) {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+}
+
+:is(.np-calendar-nav, [data-np-calendar-nav]) {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 0.25rem;
+  pointer-events: none;
+}
+
+:is(.np-calendar-nav-button, [data-np-calendar-nav-button]):is(
+  .np-calendar-nav-button,
+  [data-np-calendar-nav-button]
+) {
+  box-sizing: border-box;
+  width: var(--np-calendar-cell-size);
+  height: var(--np-calendar-cell-size);
+  padding: 0;
+  user-select: none;
+  pointer-events: auto;
+}
+
+:is(.np-calendar-nav-button, [data-np-calendar-nav-button]):is(
+    .np-calendar-nav-button,
+    [data-np-calendar-nav-button]
+  ):is([aria-disabled="true"], :disabled) {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+:is(.np-calendar-nav-button, [data-np-calendar-nav-button]):is(
+    .np-calendar-nav-button,
+    [data-np-calendar-nav-button]
+  )
+  svg {
+  width: 1rem;
+  height: 1rem;
+  pointer-events: none;
+}
+
+:dir(rtl)
+  :is(.np-calendar-nav-button, [data-np-calendar-nav-button]):is(
+    .np-calendar-nav-button,
+    [data-np-calendar-nav-button]
+  )
+  svg {
+  transform: rotate(180deg);
+}
+
+:is(.np-calendar-month-caption, [data-np-calendar-month-caption]) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--np-calendar-cell-size);
+  padding-inline: var(--np-calendar-cell-size);
+}
+
+:is(.np-calendar-caption-label, [data-np-calendar-caption-label]) {
+  font-size: 0.875rem;
+  font-weight: 500;
+  user-select: none;
+}
+
+:is(.np-calendar-dropdowns, [data-np-calendar-dropdowns]) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: var(--np-calendar-cell-size);
+  gap: calc(var(--np-spacing) * 1.5);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+:is(.np-calendar-dropdown-root, [data-np-calendar-dropdown-root]) {
+  position: relative;
+  border-radius: var(--np-calendar-cell-radius);
+  border: 1px solid transparent;
+}
+
+:is(.np-calendar-dropdown-root, [data-np-calendar-dropdown-root]):focus-within {
+  border-color: var(--np-ring);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--np-ring), transparent 50%);
+}
+
+:is(.np-calendar-dropdown, [data-np-calendar-dropdown]) {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  margin: 0;
+  background-color: var(--np-popover);
+  color: var(--np-popover-foreground);
+  opacity: 0;
+  cursor: pointer;
+  appearance: none;
+}
+
+:is(.np-calendar-dropdowns, [data-np-calendar-dropdowns])
+  :is(.np-calendar-caption-label, [data-np-calendar-caption-label]) {
+  display: flex;
+  align-items: center;
+  padding-inline: calc(var(--np-spacing) * 2);
+  gap: 0.25rem;
+  height: calc(var(--np-calendar-cell-size) - 2px);
+  border-radius: var(--np-calendar-cell-radius);
+}
+
+:is(.np-calendar-dropdowns, [data-np-calendar-dropdowns])
+  :is(.np-calendar-caption-label, [data-np-calendar-caption-label])
+  svg {
+  width: 0.875rem;
+  height: 0.875rem;
+  color: var(--np-muted-foreground);
+}
+
+:is(.np-calendar-month-grid, [data-np-calendar-month-grid]) {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+:is(.np-calendar-weekdays, [data-np-calendar-weekdays]) {
+  display: flex;
+}
+
+:is(.np-calendar-weekday, [data-np-calendar-weekday]) {
+  flex: 1 1 0%;
+  border-radius: var(--np-calendar-cell-radius);
+  color: var(--np-muted-foreground);
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-align: center;
+  user-select: none;
+}
+
+:is(.np-calendar-week, [data-np-calendar-week]) {
+  display: flex;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+:is(.np-calendar-week-number-header, [data-np-calendar-week-number-header]) {
+  width: var(--np-calendar-cell-size);
+  user-select: none;
+}
+
+:is(.np-calendar-week-number, [data-np-calendar-week-number]) {
+  color: var(--np-muted-foreground);
+  font-size: 0.8rem;
+  user-select: none;
+}
+
+:is(.np-calendar-week-number-cell, [data-np-calendar-week-number-cell]) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--np-calendar-cell-size);
+  height: var(--np-calendar-cell-size);
+  text-align: center;
+}
+
+:is(.np-calendar-day, [data-np-calendar-day]) {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  aspect-ratio: 1;
+  border-radius: var(--np-calendar-cell-radius);
+  text-align: center;
+  user-select: none;
+}
+
+:is(.np-calendar-day-button, [data-np-calendar-day-button]):is(
+  .np-calendar-day-button,
+  [data-np-calendar-day-button]
+) {
+  position: relative;
+  isolation: isolate;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: var(--np-calendar-cell-size);
+  height: auto;
+  aspect-ratio: 1;
+  gap: 0.25rem;
+  border: 0;
+  border-radius: var(--np-calendar-cell-radius);
+  font-size: inherit;
+  font-weight: 400;
+  line-height: 1;
+}
+
+:is(.np-calendar-day-button, [data-np-calendar-day-button]) > span {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+:is(.np-calendar-day, [data-np-calendar-day])[data-focused="true"]
+  :is(.np-calendar-day-button, [data-np-calendar-day-button]) {
+  z-index: 10;
+  border-color: var(--np-ring);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--np-ring), transparent 50%);
+}
+
+:is(
+  .np-calendar-day-button,
+  [data-np-calendar-day-button]
+)[data-selected-single="true"],
+:is(
+  .np-calendar-day-button,
+  [data-np-calendar-day-button]
+)[data-range-start="true"],
+:is(
+  .np-calendar-day-button,
+  [data-np-calendar-day-button]
+)[data-range-end="true"],
+:is(
+    .np-calendar-day-button,
+    [data-np-calendar-day-button]
+  )[data-selected-single="true"]:hover,
+:is(
+    .np-calendar-day-button,
+    [data-np-calendar-day-button]
+  )[data-range-start="true"]:hover,
+:is(
+    .np-calendar-day-button,
+    [data-np-calendar-day-button]
+  )[data-range-end="true"]:hover {
+  background-color: var(--np-primary);
+  color: var(--np-primary-foreground);
+}
+
+:is(
+  .np-calendar-day-button,
+  [data-np-calendar-day-button]
+)[data-range-middle="true"],
+:is(
+    .np-calendar-day-button,
+    [data-np-calendar-day-button]
+  )[data-range-middle="true"]:hover {
+  border-radius: 0;
+  background-color: var(--np-muted);
+  color: var(--np-foreground);
+}
+
+:is(.np-calendar-range-start, [data-np-calendar-range-start]),
+:is(.np-calendar-range-end, [data-np-calendar-range-end]) {
+  position: relative;
+  isolation: isolate;
+  z-index: 0;
+  background-color: var(--np-muted);
+}
+
+:is(.np-calendar-range-start, [data-np-calendar-range-start]) {
+  border-start-start-radius: var(--np-calendar-cell-radius);
+  border-end-start-radius: var(--np-calendar-cell-radius);
+}
+
+:is(.np-calendar-range-end, [data-np-calendar-range-end]) {
+  border-start-end-radius: var(--np-calendar-cell-radius);
+  border-end-end-radius: var(--np-calendar-cell-radius);
+}
+
+:is(.np-calendar-range-start, [data-np-calendar-range-start])::after,
+:is(.np-calendar-range-end, [data-np-calendar-range-end])::after {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  width: 1rem;
+  background-color: var(--np-muted);
+}
+
+:is(.np-calendar-range-start, [data-np-calendar-range-start])::after {
+  inset-inline-end: 0;
+}
+
+:is(.np-calendar-range-end, [data-np-calendar-range-end])::after {
+  inset-inline-start: 0;
+}
+
+:is(.np-calendar-range-middle, [data-np-calendar-range-middle]) {
+  border-radius: 0;
+}
+
+:is(.np-calendar-today, [data-np-calendar-today]) {
+  border-radius: var(--np-calendar-cell-radius);
+  background-color: var(--np-muted);
+  color: var(--np-foreground);
+}
+
+:is(.np-calendar-today, [data-np-calendar-today])[data-selected="true"] {
+  border-radius: 0;
+}
+
+:is(.np-calendar-outside, [data-np-calendar-outside]) {
+  color: var(--np-muted-foreground);
+}
+
+:is(.np-calendar-disabled, [data-np-calendar-disabled]) {
+  color: var(--np-muted-foreground);
+  opacity: 0.5;
+}
+
+:is(.np-calendar-hidden, [data-np-calendar-hidden]) {
+  visibility: hidden;
+}
+
+:is(.np-calendar-booked, [data-np-calendar-booked])
+  :is(.np-calendar-day-button, [data-np-calendar-day-button]) {
+  text-decoration: line-through;
+}
+
+:is(.np-calendar-booked, [data-np-calendar-booked]):is(
+  .np-calendar-disabled,
+  [data-np-calendar-disabled]
+) {
+  opacity: 1;
+}
+
+:is(.np-calendar-footer, [data-np-calendar-footer]) {
+  margin-top: 0.5rem;
+  color: var(--np-muted-foreground);
+  font-size: 0.8125rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.np-calendar, [data-np-calendar]) * {
+    transition: none;
+  }
+}

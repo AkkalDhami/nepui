@@ -1,0 +1,71 @@
+<div
+  style="
+    display: grid;
+    gap: 1rem;
+    justify-items: start;
+    width: 100%;
+    max-width: 24rem;
+  "
+>
+  <div
+    class="np-timeline"
+    id="timeline-feed"
+    aria-label="Team updates"
+    data-feed
+  >
+    <div class="np-timeline-item">
+      <span class="np-timeline-marker"></span>
+      <span class="np-timeline-connector"></span>
+      <div class="np-timeline-title">Asha posted an update</div>
+      <div class="np-timeline-description">Update number 1 for the team.</div>
+    </div>
+    <div class="np-timeline-item">
+      <span class="np-timeline-marker"></span>
+      <span class="np-timeline-connector"></span>
+      <div class="np-timeline-title">Bikash posted an update</div>
+      <div class="np-timeline-description">Update number 2 for the team.</div>
+    </div>
+    <div class="np-timeline-item">
+      <span class="np-timeline-marker"></span>
+      <span class="np-timeline-connector"></span>
+      <div class="np-timeline-title">Chandra posted an update</div>
+      <div class="np-timeline-description">Update number 3 for the team.</div>
+    </div>
+  </div>
+  <button
+    type="button"
+    class="np-button np-button-outline np-button-sm"
+    id="timeline-feed-more"
+  >
+    Load more
+  </button>
+</div>
+<script>
+  var feed = document.getElementById("timeline-feed")
+  var more = document.getElementById("timeline-feed-more")
+  var people = ["Dipa", "Esha", "Fulmaya", "Gita", "Hari", "Indra"]
+  more.addEventListener("click", function () {
+    more.disabled = true
+    more.textContent = "Loading…"
+    feed.setAttribute("data-busy", "")
+    setTimeout(function () {
+      var start = feed.children.length
+      for (var i = 0; i < 3; i++) {
+        var item = document.createElement("div")
+        item.className = "np-timeline-item"
+        item.innerHTML =
+          '<span class="np-timeline-marker"></span><span class="np-timeline-connector"></span>' +
+          '<div class="np-timeline-title">' +
+          people[(start + i) % people.length] +
+          " posted an update</div>" +
+          '<div class="np-timeline-description">Update number ' +
+          (start + i + 1) +
+          " for the team.</div>"
+        feed.appendChild(item)
+      }
+      feed.removeAttribute("data-busy")
+      more.disabled = false
+      more.textContent = "Load more"
+    }, 600)
+  })
+</script>

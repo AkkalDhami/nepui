@@ -10,8 +10,8 @@ export default function ToastTypes() {
         variant="outline"
         onClick={() =>
           toast.add({
-            title: "Event created",
-            description: "Sunday, December 3 at 9:00 AM",
+            title: "New notification",
+            description: "You have a new notification in your inbox.",
           })
         }
       >
@@ -21,9 +21,20 @@ export default function ToastTypes() {
         variant="outline"
         onClick={() =>
           toast.add({
+            title: "Message received",
+          })
+        }
+      >
+        Message
+      </Button>
+      <Button
+        variant="outline"
+        onClick={() =>
+          toast.add({
             type: "success",
-            title: "Event created",
-            description: "Sunday, December 3 at 9:00 AM",
+            title: "Profile updated",
+            description:
+              "Your profile information has been updated successfully.",
           })
         }
       >
@@ -34,8 +45,8 @@ export default function ToastTypes() {
         onClick={() =>
           toast.add({
             type: "info",
-            title: "Be at the area 10 minutes before",
-            description: "The venue opens at 8:50 AM.",
+            title: "Scheduled maintenance",
+            description: "The service will be temporarily unavailable tonight.",
           })
         }
       >
@@ -46,8 +57,8 @@ export default function ToastTypes() {
         onClick={() =>
           toast.add({
             type: "warning",
-            title: "Event starts in 10 minutes",
-            description: "Sunday, December 3 at 9:00 AM",
+            title: "Storage almost full",
+            description: "You're running out of storage space.",
           })
         }
       >
@@ -58,8 +69,8 @@ export default function ToastTypes() {
         onClick={() =>
           toast.add({
             type: "error",
-            title: "Event failed to create",
-            description: "Please try again.",
+            title: "Upload failed",
+            description: "Unable to upload your file. Please try again.",
           })
         }
       >

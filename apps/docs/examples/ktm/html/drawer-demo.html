@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="./styles/button.css" />
+
+<button
+  type="button"
+  class="np-button np-button-outline"
+  commandfor="drawer-demo"
+  command="show-modal"
+>
+  Open Drawer
+</button>
+
+<dialog
+  id="drawer-demo"
+  class="np-drawer-content"
+  closedby="any"
+  aria-labelledby="drawer-demo-title"
+  aria-describedby="drawer-demo-description"
+>
+  <div class="np-drawer-handle" aria-hidden="true"></div>
+  <div class="np-drawer-header">
+    <h2 class="np-drawer-title" id="drawer-demo-title">
+      Are you absolutely sure?
+    </h2>
+    <p class="np-drawer-description" id="drawer-demo-description">
+      This action cannot be undone. This will permanently delete your account
+      and remove your data from our servers.
+    </p>
+  </div>
+  <div class="np-drawer-footer">
+    <button
+      type="button"
+      class="np-button"
+      commandfor="drawer-demo"
+      command="close"
+    >
+      Submit
+    </button>
+    <button
+      type="button"
+      class="np-button np-button-outline"
+      commandfor="drawer-demo"
+      command="close"
+    >
+      Cancel
+    </button>
+  </div>
+</dialog>

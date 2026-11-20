@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Trace</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/trace.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem 4rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: system-ui, sans-serif;
+      }
+      main {
+        display: grid;
+        gap: 2.5rem;
+        max-width: 44rem;
+        margin-inline: auto;
+      }
+      h2 {
+        margin: 0 0 0.75rem;
+        font-size: 1rem;
+      }
+      p {
+        margin: 0 0 0.75rem;
+        color: var(--np-muted-foreground);
+        font-size: 0.875rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Default</h2>
+        <p>
+          A finished step, an expandable step with <code>&lt;details&gt;</code>,
+          and a link.
+        </p>
+        <div class="np-trace" style="width: 100%; max-width: 28rem">
+          <span class="np-trace-line"
+            ><span class="np-trace-icon"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.3-4.3" /></svg></span
+            ><span class="np-trace-title"
+              >Searched for minimumReleaseAge</span
+            ></span
+          >
+          <details class="np-trace-collapsible">
+            <summary class="np-trace-collapsible-trigger">
+              <span class="np-trace-line"
+                ><span class="np-trace-icon"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="4 17 10 11 4 5" />
+                    <line x1="12" x2="20" y1="19" y2="19" /></svg></span
+                ><span class="np-trace-title">Ran node --version</span></span
+              >
+            </summary>
+            <div class="np-trace-collapsible-content">v24.18.0</div>
+          </details>
+          <a
+            href="https://docs.astro.build"
+            target="_blank"
+            rel="noreferrer"
+            class="np-trace-link"
+            ><span class="np-trace-line"
+              ><span class="np-trace-title"
+                >Install Astro<span class="np-trace-sr-only">
+                  (opens in a new tab)</span
+                ></span
+              ><span class="np-trace-icon"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M7 7h10v10" />
+                  <path d="M7 17 17 7" /></svg></span></span
+          ></a>
+        </div>
+      </section>
+
+      <section>
+        <h2>Status</h2>
+        <p>
+          <code>np-trace-error|running|pending</code> on the line. Running
+          shimmers the title.
+        </p>
+        <div class="np-trace" style="width: 100%; max-width: 28rem">
+          <span class="np-trace-line"
+            ><span class="np-trace-icon"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="4 17 10 11 4 5" />
+                <line x1="12" x2="20" y1="19" y2="19" /></svg></span
+            ><span class="np-trace-title">Ran pnpm install</span></span
+          >
+          <span class="np-trace-line np-trace-error"
+            ><span class="np-trace-icon"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="4 17 10 11 4 5" />
+                <line x1="12" x2="20" y1="19" y2="19" /></svg></span
+            ><span class="np-trace-title">Failed to run pnpm lint</span></span
+          >
+          <span class="np-trace-line np-trace-running"
+            ><span class="np-trace-icon"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="4 17 10 11 4 5" />
+                <line x1="12" x2="20" y1="19" y2="19" /></svg></span
+            ><span class="np-trace-title">Running pnpm build</span></span
+          >
+          <span class="np-trace-line np-trace-pending"
+            ><span class="np-trace-icon"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="4 17 10 11 4 5" />
+                <line x1="12" x2="20" y1="19" y2="19" /></svg></span
+            ><span class="np-trace-title">Run pnpm test</span></span
+          >
+        </div>
+      </section>
+
+      <section>
+        <h2>Description</h2>
+        <p>Secondary text after the title.</p>
+        <div class="np-trace" style="width: 100%; max-width: 28rem">
+          <span class="np-trace-line"
+            ><span class="np-trace-icon"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                />
+                <path d="M14 2v4a2 2 0 0 0 2 2h4" /></svg></span
+            ><span class="np-trace-title">Read</span
+            ><span class="np-trace-description"
+              >src/components/trace.tsx</span
+            ></span
+          >
+          <span class="np-trace-line"
+            ><span class="np-trace-icon"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.3-4.3" /></svg></span
+            ><span class="np-trace-title">Searched</span
+            ><span class="np-trace-description"
+              >for cache keys in the docs</span
+            ></span
+          >
+        </div>
+      </section>
+
+      <section>
+        <h2>Collapsible</h2>
+        <p>
+          Native <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code>.
+          Add <code>open</code> to start open.
+        </p>
+        <div class="np-trace" style="width: 100%; max-width: 28rem">
+          <details class="np-trace-collapsible">
+            <summary class="np-trace-collapsible-trigger">
+              <span class="np-trace-line"
+                ><span class="np-trace-icon"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="4 17 10 11 4 5" />
+                    <line x1="12" x2="20" y1="19" y2="19" /></svg></span
+                ><span class="np-trace-title">Ran node --version</span></span
+              >
+            </summary>
+            <div class="np-trace-collapsible-content">v24.18.0</div>
+          </details>
+          <details class="np-trace-collapsible" open>
+            <summary class="np-trace-collapsible-trigger">
+              <span class="np-trace-line"
+                ><span class="np-trace-icon"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="4 17 10 11 4 5" />
+                    <line x1="12" x2="20" y1="19" y2="19" /></svg></span
+                ><span class="np-trace-title">Ran pnpm build</span></span
+              >
+            </summary>
+            <div class="np-trace-collapsible-content">
+              <pre
+                style="
+                  margin: 0;
+                  font-family: ui-monospace, monospace;
+                  font-size: 0.8125rem;
+                "
+              >
+vite v6.0.0 building for production
+        ✓ 42 modules transformed
+        dist/index.html   0.45 kB</pre>
+            </div>
+          </details>
+          <details class="np-trace-collapsible">
+            <summary class="np-trace-collapsible-trigger">
+              <span class="np-trace-line"
+                ><span class="np-trace-icon"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"
+                    />
+                    <path
+                      d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"
+                    />
+                    <path d="M12 5v13" /></svg></span
+                ><span class="np-trace-title">Thinking</span
+                ><span class="np-trace-description">4 seconds</span></span
+              >
+            </summary>
+            <div class="np-trace-collapsible-content">
+              The cache key needs the lockfile hash, otherwise a dependency bump
+              would reuse a stale build.
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section>
+        <h2>Link</h2>
+        <p>
+          Put <code>np-trace-link</code> on an <code>&lt;a&gt;</code> or
+          <code>&lt;button&gt;</code>.
+        </p>
+        <div class="np-trace" style="width: 100%; max-width: 28rem">
+          <a
+            href="https://docs.astro.build"
+            target="_blank"
+            rel="noreferrer"
+            class="np-trace-link"
+            ><span class="np-trace-line"
+              ><span class="np-trace-title"
+                >Install Astro<span class="np-trace-sr-only">
+                  (opens in a new tab)</span
+                ></span
+              ><span class="np-trace-icon"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M7 7h10v10" />
+                  <path d="M7 17 17 7" /></svg></span></span
+          ></a>
+          <a
+            href="https://vite.dev"
+            target="_blank"
+            rel="noreferrer"
+            class="np-trace-link"
+            ><span class="np-trace-line"
+              ><span class="np-trace-icon"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M2 12h20" />
+                  <path
+                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+                  /></svg></span
+              ><span class="np-trace-title"
+                >Vite documentation<span class="np-trace-sr-only">
+                  (opens in a new tab)</span
+                ></span
+              ><span class="np-trace-icon"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M7 7h10v10" />
+                  <path d="M7 17 17 7" /></svg></span></span
+          ></a>
+          <button type="button" class="np-trace-link" onclick="alert('Opened')">
+            <span class="np-trace-line"
+              ><span class="np-trace-icon"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                  />
+                  <path d="M14 2v4a2 2 0 0 0 2 2h4" /></svg></span
+              ><span class="np-trace-title">Open the changelog</span
+              ><span class="np-trace-icon"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m9 18 6-6-6-6" /></svg></span
+            ></span>
+          </button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Group</h2>
+        <p>A nested <code>np-trace</code> inside the content.</p>
+        <div class="np-trace" style="width: 100%; max-width: 28rem">
+          <details class="np-trace-collapsible">
+            <summary class="np-trace-collapsible-trigger">
+              <span class="np-trace-line"
+                ><span class="np-trace-icon"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.3-4.3" /></svg></span
+                ><span class="np-trace-title">Explored 3 files</span></span
+              >
+            </summary>
+            <div class="np-trace-collapsible-content">
+              <div class="np-trace">
+                <span class="np-trace-line"
+                  ><span class="np-trace-icon"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                      />
+                      <path d="M14 2v4a2 2 0 0 0 2 2h4" /></svg></span
+                  ><span class="np-trace-title">Read package.json</span></span
+                >
+                <span class="np-trace-line"
+                  ><span class="np-trace-icon"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                      />
+                      <path d="M14 2v4a2 2 0 0 0 2 2h4" /></svg></span
+                  ><span class="np-trace-title">Read vite.config.ts</span></span
+                >
+                <span class="np-trace-line"
+                  ><span class="np-trace-icon"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                      />
+                      <path d="M14 2v4a2 2 0 0 0 2 2h4" /></svg></span
+                  ><span class="np-trace-title">Read src/main.tsx</span></span
+                >
+              </div>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section>
+        <h2>Data-attribute form</h2>
+        <div data-np-trace>
+          <span data-np-trace-line data-status="running"
+            ><span data-np-trace-title>Running pnpm build</span></span
+          >
+          <details data-np-trace-collapsible>
+            <summary data-np-trace-collapsible-trigger>
+              <span data-np-trace-line
+                ><span data-np-trace-title>Ran node --version</span></span
+              >
+            </summary>
+            <div data-np-trace-collapsible-content>v24.18.0</div>
+          </details>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

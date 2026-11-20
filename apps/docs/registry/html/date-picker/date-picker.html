@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Date Picker</title>
+    <link rel="stylesheet" href="../tokens.css" />
+    <link rel="stylesheet" href="../button/button.css" />
+    <link rel="stylesheet" href="../label/label.css" />
+    <link rel="stylesheet" href="../input/input.css" />
+    <link rel="stylesheet" href="../input-group/input-group.css" />
+    <link rel="stylesheet" href="../popover/popover.css" />
+    <link rel="stylesheet" href="../calendar/calendar.css" />
+    <link rel="stylesheet" href="./date-picker.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem 24rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: var(--np-font-sans, system-ui, sans-serif);
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+        max-width: 40rem;
+        margin-inline: auto;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 1.5rem;
+      }
+
+      section > h2 {
+        margin: 0 0 0.25rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+
+      .hint {
+        margin: 0 0 0.75rem;
+        font-size: 0.8125rem;
+        color: var(--np-muted-foreground);
+      }
+    </style>
+    <script type="module" src="../popover/popover.js"></script>
+    <script type="module" src="../calendar/calendar.js"></script>
+    <script type="module" src="./date-picker.js"></script>
+  </head>
+
+  <body>
+    <main>
+      <header>
+        <h1>Date Picker</h1>
+        <button
+          class="np-button np-button-outline np-button-sm"
+          type="button"
+          onclick="document.documentElement.classList.toggle('dark')"
+        >
+          Toggle dark
+        </button>
+      </header>
+
+      <section>
+        <h2>Single</h2>
+        <p class="hint">
+          <code>data-np-date-picker</code> on an empty element. It builds the
+          trigger, the popover and the calendar.
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 0.75rem">
+          <label class="np-label" for="date">Date</label>
+          <div
+            data-np-date-picker
+            data-id="date"
+            style="--np-date-picker-width: 12rem"
+          ></div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Range</h2>
+        <p class="hint"><code>data-mode="range"</code>.</p>
+        <div style="display: flex; flex-direction: column; gap: 0.75rem">
+          <label class="np-label" for="date-range">Date Picker Range</label>
+          <div
+            data-np-date-picker
+            data-mode="range"
+            data-id="date-range"
+            data-value="2026-01-20/2026-02-09"
+            data-month="2026-01"
+            style="--np-date-picker-width: 18rem"
+          ></div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Date of birth</h2>
+        <p class="hint"><code>data-caption-layout="dropdown"</code>.</p>
+        <div style="display: flex; flex-direction: column; gap: 0.75rem">
+          <label class="np-label" for="dob">Date of birth</label>
+          <div
+            data-np-date-picker
+            data-id="dob"
+            data-placeholder="Select date"
+            data-caption-layout="dropdown"
+            data-start-year="1926"
+            data-end-year="2036"
+            style="--np-date-picker-width: 12rem"
+          ></div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Input</h2>
+        <p class="hint">
+          <code>data-editable</code> adds a text field. Type a date, or press
+          the arrow down key to open the calendar.
+        </p>
+        <div
+          style="
+            display: flex;
+            width: 100%;
+            max-width: 18rem;
+            flex-direction: column;
+            gap: 0.75rem;
+          "
+        >
+          <label class="np-label" for="subscription-date"
+            >Subscription Date</label
+          >
+          <div
+            data-np-date-picker
+            data-editable
+            data-id="subscription-date"
+            data-value="2026-06-01"
+            data-format="long"
+            data-placeholder="June 01, 2026"
+            data-caption-layout="dropdown"
+            data-start-year="1926"
+            data-end-year="2036"
+            style="--np-date-picker-width: 100%"
+          ></div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Date and time</h2>
+        <p class="hint">Next to another field.</p>
+        <div style="display: flex; gap: 1rem">
+          <div style="display: flex; flex-direction: column; gap: 0.75rem">
+            <label class="np-label" for="date-picker">Date</label>
+            <div
+              data-np-date-picker
+              data-id="date-picker"
+              data-placeholder="Select date"
+              style="--np-date-picker-width: 8.5rem"
+            ></div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 0.75rem">
+            <label class="np-label" for="time-picker">Time</label>
+            <input
+              class="np-input"
+              id="time-picker"
+              type="time"
+              step="1"
+              value="10:30:00"
+              style="width: 8.5rem"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Limits</h2>
+        <p class="hint">
+          Calendar options pass through: <code>data-min</code>,
+          <code>data-max</code>, <code>data-disabled-weekdays</code>.
+        </p>
+        <div
+          data-np-date-picker
+          data-min="2026-11-01"
+          data-max="2026-11-30"
+          data-disabled-weekdays="0,6"
+          data-placeholder="Weekdays in November"
+        ></div>
+      </section>
+
+      <section>
+        <h2>In a form</h2>
+        <p class="hint">
+          <code>data-name</code> adds a hidden input with the ISO value.
+        </p>
+        <form
+          onsubmit="
+            event.preventDefault()
+            this.querySelector('output').value =
+              new FormData(this).get('when') || '(none)'
+          "
+          style="display: flex; align-items: center; gap: 0.75rem"
+        >
+          <div
+            data-np-date-picker
+            data-name="when"
+            data-placeholder="Pick a date"
+          ></div>
+          <button class="np-button" type="submit">Submit</button>
+          <span style="font-size: 0.875rem; color: var(--np-muted-foreground)"
+            >Value: <output>-</output></span
+          >
+        </form>
+      </section>
+
+      <section>
+        <h2>Event</h2>
+        <p class="hint">
+          A <code>nepui:datepickerchange</code> event fires on every change.
+        </p>
+        <div
+          id="idx-event"
+          data-np-date-picker
+          data-placeholder="Pick a date"
+        ></div>
+        <p id="idx-event-out" class="hint" style="margin-top: 0.5rem">
+          Nothing picked.
+        </p>
+      </section>
+    </main>
+    <script type="module">
+      document.addEventListener("nepui:datepickerchange", (event) => {
+        if (event.target.id !== "idx-event") return
+        const v = event.detail.value
+        document.getElementById("idx-event-out").textContent = v
+          ? "Picked " + v
+          : "Nothing picked."
+      })
+    </script>
+  </body>
+</html>

@@ -62,6 +62,7 @@
       "type": "registry:ui",
       "title": "Checkbox",
       "description": "A control that allows the user to toggle between checked and not checked.",
+      "registryDependencies": ["https://nepui.vercel.app/r/html/label.json"],
       "files": [
         {
           "path": "registry/html/checkbox/checkbox.html",
@@ -158,7 +159,8 @@
       "description": "A container that groups related buttons together with consistent styling.",
       "registryDependencies": [
         "https://nepui.vercel.app/r/html/button.json",
-        "https://nepui.vercel.app/r/html/separator.json"
+        "https://nepui.vercel.app/r/html/separator.json",
+        "https://nepui.vercel.app/r/html/input.json"
       ],
       "files": [
         {
@@ -170,6 +172,117 @@
           "path": "registry/html/button-group/button-group.css",
           "type": "registry:ui",
           "target": "styles/button-group.css"
+        }
+      ]
+    },
+    {
+      "name": "list",
+      "type": "registry:ui",
+      "title": "List",
+      "description": "A list of items built on ul and ol, with every marker type, nesting, keyboard navigation, collapsible branches and selection.",
+      "registryDependencies": ["https://nepui.vercel.app/r/html/button.json"],
+      "files": [
+        {
+          "path": "registry/html/list/list.html",
+          "type": "registry:ui",
+          "target": "html/list.html"
+        },
+        {
+          "path": "registry/html/list/list.css",
+          "type": "registry:ui",
+          "target": "styles/list.css"
+        },
+        {
+          "path": "registry/html/list/list.js",
+          "type": "registry:ui",
+          "target": "javascripts/list.js"
+        }
+      ]
+    },
+    {
+      "name": "rating",
+      "type": "registry:ui",
+      "title": "Rating",
+      "description": "Pick a score from a row of stars, whole or half, with a preview as the pointer moves.",
+      "registryDependencies": ["https://nepui.vercel.app/r/html/button.json"],
+      "files": [
+        {
+          "path": "registry/html/rating/rating.html",
+          "type": "registry:ui",
+          "target": "html/rating.html"
+        },
+        {
+          "path": "registry/html/rating/rating.css",
+          "type": "registry:ui",
+          "target": "styles/rating.css"
+        },
+        {
+          "path": "registry/html/rating/rating.js",
+          "type": "registry:ui",
+          "target": "javascripts/rating.js"
+        }
+      ]
+    },
+    {
+      "name": "timeline",
+      "type": "registry:ui",
+      "title": "Timeline",
+      "description": "Shows events in order, such as an activity feed, a changelog or an order's progress.",
+      "registryDependencies": ["https://nepui.vercel.app/r/html/button.json"],
+      "files": [
+        {
+          "path": "registry/html/timeline/timeline.html",
+          "type": "registry:ui",
+          "target": "html/timeline.html"
+        },
+        {
+          "path": "registry/html/timeline/timeline.css",
+          "type": "registry:ui",
+          "target": "styles/timeline.css"
+        },
+        {
+          "path": "registry/html/timeline/timeline.js",
+          "type": "registry:ui",
+          "target": "javascripts/timeline.js"
+        }
+      ]
+    },
+    {
+      "name": "gradient-text",
+      "type": "registry:ui",
+      "title": "Gradient Text",
+      "description": "Text filled with a gradient that flows, with named gradients and a neon glow, in plain CSS.",
+      "files": [
+        {
+          "path": "registry/html/gradient-text/gradient-text.html",
+          "type": "registry:ui",
+          "target": "html/gradient-text.html"
+        },
+        {
+          "path": "registry/html/gradient-text/gradient-text.css",
+          "type": "registry:ui",
+          "target": "styles/gradient-text.css"
+        }
+      ]
+    },
+    {
+      "name": "aurora",
+      "type": "registry:ui",
+      "title": "Aurora",
+      "description": "A slow, soft, animated glow behind your hero or any section, with named gradients, in plain CSS.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/html/gradient-text.json"
+      ],
+      "files": [
+        {
+          "path": "registry/html/aurora/aurora.html",
+          "type": "registry:ui",
+          "target": "html/aurora.html"
+        },
+        {
+          "path": "registry/html/aurora/aurora.css",
+          "type": "registry:ui",
+          "target": "styles/aurora.css"
         }
       ]
     },
@@ -304,6 +417,170 @@
       ]
     },
     {
+      "name": "trace",
+      "type": "registry:ui",
+      "title": "Trace",
+      "description": "The building block for reasoning, tool calls, sources and more.",
+      "files": [
+        {
+          "path": "registry/html/trace/trace.html",
+          "type": "registry:ui",
+          "target": "html/trace.html"
+        },
+        {
+          "path": "registry/html/trace/trace.css",
+          "type": "registry:ui",
+          "target": "styles/trace.css"
+        }
+      ]
+    },
+    {
+      "name": "attachment",
+      "type": "registry:ui",
+      "title": "Attachment",
+      "description": "Displays a file or image attachment with media, metadata, upload state, and actions.",
+      "registryDependencies": ["https://nepui.vercel.app/r/html/button.json"],
+      "files": [
+        {
+          "path": "registry/html/attachment/attachment.html",
+          "type": "registry:ui",
+          "target": "html/attachment.html"
+        },
+        {
+          "path": "registry/html/attachment/attachment.css",
+          "type": "registry:ui",
+          "target": "styles/attachment.css"
+        }
+      ]
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "title": "Drawer",
+      "description": "A drawer component that slides in from the edge of the screen, with swipe to dismiss.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/html/button.json",
+        "https://nepui.vercel.app/r/html/scroll-area.json"
+      ],
+      "files": [
+        {
+          "path": "registry/html/drawer/drawer.html",
+          "type": "registry:ui",
+          "target": "html/drawer.html"
+        },
+        {
+          "path": "registry/html/drawer/drawer.css",
+          "type": "registry:ui",
+          "target": "styles/drawer.css"
+        },
+        {
+          "path": "registry/html/drawer/drawer.js",
+          "type": "registry:ui",
+          "target": "javascripts/drawer.js"
+        }
+      ]
+    },
+    {
+      "name": "resizable",
+      "type": "registry:ui",
+      "title": "Resizable",
+      "description": "Accessible resizable panel groups and layouts with keyboard support.",
+      "files": [
+        {
+          "path": "registry/html/resizable/resizable.html",
+          "type": "registry:ui",
+          "target": "html/resizable.html"
+        },
+        {
+          "path": "registry/html/resizable/resizable.css",
+          "type": "registry:ui",
+          "target": "styles/resizable.css"
+        },
+        {
+          "path": "registry/html/resizable/resizable.js",
+          "type": "registry:ui",
+          "target": "javascripts/resizable.js"
+        }
+      ]
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "A calendar component that allows users to select a date or a range of dates.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/html/button.json",
+        "https://nepui.vercel.app/r/html/label.json",
+        "https://nepui.vercel.app/r/html/input.json"
+      ],
+      "files": [
+        {
+          "path": "registry/html/calendar/calendar.html",
+          "type": "registry:ui",
+          "target": "html/calendar.html"
+        },
+        {
+          "path": "registry/html/calendar/calendar.css",
+          "type": "registry:ui",
+          "target": "styles/calendar.css"
+        },
+        {
+          "path": "registry/html/calendar/calendar.js",
+          "type": "registry:ui",
+          "target": "javascripts/calendar.js"
+        }
+      ]
+    },
+    {
+      "name": "icon-swap",
+      "type": "registry:ui",
+      "title": "Icon Swap",
+      "description": "Animate icon swaps with scale, blur, and fade transitions.",
+      "registryDependencies": ["https://nepui.vercel.app/r/html/button.json"],
+      "files": [
+        {
+          "path": "registry/html/icon-swap/icon-swap.html",
+          "type": "registry:ui",
+          "target": "html/icon-swap.html"
+        },
+        {
+          "path": "registry/html/icon-swap/icon-swap.css",
+          "type": "registry:ui",
+          "target": "styles/icon-swap.css"
+        }
+      ]
+    },
+    {
+      "name": "date-picker",
+      "type": "registry:ui",
+      "title": "Date Picker",
+      "description": "A date picker component with range and presets.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/html/button.json",
+        "https://nepui.vercel.app/r/html/calendar.json",
+        "https://nepui.vercel.app/r/html/popover.json",
+        "https://nepui.vercel.app/r/html/input-group.json",
+        "https://nepui.vercel.app/r/html/label.json"
+      ],
+      "files": [
+        {
+          "path": "registry/html/date-picker/date-picker.html",
+          "type": "registry:ui",
+          "target": "html/date-picker.html"
+        },
+        {
+          "path": "registry/html/date-picker/date-picker.css",
+          "type": "registry:ui",
+          "target": "styles/date-picker.css"
+        },
+        {
+          "path": "registry/html/date-picker/date-picker.js",
+          "type": "registry:ui",
+          "target": "javascripts/date-picker.js"
+        }
+      ]
+    },
+    {
       "name": "accordion",
       "type": "registry:ui",
       "title": "Accordion",
@@ -388,6 +665,7 @@
       "type": "registry:ui",
       "title": "Breadcrumb",
       "description": "Displays the path to the current resource using a hierarchy of links.",
+      "registryDependencies": ["https://nepui.vercel.app/r/html/button.json"],
       "files": [
         {
           "path": "registry/html/breadcrumb/breadcrumb.html",
@@ -624,7 +902,7 @@
       "name": "bubble",
       "type": "registry:ui",
       "title": "Bubble",
-      "description": "Displays conversational content in a message bubble. Supports variants, alignment, grouping, reactions, and collapsible content.",
+      "description": "Displays conversational content in a message bubble. Supports variants, alignment, grouping, htmlions, and collapsible content.",
       "files": [
         {
           "path": "registry/html/bubble/bubble.html",
@@ -635,6 +913,33 @@
           "path": "registry/html/bubble/bubble.css",
           "type": "registry:ui",
           "target": "styles/bubble.css"
+        }
+      ]
+    },
+    {
+      "name": "file-input",
+      "type": "registry:ui",
+      "title": "File Input",
+      "description": "Choose, drop or paste files, check them against your rules, and submit them with a form.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/html/button.json",
+        "https://nepui.vercel.app/r/field/button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/html/file-input/file-input.html",
+          "type": "registry:ui",
+          "target": "html/file-input.html"
+        },
+        {
+          "path": "registry/html/file-input/file-input.css",
+          "type": "registry:ui",
+          "target": "styles/file-input.css"
+        },
+        {
+          "path": "registry/html/file-input/file-input.js",
+          "type": "registry:ui",
+          "target": "javascripts/file-input.js"
         }
       ]
     },
@@ -761,6 +1066,7 @@
       "type": "registry:ui",
       "title": "Alert",
       "description": "Displays a callout for user attention.",
+      "registryDependencies": ["https://nepui.vercel.app/r/html/button.json"],
       "files": [
         {
           "path": "registry/html/alert/alert.html",
@@ -811,6 +1117,182 @@
       ]
     },
     {
+      "name": "code-block",
+      "type": "registry:ui",
+      "title": "Code Block",
+      "description": "Displays code, terminal output and diffs with an optional header, line numbers and a copy button.",
+      "registryDependencies": ["https://nepui.vercel.app/r/html/button.json"],
+      "files": [
+        {
+          "path": "registry/html/code-block/code-block.html",
+          "type": "registry:ui",
+          "target": "html/code-block.html"
+        },
+        {
+          "path": "registry/html/code-block/code-block.css",
+          "type": "registry:ui",
+          "target": "styles/code-block.css"
+        },
+        {
+          "path": "registry/html/code-block/code-block.js",
+          "type": "registry:ui",
+          "target": "javascripts/code-block.js"
+        }
+      ]
+    },
+    {
+      "name": "color-picker",
+      "type": "registry:ui",
+      "title": "Color Picker",
+      "description": "Pick a color from an area and sliders, type it in any format, or choose a preset, in HSV, HSL, sRGB or OKLCH.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/html/button.json",
+        "https://nepui.vercel.app/r/html/select.json"
+      ],
+      "files": [
+        {
+          "path": "registry/html/color-picker/color-picker.html",
+          "type": "registry:ui",
+          "target": "html/color-picker.html"
+        },
+        {
+          "path": "registry/html/color-picker/color-picker.css",
+          "type": "registry:ui",
+          "target": "styles/color-picker.css"
+        },
+        {
+          "path": "registry/html/color-picker/color-picker.js",
+          "type": "registry:ui",
+          "target": "javascripts/color-picker.js"
+        }
+      ]
+    },
+    {
+      "name": "password-input",
+      "type": "registry:ui",
+      "title": "Password Input",
+      "description": "A password field with a show and hide toggle, caps lock warning, strength meter and requirements checklist.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/html/button.json",
+        "https://nepui.vercel.app/r/html/field.json"
+      ],
+      "files": [
+        {
+          "path": "registry/html/password-input/password-input.html",
+          "type": "registry:ui",
+          "target": "html/password-input.html"
+        },
+        {
+          "path": "registry/html/password-input/password-input.css",
+          "type": "registry:ui",
+          "target": "styles/password-input.css"
+        },
+        {
+          "path": "registry/html/password-input/password-input.js",
+          "type": "registry:ui",
+          "target": "javascripts/password-input.js"
+        }
+      ]
+    },
+    {
+      "name": "menubar",
+      "type": "registry:ui",
+      "title": "Menubar",
+      "description": "A visually persistent menu common in desktop applications that provides quick access to a consistent set of commands.",
+      "files": [
+        {
+          "path": "registry/html/menubar/menubar.html",
+          "type": "registry:ui",
+          "target": "html/menubar.html"
+        },
+        {
+          "path": "registry/html/menubar/menubar.css",
+          "type": "registry:ui",
+          "target": "styles/menubar.css"
+        },
+        {
+          "path": "registry/html/menubar/menubar.js",
+          "type": "registry:ui",
+          "target": "javascripts/menubar.js"
+        }
+      ]
+    },
+    {
+      "name": "color-picker",
+      "type": "registry:ui",
+      "title": "Color Picker",
+      "description": "Pick a color from an area and sliders, type it in any format, or choose a preset, in HSV, HSL, sRGB or OKLCH.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/html/button.json",
+        "https://nepui.vercel.app/r/html/select.json"
+      ],
+      "files": [
+        {
+          "path": "registry/html/color-picker/color-picker.html",
+          "type": "registry:ui",
+          "target": "html/color-picker.html"
+        },
+        {
+          "path": "registry/html/color-picker/color-picker.css",
+          "type": "registry:ui",
+          "target": "styles/color-picker.css"
+        },
+        {
+          "path": "registry/html/color-picker/color-picker.js",
+          "type": "registry:ui",
+          "target": "javascripts/color-picker.js"
+        }
+      ]
+    },
+    {
+      "name": "number-input",
+      "type": "registry:ui",
+      "title": "Number Input",
+      "description": "A numeric input with increment and decrement buttons, and a scrub area.",
+      "registryDependencies": ["https://nepui.vercel.app/r/html/label.json"],
+      "files": [
+        {
+          "path": "registry/html/number-input/number-input.html",
+          "type": "registry:ui",
+          "target": "html/number-input.html"
+        },
+        {
+          "path": "registry/html/number-input/number-input.css",
+          "type": "registry:ui",
+          "target": "styles/number-input.css"
+        },
+        {
+          "path": "registry/html/number-input/number-input.js",
+          "type": "registry:ui",
+          "target": "javascripts/number-input.js"
+        }
+      ]
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "title": "Context Menu",
+      "description": "Displays a menu to the user, such as a set of actions or functions, triggered by a right click or a long press.",
+      "registryDependencies": ["https://nepui.vercel.app/r/html/button.json"],
+      "files": [
+        {
+          "path": "registry/html/context-menu/context-menu.html",
+          "type": "registry:ui",
+          "target": "html/context-menu.html"
+        },
+        {
+          "path": "registry/html/context-menu/context-menu.css",
+          "type": "registry:ui",
+          "target": "styles/context-menu.css"
+        },
+        {
+          "path": "registry/html/context-menu/context-menu.js",
+          "type": "registry:ui",
+          "target": "javascripts/context-menu.js"
+        }
+      ]
+    },
+    {
       "name": "toggle",
       "type": "registry:ui",
       "title": "Toggle",
@@ -852,10 +1334,64 @@
       ]
     },
     {
+      "name": "message",
+      "type": "registry:ui",
+      "title": "Message",
+      "description": "Displays a message in a conversation, with optional avatar, header, footer, and alignment.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/html/button.json",
+        "https://nepui.vercel.app/r/html/avatar.json",
+        "https://nepui.vercel.app/r/html/bubble.json",
+        "https://nepui.vercel.app/r/html/attachment.json",
+        "https://nepui.vercel.app/r/html/marker.json",
+        "https://nepui.vercel.app/r/html/spinner.json"
+      ],
+      "files": [
+        {
+          "path": "registry/html/message/message.html",
+          "type": "registry:ui",
+          "target": "html/message.html"
+        },
+        {
+          "path": "registry/html/message/message.css",
+          "type": "registry:ui",
+          "target": "styles/message.css"
+        }
+      ]
+    },
+    {
+      "name": "group",
+      "type": "registry:ui",
+      "title": "Group",
+      "description": "A container that visually groups a series of controls.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/html/button.json",
+        "https://nepui.vercel.app/r/html/input.json"
+      ],
+      "files": [
+        {
+          "path": "registry/html/group/group.html",
+          "type": "registry:ui",
+          "target": "html/group.html"
+        },
+        {
+          "path": "registry/html/group/group.css",
+          "type": "registry:ui",
+          "target": "styles/group.css"
+        }
+      ]
+    },
+    {
       "name": "card",
       "type": "registry:ui",
       "title": "Card",
       "description": "Displays a card with header, content, and footer.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/html/button.json",
+        "https://nepui.vercel.app/r/html/label.json",
+        "https://nepui.vercel.app/r/html/input.json",
+        "https://nepui.vercel.app/r/html/badge.json"
+      ],
       "files": [
         {
           "path": "registry/html/card/card.html",
@@ -870,10 +1406,58 @@
       ]
     },
     {
+      "name": "command",
+      "type": "registry:ui",
+      "title": "Date Picker",
+      "description": "Command menu for search and quick actions.",
+      "registryDependencies": ["https://nepui.vercel.app/r/html/button.json"],
+      "files": [
+        {
+          "path": "registry/html/command/command.html",
+          "type": "registry:ui",
+          "target": "html/command.html"
+        },
+        {
+          "path": "registry/html/command/command.css",
+          "type": "registry:ui",
+          "target": "styles/command.css"
+        },
+        {
+          "path": "registry/html/command/command.js",
+          "type": "registry:ui",
+          "target": "javascripts/command.js"
+        }
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "Pagination with page navigation, next and previous links.",
+      "registryDependencies": ["https://nepui.vercel.app/r/html/button.json"],
+      "files": [
+        {
+          "path": "registry/html/pagination/pagination.html",
+          "type": "registry:ui",
+          "target": "html/pagination.html"
+        },
+        {
+          "path": "registry/html/pagination/pagination.css",
+          "type": "registry:ui",
+          "target": "styles/pagination.css"
+        }
+      ]
+    },
+    {
       "name": "collapsible",
       "type": "registry:ui",
       "title": "Collapsible",
       "description": "An interactive component which expands/collapses a panel.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/html/button.json",
+        "https://nepui.vercel.app/r/html/label.json",
+        "https://nepui.vercel.app/r/html/input.json"
+      ],
       "files": [
         {
           "path": "registry/html/collapsible/collapsible.html",
@@ -884,6 +1468,30 @@
           "path": "registry/html/collapsible/collapsible.css",
           "type": "registry:ui",
           "target": "styles/collapsible.css"
+        }
+      ]
+    },
+    {
+      "name": "carousel",
+      "type": "registry:ui",
+      "title": "Carousel",
+      "description": " A carousel with motion and swipe.",
+      "registryDependencies": ["https://nepui.vercel.app/r/html/button.json"],
+      "files": [
+        {
+          "path": "registry/html/carousel/carousel.html",
+          "type": "registry:ui",
+          "target": "html/carousel.html"
+        },
+        {
+          "path": "registry/html/carousel/carousel.css",
+          "type": "registry:ui",
+          "target": "styles/carousel.css"
+        },
+        {
+          "path": "registry/html/carousel/carousel.js",
+          "type": "registry:ui",
+          "target": "javascripts/carousel.js"
         }
       ]
     },

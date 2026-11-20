@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spinner Variants</title>
+    <link rel="stylesheet" href="./styles/tokens.css" />
+    <link rel="stylesheet" href="./styles/spinner.css" />
+    <style>
+      .variants {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+      }
+
+      .variant {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="variants">
+      <div class="variant">
+        <span
+          class="np-spinner"
+          data-variant="default"
+          aria-label="default loading"
+        ></span>
+        <span>default</span>
+      </div>
+      <div class="variant">
+        <span
+          class="np-spinner"
+          data-variant="success"
+          aria-label="success loading"
+        ></span>
+        <span>success</span>
+      </div>
+      <div class="variant">
+        <span
+          class="np-spinner"
+          data-variant="info"
+          aria-label="info loading"
+        ></span>
+        <span>info</span>
+      </div>
+      <div class="variant">
+        <span
+          class="np-spinner"
+          data-variant="error"
+          aria-label="error loading"
+        ></span>
+        <span>error</span>
+      </div>
+      <div class="variant">
+        <span
+          class="np-spinner"
+          data-variant="warning"
+          aria-label="warning loading"
+        ></span>
+        <span>warning</span>
+      </div>
+    </div>
+  </body>
+</html>

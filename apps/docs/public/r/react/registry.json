@@ -1148,6 +1148,654 @@
           "target": "components/nepui/input-group/index.ts"
         }
       ]
+    },
+    {
+      "name": "attachment",
+      "type": "registry:ui",
+      "title": "Attachment",
+      "description": "Displays a file or image attachment with media, metadata, upload state, and actions.",
+      "registryDependencies": ["https://nepui.vercel.app/r/react/button.json"],
+      "files": [
+        {
+          "path": "registry/react/attachment/attachment.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/attachment/attachment.tsx"
+        },
+        {
+          "path": "registry/react/attachment/attachment.css",
+          "type": "registry:ui",
+          "target": "components/nepui/attachment/attachment.css"
+        },
+        {
+          "path": "registry/react/attachment/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/attachment/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "title": "Drawer",
+      "description": "A drawer component that slides in from the edge of the screen, with swipe to dismiss.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/react/button.json",
+        "https://nepui.vercel.app/r/react/scroll-area.json"
+      ],
+      "files": [
+        {
+          "path": "registry/react/drawer/drawer.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/drawer/drawer.tsx"
+        },
+        {
+          "path": "registry/react/drawer/drawer.css",
+          "type": "registry:ui",
+          "target": "components/nepui/drawer/drawer.css"
+        },
+        {
+          "path": "registry/react/drawer/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/drawer/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "resizable",
+      "type": "registry:ui",
+      "title": "Resizable",
+      "description": "Accessible resizable panel groups and layouts with keyboard support.",
+      "dependencies": ["react-resizable-panels"],
+      "files": [
+        {
+          "path": "registry/react/resizable/resizable.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/resizable/resizable.tsx"
+        },
+        {
+          "path": "registry/react/resizable/resizable.css",
+          "type": "registry:ui",
+          "target": "components/nepui/resizable/resizable.css"
+        },
+        {
+          "path": "registry/react/resizable/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/resizable/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "code-block",
+      "type": "registry:ui",
+      "title": "Code Block",
+      "description": "Displays code, terminal output and diffs with an optional header, line numbers and a copy button.",
+      "dependencies": ["shiki"],
+      "files": [
+        {
+          "path": "registry/react/code-block/code-block.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/code-block/code-block.tsx"
+        },
+        {
+          "path": "registry/react/code-block/code-block.css",
+          "type": "registry:ui",
+          "target": "components/nepui/code-block/code-block.css"
+        },
+        {
+          "path": "hooks/use-highlighted-code.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-highlighted-code.ts"
+        },
+        {
+          "path": "lib/highlighter.tsx",
+          "type": "registry:lib",
+          "target": "lib/highlighter.tsx"
+        },
+        {
+          "path": "registry/react/code-block/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/code-block/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "title": "Context Menu",
+      "description": "Displays a menu to the user, such as a set of actions or functions, triggered by a right click or a long press.",
+      "files": [
+        {
+          "path": "registry/react/context-menu/context-menu.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/context-menu/context-menu.tsx"
+        },
+        {
+          "path": "registry/react/context-menu/context-menu.css",
+          "type": "registry:ui",
+          "target": "components/nepui/context-menu/context-menu.css"
+        },
+        {
+          "path": "registry/react/context-menu/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/context-menu/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "message",
+      "type": "registry:ui",
+      "title": "Message",
+      "description": "Displays a message in a conversation, with optional avatar, header, footer, and alignment.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/react/button.json",
+        "https://nepui.vercel.app/r/react/avatar.json",
+        "https://nepui.vercel.app/r/react/bubble.json",
+        "https://nepui.vercel.app/r/react/attachment.json",
+        "https://nepui.vercel.app/r/react/marker.json",
+        "https://nepui.vercel.app/r/react/spinner.json"
+      ],
+      "files": [
+        {
+          "path": "registry/react/message/message.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/message/message.tsx"
+        },
+        {
+          "path": "registry/react/message/message.css",
+          "type": "registry:ui",
+          "target": "components/nepui/message/message.css"
+        },
+        {
+          "path": "registry/react/message/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/message/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "Pagination with page navigation, next and previous links.",
+      "registryDependencies": ["https://nepui.vercel.app/r/react/button.json"],
+      "files": [
+        {
+          "path": "registry/react/pagination/pagination.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/pagination/pagination.tsx"
+        },
+        {
+          "path": "registry/react/pagination/pagination.css",
+          "type": "registry:ui",
+          "target": "components/nepui/pagination/pagination.css"
+        },
+        {
+          "path": "registry/react/pagination/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/pagination/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "carousel",
+      "type": "registry:ui",
+      "title": "Carousel",
+      "description": " A carousel with motion and swipe.",
+      "dependencies": ["embla-carousel-react"],
+      "registryDependencies": ["https://nepui.vercel.app/r/react/button.json"],
+      "files": [
+        {
+          "path": "registry/react/carousel/carousel.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/carousel/carousel.tsx"
+        },
+        {
+          "path": "registry/react/carousel/carousel.css",
+          "type": "registry:ui",
+          "target": "components/nepui/carousel/carousel.css"
+        },
+        {
+          "path": "registry/react/carousel/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/carousel/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "Pagination with page navigation, next and previous links.",
+      "registryDependencies": ["https://nepui.vercel.app/r/react/button.json"],
+      "files": [
+        {
+          "path": "registry/react/pagination/pagination.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/pagination/pagination.tsx"
+        },
+        {
+          "path": "registry/react/pagination/pagination.css",
+          "type": "registry:ui",
+          "target": "components/nepui/pagination/pagination.css"
+        },
+        {
+          "path": "registry/react/pagination/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/pagination/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "A calendar component that allows users to select a date or a range of dates.",
+      "dependencies": ["react-day-picker"],
+      "registryDependencies": ["https://nepui.vercel.app/r/react/button.json"],
+      "files": [
+        {
+          "path": "registry/react/calendar/calendar.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/calendar/calendar.tsx"
+        },
+        {
+          "path": "registry/react/calendar/calendar.css",
+          "type": "registry:ui",
+          "target": "components/nepui/calendar/calendar.css"
+        },
+        {
+          "path": "registry/react/calendar/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/calendar/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "password-input",
+      "type": "registry:ui",
+      "title": "Password Input",
+      "description": "A password field with a show and hide toggle, caps lock warning, strength meter and requirements checklist.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/react/input-group.json"
+      ],
+      "files": [
+        {
+          "path": "registry/react/password-input/password-input.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/password-input/password-input.tsx"
+        },
+        {
+          "path": "registry/react/password-input/password-input.css",
+          "type": "registry:ui",
+          "target": "components/nepui/password-input/password-input.css"
+        },
+        {
+          "path": "registry/react/password-input/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/password-input/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "menubar",
+      "type": "registry:ui",
+      "title": "Menubar",
+      "description": "A visually persistent menu common in desktop applications that provides quick access to a consistent set of commands.",
+      "files": [
+        {
+          "path": "registry/react/menubar/menubar.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/menubar/menubar.tsx"
+        },
+        {
+          "path": "registry/react/menubar/menubar.css",
+          "type": "registry:ui",
+          "target": "components/nepui/menubar/menubar.css"
+        },
+        {
+          "path": "registry/react/menubar/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/menubar/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "gradient-text",
+      "type": "registry:ui",
+      "title": "Gradient Text",
+      "description": "Text filled with a gradient that flows, in plain CSS with no motion library.",
+      "files": [
+        {
+          "path": "registry/react/gradient-text/gradient-text.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/gradient-text/gradient-text.tsx"
+        },
+        {
+          "path": "registry/react/gradient-text/gradient-text.css",
+          "type": "registry:ui",
+          "target": "components/nepui/gradient-text/gradient-text.css"
+        },
+        {
+          "path": "registry/react/gradient-text/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/gradient-text/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "number-input",
+      "type": "registry:ui",
+      "title": "Number Input",
+      "description": "A numeric input with increment and decrement buttons, and a scrub area.",
+      "registryDependencies": ["https://nepui.vercel.app/r/react/label.json"],
+      "files": [
+        {
+          "path": "registry/react/number-input/number-input.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/number-input/number-input.tsx"
+        },
+        {
+          "path": "registry/react/number-input/number-input.css",
+          "type": "registry:ui",
+          "target": "components/nepui/number-input/number-input.css"
+        },
+        {
+          "path": "registry/react/number-input/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/number-input/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "file-input",
+      "type": "registry:ui",
+      "title": "File Input",
+      "description": "Choose, drop or paste files, check them against your rules, and submit them with a form.",
+      "registryDependencies": ["https://nepui.vercel.app/r/react/button.json"],
+      "files": [
+        {
+          "path": "registry/react/file-input/file-input.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/file-input/file-input.tsx"
+        },
+        {
+          "path": "registry/react/file-input/file-input.css",
+          "type": "registry:ui",
+          "target": "components/nepui/file-input/file-input.css"
+        },
+        {
+          "path": "registry/react/file-input/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/file-input/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "icon-swap",
+      "type": "registry:ui",
+      "title": "Icon Swap",
+      "description": "Animate icon swaps with scale, blur, and fade transitions.",
+      "files": [
+        {
+          "path": "registry/react/icon-swap/icon-swap.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/icon-swap/icon-swap.tsx"
+        },
+        {
+          "path": "registry/react/icon-swap/icon-swap.css",
+          "type": "registry:ui",
+          "target": "components/nepui/icon-swap/icon-swap.css"
+        },
+        {
+          "path": "registry/react/icon-swap/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/icon-swap/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "aurora",
+      "type": "registry:ui",
+      "title": "Aurora",
+      "description": "A slow, soft, animated glow behind your hero or any section, with named gradients, in plain CSS.",
+      "files": [
+        {
+          "path": "registry/react/aurora/aurora.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/aurora/aurora.tsx"
+        },
+        {
+          "path": "registry/react/aurora/aurora.css",
+          "type": "registry:ui",
+          "target": "components/nepui/aurora/aurora.css"
+        },
+        {
+          "path": "registry/react/aurora/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/aurora/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "gradient-text",
+      "type": "registry:ui",
+      "title": "Gradient Text",
+      "description": "Text filled with a gradient that flows, with named gradients and a neon glow, in plain CSS.",
+      "files": [
+        {
+          "path": "registry/react/gradient-text/gradient-text.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/gradient-text/gradient-text.tsx"
+        },
+        {
+          "path": "registry/react/gradient-text/gradient-text.css",
+          "type": "registry:ui",
+          "target": "components/nepui/gradient-text/gradient-text.css"
+        },
+        {
+          "path": "registry/react/gradient-text/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/gradient-text/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "group",
+      "type": "registry:ui",
+      "title": "Group",
+      "description": "A container that visually groups a series of controls.",
+      "files": [
+        {
+          "path": "registry/react/group/group.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/group/group.tsx"
+        },
+        {
+          "path": "registry/react/group/group.css",
+          "type": "registry:ui",
+          "target": "components/nepui/group/group.css"
+        },
+        {
+          "path": "registry/react/group/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/group/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "list",
+      "type": "registry:ui",
+      "title": "List",
+      "description": "A list of items built on ul and ol, with every marker type, nesting, keyboard navigation, collapsible branches and selection.",
+      "files": [
+        {
+          "path": "registry/react/list/list.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/list/list.tsx"
+        },
+        {
+          "path": "registry/react/list/list.css",
+          "type": "registry:ui",
+          "target": "components/nepui/list/list.css"
+        },
+        {
+          "path": "registry/react/list/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/list/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "rating",
+      "type": "registry:ui",
+      "title": "Rating",
+      "description": "Pick a score from a row of stars, whole or half, with a preview as the pointer moves.",
+      "files": [
+        {
+          "path": "registry/react/rating/rating.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/rating/rating.tsx"
+        },
+        {
+          "path": "registry/react/rating/rating.css",
+          "type": "registry:ui",
+          "target": "components/nepui/rating/rating.css"
+        },
+        {
+          "path": "registry/react/rating/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/rating/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "color-picker",
+      "type": "registry:ui",
+      "title": "Color Picker",
+      "description": "Pick a color from an area and sliders, type it in any format, or choose a preset, in HSV, HSL, sRGB or OKLCH.",
+      "files": [
+        {
+          "path": "registry/react/color-picker/color-picker.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/color-picker/color-picker.tsx"
+        },
+        {
+          "path": "registry/react/color-picker/color-picker.css",
+          "type": "registry:ui",
+          "target": "components/nepui/color-picker/color-picker.css"
+        },
+        {
+          "path": "registry/react/color-picker/color.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/color-picker/color.ts"
+        },
+        {
+          "path": "registry/react/color-picker/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/color-picker/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "timeline",
+      "type": "registry:ui",
+      "title": "Timeline",
+      "description": "Shows events in order, such as an activity feed, a changelog or an order's progress.",
+      "files": [
+        {
+          "path": "registry/react/timeline/timeline.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/timeline/timeline.tsx"
+        },
+        {
+          "path": "registry/react/timeline/timeline.css",
+          "type": "registry:ui",
+          "target": "components/nepui/timeline/timeline.css"
+        },
+        {
+          "path": "registry/react/timeline/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/timeline/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "date-picker",
+      "type": "registry:ui",
+      "title": "Date Picker",
+      "description": "A date picker component with range and presets.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/react/button.json",
+        "https://nepui.vercel.app/r/react/calendar.json",
+        "https://nepui.vercel.app/r/react/popover.json"
+      ],
+      "files": [
+        {
+          "path": "registry/react/date-picker/date-picker.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/date-picker/date-picker.tsx"
+        },
+        {
+          "path": "registry/react/date-picker/date-picker.css",
+          "type": "registry:ui",
+          "target": "components/nepui/date-picker/date-picker.css"
+        },
+        {
+          "path": "registry/react/date-picker/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/date-picker/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "command",
+      "type": "registry:ui",
+      "title": "Date Picker",
+      "description": "Command menu for search and quick actions.",
+      "dependencies": ["cmdk"],
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/react/input-group.json"
+      ],
+      "files": [
+        {
+          "path": "registry/react/command/command.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/command/command.tsx"
+        },
+        {
+          "path": "registry/react/command/command.css",
+          "type": "registry:ui",
+          "target": "components/nepui/command/command.css"
+        },
+        {
+          "path": "registry/react/command/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/command/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "trace",
+      "type": "registry:ui",
+      "title": "Trace",
+      "description": "The building block for reasoning, tool calls, sources and more.",
+      "files": [
+        {
+          "path": "registry/react/trace/trace.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/trace/trace.tsx"
+        },
+        {
+          "path": "registry/react/trace/trace.css",
+          "type": "registry:ui",
+          "target": "components/nepui/trace/trace.css"
+        },
+        {
+          "path": "registry/react/trace/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/trace/index.ts"
+        }
+      ]
     }
   ]
 }

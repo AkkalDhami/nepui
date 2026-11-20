@@ -217,7 +217,7 @@
     [data-align="block-start"],
     [data-align="block-end"]
   ):has(> button) {
-  margin-inline-start: -0.2rem;
+  margin-inline-start: -0.4rem;
 }
 
 :is(.np-input-group-addon, [data-np-input-group-addon]):not(
@@ -249,7 +249,7 @@
     [data-np-input-group-addon]
   )[data-align="inline-end"]
 ):has(> button) {
-  margin-inline-end: -0.2rem;
+  margin-right: -0.325rem;
 }
 
 :is(
@@ -259,7 +259,7 @@
     [data-np-input-group-addon]
   )[data-align="inline-end"]
 ):has(> kbd) {
-  margin-inline-end: -0.15rem;
+  margin-right: -0.15rem;
 }
 
 /* block-start */
