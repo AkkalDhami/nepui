@@ -1,0 +1,226 @@
+---
+title: Command
+description: Command menu for search and quick actions.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="command-demo"
+/>
+
+---
+
+## About
+
+The `<Command />` component uses the [`cmdk`](https://github.com/dip/cmdk) component by [Dip](https://www.dip.org/). It does the filtering, ranking and keyboard navigation. `CommandDialog` uses the Base UI Dialog, so the component needs no other nepui component.
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/command.json"
+      nepui="npx nepui@latest add command"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install cmdk @base-ui/react cn" className="mt-6"/>
+
+      <Step>Install the required nepui dependencies:</Step>
+      <PackageManagerTabs command="npx nepui@latest add input-group" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="command"
+        title="components/nepui/command/command.css"
+        fileTarget="components/nepui/command/command.css"
+      />
+      <ComponentSource
+        target="react"
+        name="command"
+        title="components/nepui/command/command.tsx"
+        fileTarget="components/nepui/command/command.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="command"
+        title="components/nepui/command/index.ts"
+        fileTarget="components/nepui/command/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import {
+  Command,
+  CommandDialog,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator,
+  CommandShortcut,
+} from "@/components/nepui/command"
+```
+
+```tsx
+<Command style={{ maxWidth: "24rem", height: "auto" }}>
+  <CommandInput placeholder="Type a command or search..." />
+  <CommandList>
+    <CommandEmpty>No results found.</CommandEmpty>
+    <CommandGroup heading="Suggestions">
+      <CommandItem>Calendar</CommandItem>
+      <CommandItem>Search Emoji</CommandItem>
+      <CommandItem>Calculator</CommandItem>
+    </CommandGroup>
+    <CommandSeparator />
+    <CommandGroup heading="Settings">
+      <CommandItem>Profile</CommandItem>
+      <CommandItem>Billing</CommandItem>
+      <CommandItem>Settings</CommandItem>
+    </CommandGroup>
+  </CommandList>
+</Command>
+```
+
+`Command` fills its parent (`height: 100%`). Give it a `height` and a border when you use it inline, or put it in a `CommandDialog`.
+
+---
+
+## Composition
+
+Use the following composition to build a `Command`:
+
+```text
+Command
+├── CommandInput
+└── CommandList
+    ├── CommandEmpty
+    ├── CommandGroup
+    │   ├── CommandItem
+    │   └── CommandItem
+    ├── CommandSeparator
+    └── CommandGroup
+        ├── CommandItem
+        └── CommandItem
+```
+
+For a command palette, wrap the `Command` in a `CommandDialog`.
+
+---
+
+## Basic
+
+A simple command menu in a dialog. Open it with the button, or with <kbd>⌘</kbd> or <kbd>Ctrl</kbd> + <kbd>J</kbd>, which these examples listen for.
+
+<ComponentPreview
+  name="command-basic"
+/>
+
+Control the dialog with `open` and `onOpenChange`. The dialog needs a title and a description for screen readers, they default to "Command Palette" and "Search for a command to run...". Set `title` and `description` to translate them.
+
+---
+
+## Shortcuts
+
+Use `CommandShortcut` to show a keyboard shortcut at the end of an item. It is only a label, wire the shortcut yourself.
+
+<ComponentPreview
+  name="command-shortcuts"
+/>
+
+---
+
+## Groups
+
+Use `CommandGroup` with a `heading` to group items, and `CommandSeparator` between groups. Icons inside an item are sized for you. `keywords` adds words the search matches, and `disabled` makes an item inert.
+
+<ComponentPreview
+  name="command-groups"
+/>
+
+---
+
+## Scrollable
+
+The list scrolls when it has more items than fit. It keeps the highlighted item in view.
+
+<ComponentPreview
+  name="command-scrollable"
+/>
+
+---
+
+## API Reference
+
+See the [cmdk](https://github.com/dip/cmdk) documentation for more information. The tables list the props you will use most.
+
+### Command
+
+| Prop            | Type                                          | Default |
+| --------------- | --------------------------------------------- | ------- |
+| `value`         | `string`                                      | -       |
+| `onValueChange` | `(value: string) => void`                     | -       |
+| `filter`        | `(value: string, search: string, keywords?: string[]) => number` | - |
+| `shouldFilter`  | `boolean`                                     | `true`  |
+| `loop`          | `boolean`                                     | `false` |
+| `label`         | `string`                                      | -       |
+| `className`     | `string`                                      | -       |
+
+### CommandDialog
+
+Shows a command in a dialog. Built on the Base UI Dialog.
+
+| Prop           | Type                       | Default                              |
+| -------------- | -------------------------- | ------------------------------------ |
+| `open`         | `boolean`                  | -                                    |
+| `onOpenChange` | `(open: boolean) => void`  | -                                    |
+| `title`        | `string`                   | `"Command Palette"`                  |
+| `description`  | `string`                   | `"Search for a command to run..."`   |
+| `className`    | `string`                   | -                                    |
+
+### CommandInput
+
+| Prop          | Type     | Default |
+| ------------- | -------- | ------- |
+| `placeholder` | `string` | -       |
+| `className`   | `string` | -       |
+
+### CommandGroup
+
+| Prop        | Type        | Default |
+| ----------- | ----------- | ------- |
+| `heading`   | `ReactNode` | -       |
+| `className` | `string`    | -       |
+
+### CommandItem
+
+| Prop        | Type                        | Default |
+| ----------- | --------------------------- | ------- |
+| `value`     | `string`                    | -       |
+| `keywords`  | `string[]`                  | -       |
+| `disabled`  | `boolean`                   | `false` |
+| `onSelect`  | `(value: string) => void`   | -       |
+| `className` | `string`                    | -       |
+
+Set `data-checked="true"` on an item to show a check mark.
+
+### Other parts
+
+`CommandList`, `CommandEmpty`, `CommandSeparator` and `CommandShortcut` accept `className` and pass the rest to the matching element.

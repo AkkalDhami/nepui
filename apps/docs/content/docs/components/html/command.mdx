@@ -1,0 +1,265 @@
+---
+title: Command
+description: Command menu for search and quick actions.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  target="html"
+  name="command-demo"
+  scripts={["/command/command.js"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add command"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="command"
+        title="styles/command.css"
+        fileTarget="styles/command.css"
+      />
+      <ComponentSource
+        target="html"
+        name="command"
+        title="javascripts/command.js"
+        fileTarget="javascripts/command.js"
+      />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```html
+<link rel="stylesheet" href="./styles/command.css" />
+
+<script src="./javascripts/command.js" defer></script>
+```
+
+```html
+<div class="np-command" style="max-width: 24rem; height: auto; border: 1px solid var(--np-border)">
+  <div class="np-command-input-wrapper">
+    <input
+      class="np-command-input"
+      placeholder="Type a command or search..."
+      aria-label="Search commands"
+    />
+  </div>
+  <div class="np-command-list">
+    <div class="np-command-empty">No results found.</div>
+    <div class="np-command-group">
+      <div class="np-command-group-heading">Suggestions</div>
+      <div class="np-command-item">Calendar</div>
+      <div class="np-command-item">Search Emoji</div>
+      <div class="np-command-item">Calculator</div>
+    </div>
+  </div>
+</div>
+```
+
+Or use the data attributes instead of the classes: `data-np-command`, `data-np-command-input-wrapper`, `data-np-command-input`, `data-np-command-list`, `data-np-command-empty`, `data-np-command-group`, `data-np-command-group-heading`, `data-np-command-item`, `data-np-command-shortcut`, `data-np-command-separator`.
+
+`np-command` fills its parent (`height: 100%`), so give it a `height` and a border when you use it inline, or put it in a dialog. The input needs an accessible name, use `aria-label` or a `<label>`. The search icon is drawn by the stylesheet.
+
+#### What the script adds
+
+You do not write the ARIA. For every command the script sets `role="combobox"`, `aria-controls`, `aria-activedescendant`, `role="listbox"`, `role="option"` with ids, `role="group"` with `aria-labelledby`, and the highlight. The first item is highlighted on load, as in cmdk.
+
+Search ignores case and accents, ranks the best matches first (an exact or prefix match, then the start of a word, then anywhere, then letters in order), and restores your order when the search is cleared. Groups with no matches and the separators hide while you search.
+
+---
+
+## Composition
+
+```text
+np-command
+├── np-command-input-wrapper
+│   └── np-command-input
+└── np-command-list
+    ├── np-command-empty (when there are no results)
+    └── np-command-group
+        ├── np-command-group-heading
+        ├── np-command-item
+        └── np-command-item
+```
+
+---
+
+## Basic
+
+A simple command menu in a dialog. The dialog is a native `<dialog>`, so it traps focus and closes on `Escape` with no extra code.
+
+```html
+<button type="button" data-command-open="palette">Open Menu</button>
+
+<dialog class="np-command-dialog" id="palette" aria-label="Command Palette" data-shortcut="j">
+  <div class="np-command">
+    ...
+  </div>
+</dialog>
+```
+
+`data-command-open` on any element opens the dialog with that id. `data-shortcut="j"` makes <kbd>Ctrl</kbd> or <kbd>⌘</kbd> + <kbd>J</kbd> toggle it. Use one dialog per shortcut. The dialog needs a name, so set `aria-label`. The input is focused on open, the search is cleared on close, a click on the backdrop closes it, and so does running an item.
+
+<ComponentPreview
+  target="html"
+  name="command-basic"
+  styles={["/button/button.css"]}
+  scripts={["/command/command.js"]}
+/>
+
+---
+
+## Shortcuts
+
+Use `np-command-shortcut` to show a keyboard shortcut at the end of an item. It is only a label, wire the shortcut yourself.
+
+<ComponentPreview
+  target="html"
+  name="command-shortcuts"
+  styles={["/button/button.css"]}
+  scripts={["/command/command.js"]}
+/>
+
+---
+
+## Groups
+
+Use `np-command-group` with an `np-command-group-heading`, and `np-command-separator` between groups. Icons inside an item are sized for you. `data-keywords` adds words the search matches (try "happy"), and `aria-disabled="true"` makes an item inert.
+
+<ComponentPreview
+  target="html"
+  name="command-groups"
+  styles={["/button/button.css"]}
+  scripts={["/command/command.js"]}
+/>
+
+---
+
+## Scrollable
+
+The list scrolls when it has more items than fit, and keeps the highlighted item in view.
+
+<ComponentPreview
+  target="html"
+  name="command-scrollable"
+  styles={["/button/button.css"]}
+  scripts={["/command/command.js"]}
+/>
+
+---
+
+## Links and checked items
+
+An item can be an `<a href>`, and running it follows the link. `data-checked="true"` shows a check mark, unless the item has a shortcut. Add `data-loop` to the command to wrap the arrow keys around the ends.
+
+```html
+<a class="np-command-item" href="/docs" data-keywords="documentation guides">Docs</a>
+<div class="np-command-item" data-checked="true">Compact</div>
+```
+
+---
+
+## Script reference
+
+### Attributes
+
+On the command:
+
+| Attribute        | Description                                                  |
+| ---------------- | ------------------------------------------------------------ |
+| `data-no-filter` | Do not filter or reorder. Use it when you filter the items yourself. |
+| `data-loop`      | Wrap from the last item to the first, and back.              |
+
+On an item:
+
+| Attribute        | Description                                          |
+| ---------------- | ---------------------------------------------------- |
+| `data-value`     | The value in events. Defaults to the item text.      |
+| `data-keywords`  | Extra words the search matches.                      |
+| `data-keep-open` | Do not close the dialog when this item runs.         |
+| `data-checked="true"` | Show a check mark.                              |
+| `aria-disabled="true"` | Disable the item. Also `data-disabled="true"`. |
+
+On the dialog:
+
+| Attribute       | Description                                                  |
+| --------------- | ------------------------------------------------------------ |
+| `data-shortcut` | A key. <kbd>Ctrl</kbd> or <kbd>⌘</kbd> + the key toggles the dialog. |
+
+### Event
+
+The command fires `np-command-select` (it bubbles) when an item runs, by `Enter` or a click.
+
+```js
+document.addEventListener("np-command-select", (event) => {
+  const { item, value } = event.detail
+  // item: the element, value: its data-value or text
+})
+```
+
+### Keyboard
+
+| Key                              | Action                          |
+| -------------------------------- | ------------------------------- |
+| `ArrowDown` / `Ctrl+N` / `Ctrl+J` | Next item.                     |
+| `ArrowUp` / `Ctrl+P` / `Ctrl+K`  | Previous item.                  |
+| `Home` / `End`                   | First or last item.             |
+| `Enter`                          | Run the highlighted item.       |
+| `Escape`                         | Close the dialog.               |
+
+When a dialog shortcut uses one of the `Ctrl` keys, for example `data-shortcut="j"`, the shortcut wins over that binding inside the dialog.
+
+### API
+
+| Method                              | Description                                       |
+| ----------------------------------- | ------------------------------------------------- |
+| `window.npCommand.init(root)`       | Set up the commands inside `root` (default `document`). Call it for markup added after load. |
+| `window.npCommand.open(dialogOrId)` | Open a command dialog.                            |
+| `window.npCommand.close(dialogOrId)`| Close it.                                         |
+
+---
+
+## Reference
+
+### Parts
+
+| Name            | Data attribute                       | Class alias                  |
+| --------------- | ------------------------------------ | ---------------------------- |
+| Command         | `data-np-command`                    | `np-command`                 |
+| Input wrapper   | `data-np-command-input-wrapper`      | `np-command-input-wrapper`   |
+| Input           | `data-np-command-input`              | `np-command-input`           |
+| List            | `data-np-command-list`               | `np-command-list`            |
+| Empty           | `data-np-command-empty`              | `np-command-empty`           |
+| Group           | `data-np-command-group`              | `np-command-group`           |
+| Group heading   | `data-np-command-group-heading`      | `np-command-group-heading`   |
+| Item            | `data-np-command-item`               | `np-command-item`            |
+| Shortcut        | `data-np-command-shortcut`           | `np-command-shortcut`        |
+| Separator       | `data-np-command-separator`          | `np-command-separator`       |
+| Dialog          | -                                    | `np-command-dialog` (on `<dialog>`) |
+
+### States
+
+| State       | Selector                                       |
+| ----------- | ---------------------------------------------- |
+| Highlighted | `[data-selected="true"]` on an item            |
+| Checked     | `[data-checked="true"]` on an item             |
+| Disabled    | `[data-disabled="true"]`, `[aria-disabled="true"]` |
