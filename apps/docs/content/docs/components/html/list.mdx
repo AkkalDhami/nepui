@@ -1,0 +1,413 @@
+---
+title: List
+description: A list of items built on ul and ol, with every marker type, nesting, keyboard navigation, collapsible branches and selection.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://github.com/akkaldhami.png
+---
+
+<ComponentPreview
+  target="html"
+  name="list-demo"
+  scripts={["/list/list.js"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add list"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="list"
+        title="styles/list.css"
+        fileTarget="styles/list.css"
+      />
+      <ComponentSource
+        target="html"
+        name="list"
+        title="javascripts/list.js"
+        fileTarget="javascripts/list.js"
+      />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+`list.js` is optional. Plain lists, markers, nesting and variants are pure CSS. Load the script only for keyboard navigation, collapsible branches and selection.
+
+---
+
+## Usage
+
+```html
+<link rel="stylesheet" href="./styles/list.css" />
+
+<script src="./javascripts/list.js" defer></script>
+```
+
+```html
+<ul class="np-list" aria-label="Launch checklist">
+  <li>Write the release notes</li>
+  <li>Tag the version in Git</li>
+  <li>Publish the package</li>
+</ul>
+```
+
+Or with the data attribute:
+
+```html
+<ul data-np-list aria-label="Launch checklist">
+  <li>Write the release notes</li>
+  <li>Tag the version in Git</li>
+  <li>Publish the package</li>
+</ul>
+```
+
+Every nested `ul` or `ol` needs the `np-list` class (or `data-np-list`) too. That gives it its own marker, indentation and options.
+
+---
+
+## Composition
+
+```text
+ul.np-list
+└── li
+    ├── item label
+    └── ul.np-list
+        └── li
+```
+
+---
+
+## Markers
+
+Without a marker class, nested lists cycle by depth: disc, circle, square for `ul` and decimal, lower-alpha, lower-roman for `ol`.
+
+<ComponentPreview
+  target="html"
+  name="list-markers"
+  scripts={["/list/list.js"]}
+/>
+
+| Name | Data attribute | Class alias |
+| --- | --- | --- |
+| Disc | `data-marker="disc"` | `np-list-disc` |
+| Circle | `data-marker="circle"` | `np-list-circle` |
+| Square | `data-marker="square"` | `np-list-square` |
+| Decimal | `data-marker="decimal"` | `np-list-decimal` |
+| Decimal with leading zero | `data-marker="decimal-leading-zero"` | `np-list-decimal-leading-zero` |
+| Lower alpha | `data-marker="lower-alpha"` | `np-list-lower-alpha` |
+| Upper alpha | `data-marker="upper-alpha"` | `np-list-upper-alpha` |
+| Lower roman | `data-marker="lower-roman"` | `np-list-lower-roman` |
+| Upper roman | `data-marker="upper-roman"` | `np-list-upper-roman` |
+| Lower greek | `data-marker="lower-greek"` | `np-list-lower-greek` |
+| Outline (1., 1.1., 1.1.1.) | `data-marker="outline"` | `np-list-outline` |
+| Dash | `data-marker="dash"` | `np-list-dash` |
+| Check | `data-marker="check"` | `np-list-check` |
+| Arrow | `data-marker="arrow"` | `np-list-arrow` |
+| None | `data-marker="none"` | `np-list-none` |
+
+Any CSS string works as a custom marker through the `--np-list-marker` variable:
+
+```html
+<ul class="np-list" style="--np-list-marker: '★  '">
+```
+
+---
+
+## Ordered
+
+Use an `ol`. Native `start` and `reversed` work as usual.
+
+<ComponentPreview
+  target="html"
+  name="list-ordered"
+  scripts={["/list/list.js"]}
+/>
+
+---
+
+## Nested
+
+Nested lists get their own marker by depth and keep the indentation. `np-list-outline` numbers every level (1., 1.1., 1.1.1.) and `np-list-guides` draws a guide line beside each nested list.
+
+<ComponentPreview
+  target="html"
+  name="list-nested"
+  scripts={["/list/list.js"]}
+/>
+
+| Name | Data attribute | Class alias |
+| --- | --- | --- |
+| Guide lines | `data-guides` | `np-list-guides` |
+| Markers inside the item box | `data-inside` | `np-list-inside` |
+
+---
+
+## Variants
+
+<ComponentPreview
+  target="html"
+  name="list-variants"
+  scripts={["/list/list.js"]}
+/>
+
+| Name | Data attribute | Class alias |
+| --- | --- | --- |
+| Default | - | `np-list` |
+| Plain | `data-variant="plain"` | `np-list-plain` |
+| Divided | `data-variant="divided"` | `np-list-divided` |
+| Bordered | `data-variant="bordered"` | `np-list-bordered` |
+
+---
+
+## Sizes
+
+<ComponentPreview
+  target="html"
+  name="list-sizes"
+  scripts={["/list/list.js"]}
+/>
+
+| Name | Data attribute | Class alias |
+| --- | --- | --- |
+| Small | `data-size="sm"` | `np-list-sm` |
+| Default | - | `np-list` |
+| Large | `data-size="lg"` | `np-list-lg` |
+
+---
+
+## Horizontal
+
+<ComponentPreview
+  target="html"
+  name="list-horizontal"
+  scripts={["/list/list.js"]}
+/>
+
+| Name | Data attribute | Class alias |
+| --- | --- | --- |
+| Vertical | - | `np-list` |
+| Horizontal | `data-orientation="horizontal"` | `np-list-horizontal` |
+
+---
+
+## Collapsible
+
+Load `list.js`, then add `data-collapsible` to the root list. The script wraps each item label, adds a toggle button to every item that has a nested list, and wires `aria-expanded` and `aria-controls`. Add `data-collapsed` to an item to start it closed.
+
+<ComponentPreview
+  target="html"
+  name="list-collapsible"
+  styles={["/button/button.css"]}
+  scripts={["/list/list.js"]}
+/>
+
+The script also exposes a small API:
+
+```js
+const list = NepuiList.get(document.querySelector("#files"))
+
+list.expandAll()
+list.collapseAll()
+list.toggle(item)
+list.focus(item)
+```
+
+Events bubble from the root list:
+
+```js
+list.root.addEventListener("np-list-toggle", (event) => {
+  console.log(event.detail.item, event.detail.expanded)
+})
+```
+
+`NepuiList.init()` runs on page load. Call `NepuiList.init(container)` after you insert lists into the page later.
+
+---
+
+## Keyboard navigation
+
+Add `data-navigation` to the root list (it needs `list.js`). The list becomes a single tab stop and arrow keys move focus between items. Add `data-loop` to wrap around at either end.
+
+| Key | Action |
+| --- | --- |
+| `ArrowDown` / `ArrowUp` | Move to the next or previous visible item |
+| `ArrowRight` | Expand a collapsed branch, or move to its first child |
+| `ArrowLeft` | Collapse an expanded branch, or move to the parent |
+| `Home` / `End` | Move to the first or last visible item |
+| `Enter` / `Space` | Toggle a branch, or select the item when selection is on |
+| `*` | Expand every branch at the current level |
+| Letters | Jump to the next item that starts with the typed text |
+| `Shift` + `ArrowDown` / `ArrowUp` | Extend the selection (`data-selection="multiple"`) |
+| `Ctrl` / `Cmd` + `A` | Select every visible item (`data-selection="multiple"`) |
+
+---
+
+## Selection
+
+Add `data-selection="single"` or `"multiple"` to the root list. The script sets `role="listbox"` on the list and `role="option"` and `aria-selected` on each item. Give items a `data-value`, and add `data-selected` to preselect one. Selection is for flat lists.
+
+<ComponentPreview
+  target="html"
+  name="list-selection"
+  scripts={["/list/list.js"]}
+/>
+
+```js
+list.root.addEventListener("np-list-change", (event) => {
+  console.log(event.detail.value)
+})
+```
+
+---
+
+## Accessibility
+
+- Plain lists keep native `ul`, `ol` and `li` semantics. Give a list an `aria-label` when it is not introduced by a heading.
+- With `data-navigation`, items use a roving `tabindex`, so the list is one tab stop.
+- Each toggle is a real `button` with `aria-expanded`, `aria-controls` and a name taken from the item text. It is removed from the tab order when navigation is on, and arrow keys do the same job.
+- Focus rings use `:focus-visible`, and forced-colors mode gets an outline.
+- Toggle motion is removed under `prefers-reduced-motion`.
+- Collapsed branches use `display: none`, so they leave the accessibility tree.
+- CSS needs `:has()`, `:is()` and `color-mix()`. All three are supported in current browsers.
+
+---
+
+---
+
+## Reference
+
+### Parts
+
+| Part | Class | Data attribute |
+| --- | --- | --- |
+| List (`ul` or `ol`) | `np-list` | `data-np-list` |
+| Item (optional, any direct `li` is styled already) | `np-list-item` | `data-np-list-item` |
+| Label (wraps the text of an item that has a nested list) | `np-list-label` | `data-np-list-label` |
+| Toggle (button inside the label) | `np-list-toggle` | `data-np-list-toggle` |
+
+`list.js` adds the label, the toggle and an inner `np-list-text` span for you, so you rarely write them by hand. Every nested `ul` or `ol` needs `np-list` (or `data-np-list`) too.
+
+### Marker
+
+| Name | Data attribute | Class alias |
+| --- | --- | --- |
+| Auto (cycles by depth) | - | `np-list` |
+| Disc | `data-marker="disc"` | `np-list-disc` |
+| Circle | `data-marker="circle"` | `np-list-circle` |
+| Square | `data-marker="square"` | `np-list-square` |
+| Decimal | `data-marker="decimal"` | `np-list-decimal` |
+| Decimal with leading zero | `data-marker="decimal-leading-zero"` | `np-list-decimal-leading-zero` |
+| Lower alpha | `data-marker="lower-alpha"` | `np-list-lower-alpha` |
+| Upper alpha | `data-marker="upper-alpha"` | `np-list-upper-alpha` |
+| Lower roman | `data-marker="lower-roman"` | `np-list-lower-roman` |
+| Upper roman | `data-marker="upper-roman"` | `np-list-upper-roman` |
+| Lower greek | `data-marker="lower-greek"` | `np-list-lower-greek` |
+| Outline (1., 1.1., 1.1.1.) | `data-marker="outline"` | `np-list-outline` |
+| Dash | `data-marker="dash"` | `np-list-dash` |
+| Check | `data-marker="check"` | `np-list-check` |
+| Arrow | `data-marker="arrow"` | `np-list-arrow` |
+| None | `data-marker="none"` | `np-list-none` |
+
+With no marker set, a list cycles by depth: disc, circle, square for `ul` and decimal, lower-alpha, lower-roman for `ol`. A marker applies to that list only. Nested lists go back to the depth cycle unless they set their own. The `outline` marker is the exception: it numbers every nested level.
+
+### Variant
+
+| Name | Data attribute | Class alias |
+| --- | --- | --- |
+| Default | - | `np-list` |
+| Plain | `data-variant="plain"` | `np-list-plain` |
+| Divided | `data-variant="divided"` | `np-list-divided` |
+| Bordered | `data-variant="bordered"` | `np-list-bordered` |
+
+### Size
+
+| Name | Data attribute | Class alias |
+| --- | --- | --- |
+| Small | `data-size="sm"` | `np-list-sm` |
+| Default | - | `np-list` |
+| Large | `data-size="lg"` | `np-list-lg` |
+
+### Orientation
+
+| Name | Data attribute | Class alias |
+| --- | --- | --- |
+| Vertical | - | `np-list` |
+| Horizontal | `data-orientation="horizontal"` | `np-list-horizontal` |
+
+### Features
+
+| Name | Data attribute | Class alias |
+| --- | --- | --- |
+| Guide lines beside nested lists | `data-guides` | `np-list-guides` |
+| Markers inside the item box | `data-inside` | `np-list-inside` |
+
+### Behaviour attributes
+
+These are read by `list.js` and do nothing without it. Set them on the root list unless noted.
+
+| Attribute | Values | Description |
+| --- | --- | --- |
+| `data-navigation` | boolean | Roving tabindex and arrow-key navigation. |
+| `data-loop` | boolean | Wrap from the last item to the first and back. |
+| `data-collapsible` | boolean | Add a toggle to every item that has a nested list. |
+| `data-selection` | `single` \| `multiple` | Turn the list into a listbox. Flat lists only. |
+| `data-collapsed` | boolean (on `li`) | Start the item's nested list closed. The script keeps it in sync. |
+| `data-selected` | boolean (on `li`) | Preselect the item. The script keeps it in sync. |
+| `data-disabled` or `aria-disabled="true"` | (on `li`) | Skip the item in navigation and selection. |
+| `data-value` | string (on `li`) | Value reported on selection. Defaults to the item text. |
+
+### Attributes set by the script
+
+| Attribute | On | When |
+| --- | --- | --- |
+| `role="listbox"`, `aria-multiselectable` | root list | `data-selection` is set. |
+| `role="option"`, `aria-selected` | `li` | `data-selection` is set. |
+| `tabindex="0"` or `"-1"` | `li` | `data-navigation` is set (roving tabindex). |
+| `aria-expanded`, `aria-controls`, `aria-labelledby` | toggle | `data-collapsible` is set. |
+| `tabindex="-1"` | toggle | `data-navigation` is also set. |
+| `data-collapsible` | nested lists | Copied from the root so leaf items line up with items that have a toggle. |
+
+### Script
+
+`window.NepuiList`
+
+| Method | Description |
+| --- | --- |
+| `init(scope?)` | Enhance every top-level list with `data-navigation`, `data-collapsible` or `data-selection` inside `scope` (default `document`). Runs on page load. |
+| `create(list)` | Enhance one list and return its instance. |
+| `get(list)` | Return the instance of an enhanced list, or `null`. |
+
+Instance
+
+| Member | Description |
+| --- | --- |
+| `root` | The list element. |
+| `value` | Array of selected item values. |
+| `expand(item)` / `collapse(item)` / `toggle(item)` | Open, close or flip one item's nested list. |
+| `expandAll()` / `collapseAll()` | Open or close every branch. |
+| `focus(item)` | Make the item the tab stop and focus it. |
+| `select(item)` | Select an item (toggles it in `multiple` mode). |
+| `selectAll()` / `clear()` | Select every visible item, or clear the selection. |
+| `destroy()` | Remove the listeners. Attributes the script added stay in place. |
+
+### Events
+
+Both events bubble from the root list.
+
+| Event | When | `event.detail` |
+| --- | --- | --- |
+| `np-list:toggle` | A branch opens or closes. | `{ item, expanded }` |
+| `np-list:change` | The selection changes. | `{ value }` (array of values) |
