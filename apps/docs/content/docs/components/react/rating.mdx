@@ -1,0 +1,256 @@
+---
+title: Rating
+description: Pick a score from a row of stars, whole or half, with a preview as the pointer moves.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="rating-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/rating.json"
+      nepui="npx nepui@latest add rating"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install class-variance-authority cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="rating"
+        title="components/nepui/rating/rating.css"
+        fileTarget="components/nepui/rating/rating.css"
+      />
+      <ComponentSource
+        target="react"
+        name="rating"
+        title="components/nepui/rating/rating.tsx"
+        fileTarget="components/nepui/rating/rating.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="rating"
+        title="components/nepui/rating/index.ts"
+        fileTarget="components/nepui/rating/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import { Rating, RatingItem } from "@/components/nepui/rating"
+```
+
+```tsx
+<Rating aria-label="Rating" defaultValue={3}>
+  <RatingItem />
+</Rating>
+```
+
+Give the rating an accessible name with `aria-label` or `aria-labelledby`. Without `defaultValue`, no star starts checked and Tab enters on the first star.
+
+Each star is a radio, so the rating is a radio group with one value and one tab stop. Arrow keys move the score and check it. Space checks the focused star, and Enter submits the containing form. The icons are hidden from assistive technology, because every radio already has a name.
+
+---
+
+## Composition
+
+```text
+Rating
+└── RatingItem
+```
+
+`Rating` renders its children once for every star, so place one `RatingItem` inside it. With no children it renders a default star.
+
+---
+
+## Half stars
+
+Set `step={0.5}`. The pointer picks the half it is over, and the arrow keys move by a half.
+
+<ComponentPreview
+  name="rating-half"
+/>
+
+---
+
+## Deselectable
+
+Set `deselectable`. A press on the checked star, or Space on it, clears the score to `null`.
+
+<ComponentPreview
+  name="rating-deselectable"
+/>
+
+---
+
+## Read-only
+
+Set `readOnly` to show a score, such as an average. Any value is shown, including fractional ones like 4.2. The rating becomes one image named by `getValueLabel`.
+
+<ComponentPreview
+  name="rating-read-only"
+/>
+
+---
+
+## Disabled
+
+A disabled rating cannot be focused or changed, and it is not submitted.
+
+<ComponentPreview
+  name="rating-disabled"
+/>
+
+---
+
+## Controlled
+
+Hold the score in state with `value` and `onValueChange`. A controller sets or reads the score from outside.
+
+<ComponentPreview
+  name="rating-controlled"
+/>
+
+---
+
+## Form
+
+Give the rating a `name` to submit it, and `required` to block the form until a score is set. A form reset returns it to `defaultValue`.
+
+<ComponentPreview
+  name="rating-form"
+/>
+
+---
+
+## Stars and labels
+
+Change `max`, wrap the arrow keys with `loop`, and name each star with `getValueLabel`.
+
+<ComponentPreview
+  name="rating-stars-and-labels"
+/>
+
+---
+
+## Sizes
+
+Use `size` for a small, default or large rating.
+
+<ComponentPreview
+  name="rating-sizes"
+/>
+
+---
+
+## Custom icon
+
+Put any icon in `RatingItem`. Colour the filled icons with `--np-rating-color`.
+
+<ComponentPreview
+  name="rating-custom-icon"
+/>
+
+---
+
+## Controller
+
+Create one controller for each rating with `createRatingController()` and pass it as `controller`.
+
+| Method | Description |
+| --- | --- |
+| `getValue()` | Returns the score, or `null`. |
+| `setValue(value, details?)` | Sets the score as a user would. Returns `false` if the change is canceled. Ignored when disabled or read-only. |
+| `focus()` | Moves focus to the checked star, or to the first star. |
+
+---
+
+## Events
+
+`onValueChange(value, details)` is called when a user, a form reset or the controller asks for a change. `details.reason` is the cause, and `details.cancel()` stops the change.
+
+| Reason | When |
+| --- | --- |
+| `item-press` | A star was chosen with the pointer or the keyboard. |
+| `list-navigation` | The arrow, Home or End keys moved the score. |
+| `reset` | A form reset. |
+| `imperative` | A controller call changed the score. |
+
+---
+
+## Keyboard
+
+| Key | Behavior |
+| --- | --- |
+| Tab | Enters the rating on the checked star, or the first star. |
+| Arrow keys | Move to the next or previous score and check it. They stop at the ends unless `loop` is set. In RTL, Left and Right swap. |
+| Home, End | Go to the lowest score or to `max`. |
+| Space | Checks the focused star. Clears it if it is checked and `deselectable` is set. |
+| Enter | Submits the containing form. |
+
+---
+
+## API Reference
+
+### Rating
+
+Renders a `div` with `role="radiogroup"`, or `role="img"` when read-only.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `number \| null` | |
+| `defaultValue` | `number \| null` | `null` |
+| `onValueChange` | `(value, details) => void` | |
+| `max` | `number` | `5` |
+| `step` | `number` | `1` |
+| `deselectable` | `boolean` | `false` |
+| `disabled` | `boolean` | `false` |
+| `readOnly` | `boolean` | `false` |
+| `required` | `boolean` | `false` |
+| `name` | `string` | |
+| `form` | `string` | |
+| `loop` | `boolean` | `false` |
+| `getValueLabel` | `(value, max) => string` | `"3 out of 5 stars"` |
+| `controller` | `RatingController` | |
+| `size` | `"default" \| "sm" \| "lg"` | `"default"` |
+| `debug` | `boolean` | `false` |
+
+### RatingItem
+
+Renders a `button` with `role="radio"`, or a `span` when the rating is read-only. The children can be an icon or a function that gets the star's state.
+
+| State | Type | Description |
+| --- | --- | --- |
+| `value` | `number \| null` | The current score. |
+| `preview` | `number \| null` | The score previewed under the pointer. |
+| `index` | `number` | The position of the star, starting at 1. |
+| `fill` | `number` | How much of the star the shown score covers, from 0 to 1. |
+| `checked` | `boolean` | Whether the score ends in this star. |
+| `highlighted` | `boolean` | Whether a previewed score reaches this star. |
+| `disabled`, `readOnly`, `required` | `boolean` | The state of the rating. |
+
+---
+
+## Credits
+
+- [Rating](https://ui-sdk.dev/docs/react/components/rating) from UI SDK.

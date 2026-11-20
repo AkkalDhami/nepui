@@ -1,0 +1,263 @@
+---
+title: Rating
+description: Pick a score from a row of stars, whole or half, with a preview as the pointer moves.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  target="html"
+  name="rating-demo"
+  styles={["/button/button.css"]}
+  scripts={["/rating/rating.js"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add rating"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="rating"
+        title="styles/rating.css"
+        fileTarget="styles/rating.css"
+      />
+      <ComponentSource
+        target="html"
+        name="rating"
+        title="javascripts/rating.js"
+        fileTarget="javascripts/rating.js"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the stylesheet, after `tokens.css`, and the script at the end of the page:
+
+```html
+<link rel="stylesheet" href="./styles/rating.css">
+
+<script src="./javascripts/rating.js" defer></script>
+```
+
+```html
+<div class="np-rating" aria-label="Rating" data-value="3"></div>
+```
+
+Or use the data attribute instead of the class: `data-np-rating`.
+
+The script builds the stars inside the element. It makes the rating a radio group, with one tab stop, a live preview under the pointer and the keyboard support below. Give it an accessible name with `aria-label` or `aria-labelledby`. The filled part of each star is clipped by `--np-rating-fill`, so half stars work with any icon.
+
+---
+
+## Composition
+
+```text
+np-rating (the script fills it)
+└── np-rating-item  (a button, role="radio")
+    ├── np-rating-icon
+    └── np-rating-icon np-rating-icon-fill
+```
+
+---
+
+## Half stars
+
+Set `data-step="0.5"`. The pointer picks the half it is over, and the arrow keys move by a half.
+
+<ComponentPreview
+  target="html"
+  name="rating-half"
+  styles={["/button/button.css"]}
+  scripts={["/rating/rating.js"]}
+/>
+
+---
+
+## Deselectable
+
+Add `data-deselectable`. A press on the checked star, or Space on it, clears the score to `null`.
+
+<ComponentPreview
+  target="html"
+  name="rating-deselectable"
+  styles={["/button/button.css"]}
+  scripts={["/rating/rating.js"]}
+/>
+
+---
+
+## Read-only
+
+Add `data-readonly` to show a score, such as an average. Any value is shown, including fractional ones like 4.2. The rating becomes one image named by `data-label`.
+
+<ComponentPreview
+  target="html"
+  name="rating-read-only"
+  styles={["/button/button.css"]}
+  scripts={["/rating/rating.js"]}
+/>
+
+---
+
+## Disabled
+
+A disabled rating cannot be focused or changed, and it is not submitted.
+
+<ComponentPreview
+  target="html"
+  name="rating-disabled"
+  styles={["/button/button.css"]}
+  scripts={["/rating/rating.js"]}
+/>
+
+---
+
+## Controlled
+
+Listen for `np-rating-change`, and set or read the score with `NepuiRating.get(element)`.
+
+<ComponentPreview
+  target="html"
+  name="rating-controlled"
+  styles={["/button/button.css"]}
+  scripts={["/rating/rating.js"]}
+/>
+
+---
+
+## Form
+
+Give the rating a `data-name` to submit it, and `data-required` to block the form until a score is set. A form reset returns it to `data-value`.
+
+<ComponentPreview
+  target="html"
+  name="rating-form"
+  styles={["/button/button.css"]}
+  scripts={["/rating/rating.js"]}
+/>
+
+---
+
+## Stars and labels
+
+Change `data-max`, wrap the arrow keys with `data-loop`, and name each star with `data-label`.
+
+<ComponentPreview
+  target="html"
+  name="rating-stars-and-labels"
+  scripts={["/rating/rating.js"]} 
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Sizes
+
+Add `np-rating-sm` or `np-rating-lg`.
+
+<ComponentPreview
+  target="html"
+  name="rating-sizes"
+  styles={["/button/button.css"]}
+  scripts={["/rating/rating.js"]}
+/>
+
+---
+
+## Custom icon
+
+Put any icon in a `<template>` inside the rating. Colour the filled icons with `--np-rating-color`.
+
+<ComponentPreview
+  target="html"
+  name="rating-custom-icon"
+  styles={["/button/button.css"]}
+  scripts={["/rating/rating.js"]}
+/>
+
+---
+
+## Keyboard
+
+| Key | Behavior |
+| --- | --- |
+| Tab | Enters the rating on the checked star, or the first star. |
+| Arrow keys | Move to the next or previous score and check it. They stop at the ends unless `data-loop` is set. In RTL, Left and Right swap. |
+| Home, End | Go to the lowest score or to the last star. |
+| Space | Checks the focused star. Clears it if it is checked and `data-deselectable` is set. |
+| Enter | Submits the containing form. |
+
+---
+
+## Reference
+
+### Options
+
+Set these on the element.
+
+| Attribute | Description | Default |
+| --- | --- | --- |
+| `data-value` | The initial score. A form reset returns to it. | none |
+| `data-max` | The number of stars. | `5` |
+| `data-step` | The smallest change as a fraction of a star. `0.5` gives half stars. | `1` |
+| `data-deselectable` | A press on the checked star clears the score. | |
+| `data-disabled` | Cannot be focused or changed, and is not submitted. | |
+| `data-readonly` | Shows the score as a labelled image. Any value is shown. | |
+| `data-required` | Blocks form submission until a score is set. | |
+| `data-name` | The form field name. Without it, nothing is submitted. | |
+| `data-form` | The id of the form the rating belongs to. | |
+| `data-loop` | Wraps the arrow keys from the last star to the first. | |
+| `data-label` | The name of a star, and of a read-only rating. Use `{value}` and `{max}`. | `{value} out of {max} stars` |
+
+### Parts
+
+| Class | Attribute | Element |
+| --- | --- | --- |
+| `np-rating` | `data-np-rating` | Root |
+| `np-rating-item` | `data-np-rating-item` | One star. The script creates it. |
+| `np-rating-icon` | `data-np-rating-icon` | One layer of the icon. |
+| `np-rating-icon-fill` | `data-np-rating-icon-fill` | The filled layer, clipped by `--np-rating-fill`. |
+| `np-rating-input` | `data-np-rating-input` | The hidden input that takes part in the form. |
+| `np-rating-sm`, `np-rating-lg` | `data-size="sm"`, `data-size="lg"` | Sizes. |
+
+The script sets `data-filled`, `data-partial`, `data-checked`, `data-highlighted`, `data-disabled` and `data-readonly` on each star, and `data-previewing` on the root.
+
+### Script
+
+```html
+<script src="./javascripts/rating.js" defer></script>
+```
+
+| API | Description |
+| --- | --- |
+| `NepuiRating.init(element)` | Wires one rating. Use it for a rating added after the page loaded. |
+| `NepuiRating.initAll(scope?)` | Wires every rating in the scope, or on the page. |
+| `NepuiRating.get(element)` | Returns `{ getValue, setValue, focus }` for a wired rating. `setValue(value, details?)` returns `false` if the change is canceled, and is ignored when disabled or read-only. |
+| `np-rating-change` | Cancelable event on the element. `event.detail` is `{ value, reason, event }`. Call `preventDefault()` to stop the change. |
+
+The reasons are `item-press`, `list-navigation`, `reset` and `imperative`.
+
+```js
+rating.addEventListener("np-rating-change", (event) => {
+  console.log(event.detail.reason, event.detail.value)
+})
+```
