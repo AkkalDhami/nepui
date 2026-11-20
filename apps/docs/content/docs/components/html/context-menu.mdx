@@ -1,0 +1,247 @@
+---
+title: Context Menu
+description: Displays a menu to the user, such as a set of actions or functions, triggered by a right click or a long press.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="context-menu-demo"
+  target="html"
+  scripts={["/context-menu/context-menu.js"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add context-menu"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="context-menu"
+        title="styles/context-menu.css"
+        fileTarget="styles/context-menu.css"
+      />
+      <Step>Add this script. A context menu opens at the pointer on right click, so it cannot work without JavaScript. Add it once per page.</Step>
+      <ComponentSource
+        target="html"
+        name="context-menu"
+        title="javascripts/context-menu.js"
+        fileTarget="javascripts/context-menu.js"
+      />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the stylesheet, and add the script once near the end of the page:
+
+```html
+<link rel="stylesheet" href="./styles/context-menu.css">
+<script src="./javascripts/context-menu.js" defer></script>
+```
+
+The trigger points to its menu with `aria-controls`. The menu starts hidden, and each item is an element with a menu role and `tabindex="-1"`:
+
+```html
+<div class="np-context-menu-trigger" aria-controls="file-menu">Right click here</div>
+
+<div class="np-context-menu-content" id="file-menu" role="menu" hidden>
+  <div class="np-context-menu-item" role="menuitem" tabindex="-1">Profile</div>
+  <div class="np-context-menu-item" role="menuitem" tabindex="-1">Billing</div>
+  <div class="np-context-menu-item" role="menuitem" tabindex="-1">Team</div>
+</div>
+```
+
+You can use the data attributes instead of classes: `data-np-context-menu-trigger`, `data-np-context-menu-content` and the other hooks in the reference below.
+
+Every item is a plain element, so listen for `click` on it to run your action.
+
+---
+
+## Composition
+
+Use the following composition to build a context menu:
+
+```text
+ContextMenu
+├── ContextMenuTrigger
+└── ContextMenuContent
+    ├── ContextMenuLabel
+    ├── ContextMenuItem
+    ├── ContextMenuGroup
+    │   └── ContextMenuItem
+    ├── ContextMenuCheckboxItem
+    ├── ContextMenuRadioGroup
+    │   └── ContextMenuRadioItem
+    ├── ContextMenuSub
+    │   ├── ContextMenuSubTrigger
+    │   └── ContextMenuSubContent
+    ├── ContextMenuSeparator
+    └── ContextMenuShortcut
+```
+
+---
+
+## Submenu
+
+Use `ContextMenuSub`, `ContextMenuSubTrigger` and `ContextMenuSubContent` to nest a menu.
+
+<ComponentPreview
+  name="context-menu-submenu"
+  target="html"
+  scripts={["/context-menu/context-menu.js"]}
+/>
+
+---
+
+## Shortcuts
+
+Add a `ContextMenuShortcut` to show a keyboard hint at the end of an item. Add `disabled` to an item to disable it.
+
+<ComponentPreview
+  name="context-menu-shortcuts"
+  target="html"
+  scripts={["/context-menu/context-menu.js"]}
+/>
+
+---
+
+## Groups
+
+Use `ContextMenuGroup` with a `ContextMenuLabel` to group items, and `ContextMenuSeparator` between groups.
+
+<ComponentPreview
+  name="context-menu-groups"
+  target="html"
+  scripts={["/context-menu/context-menu.js"]}
+/>
+
+---
+
+## Icons
+
+Put an icon before the text of an item. Icons are sized by the component CSS.
+
+<ComponentPreview
+  name="context-menu-icons"
+  target="html"
+  scripts={["/context-menu/context-menu.js"]}
+/>
+
+---
+
+## Checkboxes
+
+Use `ContextMenuCheckboxItem` for items that toggle. Choosing one does not close the menu.
+
+<ComponentPreview
+  name="context-menu-checkboxes"
+  target="html"
+  scripts={["/context-menu/context-menu.js"]}
+/>
+
+---
+
+## Radio Group
+
+Use `ContextMenuRadioGroup` and `ContextMenuRadioItem` for an exclusive choice.
+
+<ComponentPreview
+  name="context-menu-radio"
+  target="html"
+  scripts={["/context-menu/context-menu.js"]}
+/>
+
+---
+
+## Destructive
+
+Add `np-context-menu-destructive` (or `data-variant="destructive"`) to an item that deletes or removes something.
+
+<ComponentPreview
+  name="context-menu-destructive"
+  target="html"
+  scripts={["/context-menu/context-menu.js"]}
+/>
+
+---
+
+## Sides
+
+Add `data-side="top"` or `data-side="left"` to the menu to place it above or to the left of the pointer. The default places it at the pointer, below and to the right.
+
+<ComponentPreview
+  name="context-menu-sides"
+  target="html"
+  scripts={["/context-menu/context-menu.js"]}
+/>
+
+---
+
+## API Reference
+
+### Parts
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Trigger | `data-np-context-menu-trigger` | `np-context-menu-trigger` |
+| Menu | `data-np-context-menu-content` | `np-context-menu-content` |
+| Item | `data-np-context-menu-item` | `np-context-menu-item` |
+| Checkbox item | `data-np-context-menu-checkbox-item` | `np-context-menu-checkbox-item` |
+| Radio item | `data-np-context-menu-radio-item` | `np-context-menu-radio-item` |
+| Item indicator | `data-np-context-menu-item-indicator` | `np-context-menu-item-indicator` |
+| Label | `data-np-context-menu-label` | `np-context-menu-label` |
+| Separator | `data-np-context-menu-separator` | `np-context-menu-separator` |
+| Shortcut | `data-np-context-menu-shortcut` | `np-context-menu-shortcut` |
+| Submenu wrapper | `data-np-context-menu-sub` | `np-context-menu-sub` |
+| Submenu trigger | `data-np-context-menu-sub-trigger` | `np-context-menu-sub-trigger` |
+| Submenu content | `data-np-context-menu-sub-content` | `np-context-menu-sub-content` |
+| Submenu chevron | `data-np-context-menu-sub-indicator` | `np-context-menu-sub-indicator` |
+
+### Item variants
+
+| Name | Data attribute | Class alias |
+| ---- | -------------- | ----------- |
+| Destructive | `data-variant="destructive"` | `np-context-menu-destructive` |
+| Inset | `data-inset` | `np-context-menu-inset` |
+
+### Roles and states
+
+| Element | Role and state |
+| ------- | -------------- |
+| Menu and submenu content | `role="menu"` and the `hidden` attribute |
+| Item | `role="menuitem"` and `tabindex="-1"` |
+| Checkbox item | `role="menuitemcheckbox"` and `aria-checked` |
+| Radio item | `role="menuitemradio"` and `aria-checked`, inside a `role="group"` |
+| Disabled item | `aria-disabled="true"` or `data-disabled` |
+| Submenu trigger | `aria-haspopup="menu"` and `aria-expanded` |
+
+
+### Script
+
+The script does what a menu needs and CSS cannot:
+
+- Right click on the trigger opens the menu at the pointer. A long press opens it on touch screens.
+- The menu stays inside the window, and flips to the other side of the pointer when it runs out of room.
+- It closes on `Escape`, on a click outside, on scroll, on resize, and when an item is chosen. Checkbox and radio items keep it open.
+- Hovering an item highlights it. Hovering a submenu trigger opens its submenu.
+- Keyboard: `ArrowDown`, `ArrowUp`, `Home` and `End` move between items, `Enter` and `Space` choose, `ArrowRight` opens a submenu, and `ArrowLeft` or `Escape` closes it.
+- Checkbox and radio items toggle `aria-checked`. A radio item unchecks the other radio items in its `role="group"`.
+
+Without the script the menus stay hidden. They are not placed against the viewport edge with collision handling like the [React version](/docs/components/react/context-menu), and there is no type-ahead.
