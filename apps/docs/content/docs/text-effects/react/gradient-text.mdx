@@ -1,0 +1,146 @@
+---
+title: Gradient Text
+description: Text filled with a gradient that flows, with named gradients and a neon glow, in plain CSS.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="gradient-text-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/gradient-text.json"
+      nepui="npx nepui@latest add gradient-text"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="gradient-text"
+        title="components/nepui/gradient-text/gradient-text.css"
+        fileTarget="components/nepui/gradient-text/gradient-text.css"
+      />
+      <ComponentSource
+        target="react"
+        name="gradient-text"
+        title="components/nepui/gradient-text/gradient-text.tsx"
+        fileTarget="components/nepui/gradient-text/gradient-text.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="gradient-text"
+        title="components/nepui/gradient-text/index.ts"
+        fileTarget="components/nepui/gradient-text/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx 
+import { GradientText } from "@/components/nepui/gradient-text"
+```
+
+```tsx 
+<GradientText gradient="ocean">Build faster with nepui</GradientText>
+```
+
+`GradientText` renders a `span`. Use `render` to put the effect on another element, such as a heading:
+
+```tsx 
+<GradientText gradient="ocean" render={<h2 />}>Build faster with nepui</GradientText>
+```
+
+---
+
+## Gradients
+
+Set `gradient` to a name. The names are `aurora`, `sunrise`, `sunset`, `ocean`, `forest`, `fire`, `candy`, `lavender`, `mint`, `peach`, `midnight`, `gold`, `rainbow`, `cyber`, `plasma`, `mono`. Without one, the text uses `sunrise`.
+
+<ComponentPreview
+  name="gradient-text-gradients"
+/>
+
+---
+
+## Neon
+
+Set `neon` for a glow in the color of the gradient. Use `"soft"` or `"strong"` for other strengths, and `flicker` for a flickering tube. Neon reads best on a dark background.
+
+<ComponentPreview
+  name="gradient-text-neon"
+/>
+
+---
+
+## Speed and direction
+
+Set `speed` to `slow` or `fast`, `reverse` to flow the other way, and `animated={false}` for a static gradient.
+
+<ComponentPreview
+  name="gradient-text-speeds"
+/>
+
+---
+
+## Inline
+
+The effect works on a single word inside a sentence.
+
+<ComponentPreview
+  name="gradient-text-inline"
+/>
+
+---
+
+## Your own gradient
+
+Add a rule to your own stylesheet that sets the five stops for a name of your choice, then use that name.
+
+```css
+[data-gradient="brand"] {
+  --np-gradient-text-1: oklch(0.7 0.2 20);
+  --np-gradient-text-2: oklch(0.75 0.18 50);
+  --np-gradient-text-3: oklch(0.8 0.16 90);
+  --np-gradient-text-4: oklch(0.75 0.18 50);
+  --np-gradient-text-5: oklch(0.7 0.2 20);
+}
+```
+
+---
+
+## Accessibility
+
+With `prefers-reduced-motion: reduce` the gradient and the flicker stop, and the text stays visible. The text is real text, so it is read, selected and translated as usual. Keep enough contrast in every stop against your background.
+
+---
+
+## API Reference
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `gradient` | `GradientName` | `"sunrise"` |
+| `speed` | `"slow" \| "default" \| "fast"` | `"default"` |
+| `animated` | `boolean` | `true` |
+| `reverse` | `boolean` | `false` |
+| `neon` | `boolean \| "soft" \| "default" \| "strong"` | `false` |
+| `flicker` | `boolean` | `false` |
