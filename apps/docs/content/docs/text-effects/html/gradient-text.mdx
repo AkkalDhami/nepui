@@ -1,0 +1,155 @@
+---
+title: Gradient Text
+description: Text filled with a gradient that flows, with named gradients and a neon glow, in plain CSS.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  target="html"
+  name="gradient-text-demo"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add gradient-text"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="gradient-text"
+        title="styles/gradient-text.css"
+        fileTarget="styles/gradient-text.css"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the stylesheet, after `tokens.css`. There is no script.
+
+```html 
+<link rel="stylesheet" href="./styles/gradient-text.css">
+```
+
+```html 
+<h2 class="np-gradient-text" data-gradient="ocean">Build faster with nepui</h2>
+```
+
+The class works on any element. It clips the gradient to the glyphs, so put it on the text itself, not on a box that holds other content.
+
+---
+
+## Gradients
+
+Set `data-gradient` to a name. The names are `aurora`, `sunrise`, `sunset`, `ocean`, `forest`, `fire`, `candy`, `lavender`, `mint`, `peach`, `midnight`, `gold`, `rainbow`, `cyber`, `plasma`, `mono`. Without one, the text uses `sunrise`.
+
+<ComponentPreview
+  target="html"
+  name="gradient-text-gradients"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Neon
+
+Add `data-neon` for a glow in the color of the gradient. Use `soft` or `strong` for other strengths, and `data-flicker` for a flickering tube. Neon reads best on a dark background.
+
+<ComponentPreview
+  target="html"
+  name="gradient-text-neon"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Speed and direction
+
+Set `data-speed` to `slow` or `fast`, `data-direction="reverse"` to flow the other way, and `data-animate="false"` for a static gradient.
+
+<ComponentPreview
+  target="html"
+  name="gradient-text-speeds"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Inline
+
+The effect works on a single word inside a sentence.
+
+<ComponentPreview
+  target="html"
+  name="gradient-text-inline"
+  styles={["/button/button.css"]}
+/>
+
+---
+
+## Your own gradient
+
+Add a rule to your own stylesheet that sets the five stops for a name of your choice, then use that name.
+
+```css
+[data-gradient="brand"] {
+  --np-gradient-text-1: oklch(0.7 0.2 20);
+  --np-gradient-text-2: oklch(0.75 0.18 50);
+  --np-gradient-text-3: oklch(0.8 0.16 90);
+  --np-gradient-text-4: oklch(0.75 0.18 50);
+  --np-gradient-text-5: oklch(0.7 0.2 20);
+}
+```
+
+---
+
+## Styling
+
+| Variable | Default |
+| --- | --- |
+| `--np-gradient-text-1` to `--np-gradient-text-5` | The five stops of the gradient. |
+| `--np-gradient-text-angle` | `90deg` |
+| `--np-gradient-text-duration` | `6s` (`12s` slow, `3s` fast) |
+| `--np-gradient-text-ease` | `linear` |
+| `--np-gradient-text-glow` | The middle stop, used by neon. |
+
+The gradient loops back to its first stop, so the flow has no seam.
+
+## Accessibility
+
+With `prefers-reduced-motion: reduce` the gradient and the flicker stop, and the text stays visible. The text is real text, so it is read, selected and translated as usual. Keep enough contrast in every stop against your background.
+
+---
+
+## Reference
+
+| Class | Attribute | Description |
+| --- | --- | --- |
+| `np-gradient-text` | `data-np-gradient-text` | The element that holds the text. |
+
+| Attribute | Values | Default |
+| --- | --- | --- |
+| `data-gradient` | A gradient name | `sunrise` |
+| `data-speed` | `slow`, `fast` | The `6s` loop |
+| `data-direction` | `reverse` | Forward |
+| `data-animate` | `false` | Animated |
+| `data-neon` | empty, `soft`, `default`, `strong` | No glow |
+| `data-flicker` | | Steady |
