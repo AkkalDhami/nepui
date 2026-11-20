@@ -1,0 +1,224 @@
+---
+title: Carousel
+description: A carousel with motion and swipe.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  target="html"
+  name="carousel-demo"
+  styles={["/button/button.css"]}
+  scripts={["/carousel/carousel.js"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add carousel"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the required nepui dependencies:</Step>
+      <PackageManagerTabs command="npx nepui@latest add button" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="carousel"
+        title="styles/carousel.css"
+        fileTarget="styles/carousel.css"
+      />
+      <ComponentSource
+        target="html"
+        name="carousel"
+        title="javascripts/carousel.js"
+        fileTarget="javascripts/carousel.js"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the stylesheets, after `tokens.css` and `button.css`, and the optional script:
+
+```html
+<link rel="stylesheet" href="./styles/button.css">
+<link rel="stylesheet" href="./styles/carousel.css">
+
+<script src="./javascripts/carousel.js" defer></script>
+```
+
+```html
+<div class="np-carousel" role="region" aria-roledescription="carousel" aria-label="Photos">
+  <div class="np-carousel-viewport">
+    <div class="np-carousel-content">
+      <div class="np-carousel-item" role="group" aria-roledescription="slide" aria-label="1 of 3">...</div>
+      <div class="np-carousel-item" role="group" aria-roledescription="slide" aria-label="2 of 3">...</div>
+      <div class="np-carousel-item" role="group" aria-roledescription="slide" aria-label="3 of 3">...</div>
+    </div>
+  </div>
+  <button type="button" class="np-button np-button-outline np-button-icon-sm np-carousel-previous"
+    aria-label="Previous slide"><svg ...></svg></button>
+  <button type="button" class="np-button np-button-outline np-button-icon-sm np-carousel-next"
+    aria-label="Next slide"><svg ...></svg></button>
+</div>
+```
+
+Or use the data attributes instead of classes: `data-np-carousel`, `data-np-carousel-viewport`, `data-np-carousel-content`, `data-np-carousel-item`, `data-np-carousel-previous`, `data-np-carousel-next`, `data-np-carousel-dots`.
+
+The HTML version scrolls natively with CSS scroll-snap, so touch, trackpad and wheel work with no JavaScript. The viewport is the scroller. `carousel.js` only wires the buttons and the arrow keys. 
+
+---
+
+## Composition
+
+```text
+Carousel
+├── CarouselContent
+│   ├── CarouselItem
+│   └── CarouselItem
+├── CarouselPrevious
+└── CarouselNext
+```
+
+---
+
+## Sizes
+
+Set the width of a slide with `--np-carousel-item-basis`, on the carousel. `33.333%` shows three slides. Use a media query to change it by screen size.
+
+<ComponentPreview
+  target="html"
+  name="carousel-sizes"
+  styles={["/button/button.css"]}
+  scripts={["/carousel/carousel.js"]}
+/>
+
+---
+
+## Dots
+
+Add an empty `<div class="np-carousel-dots"></div>` (or `data-np-carousel-dots`) after the buttons. `carousel.js` fills it with one dot per position, jumps to a slide on click, and marks the current dot with `aria-current="true"`. Without the helper the container stays empty.
+
+<ComponentPreview
+  target="html"
+  name="carousel-dots"
+  styles={["/button/button.css"]}
+  scripts={["/carousel/carousel.js"]}
+/>
+
+---
+
+## Spacing
+
+Set the space between slides with `--np-carousel-gap`. The slides get a start padding of the gap and the content a negative start margin, so the slides still fit exactly.
+
+<ComponentPreview
+  target="html"
+  name="carousel-spacing"
+  styles={["/button/button.css"]}
+  scripts={["/carousel/carousel.js"]}
+/>
+
+---
+
+## Orientation
+
+Add `np-carousel-vertical` (or `data-orientation="vertical"`) to the root, and give it a height with `--np-carousel-height`. The buttons move above and below.
+
+<ComponentPreview
+  target="html"
+  name="carousel-orientation"
+  styles={["/button/button.css"]}
+  scripts={["/carousel/carousel.js"]}
+/>
+
+---
+
+## Slide counter
+
+The helper fires `np-carousel-change` on the root, with `detail.index` and `detail.count`.
+
+```js
+root.addEventListener("np-carousel-change", (event) => {
+  console.log(event.detail.index + 1, event.detail.count)
+})
+```
+
+<ComponentPreview
+  target="html"
+  name="carousel-api"
+  styles={["/button/button.css"]}
+  scripts={["/carousel/carousel.js"]}
+/>
+
+---
+
+## Accessibility
+
+- The root is a `region` with `aria-roledescription="carousel"`; give it an `aria-label`. Each slide is a `group` with `aria-roledescription="slide"`.
+- The previous and next buttons have labels and are disabled at the ends.
+- Arrow keys step through the slides when focus is inside the carousel.
+
+---
+
+## Reference
+ 
+### Component
+ 
+Classes and data attributes do exactly the same thing.
+ 
+| Class | Attribute | Element |
+| --- | --- | --- |
+| `np-carousel` | `data-np-carousel` | Root |
+| `np-carousel-viewport` | `data-np-carousel-viewport` | Clips the slides and scrolls |
+| `np-carousel-content` | `data-np-carousel-content` | The row of slides |
+| `np-carousel-item` | `data-np-carousel-item` | One slide |
+| `np-carousel-previous` | `data-np-carousel-previous` | Previous button |
+| `np-carousel-next` | `data-np-carousel-next` | Next button |
+| `np-carousel-dots` | `data-np-carousel-dots` | Empty container the script fills with dots |
+| `np-carousel-dot` | `data-np-carousel-dot` | One dot, created by the script |
+| `np-carousel-vertical` | `data-orientation="vertical"` | Vertical carousel, on the root |
+ 
+### Script
+ 
+Link `carousel.js` after the markup. It is optional, has no dependencies and starts itself.
+ 
+```html
+<script src="./javascripts/carousel.js" defer></script>
+```
+ 
+It handles:
+ 
+- The previous and next buttons: one slide at a time.
+- Disabling the buttons at the start and at the end.
+- The dots: it fills `np-carousel-dots`, jumps to a slide on click and sets `aria-current="true"` on the current dot.
+- Mouse drag: drag the slides, and they snap to the nearest one on release. A short drag (under 15% of a slide) stays on the same slide, and a click after a drag is ignored. Touch already scrolls natively.
+- Arrow keys on the carousel (Up and Down when vertical).
+
+| API | Description |
+| --- | --- |
+| `NepuiCarousel.init(root)` | Wires one carousel. Use it for a carousel added after the page loaded. |
+| `NepuiCarousel.initAll()` | Wires every carousel on the page. |
+| `np-carousel-change` | Event on the root. `event.detail` is `{ index, count }`. |
+ 
+```js
+document.addEventListener("np-carousel-change", (event) => {
+  console.log(event.detail.index + 1, "of", event.detail.count)
+})
+```
+ 

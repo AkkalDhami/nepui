@@ -1,0 +1,237 @@
+---
+title: Carousel
+description: A carousel with motion and swipe.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="carousel-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/carousel.json"
+      nepui="npx nepui@latest add carousel"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install embla-carousel-react cn" className="mt-6"/>
+
+      <Step>Install the required nepui dependencies:</Step>
+      <PackageManagerTabs command="npx nepui@latest add button" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="carousel"
+        title="components/nepui/carousel/carousel.css"
+        fileTarget="components/nepui/carousel/carousel.css"
+      />
+      <ComponentSource
+        target="react"
+        name="carousel"
+        title="components/nepui/carousel/carousel.tsx"
+        fileTarget="components/nepui/carousel/carousel.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="carousel"
+        title="components/nepui/carousel/index.ts"
+        fileTarget="components/nepui/carousel/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/nepui/carousel"
+```
+
+```tsx
+<Carousel>
+  <CarouselContent>
+    <CarouselItem>...</CarouselItem>
+    <CarouselItem>...</CarouselItem>
+    <CarouselItem>...</CarouselItem>
+  </CarouselContent>
+  <CarouselPrevious />
+  <CarouselNext />
+</Carousel>
+```
+
+The carousel is built on [Embla Carousel](https://www.embla-carousel.com), so you get drag, loop, autoplay and an API. The buttons sit `3rem` outside the root, so leave room on both sides, for example with a margin. Colours come from tokens, so dark mode needs no extra setup.
+
+---
+
+## About
+
+The carousel component is built using the [Embla Carousel](https://www.embla-carousel.com) library.
+
+---
+
+## Composition
+
+```text
+Carousel
+├── CarouselContent
+│   ├── CarouselItem
+│   └── CarouselItem
+├── CarouselPrevious
+└── CarouselNext
+```
+
+---
+
+## Sizes
+
+Set the width of a slide with `--np-carousel-item-basis`, on the carousel. `33.333%` shows three slides. Use a media query to change it by screen size.
+
+<ComponentPreview
+  name="carousel-sizes"
+/>
+
+---
+
+## Dots
+ 
+Add `CarouselDots` for a row of dots, one per position. Click a dot to jump to that slide. The current dot is marked with `aria-current`.
+ 
+<ComponentPreview
+  name="carousel-dots"
+/>
+ 
+---
+
+## Spacing
+
+Set the space between slides with `--np-carousel-gap`. The slides get a start padding of the gap and the content a negative start margin, so the slides still fit exactly.
+
+<ComponentPreview
+  name="carousel-spacing"
+/>
+
+---
+
+## Orientation
+
+Use `orientation="vertical"` and give the carousel a height with `--np-carousel-height`. The buttons move above and below.
+
+<ComponentPreview
+  name="carousel-orientation"
+/>
+
+---
+
+## Options
+
+Use the `opts` prop to pass [Embla options](https://www.embla-carousel.com/api/options/).
+
+```tsx
+<Carousel opts={{ align: "start", loop: true }}>
+  ...
+</Carousel>
+```
+
+---
+
+## API
+
+Use `setApi` to get the Embla instance. This example shows the current slide and the number of slides.
+
+```tsx
+import { type CarouselApi } from "@/components/nepui/carousel"
+```
+
+<ComponentPreview
+  name="carousel-api"
+/>
+
+---
+
+## Events
+
+Subscribe to events on the API instance:
+
+```tsx
+React.useEffect(() => {
+  if (!api) return
+
+  api.on("select", () => {
+    // Do something on select.
+  })
+}, [api])
+```
+
+---
+
+## Plugins
+
+Use the `plugins` prop to pass [Embla plugins](https://www.embla-carousel.com/docs/plugins), such as Autoplay.
+
+```tsx
+import Autoplay from "embla-carousel-autoplay"
+
+<Carousel plugins={[Autoplay({ delay: 2000 })]}>
+  ...
+</Carousel>
+```
+
+---
+
+## Accessibility
+
+- The root is a `region` with `aria-roledescription="carousel"`; give it an `aria-label`. Each slide is a `group` with `aria-roledescription="slide"`.
+- The previous and next buttons have labels and are disabled at the ends.
+- Arrow keys step through the slides when focus is inside the carousel.
+
+---
+
+## API Reference
+
+### Carousel
+
+Renders a `<div>`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
+| `opts` | Embla options | - |
+| `plugins` | Embla plugins | - |
+| `setApi` | `(api: CarouselApi) => void` | - |
+| `dir` | `"ltr" \| "rtl"` | - |
+
+### CarouselContent
+
+Renders the clipping viewport and the row inside it. `className` goes on the row.
+
+### CarouselItem
+
+Renders a `<div>` with `role="group"`.
+
+### CarouselPrevious / CarouselNext
+
+Render a nepui [Button](/docs/components/react/button), `outline` and `icon-sm` by default, and accept its props. They are disabled when the carousel cannot scroll that way.
+
+`useCarousel` and the `CarouselApi` type are exported too.
