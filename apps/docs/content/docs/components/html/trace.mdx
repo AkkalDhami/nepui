@@ -1,0 +1,169 @@
+---
+title: Trace
+description: The building block for reasoning, tool calls, sources and more.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://github.com/akkaldhami.png
+---
+
+<ComponentPreview
+  target="html"
+  name="trace-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add trace"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="trace"
+        title="styles/trace.css"
+        fileTarget="styles/trace.css"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the stylesheet, after `tokens.css`:
+
+```html
+<link rel="stylesheet" href="./styles/trace.css">
+```
+
+```html
+<div class="np-trace">
+  <span class="np-trace-line">
+    <span class="np-trace-icon"><svg ...></svg></span>
+    <span class="np-trace-title">Searched for minimumReleaseAge</span>
+  </span>
+</div>
+```
+
+Or use the data attributes instead of classes: `data-np-trace`, `data-np-trace-line`, `data-np-trace-icon`, `data-np-trace-title`.
+
+Use `Trace` for agent steps: tool calls, subagents and file edits. The icons are decorative, so the title has to say everything. Write full sentences. Colours come from tokens, so dark mode needs no extra setup.
+
+---
+
+## Composition
+
+```text
+Trace
+└── TraceLine
+    ├── TraceIcon
+    ├── TraceTitle
+    ├── TraceDescription
+    └── TraceIcon
+```
+
+The first `TraceIcon` names the action and the last one is an indicator, such as an arrow on a link.
+
+```text
+Trace
+└── TraceCollapsible
+    ├── TraceCollapsibleTrigger
+    │   └── TraceLine
+    └── TraceCollapsibleContent
+```
+
+---
+
+## Status
+
+Add a status class, or `data-status`, to the line.
+
+| Class | Data attribute | Use for |
+| --- | --- | --- |
+| - | - | Finished work |
+| `np-trace-error` | `data-status="error"` | Failed work |
+| `np-trace-running` | `data-status="running"` | In progress. The title shimmers. |
+| `np-trace-pending` | `data-status="pending"` | Not started, such as a plan step |
+
+Put the status in the title as well, because colour and motion alone do not convey it. Write present tense for `running`.
+
+<ComponentPreview
+  target="html"
+  name="trace-status"
+/>
+
+---
+
+## Description
+
+Add a `np-trace-description` element after the title. It does not truncate, so a long one wraps.
+
+<ComponentPreview
+  target="html"
+  name="trace-description"
+/>
+
+---
+
+## Collapsible
+
+Use a native `<details>` with a `<summary>`. The summary holds the line and gets a chevron after it. Add `open` to start open. No JavaScript is needed.
+
+```html
+<details class="np-trace-collapsible">
+  <summary class="np-trace-collapsible-trigger">
+    <span class="np-trace-line">...</span>
+  </summary>
+  <div class="np-trace-collapsible-content">v24.18.0</div>
+</details>
+```
+
+<ComponentPreview
+  target="html"
+  name="trace-collapsible"
+/>
+
+---
+
+## Link
+
+Put `np-trace-link` on an `<a>` or a `<button>` around the line. For a link that opens in a new tab, add screen reader text with `np-trace-sr-only`. The same wrapper opens a dialog or a sheet: put the invoker attributes on a `<button class="np-trace-link">`.
+
+<ComponentPreview
+  target="html"
+  name="trace-link"
+/>
+
+---
+
+## Group
+
+Put a nested `np-trace` inside the content to group several lines under one.
+
+<ComponentPreview
+  target="html"
+  name="trace-group"
+/>
+
+---
+
+## Accessibility
+
+- A bare line is a `span`: it is read as text and is not a tab stop.
+- Inside a collapsible trigger it becomes a button that announces whether it is expanded.
+- Inside a link, or a dialog or sheet trigger, it takes that element's keyboard and focus behaviour.
+- Icons are hidden from assistive technology, so the title is the accessible name.
+- Add `np-trace-sr-only` text "(opens in a new tab)" to links that open a new tab.
+- The title shimmer stops for users who prefer reduced motion.
