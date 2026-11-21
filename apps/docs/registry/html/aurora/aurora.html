@@ -1,0 +1,698 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Aurora</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/gradient-text.css" />
+    <link rel="stylesheet" href="../styles/aurora.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem 4rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: system-ui, sans-serif;
+      }
+      main {
+        display: grid;
+        gap: 2.5rem;
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      h2.sec {
+        margin: 0 0 0.75rem;
+        font-size: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2 class="sec">Hero</h2>
+        <section
+          class="np-aurora"
+          data-gradient="ocean"
+          style="
+            position: relative;
+            display: grid;
+            place-items: center;
+            gap: 1rem;
+            padding: 5rem 1.5rem;
+            text-align: center;
+            border: 1px solid var(--np-border);
+            border-radius: var(--np-radius-xl);
+          "
+        >
+          <span
+            style="
+              padding: 0.25rem 0.75rem;
+              border: 1px solid var(--np-border);
+              border-radius: 9999px;
+              background: var(--np-background);
+              font-size: 0.75rem;
+              font-weight: 500;
+            "
+            >New: motion components</span
+          >
+          <h1
+            style="
+              margin: 0;
+              max-width: 30rem;
+              font-size: 3rem;
+              line-height: 1.1;
+              font-weight: 700;
+              letter-spacing: -0.03em;
+            "
+          >
+            Interfaces that feel
+            <span class="np-gradient-text" data-gradient="ocean">alive</span>
+          </h1>
+          <p
+            style="
+              margin: 0;
+              max-width: 28rem;
+              color: var(--np-muted-foreground);
+            "
+          >
+            A slow, soft glow behind your hero. Pure CSS, no canvas and no
+            script.
+          </p>
+          <div
+            style="
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: center;
+              gap: 0.75rem;
+            "
+          >
+            <button type="button" class="np-button">Get started</button>
+            <button type="button" class="np-button np-button-outline">
+              Learn more
+            </button>
+          </div>
+        </section>
+      </section>
+
+      <section>
+        <h2 class="sec">Gradients</h2>
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+            gap: 0.75rem;
+          "
+        >
+          <div
+            class="np-aurora"
+            data-mask="center"
+            style="
+              display: grid;
+              place-items: center;
+              gap: 0.25rem;
+              padding: 2.5rem 1rem;
+              text-align: center;
+              border: 1px solid var(--np-border);
+              border-radius: var(--np-radius-lg);
+            "
+          >
+            <strong style="font-size: 1.125rem; text-transform: capitalize"
+              >aurora</strong
+            >
+            <span
+              style="color: var(--np-muted-foreground); font-size: 0.8125rem"
+              >data-gradient="aurora"</span
+            >
+          </div>
+          <div
+            class="np-aurora"
+            data-gradient="sunrise"
+            data-mask="center"
+            style="
+              display: grid;
+              place-items: center;
+              gap: 0.25rem;
+              padding: 2.5rem 1rem;
+              text-align: center;
+              border: 1px solid var(--np-border);
+              border-radius: var(--np-radius-lg);
+            "
+          >
+            <strong style="font-size: 1.125rem; text-transform: capitalize"
+              >sunrise</strong
+            >
+            <span
+              style="color: var(--np-muted-foreground); font-size: 0.8125rem"
+              >data-gradient="sunrise"</span
+            >
+          </div>
+          <div
+            class="np-aurora"
+            data-gradient="sunset"
+            data-mask="center"
+            style="
+              display: grid;
+              place-items: center;
+              gap: 0.25rem;
+              padding: 2.5rem 1rem;
+              text-align: center;
+              border: 1px solid var(--np-border);
+              border-radius: var(--np-radius-lg);
+            "
+          >
+            <strong style="font-size: 1.125rem; text-transform: capitalize"
+              >sunset</strong
+            >
+            <span
+              style="color: var(--np-muted-foreground); font-size: 0.8125rem"
+              >data-gradient="sunset"</span
+            >
+          </div>
+          <div
+            class="np-aurora"
+            data-gradient="ocean"
+            data-mask="center"
+            style="
+              display: grid;
+              place-items: center;
+              gap: 0.25rem;
+              padding: 2.5rem 1rem;
+              text-align: center;
+              border: 1px solid var(--np-border);
+              border-radius: var(--np-radius-lg);
+            "
+          >
+            <strong style="font-size: 1.125rem; text-transform: capitalize"
+              >ocean</strong
+            >
+            <span
+              style="color: var(--np-muted-foreground); font-size: 0.8125rem"
+              >data-gradient="ocean"</span
+            >
+          </div>
+          <div
+            class="np-aurora"
+            data-gradient="forest"
+            data-mask="center"
+            style="
+              display: grid;
+              place-items: center;
+              gap: 0.25rem;
+              padding: 2.5rem 1rem;
+              text-align: center;
+              border: 1px solid var(--np-border);
+              border-radius: var(--np-radius-lg);
+            "
+          >
+            <strong style="font-size: 1.125rem; text-transform: capitalize"
+              >forest</strong
+            >
+            <span
+              style="color: var(--np-muted-foreground); font-size: 0.8125rem"
+              >data-gradient="forest"</span
+            >
+          </div>
+          <div
+            class="np-aurora"
+            data-gradient="fire"
+            data-mask="center"
+            style="
+              display: grid;
+              place-items: center;
+              gap: 0.25rem;
+              padding: 2.5rem 1rem;
+              text-align: center;
+              border: 1px solid var(--np-border);
+              border-radius: var(--np-radius-lg);
+            "
+          >
+            <strong style="font-size: 1.125rem; text-transform: capitalize"
+              >fire</strong
+            >
+            <span
+              style="color: var(--np-muted-foreground); font-size: 0.8125rem"
+              >data-gradient="fire"</span
+            >
+          </div>
+          <div
+            class="np-aurora"
+            data-gradient="candy"
+            data-mask="center"
+            style="
+              display: grid;
+              place-items: center;
+              gap: 0.25rem;
+              padding: 2.5rem 1rem;
+              text-align: center;
+              border: 1px solid var(--np-border);
+              border-radius: var(--np-radius-lg);
+            "
+          >
+            <strong style="font-size: 1.125rem; text-transform: capitalize"
+              >candy</strong
+            >
+            <span
+              style="color: var(--np-muted-foreground); font-size: 0.8125rem"
+              >data-gradient="candy"</span
+            >
+          </div>
+          <div
+            class="np-aurora"
+            data-gradient="lavender"
+            data-mask="center"
+            style="
+              display: grid;
+              place-items: center;
+              gap: 0.25rem;
+              padding: 2.5rem 1rem;
+              text-align: center;
+              border: 1px solid var(--np-border);
+              border-radius: var(--np-radius-lg);
+            "
+          >
+            <strong style="font-size: 1.125rem; text-transform: capitalize"
+              >lavender</strong
+            >
+            <span
+              style="color: var(--np-muted-foreground); font-size: 0.8125rem"
+              >data-gradient="lavender"</span
+            >
+          </div>
+          <div
+            class="np-aurora"
+            data-gradient="mint"
+            data-mask="center"
+            style="
+              display: grid;
+              place-items: center;
+              gap: 0.25rem;
+              padding: 2.5rem 1rem;
+              text-align: center;
+              border: 1px solid var(--np-border);
+              border-radius: var(--np-radius-lg);
+            "
+          >
+            <strong style="font-size: 1.125rem; text-transform: capitalize"
+              >mint</strong
+            >
+            <span
+              style="color: var(--np-muted-foreground); font-size: 0.8125rem"
+              >data-gradient="mint"</span
+            >
+          </div>
+          <div
+            class="np-aurora"
+            data-gradient="peach"
+            data-mask="center"
+            style="
+              display: grid;
+              place-items: center;
+              gap: 0.25rem;
+              padding: 2.5rem 1rem;
+              text-align: center;
+              border: 1px solid var(--np-border);
+              border-radius: var(--np-radius-lg);
+            "
+          >
+            <strong style="font-size: 1.125rem; text-transform: capitalize"
+              >peach</strong
+            >
+            <span
+              style="color: var(--np-muted-foreground); font-size: 0.8125rem"
+              >data-gradient="peach"</span
+            >
+          </div>
+          <div
+            class="np-aurora"
+            data-gradient="midnight"
+            data-mask="center"
+            style="
+              display: grid;
+              place-items: center;
+              gap: 0.25rem;
+              padding: 2.5rem 1rem;
+              text-align: center;
+              border: 1px solid var(--np-border);
+              border-radius: var(--np-radius-lg);
+            "
+          >
+            <strong style="font-size: 1.125rem; text-transform: capitalize"
+              >midnight</strong
+            >
+            <span
+              style="color: var(--np-muted-foreground); font-size: 0.8125rem"
+              >data-gradient="midnight"</span
+            >
+          </div>
+          <div
+            class="np-aurora"
+            data-gradient="gold"
+            data-mask="center"
+            style="
+              display: grid;
+              place-items: center;
+              gap: 0.25rem;
+              padding: 2.5rem 1rem;
+              text-align: center;
+              border: 1px solid var(--np-border);
+              border-radius: var(--np-radius-lg);
+            "
+          >
+            <strong style="font-size: 1.125rem; text-transform: capitalize"
+              >gold</strong
+            >
+            <span
+              style="color: var(--np-muted-foreground); font-size: 0.8125rem"
+              >data-gradient="gold"</span
+            >
+          </div>
+          <div
+            class="np-aurora"
+            data-gradient="rainbow"
+            data-mask="center"
+            style="
+              display: grid;
+              place-items: center;
+              gap: 0.25rem;
+              padding: 2.5rem 1rem;
+              text-align: center;
+              border: 1px solid var(--np-border);
+              border-radius: var(--np-radius-lg);
+            "
+          >
+            <strong style="font-size: 1.125rem; text-transform: capitalize"
+              >rainbow</strong
+            >
+            <span
+              style="color: var(--np-muted-foreground); font-size: 0.8125rem"
+              >data-gradient="rainbow"</span
+            >
+          </div>
+          <div
+            class="np-aurora"
+            data-gradient="cyber"
+            data-mask="center"
+            style="
+              display: grid;
+              place-items: center;
+              gap: 0.25rem;
+              padding: 2.5rem 1rem;
+              text-align: center;
+              border: 1px solid var(--np-border);
+              border-radius: var(--np-radius-lg);
+            "
+          >
+            <strong style="font-size: 1.125rem; text-transform: capitalize"
+              >cyber</strong
+            >
+            <span
+              style="color: var(--np-muted-foreground); font-size: 0.8125rem"
+              >data-gradient="cyber"</span
+            >
+          </div>
+          <div
+            class="np-aurora"
+            data-gradient="plasma"
+            data-mask="center"
+            style="
+              display: grid;
+              place-items: center;
+              gap: 0.25rem;
+              padding: 2.5rem 1rem;
+              text-align: center;
+              border: 1px solid var(--np-border);
+              border-radius: var(--np-radius-lg);
+            "
+          >
+            <strong style="font-size: 1.125rem; text-transform: capitalize"
+              >plasma</strong
+            >
+            <span
+              style="color: var(--np-muted-foreground); font-size: 0.8125rem"
+              >data-gradient="plasma"</span
+            >
+          </div>
+          <div
+            class="np-aurora"
+            data-gradient="mono"
+            data-mask="center"
+            style="
+              display: grid;
+              place-items: center;
+              gap: 0.25rem;
+              padding: 2.5rem 1rem;
+              text-align: center;
+              border: 1px solid var(--np-border);
+              border-radius: var(--np-radius-lg);
+            "
+          >
+            <strong style="font-size: 1.125rem; text-transform: capitalize"
+              >mono</strong
+            >
+            <span
+              style="color: var(--np-muted-foreground); font-size: 0.8125rem"
+              >data-gradient="mono"</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec">Cover</h2>
+        <section
+          class="np-aurora"
+          data-gradient="sunset"
+          data-mask="none"
+          data-intensity="strong"
+          style="
+            display: grid;
+            place-items: center;
+            gap: 1rem;
+            padding: 7rem 1.5rem;
+            text-align: center;
+            border-radius: var(--np-radius-xl);
+            border: 1px solid var(--np-border);
+          "
+        >
+          <h1
+            style="
+              margin: 0;
+              max-width: 32rem;
+              font-size: 3.25rem;
+              line-height: 1.05;
+              font-weight: 800;
+              letter-spacing: -0.035em;
+            "
+          >
+            Ship something
+            <span class="np-gradient-text" data-gradient="fire">beautiful</span>
+          </h1>
+          <p
+            style="
+              margin: 0;
+              max-width: 26rem;
+              color: var(--np-muted-foreground);
+            "
+          >
+            The glow covers the whole section, so the content stays in front.
+          </p>
+          <button type="button" class="np-button">Start building</button>
+        </section>
+      </section>
+
+      <section>
+        <h2 class="sec">Mask</h2>
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+            gap: 0.75rem;
+          "
+        >
+          <div
+            class="np-aurora"
+            data-gradient="candy"
+            data-mask="corner"
+            style="
+              display: grid;
+              place-items: center;
+              gap: 0.25rem;
+              padding: 2.5rem 1rem;
+              text-align: center;
+              border: 1px solid var(--np-border);
+              border-radius: var(--np-radius-lg);
+            "
+          >
+            <strong style="font-size: 1.125rem">corner</strong>
+            <span
+              style="color: var(--np-muted-foreground); font-size: 0.8125rem"
+              >From the corner</span
+            >
+          </div>
+          <div
+            class="np-aurora"
+            data-gradient="candy"
+            data-mask="center"
+            style="
+              display: grid;
+              place-items: center;
+              gap: 0.25rem;
+              padding: 2.5rem 1rem;
+              text-align: center;
+              border: 1px solid var(--np-border);
+              border-radius: var(--np-radius-lg);
+            "
+          >
+            <strong style="font-size: 1.125rem">center</strong>
+            <span
+              style="color: var(--np-muted-foreground); font-size: 0.8125rem"
+              >Centered glow</span
+            >
+          </div>
+          <div
+            class="np-aurora"
+            data-gradient="candy"
+            data-mask="top"
+            style="
+              display: grid;
+              place-items: center;
+              gap: 0.25rem;
+              padding: 2.5rem 1rem;
+              text-align: center;
+              border: 1px solid var(--np-border);
+              border-radius: var(--np-radius-lg);
+            "
+          >
+            <strong style="font-size: 1.125rem">top</strong>
+            <span
+              style="color: var(--np-muted-foreground); font-size: 0.8125rem"
+              >Fades downward</span
+            >
+          </div>
+          <div
+            class="np-aurora"
+            data-gradient="candy"
+            data-mask="bottom"
+            style="
+              display: grid;
+              place-items: center;
+              gap: 0.25rem;
+              padding: 2.5rem 1rem;
+              text-align: center;
+              border: 1px solid var(--np-border);
+              border-radius: var(--np-radius-lg);
+            "
+          >
+            <strong style="font-size: 1.125rem">bottom</strong>
+            <span
+              style="color: var(--np-muted-foreground); font-size: 0.8125rem"
+              >Rises from below</span
+            >
+          </div>
+          <div
+            class="np-aurora"
+            data-gradient="candy"
+            data-mask="none"
+            style="
+              display: grid;
+              place-items: center;
+              gap: 0.25rem;
+              padding: 2.5rem 1rem;
+              text-align: center;
+              border: 1px solid var(--np-border);
+              border-radius: var(--np-radius-lg);
+            "
+          >
+            <strong style="font-size: 1.125rem">none</strong>
+            <span
+              style="color: var(--np-muted-foreground); font-size: 0.8125rem"
+              >Fills the box</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec">Intensity, speed and stillness</h2>
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+            gap: 0.75rem;
+          "
+        >
+          <div
+            class="np-aurora"
+            data-gradient="forest"
+            data-mask="center"
+            data-intensity="subtle"
+            style="
+              display: grid;
+              place-items: center;
+              gap: 0.25rem;
+              padding: 2.5rem 1rem;
+              text-align: center;
+              border: 1px solid var(--np-border);
+              border-radius: var(--np-radius-lg);
+            "
+          >
+            <strong style="font-size: 1.125rem">Subtle</strong>
+          </div>
+          <div
+            class="np-aurora"
+            data-gradient="forest"
+            data-mask="center"
+            style="
+              display: grid;
+              place-items: center;
+              gap: 0.25rem;
+              padding: 2.5rem 1rem;
+              text-align: center;
+              border: 1px solid var(--np-border);
+              border-radius: var(--np-radius-lg);
+            "
+          >
+            <strong style="font-size: 1.125rem">Default</strong>
+          </div>
+          <div
+            class="np-aurora"
+            data-gradient="forest"
+            data-mask="center"
+            data-intensity="strong"
+            data-speed="fast"
+            style="
+              display: grid;
+              place-items: center;
+              gap: 0.25rem;
+              padding: 2.5rem 1rem;
+              text-align: center;
+              border: 1px solid var(--np-border);
+              border-radius: var(--np-radius-lg);
+            "
+          >
+            <strong style="font-size: 1.125rem">Strong and fast</strong>
+          </div>
+          <div
+            class="np-aurora"
+            data-gradient="forest"
+            data-mask="center"
+            data-animate="false"
+            style="
+              display: grid;
+              place-items: center;
+              gap: 0.25rem;
+              padding: 2.5rem 1rem;
+              text-align: center;
+              border: 1px solid var(--np-border);
+              border-radius: var(--np-radius-lg);
+            "
+          >
+            <strong style="font-size: 1.125rem">Still</strong>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
