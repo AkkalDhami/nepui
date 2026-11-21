@@ -1,0 +1,524 @@
+/* nepui - List */
+
+:where(.np-list, [data-np-list]) {
+  --np-list-auto-marker: disc;
+}
+
+:where(.np-list, [data-np-list]):where(ol) {
+  --np-list-auto-marker: decimal;
+}
+
+:where(.np-list, [data-np-list]) :where(.np-list, [data-np-list]):where(ul) {
+  --np-list-auto-marker: circle;
+}
+
+:where(.np-list, [data-np-list]) :where(.np-list, [data-np-list]):where(ol) {
+  --np-list-auto-marker: lower-alpha;
+}
+
+:where(.np-list, [data-np-list])
+  :where(.np-list, [data-np-list])
+  :where(.np-list, [data-np-list]):where(ul) {
+  --np-list-auto-marker: square;
+}
+
+:where(.np-list, [data-np-list])
+  :where(.np-list, [data-np-list])
+  :where(.np-list, [data-np-list]):where(ol) {
+  --np-list-auto-marker: lower-roman;
+}
+
+:is(.np-list, [data-np-list]):where(
+  :not(:is(li, .np-list-item, [data-np-list-item]) > *)
+) {
+  --np-list-marker: initial;
+  --np-list-marker-color: var(--np-muted-foreground);
+  --np-list-check-color: var(--np-success);
+  --np-list-indent: calc(var(--np-spacing) * 6);
+
+  --np-list-color: currentColor;
+  --np-list-bg: transparent;
+  --np-list-font-family: var(--np-font-sans, inherit);
+  --np-list-font-size: 1em;
+  --np-list-line-height: 1.6;
+
+  --np-list-gap: 0.375em;
+  --np-list-column-gap: calc(var(--np-spacing) * 5);
+  --np-list-item-py: 0px;
+  --np-list-item-px: 0px;
+  --np-list-item-radius: var(--np-radius-md);
+
+  --np-list-option-py: calc(var(--np-spacing) * 1.5);
+  --np-list-option-px: calc(var(--np-spacing) * 2.5);
+  --np-list-option-indicator-size: 1rem;
+  --np-list-selected-bg: var(--np-accent);
+  --np-list-selected-fg: var(--np-accent-foreground);
+  --np-list-hover-bg: color-mix(in oklch, var(--np-accent) 60%, transparent);
+
+  --np-list-divider-width: 0px;
+  --np-list-divider-color: var(--np-border);
+  --np-list-guide-color: var(--np-border);
+
+  --np-list-border-width: 0px;
+  --np-list-border-color: var(--np-border);
+  --np-list-radius: 0px;
+  --np-list-overflow: visible;
+
+  --np-list-focus-ring: 0 0 0 3px
+    color-mix(in oklch, var(--np-ring), transparent 50%);
+  --np-list-toggle-size: 1.25rem;
+}
+
+/* A nested list is never boxed: it keeps the sizing but not the frame */
+:where(li, .np-list-item, [data-np-list-item])
+  > :where(.np-list, [data-np-list]) {
+  --np-list-bg: transparent;
+  --np-list-border-width: 0px;
+  --np-list-radius: 0px;
+  --np-list-overflow: visible;
+}
+
+/* Layout */
+.np-list,
+[data-np-list] {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  padding-inline-start: var(--np-list-indent);
+  border: var(--np-list-border-width) solid var(--np-list-border-color);
+  border-radius: var(--np-list-radius);
+  background-color: var(--np-list-bg);
+  color: var(--np-list-color);
+  font-family: var(--np-list-font-family);
+  font-size: var(--np-list-font-size);
+  line-height: var(--np-list-line-height);
+  list-style-type: var(--np-list-marker, var(--np-list-auto-marker));
+  list-style-position: outside;
+  overflow: var(--np-list-overflow);
+}
+
+:is(.np-list, [data-np-list]) > :is(li, .np-list-item, [data-np-list-item]) {
+  box-sizing: border-box;
+  margin: 0;
+  padding-block: var(--np-list-item-py);
+  padding-inline: var(--np-list-item-px);
+}
+
+:is(.np-list, [data-np-list])
+  > :is(li, .np-list-item, [data-np-list-item])
+  + :is(li, .np-list-item, [data-np-list-item]) {
+  margin-block-start: var(--np-list-gap);
+  border-block-start: var(--np-list-divider-width) solid
+    var(--np-list-divider-color);
+}
+
+:is(li, .np-list-item, [data-np-list-item]) > :is(.np-list, [data-np-list]) {
+  margin-block-start: calc(var(--np-list-gap) + var(--np-list-item-py));
+  margin-inline: calc(var(--np-list-item-px) * -1);
+  border-block-start: var(--np-list-divider-width) solid
+    var(--np-list-divider-color);
+}
+
+:is(.np-list, [data-np-list])
+  > :is(li, .np-list-item, [data-np-list-item])::marker {
+  color: var(--np-list-marker-color);
+  font-variant-numeric: tabular-nums;
+}
+
+/* States */
+:is(.np-list, [data-np-list])
+  > :is(li, .np-list-item, [data-np-list-item]):is(
+    [aria-disabled="true"],
+    [data-disabled]
+  ) {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+:is(.np-list, [data-np-list])
+  > :is(li, .np-list-item, [data-np-list-item]):focus-visible {
+  outline: none;
+  border-radius: var(--np-radius-sm);
+}
+
+:is(.np-list, [data-np-list])
+  > :is(li, .np-list-item, [data-np-list-item]):focus-visible:not(
+    :has(> :is(.np-list-label, [data-np-list-label]))
+  ),
+:is(.np-list, [data-np-list])
+  > :is(li, .np-list-item, [data-np-list-item]):focus-visible
+  > :is(.np-list-label, [data-np-list-label]) {
+  box-shadow: var(--np-list-focus-ring);
+}
+
+:is(.np-list, [data-np-list])
+  > :is(li, .np-list-item, [data-np-list-item]):is(
+    [aria-selected="true"],
+    [data-selected]
+  ) {
+  background-color: var(--np-list-selected-bg);
+  color: var(--np-list-selected-fg);
+  font-weight: 500;
+}
+
+/* Markers */
+.np-list-disc,
+:is(.np-list, [data-np-list])[data-marker="disc"] {
+  --np-list-marker: disc;
+}
+
+.np-list-circle,
+:is(.np-list, [data-np-list])[data-marker="circle"] {
+  --np-list-marker: circle;
+}
+
+.np-list-square,
+:is(.np-list, [data-np-list])[data-marker="square"] {
+  --np-list-marker: square;
+}
+
+.np-list-decimal,
+:is(.np-list, [data-np-list])[data-marker="decimal"] {
+  --np-list-marker: decimal;
+}
+
+.np-list-decimal-leading-zero,
+:is(.np-list, [data-np-list])[data-marker="decimal-leading-zero"] {
+  --np-list-marker: decimal-leading-zero;
+}
+
+.np-list-lower-alpha,
+:is(.np-list, [data-np-list])[data-marker="lower-alpha"] {
+  --np-list-marker: lower-alpha;
+}
+
+.np-list-upper-alpha,
+:is(.np-list, [data-np-list])[data-marker="upper-alpha"] {
+  --np-list-marker: upper-alpha;
+}
+
+.np-list-lower-roman,
+:is(.np-list, [data-np-list])[data-marker="lower-roman"] {
+  --np-list-marker: lower-roman;
+}
+
+.np-list-upper-roman,
+:is(.np-list, [data-np-list])[data-marker="upper-roman"] {
+  --np-list-marker: upper-roman;
+}
+
+.np-list-lower-greek,
+:is(.np-list, [data-np-list])[data-marker="lower-greek"] {
+  --np-list-marker: lower-greek;
+}
+
+.np-list-dash,
+:is(.np-list, [data-np-list])[data-marker="dash"] {
+  --np-list-marker: "\2013\00a0\00a0";
+}
+
+.np-list-check,
+:is(.np-list, [data-np-list])[data-marker="check"] {
+  --np-list-marker: "\2714\00a0\00a0";
+}
+
+.np-list-arrow,
+:is(.np-list, [data-np-list])[data-marker="arrow"] {
+  --np-list-marker: "\2192\00a0\00a0";
+}
+
+.np-list-none,
+:is(.np-list, [data-np-list])[data-marker="none"] {
+  --np-list-marker: none;
+}
+
+.np-list-check > :is(li, .np-list-item, [data-np-list-item])::marker,
+:is(.np-list, [data-np-list])[data-marker="check"]
+  > :is(li, .np-list-item, [data-np-list-item])::marker {
+  color: var(--np-list-check-color);
+}
+
+.np-list-outline,
+:is(.np-list, [data-np-list])[data-marker="outline"] {
+  --np-list-marker: decimal;
+}
+
+:is(.np-list-outline, :is(.np-list, [data-np-list])[data-marker="outline"]),
+:is(.np-list-outline, :is(.np-list, [data-np-list])[data-marker="outline"])
+  :is(.np-list, [data-np-list]) {
+  counter-reset: np-list-outline;
+}
+
+:is(
+    .np-list-outline,
+    :is(.np-list, [data-np-list])[data-marker="outline"],
+    :is(.np-list-outline, :is(.np-list, [data-np-list])[data-marker="outline"])
+      :is(.np-list, [data-np-list])
+  )
+  > :is(li, .np-list-item, [data-np-list-item]) {
+  counter-increment: np-list-outline;
+}
+
+:is(
+    .np-list-outline,
+    :is(.np-list, [data-np-list])[data-marker="outline"],
+    :is(.np-list-outline, :is(.np-list, [data-np-list])[data-marker="outline"])
+      :is(.np-list, [data-np-list])
+  )
+  > :is(li, .np-list-item, [data-np-list-item])::marker {
+  content: counters(np-list-outline, ".") ". ";
+}
+
+.np-list-inside,
+:is(.np-list, [data-np-list])[data-inside] {
+  list-style-position: inside;
+}
+
+/* Variants */
+.np-list-plain,
+.np-list-divided,
+.np-list-bordered,
+:is(.np-list, [data-np-list]):is(
+  [data-variant="plain"],
+  [data-variant="divided"],
+  [data-variant="bordered"]
+) {
+  --np-list-auto-marker: none;
+  --np-list-indent: 0px;
+
+  list-style-position: inside;
+}
+
+:is(
+    .np-list-plain,
+    .np-list-divided,
+    .np-list-bordered,
+    :is(.np-list, [data-np-list]):is(
+      [data-variant="plain"],
+      [data-variant="divided"],
+      [data-variant="bordered"]
+    )
+  )
+  :is(.np-list, [data-np-list]) {
+  --np-list-auto-marker: none;
+}
+
+.np-list-divided,
+:is(.np-list, [data-np-list])[data-variant="divided"] {
+  --np-list-divider-width: 1px;
+  --np-list-item-py: 0.5em;
+  --np-list-item-radius: 0px;
+  --np-list-option-py: 0.5em;
+  --np-list-gap: 0px;
+}
+
+.np-list-bordered,
+:is(.np-list, [data-np-list])[data-variant="bordered"] {
+  --np-list-divider-width: 1px;
+  --np-list-item-py: 0.5em;
+  --np-list-item-px: 0.75em;
+  --np-list-item-radius: 0px;
+  --np-list-option-py: 0.5em;
+  --np-list-option-px: 0.75em;
+  --np-list-gap: 0px;
+  --np-list-border-width: 1px;
+  --np-list-radius: var(--np-radius-lg);
+  --np-list-bg: var(--np-card);
+  --np-list-color: var(--np-card-foreground);
+  --np-list-overflow: clip;
+  --np-list-focus-ring: inset 0 0 0 2px
+    color-mix(in oklch, var(--np-ring), transparent 30%);
+}
+
+/* Sizes */
+.np-list-sm,
+:is(.np-list, [data-np-list])[data-size="sm"] {
+  --np-list-font-size: 0.875rem;
+  --np-list-toggle-size: 1.125rem;
+}
+
+.np-list-lg,
+:is(.np-list, [data-np-list])[data-size="lg"] {
+  --np-list-font-size: 1.125rem;
+  --np-list-toggle-size: 1.5rem;
+}
+
+/* Orientation */
+.np-list-horizontal,
+:is(.np-list, [data-np-list])[data-orientation="horizontal"] {
+  --np-list-auto-marker: none;
+  --np-list-indent: 0px;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--np-list-gap) var(--np-list-column-gap);
+}
+
+:is(
+    .np-list-horizontal,
+    :is(.np-list, [data-np-list])[data-orientation="horizontal"]
+  )
+  > :is(li, .np-list-item, [data-np-list-item])
+  + :is(li, .np-list-item, [data-np-list-item]) {
+  margin-block-start: 0;
+}
+
+/* Guides */
+:is(.np-list-guides, :is(.np-list, [data-np-list])[data-guides])
+  :is(.np-list, [data-np-list]) {
+  margin-inline-start: calc(
+    var(--np-list-indent) * -0.5 - var(--np-list-item-px)
+  );
+  padding-inline-start: calc(var(--np-list-indent) * 2.5);
+  border-inline-start: 1px solid var(--np-list-guide-color);
+}
+
+/* Selectable options */
+:is(.np-list, [data-np-list])
+  > :is(li, .np-list-item, [data-np-list-item])[role="option"] {
+  position: relative;
+  padding-block: var(--np-list-option-py);
+  padding-inline-start: var(--np-list-option-px);
+  padding-inline-end: calc(
+    var(--np-list-option-px) + var(--np-list-option-indicator-size) +
+      var(--np-spacing) * 2
+  );
+  border-radius: var(--np-list-item-radius);
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background-color 150ms ease,
+    color 150ms ease;
+}
+
+:is(.np-list, [data-np-list])
+  > :is(li, .np-list-item, [data-np-list-item])[role="option"]:hover {
+  background-color: var(--np-list-hover-bg);
+}
+
+:is(.np-list, [data-np-list])
+  > :is(li, .np-list-item, [data-np-list-item])[role="option"]:is(
+    [aria-selected="true"],
+    [data-selected]
+  ) {
+  background-color: var(--np-list-selected-bg);
+}
+
+:is(.np-list, [data-np-list])
+  > :is(li, .np-list-item, [data-np-list-item]):is(
+    [aria-selected="true"],
+    [data-selected]
+  )::after {
+  content: "";
+  position: absolute;
+  inset-inline-end: var(--np-list-option-px);
+  top: 50%;
+  translate: 0 -50%;
+  width: var(--np-list-option-indicator-size);
+  height: var(--np-list-option-indicator-size);
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+}
+
+/* Collapsible: label and toggle */
+:is(.np-list-label, [data-np-list-label]) {
+  display: inline;
+  margin-inline: calc(var(--np-spacing) * -1);
+  padding-inline: var(--np-spacing);
+  border-radius: var(--np-radius-sm);
+}
+
+:is(.np-list-toggle, [data-np-list-toggle]) {
+  --np-list-toggle-icon-size: 0.875rem;
+  --np-list-toggle-color: var(--np-muted-foreground);
+  --np-list-toggle-hover-bg: var(--np-accent);
+  --np-list-toggle-hover-fg: var(--np-accent-foreground);
+
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  inline-size: var(--np-list-toggle-size);
+  block-size: var(--np-list-toggle-size);
+  margin: -0.125rem var(--np-spacing) -0.125rem 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--np-radius-sm);
+  background-color: transparent;
+  color: var(--np-list-toggle-color);
+  font: inherit;
+  vertical-align: middle;
+  cursor: pointer;
+  transition:
+    color 150ms ease,
+    background-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+:is(.np-list-toggle, [data-np-list-toggle]):hover {
+  background-color: var(--np-list-toggle-hover-bg);
+  color: var(--np-list-toggle-hover-fg);
+}
+
+:is(.np-list-toggle, [data-np-list-toggle]):focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--np-ring), transparent 50%);
+}
+
+:is(.np-list-toggle, [data-np-list-toggle]) svg {
+  flex-shrink: 0;
+  pointer-events: none;
+  transition: rotate 150ms ease;
+}
+
+:is(.np-list-toggle, [data-np-list-toggle]) svg:not([class*="size-"]) {
+  width: var(--np-list-toggle-icon-size);
+  height: var(--np-list-toggle-icon-size);
+}
+
+:is(.np-list-toggle, [data-np-list-toggle])[aria-expanded="true"] svg {
+  rotate: 90deg;
+}
+
+:is(.np-list-toggle, [data-np-list-toggle]):dir(rtl) svg {
+  transform: scaleX(-1);
+}
+
+:is(.np-list-toggle, [data-np-list-toggle])[aria-expanded="true"]:dir(rtl) svg {
+  rotate: -90deg;
+}
+
+:is(li, .np-list-item, [data-np-list-item])[data-collapsed]
+  > :is(.np-list, [data-np-list]) {
+  display: none;
+}
+
+:is(.np-list, [data-np-list])[data-collapsible]
+  > :is(li, .np-list-item, [data-np-list-item]):not(
+    :has(> :is(.np-list-label, [data-np-list-label]))
+  ) {
+  padding-inline-start: calc(
+    var(--np-list-item-px) + var(--np-list-toggle-size) + var(--np-spacing)
+  );
+}
+
+@media (forced-colors: active) {
+  :is(.np-list, [data-np-list])
+    > :is(li, .np-list-item, [data-np-list-item]):focus-visible {
+    outline: 2px solid Highlight;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.np-list-toggle, [data-np-list-toggle]),
+  :is(.np-list-toggle, [data-np-list-toggle]) svg,
+  :is(.np-list, [data-np-list])
+    > :is(li, .np-list-item, [data-np-list-item])[role="option"] {
+    transition: none;
+  }
+}

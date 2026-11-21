@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui - List</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/list.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1.25rem 4rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: var(--np-font-sans, system-ui, sans-serif);
+      }
+
+      main {
+        display: grid;
+        gap: 2.5rem;
+        max-width: 56rem;
+        margin: 0 auto;
+      }
+
+      h2,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      h2 {
+        margin-bottom: 0.75rem;
+        font-size: 1rem;
+      }
+
+      .muted {
+        color: var(--np-muted-foreground);
+        font-size: 0.875rem;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+        gap: 1.5rem;
+      }
+
+      .caption {
+        margin-bottom: 0.5rem;
+        font-family: var(--np-font-mono, monospace);
+        font-size: 0.75rem;
+        color: var(--np-muted-foreground);
+      }
+
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 0.75rem;
+      }
+    </style>
+    <script src="../javascripts/list.js" defer></script>
+  </head>
+
+  <body>
+    <main>
+      <section>
+        <h2>Class and data attribute</h2>
+        <div class="grid">
+          <div>
+            <p class="caption">class</p>
+            <ul class="np-list np-list-square" aria-label="Class form">
+              <li>Write the release notes</li>
+              <li>Tag the version</li>
+              <li>Publish the package</li>
+            </ul>
+          </div>
+          <div>
+            <p class="caption">data attribute</p>
+            <ul
+              data-np-list
+              data-marker="square"
+              aria-label="Data attribute form"
+            >
+              <li>Write the release notes</li>
+              <li>Tag the version</li>
+              <li>Publish the package</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Unordered markers</h2>
+        <div class="grid">
+          <div>
+            <p class="caption">disc</p>
+            <ul class="np-list np-list-disc" aria-label="Disc">
+              <li>Dal</li>
+              <li>Bhat</li>
+              <li>Tarkari</li>
+            </ul>
+          </div>
+          <div>
+            <p class="caption">circle</p>
+            <ul class="np-list np-list-circle" aria-label="Circle">
+              <li>Dal</li>
+              <li>Bhat</li>
+              <li>Tarkari</li>
+            </ul>
+          </div>
+          <div>
+            <p class="caption">square</p>
+            <ul class="np-list np-list-square" aria-label="Square">
+              <li>Dal</li>
+              <li>Bhat</li>
+              <li>Tarkari</li>
+            </ul>
+          </div>
+          <div>
+            <p class="caption">dash</p>
+            <ul class="np-list np-list-dash" aria-label="Dash">
+              <li>Dal</li>
+              <li>Bhat</li>
+              <li>Tarkari</li>
+            </ul>
+          </div>
+          <div>
+            <p class="caption">check</p>
+            <ul class="np-list np-list-check" aria-label="Check">
+              <li>Dal</li>
+              <li>Bhat</li>
+              <li>Tarkari</li>
+            </ul>
+          </div>
+          <div>
+            <p class="caption">arrow</p>
+            <ul class="np-list np-list-arrow" aria-label="Arrow">
+              <li>Dal</li>
+              <li>Bhat</li>
+              <li>Tarkari</li>
+            </ul>
+          </div>
+          <div>
+            <p class="caption">custom</p>
+            <ul
+              class="np-list"
+              style="
+                --np-list-marker: &quot;★  &quot;;
+                --np-list-marker-color: var(--np-warning);
+              "
+              aria-label="Custom"
+            >
+              <li>Dal</li>
+              <li>Bhat</li>
+              <li>Tarkari</li>
+            </ul>
+          </div>
+          <div>
+            <p class="caption">inside</p>
+            <ul class="np-list np-list-inside" aria-label="Inside">
+              <li>Dal</li>
+              <li>Bhat</li>
+              <li>Tarkari</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Ordered markers</h2>
+        <div class="grid">
+          <div>
+            <p class="caption">decimal</p>
+            <ol class="np-list np-list-decimal" aria-label="Decimal">
+              <li>Plan</li>
+              <li>Build</li>
+              <li>Ship</li>
+            </ol>
+          </div>
+          <div>
+            <p class="caption">decimal-leading-zero</p>
+            <ol
+              class="np-list np-list-decimal-leading-zero"
+              aria-label="Decimal with leading zero"
+            >
+              <li>Plan</li>
+              <li>Build</li>
+              <li>Ship</li>
+            </ol>
+          </div>
+          <div>
+            <p class="caption">lower-alpha</p>
+            <ol class="np-list np-list-lower-alpha" aria-label="Lower alpha">
+              <li>Plan</li>
+              <li>Build</li>
+              <li>Ship</li>
+            </ol>
+          </div>
+          <div>
+            <p class="caption">upper-alpha</p>
+            <ol class="np-list np-list-upper-alpha" aria-label="Upper alpha">
+              <li>Plan</li>
+              <li>Build</li>
+              <li>Ship</li>
+            </ol>
+          </div>
+          <div>
+            <p class="caption">lower-roman</p>
+            <ol class="np-list np-list-lower-roman" aria-label="Lower roman">
+              <li>Plan</li>
+              <li>Build</li>
+              <li>Ship</li>
+            </ol>
+          </div>
+          <div>
+            <p class="caption">upper-roman</p>
+            <ol class="np-list np-list-upper-roman" aria-label="Upper roman">
+              <li>Plan</li>
+              <li>Build</li>
+              <li>Ship</li>
+            </ol>
+          </div>
+          <div>
+            <p class="caption">lower-greek</p>
+            <ol class="np-list np-list-lower-greek" aria-label="Lower greek">
+              <li>Plan</li>
+              <li>Build</li>
+              <li>Ship</li>
+            </ol>
+          </div>
+          <div>
+            <p class="caption">start=5, reversed</p>
+            <ol
+              class="np-list"
+              start="5"
+              reversed
+              aria-label="Start and reversed"
+            >
+              <li>Plan</li>
+              <li>Build</li>
+              <li>Ship</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Nested</h2>
+        <div class="grid">
+          <div>
+            <p class="caption">unordered by depth</p>
+            <ul class="np-list" aria-label="Unordered nesting">
+              <li>
+                Frontend
+                <ul class="np-list">
+                  <li>
+                    Components
+                    <ul class="np-list">
+                      <li>Button</li>
+                      <li>Input</li>
+                    </ul>
+                  </li>
+                  <li>Styles</li>
+                </ul>
+              </li>
+              <li>Backend</li>
+            </ul>
+          </div>
+          <div>
+            <p class="caption">ordered by depth</p>
+            <ol class="np-list" aria-label="Ordered nesting">
+              <li>
+                Frontend
+                <ol class="np-list">
+                  <li>
+                    Components
+                    <ol class="np-list">
+                      <li>Button</li>
+                      <li>Input</li>
+                    </ol>
+                  </li>
+                  <li>Styles</li>
+                </ol>
+              </li>
+              <li>Backend</li>
+            </ol>
+          </div>
+          <div>
+            <p class="caption">outline + guides</p>
+            <ol
+              class="np-list np-list-outline np-list-guides"
+              aria-label="Outline numbering"
+            >
+              <li>
+                Frontend
+                <ol class="np-list">
+                  <li>
+                    Components
+                    <ol class="np-list">
+                      <li>Button</li>
+                      <li>Input</li>
+                    </ol>
+                  </li>
+                  <li>Styles</li>
+                </ol>
+              </li>
+              <li>Backend</li>
+            </ol>
+          </div>
+          <div>
+            <p class="caption">mixed, explicit markers</p>
+            <ul class="np-list np-list-square" aria-label="Mixed nesting">
+              <li>
+                Release
+                <ol class="np-list np-list-upper-roman">
+                  <li>Draft notes</li>
+                  <li>
+                    Review
+                    <ul class="np-list np-list-check">
+                      <li>Docs</li>
+                      <li>Tests</li>
+                    </ul>
+                  </li>
+                </ol>
+              </li>
+              <li>Announce</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Variants</h2>
+        <div class="grid">
+          <div>
+            <p class="caption">plain</p>
+            <ul class="np-list np-list-plain" aria-label="Plain">
+              <li>Profile</li>
+              <li>Billing</li>
+              <li>Security</li>
+            </ul>
+          </div>
+          <div>
+            <p class="caption">divided</p>
+            <ul class="np-list np-list-divided" aria-label="Divided">
+              <li>Profile</li>
+              <li>Billing</li>
+              <li>Security</li>
+            </ul>
+          </div>
+          <div>
+            <p class="caption">bordered</p>
+            <ul class="np-list np-list-bordered" aria-label="Bordered">
+              <li>Profile</li>
+              <li>Billing</li>
+              <li>Security</li>
+            </ul>
+          </div>
+          <div>
+            <p class="caption">bordered, nested</p>
+            <ul class="np-list np-list-bordered" aria-label="Bordered nested">
+              <li>
+                Account
+                <ul class="np-list">
+                  <li>Profile</li>
+                  <li>Billing</li>
+                </ul>
+              </li>
+              <li>Security</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Sizes and horizontal</h2>
+        <div class="grid">
+          <div>
+            <p class="caption">sm</p>
+            <ul class="np-list np-list-sm" aria-label="Small">
+              <li>Small item</li>
+              <li>Small item</li>
+            </ul>
+          </div>
+          <div>
+            <p class="caption">default</p>
+            <ul class="np-list" aria-label="Default">
+              <li>Default item</li>
+              <li>Default item</li>
+            </ul>
+          </div>
+          <div>
+            <p class="caption">lg</p>
+            <ul class="np-list np-list-lg" aria-label="Large">
+              <li>Large item</li>
+              <li>Large item</li>
+            </ul>
+          </div>
+          <div>
+            <p class="caption">horizontal, arrow keys</p>
+            <ul
+              class="np-list np-list-horizontal"
+              data-navigation
+              aria-label="Footer links"
+            >
+              <li><a href="#docs" style="color: inherit">Docs</a></li>
+              <li>
+                <a href="#components" style="color: inherit">Components</a>
+              </li>
+              <li><a href="#github" style="color: inherit">GitHub</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Collapsible tree with keyboard navigation</h2>
+        <p class="muted" style="margin-bottom: 0.75rem">
+          Tab into the tree, then use the arrow keys, Home, End, Enter, Space, *
+          and letters.
+        </p>
+        <div class="row">
+          <button
+            class="np-button np-button-outline np-button-sm"
+            type="button"
+            onclick="NepuiList.get(document.getElementById('tree')).expandAll()"
+          >
+            Expand all
+          </button>
+          <button
+            class="np-button np-button-outline np-button-sm"
+            type="button"
+            onclick="
+              NepuiList.get(document.getElementById('tree')).collapseAll()
+            "
+          >
+            Collapse all
+          </button>
+        </div>
+        <ul
+          id="tree"
+          class="np-list np-list-plain np-list-guides"
+          data-collapsible
+          data-navigation
+          data-loop
+          aria-label="Project files"
+          style="max-width: 22rem"
+        >
+          <li>
+            src
+            <ul class="np-list">
+              <li>
+                components
+                <ul class="np-list">
+                  <li>button.css</li>
+                  <li>list.css</li>
+                </ul>
+              </li>
+              <li>styles</li>
+              <li>index.ts</li>
+            </ul>
+          </li>
+          <li data-collapsed>
+            docs
+            <ul class="np-list">
+              <li>getting-started.mdx</li>
+              <li>theming.mdx</li>
+            </ul>
+          </li>
+          <li aria-disabled="true">private</li>
+          <li>package.json</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Selection and disabled</h2>
+        <div class="grid">
+          <div>
+            <p class="caption">single</p>
+            <ul
+              class="np-list np-list-plain"
+              data-selection="single"
+              aria-label="Language"
+            >
+              <li data-value="np" data-selected>Nepali</li>
+              <li data-value="en">English</li>
+              <li data-value="bh">Bhojpuri</li>
+              <li data-value="mai" aria-disabled="true">Maithili</li>
+            </ul>
+          </div>
+          <div>
+            <p class="caption">multiple, bordered</p>
+            <ul
+              class="np-list np-list-bordered"
+              data-selection="multiple"
+              aria-label="Notification channels"
+            >
+              <li data-value="email" data-selected>Email</li>
+              <li data-value="sms">SMS</li>
+              <li data-value="push" data-selected>Push</li>
+            </ul>
+          </div>
+          <div>
+            <p class="caption">multiple, divided</p>
+            <ul
+              class="np-list np-list-divided"
+              data-selection="multiple"
+              aria-label="Reports"
+            >
+              <li data-value="daily">Daily summary</li>
+              <li data-value="weekly" data-selected>Weekly digest</li>
+              <li data-value="monthly">Monthly report</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
