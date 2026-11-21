@@ -1,0 +1,352 @@
+/* nepui — File Input */
+
+.np-file-input,
+[data-np-file-input] {
+  --np-file-input-gap: calc(var(--np-spacing) * 3);
+  --np-file-input-dropzone-padding: calc(var(--np-spacing) * 6);
+  --np-file-input-dropzone-radius: var(--np-radius-lg);
+  --np-file-input-dropzone-border: var(--np-input, var(--np-border));
+  --np-file-input-dropzone-bg: transparent;
+  --np-file-input-item-radius: var(--np-radius-md);
+  --np-file-input-preview-size: 2.25rem;
+  --np-file-input-icon-size: 1.25rem;
+
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--np-file-input-gap);
+  width: 100%;
+  min-width: 0;
+}
+
+:is(.np-file-input, [data-np-file-input])
+  > :is(.np-file-input-trigger, [data-np-file-input-trigger]) {
+  align-self: flex-start;
+}
+
+.np-file-input-native,
+[data-np-file-input-native],
+.np-file-input-live,
+[data-np-file-input-live] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.np-file-input-dropzone,
+[data-np-file-input-dropzone] {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--np-spacing) * 2);
+  padding: var(--np-file-input-dropzone-padding);
+  border: 1px dashed var(--np-file-input-dropzone-border);
+  border-radius: var(--np-file-input-dropzone-radius);
+  background-color: var(--np-file-input-dropzone-bg);
+  color: var(--np-muted-foreground);
+  text-align: center;
+  transition:
+    border-color 150ms ease,
+    background-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.np-file-input-dropzone-icon {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--np-spacing) * 10);
+  height: calc(var(--np-spacing) * 10);
+  border-radius: var(--np-radius-full);
+  background-color: var(--np-muted);
+  color: var(--np-foreground);
+  transition:
+    background-color 150ms ease,
+    color 150ms ease;
+}
+
+.np-file-input-dropzone-icon svg {
+  flex-shrink: 0;
+  width: var(--np-file-input-icon-size);
+  height: var(--np-file-input-icon-size);
+}
+
+.np-file-input-dropzone-title {
+  margin: 0;
+  color: var(--np-foreground);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.np-file-input-dropzone-description {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.25;
+}
+
+:is(.np-file-input-dropzone, [data-np-file-input-dropzone])[data-dragging] {
+  border-color: var(--np-ring);
+  background-color: color-mix(in oklab, var(--np-muted) 60%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--np-ring), transparent 70%);
+}
+
+:is(.np-file-input-dropzone, [data-np-file-input-dropzone])[data-drag-accept] {
+  border-color: var(--np-success);
+  background-color: color-mix(in oklch, var(--np-success) 8%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--np-success), transparent 80%);
+}
+
+:is(.np-file-input-dropzone, [data-np-file-input-dropzone])[data-drag-reject] {
+  border-color: var(--np-destructive);
+  background-color: color-mix(in oklch, var(--np-destructive) 8%, transparent);
+  box-shadow: 0 0 0 3px
+    color-mix(in oklch, var(--np-destructive), transparent 80%);
+}
+
+:is(.np-file-input-dropzone, [data-np-file-input-dropzone])[data-dragging]
+  .np-file-input-dropzone-icon {
+  background-color: var(--np-foreground);
+  color: var(--np-background);
+}
+
+.np-file-input-dropzone-overlay,
+:is(
+  .np-file-input-dropzone,
+  [data-np-file-input-dropzone]
+)[data-variant="overlay"] {
+  position: fixed;
+  inset: calc(var(--np-spacing) * 3);
+  z-index: 50;
+  display: none;
+  border-width: 2px;
+  border-radius: var(--np-radius-xl);
+  background-color: color-mix(in oklab, var(--np-background) 88%, transparent);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+}
+
+:is(
+    .np-file-input-dropzone-overlay,
+    .np-file-input-dropzone,
+    [data-np-file-input-dropzone]
+  ):is(
+    .np-file-input-dropzone-overlay,
+    [data-variant="overlay"]
+  )[data-dragging] {
+  display: flex;
+}
+
+.np-file-input-dropzone-inline,
+:is(
+  .np-file-input-dropzone,
+  [data-np-file-input-dropzone]
+)[data-variant="inline"] {
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: calc(var(--np-spacing) * 2);
+  border-style: solid;
+  color: var(--np-foreground);
+  text-align: start;
+}
+
+:is(
+    .np-file-input-dropzone-inline,
+    .np-file-input-dropzone,
+    [data-np-file-input-dropzone]
+  ):is(.np-file-input-dropzone-inline, [data-variant="inline"]):focus-within {
+  border-color: var(--np-ring);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--np-ring), transparent 50%);
+}
+
+.np-file-input-list,
+[data-np-file-input-list] {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--np-spacing) * 2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+:is(.np-file-input-list, [data-np-file-input-list]):not(:has(> li)) {
+  display: none;
+}
+
+.np-file-input-item,
+[data-np-file-input-item] {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: calc(var(--np-spacing) * 3);
+  min-width: 0;
+  padding: calc(var(--np-spacing) * 2);
+  border: 1px solid var(--np-border);
+  border-radius: var(--np-file-input-item-radius);
+  background-color: var(--np-card);
+  color: var(--np-card-foreground);
+  outline: 0;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+:is(.np-file-input-item, [data-np-file-input-item]):focus-visible {
+  border-color: var(--np-ring);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--np-ring), transparent 50%);
+}
+
+:is(.np-file-input-item, [data-np-file-input-item]) > svg {
+  flex: none;
+  width: var(--np-file-input-icon-size);
+  height: var(--np-file-input-icon-size);
+  margin-inline-start: calc(var(--np-spacing) * 1);
+  color: var(--np-muted-foreground);
+}
+
+.np-file-input-item-preview,
+[data-np-file-input-item-preview] {
+  box-sizing: border-box;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--np-file-input-preview-size);
+  height: var(--np-file-input-preview-size);
+  overflow: hidden;
+  border-radius: calc(var(--np-file-input-item-radius) - 2px);
+  background-color: var(--np-muted);
+  color: var(--np-muted-foreground);
+}
+
+:is(.np-file-input-item-preview, [data-np-file-input-item-preview]) img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+:is(.np-file-input-item-preview, [data-np-file-input-item-preview]) svg {
+  flex-shrink: 0;
+  width: var(--np-file-input-icon-size);
+  height: var(--np-file-input-icon-size);
+}
+
+.np-file-input-item-details,
+[data-np-file-input-item-details] {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.np-file-input-item-name,
+[data-np-file-input-item-name] {
+  overflow: hidden;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.np-file-input-item-size,
+[data-np-file-input-item-size] {
+  color: var(--np-muted-foreground);
+  font-size: 0.75rem;
+  line-height: 1.25;
+}
+
+.np-file-input-item-remove,
+[data-np-file-input-item-remove] {
+  flex: none;
+}
+
+.np-file-input-rejections,
+[data-np-file-input-rejections] {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--np-spacing);
+  margin: 0;
+  padding: 0;
+  color: color-mix(in oklch, var(--np-destructive), var(--np-foreground) 30%);
+  font-size: 0.8125rem;
+  line-height: 1.25;
+  list-style: none;
+}
+
+:is(.np-file-input-rejections, [data-np-file-input-rejections]):is(
+  :empty,
+  [hidden]
+) {
+  display: none;
+}
+
+:is(.np-file-input-rejections, [data-np-file-input-rejections]) b {
+  font-weight: 500;
+}
+
+:is(.np-file-input, [data-np-file-input]):is(
+    [data-disabled],
+    :has(:is(.np-file-input-native, [data-np-file-input-native]):disabled)
+  )
+  :is(
+    .np-file-input-dropzone,
+    [data-np-file-input-dropzone],
+    .np-file-input-list,
+    [data-np-file-input-list]
+  ) {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+:is(.np-file-input, [data-np-file-input])[data-invalid]
+  :is(.np-file-input-dropzone, [data-np-file-input-dropzone]),
+:is(.np-file-input-dropzone, [data-np-file-input-dropzone])[data-invalid],
+:is(.np-field, [data-np-field])[data-invalid]
+  :is(.np-file-input-dropzone, [data-np-file-input-dropzone]) {
+  border-color: var(--np-destructive);
+}
+
+:is(.dark, [data-theme="dark"]) :is(.np-file-input, [data-np-file-input]) {
+  --np-file-input-dropzone-bg: color-mix(
+    in oklab,
+    var(--np-file-input-dropzone-border) 30%,
+    transparent
+  );
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light, [data-theme="light"])
+    :is(.np-file-input, [data-np-file-input]) {
+    --np-file-input-dropzone-bg: color-mix(
+      in oklab,
+      var(--np-file-input-dropzone-border) 30%,
+      transparent
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .np-file-input-dropzone,
+  [data-np-file-input-dropzone],
+  .np-file-input-dropzone-icon,
+  .np-file-input-item,
+  [data-np-file-input-item] {
+    transition: none;
+  }
+}
