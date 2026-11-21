@@ -26,7 +26,11 @@ export default function SliderControlled() {
       >
         <Label htmlFor="slider-temperature">Temperature</Label>
         <span
-          style={{ fontSize: "0.875rem", color: "var(--np-muted-foreground)" }}
+          style={{
+            fontSize: "0.875rem",
+            color: "var(--np-muted-foreground)",
+            fontVariantNumeric: "tabular-nums",
+          }}
         >
           {value.join(", ")}
         </span>
