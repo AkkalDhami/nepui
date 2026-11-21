@@ -1531,6 +1531,29 @@
       ]
     },
     {
+      "name": "navigation-menu",
+      "type": "registry:ui",
+      "title": "Navigation Menu",
+      "description": "A collection of links for navigating websites.",
+      "files": [
+        {
+          "path": "registry/react/navigation-menu/navigation-menu.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/navigation-menu/navigation-menu.tsx"
+        },
+        {
+          "path": "registry/react/navigation-menu/navigation-menu.css",
+          "type": "registry:ui",
+          "target": "components/nepui/navigation-menu/navigation-menu.css"
+        },
+        {
+          "path": "registry/react/navigation-menu/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/navigation-menu/index.ts"
+        }
+      ]
+    },
+    {
       "name": "icon-swap",
       "type": "registry:ui",
       "title": "Icon Swap",

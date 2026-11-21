@@ -967,6 +967,29 @@
       ]
     },
     {
+      "name": "navigation-menu",
+      "type": "registry:ui",
+      "title": "Navigation Menu",
+      "description": "A collection of links for navigating websites.",
+      "files": [
+        {
+          "path": "registry/html/navigation-menu/navigation-menu.html",
+          "type": "registry:ui",
+          "target": "html/navigation-menu.html"
+        },
+        {
+          "path": "registry/html/navigation-menu/navigation-menu.css",
+          "type": "registry:ui",
+          "target": "styles/navigation-menu.css"
+        },
+        {
+          "path": "registry/html/navigation-menu/navigation-menu.js",
+          "type": "registry:ui",
+          "target": "javascripts/navigation-menu.js"
+        }
+      ]
+    },
+    {
       "name": "radio-group",
       "type": "registry:ui",
       "title": "Radio Group",
