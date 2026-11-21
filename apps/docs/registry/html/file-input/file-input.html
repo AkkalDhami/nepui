@@ -1,0 +1,1056 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — File Input</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/field.css" />
+    <link rel="stylesheet" href="../styles/file-input.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1.5rem 4rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: var(--np-font-sans, system-ui, sans-serif);
+      }
+      main {
+        max-width: 32rem;
+        margin-inline: auto;
+      }
+      h2 {
+        margin: 0 0 0.75rem;
+        font-size: 0.875rem;
+        color: var(--np-muted-foreground);
+        font-weight: 500;
+      }
+      section {
+        margin-top: 2rem;
+      }
+    </style>
+    <script src="../javascripts/file-input.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Class form</h2>
+        <div class="np-file-input">
+          <div class="np-file-input-dropzone">
+            <span class="np-file-input-dropzone-icon"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <path d="m17 8-5-5-5 5" />
+                <path d="M12 3v12" /></svg
+            ></span>
+            <p class="np-file-input-dropzone-title">Drag and drop files here</p>
+            <p class="np-file-input-dropzone-description">
+              Or paste them from your clipboard.
+            </p>
+            <button
+              class="np-button np-button-outline np-file-input-trigger"
+              type="button"
+              onclick="
+                this.closest('.np-file-input')
+                  .querySelector('input[type=file]')
+                  .click()
+              "
+            >
+              Browse files
+            </button>
+          </div>
+          <input
+            class="np-file-input-native"
+            id="i-class"
+            type="file"
+            tabindex="-1"
+            aria-hidden="true"
+            multiple
+          />
+          <ul class="np-file-input-list" aria-label="Files">
+            <template>
+              <li class="np-file-input-item" tabindex="-1">
+                <span class="np-file-input-item-preview" data-file-preview
+                  ><svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                    />
+                    <path d="M14 2v4a2 2 0 0 0 2 2h4" /></svg
+                ></span>
+                <div class="np-file-input-item-details">
+                  <span class="np-file-input-item-name" data-file-name></span>
+                  <span class="np-file-input-item-size" data-file-size></span>
+                </div>
+                <button
+                  class="np-button np-button-ghost np-button-icon-xs np-file-input-item-remove"
+                  type="button"
+                  data-file-remove
+                  aria-label="Remove file"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M18 6 6 18" />
+                    <path d="m6 6 12 12" />
+                  </svg>
+                </button>
+              </li>
+            </template>
+          </ul>
+          <ul class="np-file-input-rejections" hidden></ul>
+          <div
+            class="np-file-input-live"
+            role="status"
+            aria-live="polite"
+          ></div>
+        </div>
+      </section>
+      <section>
+        <h2>Data-attribute form</h2>
+        <div data-np-file-input>
+          <div data-np-file-input-dropzone>
+            <span class="np-file-input-dropzone-icon"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <path d="m17 8-5-5-5 5" />
+                <path d="M12 3v12" /></svg
+            ></span>
+            <p class="np-file-input-dropzone-title">Drag and drop files here</p>
+            <p class="np-file-input-dropzone-description">
+              Or paste them from your clipboard.
+            </p>
+            <button
+              class="np-button np-button-outline"
+              data-np-file-input-trigger
+              type="button"
+              onclick="
+                this.closest('[data-np-file-input]')
+                  .querySelector('input[type=file]')
+                  .click()
+              "
+            >
+              Browse files
+            </button>
+          </div>
+          <input
+            data-np-file-input-native
+            id="i-data"
+            type="file"
+            tabindex="-1"
+            aria-hidden="true"
+            multiple
+          />
+          <ul data-np-file-input-list aria-label="Files">
+            <template>
+              <li data-np-file-input-item tabindex="-1">
+                <span data-np-file-input-item-preview data-file-preview
+                  ><svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                    />
+                    <path d="M14 2v4a2 2 0 0 0 2 2h4" /></svg
+                ></span>
+                <div data-np-file-input-item-details>
+                  <span data-np-file-input-item-name data-file-name></span>
+                  <span data-np-file-input-item-size data-file-size></span>
+                </div>
+                <button
+                  class="np-button np-button-ghost np-button-icon-xs"
+                  data-np-file-input-item-remove
+                  type="button"
+                  data-file-remove
+                  aria-label="Remove file"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M18 6 6 18" />
+                    <path d="m6 6 12 12" />
+                  </svg>
+                </button>
+              </li>
+            </template>
+          </ul>
+          <ul data-np-file-input-rejections hidden></ul>
+          <div data-np-file-input-live role="status" aria-live="polite"></div>
+        </div>
+      </section>
+      <section>
+        <h2>Accepted types (images and PDFs)</h2>
+        <div class="np-file-input">
+          <div class="np-file-input-dropzone">
+            <span class="np-file-input-dropzone-icon"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <path d="m17 8-5-5-5 5" />
+                <path d="M12 3v12" /></svg
+            ></span>
+            <p class="np-file-input-dropzone-title">Drop images or PDFs</p>
+            <p class="np-file-input-dropzone-description">
+              Other file types are left out.
+            </p>
+            <button
+              class="np-button np-button-outline np-file-input-trigger"
+              type="button"
+              onclick="
+                this.closest('.np-file-input')
+                  .querySelector('input[type=file]')
+                  .click()
+              "
+            >
+              Browse files
+            </button>
+          </div>
+          <input
+            class="np-file-input-native"
+            id="i-accept"
+            type="file"
+            tabindex="-1"
+            aria-hidden="true"
+            multiple
+            accept="image/*,.pdf"
+          />
+          <ul class="np-file-input-list" aria-label="Files">
+            <template>
+              <li class="np-file-input-item" tabindex="-1">
+                <span class="np-file-input-item-preview" data-file-preview
+                  ><svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                    />
+                    <path d="M14 2v4a2 2 0 0 0 2 2h4" /></svg
+                ></span>
+                <div class="np-file-input-item-details">
+                  <span class="np-file-input-item-name" data-file-name></span>
+                  <span class="np-file-input-item-size" data-file-size></span>
+                </div>
+                <button
+                  class="np-button np-button-ghost np-button-icon-xs np-file-input-item-remove"
+                  type="button"
+                  data-file-remove
+                  aria-label="Remove file"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M18 6 6 18" />
+                    <path d="m6 6 12 12" />
+                  </svg>
+                </button>
+              </li>
+            </template>
+          </ul>
+          <ul class="np-file-input-rejections" hidden></ul>
+          <div
+            class="np-file-input-live"
+            role="status"
+            aria-live="polite"
+          ></div>
+        </div>
+      </section>
+      <section>
+        <h2>Limits (3 files, 2 MB each)</h2>
+        <div class="np-file-input" data-max-files="3" data-max-size="2000000">
+          <div class="np-file-input-dropzone">
+            <span class="np-file-input-dropzone-icon"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <path d="m17 8-5-5-5 5" />
+                <path d="M12 3v12" /></svg
+            ></span>
+            <p class="np-file-input-dropzone-title">Up to 3 files</p>
+            <p class="np-file-input-dropzone-description">
+              Each file can be up to 2 MB.
+            </p>
+            <button
+              class="np-button np-button-outline np-file-input-trigger"
+              type="button"
+              onclick="
+                this.closest('.np-file-input')
+                  .querySelector('input[type=file]')
+                  .click()
+              "
+            >
+              Browse files
+            </button>
+          </div>
+          <input
+            class="np-file-input-native"
+            id="i-limits"
+            type="file"
+            tabindex="-1"
+            aria-hidden="true"
+            multiple
+          />
+          <ul class="np-file-input-list" aria-label="Files">
+            <template>
+              <li class="np-file-input-item" tabindex="-1">
+                <span class="np-file-input-item-preview" data-file-preview
+                  ><svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                    />
+                    <path d="M14 2v4a2 2 0 0 0 2 2h4" /></svg
+                ></span>
+                <div class="np-file-input-item-details">
+                  <span class="np-file-input-item-name" data-file-name></span>
+                  <span class="np-file-input-item-size" data-file-size></span>
+                </div>
+                <button
+                  class="np-button np-button-ghost np-button-icon-xs np-file-input-item-remove"
+                  type="button"
+                  data-file-remove
+                  aria-label="Remove file"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M18 6 6 18" />
+                    <path d="m6 6 12 12" />
+                  </svg>
+                </button>
+              </li>
+            </template>
+          </ul>
+          <ul class="np-file-input-rejections" hidden></ul>
+          <div
+            class="np-file-input-live"
+            role="status"
+            aria-live="polite"
+          ></div>
+        </div>
+      </section>
+      <section>
+        <h2>One file (a new file replaces the current one)</h2>
+        <div class="np-file-input">
+          <div class="np-file-input-dropzone">
+            <span class="np-file-input-dropzone-icon"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <path d="m17 8-5-5-5 5" />
+                <path d="M12 3v12" /></svg
+            ></span>
+            <p class="np-file-input-dropzone-title">Drop a PDF here</p>
+            <button
+              class="np-button np-button-outline np-file-input-trigger"
+              type="button"
+              onclick="
+                this.closest('.np-file-input')
+                  .querySelector('input[type=file]')
+                  .click()
+              "
+            >
+              Choose a PDF
+            </button>
+          </div>
+          <input
+            class="np-file-input-native"
+            id="i-one"
+            type="file"
+            tabindex="-1"
+            aria-hidden="true"
+            accept=".pdf"
+          />
+          <ul class="np-file-input-list" aria-label="Files">
+            <template>
+              <li class="np-file-input-item" tabindex="-1">
+                <span class="np-file-input-item-preview" data-file-preview
+                  ><svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                    />
+                    <path d="M14 2v4a2 2 0 0 0 2 2h4" /></svg
+                ></span>
+                <div class="np-file-input-item-details">
+                  <span class="np-file-input-item-name" data-file-name></span>
+                  <span class="np-file-input-item-size" data-file-size></span>
+                </div>
+                <button
+                  class="np-button np-button-ghost np-button-icon-xs np-file-input-item-remove"
+                  type="button"
+                  data-file-remove
+                  aria-label="Remove file"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M18 6 6 18" />
+                    <path d="m6 6 12 12" />
+                  </svg>
+                </button>
+              </li>
+            </template>
+          </ul>
+          <ul class="np-file-input-rejections" hidden></ul>
+          <div
+            class="np-file-input-live"
+            role="status"
+            aria-live="polite"
+          ></div>
+        </div>
+      </section>
+      <section>
+        <h2>Folder</h2>
+        <div class="np-file-input">
+          <div class="np-file-input-dropzone">
+            <span class="np-file-input-dropzone-icon"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <path d="m17 8-5-5-5 5" />
+                <path d="M12 3v12" /></svg
+            ></span>
+            <p class="np-file-input-dropzone-title">Drop a folder here</p>
+            <p class="np-file-input-dropzone-description">
+              Every file inside it is added.
+            </p>
+            <button
+              class="np-button np-button-outline np-file-input-trigger"
+              type="button"
+              onclick="
+                this.closest('.np-file-input')
+                  .querySelector('input[type=file]')
+                  .click()
+              "
+            >
+              Choose a folder
+            </button>
+          </div>
+          <input
+            class="np-file-input-native"
+            id="i-folder"
+            type="file"
+            webkitdirectory
+            tabindex="-1"
+            aria-hidden="true"
+            multiple
+          />
+          <ul class="np-file-input-list" aria-label="Files">
+            <template>
+              <li class="np-file-input-item" tabindex="-1">
+                <span class="np-file-input-item-preview" data-file-preview
+                  ><svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                    />
+                    <path d="M14 2v4a2 2 0 0 0 2 2h4" /></svg
+                ></span>
+                <div class="np-file-input-item-details">
+                  <span class="np-file-input-item-name" data-file-name></span>
+                  <span class="np-file-input-item-size" data-file-size></span>
+                </div>
+                <button
+                  class="np-button np-button-ghost np-button-icon-xs np-file-input-item-remove"
+                  type="button"
+                  data-file-remove
+                  aria-label="Remove file"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M18 6 6 18" />
+                    <path d="m6 6 12 12" />
+                  </svg>
+                </button>
+              </li>
+            </template>
+          </ul>
+          <ul class="np-file-input-rejections" hidden></ul>
+          <div
+            class="np-file-input-live"
+            role="status"
+            aria-live="polite"
+          ></div>
+        </div>
+      </section>
+      <section>
+        <h2>Previews (bigger thumbnails)</h2>
+        <div class="np-file-input" style="--np-file-input-preview-size: 3rem">
+          <div class="np-file-input-dropzone">
+            <span class="np-file-input-dropzone-icon"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <path d="m17 8-5-5-5 5" />
+                <path d="M12 3v12" /></svg
+            ></span>
+            <p class="np-file-input-dropzone-title">Drop images here</p>
+            <p class="np-file-input-dropzone-description">
+              Thumbnails show as soon as they are added.
+            </p>
+            <button
+              class="np-button np-button-outline np-file-input-trigger"
+              type="button"
+              onclick="
+                this.closest('.np-file-input')
+                  .querySelector('input[type=file]')
+                  .click()
+              "
+            >
+              Browse images
+            </button>
+          </div>
+          <input
+            class="np-file-input-native"
+            id="i-prev"
+            type="file"
+            tabindex="-1"
+            aria-hidden="true"
+            multiple
+            accept="image/*"
+          />
+          <ul class="np-file-input-list" aria-label="Files">
+            <template>
+              <li class="np-file-input-item" tabindex="-1">
+                <span class="np-file-input-item-preview" data-file-preview
+                  ><svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                    />
+                    <path d="M14 2v4a2 2 0 0 0 2 2h4" /></svg
+                ></span>
+                <div class="np-file-input-item-details">
+                  <span class="np-file-input-item-name" data-file-name></span>
+                  <span class="np-file-input-item-size" data-file-size></span>
+                </div>
+                <button
+                  class="np-button np-button-ghost np-button-icon-xs np-file-input-item-remove"
+                  type="button"
+                  data-file-remove
+                  aria-label="Remove file"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M18 6 6 18" />
+                    <path d="m6 6 12 12" />
+                  </svg>
+                </button>
+              </li>
+            </template>
+          </ul>
+          <ul class="np-file-input-rejections" hidden></ul>
+          <div
+            class="np-file-input-live"
+            role="status"
+            aria-live="polite"
+          ></div>
+        </div>
+      </section>
+      <section>
+        <h2>Page-wide drop (drag a file over this page)</h2>
+        <div class="np-file-input">
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              gap: 1rem;
+            "
+          >
+            <p
+              style="
+                margin: 0;
+                font-size: 0.875rem;
+                color: var(--np-muted-foreground);
+              "
+            >
+              Drop files anywhere on this page.
+            </p>
+            <button
+              class="np-button np-button-outline np-file-input-trigger"
+              type="button"
+              onclick="
+                this.closest('.np-file-input')
+                  .querySelector('input[type=file]')
+                  .click()
+              "
+            >
+              Upload files
+            </button>
+          </div>
+          <div
+            class="np-file-input-dropzone np-file-input-dropzone-overlay"
+            data-target="document"
+          >
+            <span class="np-file-input-dropzone-icon"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <path d="m17 8-5-5-5 5" />
+                <path d="M12 3v12" /></svg
+            ></span>
+            <p class="np-file-input-dropzone-title">Drop to attach</p>
+          </div>
+          <input
+            class="np-file-input-native"
+            id="i-page"
+            type="file"
+            multiple
+            tabindex="-1"
+            aria-hidden="true"
+          />
+          <ul class="np-file-input-list" aria-label="Attachments">
+            <template>
+              <li class="np-file-input-item" tabindex="-1">
+                <span class="np-file-input-item-preview" data-file-preview
+                  ><svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                    />
+                    <path d="M14 2v4a2 2 0 0 0 2 2h4" /></svg
+                ></span>
+                <div class="np-file-input-item-details">
+                  <span class="np-file-input-item-name" data-file-name></span>
+                  <span class="np-file-input-item-size" data-file-size></span>
+                </div>
+                <button
+                  class="np-button np-button-ghost np-button-icon-xs np-file-input-item-remove"
+                  type="button"
+                  data-file-remove
+                  aria-label="Remove file"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M18 6 6 18" />
+                    <path d="m6 6 12 12" />
+                  </svg>
+                </button>
+              </li>
+            </template>
+          </ul>
+          <div
+            class="np-file-input-live"
+            role="status"
+            aria-live="polite"
+          ></div>
+        </div>
+      </section>
+      <section>
+        <h2>Disabled</h2>
+        <div class="np-file-input">
+          <div class="np-file-input-dropzone">
+            <span class="np-file-input-dropzone-icon"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <path d="m17 8-5-5-5 5" />
+                <path d="M12 3v12" /></svg
+            ></span>
+            <p class="np-file-input-dropzone-title">Uploads are turned off</p>
+            <p class="np-file-input-dropzone-description">
+              Ask an administrator to enable them.
+            </p>
+            <button
+              class="np-button np-button-outline np-file-input-trigger"
+              type="button"
+              onclick="
+                this.closest('.np-file-input')
+                  .querySelector('input[type=file]')
+                  .click()
+              "
+              disabled
+            >
+              Browse files
+            </button>
+          </div>
+          <input
+            class="np-file-input-native"
+            id="i-dis"
+            type="file"
+            tabindex="-1"
+            aria-hidden="true"
+            multiple
+            disabled
+          />
+          <ul class="np-file-input-list" aria-label="Files">
+            <template>
+              <li class="np-file-input-item" tabindex="-1">
+                <span class="np-file-input-item-preview" data-file-preview
+                  ><svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                    />
+                    <path d="M14 2v4a2 2 0 0 0 2 2h4" /></svg
+                ></span>
+                <div class="np-file-input-item-details">
+                  <span class="np-file-input-item-name" data-file-name></span>
+                  <span class="np-file-input-item-size" data-file-size></span>
+                </div>
+                <button
+                  class="np-button np-button-ghost np-button-icon-xs np-file-input-item-remove"
+                  type="button"
+                  data-file-remove
+                  aria-label="Remove file"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M18 6 6 18" />
+                    <path d="m6 6 12 12" />
+                  </svg>
+                </button>
+              </li>
+            </template>
+          </ul>
+          <div
+            class="np-file-input-live"
+            role="status"
+            aria-live="polite"
+          ></div>
+        </div>
+      </section>
+      <section>
+        <h2>Invalid</h2>
+        <div class="np-field" data-invalid>
+          <label class="np-field-label" for="i-inv">Signed contract</label>
+          <div class="np-file-input" data-invalid>
+            <div class="np-file-input-dropzone">
+              <span class="np-file-input-dropzone-icon"
+                ><svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <path d="m17 8-5-5-5 5" />
+                  <path d="M12 3v12" /></svg
+              ></span>
+              <p class="np-file-input-dropzone-title">
+                Drop the signed PDF here
+              </p>
+              <p class="np-file-input-dropzone-description">
+                Only PDF files are accepted.
+              </p>
+              <button
+                class="np-button np-button-outline np-file-input-trigger"
+                id="i-inv"
+                type="button"
+                aria-invalid="true"
+                aria-describedby="i-inv-message"
+                onclick="
+                  this.closest('.np-file-input')
+                    .querySelector('input[type=file]')
+                    .click()
+                "
+              >
+                Choose a PDF
+              </button>
+            </div>
+            <input
+              class="np-file-input-native"
+              type="file"
+              accept=".pdf"
+              required
+              tabindex="-1"
+              aria-hidden="true"
+            />
+          </div>
+          <p class="np-field-error" id="i-inv-message" role="alert">
+            Add the signed contract to continue.
+          </p>
+        </div>
+      </section>
+      <section>
+        <h2>Custom variables</h2>
+        <div
+          class="np-file-input"
+          style="
+            --np-file-input-dropzone-radius: 0;
+            --np-file-input-dropzone-padding: 1rem;
+          "
+        >
+          <div class="np-file-input-dropzone">
+            <span class="np-file-input-dropzone-icon"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <path d="m17 8-5-5-5 5" />
+                <path d="M12 3v12" /></svg
+            ></span>
+            <p class="np-file-input-dropzone-title">Drop files here</p>
+            <p class="np-file-input-dropzone-description">
+              Square corners, tighter padding.
+            </p>
+            <button
+              class="np-button np-button-outline np-file-input-trigger"
+              type="button"
+              onclick="
+                this.closest('.np-file-input')
+                  .querySelector('input[type=file]')
+                  .click()
+              "
+            >
+              Browse files
+            </button>
+          </div>
+          <input
+            class="np-file-input-native"
+            id="i-var"
+            type="file"
+            tabindex="-1"
+            aria-hidden="true"
+            multiple
+          />
+          <ul class="np-file-input-list" aria-label="Files">
+            <template>
+              <li class="np-file-input-item" tabindex="-1">
+                <span class="np-file-input-item-preview" data-file-preview
+                  ><svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                    />
+                    <path d="M14 2v4a2 2 0 0 0 2 2h4" /></svg
+                ></span>
+                <div class="np-file-input-item-details">
+                  <span class="np-file-input-item-name" data-file-name></span>
+                  <span class="np-file-input-item-size" data-file-size></span>
+                </div>
+                <button
+                  class="np-button np-button-ghost np-button-icon-xs np-file-input-item-remove"
+                  type="button"
+                  data-file-remove
+                  aria-label="Remove file"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M18 6 6 18" />
+                    <path d="m6 6 12 12" />
+                  </svg>
+                </button>
+              </li>
+            </template>
+          </ul>
+          <ul class="np-file-input-rejections" hidden></ul>
+          <div
+            class="np-file-input-live"
+            role="status"
+            aria-live="polite"
+          ></div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
