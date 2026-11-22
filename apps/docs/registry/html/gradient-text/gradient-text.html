@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Gradient Text</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/gradient-text.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem 4rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: system-ui, sans-serif;
+      }
+      main {
+        display: grid;
+        gap: 2.5rem;
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      h2.sec {
+        margin: 0 0 0.75rem;
+        font-size: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2 class="sec">Default</h2>
+        <h2
+          class="np-gradient-text"
+          style="
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+          "
+        >
+          Build faster with nepui
+        </h2>
+      </section>
+
+      <section>
+        <h2 class="sec">Gradients</h2>
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+            gap: 0.5rem 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+          "
+        >
+          <span class="np-gradient-text" data-gradient="aurora">Aurora</span>
+          <span class="np-gradient-text">Sunrise</span>
+          <span class="np-gradient-text" data-gradient="sunset">Sunset</span>
+          <span class="np-gradient-text" data-gradient="ocean">Ocean</span>
+          <span class="np-gradient-text" data-gradient="forest">Forest</span>
+          <span class="np-gradient-text" data-gradient="fire">Fire</span>
+          <span class="np-gradient-text" data-gradient="candy">Candy</span>
+          <span class="np-gradient-text" data-gradient="lavender"
+            >Lavender</span
+          >
+          <span class="np-gradient-text" data-gradient="mint">Mint</span>
+          <span class="np-gradient-text" data-gradient="peach">Peach</span>
+          <span class="np-gradient-text" data-gradient="midnight"
+            >Midnight</span
+          >
+          <span class="np-gradient-text" data-gradient="gold">Gold</span>
+          <span class="np-gradient-text" data-gradient="rainbow">Rainbow</span>
+          <span class="np-gradient-text" data-gradient="cyber">Cyber</span>
+          <span class="np-gradient-text" data-gradient="plasma">Plasma</span>
+          <span class="np-gradient-text" data-gradient="mono">Mono</span>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec">Neon</h2>
+        <div
+          style="
+            display: grid;
+            gap: 0.75rem;
+            padding: 2rem;
+            border-radius: var(--np-radius-xl);
+            background: #0a0a0a;
+            overflow: hidden;
+            font-size: 2rem;
+            font-weight: 700;
+          "
+        >
+          <span class="np-gradient-text" data-gradient="cyber" data-neon="soft"
+            >Soft glow</span
+          >
+          <span class="np-gradient-text" data-gradient="cyber" data-neon
+            >Neon glow</span
+          >
+          <span
+            class="np-gradient-text"
+            data-gradient="plasma"
+            data-neon="strong"
+            >Strong glow</span
+          >
+          <span
+            class="np-gradient-text"
+            data-gradient="fire"
+            data-neon="strong"
+            data-flicker
+            data-animate="false"
+            >Flickering sign</span
+          >
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec">Speed and direction</h2>
+        <div
+          style="
+            display: grid;
+            gap: 0.5rem;
+            font-size: 1.75rem;
+            font-weight: 600;
+          "
+        >
+          <span class="np-gradient-text" data-gradient="ocean" data-speed="slow"
+            >Slow</span
+          >
+          <span class="np-gradient-text" data-gradient="ocean">Default</span>
+          <span class="np-gradient-text" data-gradient="ocean" data-speed="fast"
+            >Fast</span
+          >
+          <span
+            class="np-gradient-text"
+            data-gradient="ocean"
+            data-direction="reverse"
+            >Reverse</span
+          >
+          <span
+            class="np-gradient-text"
+            data-gradient="ocean"
+            data-animate="false"
+            >Static</span
+          >
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec">Inline</h2>
+        <p
+          style="
+            margin: 0;
+            max-width: 28rem;
+            font-size: 1.125rem;
+            line-height: 1.6;
+          "
+        >
+          Style any word in a sentence. This one is
+          <span
+            class="np-gradient-text"
+            data-gradient="sunset"
+            style="font-weight: 600"
+            >animated with plain CSS</span
+          >, so there is nothing to load and nothing to run.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
