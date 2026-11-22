@@ -1483,6 +1483,29 @@
       ]
     },
     {
+      "name": "highlight-text",
+      "type": "registry:ui",
+      "title": "Highlight Text",
+      "description": "A highlighter pen that draws itself behind text, as a marker, a fill, an underline or a strike, in plain CSS.",
+      "files": [
+        {
+          "path": "registry/react/highlight-text/highlight-text.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/highlight-text/highlight-text.tsx"
+        },
+        {
+          "path": "registry/react/gradient-text/gradient-text.css",
+          "type": "registry:ui",
+          "target": "components/nepui/highlight-text/highlight-text.css"
+        },
+        {
+          "path": "registry/react/highlight-text/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/highlight-text/index.ts"
+        }
+      ]
+    },
+    {
       "name": "number-input",
       "type": "registry:ui",
       "title": "Number Input",
@@ -1527,6 +1550,29 @@
           "path": "registry/react/file-input/index.ts",
           "type": "registry:ui",
           "target": "components/nepui/file-input/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "navigation-menu",
+      "type": "registry:ui",
+      "title": "Navigation Menu",
+      "description": "A collection of links for navigating websites.",
+      "files": [
+        {
+          "path": "registry/react/navigation-menu/navigation-menu.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/navigation-menu/navigation-menu.tsx"
+        },
+        {
+          "path": "registry/react/navigation-menu/navigation-menu.css",
+          "type": "registry:ui",
+          "target": "components/nepui/navigation-menu/navigation-menu.css"
+        },
+        {
+          "path": "registry/react/navigation-menu/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/navigation-menu/index.ts"
         }
       ]
     },

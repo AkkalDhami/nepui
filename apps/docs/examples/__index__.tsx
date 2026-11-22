@@ -229,6 +229,11 @@ import KtmReactGroupSmall from "./ktm/react/group-small"
 import KtmReactGroupTextEnd from "./ktm/react/group-text-end"
 import KtmReactGroupTextStart from "./ktm/react/group-text-start"
 import KtmReactGroupVertical from "./ktm/react/group-vertical"
+import KtmReactHighlightTextDemo from "./ktm/react/highlight-text-demo"
+import KtmReactHighlightTextGradients from "./ktm/react/highlight-text-gradients"
+import KtmReactHighlightTextParagraph from "./ktm/react/highlight-text-paragraph"
+import KtmReactHighlightTextTriggers from "./ktm/react/highlight-text-triggers"
+import KtmReactHighlightTextVariants from "./ktm/react/highlight-text-variants"
 import KtmReactHoverCardDelay from "./ktm/react/hover-card-delay"
 import KtmReactHoverCardDemo from "./ktm/react/hover-card-demo"
 import KtmReactHoverCardInline from "./ktm/react/hover-card-inline"
@@ -313,6 +318,8 @@ import KtmReactMeterRange from "./ktm/react/meter-range"
 import KtmReactMeterSizes from "./ktm/react/meter-sizes"
 import KtmReactMeterVariants from "./ktm/react/meter-variants"
 import KtmReactModeToggle from "./ktm/react/mode-toggle"
+import KtmReactNavigationMenuDemo from "./ktm/react/navigation-menu-demo"
+import KtmReactNavigationMenuSimple from "./ktm/react/navigation-menu-simple"
 import KtmReactNumberInputDemo from "./ktm/react/number-input-demo"
 import KtmReactNumberInputFormat from "./ktm/react/number-input-format"
 import KtmReactNumberInputLabel from "./ktm/react/number-input-label"
@@ -714,6 +721,11 @@ export const ExamplesIndex: Record<
       "group-text-end": KtmReactGroupTextEnd,
       "group-text-start": KtmReactGroupTextStart,
       "group-vertical": KtmReactGroupVertical,
+      "highlight-text-demo": KtmReactHighlightTextDemo,
+      "highlight-text-gradients": KtmReactHighlightTextGradients,
+      "highlight-text-paragraph": KtmReactHighlightTextParagraph,
+      "highlight-text-triggers": KtmReactHighlightTextTriggers,
+      "highlight-text-variants": KtmReactHighlightTextVariants,
       "hover-card-delay": KtmReactHoverCardDelay,
       "hover-card-demo": KtmReactHoverCardDemo,
       "hover-card-inline": KtmReactHoverCardInline,
@@ -798,6 +810,8 @@ export const ExamplesIndex: Record<
       "meter-sizes": KtmReactMeterSizes,
       "meter-variants": KtmReactMeterVariants,
       "mode-toggle": KtmReactModeToggle,
+      "navigation-menu-demo": KtmReactNavigationMenuDemo,
+      "navigation-menu-simple": KtmReactNavigationMenuSimple,
       "number-input-demo": KtmReactNumberInputDemo,
       "number-input-format": KtmReactNumberInputFormat,
       "number-input-label": KtmReactNumberInputLabel,
@@ -1263,6 +1277,8 @@ export const ExamplesIndex: Record<
       "meter-range": "ktm/html/meter-range.html",
       "meter-sizes": "ktm/html/meter-sizes.html",
       "meter-variants": "ktm/html/meter-variants.html",
+      "navigation-menu-demo": "ktm/html/navigation-menu-demo.html",
+      "navigation-menu-simple": "ktm/html/navigation-menu-simple.html",
       "number-input-demo": "ktm/html/number-input-demo.html",
       "number-input-disabled": "ktm/html/number-input-disabled.html",
       "number-input-invalid": "ktm/html/number-input-invalid.html",
