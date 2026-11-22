@@ -1,0 +1,779 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui - Number Input</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/label.css" />
+    <link rel="stylesheet" href="../styles/number-input.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1.25rem 4rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: var(--np-font-sans, system-ui, sans-serif);
+      }
+      main {
+        display: grid;
+        gap: 2.5rem;
+        max-width: 48rem;
+        margin: 0 auto;
+      }
+      h2,
+      p {
+        margin: 0;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+      h2 {
+        margin-bottom: 0.75rem;
+        font-size: 1rem;
+      }
+      .muted {
+        color: var(--np-muted-foreground);
+        font-size: 0.875rem;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+        gap: 1.5rem;
+        align-items: start;
+      }
+      .caption {
+        margin-bottom: 0.5rem;
+        font-family: var(--np-font-mono, monospace);
+        font-size: 0.75rem;
+        color: var(--np-muted-foreground);
+      }
+    </style>
+    <script src="../javascripts/number-input.js"></script>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Class and data attribute</h2>
+        <div class="grid">
+          <div>
+            <p class="caption">class</p>
+            <div class="np-number-input">
+              <div class="np-number-input-group">
+                <button
+                  type="button"
+                  class="np-number-input-decrement"
+                  aria-label="Decrease"
+                  tabindex="-1"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14" />
+                  </svg>
+                </button>
+                <input
+                  class="np-number-input-input"
+                  type="number"
+                  value="0"
+                  aria-label="Quantity, class form"
+                />
+                <button
+                  type="button"
+                  class="np-number-input-increment"
+                  aria-label="Increase"
+                  tabindex="-1"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14M12 5v14" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="caption">data attribute</p>
+            <div data-np-number-input>
+              <div data-np-number-input-group>
+                <button
+                  type="button"
+                  data-np-number-input-decrement
+                  aria-label="Decrease"
+                  tabindex="-1"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14" />
+                  </svg>
+                </button>
+                <input
+                  data-np-number-input-input
+                  type="number"
+                  value="0"
+                  aria-label="Quantity, data form"
+                />
+                <button
+                  type="button"
+                  data-np-number-input-increment
+                  aria-label="Increase"
+                  tabindex="-1"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14M12 5v14" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Sizes</h2>
+        <div class="grid">
+          <div>
+            <p class="caption">xs</p>
+            <div class="np-number-input np-number-input-xs">
+              <div class="np-number-input-group">
+                <button
+                  type="button"
+                  class="np-number-input-decrement"
+                  aria-label="Decrease"
+                  tabindex="-1"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14" />
+                  </svg>
+                </button>
+                <input
+                  class="np-number-input-input"
+                  type="number"
+                  value="1"
+                  aria-label="Extra small"
+                />
+                <button
+                  type="button"
+                  class="np-number-input-increment"
+                  aria-label="Increase"
+                  tabindex="-1"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14M12 5v14" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="caption">sm</p>
+            <div class="np-number-input np-number-input-sm">
+              <div class="np-number-input-group">
+                <button
+                  type="button"
+                  class="np-number-input-decrement"
+                  aria-label="Decrease"
+                  tabindex="-1"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14" />
+                  </svg>
+                </button>
+                <input
+                  class="np-number-input-input"
+                  type="number"
+                  value="2"
+                  aria-label="Small"
+                />
+                <button
+                  type="button"
+                  class="np-number-input-increment"
+                  aria-label="Increase"
+                  tabindex="-1"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14M12 5v14" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="caption">default</p>
+            <div class="np-number-input">
+              <div class="np-number-input-group">
+                <button
+                  type="button"
+                  class="np-number-input-decrement"
+                  aria-label="Decrease"
+                  tabindex="-1"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14" />
+                  </svg>
+                </button>
+                <input
+                  class="np-number-input-input"
+                  type="number"
+                  value="3"
+                  aria-label="Default"
+                />
+                <button
+                  type="button"
+                  class="np-number-input-increment"
+                  aria-label="Increase"
+                  tabindex="-1"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14M12 5v14" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="caption">lg</p>
+            <div class="np-number-input np-number-input-lg">
+              <div class="np-number-input-group">
+                <button
+                  type="button"
+                  class="np-number-input-decrement"
+                  aria-label="Decrease"
+                  tabindex="-1"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14" />
+                  </svg>
+                </button>
+                <input
+                  class="np-number-input-input"
+                  type="number"
+                  value="4"
+                  aria-label="Large"
+                />
+                <button
+                  type="button"
+                  class="np-number-input-increment"
+                  aria-label="Increase"
+                  tabindex="-1"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14M12 5v14" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Scrub, range and step</h2>
+        <div class="grid">
+          <div class="np-number-input">
+            <span class="np-number-input-scrub-area"
+              ><label class="np-label" for="scrub">Drag the label</label></span
+            >
+            <div class="np-number-input-group">
+              <button
+                type="button"
+                class="np-number-input-decrement"
+                aria-label="Decrease"
+                tabindex="-1"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14" />
+                </svg>
+              </button>
+              <input
+                id="scrub"
+                class="np-number-input-input"
+                type="number"
+                value="0"
+              />
+              <button
+                type="button"
+                class="np-number-input-increment"
+                aria-label="Increase"
+                tabindex="-1"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14M12 5v14" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="np-number-input">
+            <span class="np-number-input-scrub-area"
+              ><label class="np-label" for="range">Range 0 to 10</label></span
+            >
+            <div class="np-number-input-group">
+              <button
+                type="button"
+                class="np-number-input-decrement"
+                aria-label="Decrease"
+                tabindex="-1"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14" />
+                </svg>
+              </button>
+              <input
+                id="range"
+                class="np-number-input-input"
+                type="number"
+                value="10"
+                min="0"
+                max="10"
+              />
+              <button
+                type="button"
+                class="np-number-input-increment"
+                aria-label="Increase"
+                tabindex="-1"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14M12 5v14" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="np-number-input" data-allow-wheel-scrub>
+            <span class="np-number-input-scrub-area"
+              ><label class="np-label" for="step">Step 0.1, wheel</label></span
+            >
+            <div class="np-number-input-group">
+              <button
+                type="button"
+                class="np-number-input-decrement"
+                aria-label="Decrease"
+                tabindex="-1"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14" />
+                </svg>
+              </button>
+              <input
+                id="step"
+                class="np-number-input-input"
+                type="number"
+                value="0"
+                step="0.1"
+              />
+              <button
+                type="button"
+                class="np-number-input-increment"
+                aria-label="Increase"
+                tabindex="-1"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14M12 5v14" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Stacked layout</h2>
+        <div class="grid">
+          <div class="np-number-input np-number-input-stacked">
+            <div class="np-number-input-group">
+              <button
+                type="button"
+                class="np-number-input-decrement"
+                aria-label="Decrease"
+                tabindex="-1"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              <input
+                class="np-number-input-input"
+                type="number"
+                value="12"
+                aria-label="Seats"
+              />
+              <button
+                type="button"
+                class="np-number-input-increment"
+                aria-label="Increase"
+                tabindex="-1"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="m18 15-6-6-6 6" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div
+            class="np-number-input np-number-input-stacked np-number-input-lg"
+          >
+            <div class="np-number-input-group">
+              <button
+                type="button"
+                class="np-number-input-decrement"
+                aria-label="Decrease"
+                tabindex="-1"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              <input
+                class="np-number-input-input"
+                type="number"
+                value="24"
+                aria-label="Seats, large"
+              />
+              <button
+                type="button"
+                class="np-number-input-increment"
+                aria-label="Increase"
+                tabindex="-1"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="m18 15-6-6-6 6" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>States</h2>
+        <div class="grid">
+          <div>
+            <p class="caption">disabled</p>
+            <div class="np-number-input" data-disabled>
+              <div class="np-number-input-group">
+                <button
+                  type="button"
+                  class="np-number-input-decrement"
+                  aria-label="Decrease"
+                  tabindex="-1"
+                  disabled
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14" />
+                  </svg>
+                </button>
+                <input
+                  class="np-number-input-input"
+                  type="number"
+                  value="42"
+                  aria-label="Disabled"
+                  disabled
+                />
+                <button
+                  type="button"
+                  class="np-number-input-increment"
+                  aria-label="Increase"
+                  tabindex="-1"
+                  disabled
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14M12 5v14" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="caption">read-only</p>
+            <div class="np-number-input">
+              <div class="np-number-input-group">
+                <button
+                  type="button"
+                  class="np-number-input-decrement"
+                  aria-label="Decrease"
+                  tabindex="-1"
+                  disabled
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14" />
+                  </svg>
+                </button>
+                <input
+                  class="np-number-input-input"
+                  type="number"
+                  value="10"
+                  aria-label="Read-only"
+                  readonly
+                />
+                <button
+                  type="button"
+                  class="np-number-input-increment"
+                  aria-label="Increase"
+                  tabindex="-1"
+                  disabled
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14M12 5v14" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="caption">invalid</p>
+            <div class="np-number-input">
+              <div class="np-number-input-group">
+                <button
+                  type="button"
+                  class="np-number-input-decrement"
+                  aria-label="Decrease"
+                  tabindex="-1"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14" />
+                  </svg>
+                </button>
+                <input
+                  class="np-number-input-input"
+                  type="number"
+                  value="-3"
+                  aria-label="Invalid"
+                  aria-invalid="true"
+                />
+                <button
+                  type="button"
+                  class="np-number-input-increment"
+                  aria-label="Increase"
+                  tabindex="-1"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14M12 5v14" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
