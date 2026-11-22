@@ -1,0 +1,234 @@
+/* nepui — Gradient Text */
+
+:is(.np-gradient-text, [data-np-gradient-text]) {
+  --np-gradient-text-1: oklch(0.7 0.19 295);
+  --np-gradient-text-2: oklch(0.72 0.2 320);
+  --np-gradient-text-3: oklch(0.72 0.21 350);
+  --np-gradient-text-4: oklch(0.76 0.19 30);
+  --np-gradient-text-5: oklch(0.8 0.16 70);
+  --np-gradient-text-angle: 90deg;
+  --np-gradient-text-duration: 6s;
+  --np-gradient-text-ease: linear;
+  --np-gradient-text-glow: color-mix(
+    in oklab,
+    var(--np-gradient-text-3) 85%,
+    transparent
+  );
+
+  width: fit-content;
+  max-width: 100%;
+  background-image: linear-gradient(
+    var(--np-gradient-text-angle),
+    var(--np-gradient-text-1),
+    var(--np-gradient-text-2),
+    var(--np-gradient-text-3),
+    var(--np-gradient-text-4),
+    var(--np-gradient-text-5),
+    var(--np-gradient-text-1)
+  );
+  background-size: 200% 100%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: np-gradient-text-flow var(--np-gradient-text-duration)
+    var(--np-gradient-text-ease) infinite;
+}
+
+:is(.np-gradient-text, [data-np-gradient-text])[data-gradient="aurora"] {
+  --np-gradient-text-1: oklch(0.72 0.14 250);
+  --np-gradient-text-2: oklch(0.7 0.18 280);
+  --np-gradient-text-3: oklch(0.8 0.12 220);
+  --np-gradient-text-4: oklch(0.72 0.2 310);
+  --np-gradient-text-5: oklch(0.78 0.13 190);
+}
+
+:is(.np-gradient-text, [data-np-gradient-text])[data-gradient="sunset"] {
+  --np-gradient-text-1: oklch(0.7 0.2 30);
+  --np-gradient-text-2: oklch(0.76 0.18 50);
+  --np-gradient-text-3: oklch(0.7 0.22 350);
+  --np-gradient-text-4: oklch(0.65 0.2 330);
+  --np-gradient-text-5: oklch(0.6 0.18 300);
+}
+
+:is(.np-gradient-text, [data-np-gradient-text])[data-gradient="ocean"] {
+  --np-gradient-text-1: oklch(0.75 0.15 200);
+  --np-gradient-text-2: oklch(0.7 0.16 220);
+  --np-gradient-text-3: oklch(0.66 0.18 250);
+  --np-gradient-text-4: oklch(0.72 0.15 230);
+  --np-gradient-text-5: oklch(0.78 0.13 190);
+}
+
+:is(.np-gradient-text, [data-np-gradient-text])[data-gradient="forest"] {
+  --np-gradient-text-1: oklch(0.75 0.17 150);
+  --np-gradient-text-2: oklch(0.7 0.17 130);
+  --np-gradient-text-3: oklch(0.78 0.15 170);
+  --np-gradient-text-4: oklch(0.72 0.16 110);
+  --np-gradient-text-5: oklch(0.8 0.13 180);
+}
+
+:is(.np-gradient-text, [data-np-gradient-text])[data-gradient="fire"] {
+  --np-gradient-text-1: oklch(0.65 0.22 25);
+  --np-gradient-text-2: oklch(0.72 0.2 45);
+  --np-gradient-text-3: oklch(0.82 0.18 75);
+  --np-gradient-text-4: oklch(0.7 0.21 35);
+  --np-gradient-text-5: oklch(0.6 0.22 15);
+}
+
+:is(.np-gradient-text, [data-np-gradient-text])[data-gradient="candy"] {
+  --np-gradient-text-1: oklch(0.8 0.14 350);
+  --np-gradient-text-2: oklch(0.78 0.15 320);
+  --np-gradient-text-3: oklch(0.76 0.14 290);
+  --np-gradient-text-4: oklch(0.8 0.12 260);
+  --np-gradient-text-5: oklch(0.82 0.14 330);
+}
+
+:is(.np-gradient-text, [data-np-gradient-text])[data-gradient="lavender"] {
+  --np-gradient-text-1: oklch(0.78 0.12 295);
+  --np-gradient-text-2: oklch(0.74 0.13 280);
+  --np-gradient-text-3: oklch(0.8 0.11 310);
+  --np-gradient-text-4: oklch(0.72 0.13 265);
+  --np-gradient-text-5: oklch(0.78 0.12 300);
+}
+
+:is(.np-gradient-text, [data-np-gradient-text])[data-gradient="mint"] {
+  --np-gradient-text-1: oklch(0.82 0.13 170);
+  --np-gradient-text-2: oklch(0.8 0.14 150);
+  --np-gradient-text-3: oklch(0.84 0.12 190);
+  --np-gradient-text-4: oklch(0.78 0.15 130);
+  --np-gradient-text-5: oklch(0.84 0.11 200);
+}
+
+:is(.np-gradient-text, [data-np-gradient-text])[data-gradient="peach"] {
+  --np-gradient-text-1: oklch(0.82 0.12 50);
+  --np-gradient-text-2: oklch(0.8 0.13 30);
+  --np-gradient-text-3: oklch(0.85 0.11 70);
+  --np-gradient-text-4: oklch(0.78 0.14 10);
+  --np-gradient-text-5: oklch(0.83 0.12 40);
+}
+
+:is(.np-gradient-text, [data-np-gradient-text])[data-gradient="midnight"] {
+  --np-gradient-text-1: oklch(0.55 0.15 270);
+  --np-gradient-text-2: oklch(0.6 0.17 285);
+  --np-gradient-text-3: oklch(0.62 0.14 250);
+  --np-gradient-text-4: oklch(0.55 0.16 300);
+  --np-gradient-text-5: oklch(0.5 0.13 260);
+}
+
+:is(.np-gradient-text, [data-np-gradient-text])[data-gradient="gold"] {
+  --np-gradient-text-1: oklch(0.82 0.16 85);
+  --np-gradient-text-2: oklch(0.78 0.17 70);
+  --np-gradient-text-3: oklch(0.88 0.15 95);
+  --np-gradient-text-4: oklch(0.72 0.16 60);
+  --np-gradient-text-5: oklch(0.85 0.15 80);
+}
+
+:is(.np-gradient-text, [data-np-gradient-text])[data-gradient="rainbow"] {
+  --np-gradient-text-1: oklch(0.72 0.19 25);
+  --np-gradient-text-2: oklch(0.8 0.18 90);
+  --np-gradient-text-3: oklch(0.76 0.19 150);
+  --np-gradient-text-4: oklch(0.7 0.17 230);
+  --np-gradient-text-5: oklch(0.68 0.2 300);
+}
+
+:is(.np-gradient-text, [data-np-gradient-text])[data-gradient="cyber"] {
+  --np-gradient-text-1: oklch(0.8 0.17 200);
+  --np-gradient-text-2: oklch(0.65 0.25 330);
+  --np-gradient-text-3: oklch(0.6 0.2 280);
+  --np-gradient-text-4: oklch(0.82 0.16 195);
+  --np-gradient-text-5: oklch(0.66 0.24 340);
+}
+
+:is(.np-gradient-text, [data-np-gradient-text])[data-gradient="plasma"] {
+  --np-gradient-text-1: oklch(0.6 0.25 300);
+  --np-gradient-text-2: oklch(0.65 0.24 340);
+  --np-gradient-text-3: oklch(0.7 0.22 20);
+  --np-gradient-text-4: oklch(0.62 0.24 330);
+  --np-gradient-text-5: oklch(0.58 0.22 290);
+}
+
+:is(.np-gradient-text, [data-np-gradient-text])[data-gradient="mono"] {
+  --np-gradient-text-1: var(--np-foreground);
+  --np-gradient-text-2: var(--np-muted-foreground);
+  --np-gradient-text-3: var(--np-foreground);
+  --np-gradient-text-4: var(--np-muted-foreground);
+  --np-gradient-text-5: var(--np-foreground);
+}
+
+:is(.np-gradient-text, [data-np-gradient-text])[data-speed="slow"] {
+  --np-gradient-text-duration: 12s;
+}
+
+:is(.np-gradient-text, [data-np-gradient-text])[data-speed="fast"] {
+  --np-gradient-text-duration: 3s;
+}
+
+:is(.np-gradient-text, [data-np-gradient-text])[data-direction="reverse"] {
+  animation-direction: reverse;
+}
+
+:is(.np-gradient-text, [data-np-gradient-text])[data-animate="false"] {
+  animation: none;
+}
+
+:is(.np-gradient-text, [data-np-gradient-text])[data-neon] {
+  filter: drop-shadow(0 0 0.12em var(--np-gradient-text-glow))
+    drop-shadow(0 0 0.35em var(--np-gradient-text-glow));
+}
+
+:is(.np-gradient-text, [data-np-gradient-text])[data-neon="soft"] {
+  filter: drop-shadow(
+    0 0 0.3em color-mix(in oklab, var(--np-gradient-text-glow) 60%, transparent)
+  );
+}
+
+:is(.np-gradient-text, [data-np-gradient-text])[data-neon="strong"] {
+  filter: drop-shadow(0 0 0.1em var(--np-gradient-text-glow))
+    drop-shadow(0 0 0.3em var(--np-gradient-text-glow))
+    drop-shadow(0 0 0.7em var(--np-gradient-text-glow));
+}
+
+:is(.np-gradient-text, [data-np-gradient-text])[data-flicker] {
+  animation:
+    np-gradient-text-flow var(--np-gradient-text-duration)
+      var(--np-gradient-text-ease) infinite,
+    np-gradient-text-flicker 4s linear infinite;
+}
+
+:is(
+    .np-gradient-text,
+    [data-np-gradient-text]
+  )[data-flicker][data-animate="false"] {
+  animation: np-gradient-text-flicker 4s linear infinite;
+}
+
+@keyframes np-gradient-text-flow {
+  to {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes np-gradient-text-flicker {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    opacity: 1;
+  }
+  20%,
+  24%,
+  55% {
+    opacity: 0.55;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.np-gradient-text, [data-np-gradient-text]),
+  :is(.np-gradient-text, [data-np-gradient-text])[data-flicker] {
+    animation: none;
+  }
+}
