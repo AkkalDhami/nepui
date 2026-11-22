@@ -1,0 +1,329 @@
+/* nepui - Number Input */
+
+.np-number-input,
+[data-np-number-input] {
+  --np-number-input-height: 2rem;
+  --np-number-input-radius: var(--np-radius-md);
+  --np-number-input-button-width: 2rem;
+  --np-number-input-icon-size: 1rem;
+  --np-number-input-font-size: 0.875rem;
+  --np-number-input-border: var(--np-input, var(--np-border));
+  --np-number-input-bg: transparent;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: calc(var(--np-spacing) * 2);
+  box-sizing: border-box;
+  width: 100%;
+}
+
+:is(.np-number-input, [data-np-number-input]):is(
+  [data-disabled],
+  [aria-disabled="true"]
+),
+:is(.np-number-input, [data-np-number-input]):has(
+  :where(.np-number-input-input, [data-np-number-input-input]):disabled
+) {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.np-number-input-xs,
+:is(.np-number-input, [data-np-number-input])[data-size="xs"] {
+  --np-number-input-height: 1.5rem;
+  --np-number-input-radius: min(var(--np-radius-md), 10px);
+  --np-number-input-button-width: 1.5rem;
+  --np-number-input-icon-size: 0.75rem;
+  --np-number-input-font-size: 0.75rem;
+}
+
+.np-number-input-sm,
+:is(.np-number-input, [data-np-number-input])[data-size="sm"] {
+  --np-number-input-height: 1.75rem;
+  --np-number-input-radius: min(var(--np-radius-md), 12px);
+  --np-number-input-button-width: 1.75rem;
+  --np-number-input-icon-size: 0.875rem;
+  --np-number-input-font-size: 0.8125rem;
+}
+
+.np-number-input-lg,
+:is(.np-number-input, [data-np-number-input])[data-size="lg"] {
+  --np-number-input-height: 2.25rem;
+  --np-number-input-button-width: 2.25rem;
+  --np-number-input-font-size: 1rem;
+}
+
+.np-number-input-stacked,
+:is(.np-number-input, [data-np-number-input])[data-layout="stacked"] {
+  --np-number-input-button-width: calc(var(--np-number-input-height) * 0.875);
+  --np-number-input-icon-size: 0.75rem;
+}
+
+:is(.np-number-input-group, [data-np-number-input-group]) {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--np-number-input-height);
+  border: 1px solid var(--np-number-input-border);
+  border-radius: var(--np-number-input-radius);
+  background-color: var(--np-number-input-bg);
+  color: var(--np-foreground);
+  overflow: hidden;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+:is(.np-number-input-input, [data-np-number-input-input]) {
+  flex: 1 1 auto;
+  box-sizing: border-box;
+  min-width: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0 calc(var(--np-spacing) * 2.5);
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+  color: inherit;
+  font: inherit;
+  font-family: var(--np-font-sans, inherit);
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  outline: none;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+@media (min-width: 48rem) {
+  :is(.np-number-input-input, [data-np-number-input-input]) {
+    font-size: var(--np-number-input-font-size);
+  }
+}
+
+:is(
+  .np-number-input-input,
+  [data-np-number-input-input]
+)::-webkit-inner-spin-button,
+:is(
+  .np-number-input-input,
+  [data-np-number-input-input]
+)::-webkit-outer-spin-button {
+  margin: 0;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+:is(.np-number-input-input, [data-np-number-input-input])::placeholder {
+  color: var(--np-muted-foreground);
+}
+
+:is(
+  .np-number-input-increment,
+  [data-np-number-input-increment],
+  .np-number-input-decrement,
+  [data-np-number-input-decrement]
+) {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: var(--np-number-input-button-width);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  color: var(--np-muted-foreground);
+  font: inherit;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color 150ms ease,
+    color 150ms ease;
+}
+
+:is(.np-number-input-decrement, [data-np-number-input-decrement]) {
+  border-inline-end: 1px solid var(--np-number-input-border);
+}
+
+:is(.np-number-input-increment, [data-np-number-input-increment]) {
+  border-inline-start: 1px solid var(--np-number-input-border);
+}
+
+:is(
+  .np-number-input-increment,
+  [data-np-number-input-increment],
+  .np-number-input-decrement,
+  [data-np-number-input-decrement]
+):hover {
+  background-color: var(--np-accent);
+  color: var(--np-accent-foreground);
+}
+
+:is(
+  .np-number-input-increment,
+  [data-np-number-input-increment],
+  .np-number-input-decrement,
+  [data-np-number-input-decrement]
+):is(:disabled, [aria-disabled="true"], [data-disabled]) {
+  background-color: transparent;
+  color: color-mix(in oklch, var(--np-muted-foreground), transparent 55%);
+  pointer-events: none;
+}
+
+:is(
+    .np-number-input-increment,
+    [data-np-number-input-increment],
+    .np-number-input-decrement,
+    [data-np-number-input-decrement]
+  )
+  svg {
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+:is(
+    .np-number-input-increment,
+    [data-np-number-input-increment],
+    .np-number-input-decrement,
+    [data-np-number-input-decrement]
+  )
+  svg:not([class*="size-"]) {
+  width: var(--np-number-input-icon-size);
+  height: var(--np-number-input-icon-size);
+}
+
+:is(
+    .np-number-input-stacked,
+    :is(.np-number-input, [data-np-number-input])[data-layout="stacked"]
+  )
+  :is(.np-number-input-group, [data-np-number-input-group]) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--np-number-input-button-width);
+  grid-template-rows: 1fr 1fr;
+}
+
+:is(
+    .np-number-input-stacked,
+    :is(.np-number-input, [data-np-number-input])[data-layout="stacked"]
+  )
+  :is(.np-number-input-input, [data-np-number-input-input]) {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  text-align: start;
+}
+
+:is(
+    .np-number-input-stacked,
+    :is(.np-number-input, [data-np-number-input])[data-layout="stacked"]
+  )
+  :is(.np-number-input-increment, [data-np-number-input-increment]) {
+  grid-column: 2;
+  grid-row: 1;
+  width: auto;
+  border-inline-start: 1px solid var(--np-number-input-border);
+}
+
+:is(
+    .np-number-input-stacked,
+    :is(.np-number-input, [data-np-number-input])[data-layout="stacked"]
+  )
+  :is(.np-number-input-decrement, [data-np-number-input-decrement]) {
+  grid-column: 2;
+  grid-row: 2;
+  width: auto;
+  border-inline-start: 1px solid var(--np-number-input-border);
+  border-inline-end: 0;
+  border-block-start: 1px solid var(--np-number-input-border);
+}
+
+:is(.np-number-input, [data-np-number-input])[data-scrubbing]
+  :is(.np-number-input-group, [data-np-number-input-group]) {
+  border-color: var(--np-ring);
+}
+
+:is(.np-number-input-group, [data-np-number-input-group]):has(
+  > :where(.np-number-input-input, [data-np-number-input-input]):focus-visible
+) {
+  border-color: var(--np-ring);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--np-ring), transparent 50%);
+}
+
+:is(.np-number-input-group, [data-np-number-input-group])[data-invalid],
+:is(.np-number-input-group, [data-np-number-input-group]):has(
+  > :where(
+      .np-number-input-input,
+      [data-np-number-input-input]
+    )[aria-invalid="true"]
+) {
+  border-color: var(--np-destructive);
+  box-shadow: 0 0 0 3px
+    color-mix(in oklch, var(--np-destructive), transparent 80%);
+}
+
+:is(.np-number-input-scrub-area, [data-np-number-input-scrub-area]) {
+  display: inline-block;
+  margin: 0;
+  cursor: ew-resize;
+  user-select: none;
+  touch-action: none;
+}
+
+:is(
+  .np-number-input-scrub-area,
+  [data-np-number-input-scrub-area]
+)[data-direction="vertical"] {
+  cursor: ns-resize;
+}
+
+:is(.np-number-input-scrub-area, [data-np-number-input-scrub-area])
+  :is(.np-label, [data-np-label]) {
+  cursor: inherit;
+}
+
+:is(.np-number-input-cursor, [data-np-number-input-cursor]) {
+  pointer-events: none;
+  filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.5));
+}
+
+:is(.np-number-input-cursor, [data-np-number-input-cursor]) svg {
+  display: block;
+}
+
+:is(.dark, [data-theme="dark"]) :is(.np-number-input, [data-np-number-input]) {
+  --np-number-input-bg: color-mix(
+    in oklab,
+    var(--np-number-input-border) 30%,
+    transparent
+  );
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light, [data-theme="light"])
+    :is(.np-number-input, [data-np-number-input]) {
+    --np-number-input-bg: color-mix(
+      in oklab,
+      var(--np-number-input-border) 30%,
+      transparent
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.np-number-input-group, [data-np-number-input-group]),
+  :is(
+    .np-number-input-increment,
+    [data-np-number-input-increment],
+    .np-number-input-decrement,
+    [data-np-number-input-decrement]
+  ) {
+    transition: none;
+  }
+}
