@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Menubar</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/menubar.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem;
+        font-family: var(--np-font-sans, system-ui, sans-serif);
+        background: var(--np-background);
+        color: var(--np-foreground);
+      }
+      main {
+        max-width: 40rem;
+        margin-inline: auto;
+        display: grid;
+        gap: 2rem;
+      }
+      h2 {
+        margin: 0 0 0.75rem;
+        font-size: 0.875rem;
+        color: var(--np-muted-foreground);
+        font-weight: 500;
+      }
+      section {
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--np-border);
+      }
+      p.note {
+        margin: 0.75rem 0 0;
+        font-size: 0.875rem;
+        color: var(--np-muted-foreground);
+      }
+    </style>
+    <script src="../javascripts/menubar.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Class form</h2>
+        <div class="np-menubar" role="menubar" aria-label="Application menu">
+          <div class="np-menubar-menu">
+            <button
+              class="np-menubar-trigger"
+              type="button"
+              aria-haspopup="menu"
+              aria-expanded="false"
+            >
+              File
+            </button>
+            <div class="np-menubar-content" role="menu" hidden>
+              <div role="group">
+                <div class="np-menubar-item" role="menuitem" tabindex="-1">
+                  New Tab <span class="np-menubar-shortcut">⌘T</span>
+                </div>
+                <div class="np-menubar-item" role="menuitem" tabindex="-1">
+                  New Window
+                </div>
+              </div>
+              <div class="np-menubar-separator" role="separator"></div>
+              <div role="group">
+                <div class="np-menubar-item" role="menuitem" tabindex="-1">
+                  Share
+                </div>
+                <div class="np-menubar-item" role="menuitem" tabindex="-1">
+                  Print
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="np-menubar-menu">
+            <button
+              class="np-menubar-trigger"
+              type="button"
+              aria-haspopup="menu"
+              aria-expanded="false"
+            >
+              Edit
+            </button>
+            <div class="np-menubar-content" role="menu" hidden>
+              <div role="group">
+                <div class="np-menubar-item" role="menuitem" tabindex="-1">
+                  Undo <span class="np-menubar-shortcut">⌘Z</span>
+                </div>
+                <div class="np-menubar-item" role="menuitem" tabindex="-1">
+                  Redo <span class="np-menubar-shortcut">⇧⌘Z</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="np-menubar-menu">
+            <button
+              class="np-menubar-trigger"
+              type="button"
+              aria-haspopup="menu"
+              aria-expanded="false"
+            >
+              View
+            </button>
+            <div class="np-menubar-content" role="menu" hidden>
+              <div role="group">
+                <div class="np-menubar-label" role="presentation">
+                  Appearance
+                </div>
+                <div
+                  class="np-menubar-checkbox-item"
+                  role="menuitemcheckbox"
+                  aria-checked="true"
+                  tabindex="-1"
+                  data-checked
+                >
+                  <span class="np-menubar-item-indicator"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M20 6 9 17l-5-5" /></svg></span
+                  >Bookmarks Bar
+                </div>
+                <div
+                  class="np-menubar-checkbox-item"
+                  role="menuitemcheckbox"
+                  aria-checked="false"
+                  tabindex="-1"
+                >
+                  <span class="np-menubar-item-indicator"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M20 6 9 17l-5-5" /></svg></span
+                  >Full URLs
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="note">
+          Click a menu, then hover the others. Try the arrow keys, Home, End, a
+          letter, Enter and Escape.
+        </p>
+      </section>
+
+      <section>
+        <h2>Data-attribute form</h2>
+        <div data-np-menubar role="menubar" aria-label="Application menu">
+          <div data-np-menubar-menu>
+            <button
+              data-np-menubar-trigger
+              type="button"
+              aria-haspopup="menu"
+              aria-expanded="false"
+            >
+              File
+            </button>
+            <div data-np-menubar-content role="menu" hidden>
+              <div data-np-menubar-item role="menuitem" tabindex="-1">
+                New Tab <span data-np-menubar-shortcut>⌘T</span>
+              </div>
+              <div
+                data-np-menubar-checkbox-item
+                role="menuitemcheckbox"
+                aria-checked="true"
+                data-checked
+                tabindex="-1"
+              >
+                <span data-np-menubar-item-indicator
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M20 6 9 17l-5-5" /></svg></span
+                >Bookmarks Bar
+              </div>
+              <div data-np-menubar-separator role="separator"></div>
+              <div data-np-menubar-sub>
+                <div
+                  data-np-menubar-sub-trigger
+                  role="menuitem"
+                  tabindex="-1"
+                  aria-haspopup="menu"
+                  aria-expanded="false"
+                >
+                  Share
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="m9 18 6-6-6-6" />
+                  </svg>
+                </div>
+                <div
+                  data-np-menubar-content
+                  data-np-menubar-sub-content
+                  role="menu"
+                  hidden
+                >
+                  <div data-np-menubar-item role="menuitem" tabindex="-1">
+                    Email link
+                  </div>
+                  <div data-np-menubar-item role="menuitem" tabindex="-1">
+                    Messages
+                  </div>
+                </div>
+              </div>
+              <div data-np-menubar-separator role="separator"></div>
+              <div
+                data-np-menubar-item
+                data-variant="destructive"
+                role="menuitem"
+                tabindex="-1"
+              >
+                Delete
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Radio group</h2>
+        <div class="np-menubar" role="menubar" aria-label="Application menu">
+          <div class="np-menubar-menu">
+            <button
+              class="np-menubar-trigger"
+              type="button"
+              aria-haspopup="menu"
+              aria-expanded="false"
+            >
+              Profiles
+            </button>
+            <div class="np-menubar-content" role="menu" hidden>
+              <div role="group">
+                <div class="np-menubar-label" role="presentation">
+                  Switch profile
+                </div>
+                <div role="group">
+                  <div
+                    class="np-menubar-radio-item"
+                    role="menuitemradio"
+                    aria-checked="false"
+                    tabindex="-1"
+                  >
+                    <span class="np-menubar-item-indicator"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M20 6 9 17l-5-5" /></svg></span
+                    >Andy
+                  </div>
+                  <div
+                    class="np-menubar-radio-item"
+                    role="menuitemradio"
+                    aria-checked="true"
+                    tabindex="-1"
+                    data-checked
+                  >
+                    <span class="np-menubar-item-indicator"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M20 6 9 17l-5-5" /></svg></span
+                    >Benoit
+                  </div>
+                  <div
+                    class="np-menubar-radio-item"
+                    role="menuitemradio"
+                    aria-checked="false"
+                    tabindex="-1"
+                  >
+                    <span class="np-menubar-item-indicator"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M20 6 9 17l-5-5" /></svg></span
+                    >Luis
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Submenus</h2>
+        <div class="np-menubar" role="menubar" aria-label="Application menu">
+          <div class="np-menubar-menu">
+            <button
+              class="np-menubar-trigger"
+              type="button"
+              aria-haspopup="menu"
+              aria-expanded="false"
+            >
+              File
+            </button>
+            <div class="np-menubar-content" role="menu" hidden>
+              <div role="group">
+                <div class="np-menubar-item" role="menuitem" tabindex="-1">
+                  New Tab <span class="np-menubar-shortcut">⌘T</span>
+                </div>
+              </div>
+              <div class="np-menubar-separator" role="separator"></div>
+              <div class="np-menubar-sub">
+                <div
+                  class="np-menubar-sub-trigger"
+                  role="menuitem"
+                  tabindex="-1"
+                  aria-haspopup="menu"
+                  aria-expanded="false"
+                >
+                  Share
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="m9 18 6-6-6-6" />
+                  </svg>
+                </div>
+                <div
+                  class="np-menubar-content np-menubar-sub-content"
+                  role="menu"
+                  hidden
+                >
+                  <div role="group">
+                    <div class="np-menubar-item" role="menuitem" tabindex="-1">
+                      Email link
+                    </div>
+                    <div class="np-menubar-item" role="menuitem" tabindex="-1">
+                      Messages
+                    </div>
+                    <div class="np-menubar-item" role="menuitem" tabindex="-1">
+                      Notes
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="np-menubar-separator" role="separator"></div>
+              <div role="group">
+                <div class="np-menubar-item" role="menuitem" tabindex="-1">
+                  Print <span class="np-menubar-shortcut">⌘P</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="np-menubar-menu">
+            <button
+              class="np-menubar-trigger"
+              type="button"
+              aria-haspopup="menu"
+              aria-expanded="false"
+            >
+              Edit
+            </button>
+            <div class="np-menubar-content" role="menu" hidden>
+              <div role="group">
+                <div class="np-menubar-item" role="menuitem" tabindex="-1">
+                  Undo <span class="np-menubar-shortcut">⌘Z</span>
+                </div>
+              </div>
+              <div class="np-menubar-separator" role="separator"></div>
+              <div class="np-menubar-sub">
+                <div
+                  class="np-menubar-sub-trigger"
+                  role="menuitem"
+                  tabindex="-1"
+                  aria-haspopup="menu"
+                  aria-expanded="false"
+                >
+                  Find
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="m9 18 6-6-6-6" />
+                  </svg>
+                </div>
+                <div
+                  class="np-menubar-content np-menubar-sub-content"
+                  role="menu"
+                  hidden
+                >
+                  <div role="group">
+                    <div class="np-menubar-item" role="menuitem" tabindex="-1">
+                      Search the web
+                    </div>
+                    <div class="np-menubar-item" role="menuitem" tabindex="-1">
+                      Find...
+                    </div>
+                    <div class="np-menubar-item" role="menuitem" tabindex="-1">
+                      Find Next
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Icons and destructive</h2>
+        <div class="np-menubar" role="menubar" aria-label="Application menu">
+          <div class="np-menubar-menu">
+            <button
+              class="np-menubar-trigger"
+              type="button"
+              aria-haspopup="menu"
+              aria-expanded="false"
+            >
+              File
+            </button>
+            <div class="np-menubar-content" role="menu" hidden>
+              <div role="group">
+                <div class="np-menubar-item" role="menuitem" tabindex="-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                    />
+                    <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                  </svg>
+                  New File <span class="np-menubar-shortcut">⌘N</span>
+                </div>
+                <div class="np-menubar-item" role="menuitem" tabindex="-1">
+                  Open Folder
+                </div>
+              </div>
+              <div class="np-menubar-separator" role="separator"></div>
+              <div role="group">
+                <div
+                  class="np-menubar-item np-menubar-destructive"
+                  role="menuitem"
+                  tabindex="-1"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M3 6h18" />
+                    <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                    <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                  </svg>
+                  Delete
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Disabled trigger and item</h2>
+        <div class="np-menubar" role="menubar" aria-label="Application menu">
+          <div class="np-menubar-menu">
+            <button
+              class="np-menubar-trigger"
+              type="button"
+              aria-haspopup="menu"
+              aria-expanded="false"
+            >
+              File
+            </button>
+            <div class="np-menubar-content" role="menu" hidden>
+              <div role="group">
+                <div class="np-menubar-item" role="menuitem" tabindex="-1">
+                  New Tab
+                </div>
+                <div
+                  class="np-menubar-item"
+                  role="menuitem"
+                  tabindex="-1"
+                  aria-disabled="true"
+                >
+                  Print
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="np-menubar-menu">
+            <button
+              class="np-menubar-trigger"
+              type="button"
+              aria-haspopup="menu"
+              aria-expanded="false"
+              disabled
+            >
+              Edit
+            </button>
+            <div class="np-menubar-content" role="menu" hidden>
+              <div role="group">
+                <div class="np-menubar-item" role="menuitem" tabindex="-1">
+                  Undo
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Custom variables</h2>
+        <div
+          class="np-menubar"
+          role="menubar"
+          aria-label="Application menu"
+          style="
+            --np-menubar-height: 2.5rem;
+            --np-menubar-radius: 9999px;
+            --np-menubar-trigger-bg: var(--np-accent);
+          "
+        >
+          <div class="np-menubar-menu">
+            <button
+              class="np-menubar-trigger"
+              type="button"
+              aria-haspopup="menu"
+              aria-expanded="false"
+            >
+              File
+            </button>
+            <div class="np-menubar-content" role="menu" hidden>
+              <div role="group">
+                <div class="np-menubar-item" role="menuitem" tabindex="-1">
+                  New Tab
+                </div>
+                <div class="np-menubar-item" role="menuitem" tabindex="-1">
+                  New Window
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="np-menubar-menu">
+            <button
+              class="np-menubar-trigger"
+              type="button"
+              aria-haspopup="menu"
+              aria-expanded="false"
+            >
+              Edit
+            </button>
+            <div class="np-menubar-content" role="menu" hidden>
+              <div role="group">
+                <div class="np-menubar-item" role="menuitem" tabindex="-1">
+                  Undo
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
