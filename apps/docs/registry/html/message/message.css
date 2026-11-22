@@ -1,0 +1,106 @@
+/* nepui — Message */
+
+.np-message,
+[data-np-message] {
+  --np-message-gap: calc(var(--np-spacing) * 2);
+  --np-message-content-gap: var(--np-spacing);
+  --np-message-avatar-size: calc(var(--np-spacing) * 8);
+  --np-message-footer-height: calc(var(--np-spacing) * 6);
+  --np-message-meta-size: 0.75rem;
+  --np-message-meta-color: var(--np-muted-foreground);
+  --np-message-meta-inset: var(--np-spacing);
+
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-end;
+  gap: var(--np-message-gap);
+  width: 100%;
+  min-width: 0;
+}
+
+.np-message-end,
+:is(.np-message, [data-np-message])[data-align="end"] {
+  flex-direction: row-reverse;
+}
+
+.np-message-group,
+[data-np-message-group] {
+  --np-message-group-gap: var(--np-spacing);
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--np-message-group-gap);
+  width: 100%;
+  min-width: 0;
+}
+
+.np-message-avatar,
+[data-np-message-avatar] {
+  display: flex;
+  flex-shrink: 0;
+  align-self: flex-end;
+  width: var(--np-message-avatar-size);
+}
+
+:is(.np-message, [data-np-message]):has(
+    > :is(.np-message-content, [data-np-message-content])
+      > :is(.np-message-footer, [data-np-message-footer])
+  )
+  > :is(.np-message-avatar, [data-np-message-avatar]) {
+  margin-block-end: calc(
+    var(--np-message-footer-height) + var(--np-message-content-gap)
+  );
+}
+
+.np-message-content,
+[data-np-message-content] {
+  box-sizing: border-box;
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--np-message-content-gap);
+  min-width: 0;
+}
+
+:is(.np-message, [data-np-message]):is(.np-message-end, [data-align="end"])
+  > :is(.np-message-content, [data-np-message-content]) {
+  align-items: flex-end;
+}
+
+:is(.np-message, [data-np-message])
+  :is(.np-message-content, [data-np-message-content])
+  > :is(.np-bubble, [data-np-bubble]) {
+  align-self: flex-start;
+}
+
+:is(.np-message, [data-np-message]):is(.np-message-end, [data-align="end"])
+  :is(.np-message-content, [data-np-message-content])
+  > :is(.np-bubble, [data-np-bubble]) {
+  align-self: flex-end;
+}
+
+.np-message-header,
+[data-np-message-header] {
+  box-sizing: border-box;
+  align-self: flex-start;
+  padding-inline: var(--np-message-meta-inset);
+  color: var(--np-message-meta-color);
+  font-size: var(--np-message-meta-size);
+  font-weight: 500;
+  line-height: calc(1 / 0.75);
+}
+
+.np-message-footer,
+[data-np-message-footer] {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--np-spacing);
+  height: var(--np-message-footer-height);
+  padding-inline: var(--np-message-meta-inset);
+  color: var(--np-message-meta-color);
+  font-size: var(--np-message-meta-size);
+  line-height: calc(1 / 0.75);
+}
