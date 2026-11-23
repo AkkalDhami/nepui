@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Pagination</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/pagination.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem;
+        font-family: var(--np-font-sans, system-ui, sans-serif);
+        background: var(--np-background);
+        color: var(--np-foreground);
+      }
+      main {
+        max-width: 40rem;
+        margin-inline: auto;
+        display: grid;
+        gap: 2rem;
+      }
+      h2 {
+        margin: 0 0 0.75rem;
+        font-size: 0.875rem;
+        color: var(--np-muted-foreground);
+        font-weight: 500;
+      }
+      section {
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--np-border);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Class form</h2>
+        <nav class="np-pagination" aria-label="pagination">
+          <ul class="np-pagination-content">
+            <li class="np-pagination-item">
+              <a
+                class="np-button np-button-ghost np-pagination-previous"
+                href="#"
+                aria-label="Go to previous page"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="m15 18-6-6 6-6" />
+                </svg>
+                <span class="np-pagination-text">Previous</span>
+              </a>
+            </li>
+            <li class="np-pagination-item">
+              <a
+                class="np-button np-button-ghost np-button-icon np-pagination-link"
+                href="#"
+                >1</a
+              >
+            </li>
+            <li class="np-pagination-item">
+              <a
+                class="np-button np-button-outline np-button-icon np-pagination-link"
+                href="#"
+                aria-current="page"
+                >2</a
+              >
+            </li>
+            <li class="np-pagination-item">
+              <a
+                class="np-button np-button-ghost np-button-icon np-pagination-link"
+                href="#"
+                >3</a
+              >
+            </li>
+            <li class="np-pagination-item">
+              <span class="np-pagination-ellipsis">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="1" />
+                  <circle cx="19" cy="12" r="1" />
+                  <circle cx="5" cy="12" r="1" />
+                </svg>
+                <span class="np-pagination-sr-only">More pages</span>
+              </span>
+            </li>
+            <li class="np-pagination-item">
+              <a
+                class="np-button np-button-ghost np-pagination-next"
+                href="#"
+                aria-label="Go to next page"
+              >
+                <span class="np-pagination-text">Next</span>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </section>
+
+      <section>
+        <h2>Data-attribute form</h2>
+        <nav data-np-pagination aria-label="pagination">
+          <ul data-np-pagination-content>
+            <li data-np-pagination-item>
+              <a
+                data-np-button
+                data-variant="ghost"
+                data-np-pagination-previous
+                href="#"
+                aria-label="Go to previous page"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="m15 18-6-6 6-6" />
+                </svg>
+                <span data-np-pagination-text>Previous</span>
+              </a>
+            </li>
+            <li data-np-pagination-item>
+              <a
+                data-np-button
+                data-variant="outline"
+                data-size="icon"
+                data-np-pagination-link
+                href="#"
+                aria-current="page"
+                >1</a
+              >
+            </li>
+            <li data-np-pagination-item>
+              <a
+                data-np-button
+                data-variant="ghost"
+                data-size="icon"
+                data-np-pagination-link
+                href="#"
+                >2</a
+              >
+            </li>
+            <li data-np-pagination-item>
+              <a
+                data-np-button
+                data-variant="ghost"
+                data-size="icon"
+                data-np-pagination-link
+                href="#"
+                >3</a
+              >
+            </li>
+            <li data-np-pagination-item>
+              <a
+                data-np-button
+                data-variant="ghost"
+                data-np-pagination-next
+                href="#"
+                aria-label="Go to next page"
+              >
+                <span data-np-pagination-text>Next</span>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </section>
+
+      <section>
+        <h2>Simple (numbers only)</h2>
+        <nav class="np-pagination" aria-label="pagination">
+          <ul class="np-pagination-content">
+            <li class="np-pagination-item">
+              <a
+                class="np-button np-button-ghost np-button-icon np-pagination-link"
+                href="#"
+                >1</a
+              >
+            </li>
+            <li class="np-pagination-item">
+              <a
+                class="np-button np-button-outline np-button-icon np-pagination-link"
+                href="#"
+                aria-current="page"
+                >2</a
+              >
+            </li>
+            <li class="np-pagination-item">
+              <a
+                class="np-button np-button-ghost np-button-icon np-pagination-link"
+                href="#"
+                >3</a
+              >
+            </li>
+            <li class="np-pagination-item">
+              <a
+                class="np-button np-button-ghost np-button-icon np-pagination-link"
+                href="#"
+                >4</a
+              >
+            </li>
+            <li class="np-pagination-item">
+              <a
+                class="np-button np-button-ghost np-button-icon np-pagination-link"
+                href="#"
+                >5</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </section>
+
+      <section>
+        <h2>Sizes (Button sizes) and custom gap</h2>
+        <nav
+          class="np-pagination"
+          aria-label="pagination small"
+          style="--np-pagination-gap: 0.25rem"
+        >
+          <ul class="np-pagination-content">
+            <li class="np-pagination-item">
+              <a
+                class="np-button np-button-ghost np-button-icon-sm np-pagination-link"
+                href="#"
+                >1</a
+              >
+            </li>
+            <li class="np-pagination-item">
+              <a
+                class="np-button np-button-outline np-button-icon-sm np-pagination-link"
+                href="#"
+                aria-current="page"
+                >2</a
+              >
+            </li>
+            <li class="np-pagination-item">
+              <a
+                class="np-button np-button-ghost np-button-icon-sm np-pagination-link"
+                href="#"
+                >3</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </section>
+
+      <section>
+        <h2>Disabled previous</h2>
+        <nav class="np-pagination" aria-label="pagination disabled">
+          <ul class="np-pagination-content">
+            <li class="np-pagination-item">
+              <a
+                class="np-button np-button-ghost np-pagination-previous"
+                href="#"
+                aria-disabled="true"
+                tabindex="-1"
+                aria-label="Go to previous page"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="m15 18-6-6 6-6" />
+                </svg>
+                <span class="np-pagination-text">Previous</span>
+              </a>
+            </li>
+            <li class="np-pagination-item">
+              <a
+                class="np-button np-button-outline np-button-icon np-pagination-link"
+                href="#"
+                aria-current="page"
+                >1</a
+              >
+            </li>
+            <li class="np-pagination-item">
+              <a
+                class="np-button np-button-ghost np-button-icon np-pagination-link"
+                href="#"
+                >2</a
+              >
+            </li>
+            <li class="np-pagination-item">
+              <a
+                class="np-button np-button-ghost np-pagination-next"
+                href="#"
+                aria-label="Go to next page"
+              >
+                <span class="np-pagination-text">Next</span>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </section>
+    </main>
+  </body>
+</html>
