@@ -3,6 +3,7 @@
   "name": "resizable",
   "title": "Resizable",
   "description": "Accessible resizable panel groups and layouts with keyboard support.",
+  "registryDependencies": ["https://nepui.vercel.app/r/html/button.json"],
   "files": [
     {
       "path": "registry/html/resizable/resizable.html",

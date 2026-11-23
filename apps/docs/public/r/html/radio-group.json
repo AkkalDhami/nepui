@@ -3,6 +3,11 @@
   "name": "radio-group",
   "title": "Radio Group",
   "description": "A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time",
+  "registryDependencies": [
+    "https://nepui.vercel.app/r/html/button.json",
+    "https://nepui.vercel.app/r/html/label.json",
+    "https://nepui.vercel.app/r/html/field.json"
+  ],
   "files": [
     {
       "path": "registry/html/radio-group/radio-group.html",
