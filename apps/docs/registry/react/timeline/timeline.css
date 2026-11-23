@@ -1,0 +1,206 @@
+/* nepui — Timeline */
+
+:is(.np-timeline, [data-np-timeline]) {
+  --np-timeline-marker-size: 1.5rem;
+  --np-timeline-gap: calc(var(--np-spacing) * 2);
+  --np-timeline-item-gap: 1.5rem;
+  --np-timeline-line-size: 2px;
+  --np-timeline-line-color: var(--np-border);
+  --np-timeline-line-complete-color: var(--np-primary);
+  --np-timeline-marker-bg: var(--np-background);
+  --np-timeline-marker-color: var(--np-muted-foreground);
+  --np-timeline-marker-border-color: var(--np-border);
+  --np-timeline-marker-complete-bg: var(--np-primary);
+  --np-timeline-marker-complete-color: var(--np-primary-foreground);
+  --np-timeline-marker-current-color: var(--np-primary);
+
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+:is(.np-timeline, [data-np-timeline])[data-orientation="horizontal"],
+:is(.np-timeline-horizontal):is(.np-timeline, [data-np-timeline]) {
+  display: grid;
+  grid-template-columns: repeat(var(--np-timeline-count, 1), minmax(0, 1fr));
+  grid-auto-flow: column;
+}
+
+:is(.np-timeline-item, [data-np-timeline-item]) {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--np-timeline-marker-size) minmax(0, 1fr);
+  column-gap: var(--np-timeline-gap);
+  align-content: start;
+  padding-block-end: var(--np-timeline-item-gap);
+  border-radius: var(--np-radius-md);
+  outline: none;
+}
+
+:is(.np-timeline-item, [data-np-timeline-item]):last-child {
+  padding-block-end: 0;
+}
+
+:is(.np-timeline-item, [data-np-timeline-item]):focus-visible {
+  outline: 2px solid var(--np-ring);
+  outline-offset: 4px;
+}
+
+:is(.np-timeline-item, [data-np-timeline-item])
+  > :not(
+    :is(
+      .np-timeline-marker,
+      [data-np-timeline-marker],
+      .np-timeline-connector,
+      [data-np-timeline-connector]
+    )
+  ) {
+  grid-column: 2;
+}
+
+:is(.np-timeline-marker, [data-np-timeline-marker]) {
+  position: relative;
+  z-index: 1;
+  grid-column: 1;
+  grid-row: 1;
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  width: var(--np-timeline-marker-size);
+  height: var(--np-timeline-marker-size);
+  border: 2px solid var(--np-timeline-marker-border-color);
+  border-radius: 9999px;
+  background: var(--np-timeline-marker-bg);
+  color: var(--np-timeline-marker-color);
+}
+
+:is(.np-timeline-marker, [data-np-timeline-marker]) > svg {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+:is(.np-timeline-item, [data-np-timeline-item])[data-complete]
+  :is(.np-timeline-marker, [data-np-timeline-marker]),
+:is(.np-timeline-marker, [data-np-timeline-marker])[data-complete] {
+  border-color: var(--np-timeline-marker-complete-bg);
+  background: var(--np-timeline-marker-complete-bg);
+  color: var(--np-timeline-marker-complete-color);
+}
+
+:is(.np-timeline-item, [data-np-timeline-item])[data-current]
+  :is(.np-timeline-marker, [data-np-timeline-marker]),
+:is(.np-timeline-marker, [data-np-timeline-marker])[data-current] {
+  border-color: var(--np-timeline-marker-current-color);
+  color: var(--np-timeline-marker-current-color);
+}
+
+:is(.np-timeline-connector, [data-np-timeline-connector]) {
+  position: absolute;
+  inset-block: calc(var(--np-timeline-marker-size) + 0.25rem) 0.25rem;
+  inset-inline-start: calc(
+    (var(--np-timeline-marker-size) - var(--np-timeline-line-size)) / 2
+  );
+  width: var(--np-timeline-line-size);
+  border-radius: 9999px;
+  background: var(--np-timeline-line-color);
+  pointer-events: none;
+}
+
+:is(.np-timeline-item, [data-np-timeline-item]):last-child
+  :is(.np-timeline-connector, [data-np-timeline-connector]) {
+  display: none;
+}
+
+:is(.np-timeline-item, [data-np-timeline-item])[data-complete]
+  :is(.np-timeline-connector, [data-np-timeline-connector]),
+:is(.np-timeline-connector, [data-np-timeline-connector])[data-complete] {
+  background: var(--np-timeline-line-complete-color);
+}
+
+:is(.np-timeline-title, [data-np-timeline-title]) {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: var(--np-timeline-marker-size);
+  color: var(--np-foreground);
+}
+
+:is(.np-timeline-time, [data-np-timeline-time]) {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: var(--np-muted-foreground);
+}
+
+:is(.np-timeline-description, [data-np-timeline-description]) {
+  margin: 0.25rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--np-muted-foreground);
+}
+
+:is(.np-timeline, [data-np-timeline])[data-orientation="horizontal"]
+  :is(.np-timeline-item, [data-np-timeline-item]),
+:is(.np-timeline-horizontal):is(.np-timeline, [data-np-timeline])
+  :is(.np-timeline-item, [data-np-timeline-item]) {
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: 0.25rem;
+  padding-block-end: 0;
+  padding-inline-end: var(--np-timeline-item-gap);
+}
+
+:is(.np-timeline, [data-np-timeline])[data-orientation="horizontal"]
+  :is(.np-timeline-item, [data-np-timeline-item])
+  > :not(
+    :is(
+      .np-timeline-marker,
+      [data-np-timeline-marker],
+      .np-timeline-connector,
+      [data-np-timeline-connector]
+    )
+  ),
+:is(.np-timeline-horizontal):is(.np-timeline, [data-np-timeline])
+  :is(.np-timeline-item, [data-np-timeline-item])
+  > :not(
+    :is(
+      .np-timeline-marker,
+      [data-np-timeline-marker],
+      .np-timeline-connector,
+      [data-np-timeline-connector]
+    )
+  ) {
+  grid-column: 1;
+}
+
+:is(.np-timeline, [data-np-timeline])[data-orientation="horizontal"]
+  :is(.np-timeline-item, [data-np-timeline-item])
+  > :is(.np-timeline-marker, [data-np-timeline-marker]),
+:is(.np-timeline-horizontal):is(.np-timeline, [data-np-timeline])
+  :is(.np-timeline-item, [data-np-timeline-item])
+  > :is(.np-timeline-marker, [data-np-timeline-marker]) {
+  margin-block-end: 0.5rem;
+}
+
+:is(.np-timeline, [data-np-timeline])[data-orientation="horizontal"]
+  :is(.np-timeline-connector, [data-np-timeline-connector]),
+:is(.np-timeline-horizontal):is(.np-timeline, [data-np-timeline])
+  :is(.np-timeline-connector, [data-np-timeline-connector]) {
+  inset-block: calc(
+      (var(--np-timeline-marker-size) - var(--np-timeline-line-size)) / 2
+    )
+    auto;
+  inset-inline: calc(var(--np-timeline-marker-size) + 0.25rem) 0.25rem;
+  width: auto;
+  height: var(--np-timeline-line-size);
+}
+
+:is(.np-timeline, [data-np-timeline])[data-orientation="horizontal"]
+  :is(.np-timeline-title, [data-np-timeline-title]),
+:is(.np-timeline-horizontal):is(.np-timeline, [data-np-timeline])
+  :is(.np-timeline-title, [data-np-timeline-title]) {
+  line-height: 1.25rem;
+}
+
+:is(.np-timeline, [data-np-timeline])[data-busy] {
+  cursor: progress;
+}
