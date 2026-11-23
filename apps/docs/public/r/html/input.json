@@ -3,6 +3,7 @@
   "name": "input",
   "title": "Input",
   "description": "A text input component for forms and user data entry with built-in styling and accessibility features.",
+  "registryDependencies": ["https://nepui.vercel.app/r/html/label.json"],
   "files": [
     {
       "path": "registry/html/input/input.html",

@@ -103,6 +103,7 @@
       "type": "registry:ui",
       "title": "Input",
       "description": "A text input component for forms and user data entry with built-in styling and accessibility features.",
+      "registryDependencies": ["https://nepui.vercel.app/r/html/label.json"],
       "files": [
         {
           "path": "registry/html/input/input.html",
@@ -347,6 +348,10 @@
       "description": "Combine labels, controls, and help text to compose accessible form fields and grouped inputs.",
       "registryDependencies": [
         "https://nepui.vercel.app/r/html/label.json",
+        "https://nepui.vercel.app/r/html/separator.json",
+        "https://nepui.vercel.app/r/html/input.json",
+        "https://nepui.vercel.app/r/html/checkbox.json",
+        "https://nepui.vercel.app/r/html/textarea.json",
         "https://nepui.vercel.app/r/html/separator.json"
       ],
       "files": [
@@ -485,6 +490,7 @@
       "type": "registry:ui",
       "title": "Resizable",
       "description": "Accessible resizable panel groups and layouts with keyboard support.",
+      "registryDependencies": ["https://nepui.vercel.app/r/html/button.json"],
       "files": [
         {
           "path": "registry/html/resizable/resizable.html",
@@ -731,6 +737,11 @@
       "type": "registry:ui",
       "title": "Table",
       "description": "A responsive table component.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/html/button.json",
+        "https://nepui.vercel.app/r/html/badge.json",
+        "https://nepui.vercel.app/r/html/checkbox.json"
+      ],
       "files": [
         {
           "path": "registry/html/table/table.html",
@@ -994,6 +1005,11 @@
       "type": "registry:ui",
       "title": "Radio Group",
       "description": "A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/html/button.json",
+        "https://nepui.vercel.app/r/html/label.json",
+        "https://nepui.vercel.app/r/html/field.json"
+      ],
       "files": [
         {
           "path": "registry/html/radio-group/radio-group.html",
@@ -1012,6 +1028,11 @@
       "type": "registry:ui",
       "title": "Switch",
       "description": "A control that allows the user to toggle between checked and not checked.",
+      "registryDependencies": [
+        "https://nepui.vercel.app/r/html/button.json",
+        "https://nepui.vercel.app/r/html/label.json",
+        "https://nepui.vercel.app/r/html/field.json"
+      ],
       "files": [
         {
           "path": "registry/html/switch/switch.html",
@@ -1237,33 +1258,6 @@
           "path": "registry/html/menubar/menubar.js",
           "type": "registry:ui",
           "target": "javascripts/menubar.js"
-        }
-      ]
-    },
-    {
-      "name": "color-picker",
-      "type": "registry:ui",
-      "title": "Color Picker",
-      "description": "Pick a color from an area and sliders, type it in any format, or choose a preset, in HSV, HSL, sRGB or OKLCH.",
-      "registryDependencies": [
-        "https://nepui.vercel.app/r/html/button.json",
-        "https://nepui.vercel.app/r/html/select.json"
-      ],
-      "files": [
-        {
-          "path": "registry/html/color-picker/color-picker.html",
-          "type": "registry:ui",
-          "target": "html/color-picker.html"
-        },
-        {
-          "path": "registry/html/color-picker/color-picker.css",
-          "type": "registry:ui",
-          "target": "styles/color-picker.css"
-        },
-        {
-          "path": "registry/html/color-picker/color-picker.js",
-          "type": "registry:ui",
-          "target": "javascripts/color-picker.js"
         }
       ]
     },
