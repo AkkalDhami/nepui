@@ -1,0 +1,165 @@
+---
+title: Highlight Text
+description: A highlighter pen that draws itself behind text, as a marker, a fill, an underline or a strike, in plain CSS.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="highlight-text-demo"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/highlight-text.json"
+      nepui="npx nepui@latest add highlight-text"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="highlight-text"
+        title="components/nepui/highlight-text/highlight-text.css"
+        fileTarget="components/nepui/highlight-text/highlight-text.css"
+      />
+      <ComponentSource
+        target="react"
+        name="highlight-text"
+        title="components/nepui/highlight-text/highlight-text.tsx"
+        fileTarget="components/nepui/highlight-text/highlight-text.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="highlight-text"
+        title="components/nepui/highlight-text/index.ts"
+        fileTarget="components/nepui/highlight-text/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx showLineNumbers
+import { HighlightText } from "@/components/nepui/highlight-text"
+```
+
+```tsx showLineNumbers
+<p>
+  Make the <HighlightText>important words</HighlightText> impossible to miss.
+</p>
+```
+
+`HighlightText` renders a `mark` element, which is the right meaning for text that is highlighted. Use `render` to use another element.
+
+---
+
+## Variants
+
+Set `variant` to `"mark"`, `"underline"` or `"strike"`. The default is a marker pen that sits under the lower part of the text.
+
+<ComponentPreview
+  name="highlight-text-variants"
+/>
+
+---
+
+## Gradients
+
+Set `gradient` to a name. The names are `aurora`, `sunrise`, `sunset`, `ocean`, `forest`, `fire`, `candy`, `lavender`, `mint`, `peach`, `midnight`, `gold`, `rainbow`, `cyber`, `plasma`, `mono`. Without one, the highlight uses `gold`. The names match Gradient Text and Aurora.
+
+<ComponentPreview
+  name="highlight-text-gradients"
+/>
+
+---
+
+## Triggers
+
+`trigger` is `"load"` by default, so the highlight draws when the page loads. Use `"hover"` to draw it when the pointer or focus reaches it, and `"view"` to draw it as it scrolls into view. Use `delay` from `1` to `3` to draw several in turn.
+
+The `view` trigger uses scroll-driven animation (Chrome 115 and Safari 26). Where it is not supported, the highlight is shown already drawn.
+
+<ComponentPreview
+  name="highlight-text-triggers"
+/>
+
+---
+
+## In a paragraph
+
+A highlight that wraps across lines keeps each line intact.
+
+<ComponentPreview
+  name="highlight-text-paragraph"
+/>
+
+---
+
+## Your own gradient
+
+Add a rule to your own stylesheet that sets the five stops for a name of your choice, then use that name.
+
+```css
+[data-gradient="brand"] {
+  --np-highlight-text-1: oklch(0.8 0.15 90);
+  --np-highlight-text-2: oklch(0.78 0.16 70);
+  --np-highlight-text-3: oklch(0.75 0.17 50);
+  --np-highlight-text-4: oklch(0.78 0.16 70);
+  --np-highlight-text-5: oklch(0.8 0.15 90);
+}
+```
+
+---
+
+## Styling
+
+| Variable | Default |
+| --- | --- |
+| `--np-highlight-text-1` to `--np-highlight-text-5` | The five stops of the highlight. |
+| `--np-highlight-text-opacity` | `0.55` (`0.3` subtle, `0.85` strong) |
+| `--np-highlight-text-duration` | `0.9s` (`1.8s` slow, `0.45s` fast) |
+| `--np-highlight-text-delay` | `0s` |
+| `--np-highlight-text-ease` | `cubic-bezier(0.22, 1, 0.36, 1)` |
+| `--np-highlight-text-width`, `--np-highlight-text-height` | The size the highlight ends at. |
+| `--np-highlight-text-x`, `--np-highlight-text-y` | Where the highlight sits in the text box. |
+
+The highlight is a background behind the text, so the text keeps its own color. In right-to-left text it draws from the right.
+
+## Accessibility
+
+The highlight is decoration on real text, and `mark` tells assistive technology the text is highlighted. With `prefers-reduced-motion: reduce` the highlight is shown already drawn. Check that your text keeps enough contrast over the strongest part of the highlight, in light and in dark.
+
+---
+
+## API Reference
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `gradient` | `GradientName` | `"gold"` |
+| `variant` | `"marker" \| "mark" \| "underline" \| "strike"` | `"marker"` |
+| `trigger` | `"load" \| "view" \| "hover"` | `"load"` |
+| `speed` | `"slow" \| "default" \| "fast"` | `"default"` |
+| `delay` | `0 \| 1 \| 2 \| 3` | `0` |
+| `intensity` | `"subtle" \| "default" \| "strong"` | `"default"` |
+| `reverse` | `boolean` | `false` |
+| `animated` | `boolean` | `true` |
+| `render` | `ReactElement` | |
+
+`gradientNames` is exported with every name, for building a picker.
