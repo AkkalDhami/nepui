@@ -5,6 +5,10 @@
   "description": "Combine labels, controls, and help text to compose accessible form fields and grouped inputs.",
   "registryDependencies": [
     "https://nepui.vercel.app/r/html/label.json",
+    "https://nepui.vercel.app/r/html/separator.json",
+    "https://nepui.vercel.app/r/html/input.json",
+    "https://nepui.vercel.app/r/html/checkbox.json",
+    "https://nepui.vercel.app/r/html/textarea.json",
     "https://nepui.vercel.app/r/html/separator.json"
   ],
   "files": [
