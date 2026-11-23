@@ -106,7 +106,7 @@ function TabsTrigger({ className, children, ...props }: TabsTriggerProps) {
             (variant === "line" ? (
               <motion.div
                 layoutId={`${layoutId}-indicator`}
-                className="absolute bg-foreground group-data-[orientation=horizontal]/tabs:inset-x-0 group-data-[orientation=horizontal]/tabs:-bottom-px group-data-[orientation=horizontal]/tabs:h-0.5 group-data-[orientation=vertical]/tabs:inset-y-0 group-data-[orientation=vertical]/tabs:-right-px group-data-[orientation=vertical]/tabs:w-0.5"
+                className="absolute bg-foreground group-data-[orientation=horizontal]/tabs:inset-x-0 group-data-[orientation=horizontal]/tabs:-bottom-1.25 group-data-[orientation=horizontal]/tabs:h-0.5 group-data-[orientation=vertical]/tabs:inset-y-0 group-data-[orientation=vertical]/tabs:-right-px group-data-[orientation=vertical]/tabs:w-0.5"
                 transition={{ type: "spring", stiffness: 400, damping: 30 }}
               />
             ) : (
@@ -117,7 +117,9 @@ function TabsTrigger({ className, children, ...props }: TabsTriggerProps) {
               />
             ))}
           <span
-            className={"relative z-10 flex items-center justify-center gap-1.5"}
+            className={
+              "relative z-10 -mt-0.5 flex items-center justify-center gap-1.5"
+            }
           >
             {children}
           </span>
@@ -147,10 +149,10 @@ function TabsContent({ className, children, ...props }: TabsContentProps) {
             {!state.hidden && (
               <motion.div
                 key={props.value ?? "tab-panel"}
-                initial={{ opacity: 0, filter: "blur(12px)" }}
-                animate={{ opacity: 1, filter: "blur(0px)" }}
-                exit={{ opacity: 0, filter: "blur(12px)" }}
-                transition={{ duration: 0.3, ease: "easeIn" }}
+                // initial={{ opacity: 0, filter: "blur(12px)" }}
+                // animate={{ opacity: 1, filter: "blur(0px)" }}
+                // exit={{ opacity: 0, filter: "blur(12px)" }}
+                // transition={{ duration: 0.3, ease: "easeIn" }}
               >
                 {children}
               </motion.div>

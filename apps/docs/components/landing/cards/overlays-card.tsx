@@ -40,15 +40,18 @@ import {
   PopoverTitle,
   PopoverTrigger,
 } from "@/registry/react/popover"
+import { Kbd, KbdGroup } from "@/registry/react/kbd"
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetDescription,
+  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/registry/react/sheet"
-import { Kbd, KbdGroup } from "@/registry/react/kbd"
+import { Label } from "@/components/ui/label"
 
 export function OverlaysCard() {
   return (
@@ -102,9 +105,30 @@ export function OverlaysCard() {
             </SheetTrigger>
             <SheetContent>
               <SheetHeader>
-                <SheetTitle>Filters</SheetTitle>
-                <SheetDescription>Narrow down the results.</SheetDescription>
+                <SheetTitle>Edit profile</SheetTitle>
+                <SheetDescription>
+                  Make changes to your profile here. Click save when you are
+                  done.
+                </SheetDescription>
               </SheetHeader>
+              <div
+                style={{ display: "grid", gap: "1rem", paddingInline: "1rem" }}
+              >
+                <div style={{ display: "grid", gap: "0.5rem" }}>
+                  <Label htmlFor="sheet-form-name">Name</Label>
+                  <Input id="sheet-form-name" defaultValue="Lakka Imahd" />
+                </div>
+                <div style={{ display: "grid", gap: "0.5rem" }}>
+                  <Label htmlFor="sheet-form-username">Username</Label>
+                  <Input id="sheet-form-username" defaultValue="@lakka" />
+                </div>
+              </div>
+              <SheetFooter>
+                <Button type="submit">Save changes</Button>
+                <SheetClose render={<Button variant="outline" />}>
+                  Close
+                </SheetClose>
+              </SheetFooter>
             </SheetContent>
           </Sheet>
 

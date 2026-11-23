@@ -1,4 +1,24 @@
-import { Highlight, gradientNames } from "@/registry/react/highlight-text"
+import { GradientName } from "@/registry/react/gradient-text"
+import { Highlight } from "@/registry/react/highlight-text"
+
+const gradientNames: readonly GradientName[] = [
+  "aurora",
+  "sunrise",
+  "sunset",
+  "ocean",
+  "forest",
+  "fire",
+  "candy",
+  "lavender",
+  "mint",
+  "peach",
+  "midnight",
+  "gold",
+  "rainbow",
+  "cyber",
+  "plasma",
+  "mono",
+]
 
 export default function HighlightGradientsDemo() {
   return (
