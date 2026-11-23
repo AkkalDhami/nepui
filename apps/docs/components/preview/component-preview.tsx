@@ -63,6 +63,7 @@ export async function ComponentPreview({
       "number-input",
       "file-input",
       "gradient-text",
+      "navigation-menu",
     ]
 
     const componentName = groupedComponents.includes(

@@ -84,7 +84,7 @@ export function Highlight({
           className={cn(
             "pointer-events-none absolute border border-(--hl) bg-(--np-background)",
             compact ? "size-1.25" : "size-1.75",
-            handle === "round" && "rounded-full",
+            handle === "round" && "shrink-0 rounded-full",
             position
           )}
           initial={shouldAnimate ? { scale: 0 } : false}

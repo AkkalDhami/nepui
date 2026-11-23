@@ -8,6 +8,7 @@ import { PackageManager } from "@/types"
 import { getPackageManagerIcon } from "@/components/icons"
 import { CopyButton } from "@/components/docs/copy-button"
 import { IconSwap, IconSwapItem } from "@/registry/react/icon-swap"
+import { useEffect, useState } from "react"
 
 const pkgManagers = ["pnpm", "npm", "bun", "yarn"]
 
@@ -19,6 +20,12 @@ export default function PackageManagerTabs({
   className?: string
 }) {
   const { packageManager, setPackageManager } = useConfig()
+  const [cmd, setCmd] = useState("")
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setCmd(convertNpmCommand(command)[packageManager])
+  }, [command, packageManager])
 
   function onChangePackageManager(pkgManager: PackageManager) {
     setPackageManager(pkgManager)
@@ -30,11 +37,16 @@ export default function PackageManagerTabs({
     <Tabs
       value={packageManager}
       className={cn(
-        "not-typeset w-full max-w-code rounded-lg border border-transparent bg-code py-2",
+        "not-typeset relative w-full max-w-code rounded-lg border border-transparent bg-code py-2",
         className
       )}
     >
-      <TabsList className={cn("bg-transparent pl-4")}>
+      <CopyButton
+        value={cmd}
+        className="absolute top-2.5 right-2.5 z-20 bg-code text-xs"
+      />
+
+      <TabsList className={cn("relative bg-transparent pl-4")}>
         <IconSwap>
           <IconSwapItem
             className="mr-4 flex items-center gap-3"
@@ -61,18 +73,14 @@ export default function PackageManagerTabs({
       </TabsList>
 
       {pkgManagers.map((key) => {
-        const commands = convertNpmCommand(command)
-        const cmd = commands[key as PackageManager]
+        // const commands = convertNpmCommand(command)
+        // const cmd = commands[key as PackageManager]
         return (
           <TabsContent
             key={key}
             value={key}
             className="border-t border-neutral-500/10"
           >
-            <CopyButton
-              value={cmd}
-              className="absolute right-3 bottom-0 z-10 bg-code text-xs"
-            />
             <pre
               className={cn(
                 "max-w-[calc(100%-50px)] scrollbar-none overflow-x-auto overscroll-x-contain px-4 pt-4 pb-2"
