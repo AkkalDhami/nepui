@@ -162,11 +162,6 @@ import KtmReactContextMenuRadio from "./ktm/react/context-menu-radio"
 import KtmReactContextMenuShortcuts from "./ktm/react/context-menu-shortcuts"
 import KtmReactContextMenuSides from "./ktm/react/context-menu-sides"
 import KtmReactContextMenuSubmenu from "./ktm/react/context-menu-submenu"
-import KtmReactCopyButtonCustomIcons from "./ktm/react/copy-button-custom-icons"
-import KtmReactCopyButtonDemo from "./ktm/react/copy-button-demo"
-import KtmReactCopyButtonEvents from "./ktm/react/copy-button-events"
-import KtmReactCopyButtonFrom from "./ktm/react/copy-button-from"
-import KtmReactCopyButtonSizes from "./ktm/react/copy-button-sizes"
 import KtmReactDatePickerDemo from "./ktm/react/date-picker-demo"
 import KtmReactDatePickerDob from "./ktm/react/date-picker-dob"
 import KtmReactDatePickerInput from "./ktm/react/date-picker-input"
@@ -654,11 +649,6 @@ export const ExamplesIndex: Record<
       "context-menu-shortcuts": KtmReactContextMenuShortcuts,
       "context-menu-sides": KtmReactContextMenuSides,
       "context-menu-submenu": KtmReactContextMenuSubmenu,
-      "copy-button-custom-icons": KtmReactCopyButtonCustomIcons,
-      "copy-button-demo": KtmReactCopyButtonDemo,
-      "copy-button-events": KtmReactCopyButtonEvents,
-      "copy-button-from": KtmReactCopyButtonFrom,
-      "copy-button-sizes": KtmReactCopyButtonSizes,
       "date-picker-demo": KtmReactDatePickerDemo,
       "date-picker-dob": KtmReactDatePickerDob,
       "date-picker-input": KtmReactDatePickerInput,
