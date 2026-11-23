@@ -50,9 +50,6 @@ export function FeedbackCard() {
               step={0.5}
               size="lg"
               deselectable
-              style={{
-                filter: "grayscale(100%)",
-              }}
             />
           </Field>
 

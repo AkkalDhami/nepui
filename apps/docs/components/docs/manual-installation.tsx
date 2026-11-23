@@ -1,37 +1,29 @@
-"use client"
-
 import type { ReactNode } from "react"
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { InstallationType, useConfig } from "@/hooks/use-config"
+import { getPrompt } from "@/lib/prompts"
 
-export function ManualInstallation({
+import { AgentsPrompt } from "./agents-prompt"
+import { ManualInstallationTabs } from "./manual-installation-tabs"
+import { TargetType } from "@/hooks/use-config"
+
+export async function ManualInstallation({
   cli,
   manual,
+  name,
+  target = "react",
 }: {
   cli: ReactNode
   manual: ReactNode
+  name?: string
+  target?: TargetType
 }) {
-  const { installationType, setInstallationType } = useConfig()
+  const prompt = name ? await getPrompt(target, name) : null
 
   return (
-    <Tabs
-      value={installationType}
-      onValueChange={(value) => setInstallationType(value as InstallationType)}
-      className="mt-8 gap-0"
-    >
-      <TabsList className="mb-4 bg-transparent" variant="line">
-        <TabsTrigger value="cli" className="text-base">
-          Command
-        </TabsTrigger>
-        <TabsTrigger value="manual" className="text-base">
-          Manual
-        </TabsTrigger>
-      </TabsList>
-      <TabsContent value="cli">{cli}</TabsContent>
-      <TabsContent value="manual" className="mt-0">
-        {manual}
-      </TabsContent>
-    </Tabs>
+    <ManualInstallationTabs
+      cli={cli}
+      manual={manual}
+      prompt={prompt ? <AgentsPrompt prompt={prompt} /> : undefined}
+    />
   )
 }

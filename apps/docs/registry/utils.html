@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Utilities</title>
+    <link rel="stylesheet" href="./styles/tokens.css" />
+    <link rel="stylesheet" href="./html/button/button.css" />
+    <link rel="stylesheet" href="./utils.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem 6rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: system-ui, sans-serif;
+      }
+      main {
+        display: grid;
+        gap: 2.5rem;
+        max-width: 40rem;
+        margin-inline: auto;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+      h1 {
+        margin: 0;
+        font-size: 1.5rem;
+      }
+      h2 {
+        margin: 0 0 0.75rem;
+        font-size: 0.875rem;
+        color: var(--np-muted-foreground);
+        font-weight: 500;
+      }
+      code {
+        font-size: 0.8125rem;
+      }
+      .box {
+        border: 1px solid var(--np-border);
+        border-radius: var(--np-radius-lg);
+      }
+      .scroll-y {
+        height: 10rem;
+        overflow-y: auto;
+        padding: 0.5rem 1rem;
+      }
+      .scroll-y ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 0.75rem;
+        font-size: 0.875rem;
+      }
+      .scroll-x {
+        display: flex;
+        gap: 0.5rem;
+        overflow-x: auto;
+        padding: 0.75rem;
+      }
+      .chip {
+        flex: none;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        background: var(--np-muted);
+        font-size: 0.875rem;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+      }
+      .mini {
+        height: 6rem;
+        overflow: auto;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.8125rem;
+        line-height: 1.6;
+      }
+      .tile {
+        display: grid;
+        place-items: center;
+        height: 3rem;
+        border-radius: var(--np-radius-md);
+        background: var(--np-muted);
+        font-size: 0.875rem;
+      }
+      .skeleton {
+        height: 1rem;
+        border-radius: var(--np-radius-md);
+      }
+      .field {
+        padding: 0.5rem 0.75rem;
+        border: 1px solid var(--np-input, var(--np-border));
+        border-radius: var(--np-radius-md);
+        background: transparent;
+        color: inherit;
+        font: inherit;
+      }
+      .debug::after {
+        outline: 1px dashed var(--np-ring);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Utilities</h1>
+        <button
+          class="np-button np-button-outline np-button-sm"
+          type="button"
+          onclick="document.documentElement.classList.toggle('dark')"
+        >
+          Toggle dark
+        </button>
+      </header>
+
+      <section>
+        <h2>np-scroll-fade (vertical, both edges)</h2>
+        <div class="box np-scroll-fade scroll-y">
+          <ul>
+            <li>Row 1: scroll this box and watch the edges fade</li>
+            <li>Row 2: scroll this box and watch the edges fade</li>
+            <li>Row 3: scroll this box and watch the edges fade</li>
+            <li>Row 4: scroll this box and watch the edges fade</li>
+            <li>Row 5: scroll this box and watch the edges fade</li>
+            <li>Row 6: scroll this box and watch the edges fade</li>
+            <li>Row 7: scroll this box and watch the edges fade</li>
+            <li>Row 8: scroll this box and watch the edges fade</li>
+            <li>Row 9: scroll this box and watch the edges fade</li>
+            <li>Row 10: scroll this box and watch the edges fade</li>
+            <li>Row 11: scroll this box and watch the edges fade</li>
+            <li>Row 12: scroll this box and watch the edges fade</li>
+            <li>Row 13: scroll this box and watch the edges fade</li>
+            <li>Row 14: scroll this box and watch the edges fade</li>
+            <li>Row 15: scroll this box and watch the edges fade</li>
+            <li>Row 16: scroll this box and watch the edges fade</li>
+            <li>Row 17: scroll this box and watch the edges fade</li>
+            <li>Row 18: scroll this box and watch the edges fade</li>
+            <li>Row 19: scroll this box and watch the edges fade</li>
+            <li>Row 20: scroll this box and watch the edges fade</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>np-scroll-fade-x with np-no-scrollbar</h2>
+        <div class="box np-scroll-fade-x np-no-scrollbar scroll-x">
+          <span class="chip">Chip 1</span>
+          <span class="chip">Chip 2</span>
+          <span class="chip">Chip 3</span>
+          <span class="chip">Chip 4</span>
+          <span class="chip">Chip 5</span>
+          <span class="chip">Chip 6</span>
+          <span class="chip">Chip 7</span>
+          <span class="chip">Chip 8</span>
+          <span class="chip">Chip 9</span>
+          <span class="chip">Chip 10</span>
+          <span class="chip">Chip 11</span>
+          <span class="chip">Chip 12</span>
+          <span class="chip">Chip 13</span>
+          <span class="chip">Chip 14</span>
+          <span class="chip">Chip 15</span>
+          <span class="chip">Chip 16</span>
+        </div>
+      </section>
+
+      <section>
+        <h2>
+          Single sides: np-scroll-fade-t, -b, -l, -r (and -s, -e for the inline
+          axis)
+        </h2>
+        <div class="grid">
+          <div class="box np-scroll-fade-t mini">
+            Top only. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
+            Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum
+            dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+            amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem
+            ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor
+            sit amet.
+          </div>
+          <div class="box np-scroll-fade-b mini">
+            Bottom only. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
+            Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum
+            dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+            amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem
+            ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor
+            sit amet.
+          </div>
+          <div
+            class="box np-scroll-fade-l np-no-scrollbar mini"
+            style="white-space: nowrap"
+          >
+            Left only. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
+            Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum
+            dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+            amet. Lorem ipsum dolor sit amet.
+          </div>
+          <div
+            class="box np-scroll-fade-r np-no-scrollbar mini"
+            style="white-space: nowrap"
+          >
+            Right only. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
+            Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum
+            dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+            amet. Lorem ipsum dolor sit amet.
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Sizes and the data-attribute form</h2>
+        <div class="grid">
+          <div class="box np-scroll-fade np-scroll-fade-sm mini">
+            Small fade. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
+            Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum
+            dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+            amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem
+            ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor
+            sit amet.
+          </div>
+          <div class="box np-scroll-fade np-scroll-fade-xl mini">
+            Extra large fade. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+            amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem
+            ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor
+            sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
+            Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum
+            dolor sit amet.
+          </div>
+          <div
+            class="box mini"
+            data-np-scroll-fade="y"
+            style="--np-scroll-fade-size: 2rem"
+          >
+            data-np-scroll-fade="y" with a 2rem variable. Lorem ipsum dolor sit
+            amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem
+            ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor
+            sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
+            Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum
+            dolor sit amet. Lorem ipsum dolor sit amet.
+          </div>
+          <div class="box np-scroll-fade np-scroll-fade-none mini">
+            np-scroll-fade-none turns the mask off. Lorem ipsum dolor sit amet.
+            Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum
+            dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+            amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem
+            ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor
+            sit amet. Lorem ipsum dolor sit amet.
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>np-shimmer, np-shimmer-block, np-spin, np-pulse</h2>
+        <div style="display: grid; gap: 0.75rem">
+          <div class="np-shimmer" style="font-size: 0.875rem">Thinking...</div>
+          <div
+            class="np-shimmer"
+            style="
+              font-size: 0.875rem;
+              --np-shimmer-base: var(--np-destructive);
+              --np-shimmer-duration: 3s;
+            "
+          >
+            A slower shimmer in another color
+          </div>
+          <div class="skeleton np-shimmer-block" style="width: 60%"></div>
+          <div class="skeleton np-shimmer-block" style="width: 40%"></div>
+          <div
+            style="
+              display: flex;
+              gap: 1rem;
+              align-items: center;
+              font-size: 0.875rem;
+            "
+          >
+            <svg
+              class="np-spin"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+            </svg>
+            <span>np-spin</span>
+            <span class="np-pulse">np-pulse</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>
+          np-animate-in with np-fade-in, np-zoom-in and np-slide-in-from-*
+        </h2>
+        <div style="display: flex; gap: 0.75rem; align-items: center">
+          <div
+            id="enter"
+            class="np-animate-in np-fade-in np-zoom-in np-slide-in-from-bottom np-popup"
+            style="padding: 0.75rem 1rem; font-size: 0.875rem"
+          >
+            I animate in
+          </div>
+          <button
+            class="np-button np-button-outline np-button-sm"
+            type="button"
+            onclick="
+              var el = document.getElementById('enter')
+              el.classList.remove('np-animate-in')
+              void el.offsetWidth
+              el.classList.add('np-animate-in')
+            "
+          >
+            Replay
+          </button>
+        </div>
+      </section>
+
+      <section>
+        <h2>
+          Text: np-truncate, np-line-clamp-2, np-text-balance, np-tabular-nums
+        </h2>
+        <div style="display: grid; gap: 0.75rem; font-size: 0.875rem">
+          <div class="np-truncate" style="max-width: 16rem">
+            A very long title that is cut with an ellipsis when it does not fit
+          </div>
+          <p class="np-line-clamp-2" style="margin: 0; max-width: 24rem">
+            This paragraph is clamped to two lines, so the rest of the text is
+            hidden behind an ellipsis. This paragraph is clamped to two lines,
+            so the rest of the text is hidden behind an ellipsis. This paragraph
+            is clamped to two lines, so the rest of the text is hidden behind an
+            ellipsis. This paragraph is clamped to two lines, so the rest of the
+            text is hidden behind an ellipsis.
+          </p>
+          <p
+            class="np-text-balance"
+            style="
+              margin: 0;
+              max-width: 20rem;
+              font-size: 1.125rem;
+              font-weight: 600;
+            "
+          >
+            A balanced heading splits its lines evenly instead of leaving one
+            word alone
+          </p>
+          <div class="np-tabular-nums">
+            1,111.00 / 8,888.88 (tabular numbers line up)
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Focus, disabled and hit area</h2>
+        <div
+          style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center"
+        >
+          <input
+            class="field np-focus-ring"
+            placeholder="Tab to np-focus-ring"
+            aria-label="Focus ring example"
+          />
+          <button class="field np-disabled" type="button">np-disabled</button>
+          <button
+            class="field np-hit-area debug"
+            type="button"
+            style="--np-hit-area-x: 1rem; --np-hit-area-y: 0.5rem"
+          >
+            np-hit-area
+          </button>
+          <span class="np-sr-only"
+            >This text is only for screen readers (np-sr-only).</span
+          >
+        </div>
+      </section>
+
+      <section>
+        <h2>
+          Layout and surface: np-stack, np-row, np-center, np-container,
+          np-popup
+        </h2>
+        <div class="np-stack" style="--np-gap: 0.75rem">
+          <div class="np-row" style="--np-gap: 0.5rem">
+            <div class="tile" style="flex: 1">np-row</div>
+            <div class="tile" style="flex: 1">np-row</div>
+          </div>
+          <div class="np-center tile">np-center</div>
+          <div class="np-container">
+            <div
+              class="np-popup"
+              style="padding: 0.75rem 1rem; font-size: 0.875rem"
+            >
+              np-popup is the surface used by menus and cards.
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

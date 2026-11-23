@@ -5,7 +5,7 @@ import { persist } from "zustand/middleware"
 
 export type TargetType = "html" | "react"
 type Registry = "nepui" | "shadcn"
-export type InstallationType = "cli" | "manual"
+export type InstallationType = "cli" | "manual" | "prompt"
 export type FontFamily = "fira-code" | "geist-mono" | "jetbrains-mono"
 
 interface ConfigState {

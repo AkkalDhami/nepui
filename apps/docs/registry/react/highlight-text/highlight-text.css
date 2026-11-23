@@ -1,0 +1,295 @@
+/* nepui — Highlight Text */
+
+:is(.np-highlight-text, [data-np-highlight-text]) {
+  --np-highlight-text-1: oklch(0.82 0.16 85);
+  --np-highlight-text-2: oklch(0.78 0.17 70);
+  --np-highlight-text-3: oklch(0.88 0.15 95);
+  --np-highlight-text-4: oklch(0.72 0.16 60);
+  --np-highlight-text-5: oklch(0.85 0.15 80);
+  --np-highlight-text-opacity: 0.55;
+  --np-highlight-text-duration: 0.9s;
+  --np-highlight-text-delay: 0s;
+  --np-highlight-text-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --np-highlight-text-width: 100%;
+  --np-highlight-text-height: 58%;
+  --np-highlight-text-x: 0%;
+  --np-highlight-text-y: 88%;
+
+  margin-inline: -0.2em;
+  padding-inline: 0.2em;
+  border-radius: 0.2em;
+  background-color: transparent;
+  background-image: linear-gradient(
+    90deg,
+    color-mix(
+      in oklab,
+      var(--np-highlight-text-1) calc(var(--np-highlight-text-opacity) * 100%),
+      transparent
+    ),
+    color-mix(
+      in oklab,
+      var(--np-highlight-text-2) calc(var(--np-highlight-text-opacity) * 100%),
+      transparent
+    ),
+    color-mix(
+      in oklab,
+      var(--np-highlight-text-3) calc(var(--np-highlight-text-opacity) * 100%),
+      transparent
+    ),
+    color-mix(
+      in oklab,
+      var(--np-highlight-text-4) calc(var(--np-highlight-text-opacity) * 100%),
+      transparent
+    ),
+    color-mix(
+      in oklab,
+      var(--np-highlight-text-5) calc(var(--np-highlight-text-opacity) * 100%),
+      transparent
+    )
+  );
+  background-repeat: no-repeat;
+  background-position: var(--np-highlight-text-x) var(--np-highlight-text-y);
+  background-size: var(--np-highlight-text-width)
+    var(--np-highlight-text-height);
+  color: inherit;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  animation: np-highlight-text-draw var(--np-highlight-text-duration)
+    var(--np-highlight-text-ease) var(--np-highlight-text-delay) both;
+}
+
+:is(.np-highlight-text, [data-np-highlight-text]):dir(rtl) {
+  --np-highlight-text-x: 100%;
+}
+
+:is(.np-highlight-text, [data-np-highlight-text])[data-gradient="aurora"] {
+  --np-highlight-text-1: oklch(0.72 0.14 250);
+  --np-highlight-text-2: oklch(0.7 0.18 280);
+  --np-highlight-text-3: oklch(0.8 0.12 220);
+  --np-highlight-text-4: oklch(0.72 0.2 310);
+  --np-highlight-text-5: oklch(0.78 0.13 190);
+}
+
+:is(.np-highlight-text, [data-np-highlight-text])[data-gradient="sunrise"] {
+  --np-highlight-text-1: oklch(0.7 0.19 295);
+  --np-highlight-text-2: oklch(0.72 0.2 320);
+  --np-highlight-text-3: oklch(0.72 0.21 350);
+  --np-highlight-text-4: oklch(0.76 0.19 30);
+  --np-highlight-text-5: oklch(0.8 0.16 70);
+}
+
+:is(.np-highlight-text, [data-np-highlight-text])[data-gradient="sunset"] {
+  --np-highlight-text-1: oklch(0.7 0.2 30);
+  --np-highlight-text-2: oklch(0.76 0.18 50);
+  --np-highlight-text-3: oklch(0.7 0.22 350);
+  --np-highlight-text-4: oklch(0.65 0.2 330);
+  --np-highlight-text-5: oklch(0.6 0.18 300);
+}
+
+:is(.np-highlight-text, [data-np-highlight-text])[data-gradient="ocean"] {
+  --np-highlight-text-1: oklch(0.75 0.15 200);
+  --np-highlight-text-2: oklch(0.7 0.16 220);
+  --np-highlight-text-3: oklch(0.66 0.18 250);
+  --np-highlight-text-4: oklch(0.72 0.15 230);
+  --np-highlight-text-5: oklch(0.78 0.13 190);
+}
+
+:is(.np-highlight-text, [data-np-highlight-text])[data-gradient="forest"] {
+  --np-highlight-text-1: oklch(0.75 0.17 150);
+  --np-highlight-text-2: oklch(0.7 0.17 130);
+  --np-highlight-text-3: oklch(0.78 0.15 170);
+  --np-highlight-text-4: oklch(0.72 0.16 110);
+  --np-highlight-text-5: oklch(0.8 0.13 180);
+}
+
+:is(.np-highlight-text, [data-np-highlight-text])[data-gradient="fire"] {
+  --np-highlight-text-1: oklch(0.65 0.22 25);
+  --np-highlight-text-2: oklch(0.72 0.2 45);
+  --np-highlight-text-3: oklch(0.82 0.18 75);
+  --np-highlight-text-4: oklch(0.7 0.21 35);
+  --np-highlight-text-5: oklch(0.6 0.22 15);
+}
+
+:is(.np-highlight-text, [data-np-highlight-text])[data-gradient="candy"] {
+  --np-highlight-text-1: oklch(0.8 0.14 350);
+  --np-highlight-text-2: oklch(0.78 0.15 320);
+  --np-highlight-text-3: oklch(0.76 0.14 290);
+  --np-highlight-text-4: oklch(0.8 0.12 260);
+  --np-highlight-text-5: oklch(0.82 0.14 330);
+}
+
+:is(.np-highlight-text, [data-np-highlight-text])[data-gradient="lavender"] {
+  --np-highlight-text-1: oklch(0.78 0.12 295);
+  --np-highlight-text-2: oklch(0.74 0.13 280);
+  --np-highlight-text-3: oklch(0.8 0.11 310);
+  --np-highlight-text-4: oklch(0.72 0.13 265);
+  --np-highlight-text-5: oklch(0.78 0.12 300);
+}
+
+:is(.np-highlight-text, [data-np-highlight-text])[data-gradient="mint"] {
+  --np-highlight-text-1: oklch(0.82 0.13 170);
+  --np-highlight-text-2: oklch(0.8 0.14 150);
+  --np-highlight-text-3: oklch(0.84 0.12 190);
+  --np-highlight-text-4: oklch(0.78 0.15 130);
+  --np-highlight-text-5: oklch(0.84 0.11 200);
+}
+
+:is(.np-highlight-text, [data-np-highlight-text])[data-gradient="peach"] {
+  --np-highlight-text-1: oklch(0.82 0.12 50);
+  --np-highlight-text-2: oklch(0.8 0.13 30);
+  --np-highlight-text-3: oklch(0.85 0.11 70);
+  --np-highlight-text-4: oklch(0.78 0.14 10);
+  --np-highlight-text-5: oklch(0.83 0.12 40);
+}
+
+:is(.np-highlight-text, [data-np-highlight-text])[data-gradient="midnight"] {
+  --np-highlight-text-1: oklch(0.55 0.15 270);
+  --np-highlight-text-2: oklch(0.6 0.17 285);
+  --np-highlight-text-3: oklch(0.62 0.14 250);
+  --np-highlight-text-4: oklch(0.55 0.16 300);
+  --np-highlight-text-5: oklch(0.5 0.13 260);
+}
+
+:is(.np-highlight-text, [data-np-highlight-text])[data-gradient="rainbow"] {
+  --np-highlight-text-1: oklch(0.72 0.19 25);
+  --np-highlight-text-2: oklch(0.8 0.18 90);
+  --np-highlight-text-3: oklch(0.76 0.19 150);
+  --np-highlight-text-4: oklch(0.7 0.17 230);
+  --np-highlight-text-5: oklch(0.68 0.2 300);
+}
+
+:is(.np-highlight-text, [data-np-highlight-text])[data-gradient="cyber"] {
+  --np-highlight-text-1: oklch(0.8 0.17 200);
+  --np-highlight-text-2: oklch(0.65 0.25 330);
+  --np-highlight-text-3: oklch(0.6 0.2 280);
+  --np-highlight-text-4: oklch(0.82 0.16 195);
+  --np-highlight-text-5: oklch(0.66 0.24 340);
+}
+
+:is(.np-highlight-text, [data-np-highlight-text])[data-gradient="plasma"] {
+  --np-highlight-text-1: oklch(0.6 0.25 300);
+  --np-highlight-text-2: oklch(0.65 0.24 340);
+  --np-highlight-text-3: oklch(0.7 0.22 20);
+  --np-highlight-text-4: oklch(0.62 0.24 330);
+  --np-highlight-text-5: oklch(0.58 0.22 290);
+}
+
+:is(.np-highlight-text, [data-np-highlight-text])[data-gradient="mono"] {
+  --np-highlight-text-1: var(--np-muted-foreground);
+  --np-highlight-text-2: var(--np-muted-foreground);
+  --np-highlight-text-3: var(--np-muted-foreground);
+  --np-highlight-text-4: var(--np-muted-foreground);
+  --np-highlight-text-5: var(--np-muted-foreground);
+  --np-highlight-text-opacity: 0.3;
+}
+
+:is(.np-highlight-text, [data-np-highlight-text])[data-variant="mark"] {
+  --np-highlight-text-height: 100%;
+  --np-highlight-text-y: 50%;
+}
+
+:is(.np-highlight-text, [data-np-highlight-text])[data-variant="underline"] {
+  --np-highlight-text-height: 0.16em;
+  --np-highlight-text-y: 96%;
+}
+
+:is(.np-highlight-text, [data-np-highlight-text])[data-variant="strike"] {
+  --np-highlight-text-height: 0.1em;
+  --np-highlight-text-y: 56%;
+}
+
+:is(.np-highlight-text, [data-np-highlight-text])[data-direction="reverse"] {
+  --np-highlight-text-x: 100%;
+}
+
+:is(.np-highlight-text, [data-np-highlight-text])[data-direction="reverse"]:dir(
+    rtl
+  ) {
+  --np-highlight-text-x: 0%;
+}
+
+:is(.np-highlight-text, [data-np-highlight-text])[data-intensity="subtle"] {
+  --np-highlight-text-opacity: 0.3;
+}
+
+:is(.np-highlight-text, [data-np-highlight-text])[data-intensity="strong"] {
+  --np-highlight-text-opacity: 0.85;
+}
+
+:is(.np-highlight-text, [data-np-highlight-text])[data-speed="slow"] {
+  --np-highlight-text-duration: 1.8s;
+}
+
+:is(.np-highlight-text, [data-np-highlight-text])[data-speed="fast"] {
+  --np-highlight-text-duration: 0.45s;
+}
+
+:is(.np-highlight-text, [data-np-highlight-text])[data-delay="1"] {
+  --np-highlight-text-delay: 0.3s;
+}
+
+:is(.np-highlight-text, [data-np-highlight-text])[data-delay="2"] {
+  --np-highlight-text-delay: 0.6s;
+}
+
+:is(.np-highlight-text, [data-np-highlight-text])[data-delay="3"] {
+  --np-highlight-text-delay: 0.9s;
+}
+
+:is(.np-highlight-text, [data-np-highlight-text])[data-trigger="hover"] {
+  animation: none;
+  background-size: 0% var(--np-highlight-text-height);
+  transition: background-size var(--np-highlight-text-duration)
+    var(--np-highlight-text-ease);
+}
+
+:is(.np-highlight-text, [data-np-highlight-text])[data-trigger="hover"]:is(
+    :hover,
+    :focus-within
+  ) {
+  background-size: var(--np-highlight-text-width)
+    var(--np-highlight-text-height);
+}
+
+:is(.np-highlight-text, [data-np-highlight-text])[data-trigger="view"] {
+  animation: none;
+}
+
+@supports (animation-timeline: view()) {
+  :is(.np-highlight-text, [data-np-highlight-text])[data-trigger="view"] {
+    animation: np-highlight-text-draw linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 35%;
+  }
+}
+
+:is(.np-highlight-text, [data-np-highlight-text])[data-animate="false"],
+:is(
+    .np-highlight-text,
+    [data-np-highlight-text]
+  )[data-animate="false"][data-trigger] {
+  animation: none;
+  transition: none;
+  background-size: var(--np-highlight-text-width)
+    var(--np-highlight-text-height);
+}
+
+@keyframes np-highlight-text-draw {
+  from {
+    background-size: 0% var(--np-highlight-text-height);
+  }
+  to {
+    background-size: var(--np-highlight-text-width)
+      var(--np-highlight-text-height);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.np-highlight-text, [data-np-highlight-text]),
+  :is(.np-highlight-text, [data-np-highlight-text])[data-trigger] {
+    animation: none;
+    transition: none;
+    background-size: var(--np-highlight-text-width)
+      var(--np-highlight-text-height);
+  }
+}

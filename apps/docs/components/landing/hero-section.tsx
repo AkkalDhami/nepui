@@ -13,7 +13,8 @@ export function HeroSection() {
       <div className="mx-auto flex max-w-4xl flex-col items-center gap-7 text-center">
         <Link href="/docs/components" className="no-underline">
           <Badge variant="secondary" appearance="light">
-            70+ accessible components
+            {/* 70+ accessible components */}
+            A CSS-first design system
             <ArrowRightIcon />
           </Badge>
         </Link>
@@ -25,6 +26,7 @@ export function HeroSection() {
           Build interfaces that feel{" "}
           <Highlight
             delay={0.2}
+            animate={false}
             variant="solid"
             //  color="var(--np-blue-500)"
           >
@@ -38,7 +40,8 @@ export function HeroSection() {
             variant="outline"
             handle="round"
             delay={0.7}
-            color="var(--np-orange-500)"
+            animate={false}
+            // color="var(--np-orange-500)"
             className="text-foreground"
           >
             CSS-first design system
