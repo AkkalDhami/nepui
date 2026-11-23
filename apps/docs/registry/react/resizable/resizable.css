@@ -1,0 +1,121 @@
+/* nepui — Resizable */
+
+.np-resizable,
+[data-np-resizable] {
+  --np-resizable-handle-size: 1px;
+  --np-resizable-handle-hit-size: 0.25rem;
+  --np-resizable-handle-color: var(--np-border);
+  --np-resizable-grip-length: 1.5rem;
+  --np-resizable-grip-thickness: 0.25rem;
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+:is(.np-resizable-vertical, [data-orientation="vertical"]):is(
+  .np-resizable,
+  [data-np-resizable]
+) {
+  flex-direction: column;
+}
+
+:is(.np-resizable, [data-np-resizable])[data-resizing] {
+  user-select: none;
+}
+
+.np-resizable-panel,
+[data-np-resizable-panel] {
+  box-sizing: border-box;
+  flex: var(--np-resizable-size, 1) 1 0;
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+}
+
+.np-resizable-handle,
+[data-np-resizable-handle] {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--np-resizable-handle-size);
+  background-color: var(--np-resizable-handle-color);
+  outline: none;
+  cursor: col-resize;
+  touch-action: none;
+}
+
+:is(.np-resizable-handle, [data-np-resizable-handle])::after {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: calc(50% - var(--np-resizable-handle-hit-size) / 2);
+  width: var(--np-resizable-handle-hit-size);
+}
+
+:is(.np-resizable-vertical, [data-orientation="vertical"]):is(
+    .np-resizable,
+    [data-np-resizable]
+  )
+  > :is(.np-resizable-handle, [data-np-resizable-handle]) {
+  width: auto;
+  height: var(--np-resizable-handle-size);
+  cursor: row-resize;
+}
+
+:is(.np-resizable-vertical, [data-orientation="vertical"]):is(
+    .np-resizable,
+    [data-np-resizable]
+  )
+  > :is(.np-resizable-handle, [data-np-resizable-handle])::after {
+  inset-block: calc(50% - var(--np-resizable-handle-hit-size) / 2) auto;
+  inset-inline: 0;
+  width: auto;
+  height: var(--np-resizable-handle-hit-size);
+}
+
+:is(.np-resizable-handle, [data-np-resizable-handle]):is(
+  :focus-visible,
+  [data-dragging],
+  [data-separator="active"]
+) {
+  background-color: var(--np-ring);
+}
+
+:is(.np-resizable-handle, [data-np-resizable-handle]):focus-visible {
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--np-ring), transparent 50%);
+}
+
+:is(.np-resizable-handle, [data-np-resizable-handle]):is(
+  [aria-disabled="true"],
+  [data-disabled]
+) {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.np-resizable-grip,
+[data-np-resizable-grip] {
+  z-index: 10;
+  flex: none;
+  width: var(--np-resizable-grip-thickness);
+  height: var(--np-resizable-grip-length);
+  border-radius: var(--np-radius-lg);
+  background-color: var(--np-border);
+}
+
+:is(.np-resizable-vertical, [data-orientation="vertical"]):is(
+    .np-resizable,
+    [data-np-resizable]
+  )
+  > :is(.np-resizable-handle, [data-np-resizable-handle])
+  > :is(.np-resizable-grip, [data-np-resizable-grip]) {
+  width: var(--np-resizable-grip-length);
+  height: var(--np-resizable-grip-thickness);
+}
