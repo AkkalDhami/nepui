@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Resizable</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/resizable.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem 4rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: system-ui, sans-serif;
+      }
+      main {
+        display: grid;
+        gap: 3rem;
+        max-width: 44rem;
+        margin-inline: auto;
+      }
+      h2 {
+        margin: 0 0 0.75rem;
+        font-size: 1rem;
+      }
+      p {
+        margin: 0 0 0.75rem;
+        color: var(--np-muted-foreground);
+        font-size: 0.875rem;
+      }
+    </style>
+  </head>
+
+  <script src="../javascripts/resizable.js" defer></script>
+
+  <body>
+    <main>
+      <section>
+        <h2>Default</h2>
+        <p>
+          Drag a handle, or focus it and use the arrow keys. Groups can nest.
+        </p>
+        <div
+          class="np-resizable"
+          style="
+            width: 100%;
+            max-width: 28rem;
+            height: 12.5rem;
+            border: 1px solid var(--np-border);
+            border-radius: var(--np-radius-lg);
+          "
+        >
+          <div class="np-resizable-panel" data-default-size="50">
+            <div
+              style="
+                display: flex;
+                box-sizing: border-box;
+                height: 100%;
+                align-items: center;
+                justify-content: center;
+                padding: 1.5rem;
+              "
+            >
+              <span style="font-weight: 600">One</span>
+            </div>
+          </div>
+          <div
+            class="np-resizable-handle"
+            role="separator"
+            tabindex="0"
+            aria-label="Resize"
+          ></div>
+          <div class="np-resizable-panel" data-default-size="50">
+            <div class="np-resizable np-resizable-vertical">
+              <div class="np-resizable-panel" data-default-size="25">
+                <div
+                  style="
+                    display: flex;
+                    box-sizing: border-box;
+                    height: 100%;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 1.5rem;
+                  "
+                >
+                  <span style="font-weight: 600">Two</span>
+                </div>
+              </div>
+              <div
+                class="np-resizable-handle"
+                role="separator"
+                tabindex="0"
+                aria-label="Resize"
+              ></div>
+              <div class="np-resizable-panel" data-default-size="75">
+                <div
+                  style="
+                    display: flex;
+                    box-sizing: border-box;
+                    height: 100%;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 1.5rem;
+                  "
+                >
+                  <span style="font-weight: 600">Three</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Vertical</h2>
+        <p>Add <code>np-resizable-vertical</code> to stack the panels.</p>
+        <div
+          class="np-resizable np-resizable-vertical"
+          style="
+            width: 100%;
+            max-width: 28rem;
+            height: 12.5rem;
+            border: 1px solid var(--np-border);
+            border-radius: var(--np-radius-lg);
+          "
+        >
+          <div class="np-resizable-panel" data-default-size="25">
+            <div
+              style="
+                display: flex;
+                box-sizing: border-box;
+                height: 100%;
+                align-items: center;
+                justify-content: center;
+                padding: 1.5rem;
+              "
+            >
+              <span style="font-weight: 600">Header</span>
+            </div>
+          </div>
+          <div
+            class="np-resizable-handle"
+            role="separator"
+            tabindex="0"
+            aria-label="Resize"
+          ></div>
+          <div class="np-resizable-panel" data-default-size="75">
+            <div
+              style="
+                display: flex;
+                box-sizing: border-box;
+                height: 100%;
+                align-items: center;
+                justify-content: center;
+                padding: 1.5rem;
+              "
+            >
+              <span style="font-weight: 600">Content</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Handle</h2>
+        <p>
+          Put a <code>np-resizable-grip</code> inside the handle for a visible
+          grip.
+        </p>
+        <div
+          class="np-resizable"
+          style="
+            width: 100%;
+            max-width: 28rem;
+            height: 12.5rem;
+            border: 1px solid var(--np-border);
+            border-radius: var(--np-radius-lg);
+          "
+        >
+          <div class="np-resizable-panel" data-default-size="25">
+            <div
+              style="
+                display: flex;
+                box-sizing: border-box;
+                height: 100%;
+                align-items: center;
+                justify-content: center;
+                padding: 1.5rem;
+              "
+            >
+              <span style="font-weight: 600">Sidebar</span>
+            </div>
+          </div>
+          <div
+            class="np-resizable-handle"
+            role="separator"
+            tabindex="0"
+            aria-label="Resize"
+          >
+            <div class="np-resizable-grip"></div>
+          </div>
+          <div class="np-resizable-panel" data-default-size="75">
+            <div
+              style="
+                display: flex;
+                box-sizing: border-box;
+                height: 100%;
+                align-items: center;
+                justify-content: center;
+                padding: 1.5rem;
+              "
+            >
+              <span style="font-weight: 600">Content</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Limits</h2>
+        <p>
+          <code>data-min-size</code> and <code>data-max-size</code> on a panel
+          (percent). The sidebar stays between 15% and 40%, the content keeps at
+          least 60%.
+        </p>
+        <div
+          class="np-resizable"
+          style="
+            width: 100%;
+            max-width: 28rem;
+            height: 12.5rem;
+            border: 1px solid var(--np-border);
+            border-radius: var(--np-radius-lg);
+          "
+        >
+          <div
+            class="np-resizable-panel"
+            data-min-size="15"
+            data-max-size="40"
+            data-default-size="25"
+          >
+            <div
+              style="
+                display: flex;
+                box-sizing: border-box;
+                height: 100%;
+                align-items: center;
+                justify-content: center;
+                padding: 1.5rem;
+              "
+            >
+              <span style="font-weight: 600">15–40%</span>
+            </div>
+          </div>
+          <div
+            class="np-resizable-handle"
+            role="separator"
+            tabindex="0"
+            aria-label="Resize sidebar"
+          >
+            <div class="np-resizable-grip"></div>
+          </div>
+          <div
+            class="np-resizable-panel"
+            data-min-size="60"
+            data-default-size="75"
+          >
+            <div
+              style="
+                display: flex;
+                box-sizing: border-box;
+                height: 100%;
+                align-items: center;
+                justify-content: center;
+                padding: 1.5rem;
+              "
+            >
+              <span style="font-weight: 600">Content</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
