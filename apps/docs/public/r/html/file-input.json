@@ -5,7 +5,8 @@
   "description": "Choose, drop or paste files, check them against your rules, and submit them with a form.",
   "registryDependencies": [
     "https://nepui.vercel.app/r/html/button.json",
-    "https://nepui.vercel.app/r/field/button.json"
+    "https://nepui.vercel.app/r/html/button.json",
+    "https://nepui.vercel.app/r/html/field.json"
   ],
   "files": [
     {
