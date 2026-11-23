@@ -13,7 +13,8 @@ export function HeroSection() {
       <div className="mx-auto flex max-w-4xl flex-col items-center gap-7 text-center">
         <Link href="/docs/components" className="no-underline">
           <Badge variant="secondary" appearance="light">
-            70+ accessible components
+            {/* 70+ accessible components */}
+            A CSS-first design system
             <ArrowRightIcon />
           </Badge>
         </Link>

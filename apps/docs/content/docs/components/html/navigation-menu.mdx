@@ -1,0 +1,174 @@
+---
+title: Navigation Menu
+description: A collection of links for navigating websites.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  target="html"
+  name="navigation-menu-demo"
+  previewClassName="h-96"
+  scripts={["navigation-menu/navigation-menu.js"]}
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add navigation-menu"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="navigation-menu"
+        title="styles/navigation-menu.css"
+        fileTarget="styles/navigation-menu.css"
+      />
+      <ComponentSource
+        target="html"
+        name="navigation-menu"
+        title="javascripts/navigation-menu.js"
+        fileTarget="javascripts/navigation-menu.js"
+      />
+      <ComponentSource
+        target="html"
+        name="navigation-menu"
+        title="html/navigation-menu.html"
+        fileTarget="html/navigation-menu.html"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+Link the stylesheet, after `tokens.css`, and the script at the end of the page:
+
+```html
+<link rel="stylesheet" href="./styles/navigation-menu.css">
+
+<script src="./javascripts/navigation-menu.js" defer></script>
+```
+
+```html
+<nav class="np-navigation-menu" aria-label="Main">
+  <ul class="np-navigation-menu-list">
+    <li class="np-navigation-menu-item">
+      <button type="button" class="np-navigation-menu-trigger">Getting started</button>
+      <div class="np-navigation-menu-content">
+        <ul>
+          <li><a class="np-navigation-menu-link" href="/docs">Introduction</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="np-navigation-menu-item">
+      <a class="np-navigation-menu-trigger" href="/docs">Documentation</a>
+    </li>
+  </ul>
+</nav>
+```
+
+Or use the data attributes instead of classes, such as `data-np-navigation-menu` and `data-np-navigation-menu-trigger`.
+
+Each panel belongs to its item and drops below its trigger. Unlike the React version, the HTML version has no shared popup that moves and resizes between triggers. Each panel opens by itself.
+
+The script opens a panel on hover and on click, and keeps one open at a time. It adds the chevron to each trigger if it is missing, and sets `aria-expanded` and `aria-controls`. It closes on Escape, on a click outside, and when focus leaves the menu.
+
+---
+
+## Composition
+
+```text
+np-navigation-menu (nav)
+└── np-navigation-menu-list
+    ├── np-navigation-menu-item
+    │   ├── np-navigation-menu-trigger (button)
+    │   └── np-navigation-menu-content
+    │       └── np-navigation-menu-link
+    └── np-navigation-menu-item
+        └── np-navigation-menu-trigger (a)
+```
+
+---
+
+## Links only
+
+Use `np-navigation-menu-trigger` on a link. Add `data-active` and `aria-current="page"` for the current page.
+
+<ComponentPreview
+  target="html"
+  name="navigation-menu-simple"
+  previewClassName="h-96"
+  scripts={["navigation-menu/navigation-menu.js"]}
+/>
+
+---
+
+## Link list
+
+Put a title and a description in a link with `np-navigation-menu-link-text`, `np-navigation-menu-link-title` and `np-navigation-menu-link-description`. The description is cut to two lines.
+
+---
+
+## Reference
+
+### Classes and attributes
+
+| Class | Attribute | Element |
+| --- | --- | --- |
+| `np-navigation-menu` | `data-np-navigation-menu` | Root, usually a `nav` |
+| `np-navigation-menu-list` | `data-np-navigation-menu-list` | The list of items |
+| `np-navigation-menu-item` | `data-np-navigation-menu-item` | One entry. The script sets `data-open` on the open one. |
+| `np-navigation-menu-trigger` | `data-np-navigation-menu-trigger` | A button that opens a panel, or a link styled like one |
+| `np-navigation-menu-trigger-icon` | `data-np-navigation-menu-trigger-icon` | The chevron. Added by the script. |
+| `np-navigation-menu-content` | `data-np-navigation-menu-content` | The panel |
+| `np-navigation-menu-link` | `data-np-navigation-menu-link` | A link inside a panel. `data-active` or `aria-current="page"` marks the current one. |
+| `np-navigation-menu-link-text`, `-title`, `-description` | | A title and a description inside a link |
+
+### Options
+
+| Where | Attribute | Description | Default |
+| --- | --- | --- | --- |
+| Root | `data-delay` | Milliseconds before a hover opens a panel. | `50` |
+| Root | `data-close-delay` | Milliseconds before leaving closes it. | `50` |
+| Item | `data-value` | Names the panel for `open(value)`. Generated if omitted. | |
+
+### Script
+
+```html
+<script src="./javascripts/navigation-menu.js" defer></script>
+```
+
+| API | Description |
+| --- | --- |
+| `NepuiNavigationMenu.init(element)` | Wires one menu. Use it for a menu added after the page loaded. |
+| `NepuiNavigationMenu.initAll(scope?)` | Wires every menu in the scope, or on the page. |
+| `NepuiNavigationMenu.get(element)` | Returns `{ open(value), close() }`. |
+| `np-navigation-menu-change` | Event on the root. `event.detail.value` is the `data-value` of the open item, or `null`. |
+
+---
+
+## Keyboard
+
+| Key | Behavior |
+| --- | --- |
+| Enter, Space | Opens or closes the panel of the focused trigger. |
+| Arrow Down | On a trigger, opens its panel and focuses the first link. In a panel, moves to the next link. |
+| Arrow Up | In a panel, moves to the previous link. |
+| Arrow Right, Arrow Left | Move between the top-level items. They swap in RTL. |
+| Home, End | Go to the first or the last top-level item. |
+| Escape | Closes the panel and returns focus to its trigger. |

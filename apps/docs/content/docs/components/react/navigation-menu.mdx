@@ -1,0 +1,161 @@
+---
+title: Navigation Menu
+description: A collection of links for navigating websites.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://avatars.githubusercontent.com/u/170957638?v=4
+---
+
+<ComponentPreview
+  name="navigation-menu-demo"
+  previewClassName="h-96"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/navigation-menu.json"
+      nepui="npx nepui@latest add navigation-menu"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install @base-ui/react class-variance-authority cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="navigation-menu"
+        title="components/nepui/navigation-menu/navigation-menu.css"
+        fileTarget="components/nepui/navigation-menu/navigation-menu.css"
+      />
+      <ComponentSource
+        target="react"
+        name="navigation-menu"
+        title="components/nepui/navigation-menu/navigation-menu.tsx"
+        fileTarget="components/nepui/navigation-menu/navigation-menu.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="navigation-menu"
+        title="components/nepui/navigation-menu/index.ts"
+        fileTarget="components/nepui/navigation-menu/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/nepui/navigation-menu"
+```
+
+```tsx
+<NavigationMenu>
+  <NavigationMenuList>
+    <NavigationMenuItem>
+      <NavigationMenuTrigger>Item One</NavigationMenuTrigger>
+      <NavigationMenuContent>
+        <NavigationMenuLink href="#">Link</NavigationMenuLink>
+      </NavigationMenuContent>
+    </NavigationMenuItem>
+  </NavigationMenuList>
+</NavigationMenu>
+```
+
+`NavigationMenu` renders one shared popup under the triggers. The popup moves and resizes as you go from one trigger to the next, and the content slides in the direction you moved. Base UI handles hover, click, focus, Escape and the arrow keys.
+
+---
+
+## Composition
+
+```text
+NavigationMenu
+├── NavigationMenuList
+│   ├── NavigationMenuItem
+│   │   ├── NavigationMenuTrigger
+│   │   └── NavigationMenuContent
+│   │       ├── NavigationMenuLink
+│   │       └── NavigationMenuLink
+│   └── NavigationMenuItem
+│       └── NavigationMenuLink
+└── NavigationMenuPositioner
+```
+
+---
+
+## Link component
+
+Use the `render` prop to compose a custom link, such as Next.js `Link`.
+
+```tsx showLineNumbers
+import Link from "next/link"
+
+import {
+  NavigationMenuItem,
+  NavigationMenuLink,
+  navigationMenuTriggerStyle,
+} from "@/components/nepui/navigation-menu"
+
+export function NavigationMenuDemo() {
+  return (
+    <NavigationMenuItem>
+      <NavigationMenuLink
+        render={<Link href="/docs" />}
+        className={navigationMenuTriggerStyle()}
+      >
+        Documentation
+      </NavigationMenuLink>
+    </NavigationMenuItem>
+  )
+}
+```
+
+---
+
+## Links only
+
+A link beside the triggers, or a menu of links alone, uses `navigationMenuTriggerStyle()`. Set `active` on the link for the current page.
+
+<ComponentPreview
+  name="navigation-menu-simple"
+  previewClassName="h-96"
+/>
+
+---
+
+## Link list
+
+Put a title and a description in a link with the helper classes `np-navigation-menu-link-text`, `np-navigation-menu-link-title` and `np-navigation-menu-link-description`. The description is cut to two lines.
+
+---
+
+## API Reference
+
+See the [Base UI Navigation Menu](https://base-ui.com/react/components/navigation-menu#api-reference) documentation for the props of every part.
+
+### NavigationMenu
+
+Also takes `align`, passed to the popup's positioner. The default is `"start"`.
+
+### NavigationMenuPositioner
+
+Added by `NavigationMenu`. It takes `side`, `sideOffset`, `align` and `alignOffset`, with defaults of `"bottom"`, `8`, `"start"` and `0`.
