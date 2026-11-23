@@ -3,6 +3,11 @@
   "name": "table",
   "title": "Table",
   "description": "A responsive table component.",
+  "registryDependencies": [
+    "https://nepui.vercel.app/r/html/button.json",
+    "https://nepui.vercel.app/r/html/badge.json",
+    "https://nepui.vercel.app/r/html/checkbox.json"
+  ],
   "files": [
     {
       "path": "registry/html/table/table.html",
