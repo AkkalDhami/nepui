@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nepui — Timeline</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/timeline.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem 1rem 4rem;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: system-ui, sans-serif;
+      }
+      main {
+        display: grid;
+        gap: 2.5rem;
+        max-width: 44rem;
+        margin-inline: auto;
+      }
+      h2 {
+        margin: 0 0 0.75rem;
+        font-size: 1rem;
+      }
+      p {
+        margin: 0 0 0.75rem;
+        color: var(--np-muted-foreground);
+        font-size: 0.875rem;
+      }
+    </style>
+    <script src="../javascripts/timeline.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Default</h2>
+        <p>A vertical activity feed.</p>
+        <div
+          class="np-timeline"
+          aria-label="Activity"
+          style="width: 100%; max-width: 24rem"
+        >
+          <div class="np-timeline-item">
+            <span class="np-timeline-marker"></span>
+            <span class="np-timeline-connector"></span>
+            <div class="np-timeline-title">Deployed to production</div>
+            <time class="np-timeline-time" datetime="2026-11-14T10:42"
+              >10:42</time
+            >
+            <div class="np-timeline-description">
+              Version 2.4.0 is live in all regions.
+            </div>
+          </div>
+          <div class="np-timeline-item">
+            <span class="np-timeline-marker"></span>
+            <span class="np-timeline-connector"></span>
+            <div class="np-timeline-title">Checks passed</div>
+            <time class="np-timeline-time" datetime="2026-11-14T10:30"
+              >10:30</time
+            >
+            <div class="np-timeline-description">
+              142 tests ran without a failure.
+            </div>
+          </div>
+          <div class="np-timeline-item">
+            <span class="np-timeline-marker"></span>
+            <span class="np-timeline-connector"></span>
+            <div class="np-timeline-title">Pull request merged</div>
+            <time class="np-timeline-time" datetime="2026-11-14T09:58"
+              >09:58</time
+            >
+            <div class="np-timeline-description">
+              Add export to the reports page.
+            </div>
+          </div>
+          <div class="np-timeline-item">
+            <span class="np-timeline-marker"></span>
+            <span class="np-timeline-connector"></span>
+            <div class="np-timeline-title">Review requested</div>
+            <time class="np-timeline-time" datetime="2026-11-14T09:12"
+              >09:12</time
+            >
+            <div class="np-timeline-description">
+              Two reviewers were assigned.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Horizontal</h2>
+        <p>Left and Right move between events.</p>
+        <div
+          class="np-timeline np-timeline-horizontal"
+          aria-label="Roadmap"
+          data-orientation="horizontal"
+          data-value="2"
+          style="width: 100%; max-width: 40rem"
+        >
+          <div class="np-timeline-item" data-step="1">
+            <span class="np-timeline-marker"></span>
+            <span class="np-timeline-connector"></span>
+            <div class="np-timeline-title">Kickoff</div>
+            <time class="np-timeline-time">Week 1</time>
+            <div class="np-timeline-description">
+              Scope and resource planning.
+            </div>
+          </div>
+          <div class="np-timeline-item" data-step="2">
+            <span class="np-timeline-marker"></span>
+            <span class="np-timeline-connector"></span>
+            <div class="np-timeline-title">Design review</div>
+            <time class="np-timeline-time">Week 2</time>
+            <div class="np-timeline-description">UI and UX prototypes.</div>
+          </div>
+          <div class="np-timeline-item" data-step="3">
+            <span class="np-timeline-marker"></span>
+            <span class="np-timeline-connector"></span>
+            <div class="np-timeline-title">Beta</div>
+            <time class="np-timeline-time">Week 4</time>
+            <div class="np-timeline-description">
+              Core features for testers.
+            </div>
+          </div>
+          <div class="np-timeline-item" data-step="4">
+            <span class="np-timeline-marker"></span>
+            <span class="np-timeline-connector"></span>
+            <div class="np-timeline-title">Launch</div>
+            <time class="np-timeline-time">Week 6</time>
+            <div class="np-timeline-description">Public release.</div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Status</h2>
+        <p>Complete, current and upcoming steps.</p>
+        <div
+          style="
+            display: grid;
+            gap: 1rem;
+            justify-items: start;
+            width: 100%;
+            max-width: 24rem;
+          "
+        >
+          <div
+            class="np-timeline"
+            id="timeline-status"
+            aria-label="Order progress"
+            data-value="2"
+          >
+            <div class="np-timeline-item" data-value="placed" data-step="1">
+              <span class="np-timeline-marker"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M20 6 9 17l-5-5" /></svg
+              ></span>
+              <span class="np-timeline-connector"></span>
+              <div class="np-timeline-title">Order placed</div>
+              <div class="np-timeline-description">We have your order.</div>
+            </div>
+            <div class="np-timeline-item" data-value="packed" data-step="2">
+              <span class="np-timeline-marker"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M20 6 9 17l-5-5" /></svg
+              ></span>
+              <span class="np-timeline-connector"></span>
+              <div class="np-timeline-title">Packed</div>
+              <div class="np-timeline-description">Your items are boxed.</div>
+            </div>
+            <div class="np-timeline-item" data-value="shipped" data-step="3">
+              <span class="np-timeline-marker"></span>
+              <span class="np-timeline-connector"></span>
+              <div class="np-timeline-title">Shipped, in progress</div>
+              <div class="np-timeline-description">
+                On the way to your address.
+              </div>
+            </div>
+            <div class="np-timeline-item" data-value="delivered" data-step="4">
+              <span class="np-timeline-marker"></span>
+              <span class="np-timeline-connector"></span>
+              <div class="np-timeline-title">Delivered</div>
+              <div class="np-timeline-description">Expected on Friday.</div>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="np-button np-button-outline np-button-sm"
+            id="timeline-status-focus"
+          >
+            Focus the current step
+          </button>
+        </div>
+        <script>
+          document
+            .getElementById("timeline-status-focus")
+            .addEventListener("click", function () {
+              NepuiTimeline.get(
+                document.getElementById("timeline-status")
+              ).focus("shipped")
+            })
+        </script>
+      </section>
+
+      <section>
+        <h2>Details</h2>
+        <p>Native details inside an event.</p>
+        <div
+          class="np-timeline"
+          aria-label="Changelog"
+          style="width: 100%; max-width: 24rem"
+        >
+          <div class="np-timeline-item">
+            <span class="np-timeline-marker"></span>
+            <span class="np-timeline-connector"></span>
+            <div class="np-timeline-title">v2.4.0</div>
+            <time class="np-timeline-time">Nov 14</time>
+            <details>
+              <summary
+                class="np-button np-button-ghost np-button-sm"
+                style="list-style: none; cursor: pointer"
+              >
+                What changed
+              </summary>
+              <ul
+                style="
+                  margin: 0.25rem 0 0;
+                  padding-inline-start: 1.25rem;
+                  color: var(--np-muted-foreground);
+                  font-size: 0.875rem;
+                "
+              >
+                <li>Export reports as CSV</li>
+                <li>Faster search</li>
+                <li>Fixed the date picker in RTL</li>
+              </ul>
+            </details>
+          </div>
+          <div class="np-timeline-item">
+            <span class="np-timeline-marker"></span>
+            <span class="np-timeline-connector"></span>
+            <div class="np-timeline-title">v2.3.0</div>
+            <time class="np-timeline-time">Oct 29</time>
+            <details>
+              <summary
+                class="np-button np-button-ghost np-button-sm"
+                style="list-style: none; cursor: pointer"
+              >
+                What changed
+              </summary>
+              <ul
+                style="
+                  margin: 0.25rem 0 0;
+                  padding-inline-start: 1.25rem;
+                  color: var(--np-muted-foreground);
+                  font-size: 0.875rem;
+                "
+              >
+                <li>New onboarding flow</li>
+                <li>Dark mode for charts</li>
+              </ul>
+            </details>
+          </div>
+          <div class="np-timeline-item">
+            <span class="np-timeline-marker"></span>
+            <span class="np-timeline-connector"></span>
+            <div class="np-timeline-title">v2.2.0</div>
+            <time class="np-timeline-time">Oct 02</time>
+            <details>
+              <summary
+                class="np-button np-button-ghost np-button-sm"
+                style="list-style: none; cursor: pointer"
+              >
+                What changed
+              </summary>
+              <ul
+                style="
+                  margin: 0.25rem 0 0;
+                  padding-inline-start: 1.25rem;
+                  color: var(--np-muted-foreground);
+                  font-size: 0.875rem;
+                "
+              >
+                <li>Keyboard shortcuts</li>
+                <li>Smaller bundle</li>
+              </ul>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Feed</h2>
+        <p>Loads more events, and marks the list busy while it does.</p>
+        <div
+          style="
+            display: grid;
+            gap: 1rem;
+            justify-items: start;
+            width: 100%;
+            max-width: 24rem;
+          "
+        >
+          <div
+            class="np-timeline"
+            id="timeline-feed"
+            aria-label="Team updates"
+            data-feed
+          >
+            <div class="np-timeline-item">
+              <span class="np-timeline-marker"></span>
+              <span class="np-timeline-connector"></span>
+              <div class="np-timeline-title">Asha posted an update</div>
+              <div class="np-timeline-description">
+                Update number 1 for the team.
+              </div>
+            </div>
+            <div class="np-timeline-item">
+              <span class="np-timeline-marker"></span>
+              <span class="np-timeline-connector"></span>
+              <div class="np-timeline-title">Bikash posted an update</div>
+              <div class="np-timeline-description">
+                Update number 2 for the team.
+              </div>
+            </div>
+            <div class="np-timeline-item">
+              <span class="np-timeline-marker"></span>
+              <span class="np-timeline-connector"></span>
+              <div class="np-timeline-title">Chandra posted an update</div>
+              <div class="np-timeline-description">
+                Update number 3 for the team.
+              </div>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="np-button np-button-outline np-button-sm"
+            id="timeline-feed-more"
+          >
+            Load more
+          </button>
+        </div>
+        <script>
+          var feed = document.getElementById("timeline-feed")
+          var more = document.getElementById("timeline-feed-more")
+          var people = ["Dipa", "Esha", "Fulmaya", "Gita", "Hari", "Indra"]
+          more.addEventListener("click", function () {
+            more.disabled = true
+            more.textContent = "Loading…"
+            feed.setAttribute("data-busy", "")
+            setTimeout(function () {
+              var start = feed.children.length
+              for (var i = 0; i < 3; i++) {
+                var item = document.createElement("div")
+                item.className = "np-timeline-item"
+                item.innerHTML =
+                  '<span class="np-timeline-marker"></span><span class="np-timeline-connector"></span>' +
+                  '<div class="np-timeline-title">' +
+                  people[(start + i) % people.length] +
+                  " posted an update</div>" +
+                  '<div class="np-timeline-description">Update number ' +
+                  (start + i + 1) +
+                  " for the team.</div>"
+                feed.appendChild(item)
+              }
+              feed.removeAttribute("data-busy")
+              more.disabled = false
+              more.textContent = "Load more"
+            }, 600)
+          })
+        </script>
+      </section>
+
+      <section>
+        <h2>Headings</h2>
+        <p>Use a heading element for the title.</p>
+        <div
+          class="np-timeline"
+          aria-label="Milestones"
+          style="width: 100%; max-width: 24rem"
+        >
+          <div class="np-timeline-item">
+            <span class="np-timeline-marker"></span>
+            <span class="np-timeline-connector"></span>
+            <h3 class="np-timeline-title">Founded</h3>
+            <div class="np-timeline-description">The first commit.</div>
+          </div>
+          <div class="np-timeline-item">
+            <span class="np-timeline-marker"></span>
+            <span class="np-timeline-connector"></span>
+            <h3 class="np-timeline-title">First release</h3>
+            <div class="np-timeline-description">Version 1.0 for everyone.</div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Icons</h2>
+        <p>Put an icon in the marker.</p>
+        <div
+          class="np-timeline"
+          aria-label="Activity"
+          style="width: 100%; max-width: 24rem"
+        >
+          <div class="np-timeline-item">
+            <span class="np-timeline-marker"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                /></svg
+            ></span>
+            <span class="np-timeline-connector"></span>
+            <div class="np-timeline-title">Comment added</div>
+            <time class="np-timeline-time">2 hours ago</time>
+            <div class="np-timeline-description">Looks good to me.</div>
+          </div>
+          <div class="np-timeline-item">
+            <span class="np-timeline-marker"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <line x1="6" x2="6" y1="3" y2="15" />
+                <circle cx="18" cy="6" r="3" />
+                <circle cx="6" cy="18" r="3" />
+                <path d="M18 9a9 9 0 0 1-9 9" /></svg
+            ></span>
+            <span class="np-timeline-connector"></span>
+            <div class="np-timeline-title">Branch created</div>
+            <time class="np-timeline-time">Yesterday</time>
+            <div class="np-timeline-description">feature/timeline</div>
+          </div>
+          <div class="np-timeline-item">
+            <span class="np-timeline-marker"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" x2="12" y1="8" y2="12" />
+                <line x1="12" x2="12.01" y1="16" y2="16" /></svg
+            ></span>
+            <span class="np-timeline-connector"></span>
+            <div class="np-timeline-title">Issue opened</div>
+            <time class="np-timeline-time">Mon</time>
+            <div class="np-timeline-description">Add a timeline component.</div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Compact</h2>
+        <p>A small marker with a custom colour.</p>
+        <div
+          class="np-timeline"
+          aria-label="Roadmap"
+          style="
+            width: 100%;
+            max-width: 20rem;
+            --np-timeline-marker-size: 0.75rem;
+            --np-timeline-item-gap: 1rem;
+          "
+        >
+          <div class="np-timeline-item">
+            <span
+              class="np-timeline-marker"
+              style="background: #10b981; border-color: #10b981"
+            ></span>
+            <span class="np-timeline-connector"></span>
+            <div class="np-timeline-title" style="line-height: 0.75rem">
+              Beta Program
+            </div>
+            <time
+              class="np-timeline-time"
+              style="text-transform: uppercase; font-weight: 600"
+              >Dec 15, 2025</time
+            >
+          </div>
+          <div class="np-timeline-item">
+            <span
+              class="np-timeline-marker"
+              style="background: #8b5cf6; border-color: #8b5cf6"
+            ></span>
+            <span class="np-timeline-connector"></span>
+            <div class="np-timeline-title" style="line-height: 0.75rem">
+              Usability Testing
+            </div>
+            <time
+              class="np-timeline-time"
+              style="text-transform: uppercase; font-weight: 600"
+              >Nov 01, 2025</time
+            >
+          </div>
+          <div class="np-timeline-item">
+            <span
+              class="np-timeline-marker"
+              style="background: #d946ef; border-color: #d946ef"
+            ></span>
+            <span class="np-timeline-connector"></span>
+            <div class="np-timeline-title" style="line-height: 0.75rem">
+              Design Phase
+            </div>
+            <time
+              class="np-timeline-time"
+              style="text-transform: uppercase; font-weight: 600"
+              >Oct 15, 2025</time
+            >
+          </div>
+          <div class="np-timeline-item">
+            <span
+              class="np-timeline-marker"
+              style="background: #3b82f6; border-color: #3b82f6"
+            ></span>
+            <span class="np-timeline-connector"></span>
+            <div class="np-timeline-title" style="line-height: 0.75rem">
+              Requirements Gathering
+            </div>
+            <time
+              class="np-timeline-time"
+              style="text-transform: uppercase; font-weight: 600"
+              >Aug 01, 2024</time
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
