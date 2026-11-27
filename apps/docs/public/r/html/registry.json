@@ -1467,6 +1467,24 @@
       ]
     },
     {
+      "name": "word-rotate",
+      "type": "registry:ui",
+      "title": "Word Rotate",
+      "description": "Swap one word in a sentence for the next, on a loop.",
+      "files": [
+        {
+          "path": "registry/html/word-rotate/word-rotate.html",
+          "type": "registry:ui",
+          "target": "html/word-rotate.html"
+        },
+        {
+          "path": "registry/html/pagination/pagination.css",
+          "type": "registry:ui",
+          "target": "styles/word-rotate.css"
+        }
+      ]
+    },
+    {
       "name": "collapsible",
       "type": "registry:ui",
       "title": "Collapsible",
