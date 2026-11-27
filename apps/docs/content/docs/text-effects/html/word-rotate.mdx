@@ -1,0 +1,125 @@
+---
+title: Word Rotate
+description: Swap one word in a sentence for the next, on a loop.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://github.com/akkaldhami.png
+---
+
+<ComponentPreview
+  name="word-rotate-demo"
+  target="html"
+/>
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <PackageManagerTabs
+      command="npx nepui@latest add word-rotate"
+      className="mt-4"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="html"
+        name="word-rotate"
+        title="styles/word-rotate.css"
+        fileTarget="styles/word-rotate.css"
+      />
+      <ComponentSource
+        target="html"
+        name="word-rotate"
+        title="html/word-rotate.html"
+        fileTarget="html/word-rotate.html"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+
+---
+
+## Usage
+
+```html
+<link rel="stylesheet" href="tokens.css" />
+<link rel="stylesheet" href="word-rotate.css" />
+```
+```html
+<p>
+  Build interfaces that feel
+  <span class="np-word-rotate" role="img" aria-label="fast, calm, sharp, alive">
+    <span class="np-word-rotate-item" aria-hidden="true">fast</span>
+    <span class="np-word-rotate-item" aria-hidden="true">calm</span>
+    <span class="np-word-rotate-item" aria-hidden="true">sharp</span>
+    <span class="np-word-rotate-item" aria-hidden="true">alive</span>
+  </span>
+</p>
+```
+
+No script is needed. Every `.np-word-rotate` works with `[data-np-word-rotate]`, and every `.np-word-rotate-item` works with `[data-np-word-rotate-item]`.
+
+Use up to 10 words. The rotator is as wide as its widest word, so it keeps the rest of the sentence from shifting while the words change. Words of a similar length look best in the middle of a sentence.
+
+---
+
+## Variants
+
+`data-variant` sets how a word enters and leaves: `fade`, `flip`, `blur` or `zoom`. Leave it out for `slide`.
+
+<ComponentPreview
+  name="word-rotate-variants"
+  target="html"
+/>
+
+---
+
+## Speed and direction
+
+`data-speed="slow"` keeps each word twice as long as the default and `data-speed="fast"` half as long. `data-direction="reverse"` moves words the other way. `data-animate="false"` shows the first word and stops.
+
+<ComponentPreview
+  name="word-rotate-speeds"
+  target="html"
+/>
+
+---
+
+## Inline
+
+<ComponentPreview
+  name="word-rotate-inline"
+  target="html"
+/>
+
+When a word is narrower than the widest one, use `data-align` to choose where it sits: `center` or `end`. The default is the start. Use `center` when the sentence itself is centered.
+
+---
+
+## Accessibility
+
+- Put `role="img"` and an `aria-label` that lists every word on the root, and `aria-hidden="true"` on each word. A screen reader then reads the full set once and does not announce each change.
+- The words are real text. They stay selectable and can be translated.
+- With reduced motion turned on, nothing moves and the first word stays on screen. Do not put information that a reader must not miss only in the later words.
+
+---
+
+## Reference
+
+| Name | Where | Description |
+| --- | --- | --- |
+| `np-word-rotate` | root | The rotator. |
+| `np-word-rotate-item` | word | One word. |
+| `data-variant` | root | `fade`, `flip`, `blur` or `zoom`. |
+| `data-speed` | root | `slow` or `fast`. |
+| `data-direction` | root | `reverse`. |
+| `data-animate` | root | `false` to stop. |
+| `data-align` | root | `center` or `end`. |

@@ -1,0 +1,121 @@
+---
+title: Word Rotate
+description: Swap one word in a sentence for the next, on a loop.
+contributor:
+  - name: Akkal Dhami
+    url: https://www.akkal.com.np
+    avatar: https://github.com/akkaldhami.png
+---
+
+<ComponentPreview name="word-rotate-demo" />
+
+---
+
+## Installation
+
+<ManualInstallation
+  cli={
+    <ReactCodeBlockCommand
+      shadcn="npx shadcn@latest add https://nepui.vercel.app/r/react/word-rotate.json"
+      nepui="npx nepui@latest add word-rotate"
+    />
+  }
+  manual={
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <PackageManagerTabs command="npm install cn" className="mt-6"/>
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource
+        target="react"
+        name="word-rotate"
+        title="components/nepui/word-rotate/word-rotate.css"
+        fileTarget="components/nepui/word-rotate/word-rotate.css"
+      />
+      <ComponentSource
+        target="react"
+        name="word-rotate"
+        title="components/nepui/word-rotate/word-rotate.tsx"
+        fileTarget="components/nepui/word-rotate/word-rotate.tsx"
+      />
+      <ComponentSource
+        target="react"
+        name="word-rotate"
+        title="components/nepui/word-rotate/index.ts"
+        fileTarget="components/nepui/word-rotate/index.ts"
+      />
+
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  }
+/>
+
+---
+
+## Usage
+
+```tsx
+import { WordRotate } from "@/components/ui/word-rotate";
+```
+
+```tsx
+<p>
+  Build interfaces that feel{" "}
+  <WordRotate words={["fast", "calm", "sharp", "alive"]} />
+</p>
+```
+
+The component is an inline element. It takes its font, size and color from the text around it, so you style it with `className` like any other span.
+
+Pass up to 10 words. The rotator is as wide as its widest word, so it keeps the rest of the sentence from shifting while the words change. Words of a similar length look best in the middle of a sentence.
+
+If you need markup inside a word, leave out `words` and place your own `WordRotateItem` elements as children. Then set `aria-label` yourself.
+
+---
+
+## Variants
+
+`variant` sets how a word enters and leaves. `slide` is the default.
+
+<ComponentPreview name="word-rotate-variants" />
+
+---
+
+## Speed and direction
+
+`speed` sets how long each word stays: `slow` is twice as long as the default and `fast` is half. `reverse` moves words the other way. `animated={false}` shows the first word and stops.
+
+<ComponentPreview name="word-rotate-speeds" />
+
+---
+
+## Inline
+
+<ComponentPreview name="word-rotate-inline" />
+
+When a word is narrower than the widest one, use `align` to choose where it sits: `start` (default), `center` or `end`. Use `center` when the sentence itself is centered.
+
+---
+
+## Accessibility
+
+- The rotator has `role="img"` and an `aria-label` that lists every word, so a screen reader reads the full set once. The moving words are hidden from assistive technology so it does not announce each change.
+- The words are real text. They stay selectable and can be translated.
+- With reduced motion turned on, nothing moves and the first word stays on screen. Do not put information that a reader must not miss only in the later words.
+
+---
+
+## API Reference
+
+### WordRotate
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `words` | `string[]` | | Words to rotate through, up to 10. |
+| `variant` | `"slide" \| "fade" \| "flip" \| "blur" \| "zoom"` | `"slide"` | How a word enters and leaves. |
+| `speed` | `"slow" \| "default" \| "fast"` | `"default"` | How long each word stays. |
+| `reverse` | `boolean` | `false` | Move words the other way. |
+| `animated` | `boolean` | `true` | Set to `false` to show the first word and stop. |
+| `align` | `"start" \| "center" \| "end"` | `"start"` | Where a narrow word sits. |
+| `render` | `React.ReactElement` | | Replace the root element. |
+| `children` | `React.ReactNode` | | Your own `WordRotateItem` elements, when `words` is not set. |
