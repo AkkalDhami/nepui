@@ -160,10 +160,12 @@
 ### HTML
 
 * [Gradient Text](https://nepui.vercel.app/docs/text-effects/html/gradient-text): Text filled with a gradient that flows, with named gradients and a neon glow, in plain CSS.
+* [Word Rotate](https://nepui.vercel.app/docs/text-effects/html/word-rotate): Swap one word in a sentence for the next, on a loop.
 
 ### React
 
 * [Gradient Text](https://nepui.vercel.app/docs/text-effects/react/gradient-text): Text filled with a gradient that flows, with named gradients and a neon glow, in plain CSS.
+* [Word Rotate](https://nepui.vercel.app/docs/text-effects/react/word-rotate): Swap one word in a sentence for the next, on a loop.
 
 
 ## Backgrounds

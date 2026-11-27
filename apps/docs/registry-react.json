@@ -1577,6 +1577,29 @@
       ]
     },
     {
+      "name": "word-rotate",
+      "type": "registry:ui",
+      "title": "Word Rotate",
+      "description": "Swap one word in a sentence for the next, on a loop.",
+      "files": [
+        {
+          "path": "registry/react/word-rotate/word-rotate.tsx",
+          "type": "registry:ui",
+          "target": "components/nepui/word-rotate/word-rotate.tsx"
+        },
+        {
+          "path": "registry/react/word-rotate/word-rotate.css",
+          "type": "registry:ui",
+          "target": "components/nepui/word-rotate/word-rotate.css"
+        },
+        {
+          "path": "registry/react/word-rotate/index.ts",
+          "type": "registry:ui",
+          "target": "components/nepui/word-rotate/index.ts"
+        }
+      ]
+    },
+    {
       "name": "icon-swap",
       "type": "registry:ui",
       "title": "Icon Swap",
