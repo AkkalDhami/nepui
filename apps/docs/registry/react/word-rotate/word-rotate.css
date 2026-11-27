@@ -1,0 +1,220 @@
+/* nepui — Word Rotate */
+
+:is(.np-word-rotate, [data-np-word-rotate]) {
+  --np-word-rotate-duration: 2400ms;
+  --np-word-rotate-edge: 0.14;
+  --np-word-rotate-distance: 120%;
+  --np-word-rotate-direction: 1;
+  --np-word-rotate-count: 1;
+
+  display: inline-grid;
+  overflow-x: visible;
+  overflow-y: clip;
+  padding-block: 0.1em;
+  margin-block: -0.1em;
+  vertical-align: baseline;
+}
+
+:is(.np-word-rotate, [data-np-word-rotate]):has(> :nth-child(2)) {
+  --np-word-rotate-count: 2;
+}
+
+:is(.np-word-rotate, [data-np-word-rotate]):has(> :nth-child(3)) {
+  --np-word-rotate-count: 3;
+}
+
+:is(.np-word-rotate, [data-np-word-rotate]):has(> :nth-child(4)) {
+  --np-word-rotate-count: 4;
+}
+
+:is(.np-word-rotate, [data-np-word-rotate]):has(> :nth-child(5)) {
+  --np-word-rotate-count: 5;
+}
+
+:is(.np-word-rotate, [data-np-word-rotate]):has(> :nth-child(6)) {
+  --np-word-rotate-count: 6;
+}
+
+:is(.np-word-rotate, [data-np-word-rotate]):has(> :nth-child(7)) {
+  --np-word-rotate-count: 7;
+}
+
+:is(.np-word-rotate, [data-np-word-rotate]):has(> :nth-child(8)) {
+  --np-word-rotate-count: 8;
+}
+
+:is(.np-word-rotate, [data-np-word-rotate]):has(> :nth-child(9)) {
+  --np-word-rotate-count: 9;
+}
+
+:is(.np-word-rotate, [data-np-word-rotate]):has(> :nth-child(10)) {
+  --np-word-rotate-count: 10;
+}
+
+@supports (transition-behavior: allow-discrete) {
+  :is(.np-word-rotate, [data-np-word-rotate]) {
+    animation: np-word-rotate
+      calc(var(--np-word-rotate-duration) * var(--np-word-rotate-count)) linear
+      calc(var(--np-word-rotate-duration) * var(--np-word-rotate-edge) * -1)
+      infinite;
+  }
+
+  :is(.np-word-rotate, [data-np-word-rotate]):not(:has(> :nth-child(2))) {
+    animation: none;
+  }
+}
+
+:is(.np-word-rotate, [data-np-word-rotate])[data-speed="slow"] {
+  --np-word-rotate-duration: 4800ms;
+}
+
+:is(.np-word-rotate, [data-np-word-rotate])[data-speed="fast"] {
+  --np-word-rotate-duration: 1200ms;
+}
+
+:is(.np-word-rotate, [data-np-word-rotate])[data-direction="reverse"] {
+  --np-word-rotate-direction: -1;
+}
+
+:is(.np-word-rotate, [data-np-word-rotate])[data-animate="false"] {
+  animation: none;
+}
+
+:is(.np-word-rotate-item, [data-np-word-rotate-item]) {
+  --np-word-rotate-i: 0;
+  --np-word-rotate-t: calc(
+    var(--np-word-rotate-index) - var(--np-word-rotate-i)
+  );
+  --np-word-rotate-in: clamp(
+    0,
+    1 - var(--np-word-rotate-t) / var(--np-word-rotate-edge),
+    1
+  );
+  --np-word-rotate-out: clamp(
+    0,
+    (var(--np-word-rotate-t) - 1 + var(--np-word-rotate-edge)) /
+      var(--np-word-rotate-edge),
+    1
+  );
+  --np-word-rotate-enter: calc(
+    var(--np-word-rotate-in) * var(--np-word-rotate-in)
+  );
+  --np-word-rotate-exit: calc(
+    var(--np-word-rotate-out) * var(--np-word-rotate-out)
+  );
+  --np-word-rotate-hide: max(
+    var(--np-word-rotate-in),
+    var(--np-word-rotate-out)
+  );
+
+  grid-area: 1 / 1;
+  justify-self: start;
+  width: fit-content;
+  max-width: 100%;
+  white-space: nowrap;
+  opacity: calc(1 - var(--np-word-rotate-hide));
+  translate: 0
+    calc(
+      (var(--np-word-rotate-enter) - var(--np-word-rotate-exit)) *
+        var(--np-word-rotate-direction) * var(--np-word-rotate-distance)
+    );
+}
+
+:is(.np-word-rotate-item, [data-np-word-rotate-item]):nth-child(2) {
+  --np-word-rotate-i: 1;
+}
+
+:is(.np-word-rotate-item, [data-np-word-rotate-item]):nth-child(3) {
+  --np-word-rotate-i: 2;
+}
+
+:is(.np-word-rotate-item, [data-np-word-rotate-item]):nth-child(4) {
+  --np-word-rotate-i: 3;
+}
+
+:is(.np-word-rotate-item, [data-np-word-rotate-item]):nth-child(5) {
+  --np-word-rotate-i: 4;
+}
+
+:is(.np-word-rotate-item, [data-np-word-rotate-item]):nth-child(6) {
+  --np-word-rotate-i: 5;
+}
+
+:is(.np-word-rotate-item, [data-np-word-rotate-item]):nth-child(7) {
+  --np-word-rotate-i: 6;
+}
+
+:is(.np-word-rotate-item, [data-np-word-rotate-item]):nth-child(8) {
+  --np-word-rotate-i: 7;
+}
+
+:is(.np-word-rotate-item, [data-np-word-rotate-item]):nth-child(9) {
+  --np-word-rotate-i: 8;
+}
+
+:is(.np-word-rotate-item, [data-np-word-rotate-item]):nth-child(10) {
+  --np-word-rotate-i: 9;
+}
+
+:is(.np-word-rotate, [data-np-word-rotate])[data-align="center"]
+  > :is(.np-word-rotate-item, [data-np-word-rotate-item]) {
+  justify-self: center;
+}
+
+:is(.np-word-rotate, [data-np-word-rotate])[data-align="end"]
+  > :is(.np-word-rotate-item, [data-np-word-rotate-item]) {
+  justify-self: end;
+}
+
+:is(.np-word-rotate, [data-np-word-rotate])[data-variant="fade"]
+  > :is(.np-word-rotate-item, [data-np-word-rotate-item]) {
+  translate: none;
+}
+
+:is(.np-word-rotate, [data-np-word-rotate])[data-variant="blur"]
+  > :is(.np-word-rotate-item, [data-np-word-rotate-item]) {
+  translate: none;
+  filter: blur(calc(var(--np-word-rotate-hide) * 0.2em));
+}
+
+:is(.np-word-rotate, [data-np-word-rotate])[data-variant="zoom"]
+  > :is(.np-word-rotate-item, [data-np-word-rotate-item]) {
+  translate: none;
+  scale: calc(
+    1 - (var(--np-word-rotate-enter) - var(--np-word-rotate-exit)) *
+      var(--np-word-rotate-direction) * 0.4
+  );
+}
+
+:is(.np-word-rotate, [data-np-word-rotate])[data-variant="flip"]
+  > :is(.np-word-rotate-item, [data-np-word-rotate-item]) {
+  translate: none;
+  transform: perspective(30em)
+    rotateX(
+      calc(
+        (var(--np-word-rotate-enter) - var(--np-word-rotate-exit)) *
+          var(--np-word-rotate-direction) * -90deg
+      )
+    );
+}
+
+@property --np-word-rotate-index {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0.5;
+}
+
+@keyframes np-word-rotate {
+  from {
+    --np-word-rotate-index: 0;
+  }
+  to {
+    --np-word-rotate-index: var(--np-word-rotate-count);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.np-word-rotate, [data-np-word-rotate]) {
+    animation: none;
+  }
+}

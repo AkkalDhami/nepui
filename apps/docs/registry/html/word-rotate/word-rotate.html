@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Word Rotate — nepui Motion</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/word-rotate.css" />
+    <style>
+      body {
+        margin: 0;
+        background: var(--np-background);
+        color: var(--np-foreground);
+        font-family: system-ui, sans-serif;
+      }
+      main {
+        max-width: 56rem;
+        margin: 0 auto;
+        padding: 2rem 1.25rem 4rem;
+      }
+      h2 {
+        margin: 2.5rem 0 0.75rem;
+        font-size: 0.875rem;
+        color: var(--np-muted-foreground);
+        font-weight: 500;
+      }
+      .preview {
+        border: 1px solid var(--np-border);
+        border-radius: var(--np-radius);
+        padding: 2rem 1.5rem;
+      }
+      button {
+        font: inherit;
+        font-size: 0.875rem;
+        color: var(--np-secondary-foreground);
+        background: var(--np-secondary);
+        border: 1px solid var(--np-border);
+        border-radius: var(--np-radius);
+        padding: 0.375rem 0.75rem;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Demo</h2>
+        <div class="preview">
+          <p
+            style="
+              margin: 0;
+              font-size: clamp(1.875rem, 5vw, 3rem);
+              font-weight: 600;
+              letter-spacing: -0.025em;
+            "
+          >
+            Build interfaces that feel
+            <span
+              class="np-word-rotate"
+              role="img"
+              aria-label="fast, calm, sharp, alive"
+              data-gradient
+            >
+              <span class="np-word-rotate-item" aria-hidden="true">fast</span>
+              <span class="np-word-rotate-item" aria-hidden="true">calm</span>
+              <span class="np-word-rotate-item" aria-hidden="true">sharp</span>
+              <span class="np-word-rotate-item" aria-hidden="true">alive</span>
+            </span>
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Variants</h2>
+        <div class="preview">
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+              gap: 1.25rem 2rem;
+            "
+          >
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 0.25rem;
+                font-size: 1.5rem;
+                font-weight: 600;
+              "
+            >
+              <span style="font-size: 0.75rem; font-weight: 400; opacity: 0.6"
+                >slide</span
+              >
+              <p style="margin: 0">
+                Feels
+                <span
+                  class="np-word-rotate"
+                  role="img"
+                  aria-label="fast, calm, sharp, alive"
+                >
+                  <span class="np-word-rotate-item" aria-hidden="true"
+                    >fast</span
+                  >
+                  <span class="np-word-rotate-item" aria-hidden="true"
+                    >calm</span
+                  >
+                  <span class="np-word-rotate-item" aria-hidden="true"
+                    >sharp</span
+                  >
+                  <span class="np-word-rotate-item" aria-hidden="true"
+                    >alive</span
+                  >
+                </span>
+              </p>
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 0.25rem;
+                font-size: 1.5rem;
+                font-weight: 600;
+              "
+            >
+              <span style="font-size: 0.75rem; font-weight: 400; opacity: 0.6"
+                >fade</span
+              >
+              <p style="margin: 0">
+                Feels
+                <span
+                  class="np-word-rotate"
+                  role="img"
+                  aria-label="fast, calm, sharp, alive"
+                  data-variant="fade"
+                >
+                  <span class="np-word-rotate-item" aria-hidden="true"
+                    >fast</span
+                  >
+                  <span class="np-word-rotate-item" aria-hidden="true"
+                    >calm</span
+                  >
+                  <span class="np-word-rotate-item" aria-hidden="true"
+                    >sharp</span
+                  >
+                  <span class="np-word-rotate-item" aria-hidden="true"
+                    >alive</span
+                  >
+                </span>
+              </p>
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 0.25rem;
+                font-size: 1.5rem;
+                font-weight: 600;
+              "
+            >
+              <span style="font-size: 0.75rem; font-weight: 400; opacity: 0.6"
+                >flip</span
+              >
+              <p style="margin: 0">
+                Feels
+                <span
+                  class="np-word-rotate"
+                  role="img"
+                  aria-label="fast, calm, sharp, alive"
+                  data-variant="flip"
+                >
+                  <span class="np-word-rotate-item" aria-hidden="true"
+                    >fast</span
+                  >
+                  <span class="np-word-rotate-item" aria-hidden="true"
+                    >calm</span
+                  >
+                  <span class="np-word-rotate-item" aria-hidden="true"
+                    >sharp</span
+                  >
+                  <span class="np-word-rotate-item" aria-hidden="true"
+                    >alive</span
+                  >
+                </span>
+              </p>
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 0.25rem;
+                font-size: 1.5rem;
+                font-weight: 600;
+              "
+            >
+              <span style="font-size: 0.75rem; font-weight: 400; opacity: 0.6"
+                >blur</span
+              >
+              <p style="margin: 0">
+                Feels
+                <span
+                  class="np-word-rotate"
+                  role="img"
+                  aria-label="fast, calm, sharp, alive"
+                  data-variant="blur"
+                >
+                  <span class="np-word-rotate-item" aria-hidden="true"
+                    >fast</span
+                  >
+                  <span class="np-word-rotate-item" aria-hidden="true"
+                    >calm</span
+                  >
+                  <span class="np-word-rotate-item" aria-hidden="true"
+                    >sharp</span
+                  >
+                  <span class="np-word-rotate-item" aria-hidden="true"
+                    >alive</span
+                  >
+                </span>
+              </p>
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 0.25rem;
+                font-size: 1.5rem;
+                font-weight: 600;
+              "
+            >
+              <span style="font-size: 0.75rem; font-weight: 400; opacity: 0.6"
+                >zoom</span
+              >
+              <p style="margin: 0">
+                Feels
+                <span
+                  class="np-word-rotate"
+                  role="img"
+                  aria-label="fast, calm, sharp, alive"
+                  data-variant="zoom"
+                >
+                  <span class="np-word-rotate-item" aria-hidden="true"
+                    >fast</span
+                  >
+                  <span class="np-word-rotate-item" aria-hidden="true"
+                    >calm</span
+                  >
+                  <span class="np-word-rotate-item" aria-hidden="true"
+                    >sharp</span
+                  >
+                  <span class="np-word-rotate-item" aria-hidden="true"
+                    >alive</span
+                  >
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>Speeds and direction</h2>
+        <div class="preview">
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+              gap: 1.25rem 2rem;
+            "
+          >
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 0.25rem;
+                font-size: 1.5rem;
+                font-weight: 600;
+              "
+            >
+              <span style="font-size: 0.75rem; font-weight: 400; opacity: 0.6"
+                >slow</span
+              >
+              <span
+                class="np-word-rotate"
+                role="img"
+                aria-label="fast, calm, sharp, alive"
+                data-speed="slow"
+              >
+                <span class="np-word-rotate-item" aria-hidden="true">fast</span>
+                <span class="np-word-rotate-item" aria-hidden="true">calm</span>
+                <span class="np-word-rotate-item" aria-hidden="true"
+                  >sharp</span
+                >
+                <span class="np-word-rotate-item" aria-hidden="true"
+                  >alive</span
+                >
+              </span>
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 0.25rem;
+                font-size: 1.5rem;
+                font-weight: 600;
+              "
+            >
+              <span style="font-size: 0.75rem; font-weight: 400; opacity: 0.6"
+                >default</span
+              >
+              <span
+                class="np-word-rotate"
+                role="img"
+                aria-label="fast, calm, sharp, alive"
+              >
+                <span class="np-word-rotate-item" aria-hidden="true">fast</span>
+                <span class="np-word-rotate-item" aria-hidden="true">calm</span>
+                <span class="np-word-rotate-item" aria-hidden="true"
+                  >sharp</span
+                >
+                <span class="np-word-rotate-item" aria-hidden="true"
+                  >alive</span
+                >
+              </span>
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 0.25rem;
+                font-size: 1.5rem;
+                font-weight: 600;
+              "
+            >
+              <span style="font-size: 0.75rem; font-weight: 400; opacity: 0.6"
+                >fast</span
+              >
+              <span
+                class="np-word-rotate"
+                role="img"
+                aria-label="fast, calm, sharp, alive"
+                data-speed="fast"
+              >
+                <span class="np-word-rotate-item" aria-hidden="true">fast</span>
+                <span class="np-word-rotate-item" aria-hidden="true">calm</span>
+                <span class="np-word-rotate-item" aria-hidden="true"
+                  >sharp</span
+                >
+                <span class="np-word-rotate-item" aria-hidden="true"
+                  >alive</span
+                >
+              </span>
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 0.25rem;
+                font-size: 1.5rem;
+                font-weight: 600;
+              "
+            >
+              <span style="font-size: 0.75rem; font-weight: 400; opacity: 0.6"
+                >reverse</span
+              >
+              <span
+                class="np-word-rotate"
+                role="img"
+                aria-label="fast, calm, sharp, alive"
+                data-direction="reverse"
+              >
+                <span class="np-word-rotate-item" aria-hidden="true">fast</span>
+                <span class="np-word-rotate-item" aria-hidden="true">calm</span>
+                <span class="np-word-rotate-item" aria-hidden="true"
+                  >sharp</span
+                >
+                <span class="np-word-rotate-item" aria-hidden="true"
+                  >alive</span
+                >
+              </span>
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 0.25rem;
+                font-size: 1.5rem;
+                font-weight: 600;
+              "
+            >
+              <span style="font-size: 0.75rem; font-weight: 400; opacity: 0.6"
+                >data-animate="false"</span
+              >
+              <span
+                class="np-word-rotate"
+                role="img"
+                aria-label="fast, calm, sharp, alive"
+                data-animate="false"
+              >
+                <span class="np-word-rotate-item" aria-hidden="true">fast</span>
+                <span class="np-word-rotate-item" aria-hidden="true">calm</span>
+                <span class="np-word-rotate-item" aria-hidden="true"
+                  >sharp</span
+                >
+                <span class="np-word-rotate-item" aria-hidden="true"
+                  >alive</span
+                >
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>Inline</h2>
+        <div class="preview">
+          <p
+            style="
+              margin: 0;
+              max-width: 28rem;
+              font-size: 1rem;
+              line-height: 1.75;
+            "
+          >
+            Our team writes
+            <span
+              class="np-word-rotate"
+              role="img"
+              aria-label="plans, specs, notes"
+              data-gradient="ocean"
+            >
+              <span class="np-word-rotate-item" aria-hidden="true">plans</span>
+              <span class="np-word-rotate-item" aria-hidden="true">specs</span>
+              <span class="np-word-rotate-item" aria-hidden="true">notes</span>
+            </span>
+            that people actually read, then keeps them up to date as the product
+            changes.
+          </p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
