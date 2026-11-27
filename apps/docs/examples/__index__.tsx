@@ -484,6 +484,10 @@ import KtmReactTypesetDocs from "./ktm/react/typeset-docs"
 import KtmReactTypesetLarge from "./ktm/react/typeset-large"
 import KtmReactTypesetOptOut from "./ktm/react/typeset-opt-out"
 import KtmReactTypesetTable from "./ktm/react/typeset-table"
+import KtmReactWordRotateDemo from "./ktm/react/word-rotate-demo"
+import KtmReactWordRotateInline from "./ktm/react/word-rotate-inline"
+import KtmReactWordRotateSpeeds from "./ktm/react/word-rotate-speeds"
+import KtmReactWordRotateVariants from "./ktm/react/word-rotate-variants"
 
 export const ExamplesIndex: Record<
   string,
@@ -971,6 +975,10 @@ export const ExamplesIndex: Record<
       "typeset-large": KtmReactTypesetLarge,
       "typeset-opt-out": KtmReactTypesetOptOut,
       "typeset-table": KtmReactTypesetTable,
+      "word-rotate-demo": KtmReactWordRotateDemo,
+      "word-rotate-inline": KtmReactWordRotateInline,
+      "word-rotate-speeds": KtmReactWordRotateSpeeds,
+      "word-rotate-variants": KtmReactWordRotateVariants,
     },
     html: {
       "accordion-borders": "ktm/html/accordion-borders.html",
@@ -1428,6 +1436,10 @@ export const ExamplesIndex: Record<
       "trace-link": "ktm/html/trace-link.html",
       "trace-status": "ktm/html/trace-status.html",
       "typeset-demo": "ktm/html/typeset-demo.html",
+      "word-rotate-demo": "ktm/html/word-rotate-demo.html",
+      "word-rotate-inline": "ktm/html/word-rotate-inline.html",
+      "word-rotate-speeds": "ktm/html/word-rotate-speeds.html",
+      "word-rotate-variants": "ktm/html/word-rotate-variants.html",
     },
   },
 }
